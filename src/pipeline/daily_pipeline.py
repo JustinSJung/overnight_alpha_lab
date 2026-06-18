@@ -167,10 +167,16 @@ def main():
     # 5. Score selected key events
     run_command(["python", "src/features/event_scoring.py"])
 
-    # 6. Collect price data and evaluate reactions
+    # 6. Collect news metadata for selected events
+    run_command(["python", "src/crawler/news_collector.py"])
+
+    # 7. Generate news features
+    run_command(["python", "src/features/news_features.py"])
+
+    # 8. Collect price data and evaluate reactions
     collect_and_evaluate_selected_events(key_events)
 
-    # 7. Generate prediction review and error notes
+    # 9. Generate prediction review and error notes
     run_command(["python", "src/evaluator/error_note_generator.py"])
 
     print("\nDaily pipeline completed.")
