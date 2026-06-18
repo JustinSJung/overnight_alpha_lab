@@ -66,6 +66,8 @@ The project currently includes:
 * News feature generation
 * Prediction review and error-note generation
 * Machine learning dataset builder
+* Baseline machine learning model
+* Daily model report generation
 * GitHub Pages portfolio blog
 
 ## Current Pipeline
@@ -91,6 +93,10 @@ Prediction Review and Error Note Generation
 ↓
 Machine Learning Dataset Building
 ↓
+Baseline Machine Learning Model
+↓
+Model Report Generation
+↓
 Daily Report and Blog Documentation
 ```
 
@@ -100,15 +106,17 @@ Daily Report and Blog Documentation
 * Day 2: Automated Event Scoring Pipeline
 * Day 3: Prediction Review and Error Note Generator
 * Day 4: News Features and ML Dataset Builder
+* Day 5: Baseline Machine Learning Model
 
 ## Next Steps
 
-* Build the first baseline machine learning model
-* Exclude pending rows and train only on success/failure samples
+* Continue daily pipeline execution after new price data becomes available
+* Convert pending rows into success/failure training samples
 * Add model evaluation metrics
+* Add probability-based prediction output
+* Add feature importance analysis
 * Add automatic daily blog generation
 * Add GitHub Actions or local scheduled automation
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
-
 

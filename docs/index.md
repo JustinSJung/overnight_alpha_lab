@@ -27,6 +27,7 @@ The project currently includes:
 - [Day 2: Automated Event Scoring Pipeline](posts/2026-06-18-day-2-automated-event-scoring.md)
 - [Day 3: Prediction Review and Error Note Generator](posts/2026-06-18-day-3-error-note-generator.md)
 - [Day 4: News Features and ML Dataset Builder](posts/2026-06-18-day-4-news-features-ml-dataset.md)
+- [Day 5: Baseline Machine Learning Model](posts/2026-06-18-day-5-baseline-ml-model.md)
 
 ## Repository
 
