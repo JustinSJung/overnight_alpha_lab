@@ -49,3 +49,26 @@ overnight_alpha_lab/
 ## Status
 
 project setup stage.
+
+## Current Progress
+
+- Set up the GitHub repository and Python project structure
+- Connected to the OpenDART API
+- Built a DART disclosure collector
+- Built a disclosure event parser
+- Built a daily Markdown report generator
+- Generated the first DART event report
+
+## First Output
+
+The first generated DART event report is available here:
+
+- `reports/daily_prediction/2026-06-18_dart_event_report.md`
+
+## Next Steps
+
+- Add stock price data collection
+- Compare disclosure events with next-day opening price reactions
+- Generate daily prediction review reports
+- Build error-note based model improvement logic
+- Publish selected reports through GitHub Pages
