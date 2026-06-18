@@ -182,6 +182,9 @@ def main():
     # 10. Build machine learning dataset
     run_command(["python", "src/features/ml_dataset_builder.py"])
 
+    # 11. Train baseline machine learning model
+    run_command(["python", "src/models/baseline_model.py"])
+
     print("\nDaily pipeline completed.")
 
 if __name__ == "__main__":
