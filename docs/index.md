@@ -24,6 +24,7 @@ The project currently includes:
 ## Development Log
 
 - [Day 1: DART API Collector and Event Report](posts/2026-06-18-day-1-dart-api.md)
+- [Day 2: Automated Event Scoring Pipeline](posts/2026-06-18-day-2-automated-event-scoring.md)
 
 ## Repository
 

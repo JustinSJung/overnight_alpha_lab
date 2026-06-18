@@ -52,23 +52,47 @@ project setup stage.
 
 ## Current Progress
 
-- Set up the GitHub repository and Python project structure
-- Connected to the OpenDART API
-- Built a DART disclosure collector
-- Built a disclosure event parser
-- Built a daily Markdown report generator
-- Generated the first DART event report
+The project currently includes:
 
-## First Output
+* GitHub repository and Python project structure
+* OpenDART API disclosure collection
+* DART disclosure event parsing
+* Daily Markdown report generation
+* Korean stock price data collection
+* Event-price reaction evaluation
+* Automated key event selection pipeline
+* Rule-based event scoring model
+* GitHub Pages portfolio blog
 
-The first generated DART event report is available here:
+## Current Pipeline
 
-- `reports/daily_prediction/2026-06-18_dart_event_report.md`
+```text
+DART Disclosure Collection
+↓
+Disclosure Event Parsing
+↓
+Key Event Selection
+↓
+Rule-Based Event Scoring
+↓
+Stock Price Data Collection
+↓
+Event-Price Reaction Evaluation
+↓
+Daily Report Generation
+```
+
+## Latest Blog Posts
+
+* Day 1: DART API Collector and Event Report
+* Day 2: Automated Event Scoring Pipeline
 
 ## Next Steps
 
-- Add stock price data collection
-- Compare disclosure events with next-day opening price reactions
-- Generate daily prediction review reports
-- Build error-note based model improvement logic
-- Publish selected reports through GitHub Pages
+* Build an error-note generator
+* Compare prediction direction with actual next-day price reaction
+* Create success, failure, and pending labels
+* Add news and sentiment data collection
+* Build a machine learning dataset from historical event reactions
+* Improve prediction confidence through continuous simulation and error analysis
+
