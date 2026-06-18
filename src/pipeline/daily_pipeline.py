@@ -179,6 +179,9 @@ def main():
     # 9. Generate prediction review and error notes
     run_command(["python", "src/evaluator/error_note_generator.py"])
 
+    # 10. Build machine learning dataset
+    run_command(["python", "src/features/ml_dataset_builder.py"])
+
     print("\nDaily pipeline completed.")
 
 if __name__ == "__main__":
