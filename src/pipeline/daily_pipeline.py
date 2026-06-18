@@ -134,14 +134,19 @@ def collect_and_evaluate_selected_events(key_events: pd.DataFrame) -> None:
         except FileNotFoundError as error:
             print(f"Missing file for stock_code={stock_code}: {error}")
 
-
 def main():
     print("Starting daily pipeline...")
 
+    # 1. Collect DART disclosures
     run_command(["python", "src/crawler/dart_collector.py"])
+
+    # 2. Parse DART disclosures
     run_command(["python", "src/parser/dart_parser.py"])
+
+    # 3. Generate daily DART report
     run_command(["python", "src/report_generator/daily_dart_report.py"])
 
+    # 4. Select key events
     latest_processed_file = get_latest_processed_file()
     key_events = select_key_events(latest_processed_file)
 
@@ -150,11 +155,19 @@ def main():
         print("No key events selected today.")
         return
 
-    print(key_events[["corp_name", "stock_code", "report_nm", "event_type"]].to_string(index=False))
+    print(
+        key_events[
+            ["corp_name", "stock_code", "report_nm", "event_type"]
+        ].to_string(index=False)
+    )
 
     selected_path = save_selected_events(key_events)
     print(f"\nSelected events saved to: {selected_path}")
 
+    # 5. Score selected key events
+    run_command(["python", "src/features/event_scoring.py"])
+
+    # 6. Collect price data and evaluate reactions
     collect_and_evaluate_selected_events(key_events)
 
     print("\nDaily pipeline completed.")

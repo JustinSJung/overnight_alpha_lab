@@ -8,19 +8,19 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 71 |
-| Insider or Major Holder Disclosure | 10 |
+| Other | 72 |
+| Insider or Major Holder Disclosure | 9 |
+| Paid-in Capital Increase | 5 |
 | Convertible Bond | 5 |
-| Paid-in Capital Increase | 4 |
 | Major Shareholder Change | 3 |
 | Lawsuit | 3 |
 | Supply Contract | 3 |
-| Spin-off | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
+| 넥써쓰 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260618 |
 | 경남제약 | 기타경영사항(자율공시)              (자기사채(제7회차 및 제8회차 무기명식 이권부 무보증 사모 전환사채) 소각 결정의 건) | Convertible Bond | 20260618 |
 | 서부T&D | [기재정정]최대주주변경을수반하는주식담보제공계약체결               | Major Shareholder Change | 20260618 |
 | 에스프리즘 | 소송등의제기ㆍ신청(일정금액이상의청구)               | Lawsuit | 20260618 |
@@ -39,15 +39,14 @@ This report summarizes DART disclosures collected after market close and classif
 | 전방 | 소송등의제기ㆍ신청(일정금액이상의청구)               | Lawsuit | 20260618 |
 | 테라사이언스 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260618 |
 | HDC | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260618 |
-| 엔젠바이오 | 주권매매거래정지              (주식의 병합, 분할 등 전자등록 변경, 말소) | Spin-off | 20260618 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 29
+- Classified non-other events: 28
 - Supply contract disclosures: 3
-- Financing-related disclosures: 9
-- Insider or major holder disclosures: 10
+- Financing-related disclosures: 10
+- Insider or major holder disclosures: 9
 
 ## Model Notes
 
