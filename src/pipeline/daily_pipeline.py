@@ -170,8 +170,10 @@ def main():
     # 6. Collect price data and evaluate reactions
     collect_and_evaluate_selected_events(key_events)
 
-    print("\nDaily pipeline completed.")
+    # 7. Generate prediction review and error notes
+    run_command(["python", "src/evaluator/error_note_generator.py"])
 
+    print("\nDaily pipeline completed.")
 
 if __name__ == "__main__":
     main()
