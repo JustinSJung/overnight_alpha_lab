@@ -54,16 +54,19 @@ project setup stage.
 
 The project currently includes:
 
-- GitHub repository and Python project structure
-- OpenDART API disclosure collection
-- DART disclosure event parsing
-- Daily Markdown report generation
-- Korean stock price data collection
-- Event-price reaction evaluation
-- Automated key event selection pipeline
-- Rule-based event scoring model
-- Prediction review and error-note generation
-- GitHub Pages portfolio blog
+* GitHub repository and Python project structure
+* OpenDART API disclosure collection
+* DART disclosure event parsing
+* Daily Markdown report generation
+* Korean stock price data collection
+* Event-price reaction evaluation
+* Automated key event selection pipeline
+* Rule-based event scoring model
+* Naver news metadata collection
+* News feature generation
+* Prediction review and error-note generation
+* Machine learning dataset builder
+* GitHub Pages portfolio blog
 
 ## Current Pipeline
 
@@ -76,26 +79,36 @@ Key Event Selection
 ↓
 Rule-Based Event Scoring
 ↓
+Naver News Metadata Collection
+↓
+News Feature Generation
+↓
 Stock Price Data Collection
 ↓
 Event-Price Reaction Evaluation
 ↓
 Prediction Review and Error Note Generation
 ↓
+Machine Learning Dataset Building
+↓
 Daily Report and Blog Documentation
-
+```
 
 ## Latest Blog Posts
 
 * Day 1: DART API Collector and Event Report
 * Day 2: Automated Event Scoring Pipeline
 * Day 3: Prediction Review and Error Note Generator
+* Day 4: News Features and ML Dataset Builder
 
 ## Next Steps
 
-- Add news metadata collection
-- Connect news events with DART disclosure events
-- Add sentiment and investor attention indicators
-- Build a machine learning dataset from event-reaction history
-- Improve prediction confidence through continuous simulation and error analysis
+* Build the first baseline machine learning model
+* Exclude pending rows and train only on success/failure samples
+* Add model evaluation metrics
+* Add automatic daily blog generation
+* Add GitHub Actions or local scheduled automation
+* Expand news sources and sentiment analysis
+* Add SNS and investor attention indicators
+
 
