@@ -220,3 +220,5 @@ __marimo__/
 data/raw/*.csv
 data/processed/*.csv
 data/predictions/*.csv
+
+.DS_Store
