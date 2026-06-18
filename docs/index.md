@@ -25,6 +25,7 @@ The project currently includes:
 
 - [Day 1: DART API Collector and Event Report](posts/2026-06-18-day-1-dart-api.md)
 - [Day 2: Automated Event Scoring Pipeline](posts/2026-06-18-day-2-automated-event-scoring.md)
+- [Day 3: Prediction Review and Error Note Generator](posts/2026-06-18-day-3-error-note-generator.md)
 
 ## Repository
 
