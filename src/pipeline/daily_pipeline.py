@@ -1,9 +1,13 @@
 """
 Daily pipeline for Overnight Alpha Lab.
 
-This script selects key DART disclosure events,
-collects stock prices for related companies,
-and evaluates next-day price reactions when data is available.
+This script:
+1. Collects DART disclosures
+2. Parses disclosure events
+3. Generates a daily DART report
+4. Selects key events
+5. Collects stock price data for selected companies
+6. Evaluates event-price reactions when data is available
 """
 
 import os
@@ -31,7 +35,7 @@ KEY_EVENT_TYPES = [
 
 def run_command(command: list[str]) -> None:
     """
-    Run a Python script command.
+    Run a command.
     """
 
     print(f"\nRunning: {' '.join(command)}")
@@ -108,19 +112,36 @@ def save_selected_events(df: pd.DataFrame) -> str:
     return output_path
 
 
+def collect_and_evaluate_selected_events(key_events: pd.DataFrame) -> None:
+    """
+    Collect price data and evaluate event-price reactions
+    for selected stock codes.
+    """
+
+    stock_codes = sorted(key_events["stock_code"].dropna().unique())
+
+    print("\nCollecting price data and evaluating reactions:")
+    print(f"Selected stock codes: {stock_codes}")
+
+    for stock_code in stock_codes:
+        print(f"\nProcessing stock_code={stock_code}")
+
+        try:
+            run_command(["python", "src/crawler/price_collector.py", stock_code])
+            run_command(["python", "src/evaluator/event_price_reaction.py", stock_code])
+        except subprocess.CalledProcessError as error:
+            print(f"Failed to process stock_code={stock_code}: {error}")
+        except FileNotFoundError as error:
+            print(f"Missing file for stock_code={stock_code}: {error}")
+
+
 def main():
     print("Starting daily pipeline...")
 
-    # 1. Collect DART disclosures
     run_command(["python", "src/crawler/dart_collector.py"])
-
-    # 2. Parse DART disclosures
     run_command(["python", "src/parser/dart_parser.py"])
-
-    # 3. Generate daily DART report
     run_command(["python", "src/report_generator/daily_dart_report.py"])
 
-    # 4. Select key events
     latest_processed_file = get_latest_processed_file()
     key_events = select_key_events(latest_processed_file)
 
@@ -134,8 +155,9 @@ def main():
     selected_path = save_selected_events(key_events)
     print(f"\nSelected events saved to: {selected_path}")
 
-    print("\nNext step:")
-    print("Automatically collect price data and evaluate reactions for these stock codes.")
+    collect_and_evaluate_selected_events(key_events)
+
+    print("\nDaily pipeline completed.")
 
 
 if __name__ == "__main__":

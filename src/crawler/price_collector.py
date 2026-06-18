@@ -3,13 +3,28 @@ Korean stock price data collector.
 
 This script collects daily OHLCV stock price data
 and saves it under data/raw.
+
+Usage:
+    python src/crawler/price_collector.py 005930
 """
 
 import os
+import sys
 from datetime import datetime, timedelta
 
 import pandas as pd
 from pykrx import stock
+
+
+def normalize_stock_code(value) -> str:
+    """
+    Normalize stock code to 6-digit string.
+    """
+
+    if value is None:
+        return ""
+
+    return str(value).strip().zfill(6)
 
 
 def get_date_range(days: int = 30) -> tuple[str, str]:
@@ -32,6 +47,8 @@ def collect_stock_price(
     Collect daily OHLCV data for a Korean stock.
     """
 
+    stock_code = normalize_stock_code(stock_code)
+
     df = stock.get_market_ohlcv_by_date(start_date, end_date, stock_code)
 
     if df.empty:
@@ -40,7 +57,6 @@ def collect_stock_price(
 
     df = df.reset_index()
 
-    # Rename Korean columns to English column names
     df = df.rename(
         columns={
             "날짜": "date",
@@ -90,7 +106,12 @@ def save_price_data(df: pd.DataFrame, stock_code: str, start_date: str, end_date
 
 
 def main():
-    stock_code = "005930"  # Samsung Electronics
+    if len(sys.argv) < 2:
+        print("Usage: python src/crawler/price_collector.py <stock_code>")
+        print("Example: python src/crawler/price_collector.py 005930")
+        return
+
+    stock_code = normalize_stock_code(sys.argv[1])
     start_date, end_date = get_date_range(days=30)
 
     print(f"Collecting price data for {stock_code}")

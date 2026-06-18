@@ -3,9 +3,13 @@ Event-price reaction evaluator.
 
 This script connects parsed DART disclosure events
 with stock price data and calculates simple next-day reactions.
+
+Usage:
+    python src/evaluator/event_price_reaction.py 005930
 """
 
 import os
+import sys
 
 import pandas as pd
 
@@ -110,20 +114,10 @@ def evaluate_stock_events(stock_code: str) -> pd.DataFrame:
 
     dart_df["normalized_stock_code"] = dart_df["stock_code"].apply(normalize_stock_code)
 
-    print()
-    print("Available stock codes in latest DART file:")
-    print(
-        dart_df[["corp_name", "normalized_stock_code", "report_nm", "event_type"]]
-        .head(30)
-        .to_string(index=False)
-    )
-    print()
-
     stock_events = dart_df[dart_df["normalized_stock_code"] == stock_code].copy()
 
     if stock_events.empty:
         print(f"No DART events found for stock_code={stock_code}.")
-        print("Try one of the stock codes shown above.")
         return pd.DataFrame()
 
     results = []
@@ -165,7 +159,12 @@ def save_evaluation_result(df: pd.DataFrame, stock_code: str) -> str:
 
 
 def main():
-    stock_code = "267260"
+    if len(sys.argv) < 2:
+        print("Usage: python src/evaluator/event_price_reaction.py <stock_code>")
+        print("Example: python src/evaluator/event_price_reaction.py 005930")
+        return
+
+    stock_code = normalize_stock_code(sys.argv[1])
 
     print(f"Evaluating event-price reactions for {stock_code}...")
 
