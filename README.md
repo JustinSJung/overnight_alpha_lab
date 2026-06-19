@@ -73,6 +73,7 @@ The project currently includes:
 * Execution log generation
 * Scheduled local automation with cron
 * Catch-up execution mode
+* Automation status report generator
 * GitHub Pages portfolio blog
 
 ## Operating Modes
@@ -103,11 +104,34 @@ Daily Pipeline
 ↓
 Pending Re-Evaluation
 ↓
-ML Dataset Rebuilding
-↓
-Baseline Model Re-Execution
+Automation Status Report
 ↓
 Log Generation
+```
+
+## Automation Status Report
+
+The automation status report summarizes the latest execution state.
+
+It checks:
+
+* latest DART disclosure file
+* latest parsed disclosure file
+* latest selected key events file
+* latest scored events file
+* latest news features file
+* latest error notes file
+* latest ML dataset file
+* latest baseline model report
+* pending rows
+* success rows
+* failure rows
+* trainable rows
+
+The report is generated at:
+
+```text
+reports/daily_review/YYYY-MM-DD_automation_status_report.md
 ```
 
 ## Local Automation Scripts
@@ -137,12 +161,14 @@ The `logs/` directory is excluded from GitHub.
 * Day 7: Local Daily Automation Scripts
 * Day 8: Scheduled Local Automation
 * Day 9: Catch-Up Execution Mode
+* Day 10: Automation Status Report
 
 ## Next Steps
 
-* Add automation status report generation
-* Summarize latest run results automatically
+* Add automation success/failure detection
+* Track latest run timestamps
 * Track pending rows and trainable rows over time
+* Add model performance history
 * Add automatic Git commit and push
 * Add automatic daily blog generation
 * Improve model evaluation metrics
