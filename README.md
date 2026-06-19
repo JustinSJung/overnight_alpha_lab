@@ -68,6 +68,7 @@ The project currently includes:
 * Machine learning dataset builder
 * Baseline machine learning model
 * Daily model report generation
+* Pending event re-evaluation system
 * GitHub Pages portfolio blog
 
 ## Current Pipeline
@@ -100,6 +101,22 @@ Model Report Generation
 Daily Report and Blog Documentation
 ```
 
+## Additional Re-Evaluation Flow
+
+```text
+Pending Event Detection
+↓
+Updated Price Data Collection
+↓
+Event Reaction Re-Evaluation
+↓
+Error Note Regeneration
+↓
+ML Dataset Rebuilding
+↓
+Baseline Model Re-Execution
+```
+
 ## Latest Blog Posts
 
 * Day 1: DART API Collector and Event Report
@@ -107,11 +124,12 @@ Daily Report and Blog Documentation
 * Day 3: Prediction Review and Error Note Generator
 * Day 4: News Features and ML Dataset Builder
 * Day 5: Baseline Machine Learning Model
+* Day 6: Pending Event Re-Evaluation System
 
 ## Next Steps
 
 * Continue daily pipeline execution after new price data becomes available
-* Convert pending rows into success/failure training samples
+* Re-evaluate pending rows and convert them into success/failure samples
 * Add model evaluation metrics
 * Add probability-based prediction output
 * Add feature importance analysis
@@ -119,4 +137,3 @@ Daily Report and Blog Documentation
 * Add GitHub Actions or local scheduled automation
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
-
