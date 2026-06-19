@@ -47,7 +47,7 @@ if [ $PENDING_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[3/4] Generating automation status report..." >> "$LOG_FILE"
+echo "[3/5] Generating automation status report..." >> "$LOG_FILE"
 python src/report_generator/automation_status_report.py >> "$LOG_FILE" 2>&1
 
 STATUS_REPORT_STATUS=$?
@@ -61,7 +61,21 @@ if [ $STATUS_REPORT_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[4/4] Catch-up execution completed." >> "$LOG_FILE"
+echo "[4/5] Updating automation history..." >> "$LOG_FILE"
+python src/report_generator/automation_history_tracker.py >> "$LOG_FILE" 2>&1
+
+HISTORY_STATUS=$?
+
+if [ $HISTORY_STATUS -ne 0 ]; then
+    echo "" >> "$LOG_FILE"
+    echo "Automation history update failed." >> "$LOG_FILE"
+    echo "Catch-up stopped at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
+    echo "======================================" >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "" >> "$LOG_FILE"
+echo "[5/5] Catch-up execution completed." >> "$LOG_FILE"
 echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 

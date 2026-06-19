@@ -224,3 +224,5 @@ data/predictions/*.csv
 .DS_Store
 
 logs/
+
+!data/processed/automation_history.csv
