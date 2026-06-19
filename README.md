@@ -72,22 +72,50 @@ The project currently includes:
 * Local daily automation scripts
 * Execution log generation
 * Scheduled local automation with cron
+* Catch-up execution mode
 * GitHub Pages portfolio blog
 
-## Scheduled Local Automation
+## Operating Modes
 
-The project currently uses cron for local scheduled execution.
+The project currently supports two local operating modes.
+
+### Scheduled Mode
+
+Scheduled mode uses cron.
 
 ```text
 16:10 every day - run_daily_pipeline.sh
 16:40 every day - run_pending_re_evaluator.sh
 ```
 
-The scheduled jobs run the local shell scripts:
+### Catch-Up Mode
+
+Catch-up mode is used when the scheduled job was missed.
+
+```text
+./scripts/run_catchup.sh
+```
+
+The catch-up script runs:
+
+```text
+Daily Pipeline
+↓
+Pending Re-Evaluation
+↓
+ML Dataset Rebuilding
+↓
+Baseline Model Re-Execution
+↓
+Log Generation
+```
+
+## Local Automation Scripts
 
 ```text
 scripts/run_daily_pipeline.sh
 scripts/run_pending_re_evaluator.sh
+scripts/run_catchup.sh
 ```
 
 Execution logs are saved under:
@@ -108,11 +136,13 @@ The `logs/` directory is excluded from GitHub.
 * Day 6: Pending Event Re-Evaluation System
 * Day 7: Local Daily Automation Scripts
 * Day 8: Scheduled Local Automation
+* Day 9: Catch-Up Execution Mode
 
 ## Next Steps
 
-* Verify scheduled cron execution through log files
 * Add automation status report generation
+* Summarize latest run results automatically
+* Track pending rows and trainable rows over time
 * Add automatic Git commit and push
 * Add automatic daily blog generation
 * Improve model evaluation metrics
@@ -121,5 +151,3 @@ The `logs/` directory is excluded from GitHub.
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
 * Consider GitHub Actions with GitHub Secrets
-
-
