@@ -34,6 +34,7 @@ The project currently includes:
 - [Day 9: Catch-Up Execution Mode](posts/2026-06-19-day-9-catch-up-execution-mode.md)
 - [Day 10: Automation Status Report](posts/2026-06-19-day-10-automation-status-report.md)
 - [Day 11: Automation History Tracker](posts/2026-06-19-day-11-automation-history-tracker.md)
+- [Day 12: Confidence Tracker](posts/2026-06-19-day-12-confidence-tracker.md)
 
 ## Repository
 

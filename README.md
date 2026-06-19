@@ -75,11 +75,12 @@ The project currently includes:
 * Catch-up execution mode
 * Automation status report generator
 * Automation history tracker
+* Confidence tracker
 * GitHub Pages portfolio blog
 
 ## Monitoring Layer
 
-The project now includes two monitoring outputs.
+The project includes three monitoring outputs.
 
 ### Daily Status Report
 
@@ -97,19 +98,13 @@ data/processed/automation_history.csv
 
 This file stores cumulative operating metrics over time.
 
-It tracks:
+### Confidence Report
 
-* raw DART rows
-* parsed DART rows
-* selected event rows
-* scored event rows
-* news feature rows
-* error note rows
-* ML dataset rows
-* pending rows
-* success rows
-* failure rows
-* trainable rows
+```text
+reports/daily_review/YYYY-MM-DD_confidence_report.md
+```
+
+This report summarizes prediction readiness, trainable rows, overall accuracy, event-type success rate, and prediction-direction success rate.
 
 ## Operating Modes
 
@@ -143,6 +138,8 @@ Automation Status Report
 ↓
 Automation History Update
 ↓
+Confidence Report
+↓
 Log Generation
 ```
 
@@ -175,19 +172,21 @@ The `logs/` directory is excluded from GitHub.
 * Day 9: Catch-Up Execution Mode
 * Day 10: Automation Status Report
 * Day 11: Automation History Tracker
+* Day 12: Confidence Tracker
 
 ## Next Steps
 
-* Add confidence tracker
-* Track pending row trend over time
-* Track trainable row growth over time
-* Track prediction accuracy by event type
+* Build return prediction model
+* Predict expected next-day open return
+* Predict expected next-day close return
+* Add daily stock recommender
+* Add single stock predictor
+* Improve advanced error-note reasoning
+* Track confidence improvement over time
 * Add model performance history
 * Add automatic Git commit and push
 * Add automatic daily blog generation
-* Improve model evaluation metrics
 * Add probability-based prediction output
 * Add feature importance analysis
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
-* Consider GitHub Actions with GitHub Secrets
