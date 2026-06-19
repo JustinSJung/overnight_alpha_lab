@@ -74,7 +74,42 @@ The project currently includes:
 * Scheduled local automation with cron
 * Catch-up execution mode
 * Automation status report generator
+* Automation history tracker
 * GitHub Pages portfolio blog
+
+## Monitoring Layer
+
+The project now includes two monitoring outputs.
+
+### Daily Status Report
+
+```text
+reports/daily_review/YYYY-MM-DD_automation_status_report.md
+```
+
+This report summarizes the latest execution state in a human-readable format.
+
+### Automation History
+
+```text
+data/processed/automation_history.csv
+```
+
+This file stores cumulative operating metrics over time.
+
+It tracks:
+
+* raw DART rows
+* parsed DART rows
+* selected event rows
+* scored event rows
+* news feature rows
+* error note rows
+* ML dataset rows
+* pending rows
+* success rows
+* failure rows
+* trainable rows
 
 ## Operating Modes
 
@@ -106,32 +141,9 @@ Pending Re-Evaluation
 ↓
 Automation Status Report
 ↓
+Automation History Update
+↓
 Log Generation
-```
-
-## Automation Status Report
-
-The automation status report summarizes the latest execution state.
-
-It checks:
-
-* latest DART disclosure file
-* latest parsed disclosure file
-* latest selected key events file
-* latest scored events file
-* latest news features file
-* latest error notes file
-* latest ML dataset file
-* latest baseline model report
-* pending rows
-* success rows
-* failure rows
-* trainable rows
-
-The report is generated at:
-
-```text
-reports/daily_review/YYYY-MM-DD_automation_status_report.md
 ```
 
 ## Local Automation Scripts
@@ -162,12 +174,14 @@ The `logs/` directory is excluded from GitHub.
 * Day 8: Scheduled Local Automation
 * Day 9: Catch-Up Execution Mode
 * Day 10: Automation Status Report
+* Day 11: Automation History Tracker
 
 ## Next Steps
 
-* Add automation success/failure detection
-* Track latest run timestamps
-* Track pending rows and trainable rows over time
+* Add confidence tracker
+* Track pending row trend over time
+* Track trainable row growth over time
+* Track prediction accuracy by event type
 * Add model performance history
 * Add automatic Git commit and push
 * Add automatic daily blog generation
