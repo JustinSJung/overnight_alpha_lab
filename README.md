@@ -71,64 +71,32 @@ The project currently includes:
 * Pending event re-evaluation system
 * Local daily automation scripts
 * Execution log generation
+* Scheduled local automation with cron
 * GitHub Pages portfolio blog
 
-## Current Pipeline
+## Scheduled Local Automation
+
+The project currently uses cron for local scheduled execution.
 
 ```text
-DART Disclosure Collection
-↓
-Disclosure Event Parsing
-↓
-Key Event Selection
-↓
-Rule-Based Event Scoring
-↓
-Naver News Metadata Collection
-↓
-News Feature Generation
-↓
-Stock Price Data Collection
-↓
-Event-Price Reaction Evaluation
-↓
-Prediction Review and Error Note Generation
-↓
-Machine Learning Dataset Building
-↓
-Baseline Machine Learning Model
-↓
-Model Report Generation
-↓
-Daily Report and Blog Documentation
+16:10 every day - run_daily_pipeline.sh
+16:40 every day - run_pending_re_evaluator.sh
 ```
 
-## Local Automation
+The scheduled jobs run the local shell scripts:
 
 ```text
 scripts/run_daily_pipeline.sh
 scripts/run_pending_re_evaluator.sh
 ```
 
-The local automation scripts activate the virtual environment, run the relevant pipeline, and save logs under the `logs/` directory.
-
-The `logs/` directory is excluded from GitHub.
-
-## Additional Re-Evaluation Flow
+Execution logs are saved under:
 
 ```text
-Pending Event Detection
-↓
-Updated Price Data Collection
-↓
-Event Reaction Re-Evaluation
-↓
-Error Note Regeneration
-↓
-ML Dataset Rebuilding
-↓
-Baseline Model Re-Execution
+logs/
 ```
+
+The `logs/` directory is excluded from GitHub.
 
 ## Latest Blog Posts
 
@@ -139,16 +107,19 @@ Baseline Model Re-Execution
 * Day 5: Baseline Machine Learning Model
 * Day 6: Pending Event Re-Evaluation System
 * Day 7: Local Daily Automation Scripts
+* Day 8: Scheduled Local Automation
 
 ## Next Steps
 
-* Register local scripts with macOS launchd or cron
-* Continue daily pipeline execution after new price data becomes available
-* Re-evaluate pending rows and convert them into success/failure samples
-* Add model evaluation metrics
+* Verify scheduled cron execution through log files
+* Add automation status report generation
+* Add automatic Git commit and push
+* Add automatic daily blog generation
+* Improve model evaluation metrics
 * Add probability-based prediction output
 * Add feature importance analysis
-* Add automatic daily blog generation
-* Add GitHub Actions or local scheduled automation
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
+* Consider GitHub Actions with GitHub Secrets
+
+

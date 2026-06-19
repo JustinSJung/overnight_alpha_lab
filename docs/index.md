@@ -30,6 +30,7 @@ The project currently includes:
 - [Day 5: Baseline Machine Learning Model](posts/2026-06-18-day-5-baseline-ml-model.md)
 - [Day 6: Pending Event Re-Evaluation System](posts/2026-06-19-day-6-pending-re-evaluation.md)
 - [Day 7: Local Daily Automation Scripts](posts/2026-06-19-day-7-local-daily-automation.md)
+- [Day 8: Scheduled Local Automation](posts/2026-06-19-day-8-scheduled-local-automation.md)
 
 ## Repository
 
