@@ -69,6 +69,8 @@ The project currently includes:
 * Baseline machine learning model
 * Daily model report generation
 * Pending event re-evaluation system
+* Local daily automation scripts
+* Execution log generation
 * GitHub Pages portfolio blog
 
 ## Current Pipeline
@@ -101,6 +103,17 @@ Model Report Generation
 Daily Report and Blog Documentation
 ```
 
+## Local Automation
+
+```text
+scripts/run_daily_pipeline.sh
+scripts/run_pending_re_evaluator.sh
+```
+
+The local automation scripts activate the virtual environment, run the relevant pipeline, and save logs under the `logs/` directory.
+
+The `logs/` directory is excluded from GitHub.
+
 ## Additional Re-Evaluation Flow
 
 ```text
@@ -125,9 +138,11 @@ Baseline Model Re-Execution
 * Day 4: News Features and ML Dataset Builder
 * Day 5: Baseline Machine Learning Model
 * Day 6: Pending Event Re-Evaluation System
+* Day 7: Local Daily Automation Scripts
 
 ## Next Steps
 
+* Register local scripts with macOS launchd or cron
 * Continue daily pipeline execution after new price data becomes available
 * Re-evaluate pending rows and convert them into success/failure samples
 * Add model evaluation metrics
