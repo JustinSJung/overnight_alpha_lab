@@ -222,3 +222,5 @@ data/processed/*.csv
 data/predictions/*.csv
 
 .DS_Store
+
+logs/
