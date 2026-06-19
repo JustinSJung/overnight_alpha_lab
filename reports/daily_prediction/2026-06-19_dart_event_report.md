@@ -8,18 +8,27 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 76 |
-| Insider or Major Holder Disclosure | 10 |
-| Paid-in Capital Increase | 7 |
-| Convertible Bond | 4 |
-| Major Shareholder Change | 1 |
+| Other | 66 |
+| Insider or Major Holder Disclosure | 15 |
+| Supply Contract | 5 |
+| Convertible Bond | 5 |
+| Paid-in Capital Increase | 5 |
+| Major Shareholder Change | 3 |
 | Earnings Guidance | 1 |
-| Supply Contract | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
+| CNT85 | [기재정정]단일판매ㆍ공급계약체결(자율공시)               | Supply Contract | 20260619 |
+| SGC E&C | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260619 |
+| 에이프로젠 | [기재정정]주요사항보고서(전환사채권발행결정)(자회사의 주요경영사항)               | Convertible Bond | 20260619 |
+| 에이프로젠바이오로직스 | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260619 |
+| 온타이드 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260619 |
+| 사운드백신 | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260619 |
+| GS건설 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260619 |
+| 디와이에이 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260619 |
+| SGC E&C | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260619 |
 | 삼일제약 | 유상증자또는주식관련사채등의발행결과(자율공시)               | Paid-in Capital Increase | 20260619 |
 | 제테마 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260619 |
 | 제테마 | 주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260619 |
@@ -30,18 +39,14 @@ This report summarizes DART disclosures collected after market close and classif
 | 엠디엠위탁관리부동산투자회사 | 유상증자결정 | Paid-in Capital Increase | 20260619 |
 | 프리티 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260619 |
 | 한화오션 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260619 |
-| 비트맥스 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260619 |
-| 비트맥스 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260619 |
-| 에이루트 | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260619 |
-| 디에이치엑스컴퍼니 | 주요사항보고서(자기전환사채만기전취득결정) | Convertible Bond | 20260619 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 24
-- Supply contract disclosures: 1
-- Financing-related disclosures: 11
-- Insider or major holder disclosures: 10
+- Classified non-other events: 34
+- Supply contract disclosures: 5
+- Financing-related disclosures: 10
+- Insider or major holder disclosures: 15
 
 ## Model Notes
 

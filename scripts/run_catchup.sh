@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Move to project root
+cd "$(dirname "$0")/.."
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Create log directory
+mkdir -p logs
+
+TODAY=$(date +"%Y-%m-%d")
+NOW=$(date +"%Y-%m-%d %H:%M:%S")
+
+LOG_FILE="logs/catchup_$TODAY.log"
+
+echo "======================================" >> "$LOG_FILE"
+echo "Catch-up execution started at $NOW" >> "$LOG_FILE"
+echo "======================================" >> "$LOG_FILE"
+
+echo "" >> "$LOG_FILE"
+echo "[1/3] Running daily pipeline..." >> "$LOG_FILE"
+python src/pipeline/daily_pipeline.py >> "$LOG_FILE" 2>&1
+
+DAILY_STATUS=$?
+
+if [ $DAILY_STATUS -ne 0 ]; then
+    echo "" >> "$LOG_FILE"
+    echo "Daily pipeline failed." >> "$LOG_FILE"
+    echo "Catch-up stopped at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
+    echo "======================================" >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "" >> "$LOG_FILE"
+echo "[2/3] Running pending re-evaluator..." >> "$LOG_FILE"
+python src/evaluator/pending_re_evaluator.py >> "$LOG_FILE" 2>&1
+
+PENDING_STATUS=$?
+
+if [ $PENDING_STATUS -ne 0 ]; then
+    echo "" >> "$LOG_FILE"
+    echo "Pending re-evaluator failed." >> "$LOG_FILE"
+    echo "Catch-up stopped at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
+    echo "======================================" >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "" >> "$LOG_FILE"
+echo "[3/3] Catch-up execution completed." >> "$LOG_FILE"
+echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
+echo "======================================" >> "$LOG_FILE"
+
+echo "Catch-up completed successfully."
+echo "Log file: $LOG_FILE"
+
