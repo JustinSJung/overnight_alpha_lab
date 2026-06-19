@@ -8,18 +8,20 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 68 |
-| Insider or Major Holder Disclosure | 11 |
+| Other | 71 |
+| Insider or Major Holder Disclosure | 9 |
+| Supply Contract | 7 |
 | Convertible Bond | 6 |
-| Supply Contract | 6 |
-| Paid-in Capital Increase | 4 |
-| Major Shareholder Change | 4 |
+| Paid-in Capital Increase | 3 |
+| Major Shareholder Change | 3 |
 | Lawsuit | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
+| 엔켐 | 전환사채(해외전환사채포함)발행후만기전사채취득              (제11회차) | Convertible Bond | 20260619 |
+| 제너셈 | [기재정정]단일판매ㆍ공급계약체결(자율공시)               | Supply Contract | 20260619 |
 | 모아라이프플러스 | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260619 |
 | 비비안 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260619 |
 | 센서뷰 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260619 |
@@ -38,17 +40,14 @@ This report summarizes DART disclosures collected after market close and classif
 | 디와이에이 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260619 |
 | SGC E&C | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260619 |
 | 삼일제약 | 유상증자또는주식관련사채등의발행결과(자율공시)               | Paid-in Capital Increase | 20260619 |
-| 제테마 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260619 |
-| 제테마 | 주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260619 |
-| 율촌화학 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260619 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 32
-- Supply contract disclosures: 6
-- Financing-related disclosures: 10
-- Insider or major holder disclosures: 11
+- Classified non-other events: 29
+- Supply contract disclosures: 7
+- Financing-related disclosures: 9
+- Insider or major holder disclosures: 9
 
 ## Model Notes
 
