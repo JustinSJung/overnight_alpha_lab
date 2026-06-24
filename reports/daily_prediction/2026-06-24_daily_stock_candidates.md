@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-06-24
 
-Generated at: 2026-06-24 17:39:51
+Generated at: 2026-06-24 17:45:49
 
 ML dataset: `data/processed/ml_dataset_20260624.csv`
 
@@ -23,10 +23,10 @@ The recommender now applies a direct event-type performance adjustment. Event ty
 | disclosure_violation | 5 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
 | investment_decision | 4 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
 | lawsuit | 16 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
-| major_shareholder_change | 16 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
+| major_shareholder_change | 17 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
 | merger | 5 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
 | paid_in_capital_increase | 46 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
-| spin_off | 1 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
+| spin_off | 2 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
 | supply_contract | 14 | 0 | N/A | Not available | 0.00 | 0.00 | 0.00 |
 
 ## Error-Note Learning Adjustment
@@ -40,10 +40,10 @@ The recommender also reads past error notes and applies event-type level confide
 | disclosure_violation | 5 | 0 | 0 | 5 | 0.00 |
 | investment_decision | 4 | 0 | 0 | 4 | 0.00 |
 | lawsuit | 16 | 0 | 0 | 16 | 0.00 |
-| major_shareholder_change | 16 | 0 | 0 | 16 | 0.00 |
+| major_shareholder_change | 17 | 0 | 0 | 17 | 0.00 |
 | merger | 5 | 0 | 0 | 5 | 0.00 |
 | paid_in_capital_increase | 46 | 0 | 0 | 46 | 0.00 |
-| spin_off | 1 | 0 | 0 | 1 | 0.00 |
+| spin_off | 2 | 0 | 0 | 2 | 0.00 |
 | supply_contract | 14 | 0 | 0 | 14 | 0.00 |
 
 ## Positive Candidates
@@ -97,26 +97,9 @@ The recommender also reads past error notes and applies event-type level confide
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score. Event-type performance did not change the score.
-- Related news examples: 서호전기, 1,078억 7천만 원 크레인 시스템 공급계약→중공업 수주 확대... | [속보] 서호전기, 1079억원 규모 크레인 제어시스템 공급계약 체결 | 김병훈-최진민-김창수-이성엽은 재벌총수 못잖게 배당-연봉 챙겨
+- Related news examples: [속보] 서호전기, 1079억원 규모 크레인 제어시스템 공급계약 체결 | 서호전기, 1,078억 7천만 원 크레인 시스템 공급계약→중공업 수주 확대... | 김병훈-최진민-김창수-이성엽은 재벌총수 못잖게 배당-연봉 챙겨
 
-### 4. DL이앤씨 (375500)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **110.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Adjusted recommendation score: **110.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Event-type evaluated cases: 0, success rate: N/A, avg next close: Not available
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score.
-- Related news examples: 시공사 뽑고 이주하고…'양재천 벨트' 재건축 잰걸음 | 호반건설 박철희 사장 '서울 드림' 빛 봤지만 안심 멀었다, 2026년 도시정... | DL이앤씨 주가 20% 끌어내린 사우디 8500억 세금…"근거 없는 위법 과세...
-
-### 5. 원티드랩 (376980)
+### 4. 원티드랩 (376980)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -132,6 +115,23 @@ The recommender also reads past error notes and applies event-type level confide
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score.
 - Related news examples: [52주] 최고가 3개, 최저가 693개 ... 지수는 반등 | ‘삼전·하이닉스 직행’ 반도체 계약학과, 서울대 자연계 넘었다 | AI 다음은 양자컴퓨터…빅테크 승부 시작
+
+### 5. DL이앤씨 (375500)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **110.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Adjusted recommendation score: **110.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Event-type evaluated cases: 0, success rate: N/A, avg next close: Not available
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score.
+- Related news examples: 시공사 뽑고 이주하고…'양재천 벨트' 재건축 잰걸음 | 호반건설 박철희 사장 '서울 드림' 빛 봤지만 안심 멀었다, 2026년 도시정... | DL이앤씨 주가 20% 끌어내린 사우디 8500억 세금…"근거 없는 위법 과세...
 
 ## Volatile Watchlist
 
@@ -220,7 +220,24 @@ The recommender also reads past error notes and applies event-type level confide
 - Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 8. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score.
 - Related news examples: 화면 곡면이 곧 기술력… 제이앤티씨, 글로벌 빅테크 러브콜 쏟아진다 | 글로벌 에스테틱 시장의 중심…휴젤, 톡신·필러 쌍끌이로 해외 공략 | 글로벌 외주 생산 붐 타고…인탑스, 대형 신규 바이어 확보 기대감
 
-### 6. 인베니아 (079950)
+### 6. 감성코퍼레이션 (036620)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **65.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Adjusted recommendation score: **65.00**
+- Risk level: **MEDIUM**
+- Event type: `spin_off`
+- Event-type evaluated cases: 0, success rate: N/A, avg next close: Not available
+- Disclosure title: [기재정정]주요사항보고서(회사분할결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is spin_off. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 6. Historical error notes did not change the score. Event-type performance did not change the score.
+- Related news examples: 제2의 코인 불장 오나…위지트, 가상화폐 인프라 확장으로 영토 넓힌다 | 6월 23일 주식시장 주요공시 | [뷰티 새소식] 플라워노즈, 나이트 유니콘 컬렉션 기념 더현대 서울 팝...
+
+### 7. 인베니아 (079950)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
@@ -237,7 +254,7 @@ The recommender also reads past error notes and applies event-type level confide
 - Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 8. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score.
 - Related news examples: 6월 23일 주식시장 주요공시 | [코스피·코스닥,SK바이오사이언스 현대건설 브이엠 BGF리테일  경남제... | 인베니아, BOE에 드라이에처 공급
 
-### 7. 유안타증권 (003470)
+### 8. 유안타증권 (003470)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
@@ -254,7 +271,7 @@ The recommender also reads past error notes and applies event-type level confide
 - Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score. Event-type performance did not change the score.
 - Related news examples: 유안타·LS·DB·현대차證, AI 대전환 시대 맞아 생존 전략 '각양각색' | '30돌' 축제 못 즐기는 코스닥…지수 정체 속 '동전주 구조조정' 시험대 | 올해 상승분 다 반납한 코스닥…“반도체 쏠림 완화돼야 반등”
 
-### 8. 한국화장품 (123690)
+### 9. 한국화장품 (123690)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
@@ -270,23 +287,6 @@ The recommender also reads past error notes and applies event-type level confide
 - Next close return data: Not available
 - Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score.
 - Related news examples: [단독] 에버코스 회생절차 돌입 불똥…LG생활건강 공급망 흔들리는 까닭 | K-뷰티 강세 속 효성티앤씨 급등…패션주는 종목별 차별화 | [제약+] 메디톡스, HA필러 아띠에르 도미니카공화국 허가 획득 外
-
-### 9. 대아티아이 (045390)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **39.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Adjusted recommendation score: **39.00**
-- Risk level: **MEDIUM**
-- Event type: `merger`
-- Event-type evaluated cases: 0, success rate: N/A, avg next close: Not available
-- Disclosure title: 합병등종료보고서(자산양수도)
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score.
-- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6G·데이터센터 트래픽 폭증…우리넷, 차세대 패킷 광전송 시장 선도 | [데이터 뉴스룸] 에너지業 올 1분기 매출 소폭 뒷걸음질…삼성SDI 오르고...
 
 ## General Watchlist
 

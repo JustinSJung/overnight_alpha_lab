@@ -8,21 +8,23 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 54 |
-| Insider or Major Holder Disclosure | 13 |
+| Other | 53 |
+| Insider or Major Holder Disclosure | 12 |
 | Paid-in Capital Increase | 8 |
-| Major Shareholder Change | 6 |
+| Major Shareholder Change | 7 |
 | Supply Contract | 5 |
 | Merger | 4 |
 | Lawsuit | 4 |
 | Convertible Bond | 4 |
+| Spin-off | 2 |
 | Bonus Issue | 1 |
-| Spin-off | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
+| 감성코퍼레이션 | [기재정정]주요사항보고서(회사분할결정) | Spin-off | 20260624 |
+| 비투엔 | [기재정정]최대주주변경을수반하는주식양수도계약체결               | Major Shareholder Change | 20260624 |
 | 에코볼트 | [기재정정]주요사항보고서(회사합병결정) | Merger | 20260624 |
 | 아모텍 | 권리락              (유상증자) | Paid-in Capital Increase | 20260624 |
 | 한국화장품 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260624 |
@@ -51,16 +53,14 @@ This report summarizes DART disclosures collected after market close and classif
 | 알파AI | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260624 |
 | 알파AI | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260624 |
 | SK하이닉스 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260624 |
-| 원티드랩 | 유동성공급계약의체결               | Supply Contract | 20260624 |
-| 키이스트 | 소송등의판결ㆍ결정(일정금액이상의청구)               | Lawsuit | 20260624 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 46
+- Classified non-other events: 47
 - Supply contract disclosures: 5
 - Financing-related disclosures: 12
-- Insider or major holder disclosures: 13
+- Insider or major holder disclosures: 12
 
 ## Model Notes
 
