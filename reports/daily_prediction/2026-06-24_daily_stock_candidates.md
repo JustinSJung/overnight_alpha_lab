@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-06-24
 
-Generated at: 2026-06-24 22:05:55
+Generated at: 2026-06-24 22:23:51
 
 ML dataset: `data/processed/ml_dataset_20260624.csv`
 
@@ -127,19 +127,19 @@ No candidates in this section.
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **40.00**
+- Base recommendation score: **37.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **40.00**
+- Adjusted recommendation score: **37.00**
 - Risk level: **MEDIUM**
 - Event type: `investment_decision`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 투자판단관련주요경영사항              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 한화갤러리아, 서울 순화빌딩 2135억원에 인수 추진 | 한화갤러리아, 순화빌딩 매입 가시화...2135억원에 MOU 체결 | [아주경제 오늘의 뉴스 종합] SK하이닉스, 美 나스닥 ADR 상장 추진 外
+- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 1. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [공시] 가이아코퍼레이션·보해양조 '거래정지 예고', 비씨엔씨·팸텍 등... | 한화갤러리아, 서울 중구 순화빌딩 2135억에 매입 MOU | 한화갤러리아, 서울 순화빌딩 2135억원에 인수 추진
 
 ### 5. 한국화장품제조 (003350)
 

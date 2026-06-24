@@ -16,7 +16,7 @@ echo "Catch-up execution started at $NOW" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 
 echo "" >> "$LOG_FILE"
-echo "[1/13] Running daily pipeline..." >> "$LOG_FILE"
+echo "[1/14] Running daily pipeline..." >> "$LOG_FILE"
 python src/pipeline/daily_pipeline.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[2/13] Running pending re-evaluator..." >> "$LOG_FILE"
+echo "[2/14] Running pending re-evaluator..." >> "$LOG_FILE"
 python src/evaluator/pending_re_evaluator.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -34,7 +34,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[3/13] Collecting market index data..." >> "$LOG_FILE"
+echo "[3/14] Collecting market index data..." >> "$LOG_FILE"
 python src/crawler/market_index_collector.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -43,7 +43,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[4/13] Building market-adjusted features..." >> "$LOG_FILE"
+echo "[4/14] Building market-adjusted features..." >> "$LOG_FILE"
 python src/features/market_adjusted_features.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -52,7 +52,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[5/13] Generating market-adjusted evaluation..." >> "$LOG_FILE"
+echo "[5/14] Generating market-adjusted evaluation..." >> "$LOG_FILE"
 python src/evaluator/market_adjusted_evaluator.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -61,7 +61,16 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[6/13] Generating automation status report..." >> "$LOG_FILE"
+echo "[6/14] Generating market-adjusted score adjustments..." >> "$LOG_FILE"
+python src/models/market_adjusted_score_integrator.py >> "$LOG_FILE" 2>&1
+
+if [ $? -ne 0 ]; then
+    echo "Market-adjusted score integration failed." >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "" >> "$LOG_FILE"
+echo "[7/14] Generating automation status report..." >> "$LOG_FILE"
 python src/report_generator/automation_status_report.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -70,7 +79,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[7/13] Updating automation history..." >> "$LOG_FILE"
+echo "[8/14] Updating automation history..." >> "$LOG_FILE"
 python src/report_generator/automation_history_tracker.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -79,7 +88,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[8/13] Generating confidence report..." >> "$LOG_FILE"
+echo "[9/14] Generating confidence report..." >> "$LOG_FILE"
 python src/report_generator/confidence_tracker.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -88,7 +97,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[9/13] Generating return prediction report..." >> "$LOG_FILE"
+echo "[10/14] Generating return prediction report..." >> "$LOG_FILE"
 python src/models/return_prediction_model.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -97,7 +106,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[10/13] Generating daily stock candidate report..." >> "$LOG_FILE"
+echo "[11/14] Generating daily stock candidate report..." >> "$LOG_FILE"
 python src/models/daily_stock_recommender.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -106,7 +115,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[11/13] Generating event-type performance report..." >> "$LOG_FILE"
+echo "[12/14] Generating event-type performance report..." >> "$LOG_FILE"
 python src/report_generator/event_type_performance_report.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -115,7 +124,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[12/13] Generating stock-specific pattern report..." >> "$LOG_FILE"
+echo "[13/14] Generating stock-specific pattern report..." >> "$LOG_FILE"
 python src/report_generator/stock_pattern_report.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -124,7 +133,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[13/13] Catch-up execution completed." >> "$LOG_FILE"
+echo "[14/14] Catch-up execution completed." >> "$LOG_FILE"
 echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 
