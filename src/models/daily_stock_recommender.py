@@ -2,8 +2,10 @@
 Daily stock recommender.
 
 This script generates a daily stock candidate report from the latest ML dataset.
-It applies historical confidence adjustments from advanced error notes and
-event-type performance adjustments from historical success rates and returns.
+It applies:
+- historical confidence adjustments from advanced error notes
+- event-type performance adjustments
+- stock-specific historical pattern adjustments
 
 Output:
 reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
@@ -228,9 +230,6 @@ def build_event_type_performance_adjustment_table(
 ) -> pd.DataFrame:
     """
     Build event-type success-rate and return adjustment table.
-
-    This table uses evaluated historical rows only.
-    Pending rows are counted but not used for success-rate calculation.
     """
 
     if error_notes_df.empty:
@@ -296,7 +295,6 @@ def build_event_type_performance_adjustment_table(
                 elif success_rate <= 0.45:
                     success_rate_adjustment = -3.0
             else:
-                # Small sample: adjust very lightly.
                 if success_rate >= 0.70:
                     success_rate_adjustment = 2.0
                 elif success_rate <= 0.30:
@@ -339,6 +337,170 @@ def build_event_type_performance_adjustment_table(
     return pd.DataFrame(rows)
 
 
+def build_stock_specific_adjustment_table(
+    error_notes_df: pd.DataFrame,
+) -> pd.DataFrame:
+    """
+    Build stock-specific historical pattern adjustment table.
+    """
+
+    if error_notes_df.empty:
+        return pd.DataFrame()
+
+    required_columns = [
+        "stock_code",
+        "prediction_result",
+        "next_close_return",
+    ]
+
+    for col in required_columns:
+        if col not in error_notes_df.columns:
+            return pd.DataFrame()
+
+    df = error_notes_df.copy()
+
+    df["stock_code"] = df["stock_code"].apply(normalize_stock_code)
+    df["prediction_result"] = df["prediction_result"].astype(str)
+    df["next_close_return"] = pd.to_numeric(
+        df["next_close_return"],
+        errors="coerce",
+    )
+
+    if "next_open_return" in df.columns:
+        df["next_open_return"] = pd.to_numeric(
+            df["next_open_return"],
+            errors="coerce",
+        )
+    else:
+        df["next_open_return"] = pd.NA
+
+    if "corp_name" not in df.columns:
+        df["corp_name"] = "Unknown"
+
+    if "confidence_adjustment" not in df.columns:
+        df["confidence_adjustment"] = "unknown"
+
+    rows = []
+
+    for stock_code, group in df.groupby("stock_code"):
+        if not stock_code:
+            continue
+
+        corp_name = "Unknown"
+
+        if "corp_name" in group.columns:
+            non_empty_names = group["corp_name"].dropna().astype(str)
+            non_empty_names = non_empty_names[non_empty_names.str.strip() != ""]
+
+            if not non_empty_names.empty:
+                corp_name = non_empty_names.value_counts().index[0]
+
+        total_count = len(group)
+
+        success_count = (group["prediction_result"] == "success").sum()
+        failure_count = (group["prediction_result"] == "failure").sum()
+        pending_count = (group["prediction_result"] == "pending").sum()
+
+        evaluated_count = success_count + failure_count
+
+        if evaluated_count > 0:
+            success_rate = success_count / evaluated_count
+        else:
+            success_rate = None
+
+        avg_next_open_return = group["next_open_return"].mean()
+        avg_next_close_return = group["next_close_return"].mean()
+
+        increase_count = (group["confidence_adjustment"] == "increase").sum()
+        decrease_count = (group["confidence_adjustment"] == "decrease").sum()
+        slightly_decrease_count = (
+            group["confidence_adjustment"] == "slightly_decrease"
+        ).sum()
+
+        success_rate_adjustment = 0.0
+        return_adjustment = 0.0
+        confidence_bias_adjustment = 0.0
+
+        if success_rate is not None:
+            if evaluated_count >= 3:
+                if success_rate >= 0.65:
+                    success_rate_adjustment = 5.0
+                elif success_rate >= 0.55:
+                    success_rate_adjustment = 2.5
+                elif success_rate <= 0.35:
+                    success_rate_adjustment = -5.0
+                elif success_rate <= 0.45:
+                    success_rate_adjustment = -2.5
+            else:
+                # Very small stock-level sample: adjust lightly.
+                if success_rate >= 0.70:
+                    success_rate_adjustment = 1.5
+                elif success_rate <= 0.30:
+                    success_rate_adjustment = -1.5
+
+        if not pd.isna(avg_next_close_return):
+            if avg_next_close_return >= 0.03:
+                return_adjustment = 3.0
+            elif avg_next_close_return >= 0.01:
+                return_adjustment = 1.5
+            elif avg_next_close_return <= -0.03:
+                return_adjustment = -3.0
+            elif avg_next_close_return <= -0.01:
+                return_adjustment = -1.5
+
+        confidence_bias_adjustment += increase_count * 1.0
+        confidence_bias_adjustment -= decrease_count * 1.5
+        confidence_bias_adjustment -= slightly_decrease_count * 0.75
+
+        if total_count > 0:
+            confidence_bias_adjustment = confidence_bias_adjustment / total_count
+
+        stock_specific_pattern_adjustment_score = (
+            success_rate_adjustment
+            + return_adjustment
+            + confidence_bias_adjustment
+        )
+
+        stock_pattern_label = "not_enough_data"
+
+        if pending_count == total_count:
+            stock_pattern_label = "mostly_pending"
+        elif evaluated_count > 0 and success_count > failure_count:
+            stock_pattern_label = "relatively_positive_history"
+        elif evaluated_count > 0 and failure_count > success_count:
+            stock_pattern_label = "weak_historical_reaction"
+        elif decrease_count + slightly_decrease_count > increase_count:
+            stock_pattern_label = "conservative_confidence_bias"
+
+        rows.append(
+            {
+                "stock_code": stock_code,
+                "stock_pattern_corp_name": corp_name,
+                "stock_pattern_total_count": total_count,
+                "stock_pattern_evaluated_count": evaluated_count,
+                "stock_pattern_success_count": success_count,
+                "stock_pattern_failure_count": failure_count,
+                "stock_pattern_pending_count": pending_count,
+                "stock_pattern_success_rate": success_rate,
+                "stock_pattern_avg_next_open_return": avg_next_open_return,
+                "stock_pattern_avg_next_close_return": avg_next_close_return,
+                "stock_pattern_success_rate_adjustment": success_rate_adjustment,
+                "stock_pattern_return_adjustment": return_adjustment,
+                "stock_pattern_confidence_bias_adjustment": round(
+                    confidence_bias_adjustment,
+                    2,
+                ),
+                "stock_specific_pattern_adjustment_score": round(
+                    stock_specific_pattern_adjustment_score,
+                    2,
+                ),
+                "stock_pattern_label": stock_pattern_label,
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
 def calculate_base_recommendation_score(row) -> float:
     """
     Calculate base recommendation score before historical adjustment.
@@ -375,6 +537,7 @@ def classify_risk_level(row) -> str:
     prediction_direction = str(row.get("prediction_direction", ""))
     negative_keywords = safe_number(row.get("negative_keyword_count", 0))
     adjusted_score = safe_number(row.get("adjusted_recommendation_score", 0))
+    stock_pattern_label = str(row.get("stock_pattern_label", ""))
 
     high_risk_events = [
         "paid_in_capital_increase",
@@ -391,6 +554,9 @@ def classify_risk_level(row) -> str:
         return "HIGH"
 
     if negative_keywords >= 3:
+        return "HIGH"
+
+    if stock_pattern_label == "weak_historical_reaction":
         return "HIGH"
 
     if prediction_direction == "volatile":
@@ -443,6 +609,10 @@ def build_recommendation_reason(row) -> str:
     performance_adjustment_score = safe_number(
         row.get("event_type_performance_adjustment_score", 0)
     )
+    stock_adjustment_score = safe_number(
+        row.get("stock_specific_pattern_adjustment_score", 0)
+    )
+    stock_pattern_label = row.get("stock_pattern_label", "not_enough_data")
 
     reason_parts = []
 
@@ -483,6 +653,21 @@ def build_recommendation_reason(row) -> str:
             "Event-type performance did not change the score."
         )
 
+    if stock_adjustment_score > 0:
+        reason_parts.append(
+            f"Stock-specific history added {stock_adjustment_score:.2f} points."
+        )
+    elif stock_adjustment_score < 0:
+        reason_parts.append(
+            f"Stock-specific history subtracted {abs(stock_adjustment_score):.2f} points."
+        )
+    else:
+        reason_parts.append(
+            "Stock-specific history did not change the score."
+        )
+
+    reason_parts.append(f"Stock pattern label is {stock_pattern_label}.")
+
     return " ".join(reason_parts)
 
 
@@ -506,6 +691,10 @@ def prepare_candidates(df: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:
         "event_type_success_rate_adjustment",
         "event_type_return_adjustment",
         "event_type_performance_adjustment_score",
+        "stock_pattern_success_rate_adjustment",
+        "stock_pattern_return_adjustment",
+        "stock_pattern_confidence_bias_adjustment",
+        "stock_specific_pattern_adjustment_score",
     ]
 
     for col in score_columns:
@@ -518,6 +707,7 @@ def prepare_candidates(df: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:
         candidates["base_recommendation_score"]
         + candidates["error_note_adjustment_score"]
         + candidates["event_type_performance_adjustment_score"]
+        + candidates["stock_specific_pattern_adjustment_score"]
     )
 
     candidates["risk_level"] = candidates.apply(
@@ -543,6 +733,18 @@ def prepare_candidates(df: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:
     return candidates.head(top_n)
 
 
+def add_missing_columns(df: pd.DataFrame, columns: list, default_value=0):
+    """
+    Add missing columns to dataframe.
+    """
+
+    for col in columns:
+        if col not in df.columns:
+            df[col] = default_value
+
+    return df
+
+
 def build_report() -> str:
     """
     Build daily stock candidate Markdown report.
@@ -558,9 +760,15 @@ def build_report() -> str:
     performance_adjustment_table = build_event_type_performance_adjustment_table(
         error_notes_df,
     )
+    stock_adjustment_table = build_stock_specific_adjustment_table(
+        error_notes_df,
+    )
 
     if not df.empty and "event_type" in df.columns:
         df["event_type"] = df["event_type"].astype(str)
+
+    if not df.empty and "stock_code" in df.columns:
+        df["stock_code"] = df["stock_code"].apply(normalize_stock_code)
 
     if not adjustment_table.empty:
         df = df.merge(
@@ -573,6 +781,13 @@ def build_report() -> str:
         df = df.merge(
             performance_adjustment_table,
             on="event_type",
+            how="left",
+        )
+
+    if not stock_adjustment_table.empty:
+        df = df.merge(
+            stock_adjustment_table,
+            on="stock_code",
             how="left",
         )
 
@@ -597,34 +812,36 @@ def build_report() -> str:
         "event_type_success_rate_adjustment",
         "event_type_return_adjustment",
         "event_type_performance_adjustment_score",
+        "stock_pattern_total_count",
+        "stock_pattern_evaluated_count",
+        "stock_pattern_success_count",
+        "stock_pattern_failure_count",
+        "stock_pattern_pending_count",
+        "stock_pattern_success_rate",
+        "stock_pattern_avg_next_open_return",
+        "stock_pattern_avg_next_close_return",
+        "stock_pattern_success_rate_adjustment",
+        "stock_pattern_return_adjustment",
+        "stock_pattern_confidence_bias_adjustment",
+        "stock_specific_pattern_adjustment_score",
     ]
 
-    for col in adjustment_columns:
-        if col not in df.columns:
-            df[col] = 0
+    df = add_missing_columns(df, adjustment_columns, default_value=0)
+
+    if "stock_pattern_label" not in df.columns:
+        df["stock_pattern_label"] = "not_enough_data"
 
     fill_zero_columns = [
-        "historical_error_note_count",
-        "historical_success_count",
-        "historical_failure_count",
-        "historical_pending_count",
-        "historical_increase_count",
-        "historical_decrease_count",
-        "historical_slightly_decrease_count",
-        "historical_hold_count",
-        "error_note_adjustment_score",
-        "event_type_total_count",
-        "event_type_evaluated_count",
-        "event_type_success_count",
-        "event_type_failure_count",
-        "event_type_pending_count",
-        "event_type_success_rate_adjustment",
-        "event_type_return_adjustment",
-        "event_type_performance_adjustment_score",
+        col for col in adjustment_columns
+        if col in df.columns
     ]
 
     for col in fill_zero_columns:
         df[col] = df[col].fillna(0)
+
+    df["stock_pattern_label"] = df["stock_pattern_label"].fillna(
+        "not_enough_data"
+    )
 
     candidates = prepare_candidates(df, top_n=30)
 
@@ -650,18 +867,61 @@ def build_report() -> str:
     lines.append(
         "Candidates are ranked using a rule-based score that combines event score, "
         "news sentiment, news attention, prediction direction, simple risk filters, "
-        "historical confidence adjustments from advanced error notes, and event-type "
-        "performance adjustments based on historical success rates and returns."
+        "historical confidence adjustments, event-type performance adjustments, "
+        "and stock-specific historical pattern adjustments."
     )
     lines.append("")
+
+    lines.append("## Stock-Specific Pattern Adjustment")
+    lines.append("")
+    lines.append(
+        "The recommender now applies a stock-specific historical adjustment. "
+        "Stocks with relatively positive historical reactions can receive a small "
+        "positive adjustment, while stocks with weak historical reactions can receive "
+        "a conservative penalty."
+    )
+    lines.append("")
+
+    if stock_adjustment_table.empty:
+        lines.append("No stock-specific pattern adjustment data is available yet.")
+        lines.append("")
+    else:
+        lines.append(
+            "| Stock | Company | Total | Evaluated | Success Rate | Avg Next Close | Pattern Label | Stock Adj |"
+        )
+        lines.append("|---|---|---:|---:|---:|---:|---|---:|")
+
+        view = stock_adjustment_table.sort_values(
+            by="stock_specific_pattern_adjustment_score",
+            ascending=False,
+        ).head(12)
+
+        for _, row in view.iterrows():
+            success_rate = row.get("stock_pattern_success_rate", None)
+
+            if pd.isna(success_rate) or success_rate is None:
+                success_rate_text = "N/A"
+            else:
+                success_rate_text = f"{safe_number(success_rate) * 100:.2f}%"
+
+            lines.append(
+                f"| {row.get('stock_code', '')} "
+                f"| {row.get('stock_pattern_corp_name', '')} "
+                f"| {int(safe_number(row.get('stock_pattern_total_count', 0)))} "
+                f"| {int(safe_number(row.get('stock_pattern_evaluated_count', 0)))} "
+                f"| {success_rate_text} "
+                f"| {format_percent(row.get('stock_pattern_avg_next_close_return', None))} "
+                f"| {row.get('stock_pattern_label', 'not_enough_data')} "
+                f"| {safe_number(row.get('stock_specific_pattern_adjustment_score', 0)):.2f} |"
+            )
+
+        lines.append("")
 
     lines.append("## Event-Type Success Rate Adjustment")
     lines.append("")
     lines.append(
-        "The recommender now applies a direct event-type performance adjustment. "
-        "Event types with stronger historical success rates or positive average next-day "
-        "returns can receive a small positive adjustment. Event types with weak success "
-        "rates or negative average returns can receive a conservative penalty."
+        "The recommender also applies event-type performance adjustments based on "
+        "historical success rates and average next-day returns."
     )
     lines.append("")
 
@@ -670,9 +930,9 @@ def build_report() -> str:
         lines.append("")
     else:
         lines.append(
-            "| Event Type | Total | Evaluated | Success Rate | Avg Next Close | Success Adj | Return Adj | Total Adj |"
+            "| Event Type | Total | Evaluated | Success Rate | Avg Next Close | Total Adj |"
         )
-        lines.append("|---|---:|---:|---:|---:|---:|---:|---:|")
+        lines.append("|---|---:|---:|---:|---:|---:|")
 
         view = performance_adjustment_table.sort_values(
             by="event_type_performance_adjustment_score",
@@ -693,8 +953,6 @@ def build_report() -> str:
                 f"| {int(safe_number(row.get('event_type_evaluated_count', 0)))} "
                 f"| {success_rate_text} "
                 f"| {format_percent(row.get('event_type_avg_next_close_return', None))} "
-                f"| {safe_number(row.get('event_type_success_rate_adjustment', 0)):.2f} "
-                f"| {safe_number(row.get('event_type_return_adjustment', 0)):.2f} "
                 f"| {safe_number(row.get('event_type_performance_adjustment_score', 0)):.2f} |"
             )
 
@@ -788,12 +1046,17 @@ def build_report() -> str:
             event_type = row.get("event_type", "unknown")
             report_nm = row.get("report_nm", "")
             prediction_direction = row.get("prediction_direction", "unknown")
+
             base_score = safe_number(row.get("base_recommendation_score", 0))
             error_note_score = safe_number(row.get("error_note_adjustment_score", 0))
-            performance_score = safe_number(
+            event_type_score = safe_number(
                 row.get("event_type_performance_adjustment_score", 0)
             )
+            stock_specific_score = safe_number(
+                row.get("stock_specific_pattern_adjustment_score", 0)
+            )
             adjusted_score = safe_number(row.get("adjusted_recommendation_score", 0))
+
             risk_level = row.get("risk_level", "UNKNOWN")
             candidate_type = row.get("candidate_type", "WATCHLIST")
             reason = row.get("recommendation_reason", "")
@@ -802,17 +1065,18 @@ def build_report() -> str:
             next_open_return = row.get("next_open_return", None)
             next_close_return = row.get("next_close_return", None)
 
-            event_type_evaluated_count = safe_number(
-                row.get("event_type_evaluated_count", 0)
+            stock_evaluated_count = safe_number(
+                row.get("stock_pattern_evaluated_count", 0)
             )
-            event_type_success_rate = row.get("event_type_success_rate", None)
-            event_type_avg_close = row.get("event_type_avg_next_close_return", None)
+            stock_success_rate = row.get("stock_pattern_success_rate", None)
+            stock_avg_close = row.get("stock_pattern_avg_next_close_return", None)
+            stock_pattern_label = row.get("stock_pattern_label", "not_enough_data")
 
-            if pd.isna(event_type_success_rate):
-                event_type_success_rate_text = "N/A"
+            if pd.isna(stock_success_rate):
+                stock_success_rate_text = "N/A"
             else:
-                event_type_success_rate_text = (
-                    f"{safe_number(event_type_success_rate) * 100:.2f}%"
+                stock_success_rate_text = (
+                    f"{safe_number(stock_success_rate) * 100:.2f}%"
                 )
 
             lines.append(f"### {rank}. {corp_name} ({stock_code})")
@@ -821,14 +1085,16 @@ def build_report() -> str:
             lines.append(f"- Expected direction: **{prediction_direction}**")
             lines.append(f"- Base recommendation score: **{base_score:.2f}**")
             lines.append(f"- Error-note adjustment score: **{error_note_score:.2f}**")
-            lines.append(f"- Event-type performance adjustment score: **{performance_score:.2f}**")
+            lines.append(f"- Event-type performance adjustment score: **{event_type_score:.2f}**")
+            lines.append(f"- Stock-specific pattern adjustment score: **{stock_specific_score:.2f}**")
             lines.append(f"- Adjusted recommendation score: **{adjusted_score:.2f}**")
             lines.append(f"- Risk level: **{risk_level}**")
             lines.append(f"- Event type: `{event_type}`")
             lines.append(
-                f"- Event-type evaluated cases: {event_type_evaluated_count:.0f}, "
-                f"success rate: {event_type_success_rate_text}, "
-                f"avg next close: {format_percent(event_type_avg_close)}"
+                f"- Stock-specific evaluated cases: {stock_evaluated_count:.0f}, "
+                f"success rate: {stock_success_rate_text}, "
+                f"avg next close: {format_percent(stock_avg_close)}, "
+                f"pattern: {stock_pattern_label}"
             )
 
             if report_nm:
@@ -871,8 +1137,8 @@ def build_report() -> str:
     lines.append("")
     lines.append(
         "At this stage, candidates are still generated using rule-based scoring. "
-        "The system now also uses historical error-note patterns and event-type "
-        "performance statistics as conservative confidence adjustment layers. "
+        "The system now also uses historical error-note patterns, event-type "
+        "performance statistics, and stock-specific historical reaction patterns. "
         "These adjustments will become more meaningful after enough evaluated "
         "event-reaction samples are accumulated."
     )
@@ -885,13 +1151,14 @@ def build_report() -> str:
     lines.append("- General Watchlist: events worth monitoring but not strong enough for positive classification.")
     lines.append("- Risk / Avoid Review List: negative or high-risk events such as capital increases, CB/BW, lawsuits, or disclosure violations.")
     lines.append("- Error-note adjustment score: learning signal from previous advanced error notes.")
-    lines.append("- Event-type performance adjustment score: success-rate and average-return based adjustment.")
+    lines.append("- Event-type performance adjustment score: success-rate and average-return based adjustment by event type.")
+    lines.append("- Stock-specific pattern adjustment score: success-rate, average-return, and confidence-bias adjustment by stock code.")
     lines.append("")
 
     lines.append("## Next Step")
     lines.append("")
     lines.append(
-        "The next step is to add stock-specific historical reaction patterns, so the system can distinguish between event-type level behavior and stock-level behavior."
+        "The next step is to add market index and sector movement features, so the system can distinguish stock-specific signals from broader market movement."
     )
     lines.append("")
 
