@@ -255,3 +255,83 @@ The catch-up script currently runs:
 * Add feature importance analysis
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
+
+## Day 23 Update: Market-Adjusted Evaluation Logic
+
+The project now includes market-adjusted evaluation logic.
+
+```text
+src/evaluator/market_adjusted_evaluator.py
+```
+
+This evaluator checks whether a stock moved meaningfully after adjusting for broader market movement.
+
+Previously, the system mainly checked whether a stock went up or down after an event.
+
+Now, the system also checks whether the stock outperformed or underperformed the market.
+
+### Input
+
+```text
+data/processed/market_adjusted_features_YYYYMMDD.csv
+```
+
+### Outputs
+
+```text
+data/predictions/market_adjusted_evaluation_YYYYMMDD.csv
+reports/daily_review/YYYY-MM-DD_market_adjusted_evaluation_report.md
+```
+
+### Market-Adjusted Result Categories
+
+```text
+market_adjusted_success
+market_driven_weak_success
+relative_success_but_absolute_loss
+market_adjusted_failure
+relative_failure_despite_absolute_gain
+market_adjusted_volatility_success
+market_driven_volatility
+volatility_overestimated
+market_data_missing
+pending
+```
+
+### Additional Explanation Fields
+
+```text
+market_adjusted_reason
+market_adjusted_learning_point
+market_adjusted_confidence_adjustment
+```
+
+These fields help explain whether a prediction was truly event-driven or mostly caused by broader market movement.
+
+### Updated Catch-Up Flow
+
+```text
+[1/13] Daily Pipeline
+[2/13] Pending Re-Evaluator
+[3/13] Market Index Collection
+[4/13] Market-Adjusted Features
+[5/13] Market-Adjusted Evaluation
+[6/13] Automation Status Report
+[7/13] Automation History
+[8/13] Confidence Report
+[9/13] Return Prediction Report
+[10/13] Daily Stock Candidate Report
+[11/13] Event-Type Performance Report
+[12/13] Stock-Specific Pattern Report
+[13/13] Completed
+```
+
+### Latest Progress
+
+* Day 22: Market Index and Market-Adjusted Return Features
+* Day 23: Market-Adjusted Evaluation Logic
+
+### Next Step
+
+The next step is to use market-adjusted evaluation results in confidence tracking and daily recommendation scoring.
+
