@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-06-24
 
-Generated at: 2026-06-24 21:57:59
+Generated at: 2026-06-24 22:05:55
 
 ML dataset: `data/processed/ml_dataset_20260624.csv`
 
@@ -139,7 +139,7 @@ No candidates in this section.
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 한화갤러리아, 순화빌딩 매입 가시화...2135억원에 MOU 체결 | [아주경제 오늘의 뉴스 종합] SK하이닉스, 美 나스닥 ADR 상장 추진 外 | 한화갤러리아, 2135억원에 순화빌딩 매입…"활용 방안 검토"
+- Related news examples: 한화갤러리아, 서울 순화빌딩 2135억원에 인수 추진 | 한화갤러리아, 순화빌딩 매입 가시화...2135억원에 MOU 체결 | [아주경제 오늘의 뉴스 종합] SK하이닉스, 美 나스닥 ADR 상장 추진 外
 
 ### 5. 한국화장품제조 (003350)
 
