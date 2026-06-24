@@ -68,6 +68,7 @@ The project currently includes:
 * Machine learning dataset builder
 * Baseline machine learning model
 * Return prediction model
+* Daily stock recommender
 * Daily model report generation
 * Pending event re-evaluation system
 * Local daily automation scripts
@@ -81,7 +82,7 @@ The project currently includes:
 
 ## Prediction Layer
 
-The project now includes two early model layers.
+The project now includes three early prediction layers.
 
 ### Baseline Classification Model
 
@@ -105,6 +106,29 @@ next_close_return
 ```
 
 At the current stage, the model may report `NOT_ENOUGH_DATA` because many event rows are still pending.
+
+### Daily Stock Recommender
+
+```text
+src/models/daily_stock_recommender.py
+```
+
+This module generates a daily stock candidate report.
+
+The report separates candidates into:
+
+```text
+Positive Candidates
+Volatile Watchlist
+General Watchlist
+Risk / Avoid Review List
+```
+
+The report is generated at:
+
+```text
+reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
+```
 
 ## Monitoring Layer
 
@@ -164,6 +188,8 @@ Confidence Report
 ↓
 Return Prediction Report
 ↓
+Daily Stock Candidate Report
+↓
 Log Generation
 ```
 
@@ -182,14 +208,14 @@ Log Generation
 * Day 11: Automation History Tracker
 * Day 12: Confidence Tracker
 * Day 13: Return Prediction Model
+* Day 14: Daily Stock Recommender
 
 ## Next Steps
 
-* Build daily stock recommender
-* Generate rule-based recommendation candidates
-* Add expected direction and confidence level
+* Build single stock predictor
+* Generate stock-specific prediction reports
+* Add expected direction and confidence level per stock
 * Add expected return once enough return samples exist
-* Add single stock predictor
 * Improve advanced error-note reasoning
 * Track confidence improvement over time
 * Add model performance history
