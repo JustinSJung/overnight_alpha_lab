@@ -69,6 +69,7 @@ The project currently includes:
 * Baseline machine learning model
 * Return prediction model
 * Daily stock recommender
+* Error-note-aware recommendation adjustment
 * Single stock predictor
 * Daily model report generation
 * Pending event re-evaluation system
@@ -110,34 +111,9 @@ next_rule_adjustment
 confidence_adjustment
 ```
 
-This allows the system to record not only whether a prediction was right or wrong, but also why the result may have happened and how future rules should be adjusted.
+## Recommendation Layer
 
-## Prediction Layer
-
-The project now includes four early prediction layers.
-
-### Baseline Classification Model
-
-```text
-src/models/baseline_model.py
-```
-
-This model checks whether evaluated predictions can be classified as success or failure.
-
-### Return Prediction Model
-
-```text
-src/models/return_prediction_model.py
-```
-
-This model is designed to predict:
-
-```text
-next_open_return
-next_close_return
-```
-
-At the current stage, the model may report `NOT_ENOUGH_DATA` because many event rows are still pending.
+The project now includes an error-note-aware recommendation layer.
 
 ### Daily Stock Recommender
 
@@ -156,13 +132,47 @@ General Watchlist
 Risk / Avoid Review List
 ```
 
+The recommender now calculates:
+
+```text
+base_recommendation_score
+error_note_adjustment_score
+adjusted_recommendation_score
+```
+
+The error-note adjustment score is calculated from historical advanced error notes.
+
+This allows the recommender to become more conservative for event types that have repeatedly produced weak or failed prediction patterns, and more confident for event types that have repeatedly produced successful patterns.
+
+The report is generated at:
+
+```text
+reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
+```
+
+## Prediction Layer
+
+The project currently includes:
+
+### Baseline Classification Model
+
+```text
+src/models/baseline_model.py
+```
+
+### Return Prediction Model
+
+```text
+src/models/return_prediction_model.py
+```
+
 ### Single Stock Predictor
 
 ```text
 src/models/single_stock_predictor.py
 ```
 
-This module generates a focused report for a user-provided stock code.
+The single stock predictor generates a focused report for a user-provided stock code.
 
 Example:
 
@@ -194,14 +204,17 @@ reports/single_stock/YYYY-MM-DD_STOCKCODE_single_stock_report.md
 * Day 14: Daily Stock Recommender
 * Day 15: Single Stock Predictor
 * Day 16: Advanced Error Note Generator
+* Day 17: Error-Note-Aware Recommender
 
 ## Next Steps
 
-* Apply error-note learning results to recommendation scoring
-* Reduce confidence for repeatedly failed event patterns
-* Increase confidence for repeatedly successful event patterns
-* Add event-type based success rates
-* Add confidence-adjusted recommendation scores
+* Build event-type performance report
+* Track event-type success rates
+* Track average next-day returns by event type
+* Add confidence-adjusted recommendation score history
+* Add stock-specific historical reaction patterns
+* Add market index and sector movement features
+* Add trading volume features
 * Add model performance history
 * Add automatic Git commit and push
 * Add automatic daily blog generation
@@ -209,4 +222,3 @@ reports/single_stock/YYYY-MM-DD_STOCKCODE_single_stock_report.md
 * Add feature importance analysis
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
-
