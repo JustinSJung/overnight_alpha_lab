@@ -1,13 +1,8 @@
 """
 Daily stock recommender.
 
-This script generates rule-based daily stock recommendation candidates
-from the latest ML dataset.
-
-It is not a financial advice system.
-It is a research/portfolio project module that ranks event-driven
-stock candidates based on disclosure event score, news sentiment,
-news attention, and confidence readiness.
+This script generates a daily stock candidate report from the latest ML dataset.
+It also applies historical confidence adjustments from advanced error notes.
 
 Output:
 reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
@@ -20,7 +15,9 @@ import pandas as pd
 
 
 PROCESSED_DIR = "data/processed"
+PREDICTIONS_DIR = "data/predictions"
 OUTPUT_DIR = "reports/daily_prediction"
+
 
 POSITIVE_DIRECTIONS = [
     "positive",
@@ -34,6 +31,20 @@ NEGATIVE_DIRECTIONS = [
 VOLATILE_DIRECTIONS = [
     "volatile",
 ]
+
+
+def normalize_stock_code(value) -> str:
+    """
+    Normalize stock code to 6-digit string.
+    """
+
+    if pd.isna(value):
+        return ""
+
+    try:
+        return str(int(float(value))).zfill(6)
+    except Exception:
+        return str(value).strip().zfill(6)
 
 
 def get_latest_file(directory: str, prefix: str, suffix: str = ".csv"):
@@ -61,87 +72,195 @@ def load_latest_ml_dataset():
     Load latest ML dataset.
     """
 
-    ml_dataset_path = get_latest_file(PROCESSED_DIR, "ml_dataset_")
+    path = get_latest_file(PROCESSED_DIR, "ml_dataset_")
 
-    if ml_dataset_path is None:
+    if path is None:
         return pd.DataFrame(), ""
 
     try:
-        df = pd.read_csv(ml_dataset_path)
-        return df, ml_dataset_path
+        df = pd.read_csv(path)
+
+        if "stock_code" in df.columns:
+            df["stock_code"] = df["stock_code"].apply(normalize_stock_code)
+
+        return df, path
     except Exception:
-        return pd.DataFrame(), ml_dataset_path
+        return pd.DataFrame(), path
 
 
-def safe_numeric(series, default=0):
+def load_error_notes():
     """
-    Convert a pandas series to numeric safely.
-    """
-
-    return pd.to_numeric(series, errors="coerce").fillna(default)
-
-
-def calculate_recommendation_score(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Calculate rule-based recommendation score.
+    Load all available advanced error note files.
     """
 
-    df = df.copy()
+    if not os.path.exists(PREDICTIONS_DIR):
+        return pd.DataFrame()
 
-    for column in [
-        "event_score",
-        "news_count",
-        "positive_keyword_count",
-        "negative_keyword_count",
-        "news_sentiment_score",
-        "news_attention_score",
-    ]:
-        if column not in df.columns:
-            df[column] = 0
+    files = [
+        file for file in os.listdir(PREDICTIONS_DIR)
+        if file.startswith("error_notes_") and file.endswith(".csv")
+    ]
 
-        df[column] = safe_numeric(df[column])
+    if not files:
+        return pd.DataFrame()
 
-    # Base score starts from event score.
-    df["recommendation_score"] = df["event_score"]
+    frames = []
 
-    # News sentiment contributes to score.
-    df["recommendation_score"] += df["news_sentiment_score"] * 5
+    for file in files:
+        path = os.path.join(PREDICTIONS_DIR, file)
 
-    # News attention contributes slightly.
-    df["recommendation_score"] += df["news_attention_score"].clip(upper=10) * 2
+        try:
+            df = pd.read_csv(path)
 
-    # Penalize negative keyword count.
-    df["recommendation_score"] -= df["negative_keyword_count"] * 3
+            if "stock_code" in df.columns:
+                df["stock_code"] = df["stock_code"].apply(normalize_stock_code)
 
-    # If direction is positive, give slight boost.
-    if "prediction_direction" in df.columns:
-        df.loc[
-            df["prediction_direction"].isin(POSITIVE_DIRECTIONS),
-            "recommendation_score",
-        ] += 10
+            frames.append(df)
+        except Exception:
+            continue
 
-        df.loc[
-            df["prediction_direction"].isin(NEGATIVE_DIRECTIONS),
-            "recommendation_score",
-        ] -= 10
+    if not frames:
+        return pd.DataFrame()
 
-        df.loc[
-            df["prediction_direction"].isin(VOLATILE_DIRECTIONS),
-            "recommendation_score",
-        ] -= 5
+    return pd.concat(frames, ignore_index=True)
 
-    return df
+
+def safe_number(value, default=0.0) -> float:
+    """
+    Convert value to float safely.
+    """
+
+    try:
+        if pd.isna(value):
+            return default
+
+        return float(value)
+    except Exception:
+        return default
+
+
+def format_percent(value) -> str:
+    """
+    Format return value as percent.
+    """
+
+    try:
+        if pd.isna(value):
+            return "Not available"
+
+        return f"{float(value) * 100:.2f}%"
+    except Exception:
+        return "Not available"
+
+
+def build_error_note_adjustment_table(error_notes_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Build event-type level confidence adjustment table from error notes.
+
+    The table summarizes whether each event type has historically received
+    increase/decrease confidence signals.
+    """
+
+    if error_notes_df.empty:
+        return pd.DataFrame()
+
+    required_columns = [
+        "event_type",
+        "confidence_adjustment",
+    ]
+
+    for col in required_columns:
+        if col not in error_notes_df.columns:
+            return pd.DataFrame()
+
+    df = error_notes_df.copy()
+
+    df["event_type"] = df["event_type"].astype(str)
+    df["confidence_adjustment"] = df["confidence_adjustment"].astype(str)
+
+    rows = []
+
+    for event_type, group in df.groupby("event_type"):
+        total_count = len(group)
+
+        increase_count = (group["confidence_adjustment"] == "increase").sum()
+        decrease_count = (group["confidence_adjustment"] == "decrease").sum()
+        slightly_decrease_count = (
+            group["confidence_adjustment"] == "slightly_decrease"
+        ).sum()
+        hold_count = (group["confidence_adjustment"] == "hold").sum()
+
+        success_count = 0
+        failure_count = 0
+        pending_count = 0
+
+        if "prediction_result" in group.columns:
+            success_count = (group["prediction_result"] == "success").sum()
+            failure_count = (group["prediction_result"] == "failure").sum()
+            pending_count = (group["prediction_result"] == "pending").sum()
+
+        adjustment_score = 0
+        adjustment_score += increase_count * 5
+        adjustment_score -= decrease_count * 7
+        adjustment_score -= slightly_decrease_count * 3
+
+        if total_count > 0:
+            adjustment_score = adjustment_score / total_count
+
+        rows.append(
+            {
+                "event_type": event_type,
+                "historical_error_note_count": total_count,
+                "historical_success_count": success_count,
+                "historical_failure_count": failure_count,
+                "historical_pending_count": pending_count,
+                "historical_increase_count": increase_count,
+                "historical_decrease_count": decrease_count,
+                "historical_slightly_decrease_count": slightly_decrease_count,
+                "historical_hold_count": hold_count,
+                "error_note_adjustment_score": round(adjustment_score, 2),
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
+def calculate_base_recommendation_score(row) -> float:
+    """
+    Calculate base recommendation score before historical adjustment.
+    """
+
+    event_score = safe_number(row.get("event_score", 0))
+    news_sentiment_score = safe_number(row.get("news_sentiment_score", 0))
+    news_attention_score = safe_number(row.get("news_attention_score", 0))
+    negative_keyword_count = safe_number(row.get("negative_keyword_count", 0))
+
+    score = event_score
+    score += news_sentiment_score * 5
+    score += min(news_attention_score, 10) * 2
+    score -= negative_keyword_count * 3
+
+    prediction_direction = str(row.get("prediction_direction", ""))
+
+    if prediction_direction in POSITIVE_DIRECTIONS:
+        score += 10
+    elif prediction_direction in NEGATIVE_DIRECTIONS:
+        score -= 10
+    elif prediction_direction in VOLATILE_DIRECTIONS:
+        score -= 5
+
+    return score
 
 
 def classify_risk_level(row) -> str:
     """
-    Classify simple risk level.
+    Classify risk level.
     """
 
     event_type = str(row.get("event_type", ""))
     prediction_direction = str(row.get("prediction_direction", ""))
-    negative_keywords = float(row.get("negative_keyword_count", 0))
-    score = float(row.get("recommendation_score", 0))
+    negative_keywords = safe_number(row.get("negative_keyword_count", 0))
+    adjusted_score = safe_number(row.get("adjusted_recommendation_score", 0))
 
     high_risk_events = [
         "paid_in_capital_increase",
@@ -163,7 +282,7 @@ def classify_risk_level(row) -> str:
     if prediction_direction == "volatile":
         return "MEDIUM"
 
-    if score < 30:
+    if adjusted_score < 30:
         return "MEDIUM"
 
     return "LOW"
@@ -174,95 +293,113 @@ def classify_candidate_type(row) -> str:
     Classify candidate type.
     """
 
-    direction = str(row.get("prediction_direction", ""))
-    score = float(row.get("recommendation_score", 0))
+    prediction_direction = str(row.get("prediction_direction", ""))
+    risk_level = str(row.get("risk_level", ""))
+    adjusted_score = safe_number(row.get("adjusted_recommendation_score", 0))
 
-    if direction in POSITIVE_DIRECTIONS and score >= 60:
+    if risk_level == "HIGH":
+        return "AVOID_OR_RISK_REVIEW"
+
+    if prediction_direction in POSITIVE_DIRECTIONS and adjusted_score >= 60:
         return "POSITIVE_CANDIDATE"
 
-    if direction == "volatile":
+    if prediction_direction == "volatile":
         return "WATCHLIST_VOLATILE"
 
-    if direction == "negative":
-        return "AVOID_OR_RISK_REVIEW"
+    if adjusted_score >= 40:
+        return "WATCHLIST"
 
     return "WATCHLIST"
 
 
-def build_reason(row) -> str:
+def build_recommendation_reason(row) -> str:
     """
-    Build human-readable recommendation reason.
+    Build recommendation reason text.
     """
 
     event_type = row.get("event_type", "unknown")
-    event_score = row.get("event_score", 0)
-    news_sentiment_score = row.get("news_sentiment_score", 0)
-    news_attention_score = row.get("news_attention_score", 0)
     prediction_direction = row.get("prediction_direction", "unknown")
+    event_score = safe_number(row.get("event_score", 0))
+    news_attention_score = safe_number(row.get("news_attention_score", 0))
+    news_sentiment_score = safe_number(row.get("news_sentiment_score", 0))
+    negative_keyword_count = safe_number(row.get("negative_keyword_count", 0))
+    error_note_adjustment_score = safe_number(
+        row.get("error_note_adjustment_score", 0)
+    )
 
-    reasons = []
+    reason_parts = []
 
-    reasons.append(f"Event type is {event_type}.")
-    reasons.append(f"Initial direction is {prediction_direction}.")
-    reasons.append(f"Event score is {event_score}.")
+    reason_parts.append(f"Event type is {event_type}.")
+    reason_parts.append(f"Initial direction is {prediction_direction}.")
+    reason_parts.append(f"Event score is {event_score:.0f}.")
+    reason_parts.append(f"News attention score is {news_attention_score:.0f}.")
+    reason_parts.append(f"News sentiment score is {news_sentiment_score:.0f}.")
 
-    if news_attention_score > 0:
-        reasons.append(f"News attention score is {news_attention_score}.")
+    if negative_keyword_count > 0:
+        reason_parts.append(
+            f"Negative keyword count is {negative_keyword_count:.0f}."
+        )
 
-    if news_sentiment_score > 0:
-        reasons.append(f"News sentiment is positive at {news_sentiment_score}.")
-    elif news_sentiment_score < 0:
-        reasons.append(f"News sentiment is negative at {news_sentiment_score}.")
+    if error_note_adjustment_score > 0:
+        reason_parts.append(
+            f"Historical error notes added a positive confidence adjustment of {error_note_adjustment_score:.2f}."
+        )
+    elif error_note_adjustment_score < 0:
+        reason_parts.append(
+            f"Historical error notes applied a conservative adjustment of {error_note_adjustment_score:.2f}."
+        )
     else:
-        reasons.append("News sentiment is neutral or unavailable.")
+        reason_parts.append(
+            "Historical error notes did not change the score."
+        )
 
-    return " ".join(reasons)
+    return " ".join(reason_parts)
 
 
-def prepare_candidates(df: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
+def prepare_candidates(df: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:
     """
-    Prepare top recommendation candidates.
+    Prepare candidate dataframe.
     """
 
     if df.empty:
         return pd.DataFrame()
 
-    candidates = calculate_recommendation_score(df)
+    candidates = df.copy()
 
-    candidates["risk_level"] = candidates.apply(classify_risk_level, axis=1)
-    candidates["candidate_type"] = candidates.apply(classify_candidate_type, axis=1)
-    candidates["recommendation_reason"] = candidates.apply(build_reason, axis=1)
+    candidates["base_recommendation_score"] = candidates.apply(
+        calculate_base_recommendation_score,
+        axis=1,
+    )
 
-    # Remove exact duplicate rows if the same event appears repeatedly.
-    dedupe_columns = [
-        col for col in ["stock_code", "corp_name", "event_type", "event_date"]
-        if col in candidates.columns
-    ]
+    if "error_note_adjustment_score" not in candidates.columns:
+        candidates["error_note_adjustment_score"] = 0.0
 
-    if dedupe_columns:
-        candidates = candidates.drop_duplicates(subset=dedupe_columns)
+    candidates["adjusted_recommendation_score"] = (
+        candidates["base_recommendation_score"]
+        + candidates["error_note_adjustment_score"]
+    )
 
-    # Prefer higher score, but keep risk visible.
+    candidates["risk_level"] = candidates.apply(
+        classify_risk_level,
+        axis=1,
+    )
+
+    candidates["candidate_type"] = candidates.apply(
+        classify_candidate_type,
+        axis=1,
+    )
+
+    candidates["recommendation_reason"] = candidates.apply(
+        build_recommendation_reason,
+        axis=1,
+    )
+
     candidates = candidates.sort_values(
-        by="recommendation_score",
+        by="adjusted_recommendation_score",
         ascending=False,
     )
 
     return candidates.head(top_n)
-
-
-def format_percent(value):
-    """
-    Format return value as percent if available.
-    """
-
-    try:
-        if pd.isna(value):
-            return "Not available"
-
-        return f"{float(value) * 100:.2f}%"
-    except Exception:
-        return "Not available"
 
 
 def build_report() -> str:
@@ -274,6 +411,37 @@ def build_report() -> str:
     generated_at = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 
     df, ml_dataset_path = load_latest_ml_dataset()
+    error_notes_df = load_error_notes()
+    adjustment_table = build_error_note_adjustment_table(error_notes_df)
+
+    if not df.empty and "event_type" in df.columns:
+        df["event_type"] = df["event_type"].astype(str)
+
+    if not adjustment_table.empty:
+        df = df.merge(
+            adjustment_table,
+            on="event_type",
+            how="left",
+        )
+
+    adjustment_columns = [
+        "historical_error_note_count",
+        "historical_success_count",
+        "historical_failure_count",
+        "historical_pending_count",
+        "historical_increase_count",
+        "historical_decrease_count",
+        "historical_slightly_decrease_count",
+        "historical_hold_count",
+        "error_note_adjustment_score",
+    ]
+
+    for col in adjustment_columns:
+        if col not in df.columns:
+            df[col] = 0
+
+    df["error_note_adjustment_score"] = df["error_note_adjustment_score"].fillna(0)
+
     candidates = prepare_candidates(df, top_n=30)
 
     lines = []
@@ -297,14 +465,44 @@ def build_report() -> str:
     lines.append("")
     lines.append(
         "Candidates are ranked using a rule-based score that combines event score, "
-        "news sentiment, news attention, prediction direction, and simple risk filters."
+        "news sentiment, news attention, prediction direction, simple risk filters, "
+        "and historical confidence adjustments from advanced error notes."
     )
+    lines.append("")
+
+    lines.append("## Error-Note Learning Adjustment")
     lines.append("")
     lines.append(
-        "The return prediction model is still in an early stage and may report "
-        "`NOT_ENOUGH_DATA` until enough evaluated return samples are accumulated."
+        "The recommender now reads past error notes and applies event-type level "
+        "confidence adjustments. Event types that repeatedly received `increase` "
+        "signals can receive a small positive adjustment. Event types that repeatedly "
+        "received `decrease` or `slightly_decrease` signals can receive a conservative penalty."
     )
     lines.append("")
+
+    if adjustment_table.empty:
+        lines.append("No historical error-note adjustment data is available yet.")
+        lines.append("")
+    else:
+        lines.append("| Event Type | Notes | Success | Failure | Pending | Adjustment |")
+        lines.append("|---|---:|---:|---:|---:|---:|")
+
+        adjustment_view = adjustment_table.sort_values(
+            by="error_note_adjustment_score",
+            ascending=False,
+        ).head(10)
+
+        for _, row in adjustment_view.iterrows():
+            lines.append(
+                f"| {row.get('event_type', '')} "
+                f"| {int(row.get('historical_error_note_count', 0))} "
+                f"| {int(row.get('historical_success_count', 0))} "
+                f"| {int(row.get('historical_failure_count', 0))} "
+                f"| {int(row.get('historical_pending_count', 0))} "
+                f"| {safe_number(row.get('error_note_adjustment_score', 0)):.2f} |"
+            )
+
+        lines.append("")
 
     if df.empty:
         lines.append("## Status")
@@ -328,12 +526,12 @@ def build_report() -> str:
         candidates["candidate_type"] == "WATCHLIST_VOLATILE"
     ].copy()
 
-    risk_candidates = candidates[
-        candidates["candidate_type"] == "AVOID_OR_RISK_REVIEW"
-    ].copy()
-
     watchlist_candidates = candidates[
         candidates["candidate_type"] == "WATCHLIST"
+    ].copy()
+
+    risk_candidates = candidates[
+        candidates["candidate_type"] == "AVOID_OR_RISK_REVIEW"
     ].copy()
 
     def append_candidate_section(section_title: str, section_df: pd.DataFrame, max_rows: int):
@@ -345,10 +543,16 @@ def build_report() -> str:
             lines.append("")
             return
 
-        section_df = section_df.sort_values(
-            by="recommendation_score",
-            ascending=False,
-        ).head(max_rows)
+        if section_title == "Risk / Avoid Review List":
+            section_df = section_df.sort_values(
+                by="adjusted_recommendation_score",
+                ascending=True,
+            ).head(max_rows)
+        else:
+            section_df = section_df.sort_values(
+                by="adjusted_recommendation_score",
+                ascending=False,
+            ).head(max_rows)
 
         for rank, (_, row) in enumerate(section_df.iterrows(), start=1):
             corp_name = row.get("corp_name", "Unknown")
@@ -356,7 +560,9 @@ def build_report() -> str:
             event_type = row.get("event_type", "unknown")
             report_nm = row.get("report_nm", "")
             prediction_direction = row.get("prediction_direction", "unknown")
-            recommendation_score = row.get("recommendation_score", 0)
+            base_score = safe_number(row.get("base_recommendation_score", 0))
+            adjustment_score = safe_number(row.get("error_note_adjustment_score", 0))
+            adjusted_score = safe_number(row.get("adjusted_recommendation_score", 0))
             risk_level = row.get("risk_level", "UNKNOWN")
             candidate_type = row.get("candidate_type", "WATCHLIST")
             reason = row.get("recommendation_reason", "")
@@ -365,13 +571,23 @@ def build_report() -> str:
             next_open_return = row.get("next_open_return", None)
             next_close_return = row.get("next_close_return", None)
 
+            historical_count = safe_number(row.get("historical_error_note_count", 0))
+            historical_success = safe_number(row.get("historical_success_count", 0))
+            historical_failure = safe_number(row.get("historical_failure_count", 0))
+
             lines.append(f"### {rank}. {corp_name} ({stock_code})")
             lines.append("")
             lines.append(f"- Candidate type: **{candidate_type}**")
             lines.append(f"- Expected direction: **{prediction_direction}**")
-            lines.append(f"- Recommendation score: **{recommendation_score:.2f}**")
+            lines.append(f"- Base recommendation score: **{base_score:.2f}**")
+            lines.append(f"- Error-note adjustment score: **{adjustment_score:.2f}**")
+            lines.append(f"- Adjusted recommendation score: **{adjusted_score:.2f}**")
             lines.append(f"- Risk level: **{risk_level}**")
             lines.append(f"- Event type: `{event_type}`")
+            lines.append(
+                f"- Historical error-note cases: {historical_count:.0f} "
+                f"(success {historical_success:.0f}, failure {historical_failure:.0f})"
+            )
 
             if report_nm:
                 lines.append(f"- Disclosure title: {report_nm}")
@@ -405,19 +621,17 @@ def build_report() -> str:
 
     append_candidate_section(
         "Risk / Avoid Review List",
-        risk_candidates.sort_values(
-            by="recommendation_score",
-            ascending=True,
-        ),
+        risk_candidates,
         max_rows=10,
     )
 
     lines.append("## Data Readiness")
     lines.append("")
     lines.append(
-        "At this stage, candidates are generated using rule-based scoring. "
-        "Expected return values will become more meaningful after enough evaluated "
-        "event-reaction samples are accumulated."
+        "At this stage, candidates are still generated using rule-based scoring. "
+        "The system now also uses historical error-note patterns as a conservative "
+        "confidence adjustment layer. Expected return values will become more meaningful "
+        "after enough evaluated event-reaction samples are accumulated."
     )
     lines.append("")
 
@@ -427,17 +641,19 @@ def build_report() -> str:
     lines.append("- Volatile Watchlist: potentially important events with uncertain direction.")
     lines.append("- General Watchlist: events worth monitoring but not strong enough for positive classification.")
     lines.append("- Risk / Avoid Review List: negative or high-risk events such as capital increases, CB/BW, lawsuits, or disclosure violations.")
+    lines.append("- Error-note adjustment score: historical learning signal from previous success/failure notes.")
     lines.append("")
 
     lines.append("## Next Step")
     lines.append("")
     lines.append(
-        "The next step is to improve candidate scoring by incorporating trained return "
-        "prediction outputs, event-type historical success rates, and confidence levels."
+        "The next step is to improve the adjustment logic using event-type success rates, "
+        "stock-specific historical reactions, market index movement, and trading volume."
     )
     lines.append("")
 
     return "\n".join(lines)
+
 
 def save_report(report_text: str) -> str:
     """
@@ -447,7 +663,10 @@ def save_report(report_text: str) -> str:
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     today = datetime.today().strftime("%Y-%m-%d")
-    output_path = os.path.join(OUTPUT_DIR, f"{today}_daily_stock_candidates.md")
+    output_path = os.path.join(
+        OUTPUT_DIR,
+        f"{today}_daily_stock_candidates.md",
+    )
 
     with open(output_path, "w", encoding="utf-8") as file:
         file.write(report_text)

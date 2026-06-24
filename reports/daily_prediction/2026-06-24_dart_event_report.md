@@ -8,20 +8,27 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 78 |
-| Insider or Major Holder Disclosure | 5 |
+| Other | 70 |
+| Insider or Major Holder Disclosure | 8 |
 | Paid-in Capital Increase | 5 |
-| Convertible Bond | 3 |
+| Major Shareholder Change | 4 |
+| Convertible Bond | 4 |
 | Supply Contract | 3 |
-| Major Shareholder Change | 3 |
-| Lawsuit | 1 |
-| Merger | 1 |
+| Lawsuit | 2 |
+| Merger | 2 |
+| Spin-off | 1 |
 | Investment Decision | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
+| DB손해보험 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260624 |
+| 나노씨엠에스 | 소송등의제기ㆍ신청(경영권분쟁소송)              (직무대행자선임가처분) | Lawsuit | 20260624 |
+| 나노씨엠에스 | 전환사채(해외전환사채포함)발행후만기전사채취득               | Convertible Bond | 20260624 |
+| 알에프텍 | [첨부정정]증권신고서(합병) | Merger | 20260624 |
+| SK스퀘어 | 주요사항보고서(유상증자결정)(자회사의 주요경영사항)               | Paid-in Capital Increase | 20260624 |
+| 토비스 | 주권매매거래정지              (주식의 병합, 분할 등 전자등록 변경, 말소) | Spin-off | 20260624 |
 | 알파AI | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260624 |
 | 알파AI | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260624 |
 | SK하이닉스 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260624 |
@@ -38,15 +45,14 @@ This report summarizes DART disclosures collected after market close and classif
 | 에이루트 | 주요사항보고서(전환사채매수선택권행사자지정) | Convertible Bond | 20260624 |
 | 삼호개발 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260624 |
 | 현대백화점 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260624 |
-| 노바셀테크놀로지 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260624 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 22
+- Classified non-other events: 30
 - Supply contract disclosures: 3
-- Financing-related disclosures: 8
-- Insider or major holder disclosures: 5
+- Financing-related disclosures: 9
+- Insider or major holder disclosures: 8
 
 ## Model Notes
 
