@@ -8,20 +8,26 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 79 |
-| Insider or Major Holder Disclosure | 8 |
-| Paid-in Capital Increase | 4 |
-| Supply Contract | 2 |
-| Major Shareholder Change | 2 |
-| Disclosure Violation | 2 |
+| Other | 78 |
+| Insider or Major Holder Disclosure | 5 |
+| Paid-in Capital Increase | 5 |
+| Convertible Bond | 3 |
+| Supply Contract | 3 |
+| Major Shareholder Change | 3 |
+| Lawsuit | 1 |
 | Merger | 1 |
 | Investment Decision | 1 |
-| Convertible Bond | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
+| 알파AI | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260624 |
+| 알파AI | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260624 |
+| SK하이닉스 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260624 |
+| 원티드랩 | 유동성공급계약의체결               | Supply Contract | 20260624 |
+| 키이스트 | 소송등의판결ㆍ결정(일정금액이상의청구)               | Lawsuit | 20260624 |
+| 갤럭시아에셋매니지먼트 | 최대주주등의주식보유변동 | Major Shareholder Change | 20260624 |
 | 갤럭시아에셋매니지먼트 | 특수관계인의유상증자참여 | Paid-in Capital Increase | 20260624 |
 | HEM파마 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260624 |
 | 핸즈코퍼레이션 | 유상증자또는주식관련사채등의발행결과(자율공시)               | Paid-in Capital Increase | 20260624 |
@@ -33,16 +39,14 @@ This report summarizes DART disclosures collected after market close and classif
 | 삼호개발 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260624 |
 | 현대백화점 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260624 |
 | 노바셀테크놀로지 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260624 |
-| POSCO홀딩스 | 불성실공시법인미지정              (지정유예) | Disclosure Violation | 20260624 |
-| 삼영전자공업 | 불성실공시법인지정               | Disclosure Violation | 20260624 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 21
-- Supply contract disclosures: 2
-- Financing-related disclosures: 5
-- Insider or major holder disclosures: 8
+- Classified non-other events: 22
+- Supply contract disclosures: 3
+- Financing-related disclosures: 8
+- Insider or major holder disclosures: 5
 
 ## Model Notes
 
