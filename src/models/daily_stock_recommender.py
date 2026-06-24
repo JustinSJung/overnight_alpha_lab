@@ -2,7 +2,8 @@
 Daily stock recommender.
 
 This script generates a daily stock candidate report from the latest ML dataset.
-It also applies historical confidence adjustments from advanced error notes.
+It applies historical confidence adjustments from advanced error notes and
+event-type performance adjustments from historical success rates and returns.
 
 Output:
 reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
@@ -156,9 +157,6 @@ def format_percent(value) -> str:
 def build_error_note_adjustment_table(error_notes_df: pd.DataFrame) -> pd.DataFrame:
     """
     Build event-type level confidence adjustment table from error notes.
-
-    The table summarizes whether each event type has historically received
-    increase/decrease confidence signals.
     """
 
     if error_notes_df.empty:
@@ -219,6 +217,122 @@ def build_error_note_adjustment_table(error_notes_df: pd.DataFrame) -> pd.DataFr
                 "historical_slightly_decrease_count": slightly_decrease_count,
                 "historical_hold_count": hold_count,
                 "error_note_adjustment_score": round(adjustment_score, 2),
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
+def build_event_type_performance_adjustment_table(
+    error_notes_df: pd.DataFrame,
+) -> pd.DataFrame:
+    """
+    Build event-type success-rate and return adjustment table.
+
+    This table uses evaluated historical rows only.
+    Pending rows are counted but not used for success-rate calculation.
+    """
+
+    if error_notes_df.empty:
+        return pd.DataFrame()
+
+    required_columns = [
+        "event_type",
+        "prediction_result",
+        "next_close_return",
+    ]
+
+    for col in required_columns:
+        if col not in error_notes_df.columns:
+            return pd.DataFrame()
+
+    df = error_notes_df.copy()
+
+    df["event_type"] = df["event_type"].astype(str)
+    df["prediction_result"] = df["prediction_result"].astype(str)
+    df["next_close_return"] = pd.to_numeric(
+        df["next_close_return"],
+        errors="coerce",
+    )
+
+    if "next_open_return" in df.columns:
+        df["next_open_return"] = pd.to_numeric(
+            df["next_open_return"],
+            errors="coerce",
+        )
+    else:
+        df["next_open_return"] = pd.NA
+
+    rows = []
+
+    for event_type, group in df.groupby("event_type"):
+        total_count = len(group)
+
+        success_count = (group["prediction_result"] == "success").sum()
+        failure_count = (group["prediction_result"] == "failure").sum()
+        pending_count = (group["prediction_result"] == "pending").sum()
+
+        evaluated_count = success_count + failure_count
+
+        if evaluated_count > 0:
+            success_rate = success_count / evaluated_count
+        else:
+            success_rate = None
+
+        avg_next_open_return = group["next_open_return"].mean()
+        avg_next_close_return = group["next_close_return"].mean()
+
+        success_rate_adjustment = 0.0
+        return_adjustment = 0.0
+
+        if success_rate is not None:
+            if evaluated_count >= 3:
+                if success_rate >= 0.65:
+                    success_rate_adjustment = 6.0
+                elif success_rate >= 0.55:
+                    success_rate_adjustment = 3.0
+                elif success_rate <= 0.35:
+                    success_rate_adjustment = -6.0
+                elif success_rate <= 0.45:
+                    success_rate_adjustment = -3.0
+            else:
+                # Small sample: adjust very lightly.
+                if success_rate >= 0.70:
+                    success_rate_adjustment = 2.0
+                elif success_rate <= 0.30:
+                    success_rate_adjustment = -2.0
+
+        if not pd.isna(avg_next_close_return):
+            if avg_next_close_return >= 0.03:
+                return_adjustment = 4.0
+            elif avg_next_close_return >= 0.01:
+                return_adjustment = 2.0
+            elif avg_next_close_return <= -0.03:
+                return_adjustment = -4.0
+            elif avg_next_close_return <= -0.01:
+                return_adjustment = -2.0
+
+        event_type_performance_adjustment_score = (
+            success_rate_adjustment + return_adjustment
+        )
+
+        rows.append(
+            {
+                "event_type": event_type,
+                "event_type_total_count": total_count,
+                "event_type_evaluated_count": evaluated_count,
+                "event_type_success_count": success_count,
+                "event_type_failure_count": failure_count,
+                "event_type_pending_count": pending_count,
+                "event_type_success_rate": success_rate,
+                "event_type_avg_next_open_return": avg_next_open_return,
+                "event_type_avg_next_close_return": avg_next_close_return,
+                "event_type_success_rate_adjustment": success_rate_adjustment,
+                "event_type_return_adjustment": return_adjustment,
+                "event_type_performance_adjustment_score": round(
+                    event_type_performance_adjustment_score,
+                    2,
+                ),
             }
         )
 
@@ -326,6 +440,9 @@ def build_recommendation_reason(row) -> str:
     error_note_adjustment_score = safe_number(
         row.get("error_note_adjustment_score", 0)
     )
+    performance_adjustment_score = safe_number(
+        row.get("event_type_performance_adjustment_score", 0)
+    )
 
     reason_parts = []
 
@@ -342,15 +459,28 @@ def build_recommendation_reason(row) -> str:
 
     if error_note_adjustment_score > 0:
         reason_parts.append(
-            f"Historical error notes added a positive confidence adjustment of {error_note_adjustment_score:.2f}."
+            f"Historical error notes added {error_note_adjustment_score:.2f} points."
         )
     elif error_note_adjustment_score < 0:
         reason_parts.append(
-            f"Historical error notes applied a conservative adjustment of {error_note_adjustment_score:.2f}."
+            f"Historical error notes subtracted {abs(error_note_adjustment_score):.2f} points."
         )
     else:
         reason_parts.append(
             "Historical error notes did not change the score."
+        )
+
+    if performance_adjustment_score > 0:
+        reason_parts.append(
+            f"Event-type performance added {performance_adjustment_score:.2f} points."
+        )
+    elif performance_adjustment_score < 0:
+        reason_parts.append(
+            f"Event-type performance subtracted {abs(performance_adjustment_score):.2f} points."
+        )
+    else:
+        reason_parts.append(
+            "Event-type performance did not change the score."
         )
 
     return " ".join(reason_parts)
@@ -371,12 +501,23 @@ def prepare_candidates(df: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:
         axis=1,
     )
 
-    if "error_note_adjustment_score" not in candidates.columns:
-        candidates["error_note_adjustment_score"] = 0.0
+    score_columns = [
+        "error_note_adjustment_score",
+        "event_type_success_rate_adjustment",
+        "event_type_return_adjustment",
+        "event_type_performance_adjustment_score",
+    ]
+
+    for col in score_columns:
+        if col not in candidates.columns:
+            candidates[col] = 0.0
+
+        candidates[col] = candidates[col].fillna(0.0)
 
     candidates["adjusted_recommendation_score"] = (
         candidates["base_recommendation_score"]
         + candidates["error_note_adjustment_score"]
+        + candidates["event_type_performance_adjustment_score"]
     )
 
     candidates["risk_level"] = candidates.apply(
@@ -412,7 +553,11 @@ def build_report() -> str:
 
     df, ml_dataset_path = load_latest_ml_dataset()
     error_notes_df = load_error_notes()
+
     adjustment_table = build_error_note_adjustment_table(error_notes_df)
+    performance_adjustment_table = build_event_type_performance_adjustment_table(
+        error_notes_df,
+    )
 
     if not df.empty and "event_type" in df.columns:
         df["event_type"] = df["event_type"].astype(str)
@@ -420,6 +565,13 @@ def build_report() -> str:
     if not adjustment_table.empty:
         df = df.merge(
             adjustment_table,
+            on="event_type",
+            how="left",
+        )
+
+    if not performance_adjustment_table.empty:
+        df = df.merge(
+            performance_adjustment_table,
             on="event_type",
             how="left",
         )
@@ -434,13 +586,45 @@ def build_report() -> str:
         "historical_slightly_decrease_count",
         "historical_hold_count",
         "error_note_adjustment_score",
+        "event_type_total_count",
+        "event_type_evaluated_count",
+        "event_type_success_count",
+        "event_type_failure_count",
+        "event_type_pending_count",
+        "event_type_success_rate",
+        "event_type_avg_next_open_return",
+        "event_type_avg_next_close_return",
+        "event_type_success_rate_adjustment",
+        "event_type_return_adjustment",
+        "event_type_performance_adjustment_score",
     ]
 
     for col in adjustment_columns:
         if col not in df.columns:
             df[col] = 0
 
-    df["error_note_adjustment_score"] = df["error_note_adjustment_score"].fillna(0)
+    fill_zero_columns = [
+        "historical_error_note_count",
+        "historical_success_count",
+        "historical_failure_count",
+        "historical_pending_count",
+        "historical_increase_count",
+        "historical_decrease_count",
+        "historical_slightly_decrease_count",
+        "historical_hold_count",
+        "error_note_adjustment_score",
+        "event_type_total_count",
+        "event_type_evaluated_count",
+        "event_type_success_count",
+        "event_type_failure_count",
+        "event_type_pending_count",
+        "event_type_success_rate_adjustment",
+        "event_type_return_adjustment",
+        "event_type_performance_adjustment_score",
+    ]
+
+    for col in fill_zero_columns:
+        df[col] = df[col].fillna(0)
 
     candidates = prepare_candidates(df, top_n=30)
 
@@ -466,17 +650,61 @@ def build_report() -> str:
     lines.append(
         "Candidates are ranked using a rule-based score that combines event score, "
         "news sentiment, news attention, prediction direction, simple risk filters, "
-        "and historical confidence adjustments from advanced error notes."
+        "historical confidence adjustments from advanced error notes, and event-type "
+        "performance adjustments based on historical success rates and returns."
     )
     lines.append("")
+
+    lines.append("## Event-Type Success Rate Adjustment")
+    lines.append("")
+    lines.append(
+        "The recommender now applies a direct event-type performance adjustment. "
+        "Event types with stronger historical success rates or positive average next-day "
+        "returns can receive a small positive adjustment. Event types with weak success "
+        "rates or negative average returns can receive a conservative penalty."
+    )
+    lines.append("")
+
+    if performance_adjustment_table.empty:
+        lines.append("No event-type performance adjustment data is available yet.")
+        lines.append("")
+    else:
+        lines.append(
+            "| Event Type | Total | Evaluated | Success Rate | Avg Next Close | Success Adj | Return Adj | Total Adj |"
+        )
+        lines.append("|---|---:|---:|---:|---:|---:|---:|---:|")
+
+        view = performance_adjustment_table.sort_values(
+            by="event_type_performance_adjustment_score",
+            ascending=False,
+        ).head(12)
+
+        for _, row in view.iterrows():
+            success_rate = row.get("event_type_success_rate", None)
+
+            if pd.isna(success_rate) or success_rate is None:
+                success_rate_text = "N/A"
+            else:
+                success_rate_text = f"{safe_number(success_rate) * 100:.2f}%"
+
+            lines.append(
+                f"| {row.get('event_type', '')} "
+                f"| {int(safe_number(row.get('event_type_total_count', 0)))} "
+                f"| {int(safe_number(row.get('event_type_evaluated_count', 0)))} "
+                f"| {success_rate_text} "
+                f"| {format_percent(row.get('event_type_avg_next_close_return', None))} "
+                f"| {safe_number(row.get('event_type_success_rate_adjustment', 0)):.2f} "
+                f"| {safe_number(row.get('event_type_return_adjustment', 0)):.2f} "
+                f"| {safe_number(row.get('event_type_performance_adjustment_score', 0)):.2f} |"
+            )
+
+        lines.append("")
 
     lines.append("## Error-Note Learning Adjustment")
     lines.append("")
     lines.append(
-        "The recommender now reads past error notes and applies event-type level "
-        "confidence adjustments. Event types that repeatedly received `increase` "
-        "signals can receive a small positive adjustment. Event types that repeatedly "
-        "received `decrease` or `slightly_decrease` signals can receive a conservative penalty."
+        "The recommender also reads past error notes and applies event-type level "
+        "confidence adjustments from `confidence_adjustment` values."
     )
     lines.append("")
 
@@ -495,10 +723,10 @@ def build_report() -> str:
         for _, row in adjustment_view.iterrows():
             lines.append(
                 f"| {row.get('event_type', '')} "
-                f"| {int(row.get('historical_error_note_count', 0))} "
-                f"| {int(row.get('historical_success_count', 0))} "
-                f"| {int(row.get('historical_failure_count', 0))} "
-                f"| {int(row.get('historical_pending_count', 0))} "
+                f"| {int(safe_number(row.get('historical_error_note_count', 0)))} "
+                f"| {int(safe_number(row.get('historical_success_count', 0)))} "
+                f"| {int(safe_number(row.get('historical_failure_count', 0)))} "
+                f"| {int(safe_number(row.get('historical_pending_count', 0)))} "
                 f"| {safe_number(row.get('error_note_adjustment_score', 0)):.2f} |"
             )
 
@@ -561,7 +789,10 @@ def build_report() -> str:
             report_nm = row.get("report_nm", "")
             prediction_direction = row.get("prediction_direction", "unknown")
             base_score = safe_number(row.get("base_recommendation_score", 0))
-            adjustment_score = safe_number(row.get("error_note_adjustment_score", 0))
+            error_note_score = safe_number(row.get("error_note_adjustment_score", 0))
+            performance_score = safe_number(
+                row.get("event_type_performance_adjustment_score", 0)
+            )
             adjusted_score = safe_number(row.get("adjusted_recommendation_score", 0))
             risk_level = row.get("risk_level", "UNKNOWN")
             candidate_type = row.get("candidate_type", "WATCHLIST")
@@ -571,22 +802,33 @@ def build_report() -> str:
             next_open_return = row.get("next_open_return", None)
             next_close_return = row.get("next_close_return", None)
 
-            historical_count = safe_number(row.get("historical_error_note_count", 0))
-            historical_success = safe_number(row.get("historical_success_count", 0))
-            historical_failure = safe_number(row.get("historical_failure_count", 0))
+            event_type_evaluated_count = safe_number(
+                row.get("event_type_evaluated_count", 0)
+            )
+            event_type_success_rate = row.get("event_type_success_rate", None)
+            event_type_avg_close = row.get("event_type_avg_next_close_return", None)
+
+            if pd.isna(event_type_success_rate):
+                event_type_success_rate_text = "N/A"
+            else:
+                event_type_success_rate_text = (
+                    f"{safe_number(event_type_success_rate) * 100:.2f}%"
+                )
 
             lines.append(f"### {rank}. {corp_name} ({stock_code})")
             lines.append("")
             lines.append(f"- Candidate type: **{candidate_type}**")
             lines.append(f"- Expected direction: **{prediction_direction}**")
             lines.append(f"- Base recommendation score: **{base_score:.2f}**")
-            lines.append(f"- Error-note adjustment score: **{adjustment_score:.2f}**")
+            lines.append(f"- Error-note adjustment score: **{error_note_score:.2f}**")
+            lines.append(f"- Event-type performance adjustment score: **{performance_score:.2f}**")
             lines.append(f"- Adjusted recommendation score: **{adjusted_score:.2f}**")
             lines.append(f"- Risk level: **{risk_level}**")
             lines.append(f"- Event type: `{event_type}`")
             lines.append(
-                f"- Historical error-note cases: {historical_count:.0f} "
-                f"(success {historical_success:.0f}, failure {historical_failure:.0f})"
+                f"- Event-type evaluated cases: {event_type_evaluated_count:.0f}, "
+                f"success rate: {event_type_success_rate_text}, "
+                f"avg next close: {format_percent(event_type_avg_close)}"
             )
 
             if report_nm:
@@ -629,9 +871,10 @@ def build_report() -> str:
     lines.append("")
     lines.append(
         "At this stage, candidates are still generated using rule-based scoring. "
-        "The system now also uses historical error-note patterns as a conservative "
-        "confidence adjustment layer. Expected return values will become more meaningful "
-        "after enough evaluated event-reaction samples are accumulated."
+        "The system now also uses historical error-note patterns and event-type "
+        "performance statistics as conservative confidence adjustment layers. "
+        "These adjustments will become more meaningful after enough evaluated "
+        "event-reaction samples are accumulated."
     )
     lines.append("")
 
@@ -641,14 +884,14 @@ def build_report() -> str:
     lines.append("- Volatile Watchlist: potentially important events with uncertain direction.")
     lines.append("- General Watchlist: events worth monitoring but not strong enough for positive classification.")
     lines.append("- Risk / Avoid Review List: negative or high-risk events such as capital increases, CB/BW, lawsuits, or disclosure violations.")
-    lines.append("- Error-note adjustment score: historical learning signal from previous success/failure notes.")
+    lines.append("- Error-note adjustment score: learning signal from previous advanced error notes.")
+    lines.append("- Event-type performance adjustment score: success-rate and average-return based adjustment.")
     lines.append("")
 
     lines.append("## Next Step")
     lines.append("")
     lines.append(
-        "The next step is to improve the adjustment logic using event-type success rates, "
-        "stock-specific historical reactions, market index movement, and trading volume."
+        "The next step is to add stock-specific historical reaction patterns, so the system can distinguish between event-type level behavior and stock-level behavior."
     )
     lines.append("")
 

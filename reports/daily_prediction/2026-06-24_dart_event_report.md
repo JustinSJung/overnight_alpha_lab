@@ -9,10 +9,10 @@ This report summarizes DART disclosures collected after market close and classif
 | Event Type | Count |
 |---|---:|
 | Other | 54 |
-| Insider or Major Holder Disclosure | 15 |
+| Insider or Major Holder Disclosure | 13 |
 | Paid-in Capital Increase | 8 |
+| Major Shareholder Change | 6 |
 | Supply Contract | 5 |
-| Major Shareholder Change | 4 |
 | Merger | 4 |
 | Lawsuit | 4 |
 | Convertible Bond | 4 |
@@ -23,6 +23,10 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
+| 에코볼트 | [기재정정]주요사항보고서(회사합병결정) | Merger | 20260624 |
+| 아모텍 | 권리락              (유상증자) | Paid-in Capital Increase | 20260624 |
+| 한국화장품 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260624 |
+| 한국화장품제조 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260624 |
 | 인베니아 | 최대주주변경을수반하는주식담보제공계약해제ㆍ취소등               | Major Shareholder Change | 20260624 |
 | 알에프텍 | [첨부정정]증권신고서(합병) | Merger | 20260624 |
 | 대아티아이 | 합병등종료보고서(자산양수도) | Merger | 20260624 |
@@ -49,10 +53,6 @@ This report summarizes DART disclosures collected after market close and classif
 | SK하이닉스 | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260624 |
 | 원티드랩 | 유동성공급계약의체결               | Supply Contract | 20260624 |
 | 키이스트 | 소송등의판결ㆍ결정(일정금액이상의청구)               | Lawsuit | 20260624 |
-| 갤럭시아에셋매니지먼트 | 최대주주등의주식보유변동 | Major Shareholder Change | 20260624 |
-| 갤럭시아에셋매니지먼트 | 특수관계인의유상증자참여 | Paid-in Capital Increase | 20260624 |
-| HEM파마 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260624 |
-| 핸즈코퍼레이션 | 유상증자또는주식관련사채등의발행결과(자율공시)               | Paid-in Capital Increase | 20260624 |
 
 ## Daily Insight Notes
 
@@ -60,7 +60,7 @@ This report summarizes DART disclosures collected after market close and classif
 - Classified non-other events: 46
 - Supply contract disclosures: 5
 - Financing-related disclosures: 12
-- Insider or major holder disclosures: 15
+- Insider or major holder disclosures: 13
 
 ## Model Notes
 
