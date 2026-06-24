@@ -69,6 +69,7 @@ The project currently includes:
 * Baseline machine learning model
 * Return prediction model
 * Daily stock recommender
+* Single stock predictor
 * Daily model report generation
 * Pending event re-evaluation system
 * Local daily automation scripts
@@ -82,7 +83,7 @@ The project currently includes:
 
 ## Prediction Layer
 
-The project now includes three early prediction layers.
+The project now includes four early prediction layers.
 
 ### Baseline Classification Model
 
@@ -124,10 +125,24 @@ General Watchlist
 Risk / Avoid Review List
 ```
 
+### Single Stock Predictor
+
+```text
+src/models/single_stock_predictor.py
+```
+
+This module generates a focused report for a user-provided stock code.
+
+Example:
+
+```text
+python src/models/single_stock_predictor.py 005930
+```
+
 The report is generated at:
 
 ```text
-reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
+reports/single_stock/YYYY-MM-DD_STOCKCODE_single_stock_report.md
 ```
 
 ## Monitoring Layer
@@ -209,14 +224,15 @@ Log Generation
 * Day 12: Confidence Tracker
 * Day 13: Return Prediction Model
 * Day 14: Daily Stock Recommender
+* Day 15: Single Stock Predictor
 
 ## Next Steps
 
-* Build single stock predictor
-* Generate stock-specific prediction reports
-* Add expected direction and confidence level per stock
-* Add expected return once enough return samples exist
 * Improve advanced error-note reasoning
+* Explain why predictions failed
+* Add event-type based error patterns
+* Add news sentiment based error patterns
+* Add risk-event error categories
 * Track confidence improvement over time
 * Add model performance history
 * Add automatic Git commit and push

@@ -37,6 +37,7 @@ The project currently includes:
 - [Day 12: Confidence Tracker](posts/2026-06-19-day-12-confidence-tracker.md)
 - [Day 13: Return Prediction Model](posts/2026-06-24-day-13-return-prediction-model.md)
 - [Day 14: Daily Stock Recommender](posts/2026-06-24-day-14-daily-stock-recommender.md)
+- [Day 15: Single Stock Predictor](posts/2026-06-24-day-15-single-stock-predictor.md)
 
 ## Repository
 
