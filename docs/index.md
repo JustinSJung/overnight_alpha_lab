@@ -42,6 +42,7 @@ The project currently includes:
 - [Day 17: Error-Note-Aware Recommender](posts/2026-06-24-day-17-error-note-aware-recommender.md)
 - [Day 18: Event-Type Performance Report](posts/2026-06-24-day-18-event-type-performance-report.md)
 - [Day 19: Event-Type Success Rate Adjustment](posts/2026-06-24-day-19-event-type-success-rate-adjustment.md)
+- [Day 20: Stock-Specific Historical Pattern Report](posts/2026-06-24-day-20-stock-specific-historical-pattern-report.md)
 
 ## Repository
 
