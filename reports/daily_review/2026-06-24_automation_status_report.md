@@ -1,6 +1,6 @@
 # Automation Status Report - 2026-06-24
 
-Generated at: 2026-06-24 22:23:50
+Generated at: 2026-06-24 22:33:48
 
 ## Execution Summary
 
@@ -45,7 +45,7 @@ Generated at: 2026-06-24 22:23:50
 - news_features: `data/processed/event_news_features_20260624.csv`
 - ml_dataset: `data/processed/ml_dataset_20260624.csv`
 - error_notes: `data/predictions/error_notes_20260624.csv`
-- daily_prediction_report: `reports/daily_prediction/2026-06-24_dart_event_report.md`
+- daily_prediction_report: `reports/daily_prediction/2026-06-24_market_adjusted_daily_candidates.md`
 - baseline_model_report: `reports/daily_review/2026-06-24_baseline_model_report.md`
 
 ## Interpretation
