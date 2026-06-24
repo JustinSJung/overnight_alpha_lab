@@ -71,6 +71,7 @@ The project currently includes:
 * Daily stock recommender
 * Error-note-aware recommendation adjustment
 * Event-type success rate adjustment
+* Stock-specific pattern adjustment
 * Single stock predictor
 * Event-type performance report
 * Stock-specific historical pattern report
@@ -85,17 +86,73 @@ The project currently includes:
 * Confidence tracker
 * GitHub Pages portfolio blog
 
+## Recommendation Layer
+
+The project now includes a multi-layer recommendation score.
+
+### Daily Stock Recommender
+
+```text
+src/models/daily_stock_recommender.py
+```
+
+The recommender generates a daily stock candidate report at:
+
+```text
+reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
+```
+
+The current adjusted recommendation score is calculated as:
+
+```text
+base_recommendation_score
++ error_note_adjustment_score
++ event_type_performance_adjustment_score
++ stock_specific_pattern_adjustment_score
+= adjusted_recommendation_score
+```
+
+The recommender now considers:
+
+```text
+event score
+news sentiment
+news attention
+negative keyword count
+prediction direction
+advanced error-note learning
+event-type historical success rate
+event-type average next-day return
+stock-specific historical success rate
+stock-specific average next-day return
+stock-specific confidence bias
+risk filters
+```
+
+### Stock-Specific Pattern Adjustment
+
+The recommender now calculates stock-specific adjustment using:
+
+```text
+stock_pattern_success_rate
+stock_pattern_avg_next_open_return
+stock_pattern_avg_next_close_return
+stock_pattern_success_rate_adjustment
+stock_pattern_return_adjustment
+stock_pattern_confidence_bias_adjustment
+stock_specific_pattern_adjustment_score
+stock_pattern_label
+```
+
+This allows stocks with stronger historical reaction patterns to receive slightly higher confidence, while stocks with weak historical reactions can receive a conservative penalty.
+
 ## Stock-Level Learning Layer
 
-The project now includes a stock-specific historical pattern report.
-
-### Stock-Specific Historical Pattern Report
+The project includes a stock-specific historical pattern report.
 
 ```text
 src/report_generator/stock_pattern_report.py
 ```
-
-This report summarizes historical prediction and event-reaction patterns by stock code.
 
 The report is generated at:
 
@@ -103,28 +160,11 @@ The report is generated at:
 reports/daily_review/YYYY-MM-DD_stock_pattern_report.md
 ```
 
-The report tracks:
-
-```text
-stock_code
-corp_name
-total_count
-evaluated_count
-success_count
-failure_count
-pending_count
-success_rate
-average next open return
-average next close return
-most common event type
-risk_note
-```
-
-This helps identify whether specific stocks have historically shown stronger, weaker, or mostly pending reactions to disclosure events.
+The report tracks stock-level history, including success rate, average next-day return, common event type, and risk note.
 
 ## Event-Type Learning Layer
 
-The project also includes an event-type performance report.
+The project includes an event-type performance report.
 
 ```text
 src/report_generator/event_type_performance_report.py
@@ -136,24 +176,11 @@ The report is generated at:
 reports/daily_review/YYYY-MM-DD_event_type_performance_report.md
 ```
 
-It tracks event-type level performance such as success rate and average next-day return.
-
-## Recommendation Layer
-
-The current recommendation score is calculated as:
-
-```text
-base_recommendation_score
-+ error_note_adjustment_score
-+ event_type_performance_adjustment_score
-= adjusted_recommendation_score
-```
-
-The next step is to add stock-specific historical adjustment to this score.
+It tracks event-type level success rate and average next-day return.
 
 ## Operating Modes
 
-The catch-up script now runs:
+The catch-up script currently runs:
 
 ```text
 [1/10] Daily Pipeline
@@ -190,14 +217,14 @@ The catch-up script now runs:
 * Day 18: Event-Type Performance Report
 * Day 19: Event-Type Success Rate Adjustment
 * Day 20: Stock-Specific Historical Pattern Report
+* Day 21: Stock-Specific Pattern Adjustment
 
 ## Next Steps
 
-* Apply stock-specific historical pattern adjustment to recommendation scoring
-* Add stock-level success rate adjustment
-* Add stock-level average return adjustment
-* Add stock-specific risk notes to daily candidate reports
 * Add market index and sector movement features
+* Separate stock-specific reaction from market-wide movement
+* Add sector-level return comparison
+* Add market-adjusted return calculation
 * Add trading volume features
 * Add model performance history
 * Add automatic Git commit and push
