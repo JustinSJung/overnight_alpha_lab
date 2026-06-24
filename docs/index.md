@@ -40,6 +40,7 @@ The project currently includes:
 - [Day 15: Single Stock Predictor](posts/2026-06-24-day-15-single-stock-predictor.md)
 - [Day 16: Advanced Error Note Generator](posts/2026-06-24-day-16-advanced-error-note-generator.md)
 - [Day 17: Error-Note-Aware Recommender](posts/2026-06-24-day-17-error-note-aware-recommender.md)
+- [Day 18: Event-Type Performance Report](posts/2026-06-24-day-18-event-type-performance-report.md)
 
 ## Repository
 

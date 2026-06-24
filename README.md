@@ -71,6 +71,7 @@ The project currently includes:
 * Daily stock recommender
 * Error-note-aware recommendation adjustment
 * Single stock predictor
+* Event-type performance report
 * Daily model report generation
 * Pending event re-evaluation system
 * Local daily automation scripts
@@ -82,9 +83,43 @@ The project currently includes:
 * Confidence tracker
 * GitHub Pages portfolio blog
 
+## Performance Monitoring Layer
+
+The project now includes an event-type performance report.
+
+### Event-Type Performance Report
+
+```text
+src/report_generator/event_type_performance_report.py
+```
+
+This report summarizes prediction performance by disclosure event type.
+
+The output is generated at:
+
+```text
+reports/daily_review/YYYY-MM-DD_event_type_performance_report.md
+```
+
+The report tracks:
+
+```text
+total_count
+evaluated_count
+success_count
+failure_count
+pending_count
+success_rate
+average next open return
+average next close return
+confidence adjustment bias
+```
+
+This helps identify which disclosure event types have historically shown stronger or weaker prediction behavior.
+
 ## Learning Layer
 
-The project now includes an advanced learning-note layer.
+The project includes an advanced learning-note layer.
 
 ### Advanced Error Note Generator
 
@@ -113,7 +148,7 @@ confidence_adjustment
 
 ## Recommendation Layer
 
-The project now includes an error-note-aware recommendation layer.
+The project includes an error-note-aware recommendation layer.
 
 ### Daily Stock Recommender
 
@@ -132,7 +167,7 @@ General Watchlist
 Risk / Avoid Review List
 ```
 
-The recommender now calculates:
+The recommender calculates:
 
 ```text
 base_recommendation_score
@@ -140,50 +175,36 @@ error_note_adjustment_score
 adjusted_recommendation_score
 ```
 
-The error-note adjustment score is calculated from historical advanced error notes.
-
-This allows the recommender to become more conservative for event types that have repeatedly produced weak or failed prediction patterns, and more confident for event types that have repeatedly produced successful patterns.
-
-The report is generated at:
-
-```text
-reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
-```
-
 ## Prediction Layer
 
 The project currently includes:
 
-### Baseline Classification Model
-
 ```text
 src/models/baseline_model.py
-```
-
-### Return Prediction Model
-
-```text
 src/models/return_prediction_model.py
-```
-
-### Single Stock Predictor
-
-```text
 src/models/single_stock_predictor.py
 ```
 
-The single stock predictor generates a focused report for a user-provided stock code.
-
-Example:
+The single stock predictor can be executed like this:
 
 ```text
 python src/models/single_stock_predictor.py 005930
 ```
 
-The report is generated at:
+## Operating Modes
+
+The catch-up script now runs:
 
 ```text
-reports/single_stock/YYYY-MM-DD_STOCKCODE_single_stock_report.md
+[1/9] Daily Pipeline
+[2/9] Pending Re-Evaluator
+[3/9] Automation Status Report
+[4/9] Automation History
+[5/9] Confidence Report
+[6/9] Return Prediction Report
+[7/9] Daily Stock Candidate Report
+[8/9] Event-Type Performance Report
+[9/9] Catch-up Completed
 ```
 
 ## Latest Blog Posts
@@ -205,13 +226,13 @@ reports/single_stock/YYYY-MM-DD_STOCKCODE_single_stock_report.md
 * Day 15: Single Stock Predictor
 * Day 16: Advanced Error Note Generator
 * Day 17: Error-Note-Aware Recommender
+* Day 18: Event-Type Performance Report
 
 ## Next Steps
 
-* Build event-type performance report
-* Track event-type success rates
-* Track average next-day returns by event type
-* Add confidence-adjusted recommendation score history
+* Apply event-type performance results to recommendation scoring
+* Add event-type success-rate adjustment
+* Add average return based event-type weight
 * Add stock-specific historical reaction patterns
 * Add market index and sector movement features
 * Add trading volume features
