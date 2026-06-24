@@ -19,7 +19,7 @@ echo "Catch-up execution started at $NOW" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 
 echo "" >> "$LOG_FILE"
-echo "[1/3] Running daily pipeline..." >> "$LOG_FILE"
+echo "[1/8] Running daily pipeline..." >> "$LOG_FILE"
 python src/pipeline/daily_pipeline.py >> "$LOG_FILE" 2>&1
 
 DAILY_STATUS=$?
@@ -33,7 +33,7 @@ if [ $DAILY_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[2/3] Running pending re-evaluator..." >> "$LOG_FILE"
+echo "[2/8] Running pending re-evaluator..." >> "$LOG_FILE"
 python src/evaluator/pending_re_evaluator.py >> "$LOG_FILE" 2>&1
 
 PENDING_STATUS=$?
@@ -47,7 +47,7 @@ if [ $PENDING_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[3/5] Generating automation status report..." >> "$LOG_FILE"
+echo "[3/8] Generating automation status report..." >> "$LOG_FILE"
 python src/report_generator/automation_status_report.py >> "$LOG_FILE" 2>&1
 
 STATUS_REPORT_STATUS=$?
@@ -61,7 +61,7 @@ if [ $STATUS_REPORT_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[4/6] Updating automation history..." >> "$LOG_FILE"
+echo "[4/8] Updating automation history..." >> "$LOG_FILE"
 python src/report_generator/automation_history_tracker.py >> "$LOG_FILE" 2>&1
 
 HISTORY_STATUS=$?
@@ -75,7 +75,7 @@ if [ $HISTORY_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[5/7] Generating confidence report..." >> "$LOG_FILE"
+echo "[5/8] Generating confidence report..." >> "$LOG_FILE"
 python src/report_generator/confidence_tracker.py >> "$LOG_FILE" 2>&1
 
 CONFIDENCE_STATUS=$?
@@ -89,7 +89,7 @@ if [ $CONFIDENCE_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[6/7] Generating return prediction report..." >> "$LOG_FILE"
+echo "[6/8] Generating return prediction report..." >> "$LOG_FILE"
 python src/models/return_prediction_model.py >> "$LOG_FILE" 2>&1
 
 RETURN_STATUS=$?
@@ -103,10 +103,23 @@ if [ $RETURN_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[7/7] Catch-up execution completed." >> "$LOG_FILE"
+echo "[7/8] Generating daily stock candidate report..." >> "$LOG_FILE"
+python src/models/daily_stock_recommender.py >> "$LOG_FILE" 2>&1
+
+RECOMMENDER_STATUS=$?
+
+if [ $RECOMMENDER_STATUS -ne 0 ]; then
+    echo "" >> "$LOG_FILE"
+    echo "Daily stock candidate report generation failed." >> "$LOG_FILE"
+    echo "Catch-up stopped at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
+    echo "======================================" >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "" >> "$LOG_FILE"
+echo "[8/8] Catch-up execution completed." >> "$LOG_FILE"
 echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 
 echo "Catch-up completed successfully."
 echo "Log file: $LOG_FILE"
-
