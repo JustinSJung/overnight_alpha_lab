@@ -335,3 +335,81 @@ These fields help explain whether a prediction was truly event-driven or mostly 
 
 The next step is to use market-adjusted evaluation results in confidence tracking and daily recommendation scoring.
 
+## Day 24 Update: Market-Adjusted Score Integration
+
+The project now includes a market-adjusted score integration layer.
+
+```text
+src/models/market_adjusted_score_integrator.py
+```
+
+This module converts market-adjusted evaluation results into recommendation score adjustment signals.
+
+### Input
+
+```text
+data/predictions/market_adjusted_evaluation_YYYYMMDD.csv
+```
+
+### Outputs
+
+```text
+data/processed/market_adjusted_score_adjustments_YYYYMMDD.csv
+reports/daily_review/YYYY-MM-DD_market_adjusted_score_report.md
+```
+
+### Score Rules
+
+```text
+market_adjusted_success: +15
+market_driven_weak_success: -5
+relative_success_but_absolute_loss: +5
+market_adjusted_failure: -15
+relative_failure_despite_absolute_gain: -10
+market_adjusted_volatility_success: +10
+market_driven_volatility: -5
+volatility_overestimated: -10
+market_data_missing: 0
+pending: 0
+unknown: 0
+```
+
+### New Fields
+
+```text
+market_adjusted_score_adjustment
+market_adjusted_adjustment_label
+market_adjusted_adjustment_reason
+```
+
+These fields allow the system to reward predictions that outperform the market and reduce confidence when a stock only moved because the broader market moved.
+
+### Updated Catch-Up Flow
+
+```text
+[1/14] Daily Pipeline
+[2/14] Pending Re-Evaluator
+[3/14] Market Index Collection
+[4/14] Market-Adjusted Features
+[5/14] Market-Adjusted Evaluation
+[6/14] Market-Adjusted Score Integration
+[7/14] Automation Status Report
+[8/14] Automation History
+[9/14] Confidence Report
+[10/14] Return Prediction Report
+[11/14] Daily Stock Candidate Report
+[12/14] Event-Type Performance Report
+[13/14] Stock-Specific Pattern Report
+[14/14] Completed
+```
+
+### Latest Progress
+
+* Day 22: Market Index and Market-Adjusted Return Features
+* Day 23: Market-Adjusted Evaluation Logic
+* Day 24: Market-Adjusted Score Integration
+
+### Next Step
+
+The next step is to connect the market-adjusted score adjustment directly into the daily stock recommender's final adjusted score.
+
