@@ -64,7 +64,7 @@ The project currently includes:
 * Rule-based event scoring model
 * Naver news metadata collection
 * News feature generation
-* Prediction review and error-note generation
+* Advanced prediction review and error-note generation
 * Machine learning dataset builder
 * Baseline machine learning model
 * Return prediction model
@@ -80,6 +80,37 @@ The project currently includes:
 * Automation history tracker
 * Confidence tracker
 * GitHub Pages portfolio blog
+
+## Learning Layer
+
+The project now includes an advanced learning-note layer.
+
+### Advanced Error Note Generator
+
+```text
+src/evaluator/error_note_generator.py
+```
+
+The error-note generator compares predicted direction with actual next-day price reaction and creates structured learning notes.
+
+The output is saved at:
+
+```text
+data/predictions/error_notes_YYYYMMDD.csv
+```
+
+The advanced error notes include:
+
+```text
+prediction_result
+error_category
+detailed_error_reason
+learning_point
+next_rule_adjustment
+confidence_adjustment
+```
+
+This allows the system to record not only whether a prediction was right or wrong, but also why the result may have happened and how future rules should be adjusted.
 
 ## Prediction Layer
 
@@ -145,69 +176,6 @@ The report is generated at:
 reports/single_stock/YYYY-MM-DD_STOCKCODE_single_stock_report.md
 ```
 
-## Monitoring Layer
-
-The project includes three monitoring outputs.
-
-### Daily Status Report
-
-```text
-reports/daily_review/YYYY-MM-DD_automation_status_report.md
-```
-
-### Automation History
-
-```text
-data/processed/automation_history.csv
-```
-
-### Confidence Report
-
-```text
-reports/daily_review/YYYY-MM-DD_confidence_report.md
-```
-
-## Operating Modes
-
-The project currently supports two local operating modes.
-
-### Scheduled Mode
-
-Scheduled mode uses cron.
-
-```text
-16:10 every day - run_daily_pipeline.sh
-16:40 every day - run_pending_re_evaluator.sh
-```
-
-### Catch-Up Mode
-
-Catch-up mode is used when the scheduled job was missed.
-
-```text
-./scripts/run_catchup.sh
-```
-
-The catch-up script runs:
-
-```text
-Daily Pipeline
-↓
-Pending Re-Evaluation
-↓
-Automation Status Report
-↓
-Automation History Update
-↓
-Confidence Report
-↓
-Return Prediction Report
-↓
-Daily Stock Candidate Report
-↓
-Log Generation
-```
-
 ## Latest Blog Posts
 
 * Day 1: DART API Collector and Event Report
@@ -225,15 +193,15 @@ Log Generation
 * Day 13: Return Prediction Model
 * Day 14: Daily Stock Recommender
 * Day 15: Single Stock Predictor
+* Day 16: Advanced Error Note Generator
 
 ## Next Steps
 
-* Improve advanced error-note reasoning
-* Explain why predictions failed
-* Add event-type based error patterns
-* Add news sentiment based error patterns
-* Add risk-event error categories
-* Track confidence improvement over time
+* Apply error-note learning results to recommendation scoring
+* Reduce confidence for repeatedly failed event patterns
+* Increase confidence for repeatedly successful event patterns
+* Add event-type based success rates
+* Add confidence-adjusted recommendation scores
 * Add model performance history
 * Add automatic Git commit and push
 * Add automatic daily blog generation
@@ -241,3 +209,4 @@ Log Generation
 * Add feature importance analysis
 * Expand news sources and sentiment analysis
 * Add SNS and investor attention indicators
+
