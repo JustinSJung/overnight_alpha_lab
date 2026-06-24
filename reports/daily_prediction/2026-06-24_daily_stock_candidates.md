@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-06-24
 
-Generated at: 2026-06-24 17:07:41
+Generated at: 2026-06-24 17:30:32
 
 ML dataset: `data/processed/ml_dataset_20260624.csv`
 
@@ -18,35 +18,20 @@ The recommender now reads past error notes and applies event-type level confiden
 
 | Event Type | Notes | Success | Failure | Pending | Adjustment |
 |---|---:|---:|---:|---:|---:|
+| bonus_issue | 6 | 0 | 0 | 6 | 0.00 |
 | convertible_bond | 18 | 0 | 0 | 18 | 0.00 |
 | disclosure_violation | 5 | 0 | 0 | 5 | 0.00 |
-| investment_decision | 5 | 0 | 0 | 5 | 0.00 |
-| lawsuit | 8 | 0 | 0 | 8 | 0.00 |
-| major_shareholder_change | 10 | 0 | 0 | 10 | 0.00 |
-| merger | 8 | 0 | 0 | 8 | 0.00 |
-| paid_in_capital_increase | 17 | 0 | 0 | 17 | 0.00 |
+| investment_decision | 4 | 0 | 0 | 4 | 0.00 |
+| lawsuit | 16 | 0 | 0 | 16 | 0.00 |
+| major_shareholder_change | 9 | 0 | 0 | 9 | 0.00 |
+| merger | 14 | 0 | 0 | 14 | 0.00 |
+| paid_in_capital_increase | 24 | 0 | 0 | 24 | 0.00 |
 | spin_off | 1 | 0 | 0 | 1 | 0.00 |
-| supply_contract | 12 | 0 | 0 | 12 | 0.00 |
+| supply_contract | 14 | 0 | 0 | 14 | 0.00 |
 
 ## Positive Candidates
 
-### 1. 삼호개발 (010960)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **142.00**
-- Error-note adjustment score: **0.00**
-- Adjusted recommendation score: **142.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Historical error-note cases: 12 (success 0, failure 0)
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Negative keyword count is 1. Historical error notes did not change the score.
-- Related news examples: [단독] 서울시 건설공사 부실벌점, 상반기에만 17건 | 삼호개발, GTX-B노선 제4공구 공사비 소폭 증액…계약 규모 978억원 유지 | 일성건설 주가 파죽지세… 건설주 혼조세 속 투자 기회는 어디?
-
-### 2. HEM파마 (376270)
+### 1. HEM파마 (376270)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -55,14 +40,46 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **127.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
-- Historical error-note cases: 12 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Negative keyword count is 1. Historical error notes did not change the score.
 - Related news examples: HEM파마, 46억 3천만 원대 공급계약→매출 기반 확대 기대 | [속보] HEM파마, 46.3억원 규모 프로바이오틱스 공급계약 체결…전년 연... | [주가] 6월 24일 주요 제약·바이오·기기 5% 변동 현황 - 38개사 증가
 
-### 3. 원티드랩 (376980)
+### 2. 서호전기 (065710)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **125.00**
+- Error-note adjustment score: **0.00**
+- Adjusted recommendation score: **125.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Historical error-note cases: 14 (success 0, failure 0)
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score.
+- Related news examples: [속보] 서호전기, 1079억원 규모 크레인 제어시스템 공급계약 체결 | 서호전기, 1,078억 7천만 원 크레인 시스템 공급계약→중공업 수주 확대... | 김병훈-최진민-김창수-이성엽은 재벌총수 못잖게 배당-연봉 챙겨
+
+### 3. 솔디펜스 (215090)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **125.00**
+- Error-note adjustment score: **0.00**
+- Adjusted recommendation score: **125.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Historical error-note cases: 14 (success 0, failure 0)
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score.
+- Related news examples: [52주] 최고가 3개, 최저가 693개 ... 지수는 반등 | [52주] 신고가 9개, 신저가 451개... 지수 낙폭 키워 | [52주] 최고가 7개, 최저가 124개... 지수 상승
+
+### 4. 원티드랩 (376980)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -71,12 +88,28 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **110.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
-- Historical error-note cases: 12 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: 유동성공급계약의체결              
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score.
 - Related news examples: [52주] 최고가 3개, 최저가 693개 ... 지수는 반등 | ‘삼전·하이닉스 직행’ 반도체 계약학과, 서울대 자연계 넘었다 | AI 다음은 양자컴퓨터…빅테크 승부 시작
+
+### 5. DL이앤씨 (375500)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **110.00**
+- Error-note adjustment score: **0.00**
+- Adjusted recommendation score: **110.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Historical error-note cases: 14 (success 0, failure 0)
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score.
+- Related news examples: 시공사 뽑고 이주하고…'양재천 벨트' 재건축 잰걸음 | 호반건설 박철희 사장 '서울 드림' 빛 봤지만 안심 멀었다, 2026년 도시정... | DL이앤씨 주가 20% 끌어내린 사우디 8500억 세금…"근거 없는 위법 과세...
 
 ## Volatile Watchlist
 
@@ -89,7 +122,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -105,7 +138,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -121,7 +154,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -137,7 +170,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -153,7 +186,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -169,7 +202,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -185,7 +218,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -201,7 +234,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -217,7 +250,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
@@ -233,7 +266,7 @@ The recommender now reads past error notes and applies event-type level confiden
 - Adjusted recommendation score: **72.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
-- Historical error-note cases: 8 (success 0, failure 0)
+- Historical error-note cases: 14 (success 0, failure 0)
 - Disclosure title: [기재정정]증권신고서(합병)
 - Next open return data: Not available
 - Next close return data: Not available
