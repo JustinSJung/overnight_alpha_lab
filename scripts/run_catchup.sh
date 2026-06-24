@@ -75,7 +75,7 @@ if [ $HISTORY_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[5/6] Generating confidence report..." >> "$LOG_FILE"
+echo "[5/7] Generating confidence report..." >> "$LOG_FILE"
 python src/report_generator/confidence_tracker.py >> "$LOG_FILE" 2>&1
 
 CONFIDENCE_STATUS=$?
@@ -89,7 +89,21 @@ if [ $CONFIDENCE_STATUS -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[6/6] Catch-up execution completed." >> "$LOG_FILE"
+echo "[6/7] Generating return prediction report..." >> "$LOG_FILE"
+python src/models/return_prediction_model.py >> "$LOG_FILE" 2>&1
+
+RETURN_STATUS=$?
+
+if [ $RETURN_STATUS -ne 0 ]; then
+    echo "" >> "$LOG_FILE"
+    echo "Return prediction report generation failed." >> "$LOG_FILE"
+    echo "Catch-up stopped at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
+    echo "======================================" >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "" >> "$LOG_FILE"
+echo "[7/7] Catch-up execution completed." >> "$LOG_FILE"
 echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 
