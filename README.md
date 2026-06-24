@@ -59,6 +59,9 @@ The project currently includes:
 * DART disclosure event parsing
 * Daily Markdown report generation
 * Korean stock price data collection
+* Market index collection
+* Stock market lookup
+* Market-adjusted return feature generation
 * Event-price reaction evaluation
 * Automated key event selection pipeline
 * Rule-based event scoring model
@@ -86,23 +89,75 @@ The project currently includes:
 * Confidence tracker
 * GitHub Pages portfolio blog
 
+## Market Adjustment Layer
+
+The project now includes market index and market-adjusted return features.
+
+### Market Index Collector
+
+```text
+src/crawler/market_index_collector.py
+```
+
+This module collects market reference data.
+
+It first tries to collect direct KOSPI and KOSDAQ index data.
+
+If direct index collection fails, it uses ETF proxy data as a fallback.
+
+The fallback proxies are:
+
+```text
+KOSPI proxy: KODEX 200
+KOSDAQ proxy: KODEX KOSDAQ 150
+```
+
+It also creates a stock market lookup table to identify whether stocks belong to KOSPI or KOSDAQ.
+
+Generated raw files:
+
+```text
+data/raw/market_index_YYYYMMDD.csv
+data/raw/stock_market_lookup_YYYYMMDD.csv
+```
+
+### Market-Adjusted Feature Builder
+
+```text
+src/features/market_adjusted_features.py
+```
+
+This module joins error-note data with market index data and calculates market-adjusted returns.
+
+Generated processed file:
+
+```text
+data/processed/market_adjusted_features_YYYYMMDD.csv
+```
+
+The main features are:
+
+```text
+market_next_open_return
+market_next_close_return
+market_adjusted_next_open_return
+market_adjusted_next_close_return
+market_group
+market_group_source
+market_source_type
+market_proxy_name
+```
+
+The core calculation is:
+
+```text
+market_adjusted_next_close_return
+= stock_next_close_return - market_next_close_return
+```
+
 ## Recommendation Layer
 
-The project now includes a multi-layer recommendation score.
-
-### Daily Stock Recommender
-
-```text
-src/models/daily_stock_recommender.py
-```
-
-The recommender generates a daily stock candidate report at:
-
-```text
-reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
-```
-
-The current adjusted recommendation score is calculated as:
+The current recommendation score is calculated as:
 
 ```text
 base_recommendation_score
@@ -112,39 +167,7 @@ base_recommendation_score
 = adjusted_recommendation_score
 ```
 
-The recommender now considers:
-
-```text
-event score
-news sentiment
-news attention
-negative keyword count
-prediction direction
-advanced error-note learning
-event-type historical success rate
-event-type average next-day return
-stock-specific historical success rate
-stock-specific average next-day return
-stock-specific confidence bias
-risk filters
-```
-
-### Stock-Specific Pattern Adjustment
-
-The recommender now calculates stock-specific adjustment using:
-
-```text
-stock_pattern_success_rate
-stock_pattern_avg_next_open_return
-stock_pattern_avg_next_close_return
-stock_pattern_success_rate_adjustment
-stock_pattern_return_adjustment
-stock_pattern_confidence_bias_adjustment
-stock_specific_pattern_adjustment_score
-stock_pattern_label
-```
-
-This allows stocks with stronger historical reaction patterns to receive slightly higher confidence, while stocks with weak historical reactions can receive a conservative penalty.
+The next step is to incorporate market-adjusted returns into evaluation and recommendation logic.
 
 ## Stock-Level Learning Layer
 
@@ -160,8 +183,6 @@ The report is generated at:
 reports/daily_review/YYYY-MM-DD_stock_pattern_report.md
 ```
 
-The report tracks stock-level history, including success rate, average next-day return, common event type, and risk note.
-
 ## Event-Type Learning Layer
 
 The project includes an event-type performance report.
@@ -176,23 +197,23 @@ The report is generated at:
 reports/daily_review/YYYY-MM-DD_event_type_performance_report.md
 ```
 
-It tracks event-type level success rate and average next-day return.
-
 ## Operating Modes
 
 The catch-up script currently runs:
 
 ```text
-[1/10] Daily Pipeline
-[2/10] Pending Re-Evaluator
-[3/10] Automation Status Report
-[4/10] Automation History
-[5/10] Confidence Report
-[6/10] Return Prediction Report
-[7/10] Daily Stock Candidate Report
-[8/10] Event-Type Performance Report
-[9/10] Stock-Specific Pattern Report
-[10/10] Catch-up Completed
+[1/12] Daily Pipeline
+[2/12] Pending Re-Evaluator
+[3/12] Market Index Collection
+[4/12] Market-Adjusted Features
+[5/12] Automation Status Report
+[6/12] Automation History
+[7/12] Confidence Report
+[8/12] Return Prediction Report
+[9/12] Daily Stock Candidate Report
+[10/12] Event-Type Performance Report
+[11/12] Stock-Specific Pattern Report
+[12/12] Completed
 ```
 
 ## Latest Blog Posts
@@ -218,13 +239,14 @@ The catch-up script currently runs:
 * Day 19: Event-Type Success Rate Adjustment
 * Day 20: Stock-Specific Historical Pattern Report
 * Day 21: Stock-Specific Pattern Adjustment
+* Day 22: Market Index and Market-Adjusted Return Features
 
 ## Next Steps
 
-* Add market index and sector movement features
+* Use market-adjusted returns in error-note evaluation
+* Add market-adjusted success/failure logic
 * Separate stock-specific reaction from market-wide movement
 * Add sector-level return comparison
-* Add market-adjusted return calculation
 * Add trading volume features
 * Add model performance history
 * Add automatic Git commit and push

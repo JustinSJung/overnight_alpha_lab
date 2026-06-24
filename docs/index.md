@@ -44,6 +44,7 @@ The project currently includes:
 - [Day 19: Event-Type Success Rate Adjustment](posts/2026-06-24-day-19-event-type-success-rate-adjustment.md)
 - [Day 20: Stock-Specific Historical Pattern Report](posts/2026-06-24-day-20-stock-specific-historical-pattern-report.md)
 - [Day 21: Stock-Specific Pattern Adjustment](posts/2026-06-24-day-21-stock-specific-pattern-adjustment.md)
+- [Day 22: Market Index and Market-Adjusted Return Features](posts/2026-06-24-day-22-market-adjusted-return-features.md)
 
 ## Repository
 
