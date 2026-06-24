@@ -67,6 +67,7 @@ The project currently includes:
 * Prediction review and error-note generation
 * Machine learning dataset builder
 * Baseline machine learning model
+* Return prediction model
 * Daily model report generation
 * Pending event re-evaluation system
 * Local daily automation scripts
@@ -78,6 +79,33 @@ The project currently includes:
 * Confidence tracker
 * GitHub Pages portfolio blog
 
+## Prediction Layer
+
+The project now includes two early model layers.
+
+### Baseline Classification Model
+
+```text
+src/models/baseline_model.py
+```
+
+This model checks whether evaluated predictions can be classified as success or failure.
+
+### Return Prediction Model
+
+```text
+src/models/return_prediction_model.py
+```
+
+This model is designed to predict:
+
+```text
+next_open_return
+next_close_return
+```
+
+At the current stage, the model may report `NOT_ENOUGH_DATA` because many event rows are still pending.
+
 ## Monitoring Layer
 
 The project includes three monitoring outputs.
@@ -88,23 +116,17 @@ The project includes three monitoring outputs.
 reports/daily_review/YYYY-MM-DD_automation_status_report.md
 ```
 
-This report summarizes the latest execution state in a human-readable format.
-
 ### Automation History
 
 ```text
 data/processed/automation_history.csv
 ```
 
-This file stores cumulative operating metrics over time.
-
 ### Confidence Report
 
 ```text
 reports/daily_review/YYYY-MM-DD_confidence_report.md
 ```
-
-This report summarizes prediction readiness, trainable rows, overall accuracy, event-type success rate, and prediction-direction success rate.
 
 ## Operating Modes
 
@@ -140,24 +162,10 @@ Automation History Update
 ↓
 Confidence Report
 ↓
+Return Prediction Report
+↓
 Log Generation
 ```
-
-## Local Automation Scripts
-
-```text
-scripts/run_daily_pipeline.sh
-scripts/run_pending_re_evaluator.sh
-scripts/run_catchup.sh
-```
-
-Execution logs are saved under:
-
-```text
-logs/
-```
-
-The `logs/` directory is excluded from GitHub.
 
 ## Latest Blog Posts
 
@@ -173,13 +181,14 @@ The `logs/` directory is excluded from GitHub.
 * Day 10: Automation Status Report
 * Day 11: Automation History Tracker
 * Day 12: Confidence Tracker
+* Day 13: Return Prediction Model
 
 ## Next Steps
 
-* Build return prediction model
-* Predict expected next-day open return
-* Predict expected next-day close return
-* Add daily stock recommender
+* Build daily stock recommender
+* Generate rule-based recommendation candidates
+* Add expected direction and confidence level
+* Add expected return once enough return samples exist
 * Add single stock predictor
 * Improve advanced error-note reasoning
 * Track confidence improvement over time
