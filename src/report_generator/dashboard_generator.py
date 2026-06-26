@@ -355,7 +355,7 @@ def build_html(metrics, stock_data):
     <div class="card" style="margin-top:24px;">
       <h2>주요 리포트</h2>
       <div class="links">
-        <a href="../README.md">README</a>
+        <a href="https://github.com/JustinSJung/overnight_alpha_lab#readme" target="_blank">README</a>
         <a href="index.html">Development Log</a>
       </div>
       <p class="small">
