@@ -16,7 +16,7 @@ echo "Catch-up execution started at $NOW" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 
 echo "" >> "$LOG_FILE"
-echo "[1/18] Running daily pipeline..." >> "$LOG_FILE"
+echo "[1/19] Running daily pipeline..." >> "$LOG_FILE"
 python src/pipeline/daily_pipeline.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[2/18] Running pending re-evaluator..." >> "$LOG_FILE"
+echo "[2/19] Running pending re-evaluator..." >> "$LOG_FILE"
 python src/evaluator/pending_re_evaluator.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -34,7 +34,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[3/18] Collecting market index data..." >> "$LOG_FILE"
+echo "[3/19] Collecting market index data..." >> "$LOG_FILE"
 python src/crawler/market_index_collector.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -43,7 +43,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[4/18] Building market-adjusted features..." >> "$LOG_FILE"
+echo "[4/19] Building market-adjusted features..." >> "$LOG_FILE"
 python src/features/market_adjusted_features.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -52,7 +52,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[5/18] Generating market-adjusted evaluation..." >> "$LOG_FILE"
+echo "[5/19] Generating market-adjusted evaluation..." >> "$LOG_FILE"
 python src/evaluator/market_adjusted_evaluator.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -61,7 +61,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[6/18] Generating market-adjusted score adjustments..." >> "$LOG_FILE"
+echo "[6/19] Generating market-adjusted score adjustments..." >> "$LOG_FILE"
 python src/models/market_adjusted_score_integrator.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -71,7 +71,7 @@ fi
 
 
 echo "" >> "$LOG_FILE"
-echo "[7/18] Generating market-adjusted daily candidate report..." >> "$LOG_FILE"
+echo "[7/19] Generating market-adjusted daily candidate report..." >> "$LOG_FILE"
 python src/models/market_adjusted_daily_recommender.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -81,7 +81,7 @@ fi
 
 
 echo "" >> "$LOG_FILE"
-echo "[8/18] Building trading volume features..." >> "$LOG_FILE"
+echo "[8/19] Building trading volume features..." >> "$LOG_FILE"
 python src/features/trading_volume_features.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -91,7 +91,7 @@ fi
 
 
 echo "" >> "$LOG_FILE"
-echo "[9/18] Generating trading volume score adjustments..." >> "$LOG_FILE"
+echo "[9/19] Generating trading volume score adjustments..." >> "$LOG_FILE"
 python src/models/trading_volume_score_integrator.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -101,7 +101,7 @@ fi
 
 
 echo "" >> "$LOG_FILE"
-echo "[10/18] Generating volume + market-adjusted daily candidate report..." >> "$LOG_FILE"
+echo "[10/19] Generating volume + market-adjusted daily candidate report..." >> "$LOG_FILE"
 python src/models/volume_market_adjusted_daily_recommender.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -109,8 +109,18 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+
 echo "" >> "$LOG_FILE"
-echo "[11/18] Generating automation status report..." >> "$LOG_FILE"
+echo "[11/19] Generating model performance history report..." >> "$LOG_FILE"
+python src/report_generator/model_performance_history_report.py >> "$LOG_FILE" 2>&1
+
+if [ $? -ne 0 ]; then
+    echo "Model performance history report generation failed." >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "" >> "$LOG_FILE"
+echo "[12/19] Generating automation status report..." >> "$LOG_FILE"
 python src/report_generator/automation_status_report.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -119,7 +129,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[12/18] Updating automation history..." >> "$LOG_FILE"
+echo "[13/19] Updating automation history..." >> "$LOG_FILE"
 python src/report_generator/automation_history_tracker.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -128,7 +138,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[13/18] Generating confidence report..." >> "$LOG_FILE"
+echo "[14/19] Generating confidence report..." >> "$LOG_FILE"
 python src/report_generator/confidence_tracker.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -137,7 +147,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[14/18] Generating return prediction report..." >> "$LOG_FILE"
+echo "[15/19] Generating return prediction report..." >> "$LOG_FILE"
 python src/models/return_prediction_model.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -146,7 +156,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[15/18] Generating daily stock candidate report..." >> "$LOG_FILE"
+echo "[16/19] Generating daily stock candidate report..." >> "$LOG_FILE"
 python src/models/daily_stock_recommender.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -155,7 +165,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[16/18] Generating event-type performance report..." >> "$LOG_FILE"
+echo "[17/19] Generating event-type performance report..." >> "$LOG_FILE"
 python src/report_generator/event_type_performance_report.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -164,7 +174,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[17/18] Generating stock-specific pattern report..." >> "$LOG_FILE"
+echo "[18/19] Generating stock-specific pattern report..." >> "$LOG_FILE"
 python src/report_generator/stock_pattern_report.py >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -173,7 +183,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
-echo "[18/18] Catch-up execution completed." >> "$LOG_FILE"
+echo "[19/19] Catch-up execution completed." >> "$LOG_FILE"
 echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 

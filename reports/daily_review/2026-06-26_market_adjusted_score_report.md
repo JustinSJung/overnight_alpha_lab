@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-06-26
 
-Generated at: 2026-06-26 16:17:38
+Generated at: 2026-06-26 16:24:22
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260626.csv`
 
@@ -28,36 +28,35 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **14**
+- Total rows: **13**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **14**
+- neutral_adjustment: **13**
 
 ## Market-Adjusted Result Counts
 
-- pending: **14**
+- pending: **13**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 011810 | STX | volatile | pending | 0 | N/A |
 | 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | 0 | N/A |
+| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | 0 | N/A |
+| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | 0 | N/A |
+| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | 0 | N/A |
+| 1970-01-01 | 011810 | STX | volatile | pending | 0 | N/A |
+| 1970-01-01 | 011810 | STX | volatile | pending | 0 | N/A |
 | 1970-01-01 | 221840 | 하이즈항공 | negative | pending | 0 | N/A |
 | 1970-01-01 | 439580 | 블루엠텍 | negative | pending | 0 | N/A |
 | 1970-01-01 | 224060 | 더코디 | negative | pending | 0 | N/A |
 | 1970-01-01 | 014130 | 한익스프레스 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 014130 | 한익스프레스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 014130 | 한익스프레스 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 082740 | 한화엔진 | positive | pending | 0 | N/A |
-| 1970-01-01 | 259960 | 크래프톤 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 259960 | 크래프톤 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 066980 | 한성크린텍 | positive | pending | 0 | N/A |
-| 1970-01-01 | 074610 | 이엔플러스 | negative | pending | 0 | N/A |
-| 1970-01-01 | 348080 | 큐라티스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 090350 | 노루페인트 | volatile | pending | 0 | N/A |
 
 ## Next Step
 

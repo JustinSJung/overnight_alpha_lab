@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-06-26
 
-Generated at: 2026-06-26 16:17:38
+Generated at: 2026-06-26 16:24:22
 
 Source feature file: `data/processed/market_adjusted_features_20260626.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **14**
-- pending: **14**
+- Total rows: **13**
+- pending: **13**
 
 ## Interpretation
 
@@ -29,20 +29,19 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 11810 | STX | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 11810 | STX | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 11810 | STX | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 221840 | 하이즈항공 | negative | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 439580 | 블루엠텍 | negative | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 224060 | 더코디 | negative | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 14130 | 한익스프레스 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 14130 | 한익스프레스 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 14130 | 한익스프레스 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 82740 | 한화엔진 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 259960 | 크래프톤 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 259960 | 크래프톤 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 66980 | 한성크린텍 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 74610 | 이엔플러스 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 348080 | 큐라티스 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 90350 | 노루페인트 | volatile | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 
