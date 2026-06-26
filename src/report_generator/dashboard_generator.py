@@ -85,6 +85,7 @@ def build_metrics():
     all_error_notes = read_all_csv(PREDICTIONS_DIR, "error_notes_*.csv")
     latest_market_eval = read_csv(latest_file(PREDICTIONS_DIR, "market_adjusted_evaluation_*.csv"))
     latest_volume_score = read_csv(latest_file(PROCESSED_DIR, "trading_volume_score_adjustments_*.csv"))
+    latest_social_attention = read_csv(latest_file(PROCESSED_DIR, "social_attention_features_*.csv"))
 
     if not latest_ml_df.empty and "stock_code" in latest_ml_df.columns:
         latest_ml_df["stock_code"] = latest_ml_df["stock_code"].apply(normalize_stock_code)
@@ -120,9 +121,23 @@ def build_metrics():
     else:
         confidence_status = "LOW CONFIDENCE"
         confidence_comment = "현재 성과 기준으로는 보수적으로 해석해야 합니다."
-
     market_rows = len(latest_market_eval)
     volume_rows = len(latest_volume_score)
+    social_rows = len(latest_social_attention)
+
+    high_attention_count = 0
+    rumor_noise_count = 0
+    risk_noise_count = 0
+
+    if not latest_social_attention.empty:
+        if "attention_label" in latest_social_attention.columns:
+            high_attention_count = int((latest_social_attention["attention_label"] == "high_attention").sum())
+
+        if "rumor_label" in latest_social_attention.columns:
+            rumor_noise_count = int((latest_social_attention["rumor_label"] != "no_rumor_signal").sum())
+
+        if "risk_label" in latest_social_attention.columns:
+            risk_noise_count = int((latest_social_attention["risk_label"] != "no_risk_noise").sum())
 
     latest_ml_file = str(latest_ml_path) if latest_ml_path else "N/A"
 
@@ -139,6 +154,10 @@ def build_metrics():
         "confidence_comment": confidence_comment,
         "market_rows": market_rows,
         "volume_rows": volume_rows,
+        "social_rows": social_rows,
+	"high_attention_count": high_attention_count,
+	"rumor_noise_count": rumor_noise_count,
+	"risk_noise_count": risk_noise_count,
     }, latest_ml_df
 
 
@@ -341,7 +360,24 @@ def build_html(metrics, stock_data):
         <div class="small">{metrics["generated_at"]}</div>
       </div>
     </div>
-
+    <div class="grid">
+      <div class="card">
+        <div class="label">Social Attention Rows</div>
+        <div class="value">{metrics["social_rows"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">High Attention</div>
+        <div class="value">{metrics["high_attention_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Rumor Noise</div>
+        <div class="value">{metrics["rumor_noise_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Risk Noise</div>
+        <div class="value">{metrics["risk_noise_count"]}</div>
+      </div>
+    </div>
     <div class="card">
       <h2>종목 간단 조회</h2>
       <p class="small">

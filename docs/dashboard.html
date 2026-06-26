@@ -133,14 +133,14 @@
       </div>
       <div class="card">
         <div class="label">Pending</div>
-        <div class="value">83</div>
+        <div class="value">74</div>
       </div>
     </div>
 
     <div class="grid">
       <div class="card">
         <div class="label">최근 ML 데이터 행 수</div>
-        <div class="value">85</div>
+        <div class="value">22</div>
       </div>
       <div class="card">
         <div class="label">성공</div>
@@ -152,10 +152,27 @@
       </div>
       <div class="card">
         <div class="label">마지막 생성 시간</div>
-        <div class="small">2026-06-26 17:36:03</div>
+        <div class="small">2026-06-26 17:54:28</div>
       </div>
     </div>
-
+    <div class="grid">
+      <div class="card">
+        <div class="label">Social Attention Rows</div>
+        <div class="value">15</div>
+      </div>
+      <div class="card">
+        <div class="label">High Attention</div>
+        <div class="value">1</div>
+      </div>
+      <div class="card">
+        <div class="label">Rumor Noise</div>
+        <div class="value">0</div>
+      </div>
+      <div class="card">
+        <div class="label">Risk Noise</div>
+        <div class="value">8</div>
+      </div>
+    </div>
     <div class="card">
       <h2>종목 간단 조회</h2>
       <p class="small">
@@ -179,7 +196,7 @@
   </div>
 
   <script>
-    const STOCK_DATA = [{"stock_code": "012510", "corp_name": "더존비즈온", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "243070", "corp_name": "휴온스", "event_type": "merger", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "054930", "corp_name": "유신", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "299660", "corp_name": "셀리드", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "013700", "corp_name": "까뮤이앤씨", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "009730", "corp_name": "이렘", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 5.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "445090", "corp_name": "에이직랜드", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 5.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "043260", "corp_name": "성호전자", "event_type": "bond_with_warrant", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "013580", "corp_name": "계룡건설산업", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 4.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "179530", "corp_name": "애드바이오텍", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 5.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "045390", "corp_name": "대아티아이", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "012630", "corp_name": "HDC", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 3.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "023770", "corp_name": "플레이위드", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "109960", "corp_name": "앱토크롬", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "006570", "corp_name": "대림통상", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 11.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "361610", "corp_name": "SK아이이테크놀로지", "event_type": "paid_in_capital_increase", "prediction_direction": "negative", "event_score": -70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}];
+    const STOCK_DATA = [{"stock_code": "440110", "corp_name": "파두", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "033310", "corp_name": "엠투엔", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 3.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "300080", "corp_name": "플리토", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "005960", "corp_name": "동부건설", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "001470", "corp_name": "삼부토건", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "068270", "corp_name": "셀트리온", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 3.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "007460", "corp_name": "에이프로젠", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 4.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "085660", "corp_name": "차바이오텍", "event_type": "paid_in_capital_increase", "prediction_direction": "negative", "event_score": -70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 4.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "211270", "corp_name": "AP위성", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 4.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "012510", "corp_name": "더존비즈온", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "243070", "corp_name": "휴온스", "event_type": "merger", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 4.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "054930", "corp_name": "유신", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "299660", "corp_name": "셀리드", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "013700", "corp_name": "까뮤이앤씨", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "009730", "corp_name": "이렘", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 5.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}];
 
     function fmt(value) {
       if (value === null || value === undefined || value === "") return "N/A";
