@@ -40,7 +40,7 @@ jobs:
         run: |
           ./scripts/run_catchup.sh
 
-      - name: Commit generated reports
+      - name: Commit generated reports and dashboard
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
@@ -50,12 +50,12 @@ jobs:
           git add reports/daily_review/*.md || true
           git add reports/single_stock/*.md || true
           git add docs/*.md || true
+          git add docs/*.html || true
           git add docs/posts/*.md || true
-	  git add docs/*.html || true
 
           if git diff --cached --quiet; then
             echo "No generated changes to commit."
           else
-            git commit -m "Update daily automated reports"
+            git commit -m "Update daily automated reports and dashboard"
             git push
           fi
