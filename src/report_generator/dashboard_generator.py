@@ -343,39 +343,47 @@ def build_html(metrics, stock_data):
 
     <div class="grid">
       <div class="card">
-        <div class="label">현재 신뢰도 상태</div>
+        <div class="label">System Confidence Status</div>
+        <div class="ko-desc">현재 신뢰도 상태</div>
         <div class="status">{metrics["confidence_status"]}</div>
         <div class="small">{metrics["confidence_comment"]}</div>
       </div>
       <div class="card">
-        <div class="label">누적 성공률</div>
+        <div class="label">Cumulative Success Rate</div>
+        <div class="ko-desc">누적 성공률</div>
         <div class="value">{metrics["success_rate"]}%</div>
       </div>
       <div class="card">
-        <div class="label">평가 완료</div>
+        <div class="label">Evaluated Cases</div>
+        <div class="ko-desc">평가 완료 사례</div>
         <div class="value">{metrics["evaluated_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">Pending</div>
+        <div class="label">Pending Cases</div>
+        <div class="ko-desc">평가 대기 사례</div>
         <div class="value">{metrics["pending_count"]}</div>
       </div>
     </div>
 
     <div class="grid">
       <div class="card">
-        <div class="label">최근 ML 데이터 행 수</div>
+        <div class="label">Latest ML Dataset Rows</div>
+        <div class="ko-desc">최근 ML 데이터 행 수</div>
         <div class="value">{metrics["total_events"]}</div>
       </div>
       <div class="card">
-        <div class="label">성공</div>
+        <div class="label">Successful Predictions</div>
+        <div class="ko-desc">성공 예측 수</div>
         <div class="value">{metrics["success_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">실패</div>
+        <div class="label">Failed Predictions</div>
+        <div class="ko-desc">실패 예측 수</div>
         <div class="value">{metrics["failure_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">마지막 생성 시간</div>
+        <div class="label">Last Generated At</div>
+        <div class="ko-desc">마지막 생성 시간</div>
         <div class="small">{metrics["generated_at"]}</div>
       </div>
     </div>
@@ -385,15 +393,18 @@ def build_html(metrics, stock_data):
         <div class="value">{metrics["social_rows"]}</div>
       </div>
       <div class="card">
-        <div class="label">High Attention</div>
+        <div class="label">High Attention Signals</div>
+        <div class="ko-desc">높은 관심도 신호</div>
         <div class="value">{metrics["high_attention_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">Rumor Noise</div>
+        <div class="label">Rumor Noise Signals</div>
+        <div class="ko-desc">루머성 노이즈 신호</div>
         <div class="value">{metrics["rumor_noise_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">Risk Noise</div>
+        <div class="label">Risk Noise Signals</div>
+        <div class="ko-desc">리스크성 노이즈 신호</div>
         <div class="value">{metrics["risk_noise_count"]}</div>
       </div>
     </div>
@@ -488,7 +499,90 @@ def build_html(metrics, stock_data):
 </html>
 """
 
+
+    # Final bilingual label normalization
+    # Rule: English main label + short Korean sublabel
+    label_replacements = {
+        '<div class="label">Evaluated Cases</div>\n        <div class="value">':
+        '<div class="label">Evaluated Cases</div>\n        <div class="ko-desc">평가 완료 사례</div>\n        <div class="value">',
+
+        '<div class="label">Pending Cases</div>\n        <div class="value">':
+        '<div class="label">Pending Cases</div>\n        <div class="ko-desc">평가 대기 사례</div>\n        <div class="value">',
+
+        '<div class="label">Successful Predictions</div>\n        <div class="value">':
+        '<div class="label">Successful Predictions</div>\n        <div class="ko-desc">성공 예측 수</div>\n        <div class="value">',
+
+        '<div class="label">Failed Predictions</div>\n        <div class="value">':
+        '<div class="label">Failed Predictions</div>\n        <div class="ko-desc">실패 예측 수</div>\n        <div class="value">',
+
+        '<div class="label">Social Attention Rows</div>\n        <div class="value">':
+        '<div class="label">Social Attention Rows</div>\n        <div class="ko-desc">관심도 분석 행 수</div>\n        <div class="value">',
+
+        '<div class="label">High Attention</div>\n        <div class="value">':
+        '<div class="label">High Attention Signals</div>\n        <div class="ko-desc">높은 관심도 신호</div>\n        <div class="value">',
+
+        '<div class="label">High Attention Signals</div>\n        <div class="value">':
+        '<div class="label">High Attention Signals</div>\n        <div class="ko-desc">높은 관심도 신호</div>\n        <div class="value">',
+
+        '<div class="label">Rumor Noise</div>\n        <div class="value">':
+        '<div class="label">Rumor Noise Signals</div>\n        <div class="ko-desc">루머성 노이즈 신호</div>\n        <div class="value">',
+
+        '<div class="label">Rumor Noise Signals</div>\n        <div class="value">':
+        '<div class="label">Rumor Noise Signals</div>\n        <div class="ko-desc">루머성 노이즈 신호</div>\n        <div class="value">',
+
+        '<div class="label">Risk Noise</div>\n        <div class="value">':
+        '<div class="label">Risk Noise Signals</div>\n        <div class="ko-desc">리스크성 노이즈 신호</div>\n        <div class="value">',
+
+        '<div class="label">Risk Noise Signals</div>\n        <div class="value">':
+        '<div class="label">Risk Noise Signals</div>\n        <div class="ko-desc">리스크성 노이즈 신호</div>\n        <div class="value">',
+
+        '<div class="label">Learned Rule Types</div>\n        <div class="value">':
+        '<div class="label">Learned Rule Types</div>\n        <div class="ko-desc">학습 대상 이벤트 유형</div>\n        <div class="value">',
+
+        '<div class="label">Active Learned Rules</div>\n        <div class="value">':
+        '<div class="label">Active Learned Rules</div>\n        <div class="ko-desc">활성화된 학습 룰</div>\n        <div class="value">',
+
+        '<div class="label">Positive Rule Updates</div>\n        <div class="value">':
+        '<div class="label">Positive Rule Updates</div>\n        <div class="ko-desc">점수 상향 룰</div>\n        <div class="value">',
+
+        '<div class="label">Negative Rule Updates</div>\n        <div class="value">':
+        '<div class="label">Negative Rule Updates</div>\n        <div class="ko-desc">점수 하향 룰</div>\n        <div class="value">',
+    }
+
+    for old, new in label_replacements.items():
+        html = html.replace(old, new)
+
+    text_replacements = {
+        '자동 실행 기반 공시 이벤트 분석 · 신뢰도 추적 · 종목 간단 조회':
+        'Automated disclosure-event analysis · confidence monitoring · stock quick lookup<br><span class="small">자동 실행 기반 공시 이벤트 분석 · 신뢰도 추적 · 종목 간단 조회</span>',
+
+        '이 대시보드는 투자 조언이 아닙니다. 현재 시스템의 데이터 축적 상태와 분석 결과를 확인하기 위한 연구용 화면입니다.':
+        '<b>Research dashboard only. Not investment advice.</b><br><span class="small">이 대시보드는 투자 조언이 아닙니다. 현재 시스템의 데이터 축적 상태와 분석 결과를 확인하기 위한 연구용 화면입니다.</span>',
+
+        '<h2>종목 간단 조회</h2>':
+        '<h2>Stock Quick Lookup <span class="tag">종목 간단 조회</span></h2>',
+
+        '현재 ML 데이터셋에 포함된 종목만 즉시 조회됩니다. 예: 005930':
+        'Enter a 6-digit Korean stock code to check the latest available event summary.<br><span class="small">현재 ML 데이터셋에 포함된 종목만 즉시 조회됩니다. 예: 005930</span>',
+
+        'placeholder="종목코드 6자리"':
+        'placeholder="6-digit stock code"',
+
+        '>조회</button>':
+        '>Search / 조회</button>',
+
+        '<h2>주요 리포트</h2>':
+        '<h2>Key Reports <span class="tag">주요 리포트</span></h2>',
+
+        '최신 리포트 파일은 GitHub 저장소의 reports/daily_prediction 및 reports/daily_review 폴더에서 확인할 수 있습니다.':
+        'Latest generated reports are available in the GitHub repository under reports/daily_prediction and reports/daily_review.<br><span class="small">최신 리포트 파일은 GitHub 저장소의 reports/daily_prediction 및 reports/daily_review 폴더에서 확인할 수 있습니다.</span>',
+    }
+
+    for old, new in text_replacements.items():
+        html = html.replace(old, new)
+
     return html
+
 
 
 def main():
