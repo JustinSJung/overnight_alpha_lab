@@ -195,5 +195,9 @@ echo "Generating social attention features..." >> "$LOG_FILE"
 python src/features/social_attention_features.py >> "$LOG_FILE" 2>&1
 
 echo "" >> "$LOG_FILE"
+echo "Generating learned event rules..." >> "$LOG_FILE"
+python src/models/auto_rule_updater.py >> "$LOG_FILE" 2>&1
+
+echo "" >> "$LOG_FILE"
 echo "Generating GitHub Pages dashboard..." >> "$LOG_FILE"
 python src/report_generator/dashboard_generator.py >> "$LOG_FILE" 2>&1

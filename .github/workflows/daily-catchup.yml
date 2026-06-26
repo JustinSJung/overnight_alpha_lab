@@ -47,6 +47,7 @@ jobs:
 
           git add data/processed/automation_history.csv || true
           git add data/processed/social_attention_features_*.csv || true
+	  git add data/processed/learned_event_rules_*.csv || true
           git add reports/daily_prediction/*.md || true
           git add reports/daily_review/*.md || true
           git add reports/single_stock/*.md || true
