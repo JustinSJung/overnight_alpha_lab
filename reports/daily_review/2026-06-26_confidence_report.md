@@ -1,6 +1,6 @@
 # Confidence Report - 2026-06-26
 
-Generated at: 2026-06-26 16:24:24
+Generated at: 2026-06-26 16:39:47
 
 ML dataset: `data/processed/ml_dataset_20260626.csv`
 
@@ -9,7 +9,7 @@ ML dataset: `data/processed/ml_dataset_20260626.csv`
 | Metric | Value |
 |---|---:|
 | Total rows | 19 |
-| Pending rows | 19 |
+| Pending rows | 0 |
 | Success rows | 0 |
 | Failure rows | 0 |
 | Trainable rows | 0 |
