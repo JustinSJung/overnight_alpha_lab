@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-06-26
 
-Generated at: 2026-06-26 16:39:46
+Generated at: 2026-06-26 07:57:04
 
 ML dataset source: `data/processed/ml_dataset_20260626.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260626.csv`
@@ -25,10 +25,10 @@ base_recommendation_score_v2
 
 ## Summary
 
-- Total rows: **19**
-- risk_or_avoid_review: **9**
-- positive_candidate: **7**
-- watchlist_candidate: **3**
+- Total rows: **153**
+- risk_or_avoid_review: **141**
+- positive_candidate: **10**
+- watchlist_candidate: **2**
 
 ## Strong Market-Adjusted Candidates
 
@@ -38,21 +38,23 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 282720 | 금양그린파워 | supply_contract | positive | nan | pending | 125.00 | 0.00 | 125.00 | N/A |
-| 1970-01-01 | 258610 | 케일럼 | supply_contract | positive | nan | pending | 125.00 | 0.00 | 125.00 | N/A |
-| 1970-01-01 | 005960 | 동부건설 | supply_contract | positive | nan | pending | 100.00 | 0.00 | 100.00 | N/A |
-| 1970-01-01 | 277880 | 티에스아이 | supply_contract | positive | nan | pending | 100.00 | 0.00 | 100.00 | N/A |
-| 1970-01-01 | 476830 | 알지노믹스 | bonus_issue | positive | nan | pending | 90.00 | 0.00 | 90.00 | N/A |
-| 1970-01-01 | 186230 | 그린플러스 | supply_contract | positive | nan | pending | 90.00 | 0.00 | 90.00 | N/A |
-| 1970-01-01 | 003470 | 유안타증권 | major_shareholder_change | volatile | nan | pending | 56.00 | 0.00 | 56.00 | N/A |
+| 1970-01-01 | 013580 | 계룡건설산업 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
+| 1970-01-01 | 013580 | 계룡건설산업 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
+| 1970-01-01 | 005960 | 동부건설 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
+| 1970-01-01 | 045390 | 대아티아이 | supply_contract | positive | pending | pending | 95.00 | 0.00 | 95.00 | N/A |
+| 1970-01-01 | 476830 | 알지노믹스 | bonus_issue | positive | pending | pending | 90.00 | 0.00 | 90.00 | N/A |
+| 1970-01-01 | 006570 | 대림통상 | major_shareholder_change | volatile | pending | pending | 76.00 | 0.00 | 76.00 | N/A |
+| 1970-01-01 | 006570 | 대림통상 | major_shareholder_change | volatile | pending | pending | 76.00 | 0.00 | 76.00 | N/A |
+| 1970-01-01 | 006570 | 대림통상 | major_shareholder_change | volatile | pending | pending | 76.00 | 0.00 | 76.00 | N/A |
+| 1970-01-01 | 109960 | 앱토크롬 | investment_decision | volatile | pending | pending | 41.00 | 0.00 | 41.00 | N/A |
+| 1970-01-01 | 109960 | 앱토크롬 | investment_decision | volatile | pending | pending | 41.00 | 0.00 | 41.00 | N/A |
 
 ## Watchlist Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 214150 | 클래시스 | major_shareholder_change | volatile | nan | pending | 26.00 | 0.00 | 26.00 | N/A |
-| 1970-01-01 | 214150 | 클래시스 | major_shareholder_change | volatile | nan | pending | 26.00 | 0.00 | 26.00 | N/A |
-| 1970-01-01 | 214150 | 클래시스 | major_shareholder_change | volatile | nan | pending | 26.00 | 0.00 | 26.00 | N/A |
+| 1970-01-01 | 012630 | HDC | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
+| 1970-01-01 | 012630 | HDC | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
 
 ## Volatile Watchlist
 
@@ -62,15 +64,26 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 006740 | 블루산업개발 | paid_in_capital_increase | negative | nan | pending | -30.00 | 0.00 | -30.00 | N/A |
-| 1970-01-01 | 006740 | 블루산업개발 | paid_in_capital_increase | negative | nan | pending | -30.00 | 0.00 | -30.00 | N/A |
-| 1970-01-01 | 006740 | 블루산업개발 | paid_in_capital_increase | negative | nan | pending | -30.00 | 0.00 | -30.00 | N/A |
-| 1970-01-01 | 138360 | 앤로보틱스 | paid_in_capital_increase | negative | nan | pending | -35.00 | 0.00 | -35.00 | N/A |
-| 1970-01-01 | 194370 | 제이에스코퍼레이션 | convertible_bond | negative | nan | pending | -45.00 | 0.00 | -45.00 | N/A |
-| 1970-01-01 | 003450 | 케이비증권 | paid_in_capital_increase | negative | nan | nan | -45.00 | 0.00 | -45.00 | N/A |
-| 1970-01-01 | 361610 | SK아이이테크놀로지 | paid_in_capital_increase | negative | nan | pending | -65.00 | 0.00 | -65.00 | N/A |
-| 1970-01-01 | 105560 | KB금융 | paid_in_capital_increase | negative | nan | pending | -70.00 | 0.00 | -70.00 | N/A |
-| 1970-01-01 | 187660 | 페니트리움바이오 | paid_in_capital_increase | negative | nan | pending | -80.00 | 0.00 | -80.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | convertible_bond | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
 
 ## General Review
 

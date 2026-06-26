@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-06-26
 
-Generated at: 2026-06-26 16:39:46
+Generated at: 2026-06-26 07:57:03
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260626.csv`
 
@@ -28,42 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **21**
+- Total rows: **35**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **21**
+- neutral_adjustment: **35**
 
 ## Market-Adjusted Result Counts
 
-- pending: **21**
+- pending: **35**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 361610 | SK아이이테크놀로지 | negative | pending | 0 | N/A |
-| 1970-01-01 | 187660 | 페니트리움바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 476830 | 알지노믹스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 005960 | 동부건설 | positive | pending | 0 | N/A |
-| 1970-01-01 | 006740 | 블루산업개발 | negative | pending | 0 | N/A |
-| 1970-01-01 | 006740 | 블루산업개발 | negative | pending | 0 | N/A |
-| 1970-01-01 | 006740 | 블루산업개발 | negative | pending | 0 | N/A |
-| 1970-01-01 | 138360 | 앤로보틱스 | negative | pending | 0 | N/A |
-| 1970-01-01 | 214150 | 클래시스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 214150 | 클래시스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 214150 | 클래시스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 258610 | 케일럼 | positive | pending | 0 | N/A |
-| 1970-01-01 | 277880 | 티에스아이 | positive | pending | 0 | N/A |
-| nan | 003450 | 케이비증권 | negative | pending | 0 | N/A |
-| 1970-01-01 | 003470 | 유안타증권 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 186230 | 그린플러스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 282720 | 금양그린파워 | positive | pending | 0 | N/A |
-| 1970-01-01 | 105560 | KB금융 | negative | pending | 0 | N/A |
-| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | 0 | N/A |
-| 1970-01-01 | 194370 | 제이에스코퍼레이션 | negative | pending | 0 | N/A |
+| 1970-01-01 | 013580 | 계룡건설산업 | positive | pending | 0 | N/A |
+| 1970-01-01 | 013580 | 계룡건설산업 | positive | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 045390 | 대아티아이 | positive | pending | 0 | N/A |
+| 1970-01-01 | 012630 | HDC | volatile | pending | 0 | N/A |
 
 ## Next Step
 

@@ -1,4 +1,4 @@
 ﻿run_date,generated_at,raw_dart_rows,parsed_dart_rows,selected_event_rows,scored_event_rows,news_feature_rows,error_note_rows,ml_dataset_rows,pending_rows,success_rows,failure_rows,trainable_rows,baseline_model_report_exists,automation_status_report_exists,raw_dart_file,ml_dataset_file
 2026-06-19,2026-06-19 17:05:19,100,100,18,18,18,19,21,21,0,0,0,True,True,data/raw/dart_disclosures_20260619.csv,data/processed/ml_dataset_20260619.csv
 2026-06-24,2026-06-24 22:40:49,100,100,11,11,11,11,11,11,0,0,0,True,True,data/raw/dart_disclosures_20260624.csv,data/processed/ml_dataset_20260624.csv
-2026-06-26,2026-06-26 16:39:47,100,100,15,15,15,21,19,0,0,0,0,True,True,data/raw/dart_disclosures_20260626.csv,data/processed/ml_dataset_20260626.csv
+2026-06-26,2026-06-26 07:57:07,100,100,14,14,14,35,153,153,0,0,0,True,True,data/raw/dart_disclosures_20260626.csv,data/processed/ml_dataset_20260626.csv
