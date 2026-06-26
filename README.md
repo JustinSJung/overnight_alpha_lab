@@ -1,415 +1,536 @@
 # Overnight Alpha Lab
 
-Overnight Alpha Lab is an AI research project that analyzes corporate disclosures, news, and market data released after market close, predicts next-day opening reactions, and improves the model through daily error notes.
-
-This project focuses not on predicting stock prices directly, but on modeling how the market reacts to newly released information.
-
-## Core Concept
-
-1. Collect disclosures, news, and market data after market close
-2. Generate next-day opening reaction predictions
-3. Compare predictions with actual market results
-4. Create daily error notes
-5. Improve the model through continuous feedback
-
-## Project Scope
-
-- Korean stock market event analysis
-- DART disclosure data
-- News and sentiment data
-- Next-day opening reaction prediction
-- Daily prediction review
-- Error-note based model improvement
-
-## Repository Structure
-
-```text
-overnight_alpha_lab/
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── predictions/
-├── notebooks/
-├── src/
-│   ├── crawler/
-│   ├── parser/
-│   ├── features/
-│   ├── models/
-│   ├── evaluator/
-│   └── report_generator/
-├── reports/
-│   ├── daily_prediction/
-│   ├── daily_review/
-│   └── error_notes/
-├── blog/
-│   └── _posts/
-├── README.md
-└── requirements.txt
-
-## Status
-
-project setup stage.
-
-## Current Progress
-
-The project currently includes:
-
-* GitHub repository and Python project structure
-* OpenDART API disclosure collection
-* DART disclosure event parsing
-* Daily Markdown report generation
-* Korean stock price data collection
-* Market index collection
-* Stock market lookup
-* Market-adjusted return feature generation
-* Event-price reaction evaluation
-* Automated key event selection pipeline
-* Rule-based event scoring model
-* Naver news metadata collection
-* News feature generation
-* Advanced prediction review and error-note generation
-* Machine learning dataset builder
-* Baseline machine learning model
-* Return prediction model
-* Daily stock recommender
-* Error-note-aware recommendation adjustment
-* Event-type success rate adjustment
-* Stock-specific pattern adjustment
-* Single stock predictor
-* Event-type performance report
-* Stock-specific historical pattern report
-* Daily model report generation
-* Pending event re-evaluation system
-* Local daily automation scripts
-* Execution log generation
-* Scheduled local automation with cron
-* Catch-up execution mode
-* Automation status report generator
-* Automation history tracker
-* Confidence tracker
-* GitHub Pages portfolio blog
-
-## Market Adjustment Layer
-
-The project now includes market index and market-adjusted return features.
-
-### Market Index Collector
-
-```text
-src/crawler/market_index_collector.py
-```
-
-This module collects market reference data.
-
-It first tries to collect direct KOSPI and KOSDAQ index data.
+Overnight Alpha Lab is a Python-based research and portfolio project that analyzes Korean stock disclosure events, news signals, price reactions, market-adjusted returns, trading volume reactions, and model performance history.
+
+The goal of this project is to build a local daily event-driven stock analysis pipeline that can collect public data, evaluate event reactions, generate structured reports, and track model readiness over time.
+
+This project is for research, education, and portfolio demonstration purposes only. It is not financial advice and does not provide buy or sell recommendations.
+
+---
+
+## 1. Project Goal
+
+Overnight Alpha Lab explores the following question:
+
+Can public disclosure events, news signals, market-adjusted returns, and trading volume reactions be combined into a structured daily stock analysis pipeline?
+
+The system is designed to:
+
+- collect public disclosure events
+- classify disclosure event types
+- apply rule-based event scoring
+- collect related news metadata
+- evaluate next-trading-day price reactions
+- compare stock movement against market movement
+- measure trading volume reactions
+- generate daily candidate reports
+- generate single-stock analysis reports
+- create prediction review notes
+- build machine learning datasets
+- monitor performance history over time
+- document the project as a portfolio
+
+---
+
+## 2. Current MVP Status
+
+Current stage: Day 30 Final MVP Cleanup
+
+The MVP now includes:
+
+- DART disclosure collection
+- disclosure event parsing
+- rule-based event scoring
+- Naver news feature generation
+- stock price reaction evaluation
+- market index collection
+- market-adjusted return calculation
+- market-adjusted evaluation
+- market-adjusted score integration
+- trading volume feature generation
+- trading volume score integration
+- daily stock candidate reports
+- volume and market-adjusted candidate report
+- single-stock predictor
+- advanced error-note generation
+- machine learning dataset builder
+- baseline model report
+- return prediction report
+- event-type performance report
+- stock-specific pattern report
+- model performance history report
+- local automation scripts
+- catch-up execution mode
+- GitHub Pages development blog
 
-If direct index collection fails, it uses ETF proxy data as a fallback.
+---
 
-The fallback proxies are:
+## 3. Important Disclaimer
 
-```text
-KOSPI proxy: KODEX 200
-KOSDAQ proxy: KODEX KOSDAQ 150
-```
+This project is not a trading system.
 
-It also creates a stock market lookup table to identify whether stocks belong to KOSPI or KOSDAQ.
+It is built for:
 
-Generated raw files:
+- research practice
+- data pipeline design
+- model evaluation practice
+- portfolio demonstration
+- event-driven financial data analysis experimentation
 
-```text
-data/raw/market_index_YYYYMMDD.csv
-data/raw/stock_market_lookup_YYYYMMDD.csv
-```
+The outputs should not be interpreted as investment advice.
 
-### Market-Adjusted Feature Builder
+---
 
-```text
-src/features/market_adjusted_features.py
-```
+## 4. System Architecture
 
-This module joins error-note data with market index data and calculates market-adjusted returns.
+The current pipeline follows this structure:
 
-Generated processed file:
+Disclosure Data  
+→ Event Parsing  
+→ Event Scoring  
+→ News Features  
+→ Stock Price Reaction  
+→ Market-Adjusted Features  
+→ Market-Adjusted Evaluation  
+→ Market-Adjusted Score  
+→ Trading Volume Features  
+→ Trading Volume Score  
+→ Candidate Reports  
+→ Performance History Report
 
-```text
-data/processed/market_adjusted_features_YYYYMMDD.csv
-```
+The full catch-up pipeline currently runs 19 steps:
 
-The main features are:
+1. Daily Pipeline
+2. Pending Re-Evaluator
+3. Market Index Collection
+4. Market-Adjusted Features
+5. Market-Adjusted Evaluation
+6. Market-Adjusted Score Integration
+7. Market-Adjusted Daily Candidate Report
+8. Trading Volume Features
+9. Trading Volume Score Integration
+10. Volume + Market-Adjusted Daily Candidate Report
+11. Model Performance History Report
+12. Automation Status Report
+13. Automation History
+14. Confidence Report
+15. Return Prediction Report
+16. Daily Stock Candidate Report
+17. Event-Type Performance Report
+18. Stock-Specific Pattern Report
+19. Completed
 
-```text
-market_next_open_return
-market_next_close_return
-market_adjusted_next_open_return
-market_adjusted_next_close_return
-market_group
-market_group_source
-market_source_type
-market_proxy_name
-```
+---
 
-The core calculation is:
-
-```text
-market_adjusted_next_close_return
-= stock_next_close_return - market_next_close_return
-```
-
-## Recommendation Layer
-
-The current recommendation score is calculated as:
-
-```text
-base_recommendation_score
-+ error_note_adjustment_score
-+ event_type_performance_adjustment_score
-+ stock_specific_pattern_adjustment_score
-= adjusted_recommendation_score
-```
+## 5. Main Components
 
-The next step is to incorporate market-adjusted returns into evaluation and recommendation logic.
+### 5.1 DART Disclosure Collection
 
-## Stock-Level Learning Layer
+Collects Korean disclosure data using OpenDART.
 
-The project includes a stock-specific historical pattern report.
+Main file:
 
-```text
-src/report_generator/stock_pattern_report.py
-```
+- src/crawler/dart_collector.py
 
-The report is generated at:
+Output:
 
-```text
-reports/daily_review/YYYY-MM-DD_stock_pattern_report.md
-```
+- data/raw/dart_disclosures_YYYYMMDD.csv
 
-## Event-Type Learning Layer
+### 5.2 Disclosure Event Parsing
 
-The project includes an event-type performance report.
+Classifies disclosure titles into event types.
 
-```text
-src/report_generator/event_type_performance_report.py
-```
+Main file:
 
-The report is generated at:
+- src/parser/dart_parser.py
 
-```text
-reports/daily_review/YYYY-MM-DD_event_type_performance_report.md
-```
+Example event types:
 
-## Operating Modes
+- supply_contract
+- paid_in_capital_increase
+- bonus_issue
+- convertible_bond
+- bond_with_warrant
+- major_shareholder_change
+- earnings_guidance
+- lawsuit
+- disclosure_violation
+- investment_decision
+- merger
+- spin_off
+- other
 
-The catch-up script currently runs:
+### 5.3 Event Scoring
 
-```text
-[1/12] Daily Pipeline
-[2/12] Pending Re-Evaluator
-[3/12] Market Index Collection
-[4/12] Market-Adjusted Features
-[5/12] Automation Status Report
-[6/12] Automation History
-[7/12] Confidence Report
-[8/12] Return Prediction Report
-[9/12] Daily Stock Candidate Report
-[10/12] Event-Type Performance Report
-[11/12] Stock-Specific Pattern Report
-[12/12] Completed
-```
+Applies rule-based scoring to key disclosure events.
 
-## Latest Blog Posts
-
-* Day 1: DART API Collector and Event Report
-* Day 2: Automated Event Scoring Pipeline
-* Day 3: Prediction Review and Error Note Generator
-* Day 4: News Features and ML Dataset Builder
-* Day 5: Baseline Machine Learning Model
-* Day 6: Pending Event Re-Evaluation System
-* Day 7: Local Daily Automation Scripts
-* Day 8: Scheduled Local Automation
-* Day 9: Catch-Up Execution Mode
-* Day 10: Automation Status Report
-* Day 11: Automation History Tracker
-* Day 12: Confidence Tracker
-* Day 13: Return Prediction Model
-* Day 14: Daily Stock Recommender
-* Day 15: Single Stock Predictor
-* Day 16: Advanced Error Note Generator
-* Day 17: Error-Note-Aware Recommender
-* Day 18: Event-Type Performance Report
-* Day 19: Event-Type Success Rate Adjustment
-* Day 20: Stock-Specific Historical Pattern Report
-* Day 21: Stock-Specific Pattern Adjustment
-* Day 22: Market Index and Market-Adjusted Return Features
+Main file:
 
-## Next Steps
+- src/features/event_scoring.py
 
-* Use market-adjusted returns in error-note evaluation
-* Add market-adjusted success/failure logic
-* Separate stock-specific reaction from market-wide movement
-* Add sector-level return comparison
-* Add trading volume features
-* Add model performance history
-* Add automatic Git commit and push
-* Add automatic daily blog generation
-* Add probability-based prediction output
-* Add feature importance analysis
-* Expand news sources and sentiment analysis
-* Add SNS and investor attention indicators
+The scoring system assigns:
 
-## Day 23 Update: Market-Adjusted Evaluation Logic
+- prediction_direction
+- event_score
+- confidence_level
 
-The project now includes market-adjusted evaluation logic.
+### 5.4 News Feature Generation
 
-```text
-src/evaluator/market_adjusted_evaluator.py
-```
+Collects Naver news metadata and creates simple news features.
 
-This evaluator checks whether a stock moved meaningfully after adjusting for broader market movement.
+Main files:
 
-Previously, the system mainly checked whether a stock went up or down after an event.
+- src/crawler/news_collector.py
+- src/features/news_features.py
 
-Now, the system also checks whether the stock outperformed or underperformed the market.
+Generated features include:
 
-### Input
+- news_count
+- positive_keyword_count
+- negative_keyword_count
+- news_sentiment_score
+- news_attention_score
+- top_news_titles
 
-```text
-data/processed/market_adjusted_features_YYYYMMDD.csv
-```
+### 5.5 Price Reaction Evaluation
 
-### Outputs
+Collects stock price data and evaluates next-trading-day reactions.
 
-```text
-data/predictions/market_adjusted_evaluation_YYYYMMDD.csv
-reports/daily_review/YYYY-MM-DD_market_adjusted_evaluation_report.md
-```
+Main files:
 
-### Market-Adjusted Result Categories
+- src/crawler/price_collector.py
+- src/evaluator/event_price_reaction.py
 
-```text
-market_adjusted_success
-market_driven_weak_success
-relative_success_but_absolute_loss
-market_adjusted_failure
-relative_failure_despite_absolute_gain
-market_adjusted_volatility_success
-market_driven_volatility
-volatility_overestimated
-market_data_missing
-pending
-```
-
-### Additional Explanation Fields
-
-```text
-market_adjusted_reason
-market_adjusted_learning_point
-market_adjusted_confidence_adjustment
-```
-
-These fields help explain whether a prediction was truly event-driven or mostly caused by broader market movement.
-
-### Updated Catch-Up Flow
-
-```text
-[1/13] Daily Pipeline
-[2/13] Pending Re-Evaluator
-[3/13] Market Index Collection
-[4/13] Market-Adjusted Features
-[5/13] Market-Adjusted Evaluation
-[6/13] Automation Status Report
-[7/13] Automation History
-[8/13] Confidence Report
-[9/13] Return Prediction Report
-[10/13] Daily Stock Candidate Report
-[11/13] Event-Type Performance Report
-[12/13] Stock-Specific Pattern Report
-[13/13] Completed
-```
-
-### Latest Progress
-
-* Day 22: Market Index and Market-Adjusted Return Features
-* Day 23: Market-Adjusted Evaluation Logic
-
-### Next Step
-
-The next step is to use market-adjusted evaluation results in confidence tracking and daily recommendation scoring.
-
-## Day 24 Update: Market-Adjusted Score Integration
-
-The project now includes a market-adjusted score integration layer.
-
-```text
-src/models/market_adjusted_score_integrator.py
-```
-
-This module converts market-adjusted evaluation results into recommendation score adjustment signals.
-
-### Input
-
-```text
-data/predictions/market_adjusted_evaluation_YYYYMMDD.csv
-```
-
-### Outputs
-
-```text
-data/processed/market_adjusted_score_adjustments_YYYYMMDD.csv
-reports/daily_review/YYYY-MM-DD_market_adjusted_score_report.md
-```
-
-### Score Rules
-
-```text
-market_adjusted_success: +15
-market_driven_weak_success: -5
-relative_success_but_absolute_loss: +5
-market_adjusted_failure: -15
-relative_failure_despite_absolute_gain: -10
-market_adjusted_volatility_success: +10
-market_driven_volatility: -5
-volatility_overestimated: -10
-market_data_missing: 0
-pending: 0
-unknown: 0
-```
-
-### New Fields
-
-```text
-market_adjusted_score_adjustment
-market_adjusted_adjustment_label
-market_adjusted_adjustment_reason
-```
-
-These fields allow the system to reward predictions that outperform the market and reduce confidence when a stock only moved because the broader market moved.
-
-### Updated Catch-Up Flow
-
-```text
-[1/14] Daily Pipeline
-[2/14] Pending Re-Evaluator
-[3/14] Market Index Collection
-[4/14] Market-Adjusted Features
-[5/14] Market-Adjusted Evaluation
-[6/14] Market-Adjusted Score Integration
-[7/14] Automation Status Report
-[8/14] Automation History
-[9/14] Confidence Report
-[10/14] Return Prediction Report
-[11/14] Daily Stock Candidate Report
-[12/14] Event-Type Performance Report
-[13/14] Stock-Specific Pattern Report
-[14/14] Completed
-```
-
-### Latest Progress
-
-* Day 22: Market Index and Market-Adjusted Return Features
-* Day 23: Market-Adjusted Evaluation Logic
-* Day 24: Market-Adjusted Score Integration
-
-### Next Step
-
-The next step is to connect the market-adjusted score adjustment directly into the daily stock recommender's final adjusted score.
+Output:
 
+- data/predictions/event_price_reaction_STOCK.csv
+
+### 5.6 Error Note Generator
+
+Generates structured review notes for prediction results.
+
+Main file:
+
+- src/evaluator/error_note_generator.py
+
+Generated fields include:
+
+- prediction_result
+- error_category
+- detailed_error_reason
+- learning_point
+- next_rule_adjustment
+- confidence_adjustment
+
+### 5.7 Machine Learning Dataset Builder
+
+Combines event, news, price reaction, and error-note data.
+
+Main file:
+
+- src/features/ml_dataset_builder.py
+
+Output:
+
+- data/processed/ml_dataset_YYYYMMDD.csv
+
+---
+
+## 6. Market-Adjusted Layer
+
+### 6.1 Market Index Collection
+
+Collects KOSPI and KOSDAQ market reference data.
+
+Main file:
+
+- src/crawler/market_index_collector.py
+
+If direct index collection fails, ETF proxy data is used.
+
+Outputs:
+
+- data/raw/market_index_YYYYMMDD.csv
+- data/raw/stock_market_lookup_YYYYMMDD.csv
+
+### 6.2 Market-Adjusted Features
+
+Calculates stock returns relative to market returns.
+
+Main file:
+
+- src/features/market_adjusted_features.py
+
+Core idea:
+
+market-adjusted return = stock return - market return
+
+Output:
+
+- data/processed/market_adjusted_features_YYYYMMDD.csv
+
+### 6.3 Market-Adjusted Evaluation
+
+Evaluates whether a stock truly outperformed the market.
+
+Main file:
+
+- src/evaluator/market_adjusted_evaluator.py
+
+Output:
+
+- reports/daily_review/YYYY-MM-DD_market_adjusted_evaluation_report.md
+
+Example result categories:
+
+- market_adjusted_success
+- market_driven_weak_success
+- relative_success_but_absolute_loss
+- market_adjusted_failure
+- relative_failure_despite_absolute_gain
+- market_adjusted_volatility_success
+- market_driven_volatility
+- volatility_overestimated
+- pending
+
+### 6.4 Market-Adjusted Score Integration
+
+Converts market-adjusted evaluation into score adjustments.
+
+Main file:
+
+- src/models/market_adjusted_score_integrator.py
+
+Output:
+
+- reports/daily_review/YYYY-MM-DD_market_adjusted_score_report.md
+
+---
+
+## 7. Trading Volume Layer
+
+### 7.1 Trading Volume Features
+
+Measures event-day and next-day volume relative to historical volume.
+
+Main file:
+
+- src/features/trading_volume_features.py
+
+Output:
+
+- reports/daily_review/YYYY-MM-DD_trading_volume_feature_report.md
+
+Generated labels:
+
+- extreme_volume_spike
+- strong_volume_spike
+- moderate_volume_increase
+- normal_or_weak_volume
+- insufficient_volume_baseline
+- price_file_missing
+
+### 7.2 Trading Volume Score Integration
+
+Converts volume reaction labels into score adjustments.
+
+Main file:
+
+- src/models/trading_volume_score_integrator.py
+
+Output:
+
+- reports/daily_review/YYYY-MM-DD_trading_volume_score_report.md
+
+---
+
+## 8. Candidate Reports
+
+### 8.1 Daily Stock Candidate Report
+
+Main daily candidate report.
+
+Main file:
+
+- src/models/daily_stock_recommender.py
+
+Output:
+
+- reports/daily_prediction/YYYY-MM-DD_daily_stock_candidates.md
+
+### 8.2 Market-Adjusted Daily Candidate Report
+
+Candidate report using market-adjusted score adjustment.
+
+Main file:
+
+- src/models/market_adjusted_daily_recommender.py
+
+Output:
+
+- reports/daily_prediction/YYYY-MM-DD_market_adjusted_daily_candidates.md
+
+### 8.3 Volume + Market-Adjusted Daily Candidate Report
+
+Candidate report using both market-adjusted score and trading-volume score.
+
+Main file:
+
+- src/models/volume_market_adjusted_daily_recommender.py
+
+Output:
+
+- reports/daily_prediction/YYYY-MM-DD_volume_market_adjusted_daily_candidates.md
+
+Current v3 score formula:
+
+base recommendation score + market-adjusted score adjustment + trading-volume score adjustment = final score
+
+---
+
+## 9. Review and Monitoring Reports
+
+The project generates multiple review reports:
+
+- reports/daily_review/YYYY-MM-DD_automation_status_report.md
+- reports/daily_review/YYYY-MM-DD_confidence_report.md
+- reports/daily_review/YYYY-MM-DD_return_prediction_report.md
+- reports/daily_review/YYYY-MM-DD_event_type_performance_report.md
+- reports/daily_review/YYYY-MM-DD_stock_pattern_report.md
+- reports/daily_review/YYYY-MM-DD_model_performance_history_report.md
+
+The model performance history report summarizes:
+
+- ML dataset rows
+- error-note rows
+- prediction success, failure, and pending counts
+- market-adjusted result counts
+- trading-volume adjustment counts
+- event-type performance
+- automation history
+
+Main file:
+
+- src/report_generator/model_performance_history_report.py
+
+---
+
+## 10. Single Stock Predictor
+
+A focused report can be generated for one stock code.
+
+Example:
+
+python src/models/single_stock_predictor.py 005930
+
+Output:
+
+- reports/single_stock/YYYY-MM-DD_005930_single_stock_report.md
+
+---
+
+## 11. How to Run
+
+Activate the environment:
+
+cd ~/Desktop/overnight_alpha_lab  
+source .venv/bin/activate
+
+Run the full catch-up pipeline:
+
+./scripts/run_catchup.sh
+
+Check logs:
+
+tail -n 800 logs/catchup_$(date +"%Y-%m-%d").log
+
+---
+
+## 12. Project Structure
+
+Main folders:
+
+- data/raw
+- data/processed
+- data/predictions
+- docs/posts
+- logs
+- reports/daily_prediction
+- reports/daily_review
+- reports/single_stock
+- scripts
+- src/crawler
+- src/evaluator
+- src/features
+- src/models
+- src/parser
+- src/pipeline
+- src/report_generator
+
+---
+
+## 13. Development Log
+
+The project was built incrementally from Day 1 to Day 30.
+
+Recent milestones:
+
+- Day 22: Market-Adjusted Return Features
+- Day 23: Market-Adjusted Evaluation Logic
+- Day 24: Market-Adjusted Score Integration
+- Day 25: Market-Adjusted Daily Candidate Report
+- Day 26: Trading Volume Feature Report
+- Day 27: Trading Volume Score Integration
+- Day 28: Volume + Market-Adjusted Daily Candidate Report
+- Day 29: Model Performance History Report
+- Day 30: Final MVP Cleanup
+
+Detailed posts are available in the GitHub Pages blog under docs/posts.
+
+---
+
+## 14. Current Limitations
+
+The current MVP still has limitations:
+
+- limited historical sample size
+- many pending rows due to next-trading-day data availability
+- simple rule-based event scoring
+- basic keyword-based news sentiment
+- limited sector-level comparison
+- limited trading volume coverage for some stocks
+- no production web dashboard yet
+- no live trading integration
+
+These limitations are intentional at the MVP stage.
+
+The project focuses on pipeline design, evaluation structure, and portfolio demonstration.
+
+---
+
+## 15. Future Work
+
+Planned improvements include:
+
+- sector-level return comparison
+- more robust market classification
+- expanded news sources
+- SNS and investor attention indicators
+- probability-based prediction output
+- feature importance analysis
+- dashboard prototype
+- automated Git commit and blog generation
+- more advanced machine learning models
+- larger historical backtesting dataset
+
+---
+
+## 16. Conclusion
+
+Overnight Alpha Lab is now a complete local MVP for event-driven stock analysis research.
+
+It includes data collection, event parsing, rule-based scoring, news features, market-adjusted analysis, trading-volume analysis, candidate reports, performance monitoring, and portfolio documentation.
+
+The project is not designed to provide investment advice.
+
+It is designed to demonstrate how an event-driven financial data pipeline can be built, evaluated, and documented step by step.
