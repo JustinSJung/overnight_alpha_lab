@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-06-26
 
-Generated at: 2026-06-26 08:30:33
+Generated at: 2026-06-26 09:55:42
 
 Source feature file: `data/processed/market_adjusted_features_20260626.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **28**
-- pending: **28**
+- Total rows: **34**
+- pending: **34**
 
 ## Interpretation
 
@@ -29,26 +29,26 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 7460 | 에이프로젠 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 85660 | 차바이오텍 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 85660 | 차바이오텍 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 85660 | 차바이오텍 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 211270 | AP위성 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 12510 | 더존비즈온 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 243070 | 휴온스 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 243070 | 휴온스 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 54930 | 유신 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 299660 | 셀리드 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 13700 | 까뮤이앤씨 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 9730 | 이렘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 445090 | 에이직랜드 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 43260 | 성호전자 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 13580 | 계룡건설산업 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 13580 | 계룡건설산업 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215090 | 솔디펜스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 43260 | 성호전자 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 148250 | 알엔투테크놀로지 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 148250 | 알엔투테크놀로지 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 59270 | 해성에어로보틱스 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 340930 | 유일에너테크 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 440110 | 파두 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 440110 | 파두 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 33310 | 엠투엔 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 300080 | 플리토 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 5960 | 동부건설 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 1470 | 삼부토건 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 1470 | 삼부토건 | volatile | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

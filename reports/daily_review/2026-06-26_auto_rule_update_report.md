@@ -8,26 +8,24 @@ The original rule-based event scoring file is not overwritten. The learned rules
 
 ## Summary
 
-- Total event types: **9**
+- Total event types: **7**
 - Active learned rules: **0**
 - Positive adjustment rules: **0**
 - Negative adjustment rules: **0**
-- Held due to insufficient data: **9**
+- Held due to insufficient data: **7**
 - Minimum evaluated count: **5**
 
 ## Learned Event Rules
 
 | event_type | total_count | evaluated_count | success_count | failure_count | pending_count | success_rate | learned_event_score_adjustment | learning_label |
 |---|---|---|---|---|---|---|---|---|
-| convertible_bond | 11 | 0 | 0 | 0 | 11 | 0.00% | 0.0 | hold_insufficient_data |
-| disclosure_violation | 6 | 0 | 0 | 0 | 6 | 0.00% | 0.0 | hold_insufficient_data |
-| investment_decision | 9 | 0 | 0 | 0 | 9 | 0.00% | 0.0 | hold_insufficient_data |
-| lawsuit | 6 | 0 | 0 | 0 | 6 | 0.00% | 0.0 | hold_insufficient_data |
-| major_shareholder_change | 13 | 0 | 0 | 0 | 13 | 0.00% | 0.0 | hold_insufficient_data |
-| merger | 4 | 0 | 0 | 0 | 4 | 0.00% | 0.0 | hold_insufficient_data |
-| paid_in_capital_increase | 13 | 0 | 0 | 0 | 13 | 0.00% | 0.0 | hold_insufficient_data |
-| spin_off | 1 | 0 | 0 | 0 | 1 | 0.00% | 0.0 | hold_insufficient_data |
-| supply_contract | 24 | 0 | 0 | 0 | 24 | 0.00% | 0.0 | hold_insufficient_data |
+| convertible_bond | 1 | 0 | 0 | 0 | 1 | 0.00% | 0.0 | hold_insufficient_data |
+| investment_decision | 5 | 0 | 0 | 0 | 5 | 0.00% | 0.0 | hold_insufficient_data |
+| lawsuit | 3 | 0 | 0 | 0 | 3 | 0.00% | 0.0 | hold_insufficient_data |
+| major_shareholder_change | 4 | 0 | 0 | 0 | 4 | 0.00% | 0.0 | hold_insufficient_data |
+| merger | 2 | 0 | 0 | 0 | 2 | 0.00% | 0.0 | hold_insufficient_data |
+| paid_in_capital_increase | 5 | 0 | 0 | 0 | 5 | 0.00% | 0.0 | hold_insufficient_data |
+| supply_contract | 14 | 0 | 0 | 0 | 14 | 0.00% | 0.0 | hold_insufficient_data |
 
 ## Interpretation
 
