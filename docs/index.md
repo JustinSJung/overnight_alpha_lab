@@ -21,6 +21,10 @@ The project currently includes:
 - Markdown daily report generation
 - First generated DART event report
 
+## Dashboard
+
+- [Latest Dashboard](dashboard.html)
+
 ## Development Log
 
 - [Day 1: DART API Collector and Event Report](posts/2026-06-18-day-1-dart-api.md)

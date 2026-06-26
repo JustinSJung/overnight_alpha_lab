@@ -51,6 +51,7 @@ jobs:
           git add reports/single_stock/*.md || true
           git add docs/*.md || true
           git add docs/posts/*.md || true
+	  git add docs/*.html || true
 
           if git diff --cached --quiet; then
             echo "No generated changes to commit."

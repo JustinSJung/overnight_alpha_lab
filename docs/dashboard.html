@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Overnight Alpha Lab Dashboard</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+    h1 {
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .label {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .status {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .notice {
+      background: #fff8e6;
+      border-left: 5px solid #f0b429;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    input {
+      padding: 12px;
+      font-size: 16px;
+      width: 180px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      padding: 12px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #24292f;
+      color: white;
+      margin-left: 8px;
+    }
+    .result {
+      margin-top: 18px;
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .small {
+      color: #666;
+      font-size: 13px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    td {
+      border-bottom: 1px solid #eee;
+      padding: 10px;
+    }
+    td:first-child {
+      color: #666;
+      width: 220px;
+    }
+    .links a {
+      display: inline-block;
+      margin-right: 12px;
+      margin-bottom: 8px;
+      color: #0969da;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Overnight Alpha Lab Dashboard</h1>
+    <div class="subtitle">
+      자동 실행 기반 공시 이벤트 분석 · 신뢰도 추적 · 종목 간단 조회
+    </div>
+
+    <div class="notice">
+      이 대시보드는 투자 조언이 아닙니다. 현재 시스템의 데이터 축적 상태와 분석 결과를 확인하기 위한 연구용 화면입니다.
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="label">현재 신뢰도 상태</div>
+        <div class="status">NOT READY</div>
+        <div class="small">아직 평가 완료 데이터가 부족합니다. 데이터 축적 단계입니다.</div>
+      </div>
+      <div class="card">
+        <div class="label">누적 성공률</div>
+        <div class="value">0.0%</div>
+      </div>
+      <div class="card">
+        <div class="label">평가 완료</div>
+        <div class="value">0</div>
+      </div>
+      <div class="card">
+        <div class="label">Pending</div>
+        <div class="value">83</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="label">최근 ML 데이터 행 수</div>
+        <div class="value">85</div>
+      </div>
+      <div class="card">
+        <div class="label">성공</div>
+        <div class="value">0</div>
+      </div>
+      <div class="card">
+        <div class="label">실패</div>
+        <div class="value">0</div>
+      </div>
+      <div class="card">
+        <div class="label">마지막 생성 시간</div>
+        <div class="small">2026-06-26 17:10:18</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>종목 간단 조회</h2>
+      <p class="small">
+        현재 ML 데이터셋에 포함된 종목만 즉시 조회됩니다. 예: 005930
+      </p>
+      <input id="stockInput" placeholder="종목코드 6자리" maxlength="6">
+      <button onclick="searchStock()">조회</button>
+      <div id="stockResult" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <h2>주요 리포트</h2>
+      <div class="links">
+        <a href="../README.md">README</a>
+        <a href="index.html">Development Log</a>
+      </div>
+      <p class="small">
+        최신 리포트 파일은 GitHub 저장소의 reports/daily_prediction 및 reports/daily_review 폴더에서 확인할 수 있습니다.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const STOCK_DATA = [{"stock_code": "012510", "corp_name": "더존비즈온", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "243070", "corp_name": "휴온스", "event_type": "merger", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "054930", "corp_name": "유신", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "299660", "corp_name": "셀리드", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "013700", "corp_name": "까뮤이앤씨", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "009730", "corp_name": "이렘", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 5.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "445090", "corp_name": "에이직랜드", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 5.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "043260", "corp_name": "성호전자", "event_type": "bond_with_warrant", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "013580", "corp_name": "계룡건설산업", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 4.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "179530", "corp_name": "애드바이오텍", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 5.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "045390", "corp_name": "대아티아이", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "012630", "corp_name": "HDC", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 3.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "023770", "corp_name": "플레이위드", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "109960", "corp_name": "앱토크롬", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "006570", "corp_name": "대림통상", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 11.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "361610", "corp_name": "SK아이이테크놀로지", "event_type": "paid_in_capital_increase", "prediction_direction": "negative", "event_score": -70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}];
+
+    function fmt(value) {
+      if (value === null || value === undefined || value === "") return "N/A";
+      return value;
+    }
+
+    function searchStock() {
+      const input = document.getElementById("stockInput").value.trim().padStart(6, "0");
+      const box = document.getElementById("stockResult");
+
+      if (!input || input.length !== 6) {
+        box.style.display = "block";
+        box.innerHTML = "<b>종목코드 6자리를 입력하세요.</b>";
+        return;
+      }
+
+      const item = STOCK_DATA.find(x => x.stock_code === input);
+
+      if (!item) {
+        box.style.display = "block";
+        box.innerHTML = `
+          <h3>조회 결과 없음</h3>
+          <p>현재 최신 ML 데이터셋에 이 종목이 없습니다.</p>
+          <p class="small">GitHub Actions 또는 로컬에서 single_stock_predictor를 별도로 실행하면 개별 리포트를 만들 수 있습니다.</p>
+        `;
+        return;
+      }
+
+      box.style.display = "block";
+      box.innerHTML = `
+        <h3>${item.corp_name} (${item.stock_code})</h3>
+        <table>
+          <tr><td>이벤트 유형</td><td>${fmt(item.event_type)}</td></tr>
+          <tr><td>예측 방향</td><td>${fmt(item.prediction_direction)}</td></tr>
+          <tr><td>이벤트 점수</td><td>${fmt(item.event_score)}</td></tr>
+          <tr><td>신뢰도 등급</td><td>${fmt(item.confidence_level)}</td></tr>
+          <tr><td>뉴스 수</td><td>${fmt(item.news_count)}</td></tr>
+          <tr><td>뉴스 감성 점수</td><td>${fmt(item.news_sentiment_score)}</td></tr>
+          <tr><td>현재 평가 결과</td><td>${fmt(item.prediction_result)}</td></tr>
+          <tr><td>다음 종가 수익률</td><td>${fmt(item.next_close_return)}</td></tr>
+          <tr><td>오답/평가 분류</td><td>${fmt(item.error_category)}</td></tr>
+        </table>
+      `;
+    }
+  </script>
+</body>
+</html>

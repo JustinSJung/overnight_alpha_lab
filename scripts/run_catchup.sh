@@ -189,3 +189,7 @@ echo "======================================" >> "$LOG_FILE"
 
 echo "Catch-up completed successfully."
 echo "Log file: $LOG_FILE"
+
+echo "" >> "$LOG_FILE"
+echo "Generating GitHub Pages dashboard..." >> "$LOG_FILE"
+python src/report_generator/dashboard_generator.py >> "$LOG_FILE" 2>&1
