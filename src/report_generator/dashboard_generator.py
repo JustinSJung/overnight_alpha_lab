@@ -86,6 +86,7 @@ def build_metrics():
     latest_market_eval = read_csv(latest_file(PREDICTIONS_DIR, "market_adjusted_evaluation_*.csv"))
     latest_volume_score = read_csv(latest_file(PROCESSED_DIR, "trading_volume_score_adjustments_*.csv"))
     latest_social_attention = read_csv(latest_file(PROCESSED_DIR, "social_attention_features_*.csv"))
+    latest_learned_rules = read_csv(latest_file(PROCESSED_DIR, "learned_event_rules_*.csv"))
 
     if not latest_ml_df.empty and "stock_code" in latest_ml_df.columns:
         latest_ml_df["stock_code"] = latest_ml_df["stock_code"].apply(normalize_stock_code)
@@ -138,6 +139,20 @@ def build_metrics():
 
         if "risk_label" in latest_social_attention.columns:
             risk_noise_count = int((latest_social_attention["risk_label"] != "no_risk_noise").sum())
+    learned_rule_count = len(latest_learned_rules)
+    active_learned_rule_count = 0
+    positive_learned_rule_count = 0
+    negative_learned_rule_count = 0
+
+    if not latest_learned_rules.empty and "learned_event_score_adjustment" in latest_learned_rules.columns:
+        learned_scores = pd.to_numeric(
+            latest_learned_rules["learned_event_score_adjustment"],
+            errors="coerce",
+        ).fillna(0)
+
+        active_learned_rule_count = int((learned_scores != 0).sum())
+        positive_learned_rule_count = int((learned_scores > 0).sum())
+        negative_learned_rule_count = int((learned_scores < 0).sum())
 
     latest_ml_file = str(latest_ml_path) if latest_ml_path else "N/A"
 
@@ -158,6 +173,10 @@ def build_metrics():
 	"high_attention_count": high_attention_count,
 	"rumor_noise_count": rumor_noise_count,
 	"risk_noise_count": risk_noise_count,
+	"learned_rule_count": learned_rule_count,
+	"active_learned_rule_count": active_learned_rule_count,
+	"positive_learned_rule_count": positive_learned_rule_count,
+	"negative_learned_rule_count": negative_learned_rule_count,
     }, latest_ml_df
 
 
@@ -376,6 +395,24 @@ def build_html(metrics, stock_data):
       <div class="card">
         <div class="label">Risk Noise</div>
         <div class="value">{metrics["risk_noise_count"]}</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="label">Learned Rule Types</div>
+        <div class="value">{metrics["learned_rule_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Active Learned Rules</div>
+        <div class="value">{metrics["active_learned_rule_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Positive Rule Updates</div>
+        <div class="value">{metrics["positive_learned_rule_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Negative Rule Updates</div>
+        <div class="value">{metrics["negative_learned_rule_count"]}</div>
       </div>
     </div>
     <div class="card">
