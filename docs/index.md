@@ -49,6 +49,7 @@ The project currently includes:
 - [Day 24: Market-Adjusted Score Integration](posts/2026-06-24-day-24-market-adjusted-score-integration.md)
 - [Day 25: Market-Adjusted Daily Candidate Report](posts/2026-06-24-day-25-market-adjusted-daily-candidate-report.md)
 - [Day 26: Trading Volume Feature Report](posts/2026-06-24-day-26-trading-volume-feature-report.md)
+- [Day 27: Trading Volume Score Integration](posts/2026-06-26-day-27-trading-volume-score-integration.md)
 
 ## Repository
 
