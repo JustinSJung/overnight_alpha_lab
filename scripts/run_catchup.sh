@@ -199,5 +199,9 @@ echo "Generating learned event rules..." >> "$LOG_FILE"
 python src/models/auto_rule_updater.py >> "$LOG_FILE" 2>&1
 
 echo "" >> "$LOG_FILE"
+echo "Generating learned-rule daily candidate report..." >> "$LOG_FILE"
+python src/models/learned_rule_daily_recommender.py >> "$LOG_FILE" 2>&1
+
+echo "" >> "$LOG_FILE"
 echo "Generating GitHub Pages dashboard..." >> "$LOG_FILE"
 python src/report_generator/dashboard_generator.py >> "$LOG_FILE" 2>&1
