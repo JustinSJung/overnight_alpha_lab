@@ -1,6 +1,6 @@
 # Automation Status Report - 2026-06-26
 
-Generated at: 2026-06-26 16:11:02
+Generated at: 2026-06-26 16:17:39
 
 ## Execution Summary
 
@@ -21,17 +21,17 @@ Generated at: 2026-06-26 16:11:02
 |---|---:|
 | Raw DART disclosures | 100 |
 | Parsed DART disclosures | 100 |
-| Selected key events | 13 |
-| Scored key events | 13 |
-| News feature rows | 13 |
-| Error note rows | 16 |
-| ML dataset rows | 16 |
+| Selected key events | 12 |
+| Scored key events | 12 |
+| News feature rows | 12 |
+| Error note rows | 14 |
+| ML dataset rows | 14 |
 
 ## Prediction Result Summary
 
 | Result | Rows |
 |---|---:|
-| Pending | 16 |
+| Pending | 14 |
 | Success | 0 |
 | Failure | 0 |
 | Trainable rows | 0 |
@@ -45,7 +45,7 @@ Generated at: 2026-06-26 16:11:02
 - news_features: `data/processed/event_news_features_20260626.csv`
 - ml_dataset: `data/processed/ml_dataset_20260626.csv`
 - error_notes: `data/predictions/error_notes_20260626.csv`
-- daily_prediction_report: `reports/daily_prediction/2026-06-26_market_adjusted_daily_candidates.md`
+- daily_prediction_report: `reports/daily_prediction/2026-06-26_volume_market_adjusted_daily_candidates.md`
 - baseline_model_report: `reports/daily_review/2026-06-26_baseline_model_report.md`
 
 ## Interpretation
