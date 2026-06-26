@@ -50,6 +50,8 @@ The project currently includes:
 - [Day 25: Market-Adjusted Daily Candidate Report](posts/2026-06-24-day-25-market-adjusted-daily-candidate-report.md)
 - [Day 26: Trading Volume Feature Report](posts/2026-06-24-day-26-trading-volume-feature-report.md)
 - [Day 27: Trading Volume Score Integration](posts/2026-06-26-day-27-trading-volume-score-integration.md)
+- [Day 28: Volume + Market-Adjusted Daily Candidate Report](posts/2026-06-26-day-28-volume-market-adjusted-daily-candidate-report.md)
+- [Day 29: Model Performance History Report](posts/2026-06-26-day-29-model-performance-history-report.md)
 
 ## Repository
 
