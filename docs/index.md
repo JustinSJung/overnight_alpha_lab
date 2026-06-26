@@ -57,6 +57,7 @@ The project currently includes:
 - [Day 28: Volume + Market-Adjusted Daily Candidate Report](posts/2026-06-26-day-28-volume-market-adjusted-daily-candidate-report.md)
 - [Day 29: Model Performance History Report](posts/2026-06-26-day-29-model-performance-history-report.md)
 - [Day 30: Final MVP Cleanup](posts/2026-06-26-day-30-final-mvp-cleanup.md)
+- [Phase 2: Dashboard, Social Attention, and Auto Rule Updater](posts/2026-06-26-phase-2-auto-learning-and-dashboard.md)
 
 ## Repository
 

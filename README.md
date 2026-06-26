@@ -525,7 +525,112 @@ Planned improvements include:
 
 ---
 
-## 16. Conclusion
+---
+
+## 16. Phase 2 Updates: Dashboard and Auto-Learning Layer
+
+After completing the first 30-day MVP, the project was extended with a lightweight web dashboard and an auto-learning rule layer.
+
+### GitHub Actions Automation
+
+The project now includes a GitHub Actions workflow that can run the full catch-up pipeline automatically.
+
+The workflow can be triggered in two ways:
+
+- scheduled weekday execution
+- manual execution from the GitHub Actions tab
+
+This allows the project to keep collecting data and updating reports even without running the pipeline manually on a local machine.
+
+Main file:
+
+- .github/workflows/daily-catchup.yml
+
+### GitHub Pages Dashboard
+
+A simple GitHub Pages dashboard was added to monitor the current system status.
+
+Dashboard file:
+
+- docs/dashboard.html
+
+Dashboard generator:
+
+- src/report_generator/dashboard_generator.py
+
+The dashboard shows:
+
+- system confidence status
+- cumulative success rate
+- evaluated cases
+- pending cases
+- latest ML dataset rows
+- successful predictions
+- failed predictions
+- social attention signals
+- rumor-noise signals
+- risk-noise signals
+- learned rule status
+- quick stock lookup
+
+The dashboard uses English metric names with short Korean sublabels so that both international and Korean readers can understand the system.
+
+### Social Attention Feature Layer
+
+A social attention feature layer was added to capture short-term investor attention and rumor-like noise signals from existing disclosure and news text.
+
+Main file:
+
+- src/features/social_attention_features.py
+
+Generated outputs:
+
+- data/processed/social_attention_features_YYYYMMDD.csv
+- reports/daily_review/YYYY-MM-DD_social_attention_report.md
+
+This layer does not treat rumors as facts. It only uses rumor-like language as a research feature for attention and noise detection.
+
+Generated signals include:
+
+- social attention score
+- rumor noise score
+- risk noise score
+- high attention label
+- rumor noise label
+- risk noise label
+
+### Auto Rule Updater
+
+An auto rule updater was added to move the project from simple evaluation toward a learning rule system.
+
+Main file:
+
+- src/models/auto_rule_updater.py
+
+Generated outputs:
+
+- data/processed/learned_event_rules_YYYYMMDD.csv
+- reports/daily_review/YYYY-MM-DD_auto_rule_update_report.md
+
+The auto rule updater reads accumulated success and failure results and creates event-type score adjustment rules.
+
+The original rule-based scoring file is not overwritten. Instead, learned rules are saved separately and can be safely added as an additional score layer.
+
+The learning logic is conservative:
+
+- if evaluated data is insufficient, the rule is held
+- if historical success rate is high, the event type receives a positive adjustment
+- if historical success rate is low, the event type receives a negative adjustment
+- if historical performance is neutral, no adjustment is applied
+
+This changes the project from:
+
+```text
+prediction → evaluation → error note
+
+---
+
+## 17. Conclusion
 
 Overnight Alpha Lab is now a complete local MVP for event-driven stock analysis research.
 
