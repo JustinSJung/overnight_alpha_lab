@@ -2,7 +2,9 @@
 
 cd "$(dirname "$0")/.."
 
-source .venv/bin/activate
+if [ -f ".venv/bin/activate" ]; then
+    source .venv/bin/activate
+fi
 
 mkdir -p logs
 
