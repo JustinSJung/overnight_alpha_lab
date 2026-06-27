@@ -21,6 +21,14 @@ echo "" >> "$LOG_FILE"
 echo "[1/19] Running daily pipeline..." >> "$LOG_FILE"
 python src/pipeline/daily_pipeline.py >> "$LOG_FILE" 2>&1
 
+if grep -q "Daily pipeline will stop gracefully without error." "$LOG_FILE"; then
+    echo "" >> "$LOG_FILE"
+    echo "No DART data available today." >> "$LOG_FILE"
+    echo "Skipping downstream reports and dashboard update to preserve previous dashboard values." >> "$LOG_FILE"
+    echo "Catch-up execution completed without new data." >> "$LOG_FILE"
+    exit 0
+fi
+
 if [ $? -ne 0 ]; then
     echo "Daily pipeline failed." >> "$LOG_FILE"
     exit 1
