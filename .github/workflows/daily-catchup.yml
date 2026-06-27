@@ -3,7 +3,7 @@ name: Pipeline
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 23 * * 1-5"
+    - cron: "0 23 * * 0-4"
 
 permissions:
   contents: write
@@ -42,6 +42,16 @@ jobs:
       - name: Make scripts executable
         run: |
           chmod +x scripts/run_catchup.sh
+
+      - name: Prepare runtime directories
+        run: |
+          mkdir -p data/raw
+          mkdir -p data/processed
+          mkdir -p data/predictions
+          mkdir -p reports/daily_prediction
+          mkdir -p reports/daily_review
+          mkdir -p reports/single_stock
+          mkdir -p logs
 
       - name: Run catch-up pipeline
         run: |

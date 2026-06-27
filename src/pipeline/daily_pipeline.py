@@ -15,7 +15,7 @@ import subprocess
 from datetime import datetime
 
 import pandas as pd
-
+from pathlib import Path
 
 KEY_EVENT_TYPES = [
     "supply_contract",
@@ -139,6 +139,15 @@ def main():
 
     # 1. Collect DART disclosures
     run_command(["python", "src/crawler/dart_collector.py"])
+
+    raw_dir = Path("data/raw")
+    raw_files = sorted(raw_dir.glob("dart_disclosures_*.csv"))
+
+    if not raw_files:
+        print("No DART raw disclosure file found.")
+        print("This can happen on weekends, holidays, or days with no returned disclosures.")
+        print("Daily pipeline will stop gracefully without error.")
+        return
 
     # 2. Parse DART disclosures
     run_command(["python", "src/parser/dart_parser.py"])
