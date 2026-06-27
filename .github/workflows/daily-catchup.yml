@@ -44,8 +44,20 @@ jobs:
           chmod +x scripts/run_catchup.sh
 
       - name: Run catch-up pipeline
-        run: |
-          ./scripts/run_catchup.sh
+          run: |
+            set +e
+            ./scripts/run_catchup.sh
+            EXIT_CODE=$?
+
+            echo ""
+            echo "===== Catch-up logs ====="
+            if ls logs/catchup_*.log 1> /dev/null 2>&1; then
+              tail -n 300 logs/catchup_*.log
+            else
+              echo "No catch-up log file found."
+            fi
+
+            exit $EXIT_CODE
 
       - name: Commit generated reports and dashboard
         run: |
