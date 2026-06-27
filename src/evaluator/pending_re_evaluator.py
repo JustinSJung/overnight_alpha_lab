@@ -99,7 +99,14 @@ def get_pending_stock_codes(pending_df: pd.DataFrame) -> list[str]:
 def main():
     print("Starting pending event re-evaluation...")
 
-    ml_dataset_path = get_latest_ml_dataset()
+    try:
+        ml_dataset_path = get_latest_ml_dataset()
+    except FileNotFoundError:
+        print("No ML dataset file found.")
+        print("This can happen on weekends, holidays, or days with no DART data.")
+        print("Pending re-evaluator will stop gracefully without error.")
+        return    
+
     print("Latest ML dataset:", ml_dataset_path)
 
     pending_df = load_pending_events(ml_dataset_path)
