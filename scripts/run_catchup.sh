@@ -215,3 +215,5 @@ python src/models/learned_rule_daily_recommender.py >> "$LOG_FILE" 2>&1
 echo "" >> "$LOG_FILE"
 echo "Generating GitHub Pages dashboard..." >> "$LOG_FILE"
 python src/report_generator/dashboard_generator.py >> "$LOG_FILE" 2>&1
+
+exit 0
