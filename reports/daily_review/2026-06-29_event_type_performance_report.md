@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-06-29
 
-Generated at: 2026-06-29 01:54:49
+Generated at: 2026-06-29 14:39:40
 
 ## Purpose
 
@@ -12,11 +12,11 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **131**
+- Total error-note rows: **165**
 - Evaluated rows: **0**
 - Success rows: **0**
 - Failure rows: **0**
-- Pending rows: **131**
+- Pending rows: **165**
 - Overall success rate: **N/A**
 
 Most rows are still pending. Event-type success rates will become meaningful after next-day price reactions are evaluated.
@@ -25,15 +25,15 @@ Most rows are still pending. Event-type success rates will become meaningful aft
 
 | Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| supply_contract | 43 | 0 | 0 | 0 | 43 | N/A | N/A | N/A | neutral |
+| supply_contract | 46 | 0 | 0 | 0 | 46 | N/A | N/A | N/A | neutral |
+| paid_in_capital_increase | 33 | 0 | 0 | 0 | 33 | N/A | N/A | N/A | neutral |
 | major_shareholder_change | 20 | 0 | 0 | 0 | 20 | N/A | N/A | N/A | neutral |
-| paid_in_capital_increase | 19 | 0 | 0 | 0 | 19 | N/A | N/A | N/A | neutral |
-| investment_decision | 15 | 0 | 0 | 0 | 15 | N/A | N/A | N/A | neutral |
-| convertible_bond | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | neutral |
-| lawsuit | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | neutral |
-| disclosure_violation | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | neutral |
+| investment_decision | 16 | 0 | 0 | 0 | 16 | N/A | N/A | N/A | neutral |
+| convertible_bond | 14 | 0 | 0 | 0 | 14 | N/A | N/A | N/A | neutral |
+| lawsuit | 11 | 0 | 0 | 0 | 11 | N/A | N/A | N/A | neutral |
+| disclosure_violation | 10 | 0 | 0 | 0 | 10 | N/A | N/A | N/A | neutral |
+| spin_off | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | neutral |
 | merger | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | neutral |
-| spin_off | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | neutral |
 
 ## How to Read This Report
 

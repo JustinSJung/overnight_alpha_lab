@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-06-29
 
-Generated at: 2026-06-29 01:54:46
+Generated at: 2026-06-29 14:39:37
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260629.csv`
 
@@ -23,51 +23,52 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **29**
+- Total rows: **4713**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **29**
+- neutral_volume_adjustment: **4713**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **29**
+- insufficient_volume_baseline: **4713**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
-| 20260629 | 118000 | 메타케어 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 480370 | 씨케이솔루션 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 068790 | DMS | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 011930 | 신성이엔지 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 445090 | 에이직랜드 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260629 | 300080 | 플리토 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 068240 | 다원시스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 109740 | 디에스케이 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 109740 | 디에스케이 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 109740 | 디에스케이 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 109740 | 디에스케이 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 247540 | 에코프로비엠 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260629 | 083660 | CSA 코스믹 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 

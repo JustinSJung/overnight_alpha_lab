@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-06-29
 
-Generated at: 2026-06-29 01:54:45
+Generated at: 2026-06-29 14:39:36
 
 ML dataset source: `data/processed/ml_dataset_20260629.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260629.csv`
@@ -25,10 +25,10 @@ base_recommendation_score_v2
 
 ## Summary
 
-- Total rows: **11**
-- positive_candidate: **7**
-- volatile_watchlist: **3**
-- risk_or_avoid_review: **1**
+- Total rows: **109**
+- positive_candidate: **75**
+- risk_or_avoid_review: **33**
+- volatile_watchlist: **1**
 
 ## Strong Market-Adjusted Candidates
 
@@ -38,13 +38,26 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 068790 | DMS | supply_contract | positive | pending | pending | 150.00 | 0.00 | 150.00 | N/A |
-| 1970-01-01 | 445090 | 에이직랜드 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
-| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
-| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
-| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
-| 1970-01-01 | 480370 | 씨케이솔루션 | supply_contract | positive | pending | pending | 85.00 | 0.00 | 85.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
+| 1970-01-01 | 006050 | 국영지앤엠 | supply_contract | positive | pending | pending | 145.00 | 0.00 | 145.00 | N/A |
 
 ## Watchlist Candidates
 
@@ -54,15 +67,32 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 011930 | 신성이엔지 | major_shareholder_change | volatile | pending | pending | 16.00 | 0.00 | 16.00 | N/A |
-| 1970-01-01 | 011930 | 신성이엔지 | major_shareholder_change | volatile | pending | pending | 16.00 | 0.00 | 16.00 | N/A |
-| 1970-01-01 | 011930 | 신성이엔지 | major_shareholder_change | volatile | pending | pending | 16.00 | 0.00 | 16.00 | N/A |
+| 1970-01-01 | 245620 | EDGC | major_shareholder_change | volatile | pending | pending | 6.00 | 0.00 | 6.00 | N/A |
 
 ## Risk / Avoid Review
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 118000 | 메타케어 | paid_in_capital_increase | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
+| 1970-01-01 | 260870 | SK시그넷 | paid_in_capital_increase | negative | pending | pending | -35.00 | 0.00 | -35.00 | N/A |
+| 1970-01-01 | 445680 | 큐리옥스바이오시스템즈 | convertible_bond | negative | pending | pending | -40.00 | 0.00 | -40.00 | N/A |
+| 1970-01-01 | 247540 | 에코프로비엠 | lawsuit | negative | pending | pending | -45.00 | 0.00 | -45.00 | N/A |
+| 1970-01-01 | 214370 | 케어젠 | disclosure_violation | negative | pending | pending | -45.00 | 0.00 | -45.00 | N/A |
+| 1970-01-01 | 317770 | 엑스페릭스 | convertible_bond | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 079940 | 가비아 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
 
 ## General Review
 

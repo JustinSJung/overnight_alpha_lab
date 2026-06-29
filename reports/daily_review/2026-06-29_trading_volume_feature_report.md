@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-06-29
 
-Generated at: 2026-06-29 01:54:46
+Generated at: 2026-06-29 14:39:36
 
 Source ML dataset: `data/processed/ml_dataset_20260629.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **29**
-- Rows with price file found: **29**
+- Total rows: **4713**
+- Rows with price file found: **4713**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **29**
+- insufficient_volume_baseline: **4713**
 
 ## Interpretation
 
@@ -35,35 +35,36 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260629 | 118000 | 메타케어 | paid_in_capital_increase | negative | N/A | 116,762 | N/A | N/A | 100,634 | N/A |
-| 20260629 | 480370 | 씨케이솔루션 | supply_contract | positive | N/A | 235,971 | N/A | N/A | 147,437 | N/A |
-| 20260629 | 068790 | DMS | supply_contract | positive | N/A | 173,999 | N/A | N/A | 179,485 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 011930 | 신성이엔지 | major_shareholder_change | volatile | N/A | 702,257 | N/A | N/A | 633,769 | N/A |
-| 20260629 | 445090 | 에이직랜드 | supply_contract | positive | N/A | 125,078 | N/A | N/A | 397,360 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
-| 20260629 | 300080 | 플리토 | supply_contract | positive | N/A | 1,113,577 | N/A | N/A | 371,027 | N/A |
+| 20260629 | 068240 | 다원시스 | disclosure_violation | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260629 | 109740 | 디에스케이 | major_shareholder_change | volatile | N/A | 117,407 | N/A | N/A | 39,601 | N/A |
+| 20260629 | 109740 | 디에스케이 | major_shareholder_change | volatile | N/A | 117,407 | N/A | N/A | 39,601 | N/A |
+| 20260629 | 109740 | 디에스케이 | major_shareholder_change | volatile | N/A | 117,407 | N/A | N/A | 39,601 | N/A |
+| 20260629 | 109740 | 디에스케이 | major_shareholder_change | volatile | N/A | 117,407 | N/A | N/A | 39,601 | N/A |
+| 20260629 | 247540 | 에코프로비엠 | lawsuit | negative | N/A | 662,016 | N/A | N/A | 867,237 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
+| 20260629 | 083660 | CSA 코스믹 | spin_off | volatile | N/A | 726,438 | N/A | N/A | 489,368 | N/A |
 
 ## Next Step
 

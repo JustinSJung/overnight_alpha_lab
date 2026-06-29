@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-06-29
 
-Generated at: 2026-06-29 01:54:49
+Generated at: 2026-06-29 14:39:40
 
 ML dataset: `data/processed/ml_dataset_20260629.csv`
 
@@ -29,7 +29,7 @@ The recommender now applies a stock-specific historical adjustment. Stocks with 
 | 005610 | 삼립 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 005960 | 동부건설 | 2 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 006040 | 동원산업 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
-| 006360 | GS건설 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
+| 006050 | 국영지앤엠 | 8 | 0 | N/A | Not available | mostly_pending | 0.00 |
 
 ## Event-Type Success Rate Adjustment
 
@@ -37,15 +37,15 @@ The recommender also applies event-type performance adjustments based on histori
 
 | Event Type | Total | Evaluated | Success Rate | Avg Next Close | Total Adj |
 |---|---:|---:|---:|---:|---:|
-| convertible_bond | 12 | 0 | N/A | Not available | 0.00 |
-| disclosure_violation | 6 | 0 | N/A | Not available | 0.00 |
-| investment_decision | 15 | 0 | N/A | Not available | 0.00 |
-| lawsuit | 9 | 0 | N/A | Not available | 0.00 |
+| convertible_bond | 14 | 0 | N/A | Not available | 0.00 |
+| disclosure_violation | 10 | 0 | N/A | Not available | 0.00 |
+| investment_decision | 16 | 0 | N/A | Not available | 0.00 |
+| lawsuit | 11 | 0 | N/A | Not available | 0.00 |
 | major_shareholder_change | 20 | 0 | N/A | Not available | 0.00 |
 | merger | 6 | 0 | N/A | Not available | 0.00 |
-| paid_in_capital_increase | 19 | 0 | N/A | Not available | 0.00 |
-| spin_off | 1 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 43 | 0 | N/A | Not available | 0.00 |
+| paid_in_capital_increase | 33 | 0 | N/A | Not available | 0.00 |
+| spin_off | 9 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 46 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -53,199 +53,201 @@ The recommender also reads past error notes and applies event-type level confide
 
 | Event Type | Notes | Success | Failure | Pending | Adjustment |
 |---|---:|---:|---:|---:|---:|
-| convertible_bond | 12 | 0 | 0 | 12 | 0.00 |
-| disclosure_violation | 6 | 0 | 0 | 6 | 0.00 |
-| investment_decision | 15 | 0 | 0 | 15 | 0.00 |
-| lawsuit | 9 | 0 | 0 | 9 | 0.00 |
+| convertible_bond | 14 | 0 | 0 | 14 | 0.00 |
+| disclosure_violation | 10 | 0 | 0 | 10 | 0.00 |
+| investment_decision | 16 | 0 | 0 | 16 | 0.00 |
+| lawsuit | 11 | 0 | 0 | 11 | 0.00 |
 | major_shareholder_change | 20 | 0 | 0 | 20 | 0.00 |
 | merger | 6 | 0 | 0 | 6 | 0.00 |
-| paid_in_capital_increase | 19 | 0 | 0 | 19 | 0.00 |
-| spin_off | 1 | 0 | 0 | 1 | 0.00 |
-| supply_contract | 43 | 0 | 0 | 43 | 0.00 |
+| paid_in_capital_increase | 33 | 0 | 0 | 33 | 0.00 |
+| spin_off | 9 | 0 | 0 | 9 | 0.00 |
+| supply_contract | 46 | 0 | 0 | 46 | 0.00 |
 
 ## Positive Candidates
 
-### 1. DMS (068790)
+### 1. 국영지앤엠 (006050)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **155.00**
+- Base recommendation score: **150.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **155.00**
+- Adjusted recommendation score: **150.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 13. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: DMS, 677억 규모 디스플레이패널 장비 공급 계약 | [공시] DMS, 676억원 디스플레이패널 제조용 공정장비 공급계약 | DMS, 中 CSOT 8세대 OLED 라인에 677억 장비 공급
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
 
-### 2. 에이직랜드 (445090)
+### 2. 국영지앤엠 (006050)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **135.00**
+- Base recommendation score: **150.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **135.00**
+- Adjusted recommendation score: **150.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 에이직랜드, SK하이닉스와 318억 규모 주문형 반도체 설계 계약 | AI 데이터센터 시대...에이직랜드·SK하이닉스, 차세대 eSSD 개발 맞손 | 에이직랜드, SK하이닉스 차세대 eSSD 개발 참여...319억원 규모 계약 체...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
 
-### 3. 플리토 (300080)
+### 3. 국영지앤엠 (006050)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **105.00**
+- Base recommendation score: **150.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **105.00**
+- Adjusted recommendation score: **150.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 플리토, 단일판매공급계약→주권매매거래 정지 예고 | 밀집도 분석, 다국어 안내 등…AI 기술로 관광 현장 문제 해결 | 한국관광공사, 국립공원과 전통시장에 AI 심은 이유
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
 
-### 4. 플리토 (300080)
+### 4. 국영지앤엠 (006050)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **105.00**
+- Base recommendation score: **150.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **105.00**
+- Adjusted recommendation score: **150.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 플리토, 단일판매공급계약→주권매매거래 정지 예고 | 밀집도 분석, 다국어 안내 등…AI 기술로 관광 현장 문제 해결 | 한국관광공사, 국립공원과 전통시장에 AI 심은 이유
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
 
-### 5. 플리토 (300080)
+### 5. 국영지앤엠 (006050)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **105.00**
+- Base recommendation score: **150.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **105.00**
+- Adjusted recommendation score: **150.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 플리토, 단일판매공급계약→주권매매거래 정지 예고 | 밀집도 분석, 다국어 안내 등…AI 기술로 관광 현장 문제 해결 | 한국관광공사, 국립공원과 전통시장에 AI 심은 이유
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
 
-### 6. 플리토 (300080)
+### 6. 국영지앤엠 (006050)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **105.00**
+- Base recommendation score: **150.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **105.00**
+- Adjusted recommendation score: **150.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 플리토, 단일판매공급계약→주권매매거래 정지 예고 | 밀집도 분석, 다국어 안내 등…AI 기술로 관광 현장 문제 해결 | 한국관광공사, 국립공원과 전통시장에 AI 심은 이유
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
 
-### 7. 씨케이솔루션 (480370)
+### 7. 국영지앤엠 (006050)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **84.00**
+- Base recommendation score: **150.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **84.00**
+- Adjusted recommendation score: **150.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 0. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [52주] 최고가 7개, 최저가 124개... 지수 상승 | 반도체 쏠림에 얼어붙은 IPO 시장…하반기 훈풍 올까 [IPO의 새 지평을 ... | "로봇·물류 멈추면 공장도 아웃"... 씨피시스템, 자동화 핵심 부품으로...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
+
+### 8. 국영지앤엠 (006050)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **150.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **150.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
+
+### 9. 국영지앤엠 (006050)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **150.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **150.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
+
+### 10. 국영지앤엠 (006050)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **150.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **150.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 12. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 단순 시공 시대 끝났다…남광토건, 고부가가치 개발 사업으로 실적 비상 | 6월 23일 주식시장 주요공시 | [오늘의 주요공시] 효성중공업ㆍ현대건설ㆍ태영건설 등
 
 ## Volatile Watchlist
 
-### 1. 신성이엔지 (011930)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **7.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **7.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주등소유주식변동신고서              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is -1. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: ESG 등급이 자본시장 리스크 필터로···기업 경쟁력의 새 기준 | 신성이엔지, 2026년 상반기 ESG 종합평가 A등급 획득 | [전자는 지금] 삼성 OLED TV, 美 컨슈머리포트 평가 1위 外
-
-### 2. 신성이엔지 (011930)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **7.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **7.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주등소유주식변동신고서              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is -1. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: ESG 등급이 자본시장 리스크 필터로···기업 경쟁력의 새 기준 | 신성이엔지, 2026년 상반기 ESG 종합평가 A등급 획득 | [전자는 지금] 삼성 OLED TV, 美 컨슈머리포트 평가 1위 外
-
-### 3. 신성이엔지 (011930)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **7.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **7.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주등소유주식변동신고서              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is -1. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: ESG 등급이 자본시장 리스크 필터로···기업 경쟁력의 새 기준 | 신성이엔지, 2026년 상반기 ESG 종합평가 A등급 획득 | [전자는 지금] 삼성 OLED TV, 美 컨슈머리포트 평가 1위 外
+No candidates in this section.
 
 ## General Watchlist
 
@@ -253,23 +255,7 @@ No candidates in this section.
 
 ## Risk / Avoid Review List
 
-### 1. 메타케어 (118000)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **negative**
-- Base recommendation score: **-63.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-63.00**
-- Risk level: **HIGH**
-- Event type: `paid_in_capital_increase`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 2. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 서대문구, 청년 창업기업 맞춤형 역량 강화 특강 | 통장에 꽂히는 기술료…리가켐바이오 'R&D 선순환' 원년에 쏠린 눈 | 오픈놀 최대주주 지분 50% 보호예수 해제
+No candidates in this section.
 
 ## Data Readiness
 

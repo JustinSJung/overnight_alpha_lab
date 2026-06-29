@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-06-29
 
-Generated at: 2026-06-29 01:54:45
+Generated at: 2026-06-29 14:39:35
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260629.csv`
 
@@ -28,31 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **9**
+- Total rows: **43**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **9**
+- neutral_adjustment: **43**
 
 ## Market-Adjusted Result Counts
 
-- pending: **9**
+- pending: **43**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 118000 | 메타케어 | negative | pending | 0 | N/A |
-| 1970-01-01 | 480370 | 씨케이솔루션 | positive | pending | 0 | N/A |
-| 1970-01-01 | 068790 | DMS | positive | pending | 0 | N/A |
-| 1970-01-01 | 011930 | 신성이엔지 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 011930 | 신성이엔지 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 011930 | 신성이엔지 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 445090 | 에이직랜드 | positive | pending | 0 | N/A |
-| 1970-01-01 | 300080 | 플리토 | positive | pending | 0 | N/A |
-| 1970-01-01 | 300080 | 플리토 | positive | pending | 0 | N/A |
+| 1970-01-01 | 068240 | 다원시스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 109740 | 디에스케이 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 109740 | 디에스케이 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 247540 | 에코프로비엠 | negative | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 373200 | 엑스플러스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 069920 | 엑시온그룹 | negative | pending | 0 | N/A |
+| 1970-01-01 | 079940 | 가비아 | negative | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | negative | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | negative | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | negative | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | negative | pending | 0 | N/A |
+| 1970-01-01 | 083660 | CSA 코스믹 | negative | pending | 0 | N/A |
 
 ## Next Step
 
