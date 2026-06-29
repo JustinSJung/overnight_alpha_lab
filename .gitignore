@@ -226,3 +226,12 @@ data/predictions/*.csv
 logs/
 
 !data/processed/automation_history.csv
+# Keep core state files for GitHub Actions dashboard and learning loop
+!data/processed/automation_history.csv
+!data/processed/ml_dataset_*.csv
+!data/processed/social_attention_features_*.csv
+!data/processed/learned_event_rules_*.csv
+!data/processed/market_adjusted_score_adjustments_*.csv
+!data/processed/trading_volume_score_adjustments_*.csv
+!data/predictions/error_notes_*.csv
+!data/predictions/market_adjusted_evaluation_*.csv
