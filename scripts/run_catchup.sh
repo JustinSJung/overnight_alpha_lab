@@ -193,27 +193,27 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
+echo "Generating social attention features..." >> "$LOG_FILE"
+python src/features/social_attention_features.py >> "$LOG_FILE" 2>&1 || echo "Social attention feature generation skipped or failed." >> "$LOG_FILE"
+
+echo "" >> "$LOG_FILE"
+echo "Generating learned event rules..." >> "$LOG_FILE"
+python src/models/auto_rule_updater.py >> "$LOG_FILE" 2>&1 || echo "Learned event rule generation skipped or failed." >> "$LOG_FILE"
+
+echo "" >> "$LOG_FILE"
+echo "Generating learned-rule daily candidate report..." >> "$LOG_FILE"
+python src/models/learned_rule_daily_recommender.py >> "$LOG_FILE" 2>&1 || echo "Learned-rule daily candidate report skipped or failed." >> "$LOG_FILE"
+
+echo "" >> "$LOG_FILE"
+echo "Generating GitHub Pages dashboard..." >> "$LOG_FILE"
+python src/report_generator/dashboard_generator.py >> "$LOG_FILE" 2>&1 || echo "Dashboard generation skipped or failed." >> "$LOG_FILE"
+
+echo "" >> "$LOG_FILE"
 echo "[19/19] Catch-up execution completed." >> "$LOG_FILE"
 echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
 echo "======================================" >> "$LOG_FILE"
 
 echo "Catch-up completed successfully."
 echo "Log file: $LOG_FILE"
-
-echo "" >> "$LOG_FILE"
-echo "Generating social attention features..." >> "$LOG_FILE"
-python src/features/social_attention_features.py >> "$LOG_FILE" 2>&1
-
-echo "" >> "$LOG_FILE"
-echo "Generating learned event rules..." >> "$LOG_FILE"
-python src/models/auto_rule_updater.py >> "$LOG_FILE" 2>&1
-
-echo "" >> "$LOG_FILE"
-echo "Generating learned-rule daily candidate report..." >> "$LOG_FILE"
-python src/models/learned_rule_daily_recommender.py >> "$LOG_FILE" 2>&1
-
-echo "" >> "$LOG_FILE"
-echo "Generating GitHub Pages dashboard..." >> "$LOG_FILE"
-python src/report_generator/dashboard_generator.py >> "$LOG_FILE" 2>&1
 
 exit 0
