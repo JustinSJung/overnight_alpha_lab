@@ -1,10 +1,10 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-06-29
 
-Generated at: 2026-06-29 01:36:34
+Generated at: 2026-06-29 01:54:46
 
-ML dataset source: `Not found`
-Market-adjusted score source: `Not found`
-Trading volume score source: `Not found`
+ML dataset source: `data/processed/ml_dataset_20260629.csv`
+Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260629.csv`
+Trading volume score source: `data/processed/trading_volume_score_adjustments_20260629.csv`
 
 ## Purpose
 
@@ -25,6 +25,63 @@ base_recommendation_score_v3
 = final_volume_market_adjusted_score
 ```
 
-## Status
+## Summary
 
-No volume + market-adjusted daily candidate data is available yet.
+- Total rows: **11**
+- strong_volume_market_adjusted_candidate: **7**
+- volatile_watchlist: **3**
+- risk_or_avoid_review: **1**
+
+## Strong Volume + Market-Adjusted Candidates
+
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 068790 | DMS | supply_contract | positive | pending | pending | insufficient_volume_baseline | 150.00 | 0.00 | 0.00 | 150.00 | N/A | N/A | N/A |
+| 1970-01-01 | 445090 | 에이직랜드 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 100.00 | 0.00 | 0.00 | 100.00 | N/A | N/A | N/A |
+| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 100.00 | 0.00 | 0.00 | 100.00 | N/A | N/A | N/A |
+| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 100.00 | 0.00 | 0.00 | 100.00 | N/A | N/A | N/A |
+| 1970-01-01 | 300080 | 플리토 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 100.00 | 0.00 | 0.00 | 100.00 | N/A | N/A | N/A |
+| 1970-01-01 | 480370 | 씨케이솔루션 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 85.00 | 0.00 | 0.00 | 85.00 | N/A | N/A | N/A |
+
+## Strong Market-Adjusted Candidates
+
+No candidates in this section.
+
+## Volume-Confirmed Candidates
+
+No candidates in this section.
+
+## Positive Candidates
+
+No candidates in this section.
+
+## Watchlist Candidates
+
+No candidates in this section.
+
+## Volatile Watchlist
+
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 011930 | 신성이엔지 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 011930 | 신성이엔지 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 011930 | 신성이엔지 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+
+## High-Attention Risk Review
+
+No candidates in this section.
+
+## Risk / Avoid Review
+
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 118000 | 메타케어 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
+
+## General Review
+
+No candidates in this section.
+
+## Next Step
+
+The next step is to compare this v3 report with the existing recommender and decide which score components should be merged into the main daily stock recommender.
