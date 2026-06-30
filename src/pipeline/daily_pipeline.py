@@ -138,7 +138,14 @@ def main():
     print("Starting daily pipeline...")
 
     # 1. Collect DART disclosures
-    run_command(["python", "src/crawler/dart_collector.py"])
+    try:
+        run_command(["python", "src/crawler/dart_collector.py"])
+    except Exception as error:
+        print("DART collector failed.")
+        print(f"Reason: {error}")
+        print("This can happen because of OpenDART timeout or temporary API/network issues.")
+        print("Daily pipeline will stop gracefully without error.")
+        return
 
     raw_dir = Path("data/raw")
     raw_files = sorted(raw_dir.glob("dart_disclosures_*.csv"))

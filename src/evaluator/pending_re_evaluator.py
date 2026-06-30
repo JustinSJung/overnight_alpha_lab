@@ -123,9 +123,13 @@ def main():
     print("Pending stock codes:", stock_codes)
 
     for stock_code in stock_codes:
-        run_command(["python", "src/crawler/price_collector.py", stock_code])
-        run_command(["python", "src/evaluator/event_price_reaction.py", stock_code])
-
+        try:
+            run_command(["python", "src/crawler/price_collector.py", stock_code])
+            run_command(["python", "src/evaluator/event_price_reaction.py", stock_code])
+        except Exception as error:
+            print(f"Pending re-evaluation skipped for {stock_code}.")
+            print(f"Reason: {error}")
+            continue  
     run_command(["python", "src/evaluator/error_note_generator.py"])
     run_command(["python", "src/features/ml_dataset_builder.py"])
     run_command(["python", "src/models/baseline_model.py"])
