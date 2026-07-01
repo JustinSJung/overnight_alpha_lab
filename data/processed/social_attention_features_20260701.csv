@@ -1,0 +1,2 @@
+﻿stock_code,corp_name,event_type,report_nm,news_count,news_sentiment_score,hype_keyword_count,rumor_keyword_count,retail_keyword_count,positive_catalyst_keyword_count,risk_noise_keyword_count,social_attention_score,rumor_noise_score,risk_noise_score,attention_label,rumor_label,risk_label,source_text_sample
+028080,휴맥스홀딩스,merger,주요사항보고서(회사합병결정),5.0,9.0,0,0,0,1,1,5.5,0,3,low_attention,no_rumor_signal,risk_noise_detected,"휴맥스홀딩스 주요사항보고서(회사합병결정) merger 6월 30일 주식시장 주요공시 | [아주증시포커스] 담합에 무너진 설탕3사…CJ제일제당 1년간 25% 급락, 대... | 7월 1일 개장 전 주요 공시"
