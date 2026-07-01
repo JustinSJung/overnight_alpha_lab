@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:44
+Generated at: 2026-07-01 01:01:07
 
 ML dataset source: `data/processed/ml_dataset_20260701.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260701.csv`
@@ -25,8 +25,8 @@ base_recommendation_score_v2
 
 ## Summary
 
-- Total rows: **1**
-- positive_candidate: **1**
+- Total rows: **6**
+- positive_candidate: **6**
 
 ## Strong Market-Adjusted Candidates
 
@@ -36,7 +36,12 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 028080 | 휴맥스홀딩스 | merger | volatile | pending | pending | 86.00 | 0.00 | 86.00 | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
+| 1970-01-01 | 014790 | HL D&I | supply_contract | positive | pending | pending | 105.00 | 0.00 | 105.00 | N/A |
+| 1970-01-01 | 468760 | 유진스팩10호 | merger | volatile | pending | pending | 66.00 | 0.00 | 66.00 | N/A |
 
 ## Watchlist Candidates
 

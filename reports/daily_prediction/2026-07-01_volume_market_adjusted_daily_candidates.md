@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:45
+Generated at: 2026-07-01 01:01:08
 
 ML dataset source: `data/processed/ml_dataset_20260701.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260701.csv`
@@ -27,14 +27,19 @@ base_recommendation_score_v3
 
 ## Summary
 
-- Total rows: **1**
-- strong_volume_market_adjusted_candidate: **1**
+- Total rows: **6**
+- strong_volume_market_adjusted_candidate: **6**
 
 ## Strong Volume + Market-Adjusted Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 028080 | 휴맥스홀딩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 86.00 | 0.00 | 0.00 | 86.00 | N/A | N/A | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 014790 | HL D&I | supply_contract | positive | pending | pending | insufficient_volume_baseline | 105.00 | 0.00 | 0.00 | 105.00 | N/A | N/A | N/A |
+| 1970-01-01 | 468760 | 유진스팩10호 | merger | volatile | pending | pending | insufficient_volume_baseline | 66.00 | 0.00 | 0.00 | 66.00 | N/A | N/A | N/A |
 
 ## Strong Market-Adjusted Candidates
 

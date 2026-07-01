@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:48
+Generated at: 2026-07-01 01:01:11
 
 ML dataset: `data/processed/ml_dataset_20260701.csv`
 
@@ -45,7 +45,7 @@ The recommender also applies event-type performance adjustments based on histori
 | merger | 7 | 0 | N/A | Not available | 0.00 |
 | paid_in_capital_increase | 18 | 0 | N/A | Not available | 0.00 |
 | spin_off | 1 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 38 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 41 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -61,31 +61,119 @@ The recommender also reads past error notes and applies event-type level confide
 | merger | 7 | 0 | 0 | 7 | 0.00 |
 | paid_in_capital_increase | 18 | 0 | 0 | 18 | 0.00 |
 | spin_off | 1 | 0 | 0 | 1 | 0.00 |
-| supply_contract | 38 | 0 | 0 | 38 | 0.00 |
+| supply_contract | 41 | 0 | 0 | 41 | 0.00 |
 
 ## Positive Candidates
 
-No candidates in this section.
+### 1. 삼성E&A (028050)
 
-## Volatile Watchlist
-
-### 1. 휴맥스홀딩스 (028080)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **77.00**
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **135.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **77.00**
+- Adjusted recommendation score: **135.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼성E&A 주가, 7월 1일 장중 51,700원 8.61% 상승 | 삼성E&A, 중동서 7.9억달러 수처리 프로젝트 수주 [공시pick] | [특징주] 삼성E&A, 중동 3800억원 규모 수처리 프로젝트 수주 소식에 12%...
+
+### 2. 삼성E&A (028050)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **135.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **135.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼성E&A 주가, 7월 1일 장중 51,700원 8.61% 상승 | 삼성E&A, 중동서 7.9억달러 수처리 프로젝트 수주 [공시pick] | [특징주] 삼성E&A, 중동 3800억원 규모 수처리 프로젝트 수주 소식에 12%...
+
+### 3. 삼성E&A (028050)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **135.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **135.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼성E&A 주가, 7월 1일 장중 51,700원 8.61% 상승 | 삼성E&A, 중동서 7.9억달러 수처리 프로젝트 수주 [공시pick] | [특징주] 삼성E&A, 중동 3800억원 규모 수처리 프로젝트 수주 소식에 12%...
+
+### 4. 삼성E&A (028050)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **135.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **135.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼성E&A 주가, 7월 1일 장중 51,700원 8.61% 상승 | 삼성E&A, 중동서 7.9억달러 수처리 프로젝트 수주 [공시pick] | [특징주] 삼성E&A, 중동 3800억원 규모 수처리 프로젝트 수주 소식에 12%...
+
+### 5. HL D&I (014790)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **110.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **110.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: HL D&I, 1551억 규모 고속국도 건설공사 수주 | 증권가, '3대 메가' 수혜주 발굴에 발빠르게 나서... "건설·로봇 주목" | 삼전닉스 '3대 메가 프로젝트' 훈풍, '건설·재생에너지주'에도 분다
+
+## Volatile Watchlist
+
+### 1. 유진스팩10호 (468760)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **60.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **60.00**
 - Risk level: **MEDIUM**
 - Event type: `merger`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 주요사항보고서(회사합병결정)
+- Disclosure title: [첨부정정]주요사항보고서(회사합병결정)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 6월 30일 주식시장 주요공시 | [아주증시포커스] 담합에 무너진 설탕3사…CJ제일제당 1년간 25% 급락, 대... | 7월 1일 개장 전 주요 공시
+- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 6월 30일 주식시장 주요공시 | 유진스팩10호, SPAC 합병 예비심사 청구로 주권매매거래 정지→시장 주... | 유진스팩10호, 정기주총서 재무제표 승인·이사·감사 보수한도 가결
 
 ## General Watchlist
 

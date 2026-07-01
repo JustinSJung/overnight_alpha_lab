@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:44
+Generated at: 2026-07-01 01:01:07
 
 Source feature file: `data/processed/market_adjusted_features_20260701.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **1**
-- pending: **1**
+- Total rows: **4**
+- pending: **4**
 
 ## Interpretation
 
@@ -29,7 +29,10 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 28080 | 휴맥스홀딩스 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 468760 | 유진스팩10호 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 14790 | HL D&I | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 28050 | 삼성E&A | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 28050 | 삼성E&A | positive | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

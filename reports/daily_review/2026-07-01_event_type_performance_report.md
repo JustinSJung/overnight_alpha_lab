@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:48
+Generated at: 2026-07-01 01:01:11
 
 ## Purpose
 
@@ -12,11 +12,11 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **123**
+- Total error-note rows: **126**
 - Evaluated rows: **0**
 - Success rows: **0**
 - Failure rows: **0**
-- Pending rows: **123**
+- Pending rows: **126**
 - Overall success rate: **N/A**
 
 Most rows are still pending. Event-type success rates will become meaningful after next-day price reactions are evaluated.
@@ -25,7 +25,7 @@ Most rows are still pending. Event-type success rates will become meaningful aft
 
 | Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| supply_contract | 38 | 0 | 0 | 0 | 38 | N/A | N/A | N/A | neutral |
+| supply_contract | 41 | 0 | 0 | 0 | 41 | N/A | N/A | N/A | neutral |
 | paid_in_capital_increase | 18 | 0 | 0 | 0 | 18 | N/A | N/A | N/A | neutral |
 | major_shareholder_change | 17 | 0 | 0 | 0 | 17 | N/A | N/A | N/A | neutral |
 | investment_decision | 15 | 0 | 0 | 0 | 15 | N/A | N/A | N/A | neutral |

@@ -1,6 +1,6 @@
 # Stock-Specific Historical Pattern Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:49
+Generated at: 2026-07-01 01:01:12
 
 ## Purpose
 
@@ -12,10 +12,10 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **123**
-- Number of stocks in history: **63**
+- Total error-note rows: **126**
+- Number of stocks in history: **65**
 - Stocks with evaluated reactions: **0**
-- Stocks with pending-only reactions: **63**
+- Stocks with pending-only reactions: **65**
 
 Most stock-level rows are still pending. Stock-level success rates will become meaningful after next-day price reactions are evaluated.
 
@@ -37,6 +37,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 013700 | 까뮤이앤씨 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 016250 | SGC E&C | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 025620 | 차AI헬스케어 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 028050 | 삼성E&A | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 033310 | 엠투엔 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 054930 | 유신 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 059270 | 해성에어로보틱스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
@@ -57,7 +58,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 006360 | GS건설 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 006730 | 서부T&D | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 006740 | 블루산업개발 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
-| 028080 | 휴맥스홀딩스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
+| 014790 | HL D&I | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 034230 | 파라다이스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
 | 036620 | 감성코퍼레이션 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
 | 047040 | 대우건설 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
@@ -85,6 +86,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 348370 | 엔켐 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 396470 | 워트 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 452260 | 한화갤러리아 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 468760 | 유진스팩10호 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
 | 950220 | 네오이뮨텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 
 ## How to Read This Report

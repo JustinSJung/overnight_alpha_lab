@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:44
+Generated at: 2026-07-01 01:01:07
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260701.csv`
 
@@ -28,23 +28,26 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **1**
+- Total rows: **4**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **1**
+- neutral_adjustment: **4**
 
 ## Market-Adjusted Result Counts
 
-- pending: **1**
+- pending: **4**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 028080 | 휴맥스홀딩스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 468760 | 유진스팩10호 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 014790 | HL D&I | positive | pending | 0 | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | positive | pending | 0 | N/A |
+| 1970-01-01 | 028050 | 삼성E&A | positive | pending | 0 | N/A |
 
 ## Next Step
 

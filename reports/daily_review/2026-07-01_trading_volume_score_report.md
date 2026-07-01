@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:45
+Generated at: 2026-07-01 01:01:08
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260701.csv`
 
@@ -23,23 +23,40 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **1**
+- Total rows: **18**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **1**
+- neutral_volume_adjustment: **18**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **1**
+- insufficient_volume_baseline: **18**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
-| 20260701 | 028080 | 휴맥스홀딩스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 468760 | 유진스팩10호 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 014790 | HL D&I | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260701 | 028050 | 삼성E&A | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 

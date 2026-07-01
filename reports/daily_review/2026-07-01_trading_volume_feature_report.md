@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-01
 
-Generated at: 2026-07-01 00:05:45
+Generated at: 2026-07-01 01:01:08
 
 Source ML dataset: `data/processed/ml_dataset_20260701.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **1**
-- Rows with price file found: **1**
+- Total rows: **18**
+- Rows with price file found: **18**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **1**
+- insufficient_volume_baseline: **18**
 
 ## Interpretation
 
@@ -35,7 +35,24 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260701 | 028080 | 휴맥스홀딩스 | merger | volatile | N/A | 20,432 | N/A | N/A | 20,749 | N/A |
+| 20260701 | 468760 | 유진스팩10호 | merger | volatile | N/A | 4,533 | N/A | N/A | 63,269 | N/A |
+| 20260701 | 014790 | HL D&I | supply_contract | positive | N/A | 99,433 | N/A | N/A | 123,035 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
+| 20260701 | 028050 | 삼성E&A | supply_contract | positive | N/A | 1,840,341 | N/A | N/A | 1,640,254 | N/A |
 
 ## Next Step
 
