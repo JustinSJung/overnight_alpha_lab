@@ -193,6 +193,14 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "" >> "$LOG_FILE"
+echo "Collecting Snacks market digest..." >> "$LOG_FILE"
+python src/crawler/snacks_collector.py >> "$LOG_FILE" 2>&1 || echo "Snacks collector skipped or failed." >> "$LOG_FILE"
+
+echo "" >> "$LOG_FILE"
+echo "Generating Snacks market features..." >> "$LOG_FILE"
+python src/features/snacks_market_features.py >> "$LOG_FILE" 2>&1 || echo "Snacks market feature generation skipped or failed." >> "$LOG_FILE"
+
+echo "" >> "$LOG_FILE"
 echo "Generating social attention features..." >> "$LOG_FILE"
 python src/features/social_attention_features.py >> "$LOG_FILE" 2>&1 || echo "Social attention feature generation skipped or failed." >> "$LOG_FILE"
 

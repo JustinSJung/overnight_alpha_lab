@@ -91,6 +91,8 @@ jobs:
           git add docs/*.md || true
           git add docs/*.html || true
           git add docs/posts/*.md || true
+	  git add data/raw/snacks_newsletters_*.csv || true
+	  git add data/processed/snacks_market_features_*.csv || true
 
           if git diff --cached --quiet; then
             echo "No generated changes to commit."
