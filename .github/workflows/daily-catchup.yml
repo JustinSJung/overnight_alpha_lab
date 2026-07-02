@@ -70,6 +70,17 @@ jobs:
           echo ""
           echo "Script exit code: $EXIT_CODE"
 
+          if [ "$EXIT_CODE" = "0" ]; then
+            echo "Catch-up completed with exit code 0."
+            exit 0
+          fi
+
+          if [ "$EXIT_CODE" = "143" ]; then
+            echo "Catch-up ended with exit code 143."
+            echo "Treating 143 as soft termination so generated files can still be committed."
+            exit 0
+          fi
+
           if grep -q "Catch-up completed successfully." logs/catchup_*.log 2>/dev/null; then
             echo "Catch-up success message found in log. Treating workflow as successful."
             exit 0
