@@ -6,3 +6,4 @@
 2026-06-29,2026-06-29 14:39:38,100,100,19,19,19,43,109,109,0,0,0,True,True,data/raw/dart_disclosures_20260629.csv,data/processed/ml_dataset_20260629.csv
 2026-06-30,2026-06-30 00:35:07,100,100,2,2,2,3,5,5,0,0,0,True,True,data/raw/dart_disclosures_20260630.csv,data/processed/ml_dataset_20260630.csv
 2026-07-01,2026-07-01 01:01:09,100,100,3,3,3,4,6,6,0,0,0,True,True,data/raw/dart_disclosures_20260701.csv,data/processed/ml_dataset_20260701.csv
+2026-07-02,2026-07-02 00:00:04,100,100,15,15,15,36,106,106,0,0,0,False,True,data/raw/dart_disclosures_20260701.csv,data/processed/ml_dataset_20260701.csv
