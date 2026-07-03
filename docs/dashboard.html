@@ -137,7 +137,7 @@
       <div class="card">
         <div class="label">Pending Cases</div>
         <div class="ko-desc">평가 대기 사례</div>
-        <div class="value">158</div>
+        <div class="value">123</div>
       </div>
     </div>
 
@@ -145,7 +145,7 @@
       <div class="card">
         <div class="label">Latest ML Dataset Rows</div>
         <div class="ko-desc">최근 ML 데이터 행 수</div>
-        <div class="value">106</div>
+        <div class="value">1</div>
       </div>
       <div class="card">
         <div class="label">Successful Predictions</div>
@@ -160,19 +160,19 @@
       <div class="card">
         <div class="label">Last Generated At</div>
         <div class="ko-desc">마지막 생성 시간</div>
-        <div class="small">2026-07-02 00:00:26</div>
+        <div class="small">2026-07-03 00:30:38</div>
       </div>
     </div>
     <div class="grid">
       <div class="card">
         <div class="label">Social Attention Rows</div>
         <div class="ko-desc">관심도 분석 행 수</div>
-        <div class="value">19</div>
+        <div class="value">1</div>
       </div>
       <div class="card">
         <div class="label">High Attention Signals</div>
         <div class="ko-desc">높은 관심도 신호</div>
-        <div class="value">2</div>
+        <div class="value">1</div>
       </div>
       <div class="card">
         <div class="label">Rumor Noise Signals</div>
@@ -182,7 +182,7 @@
       <div class="card">
         <div class="label">Risk Noise Signals</div>
         <div class="ko-desc">리스크성 노이즈 신호</div>
-        <div class="value">8</div>
+        <div class="value">0</div>
       </div>
     </div>
     <div class="grid">
@@ -230,7 +230,7 @@
   </div>
 
   <script>
-    const STOCK_DATA = [{"stock_code": "001360", "corp_name": "삼성제약", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "143210", "corp_name": "핸즈코퍼레이션", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "010960", "corp_name": "삼호개발", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 8.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "276730", "corp_name": "한울앤제주", "event_type": "paid_in_capital_increase", "prediction_direction": "negative", "event_score": -70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "014680", "corp_name": "한솔케미칼", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "007280", "corp_name": "한국특강", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "372800", "corp_name": "아이티아이즈", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "159910", "corp_name": "에코글로우", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "115160", "corp_name": "휴맥스", "event_type": "merger", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "123010", "corp_name": "알엔티엑스", "event_type": "spin_off", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "019570", "corp_name": "플루토스", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "028050", "corp_name": "삼성E&A", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 12.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "317770", "corp_name": "엑스페릭스", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}];
+    const STOCK_DATA = [{"stock_code": "064350", "corp_name": "현대로템", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 4.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}];
 
     function fmt(value) {
       if (value === null || value === undefined || value === "") return "N/A";
