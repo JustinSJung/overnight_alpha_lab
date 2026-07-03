@@ -11,6 +11,13 @@ PREDICTIONS_DIR = Path("data/predictions")
 DOCS_DIR = Path("docs")
 OUTPUT_PATH = DOCS_DIR / "dashboard.html"
 
+CORE_STATE_PATTERNS = [
+    (PROCESSED_DIR, "automation_history.csv"),
+    (PROCESSED_DIR, "ml_dataset_*.csv"),
+    (PREDICTIONS_DIR, "error_notes_*.csv"),
+    (PREDICTIONS_DIR, "market_adjusted_evaluation_*.csv"),
+]
+
 
 def latest_file(directory: Path, pattern: str):
     files = sorted(directory.glob(pattern))
@@ -45,6 +52,13 @@ def read_all_csv(directory: Path, pattern: str):
         return pd.DataFrame()
 
     return pd.concat(frames, ignore_index=True)
+
+
+def has_core_state_files() -> bool:
+    for directory, pattern in CORE_STATE_PATTERNS:
+        if list(directory.glob(pattern)):
+            return True
+    return False
 
 
 def normalize_stock_code(value):
@@ -590,6 +604,10 @@ def main():
 
     DOCS_DIR.mkdir(exist_ok=True)
 
+    if not has_core_state_files():
+        print("No core state files found. Dashboard generation skipped to avoid all-zero overwrite.")
+        return
+
     metrics, latest_ml_df = build_metrics()
     stock_data = build_stock_data(latest_ml_df)
 
@@ -604,4 +622,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -59,6 +59,14 @@ def get_latest_processed_file(processed_dir: str = "data/processed") -> str:
     return os.path.join(processed_dir, csv_files[0])
 
 
+def today_yyyymmdd() -> str:
+    return datetime.today().strftime("%Y%m%d")
+
+
+def raw_dart_file_for_today() -> Path:
+    return Path("data/raw") / f"dart_disclosures_{today_yyyymmdd()}.csv"
+
+
 def normalize_stock_code(value) -> str:
     """
     Normalize stock code to 6-digit string.
@@ -136,6 +144,7 @@ def collect_and_evaluate_selected_events(key_events: pd.DataFrame) -> None:
 
 def main():
     print("Starting daily pipeline...")
+    today_raw_file = raw_dart_file_for_today()
 
     # 1. Collect DART disclosures
     try:
@@ -147,12 +156,21 @@ def main():
         print("Daily pipeline will stop gracefully without error.")
         return
 
-    raw_dir = Path("data/raw")
-    raw_files = sorted(raw_dir.glob("dart_disclosures_*.csv"))
-
-    if not raw_files:
+    if not today_raw_file.exists():
         print("No DART raw disclosure file found.")
         print("This can happen on weekends, holidays, or days with no returned disclosures.")
+        print("Daily pipeline will stop gracefully without error.")
+        return
+
+    try:
+        raw_df = pd.read_csv(today_raw_file)
+    except Exception as error:
+        print(f"Could not read today's DART raw disclosure file: {error}")
+        print("Daily pipeline will stop gracefully without error.")
+        return
+
+    if raw_df.empty:
+        print("Today's DART raw disclosure file is empty.")
         print("Daily pipeline will stop gracefully without error.")
         return
 
@@ -164,6 +182,11 @@ def main():
 
     # 4. Select key events
     latest_processed_file = get_latest_processed_file()
+    expected_processed_suffix = today_yyyymmdd()
+    if expected_processed_suffix not in Path(latest_processed_file).name:
+        print(f"Latest parsed DART file is not from today: {latest_processed_file}")
+        print("Daily pipeline will stop gracefully without error.")
+        return
     key_events = select_key_events(latest_processed_file)
 
     print("\nSelected key events:")

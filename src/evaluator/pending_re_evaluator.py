@@ -49,6 +49,8 @@ def get_latest_ml_dataset(processed_dir: str = "data/processed") -> str:
     """
     Find the latest ML dataset file.
     """
+    if not os.path.isdir(processed_dir):
+        raise FileNotFoundError("Processed data directory not found.")
 
     files = [
         file for file in os.listdir(processed_dir)
@@ -109,7 +111,13 @@ def main():
 
     print("Latest ML dataset:", ml_dataset_path)
 
-    pending_df = load_pending_events(ml_dataset_path)
+    try:
+        pending_df = load_pending_events(ml_dataset_path)
+    except Exception as error:
+        print("Could not load pending rows from latest ML dataset.")
+        print(f"Reason: {error}")
+        print("Pending re-evaluator will stop gracefully without error.")
+        return
     pending_count = len(pending_df)
 
     print("Pending rows:", pending_count)
@@ -122,14 +130,27 @@ def main():
 
     print("Pending stock codes:", stock_codes)
 
+    if not stock_codes:
+        print("No valid pending stock codes found. Nothing to re-evaluate.")
+        return
+
+    successful_stock_count = 0
+
     for stock_code in stock_codes:
         try:
             run_command(["python", "src/crawler/price_collector.py", stock_code])
             run_command(["python", "src/evaluator/event_price_reaction.py", stock_code])
+            successful_stock_count += 1
         except Exception as error:
             print(f"Pending re-evaluation skipped for {stock_code}.")
             print(f"Reason: {error}")
-            continue  
+            continue
+
+    if successful_stock_count == 0:
+        print("No pending stock codes were re-evaluated successfully.")
+        print("Pending re-evaluator will stop gracefully without error.")
+        return
+
     run_command(["python", "src/evaluator/error_note_generator.py"])
     run_command(["python", "src/features/ml_dataset_builder.py"])
     run_command(["python", "src/models/baseline_model.py"])
