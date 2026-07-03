@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:30
+Generated at: 2026-07-03 01:42:24
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260703.csv`
 
@@ -23,23 +23,35 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **1**
+- Total rows: **13**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **1**
+- neutral_volume_adjustment: **13**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **1**
+- insufficient_volume_baseline: **13**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
-| 20260703 | 064350 | 현대로템 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 096760 | JW홀딩스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 096760 | JW홀딩스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 096760 | JW홀딩스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 096760 | JW홀딩스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260703 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 

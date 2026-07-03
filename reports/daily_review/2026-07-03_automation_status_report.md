@@ -1,6 +1,6 @@
 # Automation Status Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:31
+Generated at: 2026-07-03 01:42:26
 
 ## Execution Summary
 
@@ -19,19 +19,19 @@ Generated at: 2026-07-03 00:30:31
 
 | Dataset | Rows |
 |---|---:|
-| Raw DART disclosures | 45 |
-| Parsed DART disclosures | 45 |
-| Selected key events | 1 |
-| Scored key events | 1 |
-| News feature rows | 1 |
-| Error note rows | 1 |
-| ML dataset rows | 1 |
+| Raw DART disclosures | 100 |
+| Parsed DART disclosures | 100 |
+| Selected key events | 2 |
+| Scored key events | 2 |
+| News feature rows | 2 |
+| Error note rows | 5 |
+| ML dataset rows | 5 |
 
 ## Prediction Result Summary
 
 | Result | Rows |
 |---|---:|
-| Pending | 1 |
+| Pending | 5 |
 | Success | 0 |
 | Failure | 0 |
 | Trainable rows | 0 |

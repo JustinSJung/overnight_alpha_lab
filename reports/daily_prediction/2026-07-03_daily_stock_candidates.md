@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:33
+Generated at: 2026-07-03 01:42:27
 
 ML dataset: `data/processed/ml_dataset_20260703.csv`
 
@@ -41,11 +41,11 @@ The recommender also applies event-type performance adjustments based on histori
 | disclosure_violation | 6 | 0 | N/A | Not available | 0.00 |
 | investment_decision | 15 | 0 | N/A | Not available | 0.00 |
 | lawsuit | 9 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 17 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 22 | 0 | N/A | Not available | 0.00 |
 | merger | 6 | 0 | N/A | Not available | 0.00 |
 | paid_in_capital_increase | 18 | 0 | N/A | Not available | 0.00 |
 | spin_off | 1 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 39 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 38 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -57,35 +57,107 @@ The recommender also reads past error notes and applies event-type level confide
 | disclosure_violation | 6 | 0 | 0 | 6 | 0.00 |
 | investment_decision | 15 | 0 | 0 | 15 | 0.00 |
 | lawsuit | 9 | 0 | 0 | 9 | 0.00 |
-| major_shareholder_change | 17 | 0 | 0 | 17 | 0.00 |
+| major_shareholder_change | 22 | 0 | 0 | 22 | 0.00 |
 | merger | 6 | 0 | 0 | 6 | 0.00 |
 | paid_in_capital_increase | 18 | 0 | 0 | 18 | 0.00 |
 | spin_off | 1 | 0 | 0 | 1 | 0.00 |
-| supply_contract | 39 | 0 | 0 | 39 | 0.00 |
+| supply_contract | 38 | 0 | 0 | 38 | 0.00 |
 
 ## Positive Candidates
 
-### 1. 현대로템 (064350)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **104.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **104.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 우주항공·방산주 일제히 강세…한화에어로스페이스 5% 급등 주도 | 현대로템, 로봇. 수소부문 AD&RH사업본부로 개편 | "K2 계약 제대로 했네!" 폴란드 '1석2조' GO! [여의도 Pick!]
+No candidates in this section.
 
 ## Volatile Watchlist
 
-No candidates in this section.
+### 1. JW홀딩스 (096760)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **45.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **45.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 6. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 제약바이오업계, ESG 공시 강화…그룹 통합 관리·글로벌 기준 적용 | 한미약품·대웅제약·동아제약…제약업계, R&D 성과·해외 진출 확대 | [주요공시] 동부건설, SK디앤디, 두산퓨얼셀, 선진뷰티사이언스, 디알텍...
+
+### 2. JW홀딩스 (096760)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **45.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **45.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 6. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 제약바이오업계, ESG 공시 강화…그룹 통합 관리·글로벌 기준 적용 | 한미약품·대웅제약·동아제약…제약업계, R&D 성과·해외 진출 확대 | [주요공시] 동부건설, SK디앤디, 두산퓨얼셀, 선진뷰티사이언스, 디알텍...
+
+### 3. 티비에이치글로벌 (084870)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **27.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **27.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [공시] 티비에이치글로벌, 12억 규모 자사주 58만주 취득 | 티비에이치글로벌, KB증권과 신탁계약 통해 자사주 58만주 취득 | 티비에이치글로벌, 주식소각 실시→유통주식 수 감소
+
+### 4. 티비에이치글로벌 (084870)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **27.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **27.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [공시] 티비에이치글로벌, 12억 규모 자사주 58만주 취득 | 티비에이치글로벌, KB증권과 신탁계약 통해 자사주 58만주 취득 | 티비에이치글로벌, 주식소각 실시→유통주식 수 감소
+
+### 5. 티비에이치글로벌 (084870)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **27.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **27.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [공시] 티비에이치글로벌, 12억 규모 자사주 58만주 취득 | 티비에이치글로벌, KB증권과 신탁계약 통해 자사주 58만주 취득 | 티비에이치글로벌, 주식소각 실시→유통주식 수 감소
 
 ## General Watchlist
 

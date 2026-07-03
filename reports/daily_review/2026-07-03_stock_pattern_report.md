@@ -1,6 +1,6 @@
 # Stock-Specific Historical Pattern Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:34
+Generated at: 2026-07-03 01:42:28
 
 ## Purpose
 
@@ -12,10 +12,10 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **123**
-- Number of stocks in history: **63**
+- Total error-note rows: **127**
+- Number of stocks in history: **64**
 - Stocks with evaluated reactions: **0**
-- Stocks with pending-only reactions: **63**
+- Stocks with pending-only reactions: **64**
 
 Most stock-level rows are still pending. Stock-level success rates will become meaningful after next-day price reactions are evaluated.
 
@@ -32,6 +32,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 243070 | 휴온스 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | merger | mostly_pending |
 | 007460 | 에이프로젠 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | investment_decision | mostly_pending |
 | 043260 | 성호전자 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 084870 | 티비에이치글로벌 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 005960 | 동부건설 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 012510 | 더존비즈온 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 013700 | 까뮤이앤씨 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
@@ -40,6 +41,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 033310 | 엠투엔 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 054930 | 유신 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 059270 | 해성에어로보틱스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 096760 | JW홀딩스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 205500 | 넥써쓰 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 211270 | AP위성 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 299660 | 셀리드 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | investment_decision | mostly_pending |
@@ -66,7 +68,6 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 058820 | CMG제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 060900 | 에이전트AI | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 061040 | 알에프텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
-| 064350 | 현대로템 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 071850 | 캐스텍코리아 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
 | 073640 | 테라사이언스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 074610 | 이엔플러스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |

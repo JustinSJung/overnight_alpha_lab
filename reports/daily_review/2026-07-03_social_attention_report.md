@@ -8,9 +8,9 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **1**
-- High attention rows: **1**
-- Medium attention rows: **0**
+- Total rows: **2**
+- High attention rows: **0**
+- Medium attention rows: **1**
 - Rumor-noise detected rows: **0**
 - Risk-noise detected rows: **0**
 
@@ -18,7 +18,8 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
-| 064350 | 현대로템 | supply_contract | 13.5 | 0 | 0 | high_attention | no_rumor_signal | no_risk_noise |
+| 096760 | JW홀딩스 | major_shareholder_change | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 084870 | 티비에이치글로벌 | major_shareholder_change | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
 
 ## Interpretation
 

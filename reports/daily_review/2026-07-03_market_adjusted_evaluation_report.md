@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:29
+Generated at: 2026-07-03 01:42:23
 
 Source feature file: `data/processed/market_adjusted_features_20260703.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **1**
-- pending: **1**
+- Total rows: **5**
+- pending: **5**
 
 ## Interpretation
 
@@ -29,7 +29,11 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 64350 | 현대로템 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 96760 | JW홀딩스 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 96760 | JW홀딩스 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 84870 | 티비에이치글로벌 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 84870 | 티비에이치글로벌 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 84870 | 티비에이치글로벌 | volatile | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

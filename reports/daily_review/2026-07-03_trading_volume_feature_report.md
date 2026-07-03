@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:30
+Generated at: 2026-07-03 01:42:24
 
 Source ML dataset: `data/processed/ml_dataset_20260703.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **1**
-- Rows with price file found: **1**
+- Total rows: **13**
+- Rows with price file found: **13**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **1**
+- insufficient_volume_baseline: **13**
 
 ## Interpretation
 
@@ -35,7 +35,19 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260703 | 064350 | 현대로템 | supply_contract | positive | N/A | 664,121 | N/A | N/A | 408,005 | N/A |
+| 20260703 | 096760 | JW홀딩스 | major_shareholder_change | volatile | N/A | 106,237 | N/A | N/A | 92,563 | N/A |
+| 20260703 | 096760 | JW홀딩스 | major_shareholder_change | volatile | N/A | 106,237 | N/A | N/A | 92,563 | N/A |
+| 20260703 | 096760 | JW홀딩스 | major_shareholder_change | volatile | N/A | 106,237 | N/A | N/A | 92,563 | N/A |
+| 20260703 | 096760 | JW홀딩스 | major_shareholder_change | volatile | N/A | 106,237 | N/A | N/A | 92,563 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
+| 20260703 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | N/A | 47,714 | N/A | N/A | 8,064 | N/A |
 
 ## Next Step
 

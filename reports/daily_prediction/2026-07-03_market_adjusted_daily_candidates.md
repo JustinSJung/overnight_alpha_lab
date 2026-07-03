@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:29
+Generated at: 2026-07-03 01:42:24
 
 ML dataset source: `data/processed/ml_dataset_20260703.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260703.csv`
@@ -25,8 +25,9 @@ base_recommendation_score_v2
 
 ## Summary
 
-- Total rows: **1**
-- positive_candidate: **1**
+- Total rows: **5**
+- watchlist_candidate: **3**
+- positive_candidate: **2**
 
 ## Strong Market-Adjusted Candidates
 
@@ -36,11 +37,16 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 064350 | 현대로템 | supply_contract | positive | pending | pending | 105.00 | 0.00 | 105.00 | N/A |
+| 1970-01-01 | 096760 | JW홀딩스 | major_shareholder_change | volatile | pending | pending | 51.00 | 0.00 | 51.00 | N/A |
+| 1970-01-01 | 096760 | JW홀딩스 | major_shareholder_change | volatile | pending | pending | 51.00 | 0.00 | 51.00 | N/A |
 
 ## Watchlist Candidates
 
-No candidates in this section.
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
+| 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
+| 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
 
 ## Volatile Watchlist
 

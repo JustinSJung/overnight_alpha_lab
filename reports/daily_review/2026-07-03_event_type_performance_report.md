@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:34
+Generated at: 2026-07-03 01:42:28
 
 ## Purpose
 
@@ -12,11 +12,11 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **123**
+- Total error-note rows: **127**
 - Evaluated rows: **0**
 - Success rows: **0**
 - Failure rows: **0**
-- Pending rows: **123**
+- Pending rows: **127**
 - Overall success rate: **N/A**
 
 Most rows are still pending. Event-type success rates will become meaningful after next-day price reactions are evaluated.
@@ -25,9 +25,9 @@ Most rows are still pending. Event-type success rates will become meaningful aft
 
 | Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| supply_contract | 39 | 0 | 0 | 0 | 39 | N/A | N/A | N/A | neutral |
+| supply_contract | 38 | 0 | 0 | 0 | 38 | N/A | N/A | N/A | neutral |
+| major_shareholder_change | 22 | 0 | 0 | 0 | 22 | N/A | N/A | N/A | neutral |
 | paid_in_capital_increase | 18 | 0 | 0 | 0 | 18 | N/A | N/A | N/A | neutral |
-| major_shareholder_change | 17 | 0 | 0 | 0 | 17 | N/A | N/A | N/A | neutral |
 | investment_decision | 15 | 0 | 0 | 0 | 15 | N/A | N/A | N/A | neutral |
 | convertible_bond | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | neutral |
 | lawsuit | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | neutral |

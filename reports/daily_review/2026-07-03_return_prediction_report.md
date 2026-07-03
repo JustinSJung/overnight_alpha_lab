@@ -1,6 +1,6 @@
 # Return Prediction Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:33
+Generated at: 2026-07-03 01:42:27
 
 ML dataset: `data/processed/ml_dataset_20260703.csv`
 
@@ -15,7 +15,7 @@ The target variables are:
 
 ## Dataset Summary
 
-- Total rows: 1
+- Total rows: 5
 
 ## Target: next_open_return
 

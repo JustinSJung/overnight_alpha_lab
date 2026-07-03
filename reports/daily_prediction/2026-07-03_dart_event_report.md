@@ -8,23 +8,24 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 27 |
-| Insider or Major Holder Disclosure | 17 |
-| Supply Contract | 1 |
+| Insider or Major Holder Disclosure | 53 |
+| Other | 45 |
+| Major Shareholder Change | 2 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
-| 현대로템 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260703 |
+| JW홀딩스 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260703 |
+| 티비에이치글로벌 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260703 |
 
 ## Daily Insight Notes
 
-- Total disclosures collected: 45
-- Classified non-other events: 18
-- Supply contract disclosures: 1
+- Total disclosures collected: 100
+- Classified non-other events: 55
+- Supply contract disclosures: 0
 - Financing-related disclosures: 0
-- Insider or major holder disclosures: 17
+- Insider or major holder disclosures: 53
 
 ## Model Notes
 

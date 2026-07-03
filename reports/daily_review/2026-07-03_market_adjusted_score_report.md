@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-03
 
-Generated at: 2026-07-03 00:30:29
+Generated at: 2026-07-03 01:42:23
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260703.csv`
 
@@ -28,23 +28,27 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **1**
+- Total rows: **5**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **1**
+- neutral_adjustment: **5**
 
 ## Market-Adjusted Result Counts
 
-- pending: **1**
+- pending: **5**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 064350 | 현대로템 | positive | pending | 0 | N/A |
+| 1970-01-01 | 096760 | JW홀딩스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 096760 | JW홀딩스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 084870 | 티비에이치글로벌 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 084870 | 티비에이치글로벌 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 084870 | 티비에이치글로벌 | volatile | pending | 0 | N/A |
 
 ## Next Step
 

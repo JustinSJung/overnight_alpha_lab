@@ -23,11 +23,11 @@ The original rule-based event scoring file is not overwritten. The learned rules
 | disclosure_violation | 6 | 0 | 0 | 0 | 6 | 0.00% | 0.0 | hold_insufficient_data |
 | investment_decision | 15 | 0 | 0 | 0 | 15 | 0.00% | 0.0 | hold_insufficient_data |
 | lawsuit | 9 | 0 | 0 | 0 | 9 | 0.00% | 0.0 | hold_insufficient_data |
-| major_shareholder_change | 17 | 0 | 0 | 0 | 17 | 0.00% | 0.0 | hold_insufficient_data |
+| major_shareholder_change | 22 | 0 | 0 | 0 | 22 | 0.00% | 0.0 | hold_insufficient_data |
 | merger | 6 | 0 | 0 | 0 | 6 | 0.00% | 0.0 | hold_insufficient_data |
 | paid_in_capital_increase | 18 | 0 | 0 | 0 | 18 | 0.00% | 0.0 | hold_insufficient_data |
 | spin_off | 1 | 0 | 0 | 0 | 1 | 0.00% | 0.0 | hold_insufficient_data |
-| supply_contract | 39 | 0 | 0 | 0 | 39 | 0.00% | 0.0 | hold_insufficient_data |
+| supply_contract | 38 | 0 | 0 | 0 | 38 | 0.00% | 0.0 | hold_insufficient_data |
 
 ## Interpretation
 
