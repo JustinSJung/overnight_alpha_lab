@@ -13,6 +13,8 @@ OUTPUT_PATH = DOCS_DIR / "dashboard.html"
 
 CORE_STATE_PATTERNS = [
     (PROCESSED_DIR, "automation_history.csv"),
+    (PROCESSED_DIR, "price_based_candidates_*.csv"),
+    (PREDICTIONS_DIR, "price_candidate_evaluation_*.csv"),
     (PROCESSED_DIR, "ml_dataset_*.csv"),
     (PREDICTIONS_DIR, "error_notes_*.csv"),
     (PREDICTIONS_DIR, "market_adjusted_evaluation_*.csv"),
@@ -101,6 +103,8 @@ def build_metrics():
     latest_volume_score = read_csv(latest_file(PROCESSED_DIR, "trading_volume_score_adjustments_*.csv"))
     latest_social_attention = read_csv(latest_file(PROCESSED_DIR, "social_attention_features_*.csv"))
     latest_learned_rules = read_csv(latest_file(PROCESSED_DIR, "learned_event_rules_*.csv"))
+    latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
+    latest_price_eval = read_csv(latest_file(PREDICTIONS_DIR, "price_candidate_evaluation_*.csv"))
 
     if not latest_ml_df.empty and "stock_code" in latest_ml_df.columns:
         latest_ml_df["stock_code"] = latest_ml_df["stock_code"].apply(normalize_stock_code)
@@ -139,6 +143,16 @@ def build_metrics():
     market_rows = len(latest_market_eval)
     volume_rows = len(latest_volume_score)
     social_rows = len(latest_social_attention)
+    price_candidate_rows = len(latest_price_candidates)
+    price_evaluated_count = 0
+    price_success_rate = 0.0
+
+    if not latest_price_eval.empty and "price_candidate_result" in latest_price_eval.columns:
+        price_results = latest_price_eval["price_candidate_result"].astype(str)
+        price_evaluated_count = int(price_results.isin(["success", "failure"]).sum())
+        if price_evaluated_count > 0:
+            price_success_count = int((price_results == "success").sum())
+            price_success_rate = price_success_count / price_evaluated_count
 
     high_attention_count = 0
     rumor_noise_count = 0
@@ -184,6 +198,9 @@ def build_metrics():
         "market_rows": market_rows,
         "volume_rows": volume_rows,
         "social_rows": social_rows,
+        "price_candidate_rows": price_candidate_rows,
+        "price_evaluated_count": price_evaluated_count,
+        "price_success_rate": round(price_success_rate * 100, 2),
 	"high_attention_count": high_attention_count,
 	"rumor_noise_count": rumor_noise_count,
 	"risk_noise_count": risk_noise_count,
@@ -399,6 +416,28 @@ def build_html(metrics, stock_data):
         <div class="label">Last Generated At</div>
         <div class="ko-desc">마지막 생성 시간</div>
         <div class="small">{metrics["generated_at"]}</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="label">Price Candidates</div>
+        <div class="ko-desc">가격 기반 후보</div>
+        <div class="value">{metrics["price_candidate_rows"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Price Evaluated Cases</div>
+        <div class="ko-desc">가격 후보 평가 완료</div>
+        <div class="value">{metrics["price_evaluated_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Price Success Rate</div>
+        <div class="ko-desc">가격 후보 성공률</div>
+        <div class="value">{metrics["price_success_rate"]}%</div>
+      </div>
+      <div class="card">
+        <div class="label">Market-Adjusted Rows</div>
+        <div class="ko-desc">시장 조정 평가 행 수</div>
+        <div class="value">{metrics["market_rows"]}</div>
       </div>
     </div>
     <div class="grid">

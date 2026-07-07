@@ -38,6 +38,9 @@ jobs:
           echo "DART_API_KEY=${{ secrets.DART_API_KEY }}" >> .env
           echo "NAVER_CLIENT_ID=${{ secrets.NAVER_CLIENT_ID }}" >> .env
           echo "NAVER_CLIENT_SECRET=${{ secrets.NAVER_CLIENT_SECRET }}" >> .env
+          echo "KIS_APP_KEY=${{ secrets.KIS_APP_KEY }}" >> .env
+          echo "KIS_APP_SECRET=${{ secrets.KIS_APP_SECRET }}" >> .env
+          echo "KIS_ENV=${{ secrets.KIS_ENV }}" >> .env
 
       - name: Make scripts executable
         run: |
@@ -98,7 +101,10 @@ jobs:
           git config user.email "github-actions@github.com"
 
           git add data/processed/automation_history.csv || true
+          git add data/processed/price_watchlist.csv || true
           git add data/processed/ml_dataset_*.csv || true
+          git add data/processed/daily_price_signals_*.csv || true
+          git add data/processed/price_based_candidates_*.csv || true
           git add data/processed/social_attention_features_*.csv || true
           git add data/processed/learned_event_rules_*.csv || true
           git add data/processed/snacks_market_features_*.csv || true
@@ -106,6 +112,7 @@ jobs:
           git add data/processed/trading_volume_score_adjustments_*.csv || true
           git add data/predictions/error_notes_*.csv || true
           git add data/predictions/market_adjusted_evaluation_*.csv || true
+          git add data/predictions/price_candidate_evaluation_*.csv || true
           git add data/raw/snacks_newsletters_*.csv || true
           git add reports/daily_prediction/*.md || true
           git add reports/daily_review/*.md || true

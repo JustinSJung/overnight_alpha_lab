@@ -228,12 +228,16 @@ logs/
 !data/processed/automation_history.csv
 # Keep core state files for GitHub Actions dashboard and learning loop
 !data/processed/automation_history.csv
+!data/processed/price_watchlist.csv
 !data/processed/ml_dataset_*.csv
+!data/processed/daily_price_signals_*.csv
+!data/processed/price_based_candidates_*.csv
 !data/processed/social_attention_features_*.csv
 !data/processed/learned_event_rules_*.csv
 !data/processed/market_adjusted_score_adjustments_*.csv
 !data/processed/trading_volume_score_adjustments_*.csv
 !data/predictions/error_notes_*.csv
 !data/predictions/market_adjusted_evaluation_*.csv
+!data/predictions/price_candidate_evaluation_*.csv
 !data/raw/snacks_newsletters_*.csv
 !data/processed/snacks_market_features_*.csv
