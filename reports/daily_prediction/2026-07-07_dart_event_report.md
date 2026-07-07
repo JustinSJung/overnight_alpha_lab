@@ -8,44 +8,44 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 61 |
-| Insider or Major Holder Disclosure | 22 |
-| Major Shareholder Change | 5 |
-| Paid-in Capital Increase | 4 |
-| Supply Contract | 4 |
-| Convertible Bond | 2 |
-| Merger | 1 |
-| Spin-off | 1 |
+| Other | 70 |
+| Insider or Major Holder Disclosure | 12 |
+| Supply Contract | 9 |
+| Major Shareholder Change | 6 |
+| Convertible Bond | 1 |
+| Lawsuit | 1 |
+| Paid-in Capital Increase | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
-| 모아데이타 | [기재정정]주요사항보고서(자기전환사채매도결정) | Convertible Bond | 20260707 |
-| 플루토스 | 전환사채(해외전환사채포함)발행후만기전사채취득               | Convertible Bond | 20260707 |
-| 화승코퍼레이션 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
-| 청보 | 주권매매거래정지              (주식의 병합, 분할 등 전자등록 변경, 말소) | Spin-off | 20260707 |
-| 스튜디오드래곤 | 합병등종료보고서(합병) | Merger | 20260707 |
-| 삼성중공업 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
-| 우양에이치씨 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
-| 다원시스 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
-| 현대건설 | 유상증자또는주식관련사채등의발행결과(자율공시)               | Paid-in Capital Increase | 20260707 |
-| 대우건설 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
-| 오에스피 | 증권발행결과(자율공시)              (제3자배정 유상증자) | Paid-in Capital Increase | 20260707 |
-| 코오롱글로벌 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
-| 인천글로벌컨테이너터미널 | 특수관계인의유상증자참여 | Paid-in Capital Increase | 20260707 |
-| 인천글로벌컨테이너터미널 | 유상증자결정 | Paid-in Capital Increase | 20260707 |
-| 디바이스 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
-| TP | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
-| 삼익THK | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
+| 모아데이타 | [기재정정]최대주주변경을수반하는주식담보제공계약체결               | Major Shareholder Change | 20260707 |
+| 제테마 | [첨부정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260707 |
+| 옵티코어 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
+| 모아라이프플러스 | [기재정정]최대주주변경을수반하는주식담보제공계약체결               | Major Shareholder Change | 20260707 |
+| 데이타솔루션 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
+| 데이타솔루션 | 주권매매거래정지              (단일판매공급계약) | Supply Contract | 20260707 |
+| 콜마홀딩스 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
+| 씨이랩 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
+| 씨이랩 | 주권매매거래정지              (단일판매공급계약) | Supply Contract | 20260707 |
+| 삼호개발 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
+| 신성이엔지 | [기재정정]단일판매ㆍ공급계약체결(자율공시)               | Supply Contract | 20260707 |
+| LG씨엔에스 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
+| 스피어 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
+| 아이로보틱스 | 소송등의제기ㆍ신청(경영권분쟁소송)              (주주총회 개최금지 가처분) | Lawsuit | 20260707 |
+| 한미사이언스 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260707 |
+| 남화토건 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260707 |
+| CS | 주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260707 |
+| 제이스코홀딩스 | [기재정정]최대주주변경을수반하는주식담보제공계약체결               | Major Shareholder Change | 20260707 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 39
-- Supply contract disclosures: 4
-- Financing-related disclosures: 6
-- Insider or major holder disclosures: 22
+- Classified non-other events: 30
+- Supply contract disclosures: 9
+- Financing-related disclosures: 2
+- Insider or major holder disclosures: 12
 
 ## Model Notes
 

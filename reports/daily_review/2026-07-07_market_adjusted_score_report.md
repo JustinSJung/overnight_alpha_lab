@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-07
 
-Generated at: 2026-07-07 06:47:39
+Generated at: 2026-07-07 23:19:46
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260707.csv`
 
@@ -28,42 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **28**
+- Total rows: **36**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **28**
+- neutral_adjustment: **36**
 
 ## Market-Adjusted Result Counts
 
-- pending: **28**
+- pending: **36**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 288980 | 모아데이타 | negative | pending | 0 | N/A |
-| 1970-01-01 | 019570 | 플루토스 | negative | pending | 0 | N/A |
-| 1970-01-01 | 013520 | 화승코퍼레이션 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 013720 | 청보 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 253450 | 스튜디오드래곤 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 010140 | 삼성중공업 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 010140 | 삼성중공업 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 010140 | 삼성중공업 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 010140 | 삼성중공업 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 101970 | 우양에이치씨 | positive | pending | 0 | N/A |
-| 1970-01-01 | 068240 | 다원시스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 000720 | 현대건설 | negative | pending | 0 | N/A |
-| 1970-01-01 | 047040 | 대우건설 | positive | pending | 0 | N/A |
-| 1970-01-01 | 368970 | 오에스피 | negative | pending | 0 | N/A |
-| 1970-01-01 | 003070 | 코오롱글로벌 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 187870 | 디바이스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 007980 | TP | volatile | pending | 0 | N/A |
-| 1970-01-01 | 007980 | TP | volatile | pending | 0 | N/A |
-| 1970-01-01 | 007980 | TP | volatile | pending | 0 | N/A |
-| 1970-01-01 | 007980 | TP | volatile | pending | 0 | N/A |
+| 1970-01-01 | 288980 | 모아데이타 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 216080 | 제테마 | negative | pending | 0 | N/A |
+| 1970-01-01 | 380540 | 옵티코어 | positive | pending | 0 | N/A |
+| 1970-01-01 | 142760 | 모아라이프플러스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 263800 | 데이타솔루션 | positive | pending | 0 | N/A |
+| 1970-01-01 | 024720 | 콜마홀딩스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 024720 | 콜마홀딩스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 189330 | 씨이랩 | positive | pending | 0 | N/A |
+| 1970-01-01 | 189330 | 씨이랩 | positive | pending | 0 | N/A |
+| 1970-01-01 | 189330 | 씨이랩 | positive | pending | 0 | N/A |
+| 1970-01-01 | 189330 | 씨이랩 | positive | pending | 0 | N/A |
+| 1970-01-01 | 189330 | 씨이랩 | positive | pending | 0 | N/A |
+| 1970-01-01 | 189330 | 씨이랩 | positive | pending | 0 | N/A |
 
 ## Next Step
 
