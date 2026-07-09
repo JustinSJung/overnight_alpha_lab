@@ -9,9 +9,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 ## Summary
 
 - Snacks articles analyzed: **3**
-- US market attention signals: **7**
-- Macro risk signals: **2**
-- Korea relevance signals: **74**
+- US market attention signals: **4**
+- Macro risk signals: **0**
+- Korea relevance signals: **75**
 
 ## Top Global Themes
 
@@ -23,9 +23,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 
 | Rank | Title | Top Theme | Attention | Macro Risk | Korea Relevance | URL |
 |---:|---|---|---:|---:|---:|---|
-| 1 | 🚀 Nasdaq Joins Team Rocket | ai_semiconductor | 0 | 0 | 17 | https://sherwood.news/snacks/newsletters/nasdaq-joins-team-rocket/ |
-| 2 | 🚧 Play Has Some Limits | ai_semiconductor | 1 | 0 | 27 | https://sherwood.news/snacks/newsletters/play-has-some-limits/ |
-| 3 | ☁️ Meta’s cloudy future | ai_semiconductor | 6 | 2 | 30 | https://sherwood.news/snacks/newsletters/metas-cloudy-future/ |
+| 1 | 💥 Ceasefire ceases, fire increases | ai_semiconductor | 3 | 0 | 31 | https://sherwood.news/snacks/newsletters/ceasefire-ceases-fire-increases/ |
+| 2 | 🚀 Nasdaq Joins Team Rocket | ai_semiconductor | 0 | 0 | 17 | https://sherwood.news/snacks/newsletters/nasdaq-joins-team-rocket/ |
+| 3 | 🚧 Play Has Some Limits | ai_semiconductor | 1 | 0 | 27 | https://sherwood.news/snacks/newsletters/play-has-some-limits/ |
 
 ## Interpretation
 

@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-09
 
-Generated at: 2026-07-09 04:43:10
+Generated at: 2026-07-09 23:40:58
 
 Source ML dataset: `data/processed/ml_dataset_20260709.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4115**
-- Rows with price file found: **4115**
+- Total rows: **8372**
+- Rows with price file found: **8372**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **4115**
+- insufficient_volume_baseline: **8372**
 
 ## Interpretation
 
@@ -35,36 +35,36 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260709 | 900120 | 씨엑스아이 | paid_in_capital_increase | negative | N/A | 0 | N/A | N/A | 0 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
-| 20260709 | 000760 | 이화산업 | major_shareholder_change | volatile | N/A | 4,070 | N/A | N/A | 1,084 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260709 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
 
 ## Next Step
 

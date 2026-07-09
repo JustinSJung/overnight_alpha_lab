@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-09
 
-Generated at: 2026-07-09 04:43:09
+Generated at: 2026-07-09 23:40:57
 
 Source feature file: `data/processed/market_adjusted_features_20260709.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **21**
-- pending: **21**
+- Total rows: **50**
+- pending: **50**
 
 ## Interpretation
 
@@ -29,26 +29,26 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 900120 | 씨엑스아이 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 760 | 이화산업 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 210120 | 캔버스엔 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 12160 | 영흥 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 12160 | 영흥 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 12160 | 영흥 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 302430 | 이노메트리 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 9540 | HD한국조선해양 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 4710 | 한솔테크닉스 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 329180 | HD현대중공업 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 199290 | 바이오프로테크 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 141080 | 리가켐바이오 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 2020 | 코오롱 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 241840 | 에이스토리 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 109070 | 주성코퍼레이션 | negative | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

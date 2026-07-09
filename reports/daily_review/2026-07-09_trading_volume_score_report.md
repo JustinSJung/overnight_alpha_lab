@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-09
 
-Generated at: 2026-07-09 04:43:10
+Generated at: 2026-07-09 23:40:59
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260709.csv`
 
@@ -23,52 +23,52 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4115**
+- Total rows: **8372**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **4115**
+- neutral_volume_adjustment: **8372**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **4115**
+- insufficient_volume_baseline: **8372**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
-| 20260709 | 900120 | 씨엑스아이 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260709 | 000760 | 이화산업 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260709 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 

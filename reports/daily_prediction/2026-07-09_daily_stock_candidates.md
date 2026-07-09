@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-09
 
-Generated at: 2026-07-09 04:43:14
+Generated at: 2026-07-09 23:41:02
 
 ML dataset: `data/processed/ml_dataset_20260709.csv`
 
@@ -19,7 +19,6 @@ The recommender now applies a stock-specific historical adjustment. Stocks with 
 | Stock | Company | Total | Evaluated | Success Rate | Avg Next Close | Pattern Label | Stock Adj |
 |---|---|---:|---:|---:|---:|---|---:|
 | 000520 | 삼일제약 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
-| 000760 | 이화산업 | 8 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 001470 | 삼부토건 | 13 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 002020 | 코오롱 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 002070 | 비비안 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
@@ -28,6 +27,7 @@ The recommender now applies a stock-specific historical adjustment. Stocks with 
 | 003060 | 에이프로젠바이오로직스 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 003070 | 코오롱글로벌 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 003350 | 한국화장품제조 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
+| 003470 | 유안타증권 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 003490 | 대한항공 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 004440 | 삼일씨엔에스 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 
@@ -37,16 +37,16 @@ The recommender also applies event-type performance adjustments based on histori
 
 | Event Type | Total | Evaluated | Success Rate | Avg Next Close | Total Adj |
 |---|---:|---:|---:|---:|---:|
-| convertible_bond | 20 | 0 | N/A | Not available | 0.00 |
-| disclosure_violation | 6 | 0 | N/A | Not available | 0.00 |
+| convertible_bond | 25 | 0 | N/A | Not available | 0.00 |
+| disclosure_violation | 7 | 0 | N/A | Not available | 0.00 |
 | earnings_guidance | 2 | 0 | N/A | Not available | 0.00 |
-| investment_decision | 16 | 0 | N/A | Not available | 0.00 |
-| lawsuit | 15 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 56 | 0 | N/A | Not available | 0.00 |
-| merger | 8 | 0 | N/A | Not available | 0.00 |
-| paid_in_capital_increase | 25 | 0 | N/A | Not available | 0.00 |
+| investment_decision | 17 | 0 | N/A | Not available | 0.00 |
+| lawsuit | 26 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 51 | 0 | N/A | Not available | 0.00 |
+| merger | 9 | 0 | N/A | Not available | 0.00 |
+| paid_in_capital_increase | 38 | 0 | N/A | Not available | 0.00 |
 | spin_off | 1 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 66 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 68 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -54,74 +54,74 @@ The recommender also reads past error notes and applies event-type level confide
 
 | Event Type | Notes | Success | Failure | Pending | Adjustment |
 |---|---:|---:|---:|---:|---:|
-| convertible_bond | 20 | 0 | 0 | 20 | 0.00 |
-| disclosure_violation | 6 | 0 | 0 | 6 | 0.00 |
+| convertible_bond | 25 | 0 | 0 | 25 | 0.00 |
+| disclosure_violation | 7 | 0 | 0 | 7 | 0.00 |
 | earnings_guidance | 2 | 0 | 0 | 2 | 0.00 |
-| investment_decision | 16 | 0 | 0 | 16 | 0.00 |
-| lawsuit | 15 | 0 | 0 | 15 | 0.00 |
-| major_shareholder_change | 56 | 0 | 0 | 56 | 0.00 |
-| merger | 8 | 0 | 0 | 8 | 0.00 |
-| paid_in_capital_increase | 25 | 0 | 0 | 25 | 0.00 |
+| investment_decision | 17 | 0 | 0 | 17 | 0.00 |
+| lawsuit | 26 | 0 | 0 | 26 | 0.00 |
+| major_shareholder_change | 51 | 0 | 0 | 51 | 0.00 |
+| merger | 9 | 0 | 0 | 9 | 0.00 |
+| paid_in_capital_increase | 38 | 0 | 0 | 38 | 0.00 |
 | spin_off | 1 | 0 | 0 | 1 | 0.00 |
-| supply_contract | 66 | 0 | 0 | 66 | 0.00 |
+| supply_contract | 68 | 0 | 0 | 68 | 0.00 |
 
 ## Positive Candidates
 
-### 1. 코오롱글로벌 (003070)
+### 1. 동신건설 (025950)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **120.00**
+- Base recommendation score: **180.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **120.00**
+- Adjusted recommendation score: **180.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 18. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [이 시각 시황] 코스피 7,500선 붕괴…화장품·AI 강세 속 증시 조정 지... | 남화토건, 굳건한 토목·건축 경쟁력으로 정책 수혜 정조준 | [특징주] '4800조 메가 프로젝트' 기대감에 진흥기업·일성건설 '上'
+
+### 2. 에이스토리 (241840)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **140.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **140.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 6. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [아파트의 미학(美學)] 운정자이 시그니처 "구름이 내려앉은 숲속 쉼터... | [협약형특성화고⑭] 대전생활과학고, 지역 맞춤형 바이오헬스 인재 육성... | 코오롱베니트, '델 로드쇼 2026' 성료 ··· 지역 파트너와 동반성장 박...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 10일 개장 전 주요 공시 | [특징주] 에이스토리, 스튜디오드래곤과 12부작 신작 계약…글로벌 판권... | [특징주] 에이스토리, 스튜디오드래곤과 '수성궁밀회록' 12부작 공급계약
 
-### 2. 코오롱 (002020)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **110.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **110.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결(자회사의 주요경영사항)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 리튬배터리 화재 확산 차단하는 충전 파우치백 등장 | [아파트의 미학(美學)] 운정자이 시그니처 "구름이 내려앉은 숲속 쉼터... | [협약형특성화고⑭] 대전생활과학고, 지역 맞춤형 바이오헬스 인재 육성...
-
-### 3. HD한국조선해양 (009540)
+### 3. 코오롱글로벌 (003070)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **105.00**
+- Base recommendation score: **130.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **105.00**
+- Adjusted recommendation score: **130.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결(자회사의 주요경영사항)              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: HD한국조선해양, PC선 6척 4699억원 수주…올해 목표 69% 달성 | [기자수첩] K-해양방산, 전략 전환이 필요하다 | AX시대 한국은 우등생인가 낙제생인가?
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [코스피·코스닥, 코오롱글로벌  HD현대중공업 신테카바이오 한진 TJ미디... | 코오롱생명과학 "ESG 고도화·온실가스 감축" | [N2 모닝 경제 브리핑-7월 10일] 美 증시, AI 반도체 훈풍 속 3대지수 상...
 
-### 4. HD현대중공업 (329180)
+### 4. 코오롱 (002020)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -133,211 +133,175 @@ The recommender also reads past error notes and applies event-type level confide
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 택배노조, 'CJ대한통운 단체교섭의무 불인정' 대법 판결 규탄 | 대법, CJ대한통운 손 들어줬다…택배기사 단체교섭 의무 인정 2심 파기 | 대법, CJ대한통운 택배노조 단체교섭 의무 인정 판결 파기
+- Related news examples: '중학생 강연서-15발 만발 박정윤' 韓 여자 컴파운드 대표팀, 중국 꺾고... | [코스피·코스닥, 코오롱글로벌  HD현대중공업 신테카바이오 한진 TJ미디... | [역사속 오늘·7.10] 당포해전 승리(1592)·한국전쟁 휴전회담 시작(1951)...
 
-### 5. 이노메트리 (302430)
+### 5. 다스코 (058730)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **92.00**
+- Base recommendation score: **94.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **92.00**
+- Adjusted recommendation score: **94.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 1. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 전기차 캐즘 뚫은 기술력… 삼기에너지솔루션즈, 경량화 부품 수주 탄력 | LG에너지솔루션, 전기제품 상장기업 브랜드평판 6월 1위...삼성SDI 뒤이어 | 전기제품 상장기업 2026년 6월 브랜드평판...LG에너지솔루션, 삼성SDI, 에...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [26.7.9 증시 인싸잇] 오늘의 특징주 - 증시 급락 속 호남 반도체 메가 ... | 다스코 주가, 7월 9일 장중 5,320원 2.31% 상승 | [서울데이터랩]코스피 거래상위 종목 혼조…한성기업 상한가·금호건설...
+
+### 6. 다스코 (058730)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **94.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **94.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [26.7.9 증시 인싸잇] 오늘의 특징주 - 증시 급락 속 호남 반도체 메가 ... | 다스코 주가, 7월 9일 장중 5,320원 2.31% 상승 | [서울데이터랩]코스피 거래상위 종목 혼조…한성기업 상한가·금호건설...
 
 ## Volatile Watchlist
 
-### 1. 이화산업 (000760)
+### 1. 프로티나 (468530)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **27.00**
+- Base recommendation score: **85.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
+- Adjusted recommendation score: **85.00**
+- Risk level: **MEDIUM**
+- Event type: `investment_decision`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 투자판단관련주요경영사항              (항체 바이오베터 공동기술개발 및 기술이전 옵션 계약 체결)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [프리마켓 포커스] SK하이닉스 'IPO 대박'·뉴욕증시 훈풍에 개장 전 3% ... | 삼성바이오에피스, 프로티나와 AI 항체 신약개발 '속도' | 삼성바이오에피스-프로티나, AI 항체 신약 개발 후속계약 체결
+
+### 2. 젠큐릭스 (229000)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **55.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **55.00**
+- Risk level: **MEDIUM**
+- Event type: `merger`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [첨부정정]주요사항보고서(회사합병결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [의료기기업계 소식] 7월 7일 | 젠큐릭스 "복지부 '저출산 극복 기술개발' 선정…차세대 산전진단 개발... | 젠큐릭스, 경영권 매각 '없다'…공식 부인
+
+### 3. 유안타증권 (003470)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **42.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **42.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 6. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: "브로커리지 넘어 WM까지"…유안타증권 '체질 개선' 속도 | 미래에셋증권, 증권사 브랜드평판 2026년 7월...1위 | 은행보다 돈 많은 하이닉스…미래에셋 1.26조 CP 인수
+
+### 4. 아틀라스링크 (297570)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **12.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **12.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주변경              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 10일 개장 전 주요 공시 | 저궤도 위성 경쟁 치열, 국내 개발 상황은? | 아틀라스링크, 최대주주 변경…미래산업 주식회사 등
 
-### 2. 이화산업 (000760)
+### 5. 아틀라스링크 (297570)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **27.00**
+- Base recommendation score: **12.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
+- Adjusted recommendation score: **12.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주변경              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 10일 개장 전 주요 공시 | 저궤도 위성 경쟁 치열, 국내 개발 상황은? | 아틀라스링크, 최대주주 변경…미래산업 주식회사 등
 
-### 3. 이화산업 (000760)
+### 6. 아틀라스링크 (297570)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **27.00**
+- Base recommendation score: **12.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
+- Adjusted recommendation score: **12.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주변경              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 10일 개장 전 주요 공시 | 저궤도 위성 경쟁 치열, 국내 개발 상황은? | 아틀라스링크, 최대주주 변경…미래산업 주식회사 등
 
-### 4. 이화산업 (000760)
+### 7. 아틀라스링크 (297570)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **27.00**
+- Base recommendation score: **12.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
+- Adjusted recommendation score: **12.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주변경              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
-
-### 5. 이화산업 (000760)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **27.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주변경              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
-
-### 6. 이화산업 (000760)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **27.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주변경              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
-
-### 7. 이화산업 (000760)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **27.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주변경              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
-
-### 8. 이화산업 (000760)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **27.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주변경              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
-
-### 9. 이화산업 (000760)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **27.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]최대주주등소유주식변동신고서(최대주주변경시)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
-
-### 10. 이화산업 (000760)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **27.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **27.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주변경              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 감자 완료 후 거래 재개… 케이피엠테크, 고부가가치 PCB 시장 공략 박차 | 화학 상장기업 브랜드평판 7월 빅데이터 분석... 1위 에코프로, 2위 LG화... | 10년 내 메가 프로젝트 산단 조성…가능의 조건은?
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 10일 개장 전 주요 공시 | 저궤도 위성 경쟁 치열, 국내 개발 상황은? | 아틀라스링크, 최대주주 변경…미래산업 주식회사 등
 
 ## General Watchlist
 
@@ -345,7 +309,185 @@ No candidates in this section.
 
 ## Risk / Avoid Review List
 
-No candidates in this section.
+### 1. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 2. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 3. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 4. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 5. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 6. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 7. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 8. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 9. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
+
+### 10. 한울앤제주 (276730)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-29.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-29.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 10. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경기 불황 뚫는 70년 관록… '주정 대장' 풍국주정, 안정적 실적 기대감... | 냉동김밥 수출 기대감에 김밥주 강세…한성기업 주가 파죽지세 | 지구온난화 장기화에 멈추지 않는 랠리... 여름 테마 '슈퍼 사이클' 진입...
 
 ## Data Readiness
 
