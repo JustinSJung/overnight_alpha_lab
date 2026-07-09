@@ -235,9 +235,10 @@ logs/
 !data/processed/social_attention_features_*.csv
 !data/processed/learned_event_rules_*.csv
 !data/processed/market_adjusted_score_adjustments_*.csv
-!data/processed/trading_volume_score_adjustments_*.csv
 !data/predictions/error_notes_*.csv
 !data/predictions/market_adjusted_evaluation_*.csv
 !data/predictions/price_candidate_evaluation_*.csv
 !data/raw/snacks_newsletters_*.csv
 !data/processed/snacks_market_features_*.csv
+# Do not commit large generated volume adjustment files
+data/processed/trading_volume_score_adjustments_*.csv
