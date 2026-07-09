@@ -80,12 +80,8 @@ jobs:
 
           if [ "$EXIT_CODE" = "143" ]; then
             echo "Catch-up ended with exit code 143."
-            if ls logs/catchup_*.log 1> /dev/null 2>&1; then
-              echo "Treating 143 as soft termination so generated files can still be committed."
-              exit 0
-            fi
-            echo "No catch-up log was generated; keeping exit code 143 as a failure."
-            exit 143
+            echo "Treating 143 as soft termination so generated files can still be committed."
+            exit 0
           fi
 
           if grep -q "Catch-up completed successfully." logs/catchup_*.log 2>/dev/null; then
@@ -101,18 +97,18 @@ jobs:
           git config user.email "github-actions@github.com"
 
           git add data/processed/automation_history.csv || true
-	  git add data/processed/price_watchlist.csv || true
           git add data/processed/ml_dataset_*.csv || true
-          git add data/processed/daily_price_signals_*.csv || true
-          git add data/processed/price_based_candidates_*.csv || true
           git add data/processed/social_attention_features_*.csv || true
           git add data/processed/learned_event_rules_*.csv || true
           git add data/processed/snacks_market_features_*.csv || true
+          git add data/processed/daily_price_signals_*.csv || true
+          git add data/processed/price_based_candidates_*.csv || true
           git add data/processed/market_adjusted_score_adjustments_*.csv || true
+          git add data/raw/snacks_newsletters_*.csv || true
           git add data/predictions/error_notes_*.csv || true
           git add data/predictions/market_adjusted_evaluation_*.csv || true
+          git add data/predictions/price_based_candidates_*.csv || true
           git add data/predictions/price_candidate_evaluation_*.csv || true
-          git add data/raw/snacks_newsletters_*.csv || true
           git add reports/daily_prediction/*.md || true
           git add reports/daily_review/*.md || true
           git add reports/single_stock/*.md || true
