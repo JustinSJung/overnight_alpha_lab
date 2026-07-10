@@ -1,4 +1,5 @@
 import json
+import math
 import os
 from datetime import datetime
 from pathlib import Path
@@ -168,18 +169,29 @@ def build_metrics():
         if price_evaluated_count > 0:
             price_success_rate = price_success_count / price_evaluated_count
 
-    if price_evaluated_count < 10:
+    sample_confidence_factor = min(1.0, math.sqrt(price_evaluated_count / 100)) if price_evaluated_count else 0.0
+    reliability_score = price_success_rate * 100 * sample_confidence_factor
+
+    if reliability_score < 30:
         confidence_status = "NOT READY"
-        confidence_comment = "KIS 가격 후보 평가 데이터가 아직 부족합니다. 가격 기반 학습 데이터 축적 단계입니다."
-    elif price_success_rate >= 0.65:
-        confidence_status = "WATCHLIST"
-        confidence_comment = "KIS 가격 후보 평가 기준으로 초기 신뢰도 관찰 가능 단계입니다. 아직 투자 판단용은 아닙니다."
-    elif price_success_rate >= 0.5:
+        confidence_status_ko = "준비 부족"
+        confidence_comment = "신뢰도 점수가 아직 낮습니다. KIS 가격 후보 평가 데이터 축적이 더 필요합니다."
+    elif reliability_score < 50:
         confidence_status = "EARLY STAGE"
-        confidence_comment = "KIS 가격 후보 평가에서 일부 패턴 확인은 가능하지만 더 많은 데이터가 필요합니다."
+        confidence_status_ko = "초기 검증 단계"
+        confidence_comment = "표본 수를 반영한 신뢰도 기준으로 초기 검증 단계입니다. 일부 패턴은 관찰되지만 더 많은 평가 데이터가 필요합니다."
+    elif reliability_score < 65:
+        confidence_status = "WATCHLIST"
+        confidence_status_ko = "관찰 가능 단계"
+        confidence_comment = "KIS 가격 후보 평가 기준으로 관찰 가능한 단계입니다. 아직 투자 판단용은 아닙니다."
+    elif reliability_score < 80:
+        confidence_status = "MODERATE CONFIDENCE"
+        confidence_status_ko = "중간 신뢰도"
+        confidence_comment = "KIS 가격 후보 평가에서 중간 수준의 신뢰도가 관찰됩니다. 계속 누적 검증이 필요합니다."
     else:
-        confidence_status = "LOW CONFIDENCE"
-        confidence_comment = "KIS 가격 후보 평가 기준으로는 아직 보수적으로 해석해야 합니다."
+        confidence_status = "HIGH CONFIDENCE"
+        confidence_status_ko = "높은 신뢰도"
+        confidence_comment = "KIS 가격 후보 평가에서 높은 신뢰도가 관찰됩니다. 그래도 연구용 모니터링 지표로 해석해야 합니다."
 
     high_attention_count = 0
     rumor_noise_count = 0
@@ -221,6 +233,7 @@ def build_metrics():
         "evaluated_count": evaluated_count,
         "dart_success_rate": round(dart_success_rate * 100, 2),
         "confidence_status": confidence_status,
+        "confidence_status_ko": confidence_status_ko,
         "confidence_comment": confidence_comment,
         "market_rows": market_rows,
         "volume_rows": volume_rows,
@@ -231,6 +244,8 @@ def build_metrics():
         "price_failure_count": price_failure_count,
         "price_pending_count": price_pending_count,
         "price_success_rate": round(price_success_rate * 100, 2),
+        "sample_confidence_factor": round(sample_confidence_factor, 3),
+        "reliability_score": round(reliability_score, 1),
 	"high_attention_count": high_attention_count,
 	"rumor_noise_count": rumor_noise_count,
 	"risk_noise_count": risk_noise_count,
@@ -283,6 +298,7 @@ def build_stock_data(latest_ml_df):
 def build_html(metrics, stock_data):
     stock_json = json.dumps(stock_data, ensure_ascii=False)
     success_width = min(max(safe_float(metrics.get("price_success_rate", 0)), 0), 100)
+    reliability_width = min(max(safe_float(metrics.get("reliability_score", 0)), 0), 100)
     evaluated_width = 0
     price_total = metrics.get("price_evaluated_count", 0) + metrics.get("price_pending_count", 0)
     if price_total:
@@ -293,6 +309,7 @@ def build_html(metrics, stock_data):
     status_class = {
         "WATCHLIST": "badge-green",
         "MODERATE CONFIDENCE": "badge-green",
+        "HIGH CONFIDENCE": "badge-green",
         "EARLY STAGE": "badge-orange",
         "NOT READY": "badge-orange",
         "LOW CONFIDENCE": "badge-red",
@@ -449,6 +466,34 @@ def build_html(metrics, stock_data):
       font-weight: 850;
     }}
 
+    .hero-rate-unit {{
+      font-size: clamp(22px, 4vw, 34px);
+      color: rgba(255, 255, 255, 0.68);
+    }}
+
+    .hero-stats {{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }}
+
+    .hero-stat {{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+    }}
+
+    .hero-stat b {{
+      color: white;
+      font-size: 15px;
+    }}
+
     .progress {{
       height: 10px;
       margin-top: 18px;
@@ -487,6 +532,14 @@ def build_html(metrics, stock_data):
       margin: 0;
       font-size: 22px;
       letter-spacing: 0;
+    }}
+
+    .heading-ko {{
+      display: inline-block;
+      margin-left: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
     }}
 
     .section-subtitle {{
@@ -732,7 +785,7 @@ def build_html(metrics, stock_data):
       <div>
         <p class="eyebrow">Overnight Alpha Lab</p>
         <h1>Daily Price-Signal Learning System</h1>
-        <div class="subtitle">KIS Price-Based Learning Dashboard</div>
+        <div class="subtitle">KIS Price-Based Learning Dashboard / KIS 가격 기반 학습 대시보드</div>
         <p class="hero-copy">
           Primary learning is based on Korea Investment API price-candidate evaluation.
           DART, news, Snacks, and social attention are supplementary signals.
@@ -740,22 +793,36 @@ def build_html(metrics, stock_data):
       </div>
       <div class="hero-panel">
         <div>
-          <span class="badge {status_class}">{metrics["confidence_status"]}</span>
-          <div class="hero-rate-label">Cumulative Price Success Rate</div>
-          <div class="hero-rate">{metrics["price_success_rate"]}%</div>
-          <div class="progress" aria-label="Price success rate">
-            <span style="width: {success_width:.0f}%"></span>
+          <span class="badge {status_class}">{metrics["confidence_status"]} / {metrics["confidence_status_ko"]}</span>
+          <div class="hero-rate-label">Reliability Score<br>신뢰도 점수</div>
+          <div class="hero-rate">{metrics["reliability_score"]}<span class="hero-rate-unit"> / 100</span></div>
+          <div class="progress" aria-label="Reliability score">
+            <span style="width: {reliability_width:.0f}%"></span>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span>Price Success Rate / 가격 후보 성공률</span>
+              <b>{metrics["price_success_rate"]}%</b>
+            </div>
+            <div class="hero-stat">
+              <span>Price Evaluated Cases / 가격 후보 평가 완료</span>
+              <b>{metrics["price_evaluated_count"]}</b>
+            </div>
+            <div class="hero-stat">
+              <span>Price Pending Candidates / 가격 후보 평가 대기</span>
+              <b>{metrics["price_pending_count"]}</b>
+            </div>
           </div>
         </div>
-        <p class="hero-note">{metrics["confidence_comment"]}</p>
+        <p class="hero-note">{metrics["confidence_status_ko"]}. {metrics["confidence_comment"]}</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
         <div>
-          <h2>KIS Price-Based Learning</h2>
-          <p class="section-subtitle">Primary learning metrics are cumulative across historical price candidate evaluations.</p>
+          <h2>KIS Price-Based Learning <span class="heading-ko">KIS 가격 기반 학습</span></h2>
+          <p class="section-subtitle">Primary learning metrics are cumulative across historical price candidate evaluations. KIS 가격 후보 평가 데이터를 누적 기준으로 집계합니다.</p>
         </div>
       </div>
       <div class="kpi-grid">
@@ -793,52 +860,62 @@ def build_html(metrics, stock_data):
         </div>
       </div>
       <div class="note section">
-        KIS price learning metrics are cumulative across historical price candidate evaluations. This dashboard is for research monitoring only and is not investment advice.
+        Reliability Score is sample-adjusted. It combines KIS price-candidate success rate with the amount of evaluated historical data.<br>
+        신뢰도 점수는 표본 수를 반영한 값입니다. KIS 가격 후보 성공률과 누적 평가 데이터를 함께 반영합니다.
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
         <div>
-          <h2>Supplementary Signals</h2>
-          <p class="section-subtitle">DART, news, Snacks, social attention, and learned rules provide context around the primary price loop.</p>
+          <h2>Supplementary Signals <span class="heading-ko">보조 신호</span></h2>
+          <p class="section-subtitle">DART, news, Snacks, social attention, and learned rules provide context around the primary price loop. DART, 뉴스, Snacks, 관심도 분석은 가격 기반 학습을 보조합니다.</p>
         </div>
       </div>
       <div class="signal-grid">
         <div class="card">
           <div class="label">DART Event Evaluated Cases</div>
+          <div class="ko-desc">DART 이벤트 평가 완료</div>
           <div class="value">{metrics["evaluated_count"]}</div>
         </div>
         <div class="card">
           <div class="label">DART Event Pending Cases</div>
+          <div class="ko-desc">DART 이벤트 평가 대기</div>
           <div class="value warning">{metrics["pending_count"]}</div>
         </div>
         <div class="card">
           <div class="label">DART Event Success Rate</div>
+          <div class="ko-desc">DART 이벤트 성공률</div>
           <div class="value">{metrics["dart_success_rate"]}%</div>
         </div>
         <div class="card">
           <div class="label">Social Attention Rows</div>
+          <div class="ko-desc">관심도 분석 행 수</div>
           <div class="value">{metrics["social_rows"]}</div>
         </div>
         <div class="card">
           <div class="label">High Attention Signals</div>
+          <div class="ko-desc">높은 관심도 신호</div>
           <div class="value success">{metrics["high_attention_count"]}</div>
         </div>
         <div class="card">
           <div class="label">Risk Noise Signals</div>
+          <div class="ko-desc">리스크성 노이즈 신호</div>
           <div class="value risk">{metrics["risk_noise_count"]}</div>
         </div>
         <div class="card">
           <div class="label">Market-Adjusted Rows</div>
+          <div class="ko-desc">시장 조정 평가 행 수</div>
           <div class="value">{metrics["market_rows"]}</div>
         </div>
         <div class="card">
           <div class="label">Learned Rule Types</div>
+          <div class="ko-desc">학습 대상 이벤트 유형</div>
           <div class="value">{metrics["learned_rule_count"]}</div>
         </div>
         <div class="card">
           <div class="label">Active Learned Rules</div>
+          <div class="ko-desc">활성화된 학습 룰</div>
           <div class="value">{metrics["active_learned_rule_count"]}</div>
         </div>
       </div>
@@ -847,8 +924,8 @@ def build_html(metrics, stock_data):
     <section class="section">
       <div class="section-heading">
         <div>
-          <h2>Dataset & Reports</h2>
-          <p class="section-subtitle">Latest generated at {metrics["generated_at"]}. Latest ML dataset rows: {metrics["total_events"]}.</p>
+          <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
+          <p class="section-subtitle">Latest generated at {metrics["generated_at"]}. Latest ML dataset rows: {metrics["total_events"]}. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">
