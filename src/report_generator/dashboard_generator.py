@@ -215,6 +215,20 @@ def format_metric_value(value, suffix=""):
     return f"{value}{suffix}"
 
 
+def render_kpi_value(value, suffix="", css_class=""):
+    if value is None:
+        return "\n".join([
+            '<div class="kpi-value-small">',
+            '            <span class="status-pill">Insufficient data<br>데이터 부족</span>',
+            '          </div>',
+        ])
+
+    classes = "kpi-value"
+    if css_class:
+        classes += f" {css_class}"
+    return f'<div class="{classes}">{value}{suffix}</div>'
+
+
 def build_metrics():
     latest_ml_path = latest_file(PROCESSED_DIR, "ml_dataset_*.csv")
     latest_ml_df = read_csv(latest_ml_path)
@@ -425,6 +439,14 @@ def build_html(metrics, stock_data):
         "NOT READY": "badge-orange",
         "LOW CONFIDENCE": "badge-red",
     }.get(str(metrics.get("confidence_status", "")).upper(), "badge-gray")
+    benchmark_helper = ""
+    if metrics.get("benchmark_success_rate") is None:
+        benchmark_helper = "\n".join([
+            '<div class="muted-helper">',
+            '            Benchmark evaluation will appear after benchmark-matched candidate results are available.<br>',
+            '            시장 기준 평가 데이터가 쌓이면 표시됩니다.',
+            '          </div>',
+        ])
 
     html = f"""<!DOCTYPE html>
 <html lang="ko">
@@ -710,23 +732,56 @@ def build_html(metrics, stock_data):
       font-size: 12px;
     }}
 
-    .value {{
+    .value,
+    .kpi-value {{
       font-size: clamp(28px, 4vw, 40px);
       line-height: 1;
       font-weight: 850;
       color: var(--ink);
     }}
 
-    .value.success {{
+    .value.success,
+    .kpi-value.success {{
       color: var(--green);
     }}
 
-    .value.warning {{
+    .value.warning,
+    .kpi-value.warning {{
       color: var(--orange);
     }}
 
-    .value.risk {{
+    .value.risk,
+    .kpi-value.risk {{
       color: var(--red);
+    }}
+
+    .kpi-value-small {{
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+    }}
+
+    .status-pill {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: var(--gray-soft);
+      color: #5b6678;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: center;
+      white-space: normal;
+    }}
+
+    .muted-helper {{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
     }}
 
     .mini-bar {{
@@ -972,7 +1027,8 @@ def build_html(metrics, stock_data):
         <div class="card kpi-card">
           <div class="label">Benchmark-Adjusted Success Rate</div>
           <div class="ko-desc">시장 대비 성공률</div>
-          <div class="value">{format_metric_value(metrics["benchmark_success_rate"], "%")}</div>
+          {render_kpi_value(metrics["benchmark_success_rate"], "%")}
+          {benchmark_helper}
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark-Adjusted Evaluated Cases</div>
@@ -997,22 +1053,22 @@ def build_html(metrics, stock_data):
         <div class="card">
           <div class="label">Rolling 7-Day Success Rate</div>
           <div class="ko-desc">최근 7일 성공률</div>
-          <div class="value">{format_metric_value(metrics["rolling_7d_success_rate"], "%")}</div>
+          {render_kpi_value(metrics["rolling_7d_success_rate"], "%")}
         </div>
         <div class="card">
           <div class="label">Rolling 30-Day Success Rate</div>
           <div class="ko-desc">최근 30일 성공률</div>
-          <div class="value">{format_metric_value(metrics["rolling_30d_success_rate"], "%")}</div>
+          {render_kpi_value(metrics["rolling_30d_success_rate"], "%")}
         </div>
         <div class="card">
           <div class="label">Rolling 7-Day Evaluated Cases</div>
           <div class="ko-desc">최근 7일 평가 수</div>
-          <div class="value">{metrics["rolling_7d_evaluated_count"] if metrics["rolling_7d_evaluated_count"] else "Insufficient data / 데이터 부족"}</div>
+          {render_kpi_value(metrics["rolling_7d_evaluated_count"] or None)}
         </div>
         <div class="card">
           <div class="label">Rolling 30-Day Evaluated Cases</div>
           <div class="ko-desc">최근 30일 평가 수</div>
-          <div class="value">{metrics["rolling_30d_evaluated_count"] if metrics["rolling_30d_evaluated_count"] else "Insufficient data / 데이터 부족"}</div>
+          {render_kpi_value(metrics["rolling_30d_evaluated_count"] or None)}
         </div>
       </div>
     </section>
