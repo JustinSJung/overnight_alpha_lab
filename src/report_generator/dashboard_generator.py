@@ -124,22 +124,9 @@ def build_metrics():
     evaluated_count = success_count + failure_count
 
     if evaluated_count > 0:
-        success_rate = success_count / evaluated_count
+        dart_success_rate = success_count / evaluated_count
     else:
-        success_rate = 0.0
-
-    if evaluated_count < 10:
-        confidence_status = "NOT READY"
-        confidence_comment = "아직 평가 완료 데이터가 부족합니다. 데이터 축적 단계입니다."
-    elif success_rate >= 0.65:
-        confidence_status = "WATCHLIST"
-        confidence_comment = "초기 신뢰도 관찰 가능 단계입니다. 아직 투자 판단용은 아닙니다."
-    elif success_rate >= 0.5:
-        confidence_status = "EARLY STAGE"
-        confidence_comment = "일부 패턴 확인은 가능하지만 더 많은 데이터가 필요합니다."
-    else:
-        confidence_status = "LOW CONFIDENCE"
-        confidence_comment = "현재 성과 기준으로는 보수적으로 해석해야 합니다."
+        dart_success_rate = 0.0
     market_rows = len(latest_market_eval)
     volume_rows = len(latest_volume_score)
     social_rows = len(latest_social_attention)
@@ -153,6 +140,19 @@ def build_metrics():
         if price_evaluated_count > 0:
             price_success_count = int((price_results == "success").sum())
             price_success_rate = price_success_count / price_evaluated_count
+
+    if price_evaluated_count < 10:
+        confidence_status = "NOT READY"
+        confidence_comment = "KIS 가격 후보 평가 데이터가 아직 부족합니다. 가격 기반 학습 데이터 축적 단계입니다."
+    elif price_success_rate >= 0.65:
+        confidence_status = "WATCHLIST"
+        confidence_comment = "KIS 가격 후보 평가 기준으로 초기 신뢰도 관찰 가능 단계입니다. 아직 투자 판단용은 아닙니다."
+    elif price_success_rate >= 0.5:
+        confidence_status = "EARLY STAGE"
+        confidence_comment = "KIS 가격 후보 평가에서 일부 패턴 확인은 가능하지만 더 많은 데이터가 필요합니다."
+    else:
+        confidence_status = "LOW CONFIDENCE"
+        confidence_comment = "KIS 가격 후보 평가 기준으로는 아직 보수적으로 해석해야 합니다."
 
     high_attention_count = 0
     rumor_noise_count = 0
@@ -192,7 +192,7 @@ def build_metrics():
         "failure_count": failure_count,
         "pending_count": pending_count,
         "evaluated_count": evaluated_count,
-        "success_rate": round(success_rate * 100, 2),
+        "dart_success_rate": round(dart_success_rate * 100, 2),
         "confidence_status": confidence_status,
         "confidence_comment": confidence_comment,
         "market_rows": market_rows,
@@ -370,6 +370,8 @@ def build_html(metrics, stock_data):
 
     <div class="notice">
       이 대시보드는 투자 조언이 아닙니다. 현재 시스템의 데이터 축적 상태와 분석 결과를 확인하기 위한 연구용 화면입니다.
+      <br>
+      <span class="small">Primary learning is based on Korea Investment API price-candidate evaluation. DART/news/Snacks are supplementary signals.</span>
     </div>
 
     <div class="grid">
@@ -380,18 +382,18 @@ def build_html(metrics, stock_data):
         <div class="small">{metrics["confidence_comment"]}</div>
       </div>
       <div class="card">
-        <div class="label">Cumulative Success Rate</div>
-        <div class="ko-desc">누적 성공률</div>
-        <div class="value">{metrics["success_rate"]}%</div>
+        <div class="label">Price Success Rate</div>
+        <div class="ko-desc">KIS 가격 후보 성공률</div>
+        <div class="value">{metrics["price_success_rate"]}%</div>
       </div>
       <div class="card">
-        <div class="label">Evaluated Cases</div>
-        <div class="ko-desc">평가 완료 사례</div>
+        <div class="label">DART Event Evaluated Cases</div>
+        <div class="ko-desc">DART 이벤트 평가 완료</div>
         <div class="value">{metrics["evaluated_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">Pending Cases</div>
-        <div class="ko-desc">평가 대기 사례</div>
+        <div class="label">DART Event Pending Cases</div>
+        <div class="ko-desc">DART 이벤트 평가 대기</div>
         <div class="value">{metrics["pending_count"]}</div>
       </div>
     </div>
@@ -403,13 +405,13 @@ def build_html(metrics, stock_data):
         <div class="value">{metrics["total_events"]}</div>
       </div>
       <div class="card">
-        <div class="label">Successful Predictions</div>
-        <div class="ko-desc">성공 예측 수</div>
+        <div class="label">DART Event Successes</div>
+        <div class="ko-desc">DART 이벤트 성공 수</div>
         <div class="value">{metrics["success_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">Failed Predictions</div>
-        <div class="ko-desc">실패 예측 수</div>
+        <div class="label">DART Event Failures</div>
+        <div class="ko-desc">DART 이벤트 실패 수</div>
         <div class="value">{metrics["failure_count"]}</div>
       </div>
       <div class="card">
@@ -430,9 +432,9 @@ def build_html(metrics, stock_data):
         <div class="value">{metrics["price_evaluated_count"]}</div>
       </div>
       <div class="card">
-        <div class="label">Price Success Rate</div>
-        <div class="ko-desc">가격 후보 성공률</div>
-        <div class="value">{metrics["price_success_rate"]}%</div>
+        <div class="label">DART Event Success Rate</div>
+        <div class="ko-desc">DART 이벤트 성공률</div>
+        <div class="value">{metrics["dart_success_rate"]}%</div>
       </div>
       <div class="card">
         <div class="label">Market-Adjusted Rows</div>
@@ -556,17 +558,17 @@ def build_html(metrics, stock_data):
     # Final bilingual label normalization
     # Rule: English main label + short Korean sublabel
     label_replacements = {
-        '<div class="label">Evaluated Cases</div>\n        <div class="value">':
-        '<div class="label">Evaluated Cases</div>\n        <div class="ko-desc">평가 완료 사례</div>\n        <div class="value">',
+        '<div class="label">DART Event Evaluated Cases</div>\n        <div class="value">':
+        '<div class="label">DART Event Evaluated Cases</div>\n        <div class="ko-desc">DART 이벤트 평가 완료</div>\n        <div class="value">',
 
-        '<div class="label">Pending Cases</div>\n        <div class="value">':
-        '<div class="label">Pending Cases</div>\n        <div class="ko-desc">평가 대기 사례</div>\n        <div class="value">',
+        '<div class="label">DART Event Pending Cases</div>\n        <div class="value">':
+        '<div class="label">DART Event Pending Cases</div>\n        <div class="ko-desc">DART 이벤트 평가 대기</div>\n        <div class="value">',
 
-        '<div class="label">Successful Predictions</div>\n        <div class="value">':
-        '<div class="label">Successful Predictions</div>\n        <div class="ko-desc">성공 예측 수</div>\n        <div class="value">',
+        '<div class="label">DART Event Successes</div>\n        <div class="value">':
+        '<div class="label">DART Event Successes</div>\n        <div class="ko-desc">DART 이벤트 성공 수</div>\n        <div class="value">',
 
-        '<div class="label">Failed Predictions</div>\n        <div class="value">':
-        '<div class="label">Failed Predictions</div>\n        <div class="ko-desc">실패 예측 수</div>\n        <div class="value">',
+        '<div class="label">DART Event Failures</div>\n        <div class="value">':
+        '<div class="label">DART Event Failures</div>\n        <div class="ko-desc">DART 이벤트 실패 수</div>\n        <div class="value">',
 
         '<div class="label">Social Attention Rows</div>\n        <div class="value">':
         '<div class="label">Social Attention Rows</div>\n        <div class="ko-desc">관심도 분석 행 수</div>\n        <div class="value">',
