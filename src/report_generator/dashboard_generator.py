@@ -1,10 +1,22 @@
 import json
-import math
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.evaluation.metrics import (
+    classify_confidence_status,
+    reliability_score_from_wilson,
+    safe_percentage,
+)
+from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
 
 
 PROCESSED_DIR = Path("data/processed")
@@ -117,6 +129,92 @@ def evaluation_result_series(df: pd.DataFrame) -> pd.Series:
     return pd.Series(dtype=str)
 
 
+def success_series(df: pd.DataFrame, success_column: str) -> pd.Series:
+    """
+    Return success/failure/pending values with backward-compatible fallback.
+    """
+
+    if df.empty:
+        return pd.Series(dtype=str)
+
+    fallback = evaluation_result_series(df)
+
+    if success_column in df.columns:
+        primary = df[success_column].astype(str)
+        missing = primary.isin(["", "nan", "None", "<NA>"])
+        return primary.where(~missing, fallback)
+
+    return fallback
+
+
+def count_results(series: pd.Series) -> dict:
+    return {
+        "success": int((series == RESULT_SUCCESS).sum()),
+        "failure": int((series == RESULT_FAILURE).sum()),
+        "pending": int((series == RESULT_PENDING).sum()),
+    }
+
+
+def explicit_result_series(df: pd.DataFrame, column: str) -> pd.Series:
+    if df.empty or column not in df.columns:
+        return pd.Series(dtype=str)
+
+    series = df[column].astype(str)
+    return series.where(~series.isin(["", "nan", "None", "<NA>"]), "")
+
+
+def rolling_success_metrics(df: pd.DataFrame, days: int) -> dict:
+    if df.empty:
+        return {
+            "success_rate": None,
+            "evaluated_count": 0,
+        }
+
+    date_source = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
+    for column in ["evaluation_date", "evaluated_at", "signal_date", "candidate_date"]:
+        if column in df.columns:
+            parsed = pd.to_datetime(df[column], errors="coerce")
+            date_source = date_source.fillna(parsed)
+
+    if date_source.notna().sum() == 0:
+        return {
+            "success_rate": None,
+            "evaluated_count": 0,
+        }
+
+    result_series = success_series(df, "success_close_t1")
+    evaluated_mask = result_series.isin([RESULT_SUCCESS, RESULT_FAILURE])
+
+    if not evaluated_mask.any():
+        return {
+            "success_rate": None,
+            "evaluated_count": 0,
+        }
+
+    latest_date = date_source[evaluated_mask].max()
+    cutoff = latest_date - pd.Timedelta(days=days - 1)
+    mask = evaluated_mask & (date_source >= cutoff) & (date_source <= latest_date)
+    evaluated_count = int(mask.sum())
+
+    if evaluated_count == 0:
+        return {
+            "success_rate": None,
+            "evaluated_count": 0,
+        }
+
+    success_count = int((result_series[mask] == RESULT_SUCCESS).sum())
+    return {
+        "success_rate": round(safe_percentage(success_count, evaluated_count), 2),
+        "evaluated_count": evaluated_count,
+    }
+
+
+def format_metric_value(value, suffix=""):
+    if value is None:
+        return "Insufficient data / 데이터 부족"
+    return f"{value}{suffix}"
+
+
 def build_metrics():
     latest_ml_path = latest_file(PROCESSED_DIR, "ml_dataset_*.csv")
     latest_ml_df = read_csv(latest_ml_path)
@@ -159,8 +257,15 @@ def build_metrics():
     price_failure_count = 0
     price_pending_count = 0
     price_success_rate = 0.0
+    benchmark_evaluated_count = 0
+    benchmark_success_count = 0
+    benchmark_success_rate = None
+    rolling_7d_success_rate = None
+    rolling_30d_success_rate = None
+    rolling_7d_evaluated_count = 0
+    rolling_30d_evaluated_count = 0
 
-    price_results = evaluation_result_series(all_price_eval)
+    price_results = success_series(all_price_eval, "success_close_t1")
     if not price_results.empty:
         price_evaluated_count = int(price_results.isin(["success", "failure"]).sum())
         price_success_count = int((price_results == "success").sum())
@@ -169,29 +274,29 @@ def build_metrics():
         if price_evaluated_count > 0:
             price_success_rate = price_success_count / price_evaluated_count
 
-    sample_confidence_factor = min(1.0, math.sqrt(price_evaluated_count / 100)) if price_evaluated_count else 0.0
-    reliability_score = price_success_rate * 100 * sample_confidence_factor
+    benchmark_results = explicit_result_series(all_price_eval, "success_excess_t1")
+    if not benchmark_results.empty:
+        benchmark_evaluated_count = int(benchmark_results.isin([RESULT_SUCCESS, RESULT_FAILURE]).sum())
+        benchmark_success_count = int((benchmark_results == RESULT_SUCCESS).sum())
+        if benchmark_evaluated_count > 0:
+            benchmark_success_rate = round(safe_percentage(benchmark_success_count, benchmark_evaluated_count), 2)
 
-    if reliability_score < 30:
-        confidence_status = "NOT READY"
-        confidence_status_ko = "준비 부족"
-        confidence_comment = "신뢰도 점수가 아직 낮습니다. KIS 가격 후보 평가 데이터 축적이 더 필요합니다."
-    elif reliability_score < 50:
-        confidence_status = "EARLY STAGE"
-        confidence_status_ko = "초기 검증 단계"
-        confidence_comment = "표본 수를 반영한 신뢰도 기준으로 초기 검증 단계입니다. 일부 패턴은 관찰되지만 더 많은 평가 데이터가 필요합니다."
-    elif reliability_score < 65:
-        confidence_status = "WATCHLIST"
-        confidence_status_ko = "관찰 가능 단계"
-        confidence_comment = "KIS 가격 후보 평가 기준으로 관찰 가능한 단계입니다. 아직 투자 판단용은 아닙니다."
-    elif reliability_score < 80:
-        confidence_status = "MODERATE CONFIDENCE"
-        confidence_status_ko = "중간 신뢰도"
-        confidence_comment = "KIS 가격 후보 평가에서 중간 수준의 신뢰도가 관찰됩니다. 계속 누적 검증이 필요합니다."
-    else:
-        confidence_status = "HIGH CONFIDENCE"
-        confidence_status_ko = "높은 신뢰도"
-        confidence_comment = "KIS 가격 후보 평가에서 높은 신뢰도가 관찰됩니다. 그래도 연구용 모니터링 지표로 해석해야 합니다."
+    rolling_7d = rolling_success_metrics(all_price_eval, 7)
+    rolling_30d = rolling_success_metrics(all_price_eval, 30)
+    rolling_7d_success_rate = rolling_7d["success_rate"]
+    rolling_30d_success_rate = rolling_30d["success_rate"]
+    rolling_7d_evaluated_count = rolling_7d["evaluated_count"]
+    rolling_30d_evaluated_count = rolling_30d["evaluated_count"]
+
+    reliability_score = reliability_score_from_wilson(
+        price_success_count,
+        price_evaluated_count,
+    )
+    confidence_status, confidence_status_ko = classify_confidence_status(reliability_score)
+    confidence_comment = (
+        "Wilson 신뢰구간 하한값 기준의 보수적 신뢰도입니다. "
+        "표본 수가 적을수록 단순 성공률보다 낮게 표시됩니다."
+    )
 
     high_attention_count = 0
     rumor_noise_count = 0
@@ -244,8 +349,14 @@ def build_metrics():
         "price_failure_count": price_failure_count,
         "price_pending_count": price_pending_count,
         "price_success_rate": round(price_success_rate * 100, 2),
-        "sample_confidence_factor": round(sample_confidence_factor, 3),
         "reliability_score": round(reliability_score, 1),
+        "benchmark_evaluated_count": benchmark_evaluated_count,
+        "benchmark_success_count": benchmark_success_count,
+        "benchmark_success_rate": benchmark_success_rate,
+        "rolling_7d_success_rate": rolling_7d_success_rate,
+        "rolling_30d_success_rate": rolling_30d_success_rate,
+        "rolling_7d_evaluated_count": rolling_7d_evaluated_count,
+        "rolling_30d_evaluated_count": rolling_30d_evaluated_count,
 	"high_attention_count": high_attention_count,
 	"rumor_noise_count": rumor_noise_count,
 	"risk_noise_count": risk_noise_count,
@@ -858,10 +969,51 @@ def build_html(metrics, stock_data):
           <div class="ko-desc">오늘 가격 기반 후보</div>
           <div class="value">{metrics["price_candidate_rows"]}</div>
         </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">시장 대비 성공률</div>
+          <div class="value">{format_metric_value(metrics["benchmark_success_rate"], "%")}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark-Adjusted Evaluated Cases</div>
+          <div class="ko-desc">시장 대비 평가 완료</div>
+          <div class="value">{metrics["benchmark_evaluated_count"]}</div>
+        </div>
       </div>
       <div class="note section">
-        Reliability Score is sample-adjusted. It combines KIS price-candidate success rate with the amount of evaluated historical data.<br>
-        신뢰도 점수는 표본 수를 반영한 값입니다. KIS 가격 후보 성공률과 누적 평가 데이터를 함께 반영합니다.
+        Reliability Score uses the Wilson lower confidence bound, so it is more conservative than raw success rate when sample size is small.<br>
+        신뢰도 점수는 Wilson 신뢰구간 하한값을 사용하므로, 표본 수가 적을 때 단순 성공률보다 보수적으로 계산됩니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Rolling Performance <span class="heading-ko">최근 성과 추이</span></h2>
+          <p class="section-subtitle">Rolling metrics use evaluation date, or signal date when evaluation date is unavailable. 최근 평가일 기준의 단기 성과를 확인합니다.</p>
+        </div>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Rolling 7-Day Success Rate</div>
+          <div class="ko-desc">최근 7일 성공률</div>
+          <div class="value">{format_metric_value(metrics["rolling_7d_success_rate"], "%")}</div>
+        </div>
+        <div class="card">
+          <div class="label">Rolling 30-Day Success Rate</div>
+          <div class="ko-desc">최근 30일 성공률</div>
+          <div class="value">{format_metric_value(metrics["rolling_30d_success_rate"], "%")}</div>
+        </div>
+        <div class="card">
+          <div class="label">Rolling 7-Day Evaluated Cases</div>
+          <div class="ko-desc">최근 7일 평가 수</div>
+          <div class="value">{metrics["rolling_7d_evaluated_count"] if metrics["rolling_7d_evaluated_count"] else "Insufficient data / 데이터 부족"}</div>
+        </div>
+        <div class="card">
+          <div class="label">Rolling 30-Day Evaluated Cases</div>
+          <div class="ko-desc">최근 30일 평가 수</div>
+          <div class="value">{metrics["rolling_30d_evaluated_count"] if metrics["rolling_30d_evaluated_count"] else "Insufficient data / 데이터 부족"}</div>
+        </div>
       </div>
     </section>
 
@@ -1112,6 +1264,16 @@ def main():
 
     print(f"Dashboard saved to: {OUTPUT_PATH}")
     print(f"Embedded stock count: {len(stock_data)}")
+    print("Dashboard metric summary:")
+    print(f"- cumulative price evaluated cases: {metrics['price_evaluated_count']}")
+    print(f"- success count: {metrics['price_success_count']}")
+    print(f"- failure count: {metrics['price_failure_count']}")
+    print(f"- raw success rate: {metrics['price_success_rate']}%")
+    print(f"- Wilson reliability score: {metrics['reliability_score']}")
+    print(f"- benchmark-adjusted evaluated cases: {metrics['benchmark_evaluated_count']}")
+    print(f"- benchmark-adjusted success rate: {format_metric_value(metrics['benchmark_success_rate'], '%')}")
+    print(f"- rolling 7-day success rate: {format_metric_value(metrics['rolling_7d_success_rate'], '%')}")
+    print(f"- rolling 30-day success rate: {format_metric_value(metrics['rolling_30d_success_rate'], '%')}")
 
 
 if __name__ == "__main__":

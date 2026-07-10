@@ -478,9 +478,9 @@
         <div>
           <span class="badge badge-orange">EARLY STAGE / 초기 검증 단계</span>
           <div class="hero-rate-label">Reliability Score<br>신뢰도 점수</div>
-          <div class="hero-rate">35.5<span class="hero-rate-unit"> / 100</span></div>
+          <div class="hero-rate">43.6<span class="hero-rate-unit"> / 100</span></div>
           <div class="progress" aria-label="Reliability score">
-            <span style="width: 36%"></span>
+            <span style="width: 44%"></span>
           </div>
           <div class="hero-stats">
             <div class="hero-stat">
@@ -493,11 +493,11 @@
             </div>
             <div class="hero-stat">
               <span>Price Pending Candidates / 가격 후보 평가 대기</span>
-              <b>128</b>
+              <b>256</b>
             </div>
           </div>
         </div>
-        <p class="hero-note">초기 검증 단계. 표본 수를 반영한 신뢰도 기준으로 초기 검증 단계입니다. 일부 패턴은 관찰되지만 더 많은 평가 데이터가 필요합니다.</p>
+        <p class="hero-note">초기 검증 단계. Wilson 신뢰구간 하한값 기준의 보수적 신뢰도입니다. 표본 수가 적을수록 단순 성공률보다 낮게 표시됩니다.</p>
       </div>
     </section>
 
@@ -519,7 +519,7 @@
           <div class="label">Price Evaluated Cases</div>
           <div class="ko-desc">가격 후보 평가 완료</div>
           <div class="value">35</div>
-          <div class="mini-bar"><span style="width: 21%"></span></div>
+          <div class="mini-bar"><span style="width: 12%"></span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Price Success Count</div>
@@ -534,17 +534,58 @@
         <div class="card kpi-card">
           <div class="label">Price Pending Candidates</div>
           <div class="ko-desc">가격 후보 평가 대기</div>
-          <div class="value warning">128</div>
+          <div class="value warning">256</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Price Candidates</div>
           <div class="ko-desc">오늘 가격 기반 후보</div>
           <div class="value">78</div>
         </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">시장 대비 성공률</div>
+          <div class="value">Insufficient data / 데이터 부족</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark-Adjusted Evaluated Cases</div>
+          <div class="ko-desc">시장 대비 평가 완료</div>
+          <div class="value">0</div>
+        </div>
       </div>
       <div class="note section">
-        Reliability Score is sample-adjusted. It combines KIS price-candidate success rate with the amount of evaluated historical data.<br>
-        신뢰도 점수는 표본 수를 반영한 값입니다. KIS 가격 후보 성공률과 누적 평가 데이터를 함께 반영합니다.
+        Reliability Score uses the Wilson lower confidence bound, so it is more conservative than raw success rate when sample size is small.<br>
+        신뢰도 점수는 Wilson 신뢰구간 하한값을 사용하므로, 표본 수가 적을 때 단순 성공률보다 보수적으로 계산됩니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Rolling Performance <span class="heading-ko">최근 성과 추이</span></h2>
+          <p class="section-subtitle">Rolling metrics use evaluation date, or signal date when evaluation date is unavailable. 최근 평가일 기준의 단기 성과를 확인합니다.</p>
+        </div>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Rolling 7-Day Success Rate</div>
+          <div class="ko-desc">최근 7일 성공률</div>
+          <div class="value">60.0%</div>
+        </div>
+        <div class="card">
+          <div class="label">Rolling 30-Day Success Rate</div>
+          <div class="ko-desc">최근 30일 성공률</div>
+          <div class="value">60.0%</div>
+        </div>
+        <div class="card">
+          <div class="label">Rolling 7-Day Evaluated Cases</div>
+          <div class="ko-desc">최근 7일 평가 수</div>
+          <div class="value">35</div>
+        </div>
+        <div class="card">
+          <div class="label">Rolling 30-Day Evaluated Cases</div>
+          <div class="ko-desc">최근 30일 평가 수</div>
+          <div class="value">35</div>
+        </div>
       </div>
     </section>
 
@@ -608,7 +649,7 @@
       <div class="section-heading">
         <div>
           <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-07-10 21:20:25. Latest ML dataset rows: 162. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
+          <p class="section-subtitle">Latest generated at 2026-07-10 22:23:57. Latest ML dataset rows: 162. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">
