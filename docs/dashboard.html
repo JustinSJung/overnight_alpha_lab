@@ -2,267 +2,581 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Overnight Alpha Lab Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Price-Signal Learning System</title>
   <style>
+    :root {
+      --bg: #f4f7fb;
+      --ink: #172033;
+      --muted: #647086;
+      --line: #e2e8f0;
+      --panel: #ffffff;
+      --panel-soft: #f8fafc;
+      --green: #168a5b;
+      --green-soft: #e7f6ef;
+      --orange: #b76b00;
+      --orange-soft: #fff4df;
+      --red: #be3144;
+      --red-soft: #ffe9ed;
+      --gray: #526070;
+      --gray-soft: #edf1f5;
+      --blue: #2454a6;
+      --blue-soft: #e8efff;
+      --shadow: 0 16px 42px rgba(23, 32, 51, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f7fb;
-      color: #222;
+      background: var(--bg);
+      color: var(--ink);
     }
+
     .container {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 32px 20px;
+      padding: 28px 20px 44px;
     }
-    h1 {
-      margin-bottom: 8px;
-    }
-    .subtitle {
-      color: #666;
-      margin-bottom: 28px;
-    }
-    .grid {
+
+    .hero {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 28px;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 34px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top left, rgba(79, 122, 255, 0.26), transparent 34%),
+        linear-gradient(135deg, #111827 0%, #1d3557 52%, #235a67 100%);
+      color: white;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .label {
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 20px;
+      font-weight: 650;
+    }
+
+    .hero-copy {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .hero-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 248px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-green {
+      color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .badge-orange {
+      color: var(--orange);
+      background: var(--orange-soft);
+    }
+
+    .badge-red {
+      color: var(--red);
+      background: var(--red-soft);
+    }
+
+    .badge-gray {
+      color: var(--gray);
+      background: var(--gray-soft);
+    }
+
+    .hero-rate-label {
+      margin-top: 30px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-rate {
+      margin-top: 8px;
+      font-size: clamp(44px, 8vw, 72px);
+      line-height: 0.95;
+      font-weight: 850;
+    }
+
+    .progress {
+      height: 10px;
+      margin-top: 18px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #46d39a, #9ee6be);
+    }
+
+    .hero-note {
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.72);
       font-size: 13px;
-      color: #666;
-      margin-bottom: 8px;
+      line-height: 1.55;
     }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .section-subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      min-width: 0;
+      background: var(--panel);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(23, 32, 51, 0.06);
+    }
+
+    .kpi-card {
+      min-height: 146px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border-color: #dbeafe;
+    }
+
+    .kpi-card.primary {
+      grid-column: span 2;
+      background: linear-gradient(180deg, #f1fff7 0%, #ffffff 100%);
+      border-color: #bcebd4;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .ko-desc {
+      margin-top: -4px;
+      margin-bottom: 12px;
+      color: #8190a3;
+      font-size: 12px;
+    }
+
     .value {
-      font-size: 28px;
-      font-weight: 700;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1;
+      font-weight: 850;
+      color: var(--ink);
     }
-    .status {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
+
+    .value.success {
+      color: var(--green);
     }
-    .notice {
-      background: #fff8e6;
-      border-left: 5px solid #f0b429;
-      padding: 14px 18px;
+
+    .value.warning {
+      color: var(--orange);
+    }
+
+    .value.risk {
+      color: var(--red);
+    }
+
+    .mini-bar {
+      height: 8px;
+      margin-top: 16px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e7edf5;
+    }
+
+    .mini-bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--blue);
+    }
+
+    .note {
+      padding: 15px 18px;
       border-radius: 8px;
-      margin-bottom: 24px;
+      border: 1px solid #dbeafe;
+      background: var(--blue-soft);
+      color: #28446d;
+      font-size: 13px;
+      line-height: 1.6;
     }
+
+    .tool-card {
+      margin-top: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: 0 10px 26px rgba(23, 32, 51, 0.06);
+    }
+
+    .lookup-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
     input {
-      padding: 12px;
+      width: min(240px, 100%);
+      padding: 12px 14px;
       font-size: 16px;
-      width: 180px;
-      border: 1px solid #ccc;
+      border: 1px solid #cbd5e1;
       border-radius: 8px;
+      outline: none;
+      background: white;
     }
+
+    input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(36, 84, 166, 0.12);
+    }
+
     button {
       padding: 12px 16px;
-      font-size: 16px;
+      font-size: 15px;
+      font-weight: 750;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      background: #24292f;
+      background: #172033;
       color: white;
-      margin-left: 8px;
     }
+
     .result {
       margin-top: 18px;
-      background: white;
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
     }
+
     .small {
-      color: #666;
+      color: var(--muted);
       font-size: 13px;
+      line-height: 1.5;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 12px;
     }
+
     td {
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--line);
       padding: 10px;
     }
+
     td:first-child {
-      color: #666;
+      color: var(--muted);
       width: 220px;
     }
+
     .links a {
       display: inline-block;
-      margin-right: 12px;
-      margin-bottom: 8px;
-      color: #0969da;
+      margin: 10px 10px 0 0;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: var(--gray-soft);
+      color: #24435f;
       text-decoration: none;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 26px;
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .kpi-card.primary {
+        grid-column: span 2;
+      }
+
+      .signal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        padding: 14px 12px 34px;
+      }
+
+      .hero {
+        border-radius: 22px;
+        padding: 22px;
+      }
+
+      .hero-panel {
+        min-height: auto;
+      }
+
+      .kpi-grid,
+      .signal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-card.primary {
+        grid-column: span 1;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      td:first-child {
+        width: 45%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Overnight Alpha Lab Dashboard</h1>
-    <div class="subtitle">
-      Automated disclosure-event analysis · confidence monitoring · stock quick lookup<br><span class="small">자동 실행 기반 공시 이벤트 분석 · 신뢰도 추적 · 종목 간단 조회</span>
-    </div>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Overnight Alpha Lab</p>
+        <h1>Daily Price-Signal Learning System</h1>
+        <div class="subtitle">KIS Price-Based Learning Dashboard</div>
+        <p class="hero-copy">
+          Primary learning is based on Korea Investment API price-candidate evaluation.
+          DART, news, Snacks, and social attention are supplementary signals.
+        </p>
+      </div>
+      <div class="hero-panel">
+        <div>
+          <span class="badge badge-orange">EARLY STAGE</span>
+          <div class="hero-rate-label">Cumulative Price Success Rate</div>
+          <div class="hero-rate">60.0%</div>
+          <div class="progress" aria-label="Price success rate">
+            <span style="width: 60%"></span>
+          </div>
+        </div>
+        <p class="hero-note">KIS 가격 후보 평가에서 일부 패턴 확인은 가능하지만 더 많은 데이터가 필요합니다.</p>
+      </div>
+    </section>
 
-    <div class="notice">
-      <b>Research dashboard only. Not investment advice.</b><br><span class="small">이 대시보드는 투자 조언이 아닙니다. 현재 시스템의 데이터 축적 상태와 분석 결과를 확인하기 위한 연구용 화면입니다.</span>
-      <br>
-      <span class="small">Primary learning is based on Korea Investment API price-candidate evaluation. DART/news/Snacks are supplementary signals.</span>
-      <br>
-      <span class="small">KIS price learning metrics are cumulative across historical price candidate evaluations.</span>
-    </div>
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>KIS Price-Based Learning</h2>
+          <p class="section-subtitle">Primary learning metrics are cumulative across historical price candidate evaluations.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card primary">
+          <div class="label">Price Success Rate</div>
+          <div class="ko-desc">KIS 가격 후보 성공률</div>
+          <div class="value success">60.0%</div>
+          <div class="mini-bar"><span style="width: 60%"></span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Price Evaluated Cases</div>
+          <div class="ko-desc">가격 후보 평가 완료</div>
+          <div class="value">35</div>
+          <div class="mini-bar"><span style="width: 21%"></span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Price Success Count</div>
+          <div class="ko-desc">가격 후보 성공 수</div>
+          <div class="value success">21</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Price Failure Count</div>
+          <div class="ko-desc">가격 후보 실패 수</div>
+          <div class="value risk">14</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Price Pending Candidates</div>
+          <div class="ko-desc">가격 후보 평가 대기</div>
+          <div class="value warning">128</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Price Candidates</div>
+          <div class="ko-desc">오늘 가격 기반 후보</div>
+          <div class="value">78</div>
+        </div>
+      </div>
+      <div class="note section">
+        KIS price learning metrics are cumulative across historical price candidate evaluations. This dashboard is for research monitoring only and is not investment advice.
+      </div>
+    </section>
 
-    <div class="grid">
-      <div class="card">
-        <div class="label">System Confidence Status</div>
-        <div class="ko-desc">현재 신뢰도 상태</div>
-        <div class="status">EARLY STAGE</div>
-        <div class="small">KIS 가격 후보 평가에서 일부 패턴 확인은 가능하지만 더 많은 데이터가 필요합니다.</div>
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Supplementary Signals</h2>
+          <p class="section-subtitle">DART, news, Snacks, social attention, and learned rules provide context around the primary price loop.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="label">Price Success Rate</div>
-        <div class="ko-desc">KIS 가격 후보 성공률</div>
-        <div class="value">60.0%</div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">DART Event Evaluated Cases</div>
+          <div class="value">0</div>
+        </div>
+        <div class="card">
+          <div class="label">DART Event Pending Cases</div>
+          <div class="value warning">244</div>
+        </div>
+        <div class="card">
+          <div class="label">DART Event Success Rate</div>
+          <div class="value">0.0%</div>
+        </div>
+        <div class="card">
+          <div class="label">Social Attention Rows</div>
+          <div class="value">30</div>
+        </div>
+        <div class="card">
+          <div class="label">High Attention Signals</div>
+          <div class="value success">5</div>
+        </div>
+        <div class="card">
+          <div class="label">Risk Noise Signals</div>
+          <div class="value risk">21</div>
+        </div>
+        <div class="card">
+          <div class="label">Market-Adjusted Rows</div>
+          <div class="value">50</div>
+        </div>
+        <div class="card">
+          <div class="label">Learned Rule Types</div>
+          <div class="value">10</div>
+        </div>
+        <div class="card">
+          <div class="label">Active Learned Rules</div>
+          <div class="value">0</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="label">DART Event Evaluated Cases</div>
-        <div class="ko-desc">DART 이벤트 평가 완료</div>
-        <div class="value">0</div>
-      </div>
-      <div class="card">
-        <div class="label">DART Event Pending Cases</div>
-        <div class="ko-desc">DART 이벤트 평가 대기</div>
-        <div class="value">244</div>
-      </div>
-    </div>
+    </section>
 
-    <div class="grid">
-      <div class="card">
-        <div class="label">Latest ML Dataset Rows</div>
-        <div class="ko-desc">최근 ML 데이터 행 수</div>
-        <div class="value">162</div>
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Dataset & Reports</h2>
+          <p class="section-subtitle">Latest generated at 2026-07-10 21:10:03. Latest ML dataset rows: 162.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="label">DART Event Successes</div>
-        <div class="ko-desc">DART 이벤트 성공 수</div>
-        <div class="value">0</div>
+      <div class="tool-card">
+        <h2>Stock Quick Lookup <span class="small">종목 간단 조회</span></h2>
+        <p class="small">
+          Enter a 6-digit Korean stock code to check the latest available event summary.
+          Enter a 6-digit Korean stock code to check the latest available event summary.<br><span class="small">현재 ML 데이터셋에 포함된 종목만 즉시 조회됩니다. 예: 005930</span>
+        </p>
+        <div class="lookup-row">
+          <input id="stockInput" placeholder="6-digit stock code" maxlength="6">
+          <button onclick="searchStock()">Search / 조회</button>
+        </div>
+        <div id="stockResult" class="result" style="display:none;"></div>
       </div>
-      <div class="card">
-        <div class="label">DART Event Failures</div>
-        <div class="ko-desc">DART 이벤트 실패 수</div>
-        <div class="value">0</div>
-      </div>
-      <div class="card">
-        <div class="label">Last Generated At</div>
-        <div class="ko-desc">마지막 생성 시간</div>
-        <div class="small">2026-07-10 20:56:12</div>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <div class="label">Price Candidates</div>
-        <div class="ko-desc">가격 기반 후보</div>
-        <div class="value">78</div>
-      </div>
-      <div class="card">
-        <div class="label">Price Evaluated Cases</div>
-        <div class="ko-desc">가격 후보 평가 완료</div>
-        <div class="value">35</div>
-      </div>
-      <div class="card">
-        <div class="label">Price Success Count</div>
-        <div class="ko-desc">가격 후보 성공 수</div>
-        <div class="value">21</div>
-      </div>
-      <div class="card">
-        <div class="label">Price Failure Count</div>
-        <div class="ko-desc">가격 후보 실패 수</div>
-        <div class="value">14</div>
-      </div>
-      <div class="card">
-        <div class="label">Price Pending Candidates</div>
-        <div class="ko-desc">가격 후보 평가 대기</div>
-        <div class="value">128</div>
-      </div>
-      <div class="card">
-        <div class="label">DART Event Success Rate</div>
-        <div class="ko-desc">DART 이벤트 성공률</div>
-        <div class="value">0.0%</div>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <div class="label">Social Attention Rows</div>
-        <div class="ko-desc">관심도 분석 행 수</div>
-        <div class="value">30</div>
-      </div>
-      <div class="card">
-        <div class="label">High Attention Signals</div>
-        <div class="ko-desc">높은 관심도 신호</div>
-        <div class="value">5</div>
-      </div>
-      <div class="card">
-        <div class="label">Rumor Noise Signals</div>
-        <div class="ko-desc">루머성 노이즈 신호</div>
-        <div class="value">1</div>
-      </div>
-      <div class="card">
-        <div class="label">Risk Noise Signals</div>
-        <div class="ko-desc">리스크성 노이즈 신호</div>
-        <div class="value">21</div>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <div class="label">Learned Rule Types</div>
-        <div class="ko-desc">학습 대상 이벤트 유형</div>
-        <div class="value">10</div>
-      </div>
-      <div class="card">
-        <div class="label">Active Learned Rules</div>
-        <div class="ko-desc">활성화된 학습 룰</div>
-        <div class="value">0</div>
-      </div>
-      <div class="card">
-        <div class="label">Positive Rule Updates</div>
-        <div class="ko-desc">점수 상향 룰</div>
-        <div class="value">0</div>
-      </div>
-      <div class="card">
-        <div class="label">Negative Rule Updates</div>
-        <div class="ko-desc">점수 하향 룰</div>
-        <div class="value">0</div>
-      </div>
-    </div>
-    <div class="card">
-      <h2>Stock Quick Lookup <span class="tag">종목 간단 조회</span></h2>
-      <p class="small">
-        Enter a 6-digit Korean stock code to check the latest available event summary.<br><span class="small">현재 ML 데이터셋에 포함된 종목만 즉시 조회됩니다. 예: 005930</span>
-      </p>
-      <input id="stockInput" placeholder="6-digit stock code" maxlength="6">
-      <button onclick="searchStock()">Search / 조회</button>
-      <div id="stockResult" class="result" style="display:none;"></div>
-    </div>
 
-    <div class="card" style="margin-top:24px;">
-      <h2>Key Reports <span class="tag">주요 리포트</span></h2>
-      <div class="links">
-        <a href="https://github.com/JustinSJung/overnight_alpha_lab#readme" target="_blank">README</a>
-        <a href="index.html">Development Log</a>
+      <div class="tool-card">
+        <h2>Key Reports <span class="small">주요 리포트</span></h2>
+        <div class="links">
+          <a href="https://github.com/JustinSJung/overnight_alpha_lab#readme" target="_blank">README</a>
+          <a href="index.html">Development Log</a>
+          <a href="https://github.com/JustinSJung/overnight_alpha_lab/tree/main/reports/daily_prediction" target="_blank">Key Reports</a>
+        </div>
+        <p class="small">
+          Latest generated reports are available in the GitHub repository under reports/daily_prediction and reports/daily_review.
+          Latest generated reports are available in the GitHub repository under reports/daily_prediction and reports/daily_review.<br><span class="small">최신 리포트 파일은 GitHub 저장소의 reports/daily_prediction 및 reports/daily_review 폴더에서 확인할 수 있습니다.</span>
+        </p>
       </div>
-      <p class="small">
-        Latest generated reports are available in the GitHub repository under reports/daily_prediction and reports/daily_review.<br><span class="small">최신 리포트 파일은 GitHub 저장소의 reports/daily_prediction 및 reports/daily_review 폴더에서 확인할 수 있습니다.</span>
-      </p>
-    </div>
+    </section>
   </div>
 
   <script>
