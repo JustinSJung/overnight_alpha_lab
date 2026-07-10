@@ -94,6 +94,28 @@ def safe_float(value, default=0.0):
         return default
 
 
+def evaluation_result_series(df: pd.DataFrame) -> pd.Series:
+    """
+    Return price evaluation result values across supported schema versions.
+    """
+
+    if df.empty:
+        return pd.Series(dtype=str)
+
+    if "prediction_result" in df.columns and "price_candidate_result" in df.columns:
+        primary = df["prediction_result"].astype(str)
+        fallback = df["price_candidate_result"].astype(str)
+        return primary.where(~primary.isin(["", "nan", "None"]), fallback)
+
+    if "prediction_result" in df.columns:
+        return df["prediction_result"].astype(str)
+
+    if "price_candidate_result" in df.columns:
+        return df["price_candidate_result"].astype(str)
+
+    return pd.Series(dtype=str)
+
+
 def build_metrics():
     latest_ml_path = latest_file(PROCESSED_DIR, "ml_dataset_*.csv")
     latest_ml_df = read_csv(latest_ml_path)
@@ -104,7 +126,7 @@ def build_metrics():
     latest_social_attention = read_csv(latest_file(PROCESSED_DIR, "social_attention_features_*.csv"))
     latest_learned_rules = read_csv(latest_file(PROCESSED_DIR, "learned_event_rules_*.csv"))
     latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
-    latest_price_eval = read_csv(latest_file(PREDICTIONS_DIR, "price_candidate_evaluation_*.csv"))
+    all_price_eval = read_all_csv(PREDICTIONS_DIR, "price_candidate_evaluation_*.csv")
 
     if not latest_ml_df.empty and "stock_code" in latest_ml_df.columns:
         latest_ml_df["stock_code"] = latest_ml_df["stock_code"].apply(normalize_stock_code)
@@ -132,13 +154,18 @@ def build_metrics():
     social_rows = len(latest_social_attention)
     price_candidate_rows = len(latest_price_candidates)
     price_evaluated_count = 0
+    price_success_count = 0
+    price_failure_count = 0
+    price_pending_count = 0
     price_success_rate = 0.0
 
-    if not latest_price_eval.empty and "price_candidate_result" in latest_price_eval.columns:
-        price_results = latest_price_eval["price_candidate_result"].astype(str)
+    price_results = evaluation_result_series(all_price_eval)
+    if not price_results.empty:
         price_evaluated_count = int(price_results.isin(["success", "failure"]).sum())
+        price_success_count = int((price_results == "success").sum())
+        price_failure_count = int((price_results == "failure").sum())
+        price_pending_count = int((price_results == "pending").sum())
         if price_evaluated_count > 0:
-            price_success_count = int((price_results == "success").sum())
             price_success_rate = price_success_count / price_evaluated_count
 
     if price_evaluated_count < 10:
@@ -200,6 +227,9 @@ def build_metrics():
         "social_rows": social_rows,
         "price_candidate_rows": price_candidate_rows,
         "price_evaluated_count": price_evaluated_count,
+        "price_success_count": price_success_count,
+        "price_failure_count": price_failure_count,
+        "price_pending_count": price_pending_count,
         "price_success_rate": round(price_success_rate * 100, 2),
 	"high_attention_count": high_attention_count,
 	"rumor_noise_count": rumor_noise_count,
@@ -372,6 +402,8 @@ def build_html(metrics, stock_data):
       이 대시보드는 투자 조언이 아닙니다. 현재 시스템의 데이터 축적 상태와 분석 결과를 확인하기 위한 연구용 화면입니다.
       <br>
       <span class="small">Primary learning is based on Korea Investment API price-candidate evaluation. DART/news/Snacks are supplementary signals.</span>
+      <br>
+      <span class="small">KIS price learning metrics are cumulative across historical price candidate evaluations.</span>
     </div>
 
     <div class="grid">
@@ -432,14 +464,24 @@ def build_html(metrics, stock_data):
         <div class="value">{metrics["price_evaluated_count"]}</div>
       </div>
       <div class="card">
+        <div class="label">Price Success Count</div>
+        <div class="ko-desc">가격 후보 성공 수</div>
+        <div class="value">{metrics["price_success_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Price Failure Count</div>
+        <div class="ko-desc">가격 후보 실패 수</div>
+        <div class="value">{metrics["price_failure_count"]}</div>
+      </div>
+      <div class="card">
+        <div class="label">Price Pending Candidates</div>
+        <div class="ko-desc">가격 후보 평가 대기</div>
+        <div class="value">{metrics["price_pending_count"]}</div>
+      </div>
+      <div class="card">
         <div class="label">DART Event Success Rate</div>
         <div class="ko-desc">DART 이벤트 성공률</div>
         <div class="value">{metrics["dart_success_rate"]}%</div>
-      </div>
-      <div class="card">
-        <div class="label">Market-Adjusted Rows</div>
-        <div class="ko-desc">시장 조정 평가 행 수</div>
-        <div class="value">{metrics["market_rows"]}</div>
       </div>
     </div>
     <div class="grid">
