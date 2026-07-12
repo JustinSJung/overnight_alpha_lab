@@ -1,0 +1,11 @@
+﻿event_type,total_count,success_count,failure_count,pending_count,evaluated_count,success_rate,failure_rate,pending_rate,raw_learned_adjustment,confidence_multiplier,learned_event_score_adjustment,learning_label,learning_reason,minimum_required_evaluated_count,market_adjusted_success_count,market_adjusted_failure_count,market_adjusted_pending_count,market_adjusted_evaluated_count,market_adjusted_success_rate
+convertible_bond,25,0,0,25,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,15,0,0
+disclosure_violation,7,0,0,7,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,2,0,0
+earnings_guidance,2,0,0,2,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,2,0,0
+investment_decision,17,0,0,17,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,13,0,0
+lawsuit,26,0,0,26,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,23,0,0
+major_shareholder_change,51,0,0,51,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,46,0,0
+merger,9,0,0,9,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,9,0,0
+paid_in_capital_increase,38,0,0,38,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,31,0,0
+spin_off,1,0,0,1,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,1,0,0
+supply_contract,68,0,0,68,0,0,0,1.0,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,59,0,0
