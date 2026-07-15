@@ -58,6 +58,42 @@ def safe_float(value, default=0.0):
         return default
 
 
+def normalize_event_date(df):
+    result_df = df.copy()
+
+    if "event_date" not in result_df.columns:
+        result_df["event_date"] = ""
+        return result_df
+
+    result_df["event_date"] = pd.to_datetime(
+        result_df["event_date"],
+        errors="coerce",
+    ).dt.strftime("%Y-%m-%d")
+    result_df["event_date"] = result_df["event_date"].fillna("")
+
+    return result_df
+
+
+def prepare_adjustment_for_join(source_df, keep_columns, join_columns):
+    existing_columns = [column for column in keep_columns if column in source_df.columns]
+
+    if not existing_columns:
+        return pd.DataFrame(columns=join_columns)
+
+    result_df = source_df[existing_columns].copy()
+
+    missing_join_columns = [column for column in join_columns if column not in result_df.columns]
+    for column in missing_join_columns:
+        result_df[column] = ""
+
+    result_df = result_df.drop_duplicates(
+        subset=join_columns,
+        keep="first",
+    )
+
+    return result_df
+
+
 def make_bucket(final_score, prediction_direction):
     direction = str(prediction_direction)
 
@@ -107,13 +143,17 @@ def build_recommendations(ml_df, market_df, volume_df, learned_df):
     if "stock_code" in df.columns:
         df["stock_code"] = df["stock_code"].apply(normalize_stock_code)
 
+    df = normalize_event_date(df)
+
     if not market_df.empty and "stock_code" in market_df.columns:
         market_df = market_df.copy()
         market_df["stock_code"] = market_df["stock_code"].apply(normalize_stock_code)
+        market_df = normalize_event_date(market_df)
 
         market_cols = [
             column
             for column in [
+                "event_date",
                 "stock_code",
                 "market_adjusted_score_adjustment",
                 "market_adjusted_adjustment_label",
@@ -122,15 +162,28 @@ def build_recommendations(ml_df, market_df, volume_df, learned_df):
             if column in market_df.columns
         ]
 
-        df = df.merge(market_df[market_cols], on="stock_code", how="left")
+        market_df = prepare_adjustment_for_join(
+            source_df=market_df,
+            keep_columns=market_cols,
+            join_columns=["event_date", "stock_code"],
+        )
+
+        df = df.merge(
+            market_df,
+            on=["event_date", "stock_code"],
+            how="left",
+            validate="m:1",
+        )
 
     if not volume_df.empty and "stock_code" in volume_df.columns:
         volume_df = volume_df.copy()
         volume_df["stock_code"] = volume_df["stock_code"].apply(normalize_stock_code)
+        volume_df = normalize_event_date(volume_df)
 
         volume_cols = [
             column
             for column in [
+                "event_date",
                 "stock_code",
                 "trading_volume_score_adjustment",
                 "trading_volume_adjustment_label",
@@ -139,7 +192,18 @@ def build_recommendations(ml_df, market_df, volume_df, learned_df):
             if column in volume_df.columns
         ]
 
-        df = df.merge(volume_df[volume_cols], on="stock_code", how="left")
+        volume_df = prepare_adjustment_for_join(
+            source_df=volume_df,
+            keep_columns=volume_cols,
+            join_columns=["event_date", "stock_code"],
+        )
+
+        df = df.merge(
+            volume_df,
+            on=["event_date", "stock_code"],
+            how="left",
+            validate="m:1",
+        )
 
     if not learned_df.empty and "event_type" in learned_df.columns:
         learned_cols = [
@@ -155,7 +219,18 @@ def build_recommendations(ml_df, market_df, volume_df, learned_df):
             if column in learned_df.columns
         ]
 
-        df = df.merge(learned_df[learned_cols], on="event_type", how="left")
+        learned_df = prepare_adjustment_for_join(
+            source_df=learned_df,
+            keep_columns=learned_cols,
+            join_columns=["event_type"],
+        )
+
+        df = df.merge(
+            learned_df,
+            on="event_type",
+            how="left",
+            validate="m:1",
+        )
 
     df["base_event_score_v4"] = df.get("event_score", 0).apply(safe_float)
 
