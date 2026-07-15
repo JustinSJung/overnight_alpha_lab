@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-15
 
-Generated at: 2026-07-15 00:19:29
+Generated at: 2026-07-15 00:22:36
 
 Source feature file: `data/processed/market_adjusted_features_20260715.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4**
-- pending: **4**
+- Total rows: **5**
+- pending: **5**
 
 ## Interpretation
 
@@ -29,6 +29,7 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 119850 | 지엔씨에너지 | positive | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 42660 | 한화오션 | positive | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 11930 | 신성이엔지 | positive | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 660 | SK하이닉스 | negative | pending | pending | N/A | N/A | N/A |

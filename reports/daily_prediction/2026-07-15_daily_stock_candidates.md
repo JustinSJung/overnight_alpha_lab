@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-15
 
-Generated at: 2026-07-15 00:19:33
+Generated at: 2026-07-15 00:22:40
 
 ML dataset: `data/processed/ml_dataset_20260715.csv`
 
@@ -46,7 +46,7 @@ The recommender also applies event-type performance adjustments based on histori
 | merger | 12 | 0 | N/A | Not available | 0.00 |
 | paid_in_capital_increase | 42 | 0 | N/A | Not available | 0.00 |
 | spin_off | 1 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 75 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 76 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -63,11 +63,29 @@ The recommender also reads past error notes and applies event-type level confide
 | merger | 12 | 0 | 0 | 12 | 0.00 |
 | paid_in_capital_increase | 42 | 0 | 0 | 42 | 0.00 |
 | spin_off | 1 | 0 | 0 | 1 | 0.00 |
-| supply_contract | 75 | 0 | 0 | 75 | 0.00 |
+| supply_contract | 76 | 0 | 0 | 76 | 0.00 |
 
 ## Positive Candidates
 
-### 1. 한화오션 (042660)
+### 1. 지엔씨에너지 (119850)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **157.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **157.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 14. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [코스닥 기관] 원익IPS 브이엠 테스 담고 알테오젠 기가비스 심텍 팔았... | "물 들어올 때 젓는다"…대원전선, AI 전력 대란 속 초고압선 수주 잭팟 | 정재헌vs박윤영vs홍범식…이통3사 전쟁터, 'AIDC'로 이동
+
+### 2. 한화오션 (042660)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -85,7 +103,7 @@ The recommender also reads past error notes and applies event-type level confide
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: 美 자주포·스페인 K9 출격 대기…K-방산 5개사 다시 날아오를까 | “獨잠수함은 8년뒤 오는데...” 加 ‘고물 배 10년 더 굴려야’ [여의도... | [초점] '글로벌 톱티어 전쟁'…재계, '생존 체질개선' 미래산업 판 다시...
 
-### 2. 신성이엔지 (011930)
+### 3. 신성이엔지 (011930)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -117,37 +135,37 @@ No candidates in this section.
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
-- Base recommendation score: **-35.00**
+- Base recommendation score: **-56.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-35.00**
+- Adjusted recommendation score: **-56.00**
 - Risk level: **HIGH**
 - Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 유상증자또는주식관련사채등의발행결과(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 용인 SK하이닉스 배후 수요 잡는다…동일하이빌 파크밸리 589세대 공급 | 장초반...아시아 3國 증시 '상승', 코스피·삼성전자 '껑충' | SOCAMM 테마 강세…SK하이닉스·삼성전자 동반 폭등랠리
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 4. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: SK하이닉스 ADR 27% 폭등에…국내 본주도 210만원 회복 | 전남광주 '첨단3지구 A6블록 제일풍경채', 오는 8월 분양 예정 | [디지털포스트 모닝픽] AI 뒤쳐진 응징? … IBM 시총 100조 증발
 
 ### 2. SK하이닉스 (000660)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
-- Base recommendation score: **-35.00**
+- Base recommendation score: **-56.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-35.00**
+- Adjusted recommendation score: **-56.00**
 - Risk level: **HIGH**
 - Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 유상증자또는주식관련사채등의발행결과(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 용인 SK하이닉스 배후 수요 잡는다…동일하이빌 파크밸리 589세대 공급 | 장초반...아시아 3國 증시 '상승', 코스피·삼성전자 '껑충' | SOCAMM 테마 강세…SK하이닉스·삼성전자 동반 폭등랠리
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 4. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: SK하이닉스 ADR 27% 폭등에…국내 본주도 210만원 회복 | 전남광주 '첨단3지구 A6블록 제일풍경채', 오는 8월 분양 예정 | [디지털포스트 모닝픽] AI 뒤쳐진 응징? … IBM 시총 100조 증발
 
 ## Data Readiness
 

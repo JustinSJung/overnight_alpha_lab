@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-15
 
-Generated at: 2026-07-15 00:19:29
+Generated at: 2026-07-15 00:22:37
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260715.csv`
 
@@ -28,22 +28,23 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **4**
+- Total rows: **5**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **4**
+- neutral_adjustment: **5**
 
 ## Market-Adjusted Result Counts
 
-- pending: **4**
+- pending: **5**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
+| 1970-01-01 | 119850 | 지엔씨에너지 | positive | pending | 0 | N/A |
 | 1970-01-01 | 042660 | 한화오션 | positive | pending | 0 | N/A |
 | 1970-01-01 | 011930 | 신성이엔지 | positive | pending | 0 | N/A |
 | 1970-01-01 | 000660 | SK하이닉스 | negative | pending | 0 | N/A |

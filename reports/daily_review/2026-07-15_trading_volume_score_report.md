@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-15
 
-Generated at: 2026-07-15 00:19:30
+Generated at: 2026-07-15 00:22:37
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260715.csv`
 
@@ -23,22 +23,23 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **6**
+- Total rows: **7**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **6**
+- neutral_volume_adjustment: **7**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **6**
+- insufficient_volume_baseline: **7**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
+| 20260715 | 119850 | 지엔씨에너지 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260715 | 042660 | 한화오션 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260715 | 011930 | 신성이엔지 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260715 | 000660 | SK하이닉스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |

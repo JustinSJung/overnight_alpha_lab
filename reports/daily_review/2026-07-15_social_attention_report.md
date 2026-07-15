@@ -8,9 +8,9 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **3**
-- High attention rows: **1**
-- Medium attention rows: **2**
+- Total rows: **4**
+- High attention rows: **0**
+- Medium attention rows: **4**
 - Rumor-noise detected rows: **0**
 - Risk-noise detected rows: **1**
 
@@ -18,9 +18,10 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
-| 000660 | SK하이닉스 | paid_in_capital_increase | 17.5 | 0 | 3 | high_attention | no_rumor_signal | risk_noise_detected |
+| 119850 | 지엔씨에너지 | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
 | 011930 | 신성이엔지 | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
 | 042660 | 한화오션 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 000660 | SK하이닉스 | paid_in_capital_increase | 6.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
 
 ## Interpretation
 

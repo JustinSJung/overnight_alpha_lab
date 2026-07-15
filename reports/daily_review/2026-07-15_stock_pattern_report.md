@@ -1,6 +1,6 @@
 # Stock-Specific Historical Pattern Report - 2026-07-15
 
-Generated at: 2026-07-15 00:19:34
+Generated at: 2026-07-15 00:22:41
 
 ## Purpose
 
@@ -12,10 +12,10 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **298**
-- Number of stocks in history: **128**
+- Total error-note rows: **299**
+- Number of stocks in history: **129**
 - Stocks with evaluated reactions: **0**
-- Stocks with pending-only reactions: **128**
+- Stocks with pending-only reactions: **129**
 
 Most stock-level rows are still pending. Stock-level success rates will become meaningful after next-day price reactions are evaluated.
 
@@ -125,6 +125,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 097780 | 에코볼트 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
 | 105550 | 엣지파운드리 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 115480 | 씨유메디칼 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 119850 | 지엔씨에너지 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 123690 | 한국화장품 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 187870 | 디바이스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 216080 | 제테마 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
