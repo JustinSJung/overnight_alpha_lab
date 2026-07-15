@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-07-15
 
-Generated at: 2026-07-15 00:22:40
+Generated at: 2026-07-15 23:15:48
 
 ## Purpose
 
@@ -12,11 +12,11 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **299**
+- Total error-note rows: **363**
 - Evaluated rows: **0**
 - Success rows: **0**
 - Failure rows: **0**
-- Pending rows: **299**
+- Pending rows: **363**
 - Overall success rate: **N/A**
 
 Most rows are still pending. Event-type success rates will become meaningful after next-day price reactions are evaluated.
@@ -25,15 +25,16 @@ Most rows are still pending. Event-type success rates will become meaningful aft
 
 | Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| supply_contract | 76 | 0 | 0 | 0 | 76 | N/A | N/A | N/A | neutral |
-| major_shareholder_change | 58 | 0 | 0 | 0 | 58 | N/A | N/A | N/A | neutral |
-| convertible_bond | 55 | 0 | 0 | 0 | 55 | N/A | N/A | N/A | neutral |
-| paid_in_capital_increase | 42 | 0 | 0 | 0 | 42 | N/A | N/A | N/A | neutral |
-| lawsuit | 27 | 0 | 0 | 0 | 27 | N/A | N/A | N/A | neutral |
-| investment_decision | 18 | 0 | 0 | 0 | 18 | N/A | N/A | N/A | neutral |
-| merger | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | neutral |
-| disclosure_violation | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | neutral |
+| supply_contract | 75 | 0 | 0 | 0 | 75 | N/A | N/A | N/A | neutral |
+| major_shareholder_change | 74 | 0 | 0 | 0 | 74 | N/A | N/A | N/A | neutral |
+| convertible_bond | 63 | 0 | 0 | 0 | 63 | N/A | N/A | N/A | neutral |
+| paid_in_capital_increase | 49 | 0 | 0 | 0 | 49 | N/A | N/A | N/A | neutral |
+| lawsuit | 39 | 0 | 0 | 0 | 39 | N/A | N/A | N/A | neutral |
+| investment_decision | 31 | 0 | 0 | 0 | 31 | N/A | N/A | N/A | neutral |
+| merger | 16 | 0 | 0 | 0 | 16 | N/A | N/A | N/A | neutral |
+| disclosure_violation | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | neutral |
 | earnings_guidance | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | neutral |
+| bonus_issue | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | neutral |
 | spin_off | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | neutral |
 
 ## How to Read This Report

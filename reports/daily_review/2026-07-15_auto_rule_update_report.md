@@ -8,27 +8,28 @@ The original rule-based event scoring file is not overwritten. The learned rules
 
 ## Summary
 
-- Total event types: **10**
+- Total event types: **11**
 - Active learned rules: **0**
 - Positive adjustment rules: **0**
 - Negative adjustment rules: **0**
-- Held due to insufficient data: **10**
+- Held due to insufficient data: **11**
 - Minimum evaluated count: **5**
 
 ## Learned Event Rules
 
 | event_type | total_count | evaluated_count | success_count | failure_count | pending_count | success_rate | learned_event_score_adjustment | learning_label |
 |---|---|---|---|---|---|---|---|---|
-| convertible_bond | 55 | 0 | 0 | 0 | 55 | 0.00% | 0.0 | hold_insufficient_data |
-| disclosure_violation | 8 | 0 | 0 | 0 | 8 | 0.00% | 0.0 | hold_insufficient_data |
+| bonus_issue | 1 | 0 | 0 | 0 | 1 | 0.00% | 0.0 | hold_insufficient_data |
+| convertible_bond | 63 | 0 | 0 | 0 | 63 | 0.00% | 0.0 | hold_insufficient_data |
+| disclosure_violation | 12 | 0 | 0 | 0 | 12 | 0.00% | 0.0 | hold_insufficient_data |
 | earnings_guidance | 2 | 0 | 0 | 0 | 2 | 0.00% | 0.0 | hold_insufficient_data |
-| investment_decision | 18 | 0 | 0 | 0 | 18 | 0.00% | 0.0 | hold_insufficient_data |
-| lawsuit | 27 | 0 | 0 | 0 | 27 | 0.00% | 0.0 | hold_insufficient_data |
-| major_shareholder_change | 58 | 0 | 0 | 0 | 58 | 0.00% | 0.0 | hold_insufficient_data |
-| merger | 12 | 0 | 0 | 0 | 12 | 0.00% | 0.0 | hold_insufficient_data |
-| paid_in_capital_increase | 42 | 0 | 0 | 0 | 42 | 0.00% | 0.0 | hold_insufficient_data |
+| investment_decision | 31 | 0 | 0 | 0 | 31 | 0.00% | 0.0 | hold_insufficient_data |
+| lawsuit | 39 | 0 | 0 | 0 | 39 | 0.00% | 0.0 | hold_insufficient_data |
+| major_shareholder_change | 74 | 0 | 0 | 0 | 74 | 0.00% | 0.0 | hold_insufficient_data |
+| merger | 16 | 0 | 0 | 0 | 16 | 0.00% | 0.0 | hold_insufficient_data |
+| paid_in_capital_increase | 49 | 0 | 0 | 0 | 49 | 0.00% | 0.0 | hold_insufficient_data |
 | spin_off | 1 | 0 | 0 | 0 | 1 | 0.00% | 0.0 | hold_insufficient_data |
-| supply_contract | 76 | 0 | 0 | 0 | 76 | 0.00% | 0.0 | hold_insufficient_data |
+| supply_contract | 75 | 0 | 0 | 0 | 75 | 0.00% | 0.0 | hold_insufficient_data |
 
 ## Interpretation
 

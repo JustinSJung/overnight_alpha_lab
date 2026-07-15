@@ -9,9 +9,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 ## Summary
 
 - Snacks articles analyzed: **3**
-- US market attention signals: **10**
-- Macro risk signals: **3**
-- Korea relevance signals: **77**
+- US market attention signals: **8**
+- Macro risk signals: **4**
+- Korea relevance signals: **72**
 
 ## Top Global Themes
 
@@ -23,9 +23,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 
 | Rank | Title | Top Theme | Attention | Macro Risk | Korea Relevance | URL |
 |---:|---|---|---:|---:|---:|---|
-| 1 | ☀️ Solar power. No, not that kind. | ai_semiconductor | 2 | 2 | 25 | https://sherwood.news/snacks/newsletters/solar-power-no-not-that-kind/ |
-| 2 | ⚽ Football vs. football 🏈 | ai_semiconductor | 3 | 1 | 24 | https://sherwood.news/snacks/newsletters/football-vs-football/ |
-| 3 | 👋 Hi, Hynix! | ai_semiconductor | 5 | 0 | 28 | https://sherwood.news/snacks/newsletters/hi-hynix/ |
+| 1 | 🔵 They Big Blew It | ai_semiconductor | 3 | 1 | 23 | https://sherwood.news/snacks/newsletters/they-big-blew-it/ |
+| 2 | ☀️ Solar power. No, not that kind. | ai_semiconductor | 2 | 2 | 25 | https://sherwood.news/snacks/newsletters/solar-power-no-not-that-kind/ |
+| 3 | ⚽ Football vs. football 🏈 | ai_semiconductor | 3 | 1 | 24 | https://sherwood.news/snacks/newsletters/football-vs-football/ |
 
 ## Interpretation
 

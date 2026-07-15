@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-15
 
-Generated at: 2026-07-15 00:22:37
+Generated at: 2026-07-15 23:15:44
 
 Source ML dataset: `data/processed/ml_dataset_20260715.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **7**
-- Rows with price file found: **7**
+- Total rows: **1557**
+- Rows with price file found: **1557**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **7**
+- insufficient_volume_baseline: **1557**
 
 ## Interpretation
 
@@ -35,13 +35,36 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260715 | 119850 | 지엔씨에너지 | supply_contract | positive | N/A | 112,179 | N/A | N/A | 127,645 | N/A |
-| 20260715 | 042660 | 한화오션 | supply_contract | positive | N/A | 1,642,714 | N/A | N/A | 2,044,579 | N/A |
-| 20260715 | 011930 | 신성이엔지 | supply_contract | positive | N/A | 854,132 | N/A | N/A | 890,666 | N/A |
-| 20260715 | 000660 | SK하이닉스 | paid_in_capital_increase | negative | N/A | 3,872,910 | N/A | N/A | 3,644,469 | N/A |
-| 20260715 | 000660 | SK하이닉스 | paid_in_capital_increase | negative | N/A | 3,872,910 | N/A | N/A | 3,644,469 | N/A |
-| 20260715 | 000660 | SK하이닉스 | paid_in_capital_increase | negative | N/A | 3,872,910 | N/A | N/A | 3,644,469 | N/A |
-| 20260715 | 000660 | SK하이닉스 | paid_in_capital_increase | negative | N/A | 3,872,910 | N/A | N/A | 3,644,469 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260715 | 065420 | 에스아이리소스 | investment_decision | volatile | N/A | 0 | N/A | N/A | 0 | N/A |
 
 ## Next Step
 
