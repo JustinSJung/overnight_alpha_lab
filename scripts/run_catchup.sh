@@ -130,6 +130,8 @@ run_optional "Generating Snacks market features..." python src/features/snacks_m
 run_optional "Generating social attention features..." python src/features/social_attention_features.py
 run_optional "Generating learned event rules..." python src/models/auto_rule_updater.py
 run_optional "Generating learned-rule daily candidate report..." python src/models/learned_rule_daily_recommender.py
-run_optional "[23/24] Generating GitHub Pages dashboard..." python src/report_generator/dashboard_generator.py
+run_optional "Running supplementary news providers..." python src/news_providers/provider_runner.py
+run_optional "[23/24] Generating price signal diagnostics report..." python src/report_generator/price_signal_diagnostics_report.py
+run_optional "[24/24] Generating GitHub Pages dashboard..." python src/report_generator/dashboard_generator.py
 
 finish_success

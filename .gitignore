@@ -240,5 +240,9 @@ logs/
 !data/predictions/price_candidate_evaluation_*.csv
 !data/raw/snacks_newsletters_*.csv
 !data/processed/snacks_market_features_*.csv
+!data/raw/news_provider_items_*.csv
+!data/processed/news_provider_features_*.csv
+!data/processed/news_provider_status_*.csv
+!data/processed/price_signal_diagnostics_summary_*.csv
 # Do not commit large generated volume adjustment files
 data/processed/trading_volume_score_adjustments_*.csv

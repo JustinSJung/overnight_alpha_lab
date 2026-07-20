@@ -27,6 +27,8 @@ OUTPUT_PATH = DOCS_DIR / "dashboard.html"
 CORE_STATE_PATTERNS = [
     (PROCESSED_DIR, "automation_history.csv"),
     (PROCESSED_DIR, "price_based_candidates_*.csv"),
+    (PROCESSED_DIR, "price_signal_diagnostics_summary_*.csv"),
+    (PROCESSED_DIR, "news_provider_features_*.csv"),
     (PREDICTIONS_DIR, "price_candidate_evaluation_*.csv"),
     (PROCESSED_DIR, "ml_dataset_*.csv"),
     (PREDICTIONS_DIR, "error_notes_*.csv"),
@@ -229,6 +231,37 @@ def render_kpi_value(value, suffix="", css_class=""):
     return f'<div class="{classes}">{value}{suffix}</div>'
 
 
+def render_status_pill(value, ko_value="데이터 부족", css_class=""):
+    if value is None or value == "":
+        value = "Insufficient data"
+        ko_value = "데이터 부족"
+
+    classes = "status-pill"
+    if css_class:
+        classes += f" {css_class}"
+
+    return f'<span class="{classes}">{value}<br>{ko_value}</span>'
+
+
+def file_mtime(path):
+    if path is None or not path.exists():
+        return None
+
+    try:
+        return datetime.fromtimestamp(path.stat().st_mtime).strftime("%Y-%m-%d %H:%M:%S")
+    except Exception:
+        return None
+
+
+def first_row_value(df: pd.DataFrame, column: str, default=None):
+    if df.empty or column not in df.columns:
+        return default
+    value = df.iloc[0].get(column, default)
+    if pd.isna(value):
+        return default
+    return value
+
+
 def build_metrics():
     latest_ml_path = latest_file(PROCESSED_DIR, "ml_dataset_*.csv")
     latest_ml_df = read_csv(latest_ml_path)
@@ -239,6 +272,18 @@ def build_metrics():
     latest_social_attention = read_csv(latest_file(PROCESSED_DIR, "social_attention_features_*.csv"))
     latest_learned_rules = read_csv(latest_file(PROCESSED_DIR, "learned_event_rules_*.csv"))
     latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
+    latest_diagnostics_path = latest_file(PROCESSED_DIR, "price_signal_diagnostics_summary_*.csv")
+    latest_diagnostics = read_csv(latest_diagnostics_path)
+    latest_news_items_path = latest_file(Path("data/raw"), "news_provider_items_*.csv")
+    latest_news_features_path = latest_file(PROCESSED_DIR, "news_provider_features_*.csv")
+    latest_news_status_path = latest_file(PROCESSED_DIR, "news_provider_status_*.csv")
+    latest_naver_news_path = latest_file(Path("data/raw"), "naver_news_*.csv")
+    latest_snacks_raw_path = latest_file(Path("data/raw"), "snacks_newsletters_*.csv")
+    latest_news_items = read_csv(latest_news_items_path)
+    latest_news_features = read_csv(latest_news_features_path)
+    latest_news_status = read_csv(latest_news_status_path)
+    latest_naver_news = read_csv(latest_naver_news_path)
+    latest_snacks_raw = read_csv(latest_snacks_raw_path)
     all_price_eval = read_all_csv(PREDICTIONS_DIR, "price_candidate_evaluation_*.csv")
 
     if not latest_ml_df.empty and "stock_code" in latest_ml_df.columns:
@@ -266,6 +311,11 @@ def build_metrics():
     volume_rows = len(latest_volume_score)
     social_rows = len(latest_social_attention)
     price_candidate_rows = len(latest_price_candidates)
+    selected_pick_rows = 0
+    if not latest_price_candidates.empty and "selected_pick" in latest_price_candidates.columns:
+        selected_pick_rows = int(
+            latest_price_candidates["selected_pick"].astype(str).str.lower().isin(["true", "1", "yes"]).sum()
+        )
     price_evaluated_count = 0
     price_success_count = 0
     price_failure_count = 0
@@ -342,6 +392,52 @@ def build_metrics():
 
     latest_ml_file = str(latest_ml_path) if latest_ml_path else "N/A"
 
+    diagnostics_overall_success_rate = first_row_value(
+        latest_diagnostics,
+        "raw_success_rate",
+        None,
+    )
+    diagnostics_reliability_score = first_row_value(
+        latest_diagnostics,
+        "wilson_reliability_score",
+        None,
+    )
+    top_10_success_rate = first_row_value(latest_diagnostics, "top_10_success_rate", None)
+    top_20_success_rate = first_row_value(latest_diagnostics, "top_20_success_rate", None)
+    top_50_success_rate = first_row_value(latest_diagnostics, "top_50_success_rate", None)
+    top_100_success_rate = first_row_value(latest_diagnostics, "top_100_success_rate", None)
+    diagnostics_judgment_en = first_row_value(latest_diagnostics, "judgment_en", "")
+    diagnostics_judgment_ko = first_row_value(latest_diagnostics, "judgment_ko", "")
+
+    google_status_en = None
+    google_status_ko = "데이터 부족"
+    google_item_count = len(latest_news_items)
+    news_feature_count = len(latest_news_features)
+    last_news_provider_update = file_mtime(latest_news_features_path) or file_mtime(latest_news_items_path)
+
+    if not latest_news_status.empty and "source_provider" in latest_news_status.columns:
+        google_rows = latest_news_status[
+            latest_news_status["source_provider"].astype(str) == "google_news_rss"
+        ]
+        if not google_rows.empty:
+            if "updated_at" in google_rows.columns:
+                last_news_provider_update = str(google_rows.iloc[-1].get("updated_at", last_news_provider_update))
+            item_total = int(pd.to_numeric(google_rows.get("item_count", 0), errors="coerce").fillna(0).sum())
+            if item_total > 0:
+                google_status_en = "Available"
+                google_status_ko = "수집 가능"
+            elif "status" in google_rows.columns and (google_rows["status"].astype(str) == "failed").any():
+                google_status_en = "Provider failed"
+                google_status_ko = "수집 실패"
+            else:
+                google_status_en = "No items"
+                google_status_ko = "수집 항목 없음"
+
+    naver_status_en = "Available" if len(latest_naver_news) > 0 else None
+    naver_status_ko = "수집 가능" if len(latest_naver_news) > 0 else "데이터 부족"
+    snacks_status_en = "Available" if len(latest_snacks_raw) > 0 or len(latest_snacks_market := read_csv(latest_file(PROCESSED_DIR, "snacks_market_features_*.csv"))) > 0 else None
+    snacks_status_ko = "수집 가능" if snacks_status_en else "데이터 부족"
+
     return {
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "latest_ml_file": latest_ml_file,
@@ -358,6 +454,7 @@ def build_metrics():
         "volume_rows": volume_rows,
         "social_rows": social_rows,
         "price_candidate_rows": price_candidate_rows,
+        "selected_pick_rows": selected_pick_rows,
         "price_evaluated_count": price_evaluated_count,
         "price_success_count": price_success_count,
         "price_failure_count": price_failure_count,
@@ -378,6 +475,23 @@ def build_metrics():
 	"active_learned_rule_count": active_learned_rule_count,
 	"positive_learned_rule_count": positive_learned_rule_count,
 	"negative_learned_rule_count": negative_learned_rule_count,
+        "diagnostics_overall_success_rate": diagnostics_overall_success_rate,
+        "diagnostics_reliability_score": diagnostics_reliability_score,
+        "top_10_success_rate": top_10_success_rate,
+        "top_20_success_rate": top_20_success_rate,
+        "top_50_success_rate": top_50_success_rate,
+        "top_100_success_rate": top_100_success_rate,
+        "diagnostics_judgment_en": diagnostics_judgment_en,
+        "diagnostics_judgment_ko": diagnostics_judgment_ko,
+        "naver_status_en": naver_status_en,
+        "naver_status_ko": naver_status_ko,
+        "google_status_en": google_status_en,
+        "google_status_ko": google_status_ko,
+        "snacks_status_en": snacks_status_en,
+        "snacks_status_ko": snacks_status_ko,
+        "last_news_provider_update": last_news_provider_update,
+        "news_provider_item_count": google_item_count,
+        "news_provider_feature_count": news_feature_count,
     }, latest_ml_df
 
 
@@ -1076,6 +1190,98 @@ def build_html(metrics, stock_data):
     <section class="section">
       <div class="section-heading">
         <div>
+          <h2>Signal Quality Diagnostics <span class="heading-ko">신호 품질 진단</span></h2>
+          <p class="section-subtitle">Rank buckets compare selected top candidates against the broad evaluation pool. 랭킹 구간별 성과로 선별 후보가 전체 후보 풀보다 나은지 점검합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card primary">
+          <div class="label">Overall Price Success Rate</div>
+          <div class="ko-desc">전체 가격 후보 성공률</div>
+          {render_kpi_value(metrics["diagnostics_overall_success_rate"], "%", "success")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top 10 Success Rate</div>
+          <div class="ko-desc">Top 10 성공률</div>
+          {render_kpi_value(metrics["top_10_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top 20 Success Rate</div>
+          <div class="ko-desc">Top 20 성공률</div>
+          {render_kpi_value(metrics["top_20_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top 50 Success Rate</div>
+          <div class="ko-desc">Top 50 성공률</div>
+          {render_kpi_value(metrics["top_50_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top 100 Success Rate</div>
+          <div class="ko-desc">Top 100 성공률</div>
+          {render_kpi_value(metrics["top_100_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Candidate Pool Today</div>
+          <div class="ko-desc">오늘 평가 후보 풀</div>
+          <div class="value">{metrics["price_candidate_rows"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Selected Picks Today</div>
+          <div class="ko-desc">오늘 선별 후보 수</div>
+          <div class="value success">{metrics["selected_pick_rows"]}</div>
+        </div>
+      </div>
+      <div class="note section">
+        Large candidate pools improve statistical reliability. Selected picks are a smaller top-ranked subset for focused monitoring.<br>
+        큰 후보 풀은 통계적 신뢰도 측정에 도움이 되며, 선별 후보는 집중 모니터링용 상위 후보입니다.<br>
+        <span class="small">{metrics["diagnostics_judgment_en"]}<br>{metrics["diagnostics_judgment_ko"]}</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>News Source Status <span class="heading-ko">뉴스 소스 상태</span></h2>
+          <p class="section-subtitle">News providers are supplementary context and should not block the primary KIS price loop. 뉴스 provider는 보조 신호이며 KIS 가격 학습 파이프라인을 중단시키지 않습니다.</p>
+        </div>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Naver Status</div>
+          <div class="ko-desc">네이버 뉴스 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["naver_status_en"], metrics["naver_status_ko"])}</div>
+        </div>
+        <div class="card">
+          <div class="label">Google News RSS Status</div>
+          <div class="ko-desc">Google News RSS 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["google_status_en"], metrics["google_status_ko"])}</div>
+        </div>
+        <div class="card">
+          <div class="label">Snacks Digest Status</div>
+          <div class="ko-desc">Snacks 시장 요약 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["snacks_status_en"], metrics["snacks_status_ko"])}</div>
+        </div>
+        <div class="card">
+          <div class="label">Last News Provider Update</div>
+          <div class="ko-desc">마지막 뉴스 provider 업데이트</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["last_news_provider_update"], "업데이트 시각")}</div>
+        </div>
+        <div class="card">
+          <div class="label">News Provider Items</div>
+          <div class="ko-desc">뉴스 provider 원문 항목 수</div>
+          <div class="value">{metrics["news_provider_item_count"]}</div>
+        </div>
+        <div class="card">
+          <div class="label">News Provider Features</div>
+          <div class="ko-desc">뉴스 provider 특징 행 수</div>
+          <div class="value">{metrics["news_provider_feature_count"]}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
           <h2>Supplementary Signals <span class="heading-ko">보조 신호</span></h2>
           <p class="section-subtitle">DART, news, Snacks, social attention, and learned rules provide context around the primary price loop. DART, 뉴스, Snacks, 관심도 분석은 가격 기반 학습을 보조합니다.</p>
         </div>
@@ -1330,6 +1536,16 @@ def main():
     print(f"- benchmark-adjusted success rate: {format_metric_value(metrics['benchmark_success_rate'], '%')}")
     print(f"- rolling 7-day success rate: {format_metric_value(metrics['rolling_7d_success_rate'], '%')}")
     print(f"- rolling 30-day success rate: {format_metric_value(metrics['rolling_30d_success_rate'], '%')}")
+    print(f"- diagnostics overall price success rate: {format_metric_value(metrics['diagnostics_overall_success_rate'], '%')}")
+    print(f"- diagnostics Wilson reliability score: {format_metric_value(metrics['diagnostics_reliability_score'])}")
+    print(f"- Top 10 success rate: {format_metric_value(metrics['top_10_success_rate'], '%')}")
+    print(f"- Top 20 success rate: {format_metric_value(metrics['top_20_success_rate'], '%')}")
+    print(f"- Top 50 success rate: {format_metric_value(metrics['top_50_success_rate'], '%')}")
+    print(f"- Top 100 success rate: {format_metric_value(metrics['top_100_success_rate'], '%')}")
+    print(f"- candidate pool today: {metrics['price_candidate_rows']}")
+    print(f"- selected picks today: {metrics['selected_pick_rows']}")
+    print(f"- Google News RSS item count: {metrics['news_provider_item_count']}")
+    print(f"- news provider feature count: {metrics['news_provider_feature_count']}")
 
 
 if __name__ == "__main__":

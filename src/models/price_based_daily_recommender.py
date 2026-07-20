@@ -13,6 +13,7 @@ import pandas as pd
 
 PROCESSED_DIR = Path("data/processed")
 REPORT_DIR = Path("reports/daily_prediction")
+SELECTED_PICK_TOP_N = 20
 
 
 def latest_file(directory: Path, pattern: str):
@@ -113,8 +114,13 @@ def score_candidate(row, social_lookup: dict[str, dict], ml_lookup: dict[str, di
     return {
         "stock_code": stock_code,
         "candidate_date": row.get("signal_date", datetime.today().strftime("%Y-%m-%d")),
+        "candidate_pool_date": row.get("signal_date", datetime.today().strftime("%Y-%m-%d")),
+        "signal_date": row.get("signal_date", datetime.today().strftime("%Y-%m-%d")),
+        "prediction_date": datetime.today().strftime("%Y-%m-%d"),
         "candidate_action": action,
         "prediction_direction": direction,
+        "prediction_score": final_score,
+        "final_price_signal_score": final_score,
         "price_candidate_score": final_score,
         "price_score_base": round(price_score, 2),
         "supplementary_score": supplementary_score,
@@ -127,6 +133,7 @@ def score_candidate(row, social_lookup: dict[str, dict], ml_lookup: dict[str, di
         "volatility_20d": row.get("volatility_20d", pd.NA),
         "price_source": row.get("price_source", "unknown"),
         "corp_name": ml_context.get("corp_name", ""),
+        "stock_name": ml_context.get("corp_name", ""),
         "event_type": ml_context.get("event_type", ""),
         "social_attention_label": social.get("attention_label", ""),
         "social_risk_label": social.get("risk_label", ""),
@@ -139,6 +146,8 @@ def save_report(candidates: pd.DataFrame, output_csv: Path) -> str:
     today_display = datetime.today().strftime("%Y-%m-%d")
     output_path = REPORT_DIR / f"{today_display}_price_based_daily_candidates.md"
 
+    selected = candidates[candidates.get("selected_pick", False) == True].copy()
+
     lines = [
         f"# {today_display} Price-Based Daily Candidates",
         "",
@@ -146,20 +155,32 @@ def save_report(candidates: pd.DataFrame, output_csv: Path) -> str:
         "",
         f"Source CSV: `{output_csv}`",
         "",
-        "| Stock | Action | Score | Signal | 5D Return | Volume Ratio | Source |",
-        "|---|---|---:|---|---:|---:|---|",
+        "## Candidate Pool Summary",
+        "",
+        f"- Broad candidate pool count: **{len(candidates)}**",
+        f"- Selected pick count: **{len(selected)}**",
+        "",
+        "> All candidates remain in the evaluation pool. Selected picks are only the top-ranked candidates for focused monitoring.",
+        "> 전체 후보는 평가 풀에 유지되며, 선별 후보는 집중 모니터링용 상위 후보입니다.",
+        "",
+        "## Selected Top Candidates",
+        "",
+        "| Rank | Stock | Name | Action | Score | Signal | 5D Return | Volume Ratio | Selection Reason |",
+        "|---:|---|---|---|---:|---|---:|---:|---|",
     ]
 
-    for _, row in candidates.head(30).iterrows():
+    for _, row in selected.head(SELECTED_PICK_TOP_N).iterrows():
         lines.append(
-            "| {stock} | {action} | {score:.2f} | {signal} | {ret:.2f}% | {volume:.2f}x | {source} |".format(
+            "| {rank} | {stock} | {name} | {action} | {score:.2f} | {signal} | {ret:.2f}% | {volume:.2f}x | {reason} |".format(
+                rank=int(safe_float(row.get("candidate_rank", 0))),
                 stock=row.get("stock_code", ""),
+                name=row.get("stock_name", row.get("corp_name", "")),
                 action=row.get("candidate_action", ""),
                 score=safe_float(row.get("price_candidate_score", 0)),
                 signal=row.get("signal_label", ""),
                 ret=safe_float(row.get("return_5d", 0)) * 100,
                 volume=safe_float(row.get("volume_ratio_20d", 0)),
-                source=row.get("price_source", ""),
+                reason=row.get("selection_reason", ""),
             )
         )
 
@@ -207,6 +228,14 @@ def main():
     candidates = pd.DataFrame(rows).sort_values(
         ["price_candidate_score", "return_5d", "volume_ratio_20d"],
         ascending=[False, False, False],
+    ).reset_index(drop=True)
+
+    candidates["candidate_rank"] = range(1, len(candidates) + 1)
+    candidates["selected_pick"] = candidates["candidate_rank"] <= SELECTED_PICK_TOP_N
+    candidates["selection_reason"] = candidates["candidate_rank"].apply(
+        lambda rank: f"Top {SELECTED_PICK_TOP_N} by final price signal score"
+        if rank <= SELECTED_PICK_TOP_N
+        else "Broad evaluation pool candidate"
     )
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
