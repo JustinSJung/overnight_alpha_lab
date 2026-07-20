@@ -6,7 +6,7 @@ Source CSV: `data/processed/price_based_candidates_20260720.csv`
 
 ## Candidate Pool Summary
 
-- Broad candidate pool count: **78**
+- Broad candidate pool count: **89**
 - Selected pick count: **20**
 
 > All candidates remain in the evaluation pool. Selected picks are only the top-ranked candidates for focused monitoring.
@@ -16,26 +16,26 @@ Source CSV: `data/processed/price_based_candidates_20260720.csv`
 
 | Rank | Stock | Name | Action | Score | Signal | 5D Return | Volume Ratio | Selection Reason |
 |---:|---|---|---|---:|---|---:|---:|---|
-| 1 | 263800 |  | BUY_CANDIDATE | 119.00 | strong_price_momentum | 70.42% | 14.64x | Top 20 by final price signal score |
-| 2 | 189330 |  | BUY_CANDIDATE | 103.00 | price_momentum | 45.89% | 12.87x | Top 20 by final price signal score |
-| 3 | 058730 | 다스코 | BUY_CANDIDATE | 99.86 | price_momentum | 32.09% | 2.64x | Top 20 by final price signal score |
-| 4 | 368970 |  | BUY_CANDIDATE | 97.98 | price_momentum | 16.05% | 3.64x | Top 20 by final price signal score |
-| 5 | 008930 |  | BUY_CANDIDATE | 89.94 | price_momentum | 3.84% | 4.02x | Top 20 by final price signal score |
-| 6 | 012160 |  | BUY_CANDIDATE | 88.32 | price_momentum | 36.84% | 1.77x | Top 20 by final price signal score |
-| 7 | 000760 |  | BUY_CANDIDATE | 84.09 | price_momentum | 6.92% | 2.21x | Top 20 by final price signal score |
-| 8 | 036630 |  | BUY_CANDIDATE | 83.00 | price_momentum | 54.92% | 9.38x | Top 20 by final price signal score |
-| 9 | 290720 | 푸드나무 | WATCHLIST | 68.71 | price_momentum | 16.11% | 1.46x | Top 20 by final price signal score |
-| 10 | 253450 |  | WATCHLIST | 68.30 | price_momentum | 1.39% | 2.78x | Top 20 by final price signal score |
-| 11 | 003070 | 코오롱글로벌 | WATCHLIST | 63.07 | price_momentum | -6.63% | 1.67x | Top 20 by final price signal score |
-| 12 | 088790 |  | WATCHLIST | 61.04 | price_momentum | 4.22% | 0.29x | Top 20 by final price signal score |
-| 13 | 013520 |  | HOLD | 58.94 | neutral | -0.19% | 1.00x | Top 20 by final price signal score |
-| 14 | 006730 |  | HOLD | 58.17 | price_momentum | 0.88% | 1.47x | Top 20 by final price signal score |
-| 15 | 419540 |  | HOLD | 56.71 | neutral | -0.96% | 0.26x | Top 20 by final price signal score |
-| 16 | 065770 |  | HOLD | 56.50 | price_momentum | 4.79% | 0.64x | Top 20 by final price signal score |
-| 17 | 024720 |  | HOLD | 55.62 | neutral | 0.00% | 1.03x | Top 20 by final price signal score |
-| 18 | 223220 | 로지스몬 | HOLD | 55.31 | neutral | 10.08% | 0.37x | Top 20 by final price signal score |
-| 19 | 020560 |  | HOLD | 51.59 | neutral | -4.55% | 1.05x | Top 20 by final price signal score |
-| 20 | 003490 |  | HOLD | 51.49 | price_weakness | -6.48% | 1.12x | Top 20 by final price signal score |
+| 1 | 012160 |  | BUY_CANDIDATE | 103.00 | price_momentum | 23.16% | 3.38x | Top 20 by final price signal score |
+| 2 | 465770 |  | BUY_CANDIDATE | 94.08 | price_momentum | 111.87% | 1.51x | Top 20 by final price signal score |
+| 3 | 322780 |  | WATCHLIST | 64.76 | price_momentum | 23.80% | 0.21x | Top 20 by final price signal score |
+| 4 | 368970 |  | WATCHLIST | 63.95 | price_momentum | 0.66% | 0.41x | Top 20 by final price signal score |
+| 5 | 263800 |  | WATCHLIST | 62.31 | price_momentum | -23.29% | 2.55x | Top 20 by final price signal score |
+| 6 | 000760 |  | HOLD | 59.78 | price_momentum | -14.02% | 3.73x | Top 20 by final price signal score |
+| 7 | 290720 | 푸드나무 | HOLD | 59.40 | price_momentum | -3.63% | 1.86x | Top 20 by final price signal score |
+| 8 | 008930 |  | HOLD | 53.78 | neutral | -2.69% | 0.66x | Top 20 by final price signal score |
+| 9 | 024720 |  | HOLD | 52.86 | neutral | -1.19% | 0.46x | Top 20 by final price signal score |
+| 10 | 020560 |  | HOLD | 51.21 | neutral | -4.33% | 1.64x | Top 20 by final price signal score |
+| 11 | 389680 | 유디엠텍 | HOLD | 49.52 | neutral | -3.34% | 0.50x | Top 20 by final price signal score |
+| 12 | 007980 |  | HOLD | 47.97 | neutral | -3.40% | 0.61x | Top 20 by final price signal score |
+| 13 | 055550 | 신한지주 | HOLD | 47.76 | neutral | -6.78% | 0.93x | Top 20 by final price signal score |
+| 14 | 296160 |  | HOLD | 46.69 | neutral | 2.17% | 0.89x | Top 20 by final price signal score |
+| 15 | 419540 |  | HOLD | 46.02 | neutral | -3.64% | 0.75x | Top 20 by final price signal score |
+| 16 | 088790 |  | HOLD | 45.44 | neutral | -6.92% | 0.49x | Top 20 by final price signal score |
+| 17 | 236810 |  | HOLD | 44.53 | neutral | -4.11% | 2.03x | Top 20 by final price signal score |
+| 18 | 058730 |  | HOLD | 44.46 | neutral | -13.32% | 0.63x | Top 20 by final price signal score |
+| 19 | 001470 |  | HOLD | 44.00 | neutral | 0.00% | 0.00x | Top 20 by final price signal score |
+| 20 | 023440 |  | HOLD | 44.00 | neutral | 0.00% | 0.00x | Top 20 by final price signal score |
 
 ## Notes
 
