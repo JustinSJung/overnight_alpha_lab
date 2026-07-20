@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-20
 
-Generated at: 2026-07-20 21:25:03
+Generated at: 2026-07-20 23:18:36
 
 ML dataset: `data/processed/ml_dataset_20260720.csv`
 
@@ -72,19 +72,19 @@ The recommender also reads past error notes and applies event-type level confide
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **122.00**
+- Base recommendation score: **117.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **122.00**
+- Adjusted recommendation score: **117.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약해지              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 유디엠텍, 10억원 규모 공급계약 해지 | 유디엠텍, 소수계좌 거래집중종목 지정→투자주의 신호
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 6. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 21일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 유디엠텍, 10억원 규모 공급계약 해지
 
 ### 2. 케이쓰리아이 (431190)
 
@@ -102,7 +102,7 @@ The recommender also reads past error notes and applies event-type level confide
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 케이쓰리아이-삼보모터스, 피지컬 AI 제조 인프라 구축 MOU | 케이쓰리아이, 삼보모터스와 업무협약…제조 AX 사업화 | 케이쓰리아이, 삼보모터스와 ‘엔비디아 옴니버스’ 기반 피지컬 AI 제조...
+- Related news examples: 케이쓰리아이-삼보모터스, 피지컬 AI 제조 인프라 구축 MOU | 케이쓰리아이, 삼보모터스와 ‘엔비디아 옴니버스’ 기반 피지컬 AI 제조... | 케이쓰리아이, 삼보모터스와 업무협약…제조 AX 사업화
 
 ## Volatile Watchlist
 
@@ -110,19 +110,19 @@ The recommender also reads past error notes and applies event-type level confide
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **75.00**
+- Base recommendation score: **70.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **75.00**
+- Adjusted recommendation score: **70.00**
 - Risk level: **MEDIUM**
 - Event type: `investment_decision`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 투자판단관련주요경영사항(임상시험계획변경승인)              (GCC2005의 국내 제 1상 임상시험계획 변경승인)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [HIT알공] 콜마바이오텍, '엠오디머티어리얼즈' 흡수합병 결정 | 지씨셀, 'GCC2005' 임상 1상 변경 승인 | [속보] 지씨셀, GCC2005 국내 1상 변경계획 승인…단회 투여 시험군 추가
+- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 21일 개장 전 주요 공시 | [THE CEO] 신동빈 롯데그룹 회장 | [HIT알공] 콜마바이오텍, '엠오디머티어리얼즈' 흡수합병 결정
 
 ### 2. 파라택시스이더리움 (290560)
 
@@ -232,41 +232,41 @@ The recommender also reads past error notes and applies event-type level confide
 - Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 7. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: 메이슨캐피탈 투자사 '뷰텔', 비침습 혈당측정기 상용화 잰걸음 | 아리바이오 알츠하이머 치료제 임상 3상 임박…메이슨캐피탈 투자 성과... | [TOP's Pick] [제약] HLB생명과학R&D, 차세대 헴프 신약개발 시동 外
 
-### 8. 한양디지텍 (078350)
+### 8. 신한지주 (055550)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **37.00**
+- Base recommendation score: **24.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **37.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주변경              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 5. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 한양디지텍, 故 김형육 회장 상속 절차 완료…김윤상 대표 최대주주로 | 한양디지텍, 최대주주 변경
-
-### 9. 신한지주 (055550)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
+- Adjusted recommendation score: **24.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주등소유주식변동신고서              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 주가도 이익도 부진…우리금융, 비은행 격차에 발목 | 코스피 빠져도 우린 올라요…금리 오르자 ‘돈 잔치’ 질주 나선 은행주 | '6500선' 흔들린 증시 살아날까…어닝시즌, 순환매 분수령
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [150조 국민성장펀드] 은행이 운용사 만나려 줄섰다…李 덕분에 甲乙 역... | “삼성전기 주식 늘리고, 현대차 지분 확 줄였다”…외국인, 韓 대기업... | 신한지주, 롯데손보 인수 유력하지만…실소요 자금 '2조원' 변수
+
+### 9. 한양디지텍 (078350)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **7.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **7.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주변경              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is -1. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 21일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 한양디지텍, 故 김형육 회장 상속 절차 완료…김윤상 대표 최대주주로
 
 ## General Watchlist
 
@@ -278,21 +278,21 @@ No candidates in this section.
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
-- Base recommendation score: **-87.00**
+- Base recommendation score: **-97.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-87.00**
+- Adjusted recommendation score: **-97.00**
 - Risk level: **HIGH**
 - Event type: `disclosure_violation`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 불성실공시법인지정              (공시번복 3건)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is disclosure_violation. Initial direction is negative. Event score is -80. News attention score is 5. News sentiment score is 1. Negative keyword count is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이톡시, 상장적격성 실질심사 대상→주권매매거래정지 기간 변경 | 코스닥 '퇴출 시계' 빨라졌다...300곳 생존 시험대 | 코스닥 부진에…상장사 300여곳 상폐 위험
+- Reason: Event type is disclosure_violation. Initial direction is negative. Event score is -80. News attention score is 5. News sentiment score is -1. Negative keyword count is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [오늘의 증시일정] 한국유니온제약·신풍·아이톡시 등 | 아이톡시, 상장적격성 실질심사 대상→주권매매거래정지 기간 변경 | 코스닥 '퇴출 시계' 빨라졌다...300곳 생존 시험대
 
-### 2. 아이톡시 (052770)
+### 2. 졸스 (018700)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
@@ -302,15 +302,69 @@ No candidates in this section.
 - Stock-specific pattern adjustment score: **0.00**
 - Adjusted recommendation score: **-87.00**
 - Risk level: **HIGH**
-- Event type: `disclosure_violation`
+- Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 불성실공시법인지정              (공시번복 3건)
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is disclosure_violation. Initial direction is negative. Event score is -80. News attention score is 5. News sentiment score is 1. Negative keyword count is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이톡시, 상장적격성 실질심사 대상→주권매매거래정지 기간 변경 | 코스닥 '퇴출 시계' 빨라졌다...300곳 생존 시험대 | 코스닥 부진에…상장사 300여곳 상폐 위험
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 화장품주 차익실현 속 종목별 차별화… 뷰티스킨·달바글로벌 花色도네 | 화장품 상장기업 2026년 7월 브랜드평판...아모레퍼시픽, LG생활건강, 한...
 
-### 3. SG (255220)
+### 3. 졸스 (018700)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-87.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-87.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 화장품주 차익실현 속 종목별 차별화… 뷰티스킨·달바글로벌 花色도네 | 화장품 상장기업 2026년 7월 브랜드평판...아모레퍼시픽, LG생활건강, 한...
+
+### 4. 졸스 (018700)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-87.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-87.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 화장품주 차익실현 속 종목별 차별화… 뷰티스킨·달바글로벌 花色도네 | 화장품 상장기업 2026년 7월 브랜드평판...아모레퍼시픽, LG생활건강, 한...
+
+### 5. 졸스 (018700)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-87.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-87.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 화장품주 차익실현 속 종목별 차별화… 뷰티스킨·달바글로벌 花色도네 | 화장품 상장기업 2026년 7월 브랜드평판...아모레퍼시픽, LG생활건강, 한...
+
+### 6. SG (255220)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
@@ -328,7 +382,7 @@ No candidates in this section.
 - Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: '2014년 프로 입문한' 김명훈 9단, 12년 만에 통산 500승 달성...역대 97번... | 이준, 이석훈 아내와 뜻밖의 과거 고백 "이 누나는…" | SG, 21일 유상증자 권리락 발생
 
-### 4. 엔젠바이오 (354200)
+### 7. 엔젠바이오 (354200)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
@@ -346,7 +400,7 @@ No candidates in this section.
 - Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 1. Negative keyword count is 6. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | [HIT알공] 콜마바이오텍, '엠오디머티어리얼즈' 흡수합병 결정 | 엔젠바이오, 21일 유상증자 권리락 발생
 
-### 5. 엔젠바이오 (354200)
+### 8. 엔젠바이오 (354200)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
@@ -363,60 +417,6 @@ No candidates in this section.
 - Next close return data: Not available
 - Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 1. Negative keyword count is 6. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | [HIT알공] 콜마바이오텍, '엠오디머티어리얼즈' 흡수합병 결정 | 엔젠바이오, 21일 유상증자 권리락 발생
-
-### 6. 모바일어플라이언스 (087260)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **negative**
-- Base recommendation score: **-79.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-79.00**
-- Risk level: **HIGH**
-- Event type: `disclosure_violation`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 불성실공시법인지정              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is disclosure_violation. Initial direction is negative. Event score is -80. News attention score is 5. News sentiment score is 2. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 모바일어플라이언스, 상장적격성 실질심사 대상 지정→주권매매거래 정... | 전기차·수소차 전력 효율 극대화…아이에이 차세대 전력반도체 기술력...
-
-### 7. 모바일어플라이언스 (087260)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **negative**
-- Base recommendation score: **-79.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-79.00**
-- Risk level: **HIGH**
-- Event type: `disclosure_violation`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 불성실공시법인지정              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is disclosure_violation. Initial direction is negative. Event score is -80. News attention score is 5. News sentiment score is 2. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 모바일어플라이언스, 상장적격성 실질심사 대상 지정→주권매매거래 정... | 전기차·수소차 전력 효율 극대화…아이에이 차세대 전력반도체 기술력...
-
-### 8. 모바일어플라이언스 (087260)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **negative**
-- Base recommendation score: **-79.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-79.00**
-- Risk level: **HIGH**
-- Event type: `disclosure_violation`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 불성실공시법인지정              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is disclosure_violation. Initial direction is negative. Event score is -80. News attention score is 5. News sentiment score is 2. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | 모바일어플라이언스, 상장적격성 실질심사 대상 지정→주권매매거래 정... | 전기차·수소차 전력 효율 극대화…아이에이 차세대 전력반도체 기술력...
 
 ### 9. 졸스 (018700)
 

@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-07-20
 
-Generated at: 2026-07-20 21:25:00
+Generated at: 2026-07-20 23:18:33
 
 ML dataset source: `data/processed/ml_dataset_20260720.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260720.csv`
@@ -31,15 +31,15 @@ base_recommendation_score_v3
 - risk_or_avoid_review: **24**
 - strong_volume_market_adjusted_candidate: **12**
 - positive_candidate: **2**
-- watchlist_candidate: **1**
+- volatile_watchlist: **1**
 
 ## Strong Volume + Market-Adjusted Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 389680 | 유디엠텍 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 120.00 | 0.00 | 0.00 | 120.00 | N/A | N/A | N/A |
+| 1970-01-01 | 389680 | 유디엠텍 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 115.00 | 0.00 | 0.00 | 115.00 | N/A | N/A | N/A |
 | 1970-01-01 | 431190 | 케이쓰리아이 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 100.00 | 0.00 | 0.00 | 100.00 | N/A | N/A | N/A |
-| 1970-01-01 | 144510 | 지씨셀 | investment_decision | volatile | pending | pending | insufficient_volume_baseline | 81.00 | 0.00 | 0.00 | 81.00 | N/A | N/A | N/A |
+| 1970-01-01 | 144510 | 지씨셀 | investment_decision | volatile | pending | pending | insufficient_volume_baseline | 76.00 | 0.00 | 0.00 | 76.00 | N/A | N/A | N/A |
 | 1970-01-01 | 065420 | 에스아이리소스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 75.00 | 0.00 | 0.00 | 75.00 | N/A | N/A | N/A |
 | 1970-01-01 | 065420 | 에스아이리소스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 75.00 | 0.00 | 0.00 | 75.00 | N/A | N/A | N/A |
 | 1970-01-01 | 065420 | 에스아이리소스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 75.00 | 0.00 | 0.00 | 75.00 | N/A | N/A | N/A |
@@ -63,17 +63,17 @@ No candidates in this section.
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1970-01-01 | 033310 | 엠투엔 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
-| 1970-01-01 | 078350 | 한양디지텍 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 46.00 | 0.00 | 0.00 | 46.00 | N/A | N/A | N/A |
+| 1970-01-01 | 055550 | 신한지주 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 36.00 | 0.00 | 0.00 | 36.00 | N/A | N/A | N/A |
 
 ## Watchlist Candidates
 
-| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 055550 | 신한지주 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
+No candidates in this section.
 
 ## Volatile Watchlist
 
-No candidates in this section.
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 078350 | 한양디지텍 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
 
 ## High-Attention Risk Review
 
@@ -91,18 +91,18 @@ No candidates in this section.
 | 1970-01-01 | 018700 | 졸스 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -60.00 | 0.00 | 0.00 | -60.00 | N/A | N/A | N/A |
 | 1970-01-01 | 018700 | 졸스 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -60.00 | 0.00 | 0.00 | -60.00 | N/A | N/A | N/A |
 | 1970-01-01 | 354200 | 엔젠바이오 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -60.00 | 0.00 | 0.00 | -60.00 | N/A | N/A | N/A |
-| 1970-01-01 | 087260 | 모바일어플라이언스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
-| 1970-01-01 | 087260 | 모바일어플라이언스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
 | 1970-01-01 | 290720 | 푸드나무 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
-| 1970-01-01 | 087260 | 모바일어플라이언스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
-| 1970-01-01 | 052770 | 아이톡시 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
-| 1970-01-01 | 052770 | 아이톡시 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
-| 1970-01-01 | 052770 | 아이톡시 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
 | 1970-01-01 | 018700 | 졸스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
 | 1970-01-01 | 018700 | 졸스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
 | 1970-01-01 | 018700 | 졸스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
 | 1970-01-01 | 018700 | 졸스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -75.00 | 0.00 | 0.00 | -75.00 | N/A | N/A | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -75.00 | 0.00 | 0.00 | -75.00 | N/A | N/A | N/A |
 | 1970-01-01 | 255220 | SG | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -75.00 | 0.00 | 0.00 | -75.00 | N/A | N/A | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -75.00 | 0.00 | 0.00 | -75.00 | N/A | N/A | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -75.00 | 0.00 | 0.00 | -75.00 | N/A | N/A | N/A |
+| 1970-01-01 | 087260 | 모바일어플라이언스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -80.00 | 0.00 | 0.00 | -80.00 | N/A | N/A | N/A |
+| 1970-01-01 | 087260 | 모바일어플라이언스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -80.00 | 0.00 | 0.00 | -80.00 | N/A | N/A | N/A |
 
 ## General Review
 

@@ -29,13 +29,13 @@ Source CSV: `data/processed/price_based_candidates_20260720.csv`
 | 11 | 008930 |  | HOLD | 53.78 | neutral | -2.69% | 0.66x | Top 20 by final price signal score |
 | 12 | 024720 |  | HOLD | 52.86 | neutral | -1.19% | 0.46x | Top 20 by final price signal score |
 | 13 | 020560 |  | HOLD | 51.21 | neutral | -4.33% | 1.64x | Top 20 by final price signal score |
-| 14 | 389680 | 유디엠텍 | HOLD | 49.52 | neutral | -3.34% | 0.50x | Top 20 by final price signal score |
-| 15 | 007980 |  | HOLD | 47.97 | neutral | -3.40% | 0.61x | Top 20 by final price signal score |
+| 14 | 007980 |  | HOLD | 47.97 | neutral | -3.40% | 0.61x | Top 20 by final price signal score |
+| 15 | 055550 | 신한지주 | HOLD | 47.76 | neutral | -6.78% | 0.93x | Top 20 by final price signal score |
 | 16 | 296160 |  | HOLD | 46.69 | neutral | 2.17% | 0.89x | Top 20 by final price signal score |
 | 17 | 419540 |  | HOLD | 46.02 | neutral | -3.64% | 0.75x | Top 20 by final price signal score |
-| 18 | 088790 |  | HOLD | 45.44 | neutral | -6.92% | 0.49x | Top 20 by final price signal score |
-| 19 | 236810 |  | HOLD | 44.53 | neutral | -4.11% | 2.03x | Top 20 by final price signal score |
-| 20 | 058730 |  | HOLD | 44.46 | neutral | -13.32% | 0.63x | Top 20 by final price signal score |
+| 18 | 389680 | 유디엠텍 | HOLD | 45.52 | neutral | -3.34% | 0.50x | Top 20 by final price signal score |
+| 19 | 088790 |  | HOLD | 45.44 | neutral | -6.92% | 0.49x | Top 20 by final price signal score |
+| 20 | 236810 |  | HOLD | 44.53 | neutral | -4.11% | 2.03x | Top 20 by final price signal score |
 
 ## Notes
 

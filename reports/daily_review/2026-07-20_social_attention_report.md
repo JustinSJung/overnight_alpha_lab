@@ -24,11 +24,12 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 | 033310 | 엠투엔 | major_shareholder_change | 11.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
 | 065420 | 에스아이리소스 | paid_in_capital_increase | 9.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
 | 065420 | 에스아이리소스 | paid_in_capital_increase | 9.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 389680 | 유디엠텍 | supply_contract | 9.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
 | 144510 | 지씨셀 | investment_decision | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 389680 | 유디엠텍 | supply_contract | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
 | 431190 | 케이쓰리아이 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
 | 354200 | 엔젠바이오 | paid_in_capital_increase | 5.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
 | 290560 | 파라택시스이더리움 | merger | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 055550 | 신한지주 | major_shareholder_change | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
 | 052770 | 아이톡시 | disclosure_violation | 3.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
 | 087260 | 모바일어플라이언스 | disclosure_violation | 3.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
 | 018700 | 졸스 | convertible_bond | 3.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
@@ -37,7 +38,6 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 | 018700 | 졸스 | paid_in_capital_increase | 3.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
 | 005710 | 대원산업 | lawsuit | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
 | 255220 | SG | paid_in_capital_increase | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
-| 290720 | 푸드나무 | paid_in_capital_increase | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
 
 ## Interpretation
 
