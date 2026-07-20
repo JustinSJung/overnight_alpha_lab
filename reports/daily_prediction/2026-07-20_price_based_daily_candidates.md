@@ -21,9 +21,9 @@ Source CSV: `data/processed/price_based_candidates_20260720.csv`
 | 3 | 322780 |  | WATCHLIST | 64.76 | price_momentum | 23.80% | 0.21x | Top 20 by final price signal score |
 | 4 | 368970 |  | WATCHLIST | 63.95 | price_momentum | 0.66% | 0.41x | Top 20 by final price signal score |
 | 5 | 263800 |  | WATCHLIST | 62.31 | price_momentum | -23.29% | 2.55x | Top 20 by final price signal score |
-| 6 | 018700 | 졸스 | WATCHLIST | 60.63 | price_momentum | 3.48% | 1.35x | Top 20 by final price signal score |
-| 7 | 230360 |  | HOLD | 59.98 | price_momentum | 0.00% | 0.00x | Top 20 by final price signal score |
-| 8 | 000760 |  | HOLD | 59.78 | price_momentum | -14.02% | 3.73x | Top 20 by final price signal score |
+| 6 | 230360 |  | HOLD | 59.98 | price_momentum | 0.00% | 0.00x | Top 20 by final price signal score |
+| 7 | 000760 |  | HOLD | 59.78 | price_momentum | -14.02% | 3.73x | Top 20 by final price signal score |
+| 8 | 018700 | 졸스 | HOLD | 56.63 | price_momentum | 3.48% | 1.35x | Top 20 by final price signal score |
 | 9 | 431190 | 케이쓰리아이 | HOLD | 56.18 | neutral | -2.52% | 1.34x | Top 20 by final price signal score |
 | 10 | 290720 | 푸드나무 | HOLD | 55.40 | price_momentum | -3.63% | 1.86x | Top 20 by final price signal score |
 | 11 | 008930 |  | HOLD | 53.78 | neutral | -2.69% | 0.66x | Top 20 by final price signal score |

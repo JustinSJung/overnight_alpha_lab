@@ -9,9 +9,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 ## Summary
 
 - Snacks articles analyzed: **3**
-- US market attention signals: **7**
-- Macro risk signals: **1**
-- Korea relevance signals: **79**
+- US market attention signals: **10**
+- Macro risk signals: **2**
+- Korea relevance signals: **91**
 
 ## Top Global Themes
 
@@ -23,9 +23,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 
 | Rank | Title | Top Theme | Attention | Macro Risk | Korea Relevance | URL |
 |---:|---|---|---:|---:|---:|---|
-| 1 | 🎮 Doing GameStop's Bidding | ai_semiconductor | 4 | 0 | 21 | https://sherwood.news/snacks/newsletters/doing-gamestops-bidding/ |
-| 2 | ✴️ claude how do i write an ipo | ai_semiconductor | 0 | 0 | 35 | https://sherwood.news/snacks/newsletters/claude-how-do-i-write-an-ipo/ |
-| 3 | 🔵 They Big Blew It | ai_semiconductor | 3 | 1 | 23 | https://sherwood.news/snacks/newsletters/they-big-blew-it/ |
+| 1 | Is Kimi K3 the next DeepSeek Moment | ai_semiconductor | 6 | 2 | 35 | https://sherwood.news/snacks/newsletters/is-kimi-k3-the-next-deepseek-moment/ |
+| 2 | 🎮 Doing GameStop's Bidding | ai_semiconductor | 4 | 0 | 21 | https://sherwood.news/snacks/newsletters/doing-gamestops-bidding/ |
+| 3 | ✴️ claude how do i write an ipo | ai_semiconductor | 0 | 0 | 35 | https://sherwood.news/snacks/newsletters/claude-how-do-i-write-an-ipo/ |
 
 ## Interpretation
 
