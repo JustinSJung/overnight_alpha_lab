@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-20
 
-Generated at: 2026-07-20 08:43:30
+Generated at: 2026-07-20 14:08:02
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260720.csv`
 
@@ -28,42 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **36**
+- Total rows: **39**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **36**
+- neutral_adjustment: **39**
 
 ## Market-Adjusted Result Counts
 
-- pending: **36**
+- pending: **39**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 033310 | 엠투엔 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 290720 | 푸드나무 | negative | pending | 0 | N/A |
-| 1970-01-01 | 389680 | 유디엠텍 | positive | pending | 0 | N/A |
-| 1970-01-01 | 144510 | 지씨셀 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 078350 | 한양디지텍 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 224060 | 더코디 | negative | pending | 0 | N/A |
-| 1970-01-01 | 055550 | 신한지주 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 082270 | 젬백스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 033540 | 파라텍 | negative | pending | 0 | N/A |
-| 1970-01-01 | 112610 | 씨에스윈드 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 112610 | 씨에스윈드 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 354200 | 엔젠바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 003470 | 유안타증권 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 052770 | 아이톡시 | negative | pending | 0 | N/A |
+| 1970-01-01 | 052770 | 아이톡시 | negative | pending | 0 | N/A |
+| 1970-01-01 | 052770 | 아이톡시 | negative | pending | 0 | N/A |
+| 1970-01-01 | 087260 | 모바일어플라이언스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 087260 | 모바일어플라이언스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 087260 | 모바일어플라이언스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 018700 | 졸스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 005710 | 대원산업 | negative | pending | 0 | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | positive | pending | 0 | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | positive | pending | 0 | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | positive | pending | 0 | N/A |
+| 1970-01-01 | 065420 | 에스아이리소스 | positive | pending | 0 | N/A |
+| 1970-01-01 | 290560 | 파라택시스이더리움 | volatile | pending | 0 | N/A |
 
 ## Next Step
 
