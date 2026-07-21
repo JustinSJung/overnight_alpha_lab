@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-21
 
-Generated at: 2026-07-21 05:14:41
+Generated at: 2026-07-21 05:32:28
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260721.csv`
 
@@ -28,17 +28,17 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **5**
+- Total rows: **4**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **5**
+- neutral_adjustment: **4**
 
 ## Market-Adjusted Result Counts
 
-- pending: **5**
+- pending: **4**
 
 ## Sample Rows
 
@@ -48,7 +48,6 @@ The goal is to reward predictions that outperform the market and penalize result
 | 1970-01-01 | 215380 | 우정바이오 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 009810 | 플레이그램 | negative | pending | 0 | N/A |
 | 1970-01-01 | 009810 | 플레이그램 | negative | pending | 0 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | 0 | N/A |
 
 ## Next Step
 

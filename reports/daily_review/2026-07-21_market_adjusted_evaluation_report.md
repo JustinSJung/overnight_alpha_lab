@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-21
 
-Generated at: 2026-07-21 05:14:40
+Generated at: 2026-07-21 05:32:28
 
 Source feature file: `data/processed/market_adjusted_features_20260721.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **5**
-- pending: **5**
+- Total rows: **4**
+- pending: **4**
 
 ## Interpretation
 
@@ -33,7 +33,6 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 1970-01-01 | 215380 | 우정바이오 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 9810 | 플레이그램 | negative | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 9810 | 플레이그램 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

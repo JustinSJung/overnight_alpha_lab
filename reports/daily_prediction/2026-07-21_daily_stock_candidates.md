@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-21
 
-Generated at: 2026-07-21 05:14:45
+Generated at: 2026-07-21 05:32:32
 
 ML dataset: `data/processed/ml_dataset_20260721.csv`
 
@@ -42,7 +42,7 @@ The recommender also applies event-type performance adjustments based on histori
 | disclosure_violation | 19 | 0 | N/A | Not available | 0.00 |
 | earnings_guidance | 2 | 0 | N/A | Not available | 0.00 |
 | investment_decision | 34 | 0 | N/A | Not available | 0.00 |
-| lawsuit | 42 | 0 | N/A | Not available | 0.00 |
+| lawsuit | 41 | 0 | N/A | Not available | 0.00 |
 | major_shareholder_change | 79 | 0 | N/A | Not available | 0.00 |
 | merger | 24 | 0 | N/A | Not available | 0.00 |
 | paid_in_capital_increase | 72 | 0 | N/A | Not available | 0.00 |
@@ -60,7 +60,7 @@ The recommender also reads past error notes and applies event-type level confide
 | disclosure_violation | 19 | 0 | 0 | 19 | 0.00 |
 | earnings_guidance | 2 | 0 | 0 | 2 | 0.00 |
 | investment_decision | 34 | 0 | 0 | 34 | 0.00 |
-| lawsuit | 42 | 0 | 0 | 42 | 0.00 |
+| lawsuit | 41 | 0 | 0 | 41 | 0.00 |
 | major_shareholder_change | 79 | 0 | 0 | 79 | 0.00 |
 | merger | 24 | 0 | 0 | 24 | 0.00 |
 | paid_in_capital_increase | 72 | 0 | 0 | 72 | 0.00 |
@@ -96,23 +96,23 @@ No candidates in this section.
 
 ## Risk / Avoid Review List
 
-### 1. 엔지켐생명과학 (183490)
+### 1. 플레이그램 (009810)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
-- Base recommendation score: **-91.00**
+- Base recommendation score: **-70.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-91.00**
+- Adjusted recommendation score: **-70.00**
 - Risk level: **HIGH**
-- Event type: `lawsuit`
+- Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 소송등의판결ㆍ결정              (주주명부열람등사가처분)
+- Disclosure title: 유상증자또는주식관련사채등의발행결과(자율공시)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is lawsuit. Initial direction is negative. Event score is -75. News attention score is 5. News sentiment score is -2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 엔지켐생명과학, 경영권 분쟁 가처분 승소 | 엔지켐생명과학, 임시주주지위확인 가처분 승소…"거래재개·경영정상화... | 엔지켐생명과학, 임시주주 지위확인 가처분 승소…"법원, 이수민 측 신...
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 0. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 청소년 SNS 규제 추진… 실효성 있을까 | [현장스케치] 2026 서울썸머비치 광화문 개장, '도심 속 여름 피서지로... | 류승룡·하지원 '비광', 강렬한 가족 구원 서사 예고
 
 ### 2. 플레이그램 (009810)
 
@@ -132,25 +132,7 @@ No candidates in this section.
 - Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 0. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: 청소년 SNS 규제 추진… 실효성 있을까 | [현장스케치] 2026 서울썸머비치 광화문 개장, '도심 속 여름 피서지로... | 류승룡·하지원 '비광', 강렬한 가족 구원 서사 예고
 
-### 3. 플레이그램 (009810)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **negative**
-- Base recommendation score: **-70.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-70.00**
-- Risk level: **HIGH**
-- Event type: `paid_in_capital_increase`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 유상증자또는주식관련사채등의발행결과(자율공시)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 0. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 청소년 SNS 규제 추진… 실효성 있을까 | [현장스케치] 2026 서울썸머비치 광화문 개장, '도심 속 여름 피서지로... | 류승룡·하지원 '비광', 강렬한 가족 구원 서사 예고
-
-### 4. 제이에스링크 (127120)
+### 3. 제이에스링크 (127120)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**

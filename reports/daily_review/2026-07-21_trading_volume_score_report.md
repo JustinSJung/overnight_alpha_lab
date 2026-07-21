@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-21
 
-Generated at: 2026-07-21 05:14:42
+Generated at: 2026-07-21 05:32:29
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260721.csv`
 
@@ -23,17 +23,17 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **7**
+- Total rows: **6**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **7**
+- neutral_volume_adjustment: **6**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **7**
+- insufficient_volume_baseline: **6**
 
 ## Sample Rows
 
@@ -45,7 +45,6 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 20260721 | 009810 | 플레이그램 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260721 | 009810 | 플레이그램 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260721 | 009810 | 플레이그램 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260721 | 183490 | 엔지켐생명과학 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 

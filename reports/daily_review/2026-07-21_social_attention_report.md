@@ -8,11 +8,11 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **4**
+- Total rows: **3**
 - High attention rows: **0**
 - Medium attention rows: **0**
 - Rumor-noise detected rows: **0**
-- Risk-noise detected rows: **3**
+- Risk-noise detected rows: **2**
 
 ## Top Social Attention Signals
 
@@ -21,7 +21,6 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 | 127120 | 제이에스링크 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
 | 215380 | 우정바이오 | merger | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
 | 009810 | 플레이그램 | paid_in_capital_increase | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
-| 183490 | 엔지켐생명과학 | lawsuit | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
 
 ## Interpretation
 

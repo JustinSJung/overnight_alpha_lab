@@ -1,6 +1,6 @@
 # Stock-Specific Historical Pattern Report - 2026-07-21
 
-Generated at: 2026-07-21 05:14:46
+Generated at: 2026-07-21 05:32:33
 
 ## Purpose
 
@@ -12,7 +12,7 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **425**
+- Total error-note rows: **424**
 - Number of stocks in history: **171**
 - Stocks with evaluated reactions: **0**
 - Stocks with pending-only reactions: **171**
@@ -30,9 +30,9 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 001470 | 삼부토건 | 13 | 0 | 0 | 0 | 13 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 109070 | 주성코퍼레이션 | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 085660 | 차바이오텍 | 10 | 0 | 0 | 0 | 10 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
-| 183490 | 엔지켐생명과학 | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | lawsuit | mostly_pending |
 | 276730 | 한울앤제주 | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 018700 | 졸스 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 183490 | 엔지켐생명과학 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | lawsuit | mostly_pending |
 | 189330 | 씨이랩 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 263800 | 데이타솔루션 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 068270 | 셀트리온 | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | investment_decision | mostly_pending |

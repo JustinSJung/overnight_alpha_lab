@@ -6,13 +6,13 @@ This diagnostic report evaluates ranking quality for the broad KIS price-candida
 ## Overall Performance
 
 - Cumulative evaluated cases: **1621**
-- Success count: **831**
-- Failure count: **790**
+- Success count: **830**
+- Failure count: **791**
 - Pending count: **2048**
-- Raw success rate: **51.26%**
+- Raw success rate: **51.20%**
 - Wilson reliability score: **48.8 / 100**
-- Rolling 7-day success rate: **52.32%**
-- Rolling 30-day success rate: **51.26%**
+- Rolling 7-day success rate: **52.25%**
+- Rolling 30-day success rate: **51.20%**
 - Score version: **v2_conservative_ranker**
 - V2 evaluated cases: **0**
 - Current ranking diagnosis: **Insufficient v2 data / v2 데이터 부족**
@@ -24,10 +24,10 @@ Ranks are recalculated within each signal/prediction day using final_price_signa
 
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
-| Top 10 | 43 | 9 | 34 | 20.93% | -2.33% | N/A |
-| Top 20 | 84 | 28 | 56 | 33.33% | -2.26% | N/A |
-| Top 50 | 205 | 59 | 146 | 28.78% | -2.90% | N/A |
-| Top 100 | 387 | 120 | 267 | 31.01% | -1.81% | N/A |
+| Top 10 | 43 | 10 | 33 | 23.26% | -2.27% | N/A |
+| Top 20 | 84 | 29 | 55 | 34.52% | -2.23% | N/A |
+| Top 50 | 205 | 60 | 145 | 29.27% | -2.89% | N/A |
+| Top 100 | 387 | 119 | 268 | 30.75% | -1.79% | N/A |
 | Rest | 1234 | 711 | 523 | 57.62% | -0.94% | N/A |
 
 ## V2 Penalty Diagnostics by Rank Bucket
@@ -56,7 +56,7 @@ V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단�
 | high | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
 | medium | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
 | low | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
-| unknown | 1621 | 831 | 790 | 51.26% | -1.14% | N/A |
+| unknown | 1621 | 830 | 791 | 51.20% | -1.14% | N/A |
 
 ### price_signal_score_v1
 
@@ -66,36 +66,36 @@ V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단�
 | high | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
 | medium | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
 | low | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
-| unknown | 1621 | 831 | 790 | 51.26% | -1.14% | N/A |
+| unknown | 1621 | 830 | 791 | 51.20% | -1.14% | N/A |
 
 ### prediction_score
 
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
-| very_high | 2 | 0 | 2 | 0.00% | -2.12% | N/A |
+| very_high | 2 | 1 | 1 | 50.00% | -1.62% | N/A |
 | high | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
-| medium | 3 | 2 | 1 | 66.67% | 4.00% | N/A |
-| low | 69 | 37 | 32 | 53.62% | -0.38% | N/A |
+| medium | 3 | 2 | 1 | 66.67% | 4.58% | N/A |
+| low | 69 | 35 | 34 | 50.72% | -0.32% | N/A |
 | unknown | 1547 | 792 | 755 | 51.20% | -1.19% | N/A |
 
 ### final_price_signal_score
 
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
-| very_high | 2 | 0 | 2 | 0.00% | -2.12% | N/A |
+| very_high | 2 | 1 | 1 | 50.00% | -1.62% | N/A |
 | high | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
-| medium | 3 | 2 | 1 | 66.67% | 4.00% | N/A |
-| low | 69 | 37 | 32 | 53.62% | -0.38% | N/A |
+| medium | 3 | 2 | 1 | 66.67% | 4.58% | N/A |
+| low | 69 | 35 | 34 | 50.72% | -0.32% | N/A |
 | unknown | 1547 | 792 | 755 | 51.20% | -1.19% | N/A |
 
 ### price_candidate_score
 
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
-| very_high | 206 | 55 | 151 | 26.70% | -3.10% | N/A |
+| very_high | 206 | 56 | 150 | 27.18% | -3.09% | N/A |
 | high | 156 | 51 | 105 | 32.69% | -0.26% | N/A |
-| medium | 74 | 22 | 52 | 29.73% | -1.35% | N/A |
-| low | 1185 | 703 | 482 | 59.32% | -0.91% | N/A |
+| medium | 74 | 22 | 52 | 29.73% | -1.32% | N/A |
+| low | 1185 | 701 | 484 | 59.16% | -0.91% | N/A |
 | unknown | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
 
 ## Volume and Supplementary Signal Diagnostics
@@ -105,25 +105,25 @@ V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단�
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
 | high_risk_noise | 15 | 8 | 7 | 53.33% | -3.13% | N/A |
-| nan | 1354 | 700 | 654 | 51.70% | -0.96% | N/A |
+| nan | 1354 | 699 | 655 | 51.62% | -0.95% | N/A |
 | no_risk_noise | 101 | 55 | 46 | 54.46% | -1.52% | N/A |
-| risk_noise_detected | 151 | 68 | 83 | 45.03% | -2.44% | N/A |
+| risk_noise_detected | 151 | 68 | 83 | 45.03% | -2.42% | N/A |
 
 ### social_attention_bucket
 
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
-| high_attention | 1 | 1 | 0 | 100.00% | -3.98% | N/A |
+| high_attention | 1 | 1 | 0 | 100.00% | -1.88% | N/A |
 | low_attention | 132 | 53 | 79 | 40.15% | -3.20% | N/A |
-| medium_attention | 134 | 77 | 57 | 57.46% | -1.09% | N/A |
-| nan | 1354 | 700 | 654 | 51.70% | -0.96% | N/A |
+| medium_attention | 134 | 77 | 57 | 57.46% | -1.08% | N/A |
+| nan | 1354 | 699 | 655 | 51.62% | -0.95% | N/A |
 
 ### volume_ratio_bucket
 
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
-| high | 135 | 58 | 77 | 42.96% | -0.92% | N/A |
-| normal | 1310 | 734 | 576 | 56.03% | -0.84% | N/A |
+| high | 135 | 59 | 76 | 43.70% | -0.89% | N/A |
+| normal | 1310 | 732 | 578 | 55.88% | -0.84% | N/A |
 | unknown | 75 | 8 | 67 | 10.67% | -1.71% | N/A |
 | very_high | 101 | 31 | 70 | 30.69% | -5.03% | N/A |
 

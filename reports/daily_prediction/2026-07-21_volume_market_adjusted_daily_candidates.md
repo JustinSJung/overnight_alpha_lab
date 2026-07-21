@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-07-21
 
-Generated at: 2026-07-21 05:14:42
+Generated at: 2026-07-21 05:32:29
 
 ML dataset source: `data/processed/ml_dataset_20260721.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260721.csv`
@@ -27,8 +27,8 @@ base_recommendation_score_v3
 
 ## Summary
 
-- Total rows: **5**
-- risk_or_avoid_review: **4**
+- Total rows: **4**
+- risk_or_avoid_review: **3**
 - strong_volume_market_adjusted_candidate: **1**
 
 ## Strong Volume + Market-Adjusted Candidates
@@ -68,7 +68,6 @@ No candidates in this section.
 | 1970-01-01 | 127120 | 제이에스링크 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -25.00 | 0.00 | 0.00 | -25.00 | N/A | N/A | N/A |
 | 1970-01-01 | 009810 | 플레이그램 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
 | 1970-01-01 | 009810 | 플레이그램 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -80.00 | 0.00 | 0.00 | -80.00 | N/A | N/A | N/A |
 
 ## General Review
 

@@ -18,14 +18,14 @@ This report is for research and portfolio demonstration purposes only. It is not
 
 ## Summary
 
-- Total candidate rows: **5**
+- Total candidate rows: **4**
 - Rows with active learned-rule adjustment: **0**
 
 ## Candidate Buckets
 
 | Bucket | Count |
 |---|---:|
-| risk_or_avoid_review | 4 |
+| risk_or_avoid_review | 3 |
 | watchlist_candidate | 1 |
 
 ## Top Candidates
@@ -36,7 +36,6 @@ This report is for research and portfolio demonstration purposes only. It is not
 | 127120 | 제이에스링크 | paid_in_capital_increase | negative | -70.0 | 0.0 | 0.0 | 0.0 | -70.0 | risk_or_avoid_review | hold_insufficient_data | 0 | 0.00% |
 | 009810 | 플레이그램 | paid_in_capital_increase | negative | -70.0 | 0.0 | 0.0 | 0.0 | -70.0 | risk_or_avoid_review | hold_insufficient_data | 0 | 0.00% |
 | 009810 | 플레이그램 | paid_in_capital_increase | negative | -70.0 | 0.0 | 0.0 | 0.0 | -70.0 | risk_or_avoid_review | hold_insufficient_data | 0 | 0.00% |
-| 183490 | 엔지켐생명과학 | lawsuit | negative | -75.0 | 0.0 | 0.0 | 0.0 | -75.0 | risk_or_avoid_review | hold_insufficient_data | 0 | 0.00% |
 
 ## Interpretation
 
