@@ -406,6 +406,10 @@ def build_metrics():
     top_20_success_rate = first_row_value(latest_diagnostics, "top_20_success_rate", None)
     top_50_success_rate = first_row_value(latest_diagnostics, "top_50_success_rate", None)
     top_100_success_rate = first_row_value(latest_diagnostics, "top_100_success_rate", None)
+    top_10_evaluated_count = first_row_value(latest_diagnostics, "top_10_evaluated_count", None)
+    top_20_evaluated_count = first_row_value(latest_diagnostics, "top_20_evaluated_count", None)
+    top_50_evaluated_count = first_row_value(latest_diagnostics, "top_50_evaluated_count", None)
+    top_100_evaluated_count = first_row_value(latest_diagnostics, "top_100_evaluated_count", None)
     diagnostics_judgment_en = first_row_value(latest_diagnostics, "judgment_en", "")
     diagnostics_judgment_ko = first_row_value(latest_diagnostics, "judgment_ko", "")
 
@@ -481,6 +485,10 @@ def build_metrics():
         "top_20_success_rate": top_20_success_rate,
         "top_50_success_rate": top_50_success_rate,
         "top_100_success_rate": top_100_success_rate,
+        "top_10_evaluated_count": top_10_evaluated_count,
+        "top_20_evaluated_count": top_20_evaluated_count,
+        "top_50_evaluated_count": top_50_evaluated_count,
+        "top_100_evaluated_count": top_100_evaluated_count,
         "diagnostics_judgment_en": diagnostics_judgment_en,
         "diagnostics_judgment_ko": diagnostics_judgment_ko,
         "naver_status_en": naver_status_en,
@@ -1191,7 +1199,7 @@ def build_html(metrics, stock_data):
       <div class="section-heading">
         <div>
           <h2>Signal Quality Diagnostics <span class="heading-ko">신호 품질 진단</span></h2>
-          <p class="section-subtitle">Rank buckets compare selected top candidates against the broad evaluation pool. 랭킹 구간별 성과로 선별 후보가 전체 후보 풀보다 나은지 점검합니다.</p>
+          <p class="section-subtitle">Rank buckets are recalculated within each signal/prediction day, then aggregated across evaluated days. 랭킹 구간은 각 일자 안에서 다시 계산한 뒤 전체 평가일에 걸쳐 누적 집계합니다.</p>
         </div>
       </div>
       <div class="kpi-grid">
@@ -1201,24 +1209,28 @@ def build_html(metrics, stock_data):
           {render_kpi_value(metrics["diagnostics_overall_success_rate"], "%", "success")}
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 10 Success Rate</div>
-          <div class="ko-desc">Top 10 성공률</div>
+          <div class="label">Top 10 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 10 누적 성공률</div>
           {render_kpi_value(metrics["top_10_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["top_10_evaluated_count"])}<br>평가 완료: {format_metric_value(metrics["top_10_evaluated_count"])}</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 20 Success Rate</div>
-          <div class="ko-desc">Top 20 성공률</div>
+          <div class="label">Top 20 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 20 누적 성공률</div>
           {render_kpi_value(metrics["top_20_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["top_20_evaluated_count"])}<br>평가 완료: {format_metric_value(metrics["top_20_evaluated_count"])}</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 50 Success Rate</div>
-          <div class="ko-desc">Top 50 성공률</div>
+          <div class="label">Top 50 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 50 누적 성공률</div>
           {render_kpi_value(metrics["top_50_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["top_50_evaluated_count"])}<br>평가 완료: {format_metric_value(metrics["top_50_evaluated_count"])}</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 100 Success Rate</div>
-          <div class="ko-desc">Top 100 성공률</div>
+          <div class="label">Top 100 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 100 누적 성공률</div>
           {render_kpi_value(metrics["top_100_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["top_100_evaluated_count"])}<br>평가 완료: {format_metric_value(metrics["top_100_evaluated_count"])}</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Candidate Pool Today</div>
@@ -1234,6 +1246,8 @@ def build_html(metrics, stock_data):
       <div class="note section">
         Large candidate pools improve statistical reliability. Selected picks are a smaller top-ranked subset for focused monitoring.<br>
         큰 후보 풀은 통계적 신뢰도 측정에 도움이 되며, 선별 후보는 집중 모니터링용 상위 후보입니다.<br>
+        Top N rates are cumulative per signal/prediction day, then aggregated across historical evaluations.<br>
+        Top N 성공률은 각 signal/prediction 일자별 누적 구간을 과거 평가 전체에 걸쳐 집계한 값입니다.<br>
         <span class="small">{metrics["diagnostics_judgment_en"]}<br>{metrics["diagnostics_judgment_ko"]}</span>
       </div>
     </section>
@@ -1542,6 +1556,10 @@ def main():
     print(f"- Top 20 success rate: {format_metric_value(metrics['top_20_success_rate'], '%')}")
     print(f"- Top 50 success rate: {format_metric_value(metrics['top_50_success_rate'], '%')}")
     print(f"- Top 100 success rate: {format_metric_value(metrics['top_100_success_rate'], '%')}")
+    print(f"- Top 10 evaluated cases: {format_metric_value(metrics['top_10_evaluated_count'])}")
+    print(f"- Top 20 evaluated cases: {format_metric_value(metrics['top_20_evaluated_count'])}")
+    print(f"- Top 50 evaluated cases: {format_metric_value(metrics['top_50_evaluated_count'])}")
+    print(f"- Top 100 evaluated cases: {format_metric_value(metrics['top_100_evaluated_count'])}")
     print(f"- candidate pool today: {metrics['price_candidate_rows']}")
     print(f"- selected picks today: {metrics['selected_pick_rows']}")
     print(f"- Google News RSS item count: {metrics['news_provider_item_count']}")

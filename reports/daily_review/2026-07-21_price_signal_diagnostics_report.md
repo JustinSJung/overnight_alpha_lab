@@ -16,13 +16,16 @@ This diagnostic report evaluates ranking quality for the broad KIS price-candida
 
 ## Rank Bucket Performance
 
-| rank_bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
+Ranks are recalculated within each signal/prediction day using final_price_signal_score, prediction_score, then price_candidate_score as fallback. Each Top N row below is cumulative per day before being aggregated across all evaluated days.
+랭킹은 각 signal/prediction 일자 안에서 점수 기준으로 다시 계산하며, 각 Top N은 일별 누적 구간을 전체 평가일에 걸쳐 집계한 값입니다.
+
+| bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
 |---|---:|---:|---:|---:|---:|---:|
-| Top 10 | 5 | 2 | 3 | 40.00% | 3.54% | N/A |
-| Top 20 | 5 | 2 | 3 | 40.00% | 3.54% | N/A |
-| Top 50 | 26 | 18 | 8 | 69.23% | -0.43% | N/A |
-| Top 100 | 74 | 55 | 19 | 74.32% | -1.57% | N/A |
-| Rest | 0 | 0 | 0 | Insufficient data / 데이터 부족 | N/A | N/A |
+| Top 10 | 43 | 9 | 34 | 20.93% | -2.10% | N/A |
+| Top 20 | 84 | 28 | 56 | 33.33% | -2.14% | N/A |
+| Top 50 | 204 | 59 | 145 | 28.92% | -2.80% | N/A |
+| Top 100 | 385 | 122 | 263 | 31.69% | -1.85% | N/A |
+| Rest | 1234 | 725 | 509 | 58.75% | -1.00% | N/A |
 
 ## Score Bucket Performance
 
@@ -91,37 +94,41 @@ This diagnostic report evaluates ranking quality for the broad KIS price-candida
 
 | stock_code | stock_name | corp_name | signal_date | prediction_date | candidate_rank | final_price_signal_score | prediction_score | price_candidate_score | volume_ratio_20d | close_t1_return | excess_return_t1 | prediction_result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 012160 |  |  | 2026-07-20 | 2026-07-20 | 1.0 | 103.0 | 103.0 | 103.0 | 3.3785 | -0.0392 |  | failure |
+| 024720 |  | 콜마홀딩스 |  |  | 2.0 |  |  | 109.59 | 1.8376 |  |  |  |
+| 368970 |  |  |  |  | 32.0 |  |  | 91.23 | 0.371 |  |  |  |
+| 065770 |  | CS |  |  | 42.0 |  |  | 91.11 | 13.4174 |  |  |  |
+| 002780 |  |  |  |  | 52.0 |  |  | 88.59 | 1.9443 |  |  |  |
+| 038530 |  |  |  |  | 62.0 |  |  | 85.24 | 4.9367 |  |  |  |
 
 ### High volume but failed
 
 | stock_code | stock_name | corp_name | signal_date | prediction_date | candidate_rank | final_price_signal_score | prediction_score | price_candidate_score | volume_ratio_20d | close_t1_return | excess_return_t1 | prediction_result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 065770 |  | CS |  |  |  |  |  | 91.11 | 13.4174 |  |  |  |
-| 038530 |  |  |  |  |  |  |  | 85.24 | 4.9367 |  |  |  |
-| 065770 |  | CS | 2026-07-07 | 2026-07-07 |  |  |  | 91.11 | 13.4174 | -0.0352 |  | failure |
-| 038530 |  |  | 2026-07-07 | 2026-07-07 |  |  |  | 85.24 | 4.9367 | -0.1234 |  | failure |
-| 263800 |  |  | 2026-07-09 | 2026-07-09 |  |  |  | 119.0 | 14.6426 | -0.0544 |  | failure |
+| 065770 |  | CS |  |  | 42.0 |  |  | 91.11 | 13.4174 |  |  |  |
+| 038530 |  |  |  |  | 62.0 |  |  | 85.24 | 4.9367 |  |  |  |
+| 065770 |  | CS | 2026-07-07 | 2026-07-07 | 44.0 |  |  | 91.11 | 13.4174 | -0.0352 |  | failure |
+| 038530 |  |  | 2026-07-07 | 2026-07-07 | 64.0 |  |  | 85.24 | 4.9367 | -0.1234 |  | failure |
+| 263800 |  |  | 2026-07-09 | 2026-07-09 | 3.0 |  |  | 119.0 | 14.6426 | -0.0544 |  | failure |
 
 ### High risk noise and failed
 
 | stock_code | stock_name | corp_name | signal_date | prediction_date | candidate_rank | final_price_signal_score | prediction_score | price_candidate_score | volume_ratio_20d | close_t1_return | excess_return_t1 | prediction_result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 024720 |  | 콜마홀딩스 |  |  |  |  |  | 109.59 | 1.8376 |  |  |  |
-| 368970 |  |  |  |  |  |  |  | 91.23 | 0.371 |  |  |  |
-| 065770 |  | CS |  |  |  |  |  | 91.11 | 13.4174 |  |  |  |
-| 002780 |  |  |  |  |  |  |  | 88.59 | 1.9443 |  |  |  |
-| 038530 |  |  |  |  |  |  |  | 85.24 | 4.9367 |  |  |  |
+| 024720 |  | 콜마홀딩스 |  |  | 2.0 |  |  | 109.59 | 1.8376 |  |  |  |
+| 368970 |  |  |  |  | 32.0 |  |  | 91.23 | 0.371 |  |  |  |
+| 065770 |  | CS |  |  | 42.0 |  |  | 91.11 | 13.4174 |  |  |  |
+| 002780 |  |  |  |  | 52.0 |  |  | 88.59 | 1.9443 |  |  |  |
+| 038530 |  |  |  |  | 62.0 |  |  | 85.24 | 4.9367 |  |  |  |
 
 ### Low score but succeeded
 
 | stock_code | stock_name | corp_name | signal_date | prediction_date | candidate_rank | final_price_signal_score | prediction_score | price_candidate_score | volume_ratio_20d | close_t1_return | excess_return_t1 | prediction_result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 033310 | 엠투엔 | 엠투엔 | 2026-07-20 | 2026-07-20 | 31.0 | 39.33 | 39.33 | 39.33 | 0.2998 | -0.0015 |  | success |
-| 065770 |  |  | 2026-07-20 | 2026-07-20 | 32.0 | 38.89 | 38.89 | 38.89 | 0.3058 | -0.0388 |  | success |
-| 321370 |  |  | 2026-07-20 | 2026-07-20 | 33.0 | 38.68 | 38.68 | 38.68 | 4.4367 | -0.0714 |  | success |
-| 040910 |  |  | 2026-07-20 | 2026-07-20 | 34.0 | 38.43 | 38.43 | 38.43 | 1.1607 | -0.0125 |  | success |
-| 112610 |  |  | 2026-07-20 | 2026-07-20 | 35.0 | 37.06 | 37.06 | 37.06 | 0.615 | -0.0154 |  | success |
+| 0126Z0 |  |  |  |  | 332.0 |  |  | 39.08 | 1.0887 |  |  |  |
+| 025980 |  |  |  |  | 342.0 |  |  | 36.9 | 0.6787 |  |  |  |
+| 049950 |  |  |  |  | 352.0 |  |  | 36.37 | 0.7108 |  |  |  |
+| 004380 |  |  |  |  | 362.0 |  |  | 35.0 | 0.3365 |  |  |  |
+| 019570 |  |  |  |  | 372.0 |  |  | 32.09 | 0.0 |  |  |  |
 
 ## Summary Judgment
 

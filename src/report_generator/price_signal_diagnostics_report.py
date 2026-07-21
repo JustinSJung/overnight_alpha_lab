@@ -82,49 +82,59 @@ def normalize_result_series(df: pd.DataFrame) -> pd.Series:
     return result
 
 
-def score_column(df: pd.DataFrame):
-    for column in ["final_price_signal_score", "prediction_score", "price_candidate_score"]:
+def score_columns(df: pd.DataFrame) -> list[str]:
+    return [
+        column
+        for column in ["final_price_signal_score", "prediction_score", "price_candidate_score"]
+        if column in df.columns
+    ]
+
+
+def coalesced_score(df: pd.DataFrame) -> pd.Series:
+    score = pd.Series(pd.NA, index=df.index, dtype="Float64")
+
+    for column in score_columns(df):
+        values = pd.to_numeric(df[column], errors="coerce")
+        score = score.fillna(values)
+
+    return score
+
+
+def coalesced_rank_date(df: pd.DataFrame) -> pd.Series:
+    dates = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
+
+    for column in ["signal_date", "prediction_date", "candidate_date"]:
         if column in df.columns:
-            return column
-    return None
+            parsed = pd.to_datetime(df[column], errors="coerce")
+            dates = dates.fillna(parsed)
 
-
-def date_group_columns(df: pd.DataFrame):
-    for columns in [
-        ["signal_date", "prediction_date"],
-        ["candidate_date"],
-        ["signal_date"],
-        ["prediction_date"],
-    ]:
-        if all(column in df.columns for column in columns):
-            return columns
-    return []
+    return dates.dt.strftime("%Y-%m-%d").fillna("unknown")
 
 
 def ensure_candidate_rank(df: pd.DataFrame) -> pd.DataFrame:
     result = df.copy()
+    result["diagnostic_rank_date"] = coalesced_rank_date(result)
+    result["diagnostic_score"] = coalesced_score(result)
 
     if "candidate_rank" in result.columns:
-        result["candidate_rank"] = pd.to_numeric(result["candidate_rank"], errors="coerce")
+        result["source_candidate_rank"] = pd.to_numeric(result["candidate_rank"], errors="coerce")
     else:
-        result["candidate_rank"] = pd.NA
+        result["source_candidate_rank"] = pd.NA
+
+    if result["diagnostic_score"].notna().any():
+        result["candidate_rank"] = result.groupby(
+            "diagnostic_rank_date",
+            dropna=False,
+        )["diagnostic_score"].rank(
+            method="first",
+            ascending=False,
+        )
+    else:
+        result["candidate_rank"] = result["source_candidate_rank"]
 
     missing_rank = result["candidate_rank"].isna()
-    score_col = score_column(result)
-
-    if missing_rank.any() and score_col:
-        result[score_col] = pd.to_numeric(result[score_col], errors="coerce")
-        group_cols = date_group_columns(result)
-
-        if group_cols:
-            inferred = result.groupby(group_cols, dropna=False)[score_col].rank(
-                method="first",
-                ascending=False,
-            )
-        else:
-            inferred = result[score_col].rank(method="first", ascending=False)
-
-        result.loc[missing_rank, "candidate_rank"] = inferred[missing_rank]
+    if missing_rank.any():
+        result.loc[missing_rank, "candidate_rank"] = result.loc[missing_rank, "source_candidate_rank"]
 
     result["candidate_rank"] = pd.to_numeric(result["candidate_rank"], errors="coerce")
     return result
@@ -330,8 +340,7 @@ def build_diagnostics():
         else:
             optional_rows.extend(summarize_optional_bucket(evaluations, column, label))
 
-    score_col = score_column(evaluations)
-    score_series = pd.to_numeric(evaluations[score_col], errors="coerce") if score_col else pd.Series(0, index=evaluations.index)
+    score_series = coalesced_score(evaluations).fillna(0)
     volume_series = pd.to_numeric(evaluations.get("volume_ratio_20d", 0), errors="coerce")
     result_series = normalize_result_series(evaluations)
 
@@ -383,6 +392,10 @@ def build_diagnostics():
         "top_20_success_rate": top_lookup.get("Top 20", {}).get("success_rate"),
         "top_50_success_rate": top_lookup.get("Top 50", {}).get("success_rate"),
         "top_100_success_rate": top_lookup.get("Top 100", {}).get("success_rate"),
+        "top_10_evaluated_count": top_lookup.get("Top 10", {}).get("evaluated_count", 0),
+        "top_20_evaluated_count": top_lookup.get("Top 20", {}).get("evaluated_count", 0),
+        "top_50_evaluated_count": top_lookup.get("Top 50", {}).get("evaluated_count", 0),
+        "top_100_evaluated_count": top_lookup.get("Top 100", {}).get("evaluated_count", 0),
         "candidate_pool_today": len(latest_candidates),
         "selected_picks_today": latest_selected_count,
         "daily_signal_rows": len(signals),
@@ -413,7 +426,7 @@ def format_return(value):
 
 def table_rows(rows, name_column):
     lines = [
-        f"| {name_column} | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |",
+        f"| {'bucket' if name_column == 'rank_bucket' else name_column} | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |",
         "|---|---:|---:|---:|---:|---:|---:|",
     ]
     for row in rows:
@@ -481,6 +494,9 @@ def write_report(data):
         f"- Rolling 30-day success rate: **{format_percent(summary['rolling_30d_success_rate'])}**",
         "",
         "## Rank Bucket Performance",
+        "",
+        "Ranks are recalculated within each signal/prediction day using final_price_signal_score, prediction_score, then price_candidate_score as fallback. Each Top N row below is cumulative per day before being aggregated across all evaluated days.",
+        "랭킹은 각 signal/prediction 일자 안에서 점수 기준으로 다시 계산하며, 각 Top N은 일별 누적 구간을 전체 평가일에 걸쳐 집계한 값입니다.",
         "",
         *table_rows(data["rank_rows"], "rank_bucket"),
         "",

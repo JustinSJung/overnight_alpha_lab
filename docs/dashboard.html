@@ -632,7 +632,7 @@
       <div class="section-heading">
         <div>
           <h2>Signal Quality Diagnostics <span class="heading-ko">신호 품질 진단</span></h2>
-          <p class="section-subtitle">Rank buckets compare selected top candidates against the broad evaluation pool. 랭킹 구간별 성과로 선별 후보가 전체 후보 풀보다 나은지 점검합니다.</p>
+          <p class="section-subtitle">Rank buckets are recalculated within each signal/prediction day, then aggregated across evaluated days. 랭킹 구간은 각 일자 안에서 다시 계산한 뒤 전체 평가일에 걸쳐 누적 집계합니다.</p>
         </div>
       </div>
       <div class="kpi-grid">
@@ -642,24 +642,28 @@
           <div class="kpi-value success">52.32%</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 10 Success Rate</div>
-          <div class="ko-desc">Top 10 성공률</div>
-          <div class="kpi-value">40.0%</div>
+          <div class="label">Top 10 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 10 누적 성공률</div>
+          <div class="kpi-value">20.93%</div>
+          <div class="muted-helper">Evaluated cases: 43<br>평가 완료: 43</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 20 Success Rate</div>
-          <div class="ko-desc">Top 20 성공률</div>
-          <div class="kpi-value">40.0%</div>
+          <div class="label">Top 20 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 20 누적 성공률</div>
+          <div class="kpi-value">33.33%</div>
+          <div class="muted-helper">Evaluated cases: 84<br>평가 완료: 84</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 50 Success Rate</div>
-          <div class="ko-desc">Top 50 성공률</div>
-          <div class="kpi-value">69.23%</div>
+          <div class="label">Top 50 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 50 누적 성공률</div>
+          <div class="kpi-value">28.92%</div>
+          <div class="muted-helper">Evaluated cases: 204<br>평가 완료: 204</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Top 100 Success Rate</div>
-          <div class="ko-desc">Top 100 성공률</div>
-          <div class="kpi-value">74.32%</div>
+          <div class="label">Top 100 Cumulative Success Rate</div>
+          <div class="ko-desc">일별 Top 100 누적 성공률</div>
+          <div class="kpi-value">31.69%</div>
+          <div class="muted-helper">Evaluated cases: 385<br>평가 완료: 385</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Candidate Pool Today</div>
@@ -675,6 +679,8 @@
       <div class="note section">
         Large candidate pools improve statistical reliability. Selected picks are a smaller top-ranked subset for focused monitoring.<br>
         큰 후보 풀은 통계적 신뢰도 측정에 도움이 되며, 선별 후보는 집중 모니터링용 상위 후보입니다.<br>
+        Top N rates are cumulative per signal/prediction day, then aggregated across historical evaluations.<br>
+        Top N 성공률은 각 signal/prediction 일자별 누적 구간을 과거 평가 전체에 걸쳐 집계한 값입니다.<br>
         <span class="small">Overall performance remains close to random; ranking quality is not yet clearly proven.<br>전체 성과가 아직 무작위에 가까우며, 랭킹 품질은 명확히 입증되지 않았습니다.</span>
       </div>
     </section>
@@ -780,7 +786,7 @@
       <div class="section-heading">
         <div>
           <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-07-21 00:37:45. Latest ML dataset rows: 7. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
+          <p class="section-subtitle">Latest generated at 2026-07-21 11:08:31. Latest ML dataset rows: 7. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">
