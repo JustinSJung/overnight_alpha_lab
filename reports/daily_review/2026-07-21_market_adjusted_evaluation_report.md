@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-21
 
-Generated at: 2026-07-21 05:32:28
+Generated at: 2026-07-21 23:15:36
 
 Source feature file: `data/processed/market_adjusted_features_20260721.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4**
-- pending: **4**
+- Total rows: **27**
+- pending: **27**
 
 ## Interpretation
 
@@ -29,10 +29,26 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 127120 | 제이에스링크 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 215380 | 우정바이오 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 9810 | 플레이그램 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 9810 | 플레이그램 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 66790 | 씨씨에스 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 348950 | 제이알글로벌리츠 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 397030 | 에이프릴바이오 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 6220 | 제주은행 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 66430 | 아이로보틱스 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 106240 | 파인테크닉스 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 276730 | 한울앤제주 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 276730 | 한울앤제주 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 53580 | 웹케시 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 71950 | 코아스 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 159910 | 에코글로우 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 119850 | 지엔씨에너지 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 340810 | 시선AI | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 340810 | 시선AI | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 900120 | 씨엑스아이 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 900120 | 씨엑스아이 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 900120 | 씨엑스아이 | negative | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

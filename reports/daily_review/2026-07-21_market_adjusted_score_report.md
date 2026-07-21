@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-21
 
-Generated at: 2026-07-21 05:32:28
+Generated at: 2026-07-21 23:15:36
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260721.csv`
 
@@ -28,26 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **4**
+- Total rows: **27**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **4**
+- neutral_adjustment: **27**
 
 ## Market-Adjusted Result Counts
 
-- pending: **4**
+- pending: **27**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 127120 | 제이에스링크 | negative | pending | 0 | N/A |
-| 1970-01-01 | 215380 | 우정바이오 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 009810 | 플레이그램 | negative | pending | 0 | N/A |
-| 1970-01-01 | 009810 | 플레이그램 | negative | pending | 0 | N/A |
+| 1970-01-01 | 066790 | 씨씨에스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 348950 | 제이알글로벌리츠 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 397030 | 에이프릴바이오 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 006220 | 제주은행 | negative | pending | 0 | N/A |
+| 1970-01-01 | 066430 | 아이로보틱스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 106240 | 파인테크닉스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 276730 | 한울앤제주 | negative | pending | 0 | N/A |
+| 1970-01-01 | 276730 | 한울앤제주 | negative | pending | 0 | N/A |
+| 1970-01-01 | 053580 | 웹케시 | positive | pending | 0 | N/A |
+| 1970-01-01 | 071950 | 코아스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 179530 | 애드바이오텍 | negative | pending | 0 | N/A |
+| 1970-01-01 | 159910 | 에코글로우 | negative | pending | 0 | N/A |
+| 1970-01-01 | 119850 | 지엔씨에너지 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340810 | 시선AI | negative | pending | 0 | N/A |
+| 1970-01-01 | 340810 | 시선AI | negative | pending | 0 | N/A |
+| 1970-01-01 | 900120 | 씨엑스아이 | negative | pending | 0 | N/A |
+| 1970-01-01 | 900120 | 씨엑스아이 | negative | pending | 0 | N/A |
+| 1970-01-01 | 900120 | 씨엑스아이 | negative | pending | 0 | N/A |
 
 ## Next Step
 

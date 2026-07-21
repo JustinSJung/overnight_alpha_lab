@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-21
 
-Generated at: 2026-07-21 05:32:29
+Generated at: 2026-07-21 23:15:38
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260721.csv`
 
@@ -23,28 +23,52 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **6**
+- Total rows: **88**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **6**
+- neutral_volume_adjustment: **88**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **6**
+- insufficient_volume_baseline: **88**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
-| 20260721 | 127120 | 제이에스링크 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260721 | 215380 | 우정바이오 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260721 | 009810 | 플레이그램 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260721 | 009810 | 플레이그램 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260721 | 009810 | 플레이그램 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260721 | 009810 | 플레이그램 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 066790 | 씨씨에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 348950 | 제이알글로벌리츠 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 397030 | 에이프릴바이오 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 006220 | 제주은행 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 066430 | 아이로보틱스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 106240 | 파인테크닉스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 276730 | 한울앤제주 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 276730 | 한울앤제주 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 276730 | 한울앤제주 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 276730 | 한울앤제주 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 053580 | 웹케시 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 071950 | 코아스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 179530 | 애드바이오텍 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 

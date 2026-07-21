@@ -19,17 +19,17 @@ The original rule-based event scoring file is not overwritten. The learned rules
 
 | event_type | total_count | evaluated_count | success_count | failure_count | pending_count | success_rate | learned_event_score_adjustment | learning_label |
 |---|---|---|---|---|---|---|---|---|
-| bonus_issue | 1 | 0 | 0 | 0 | 1 | 0.00% | 0.0 | hold_insufficient_data |
-| convertible_bond | 68 | 0 | 0 | 0 | 68 | 0.00% | 0.0 | hold_insufficient_data |
-| disclosure_violation | 19 | 0 | 0 | 0 | 19 | 0.00% | 0.0 | hold_insufficient_data |
+| bonus_issue | 2 | 0 | 0 | 0 | 2 | 0.00% | 0.0 | hold_insufficient_data |
+| convertible_bond | 75 | 0 | 0 | 0 | 75 | 0.00% | 0.0 | hold_insufficient_data |
+| disclosure_violation | 20 | 0 | 0 | 0 | 20 | 0.00% | 0.0 | hold_insufficient_data |
 | earnings_guidance | 2 | 0 | 0 | 0 | 2 | 0.00% | 0.0 | hold_insufficient_data |
-| investment_decision | 34 | 0 | 0 | 0 | 34 | 0.00% | 0.0 | hold_insufficient_data |
-| lawsuit | 41 | 0 | 0 | 0 | 41 | 0.00% | 0.0 | hold_insufficient_data |
-| major_shareholder_change | 79 | 0 | 0 | 0 | 79 | 0.00% | 0.0 | hold_insufficient_data |
-| merger | 24 | 0 | 0 | 0 | 24 | 0.00% | 0.0 | hold_insufficient_data |
-| paid_in_capital_increase | 72 | 0 | 0 | 0 | 72 | 0.00% | 0.0 | hold_insufficient_data |
+| investment_decision | 36 | 0 | 0 | 0 | 36 | 0.00% | 0.0 | hold_insufficient_data |
+| lawsuit | 42 | 0 | 0 | 0 | 42 | 0.00% | 0.0 | hold_insufficient_data |
+| major_shareholder_change | 85 | 0 | 0 | 0 | 85 | 0.00% | 0.0 | hold_insufficient_data |
+| merger | 23 | 0 | 0 | 0 | 23 | 0.00% | 0.0 | hold_insufficient_data |
+| paid_in_capital_increase | 76 | 0 | 0 | 0 | 76 | 0.00% | 0.0 | hold_insufficient_data |
 | spin_off | 2 | 0 | 0 | 0 | 2 | 0.00% | 0.0 | hold_insufficient_data |
-| supply_contract | 82 | 0 | 0 | 0 | 82 | 0.00% | 0.0 | hold_insufficient_data |
+| supply_contract | 84 | 0 | 0 | 0 | 84 | 0.00% | 0.0 | hold_insufficient_data |
 
 ## Interpretation
 
