@@ -8,9 +8,9 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **4**
+- Total rows: **7**
 - High attention rows: **0**
-- Medium attention rows: **1**
+- Medium attention rows: **3**
 - Rumor-noise detected rows: **0**
 - Risk-noise detected rows: **2**
 
@@ -18,10 +18,13 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
-| 248070 | 솔루엠 | major_shareholder_change | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 288330 | 파라택시스코리아 | merger | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 036530 | SNT홀딩스 | supply_contract | 10.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 038680 | 에스넷 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 100840 | SNT에너지 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
 | 084870 | 티비에이치글로벌 | major_shareholder_change | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
 | 004710 | 한솔테크닉스 | paid_in_capital_increase | 3.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
+| 134790 | 시디즈 | major_shareholder_change | 3.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 248070 | 솔루엠 | major_shareholder_change | 3.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
 
 ## Interpretation
 

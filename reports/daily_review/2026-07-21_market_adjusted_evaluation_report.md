@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-21
 
-Generated at: 2026-07-21 00:37:29
+Generated at: 2026-07-21 02:13:59
 
 Source feature file: `data/processed/market_adjusted_features_20260721.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **7**
-- pending: **7**
+- Total rows: **10**
+- pending: **10**
 
 ## Interpretation
 
@@ -29,13 +29,16 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 134790 | 시디즈 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 38680 | 에스넷 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 36530 | SNT홀딩스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 100840 | SNT에너지 | positive | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 84870 | 티비에이치글로벌 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 84870 | 티비에이치글로벌 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 248070 | 솔루엠 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 248070 | 솔루엠 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 248070 | 솔루엠 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 4710 | 한솔테크닉스 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 288330 | 파라택시스코리아 | volatile | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

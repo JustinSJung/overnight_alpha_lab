@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-21
 
-Generated at: 2026-07-21 00:37:30
+Generated at: 2026-07-21 02:14:01
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260721.csv`
 
@@ -23,22 +23,26 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **15**
+- Total rows: **18**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **15**
+- neutral_volume_adjustment: **18**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **15**
+- insufficient_volume_baseline: **18**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
+| 20260721 | 134790 | 시디즈 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 038680 | 에스넷 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 036530 | SNT홀딩스 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260721 | 100840 | SNT에너지 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260721 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260721 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260721 | 084870 | 티비에이치글로벌 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
@@ -53,7 +57,6 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 20260721 | 248070 | 솔루엠 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260721 | 248070 | 솔루엠 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260721 | 004710 | 한솔테크닉스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260721 | 288330 | 파라택시스코리아 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 

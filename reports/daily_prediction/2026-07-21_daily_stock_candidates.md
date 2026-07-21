@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-21
 
-Generated at: 2026-07-21 00:37:34
+Generated at: 2026-07-21 02:14:04
 
 ML dataset: `data/processed/ml_dataset_20260721.csv`
 
@@ -43,11 +43,11 @@ The recommender also applies event-type performance adjustments based on histori
 | earnings_guidance | 2 | 0 | N/A | Not available | 0.00 |
 | investment_decision | 34 | 0 | N/A | Not available | 0.00 |
 | lawsuit | 41 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 84 | 0 | N/A | Not available | 0.00 |
-| merger | 24 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 85 | 0 | N/A | Not available | 0.00 |
+| merger | 23 | 0 | N/A | Not available | 0.00 |
 | paid_in_capital_increase | 70 | 0 | N/A | Not available | 0.00 |
 | spin_off | 2 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 82 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 85 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -61,14 +61,48 @@ The recommender also reads past error notes and applies event-type level confide
 | earnings_guidance | 2 | 0 | 0 | 2 | 0.00 |
 | investment_decision | 34 | 0 | 0 | 34 | 0.00 |
 | lawsuit | 41 | 0 | 0 | 41 | 0.00 |
-| major_shareholder_change | 84 | 0 | 0 | 84 | 0.00 |
-| merger | 24 | 0 | 0 | 24 | 0.00 |
+| major_shareholder_change | 85 | 0 | 0 | 85 | 0.00 |
+| merger | 23 | 0 | 0 | 23 | 0.00 |
 | paid_in_capital_increase | 70 | 0 | 0 | 70 | 0.00 |
 | spin_off | 2 | 0 | 0 | 2 | 0.00 |
 
 ## Positive Candidates
 
-No candidates in this section.
+### 1. 에스넷 (038680)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **115.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **115.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결(자율공시)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [공시] 에스넷, 씨이랩과 59억원 퓨팅자원 활용기반 강화 사업 계약 | 원격의료부터 맞춤형 IT까지… 인성정보 '알짜 사업' 부각 | 에스넷그룹, 시스코 대표 보안 파트너 도약 박차
+
+### 2. SNT에너지 (100840)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **112.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **112.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [공시] SNT에너지, 약 319억원 규모 에어 쿨러 공급계약 | SNT에너지, 318억 6천만 원 에어 쿨러 공급→해외 매출 기대 | [더벨][디티에스 IPO] 상장예비심사 통과, 내달 증권신고서 제출 전망
 
 ## Volatile Watchlist
 
@@ -76,55 +110,55 @@ No candidates in this section.
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **60.00**
+- Base recommendation score: **40.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **60.00**
+- Adjusted recommendation score: **40.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주등소유주식변동신고서              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 에너지인프라 사업 확대하는 호반그룹…국내외 현장 챙기는 김대헌 사장 | 키사이드, 글로벌 K-뷰티 유통망 확대…중남미·유럽·아시아 동시 공략 | [150조 국민성장펀드] [간접투자 2차] 벤처캐피탈 격전지에서…KB PE+에코...
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 솔루엠, 유럽서 메가와트급 초급속 충전 상용화…포르투갈 첫 출하 | [전자는 지금] LG전자, AI∙고효율 기술로 ‘에너지위너상’ 12관왕 外 | 솔루엠, 메가와트급 초급속 충전 플랫폼 첫 상용화...유럽 공략 본격화
 
 ### 2. 솔루엠 (248070)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **60.00**
+- Base recommendation score: **40.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **60.00**
+- Adjusted recommendation score: **40.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주등소유주식변동신고서              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 에너지인프라 사업 확대하는 호반그룹…국내외 현장 챙기는 김대헌 사장 | 키사이드, 글로벌 K-뷰티 유통망 확대…중남미·유럽·아시아 동시 공략 | [150조 국민성장펀드] [간접투자 2차] 벤처캐피탈 격전지에서…KB PE+에코...
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 솔루엠, 유럽서 메가와트급 초급속 충전 상용화…포르투갈 첫 출하 | [전자는 지금] LG전자, AI∙고효율 기술로 ‘에너지위너상’ 12관왕 外 | 솔루엠, 메가와트급 초급속 충전 플랫폼 첫 상용화...유럽 공략 본격화
 
 ### 3. 솔루엠 (248070)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **60.00**
+- Base recommendation score: **40.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **60.00**
+- Adjusted recommendation score: **40.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 최대주주등소유주식변동신고서              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 에너지인프라 사업 확대하는 호반그룹…국내외 현장 챙기는 김대헌 사장 | 키사이드, 글로벌 K-뷰티 유통망 확대…중남미·유럽·아시아 동시 공략 | [150조 국민성장펀드] [간접투자 2차] 벤처캐피탈 격전지에서…KB PE+에코...
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 솔루엠, 유럽서 메가와트급 초급속 충전 상용화…포르투갈 첫 출하 | [전자는 지금] LG전자, AI∙고효율 기술로 ‘에너지위너상’ 12관왕 外 | 솔루엠, 메가와트급 초급속 충전 플랫폼 첫 상용화...유럽 공략 본격화
 
 ### 4. 티비에이치글로벌 (084870)
 
@@ -162,6 +196,24 @@ No candidates in this section.
 - Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: [공시] 티비에이치글로벌, 12억 규모 자사주 58만주 취득 | 티비에이치글로벌, KB증권과 신탁계약 통해 자사주 58만주 취득 | 티비에이치글로벌, 주식소각 실시→유통주식 수 감소
 
+### 6. 시디즈 (134790)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **15.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **15.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 0. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: '제18회 대통령배 KeG', 17일부터 지역 선발전 돌입…총상금 2,550만 원 | 아마 e스포츠 요람 ‘제18회 대통령배 KeG’ 스타트 | 클투, 시디즈와 함께 이색 스포츠 이벤트 '시디즈 의자 레이스' 개최
+
 ## General Watchlist
 
 No candidates in this section.
@@ -186,23 +238,23 @@ No candidates in this section.
 - Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: 삼성전자 약세에 삼성페이 관련주 동반 조정 | [더벨]얼머스인베, 1040억 펀드 결성…중견VC 입지 공고히 | [사설] 국내 태양광 모듈업계 고사시키는 평가기준
 
-### 2. 파라택시스코리아 (288330)
+### 2. SNT홀딩스 (036530)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **volatile**
-- Base recommendation score: **11.00**
+- Expected direction: **positive**
+- Base recommendation score: **86.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **11.00**
+- Adjusted recommendation score: **86.00**
 - Risk level: **HIGH**
-- Event type: `merger`
+- Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Disclosure title: 단일판매ㆍ공급계약체결(자회사의 주요경영사항)              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is -3. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [N2 모닝 경제 브리핑-7월 21일] 美 증시, 중동 긴장 재부각에 약세…나... | [BTC 기관 트래커] 기관 보유 비트코인 419만개...스트래티지 매도·스트... | 삼성바이오로직스 정상 지켰다…7월 제약 상장기업 브랜드평판 발표
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 1. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신고가 4개, 신저가 136개.. 지수 하락 | 독자적 유도무기 부품 확보… 그린광학, K-방산 수출 호조 최대 수혜 | [공매도 브리핑] SK하이닉스 2,906억…안랩 비중 38.20%
 
 ## Data Readiness
 

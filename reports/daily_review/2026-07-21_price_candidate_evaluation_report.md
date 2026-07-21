@@ -4,13 +4,13 @@ Source CSV: `data/predictions/price_candidate_evaluation_20260721.csv`
 
 ## Summary
 
-- Absolute close T1 evaluated cases: 354
-- Absolute close T1 success rate: 58.76%
+- Absolute close T1 evaluated cases: 355
+- Absolute close T1 success rate: 56.06%
 - Benchmark-adjusted T1 evaluated cases: 0
 - Benchmark-adjusted T1 success rate: 0.00%
-- Pending cases: 391
+- Pending cases: 394
 - Skipped cases: 0
-- T3 return available: 363
+- T3 return available: 364
 - T5 return available: 284
 
 Small samples should be interpreted conservatively; dashboard reliability uses Wilson lower bound.
@@ -22,8 +22,8 @@ Small samples should be interpreted conservatively; dashboard reliability uses W
 | 465770 | 2026-07-16 | 29.98% | 0.00% |
 | 189330 | 2026-07-07 | 29.97% | 0.00% |
 | 465770 | 2026-07-13 | 29.92% | 0.00% |
-| 465770 | 2026-07-20 | 20.05% | 0.00% |
 | 012160 | 2026-07-13 | 12.10% | 0.00% |
+| 000760 | 2026-07-09 | 10.63% | 0.00% |
 
 ## Top Failure Examples
 

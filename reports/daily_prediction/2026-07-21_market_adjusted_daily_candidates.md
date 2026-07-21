@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-07-21
 
-Generated at: 2026-07-21 00:37:30
+Generated at: 2026-07-21 02:14:00
 
 ML dataset source: `data/processed/ml_dataset_20260721.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260721.csv`
@@ -25,8 +25,8 @@ base_recommendation_score_v2
 
 ## Summary
 
-- Total rows: **7**
-- positive_candidate: **3**
+- Total rows: **10**
+- positive_candidate: **6**
 - watchlist_candidate: **3**
 - risk_or_avoid_review: **1**
 
@@ -38,9 +38,12 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 66.00 | 0.00 | 66.00 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 66.00 | 0.00 | 66.00 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 66.00 | 0.00 | 66.00 | N/A |
+| 1970-01-01 | 038680 | 에스넷 | supply_contract | positive | pending | pending | 110.00 | 0.00 | 110.00 | N/A |
+| 1970-01-01 | 100840 | SNT에너지 | supply_contract | positive | pending | pending | 110.00 | 0.00 | 110.00 | N/A |
+| 1970-01-01 | 036530 | SNT홀딩스 | supply_contract | positive | pending | pending | 90.00 | 0.00 | 90.00 | N/A |
+| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
+| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
+| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
 
 ## Watchlist Candidates
 
@@ -48,7 +51,7 @@ No candidates in this section.
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
 | 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
-| 1970-01-01 | 288330 | 파라택시스코리아 | merger | volatile | pending | pending | 26.00 | 0.00 | 26.00 | N/A |
+| 1970-01-01 | 134790 | 시디즈 | major_shareholder_change | volatile | pending | pending | 21.00 | 0.00 | 21.00 | N/A |
 
 ## Volatile Watchlist
 

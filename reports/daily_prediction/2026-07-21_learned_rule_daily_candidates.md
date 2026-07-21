@@ -18,22 +18,25 @@ This report is for research and portfolio demonstration purposes only. It is not
 
 ## Summary
 
-- Total candidate rows: **7**
+- Total candidate rows: **10**
 - Rows with active learned-rule adjustment: **0**
 
 ## Candidate Buckets
 
 | Bucket | Count |
 |---|---:|
-| general_review | 5 |
-| watchlist_candidate | 1 |
+| general_review | 6 |
+| positive_candidate | 3 |
 | risk_or_avoid_review | 1 |
 
 ## Top Candidates
 
 | stock_code | corp_name | event_type | prediction_direction | base_event_score_v4 | market_adjusted_score_adjustment | trading_volume_score_adjustment | learned_event_score_adjustment | final_learned_rule_score | candidate_bucket | learning_label | evaluated_count | success_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 288330 | 파라택시스코리아 | merger | volatile | 30.0 | 0.0 | 0.0 | 0.0 | 30.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 038680 | 에스넷 | supply_contract | positive | 70.0 | 0.0 | 0.0 | 0.0 | 70.0 | positive_candidate | hold_insufficient_data | 0 | 0.00% |
+| 036530 | SNT홀딩스 | supply_contract | positive | 70.0 | 0.0 | 0.0 | 0.0 | 70.0 | positive_candidate | hold_insufficient_data | 0 | 0.00% |
+| 100840 | SNT에너지 | supply_contract | positive | 70.0 | 0.0 | 0.0 | 0.0 | 70.0 | positive_candidate | hold_insufficient_data | 0 | 0.00% |
+| 134790 | 시디즈 | major_shareholder_change | volatile | 10.0 | 0.0 | 0.0 | 0.0 | 10.0 | general_review | hold_insufficient_data | 0 | 0.00% |
 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | 10.0 | 0.0 | 0.0 | 0.0 | 10.0 | general_review | hold_insufficient_data | 0 | 0.00% |
 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | 10.0 | 0.0 | 0.0 | 0.0 | 10.0 | general_review | hold_insufficient_data | 0 | 0.00% |
 | 248070 | 솔루엠 | major_shareholder_change | volatile | 10.0 | 0.0 | 0.0 | 0.0 | 10.0 | general_review | hold_insufficient_data | 0 | 0.00% |
