@@ -85,7 +85,12 @@ def normalize_result_series(df: pd.DataFrame) -> pd.Series:
 def score_columns(df: pd.DataFrame) -> list[str]:
     return [
         column
-        for column in ["final_price_signal_score", "prediction_score", "price_candidate_score"]
+        for column in [
+            "final_price_signal_score_v2",
+            "final_price_signal_score",
+            "prediction_score",
+            "price_candidate_score",
+        ]
         if column in df.columns
     ]
 
@@ -170,6 +175,8 @@ def summarize_subset(df: pd.DataFrame) -> dict:
             "success_rate": None,
             "avg_close_t1_return": None,
             "avg_excess_t1_return": None,
+            "avg_final_price_signal_score_v2": None,
+            "avg_total_penalty_v2": None,
         }
 
     result_series = normalize_result_series(df)
@@ -192,6 +199,23 @@ def summarize_subset(df: pd.DataFrame) -> dict:
     if "excess_return_t1" in df.columns and evaluated.any():
         avg_excess = pd.to_numeric(df.loc[evaluated, "excess_return_t1"], errors="coerce").mean()
 
+    penalty_columns = [
+        "volatility_penalty",
+        "overextension_penalty",
+        "reversal_risk_penalty",
+        "news_risk_penalty",
+        "attention_noise_penalty",
+        "market_regime_penalty",
+    ]
+    avg_v2_score = None
+    avg_total_penalty = None
+    if "final_price_signal_score_v2" in df.columns and evaluated.any():
+        avg_v2_score = pd.to_numeric(df.loc[evaluated, "final_price_signal_score_v2"], errors="coerce").mean()
+    available_penalties = [column for column in penalty_columns if column in df.columns]
+    if available_penalties and evaluated.any():
+        penalties = df.loc[evaluated, available_penalties].apply(pd.to_numeric, errors="coerce").sum(axis=1)
+        avg_total_penalty = penalties.mean()
+
     return {
         "evaluated_count": evaluated_count,
         "success_count": success_count,
@@ -201,6 +225,8 @@ def summarize_subset(df: pd.DataFrame) -> dict:
         else None,
         "avg_close_t1_return": round(avg_close, 4) if pd.notna(avg_close) else None,
         "avg_excess_t1_return": round(avg_excess, 4) if pd.notna(avg_excess) else None,
+        "avg_final_price_signal_score_v2": round(avg_v2_score, 2) if pd.notna(avg_v2_score) else None,
+        "avg_total_penalty_v2": round(avg_total_penalty, 2) if pd.notna(avg_total_penalty) else None,
     }
 
 
@@ -287,8 +313,13 @@ def examples(df: pd.DataFrame, condition, limit=5) -> pd.DataFrame:
         "prediction_date",
         "candidate_rank",
         "final_price_signal_score",
+        "final_price_signal_score_v2",
+        "score_version",
         "prediction_score",
         "price_candidate_score",
+        "overextension_penalty",
+        "reversal_risk_penalty",
+        "news_risk_penalty",
         "volume_ratio_20d",
         "close_t1_return",
         "excess_return_t1",
@@ -296,6 +327,38 @@ def examples(df: pd.DataFrame, condition, limit=5) -> pd.DataFrame:
     ]
     cols = [col for col in cols if col in subset.columns]
     return subset[cols].head(limit)
+
+
+def ranking_diagnosis(overall, top20_rate, v2_evaluated_count) -> tuple[str, str]:
+    if v2_evaluated_count < 30:
+        return "Insufficient v2 data", "v2 데이터 부족"
+    if overall is None or top20_rate is None:
+        return "Insufficient v2 data", "v2 데이터 부족"
+    delta = top20_rate - overall
+    if delta > 3:
+        return "Ranking improving", "랭킹 개선 중"
+    if delta < -3:
+        return "Ranking inverted", "랭킹 역방향 가능성"
+    return "Ranking weak", "랭킹 약함"
+
+
+def summarize_penalties_by_bucket(evaluations: pd.DataFrame, rank_rows: list[dict]) -> list[dict]:
+    if evaluations.empty:
+        return []
+
+    rows = []
+    for label, end in RANK_BUCKETS:
+        subset = evaluations[rank_bucket_mask(evaluations, end)]
+        summary = summarize_subset(subset)
+        rows.append(
+            {
+                "rank_bucket": label,
+                "evaluated_count": summary["evaluated_count"],
+                "avg_final_price_signal_score_v2": summary["avg_final_price_signal_score_v2"],
+                "avg_total_penalty_v2": summary["avg_total_penalty_v2"],
+            }
+        )
+    return rows
 
 
 def build_diagnostics():
@@ -317,7 +380,13 @@ def build_diagnostics():
         rank_rows.append({"rank_bucket": label, **summarize_subset(evaluations[rank_bucket_mask(evaluations, end)])})
 
     score_rows = {}
-    for column in ["prediction_score", "final_price_signal_score", "price_candidate_score"]:
+    for column in [
+        "final_price_signal_score_v2",
+        "price_signal_score_v1",
+        "prediction_score",
+        "final_price_signal_score",
+        "price_candidate_score",
+    ]:
         score_rows[column] = summarize_score_buckets(evaluations, column)
 
     optional_rows = []
@@ -341,11 +410,13 @@ def build_diagnostics():
             optional_rows.extend(summarize_optional_bucket(evaluations, column, label))
 
     score_series = coalesced_score(evaluations).fillna(0)
+    v2_score_series = pd.to_numeric(evaluations.get("final_price_signal_score_v2", score_series), errors="coerce").fillna(0)
     volume_series = pd.to_numeric(evaluations.get("volume_ratio_20d", 0), errors="coerce")
     result_series = normalize_result_series(evaluations)
 
     example_groups = {
         "High score but failed": examples(evaluations, lambda df: (score_series >= 65) & (result_series == RESULT_FAILURE)),
+        "High-score failures under v2": examples(evaluations, lambda df: (v2_score_series >= 65) & (result_series == RESULT_FAILURE)),
         "High volume but failed": examples(evaluations, lambda df: (volume_series >= 2) & (result_series == RESULT_FAILURE)),
         "High risk noise and failed": examples(
             evaluations,
@@ -354,6 +425,7 @@ def build_diagnostics():
             & (result_series == RESULT_FAILURE),
         ),
         "Low score but succeeded": examples(evaluations, lambda df: (score_series < 50) & (result_series == RESULT_SUCCESS)),
+        "Low-score successes under v2": examples(evaluations, lambda df: (v2_score_series < 50) & (result_series == RESULT_SUCCESS)),
     }
 
     top_lookup = {row["rank_bucket"]: row for row in rank_rows}
@@ -378,6 +450,22 @@ def build_diagnostics():
     if not latest_candidates.empty and "selected_pick" in latest_candidates.columns:
         latest_selected_count = int(latest_candidates["selected_pick"].astype(str).str.lower().isin(["true", "1", "yes"]).sum())
 
+    score_version = ""
+    if not latest_candidates.empty and "score_version" in latest_candidates.columns:
+        versions = latest_candidates["score_version"].dropna().astype(str).unique()
+        score_version = versions[0] if len(versions) else ""
+
+    v2_evaluated_count = 0
+    if "score_version" in evaluations.columns:
+        v2_mask = evaluations["score_version"].astype(str).eq("v2_conservative_ranker")
+        v2_evaluated_count = int((v2_mask & result_series.isin([RESULT_SUCCESS, RESULT_FAILURE])).sum())
+
+    ranking_diagnosis_en, ranking_diagnosis_ko = ranking_diagnosis(
+        raw_success_rate,
+        top20_rate,
+        v2_evaluated_count,
+    )
+
     summary = {
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "evaluated_count": evaluated_count,
@@ -396,6 +484,10 @@ def build_diagnostics():
         "top_20_evaluated_count": top_lookup.get("Top 20", {}).get("evaluated_count", 0),
         "top_50_evaluated_count": top_lookup.get("Top 50", {}).get("evaluated_count", 0),
         "top_100_evaluated_count": top_lookup.get("Top 100", {}).get("evaluated_count", 0),
+        "score_version": score_version,
+        "v2_evaluated_count": v2_evaluated_count,
+        "ranking_diagnosis_en": ranking_diagnosis_en,
+        "ranking_diagnosis_ko": ranking_diagnosis_ko,
         "candidate_pool_today": len(latest_candidates),
         "selected_picks_today": latest_selected_count,
         "daily_signal_rows": len(signals),
@@ -408,6 +500,7 @@ def build_diagnostics():
         "rank_rows": rank_rows,
         "score_rows": score_rows,
         "optional_rows": optional_rows,
+        "penalty_rows": summarize_penalties_by_bucket(evaluations, rank_rows),
         "example_groups": example_groups,
     }
 
@@ -439,6 +532,25 @@ def table_rows(rows, name_column):
                 rate=format_percent(row.get("success_rate")),
                 close=format_return(row.get("avg_close_t1_return")),
                 excess=format_return(row.get("avg_excess_t1_return")),
+            )
+        )
+    return lines
+
+
+def penalty_table_rows(rows):
+    lines = [
+        "| bucket | Evaluated | Avg V2 Score | Avg Total V2 Penalty |",
+        "|---|---:|---:|---:|",
+    ]
+    for row in rows:
+        avg_score = row.get("avg_final_price_signal_score_v2")
+        avg_penalty = row.get("avg_total_penalty_v2")
+        lines.append(
+            "| {bucket} | {evaluated} | {score} | {penalty} |".format(
+                bucket=row.get("rank_bucket", ""),
+                evaluated=row.get("evaluated_count", 0),
+                score="N/A" if avg_score is None or pd.isna(avg_score) else f"{float(avg_score):.2f}",
+                penalty="N/A" if avg_penalty is None or pd.isna(avg_penalty) else f"{float(avg_penalty):.2f}",
             )
         )
     return lines
@@ -492,13 +604,26 @@ def write_report(data):
         f"- Wilson reliability score: **{summary['wilson_reliability_score']} / 100**",
         f"- Rolling 7-day success rate: **{format_percent(summary['rolling_7d_success_rate'])}**",
         f"- Rolling 30-day success rate: **{format_percent(summary['rolling_30d_success_rate'])}**",
+        f"- Score version: **{summary.get('score_version') or 'legacy / mixed'}**",
+        f"- V2 evaluated cases: **{summary.get('v2_evaluated_count', 0)}**",
+        f"- Current ranking diagnosis: **{summary.get('ranking_diagnosis_en', '')} / {summary.get('ranking_diagnosis_ko', '')}**",
         "",
         "## Rank Bucket Performance",
         "",
-        "Ranks are recalculated within each signal/prediction day using final_price_signal_score, prediction_score, then price_candidate_score as fallback. Each Top N row below is cumulative per day before being aggregated across all evaluated days.",
+        "Ranks are recalculated within each signal/prediction day using final_price_signal_score_v2 first, then final_price_signal_score, prediction_score, and price_candidate_score as fallbacks. Each Top N row below is cumulative per day before being aggregated across all evaluated days.",
         "랭킹은 각 signal/prediction 일자 안에서 점수 기준으로 다시 계산하며, 각 Top N은 일별 누적 구간을 전체 평가일에 걸쳐 집계한 값입니다.",
         "",
         *table_rows(data["rank_rows"], "rank_bucket"),
+        "",
+        "## V2 Penalty Diagnostics by Rank Bucket",
+        "",
+        "Average v2 score and penalties are shown when evaluated rows contain v2 component columns.",
+        "평가 데이터에 v2 구성 컬럼이 있을 때 평균 v2 점수와 페널티를 표시합니다.",
+        "",
+        *penalty_table_rows(data["penalty_rows"]),
+        "",
+        "V2 scoring impact should be judged after several new daily runs.",
+        "V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.",
         "",
         "## Score Bucket Performance",
         "",
@@ -537,6 +662,9 @@ def write_report(data):
             "",
             f"- {summary['judgment_en']}",
             f"- {summary['judgment_ko']}",
+            f"- Current ranking diagnosis: {summary.get('ranking_diagnosis_en', '')} / {summary.get('ranking_diagnosis_ko', '')}",
+            "- V2 scoring impact should be judged after several new daily runs.",
+            "- V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.",
             "",
             "Large candidate pools improve statistical reliability. Selected picks are a smaller top-ranked subset for focused monitoring.",
             "큰 후보 풀은 통계적 신뢰도 측정에 도움이 되며, 선별 후보는 집중 모니터링용 상위 후보입니다.",
@@ -564,6 +692,9 @@ def main():
     print(f"Top 100 success rate: {format_percent(summary['top_100_success_rate'])}")
     print(f"candidate pool today: {summary['candidate_pool_today']}")
     print(f"selected picks today: {summary['selected_picks_today']}")
+    print(f"score_version: {summary.get('score_version') or 'legacy / mixed'}")
+    print(f"v2 evaluated cases: {summary.get('v2_evaluated_count', 0)}")
+    print(f"ranking diagnosis: {summary.get('ranking_diagnosis_en', '')} / {summary.get('ranking_diagnosis_ko', '')}")
 
 
 if __name__ == "__main__":

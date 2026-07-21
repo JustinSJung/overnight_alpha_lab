@@ -243,6 +243,17 @@ def render_status_pill(value, ko_value="데이터 부족", css_class=""):
     return f'<span class="{classes}">{value}<br>{ko_value}</span>'
 
 
+def ranking_status_class(value):
+    text = str(value or "").lower()
+    if "improving" in text:
+        return "badge-green"
+    if "inverted" in text:
+        return "badge-red"
+    if "weak" in text:
+        return "badge-orange"
+    return "badge-gray"
+
+
 def file_mtime(path):
     if path is None or not path.exists():
         return None
@@ -412,6 +423,10 @@ def build_metrics():
     top_100_evaluated_count = first_row_value(latest_diagnostics, "top_100_evaluated_count", None)
     diagnostics_judgment_en = first_row_value(latest_diagnostics, "judgment_en", "")
     diagnostics_judgment_ko = first_row_value(latest_diagnostics, "judgment_ko", "")
+    diagnostics_score_version = first_row_value(latest_diagnostics, "score_version", "legacy / mixed")
+    v2_evaluated_count = first_row_value(latest_diagnostics, "v2_evaluated_count", 0)
+    ranking_diagnosis_en = first_row_value(latest_diagnostics, "ranking_diagnosis_en", "Insufficient v2 data")
+    ranking_diagnosis_ko = first_row_value(latest_diagnostics, "ranking_diagnosis_ko", "v2 데이터 부족")
 
     google_status_en = None
     google_status_ko = "데이터 부족"
@@ -491,6 +506,10 @@ def build_metrics():
         "top_100_evaluated_count": top_100_evaluated_count,
         "diagnostics_judgment_en": diagnostics_judgment_en,
         "diagnostics_judgment_ko": diagnostics_judgment_ko,
+        "diagnostics_score_version": diagnostics_score_version,
+        "v2_evaluated_count": v2_evaluated_count,
+        "ranking_diagnosis_en": ranking_diagnosis_en,
+        "ranking_diagnosis_ko": ranking_diagnosis_ko,
         "naver_status_en": naver_status_en,
         "naver_status_ko": naver_status_ko,
         "google_status_en": google_status_en,
@@ -561,6 +580,7 @@ def build_html(metrics, stock_data):
         "NOT READY": "badge-orange",
         "LOW CONFIDENCE": "badge-red",
     }.get(str(metrics.get("confidence_status", "")).upper(), "badge-gray")
+    ranking_class = ranking_status_class(metrics.get("ranking_diagnosis_en"))
     benchmark_helper = ""
     if metrics.get("benchmark_success_rate") is None:
         benchmark_helper = "\n".join([
@@ -899,6 +919,26 @@ def build_html(metrics, stock_data):
       white-space: normal;
     }}
 
+    .status-pill.badge-green {{
+      color: var(--green);
+      background: var(--green-soft);
+    }}
+
+    .status-pill.badge-orange {{
+      color: var(--orange);
+      background: var(--orange-soft);
+    }}
+
+    .status-pill.badge-red {{
+      color: var(--red);
+      background: var(--red-soft);
+    }}
+
+    .status-pill.badge-gray {{
+      color: var(--gray);
+      background: var(--gray-soft);
+    }}
+
     .muted-helper {{
       margin-top: 10px;
       color: var(--muted);
@@ -1209,6 +1249,18 @@ def build_html(metrics, stock_data):
           {render_kpi_value(metrics["diagnostics_overall_success_rate"], "%", "success")}
         </div>
         <div class="card kpi-card">
+          <div class="label">Current Ranking Diagnosis</div>
+          <div class="ko-desc">현재 랭킹 진단</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["ranking_diagnosis_en"], metrics["ranking_diagnosis_ko"], ranking_class)}</div>
+          <div class="muted-helper">V2 evaluated cases: {format_metric_value(metrics["v2_evaluated_count"])}<br>v2 평가 완료: {format_metric_value(metrics["v2_evaluated_count"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Score Version</div>
+          <div class="ko-desc">점수 산식 버전</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["diagnostics_score_version"], "보수적 v2 랭커", "badge-gray")}</div>
+          <div class="muted-helper">V2 scoring impact should be judged after several new daily runs.<br>v2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.</div>
+        </div>
+        <div class="card kpi-card">
           <div class="label">Top 10 Cumulative Success Rate</div>
           <div class="ko-desc">일별 Top 10 누적 성공률</div>
           {render_kpi_value(metrics["top_10_success_rate"], "%")}
@@ -1248,6 +1300,8 @@ def build_html(metrics, stock_data):
         큰 후보 풀은 통계적 신뢰도 측정에 도움이 되며, 선별 후보는 집중 모니터링용 상위 후보입니다.<br>
         Top N rates are cumulative per signal/prediction day, then aggregated across historical evaluations.<br>
         Top N 성공률은 각 signal/prediction 일자별 누적 구간을 과거 평가 전체에 걸쳐 집계한 값입니다.<br>
+        V2 scoring impact should be judged after several new daily runs.<br>
+        V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.<br>
         <span class="small">{metrics["diagnostics_judgment_en"]}<br>{metrics["diagnostics_judgment_ko"]}</span>
       </div>
     </section>

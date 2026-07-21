@@ -13,10 +13,13 @@ This diagnostic report evaluates ranking quality for the broad KIS price-candida
 - Wilson reliability score: **49.3 / 100**
 - Rolling 7-day success rate: **52.88%**
 - Rolling 30-day success rate: **51.73%**
+- Score version: **v2_conservative_ranker**
+- V2 evaluated cases: **0**
+- Current ranking diagnosis: **Insufficient v2 data / v2 데이터 부족**
 
 ## Rank Bucket Performance
 
-Ranks are recalculated within each signal/prediction day using final_price_signal_score, prediction_score, then price_candidate_score as fallback. Each Top N row below is cumulative per day before being aggregated across all evaluated days.
+Ranks are recalculated within each signal/prediction day using final_price_signal_score_v2 first, then final_price_signal_score, prediction_score, and price_candidate_score as fallbacks. Each Top N row below is cumulative per day before being aggregated across all evaluated days.
 랭킹은 각 signal/prediction 일자 안에서 점수 기준으로 다시 계산하며, 각 Top N은 일별 누적 구간을 전체 평가일에 걸쳐 집계한 값입니다.
 
 | bucket | Evaluated | Success | Failure | Success Rate | Avg Close T1 | Avg Excess T1 |
@@ -27,7 +30,31 @@ Ranks are recalculated within each signal/prediction day using final_price_signa
 | Top 100 | 386 | 118 | 268 | 30.57% | -1.79% | N/A |
 | Rest | 1234 | 720 | 514 | 58.35% | -0.98% | N/A |
 
+## V2 Penalty Diagnostics by Rank Bucket
+
+Average v2 score and penalties are shown when evaluated rows contain v2 component columns.
+평가 데이터에 v2 구성 컬럼이 있을 때 평균 v2 점수와 페널티를 표시합니다.
+
+| bucket | Evaluated | Avg V2 Score | Avg Total V2 Penalty |
+|---|---:|---:|---:|
+| Top 10 | 43 | N/A | N/A |
+| Top 20 | 84 | N/A | N/A |
+| Top 50 | 204 | N/A | N/A |
+| Top 100 | 386 | N/A | N/A |
+| Rest | 1234 | N/A | N/A |
+
+V2 scoring impact should be judged after several new daily runs.
+V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.
+
 ## Score Bucket Performance
+
+### final_price_signal_score_v2
+
+Insufficient data / 데이터 부족
+
+### price_signal_score_v1
+
+Insufficient data / 데이터 부족
 
 ### prediction_score
 
@@ -100,6 +127,16 @@ Ranks are recalculated within each signal/prediction day using final_price_signa
 | 002780 |  |  |  |  | 52.0 |  |  | 88.59 | 1.9443 |  |  |  |
 | 038530 |  |  |  |  | 62.0 |  |  | 85.24 | 4.9367 |  |  |  |
 
+### High-score failures under v2
+
+| stock_code | stock_name | corp_name | signal_date | prediction_date | candidate_rank | final_price_signal_score | prediction_score | price_candidate_score | volume_ratio_20d | close_t1_return | excess_return_t1 | prediction_result |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 024720 |  | 콜마홀딩스 |  |  | 2.0 |  |  | 109.59 | 1.8376 |  |  |  |
+| 368970 |  |  |  |  | 32.0 |  |  | 91.23 | 0.371 |  |  |  |
+| 065770 |  | CS |  |  | 42.0 |  |  | 91.11 | 13.4174 |  |  |  |
+| 002780 |  |  |  |  | 52.0 |  |  | 88.59 | 1.9443 |  |  |  |
+| 038530 |  |  |  |  | 62.0 |  |  | 85.24 | 4.9367 |  |  |  |
+
 ### High volume but failed
 
 | stock_code | stock_name | corp_name | signal_date | prediction_date | candidate_rank | final_price_signal_score | prediction_score | price_candidate_score | volume_ratio_20d | close_t1_return | excess_return_t1 | prediction_result |
@@ -130,10 +167,23 @@ Ranks are recalculated within each signal/prediction day using final_price_signa
 | 004380 |  |  |  |  | 362.0 |  |  | 35.0 | 0.3365 |  |  |  |
 | 019570 |  |  |  |  | 372.0 |  |  | 32.09 | 0.0 |  |  |  |
 
+### Low-score successes under v2
+
+| stock_code | stock_name | corp_name | signal_date | prediction_date | candidate_rank | final_price_signal_score | prediction_score | price_candidate_score | volume_ratio_20d | close_t1_return | excess_return_t1 | prediction_result |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0126Z0 |  |  |  |  | 332.0 |  |  | 39.08 | 1.0887 |  |  |  |
+| 025980 |  |  |  |  | 342.0 |  |  | 36.9 | 0.6787 |  |  |  |
+| 049950 |  |  |  |  | 352.0 |  |  | 36.37 | 0.7108 |  |  |  |
+| 004380 |  |  |  |  | 362.0 |  |  | 35.0 | 0.3365 |  |  |  |
+| 019570 |  |  |  |  | 372.0 |  |  | 32.09 | 0.0 |  |  |  |
+
 ## Summary Judgment
 
 - Overall performance remains close to random; ranking quality is not yet clearly proven.
 - 전체 성과가 아직 무작위에 가까우며, 랭킹 품질은 명확히 입증되지 않았습니다.
+- Current ranking diagnosis: Insufficient v2 data / v2 데이터 부족
+- V2 scoring impact should be judged after several new daily runs.
+- V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.
 
 Large candidate pools improve statistical reliability. Selected picks are a smaller top-ranked subset for focused monitoring.
 큰 후보 풀은 통계적 신뢰도 측정에 도움이 되며, 선별 후보는 집중 모니터링용 상위 후보입니다.
