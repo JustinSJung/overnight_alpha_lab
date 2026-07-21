@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-07-21
 
-Generated at: 2026-07-21 02:14:00
+Generated at: 2026-07-21 05:14:41
 
 ML dataset source: `data/processed/ml_dataset_20260721.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260721.csv`
@@ -25,10 +25,9 @@ base_recommendation_score_v2
 
 ## Summary
 
-- Total rows: **10**
-- positive_candidate: **6**
-- watchlist_candidate: **3**
-- risk_or_avoid_review: **1**
+- Total rows: **5**
+- risk_or_avoid_review: **4**
+- positive_candidate: **1**
 
 ## Strong Market-Adjusted Candidates
 
@@ -38,20 +37,11 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 038680 | 에스넷 | supply_contract | positive | pending | pending | 110.00 | 0.00 | 110.00 | N/A |
-| 1970-01-01 | 100840 | SNT에너지 | supply_contract | positive | pending | pending | 110.00 | 0.00 | 110.00 | N/A |
-| 1970-01-01 | 036530 | SNT홀딩스 | supply_contract | positive | pending | pending | 90.00 | 0.00 | 90.00 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
+| 1970-01-01 | 215380 | 우정바이오 | merger | volatile | pending | pending | 61.00 | 0.00 | 61.00 | N/A |
 
 ## Watchlist Candidates
 
-| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
-| 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | 36.00 | 0.00 | 36.00 | N/A |
-| 1970-01-01 | 134790 | 시디즈 | major_shareholder_change | volatile | pending | pending | 21.00 | 0.00 | 21.00 | N/A |
+No candidates in this section.
 
 ## Volatile Watchlist
 
@@ -61,7 +51,10 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 004710 | 한솔테크닉스 | paid_in_capital_increase | negative | pending | pending | -60.00 | 0.00 | -60.00 | N/A |
+| 1970-01-01 | 127120 | 제이에스링크 | paid_in_capital_increase | negative | pending | pending | -25.00 | 0.00 | -25.00 | N/A |
+| 1970-01-01 | 009810 | 플레이그램 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 009810 | 플레이그램 | paid_in_capital_increase | negative | pending | pending | -65.00 | 0.00 | -65.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -80.00 | 0.00 | -80.00 | N/A |
 
 ## General Review
 

@@ -6,7 +6,7 @@ Source CSV: `data/processed/price_based_candidates_20260721.csv`
 
 ## Candidate Pool Summary
 
-- Broad candidate pool count: **105**
+- Broad candidate pool count: **108**
 - Selected pick count: **20**
 - Score version: **v2_conservative_ranker**
 
@@ -17,26 +17,26 @@ Source CSV: `data/processed/price_based_candidates_20260721.csv`
 
 | Rank | Stock | Name | Action | Score | Signal | 5D Return | Volume Ratio | Selection Reason |
 |---:|---|---|---|---:|---|---:|---:|---|
-| 1 | 134790 | 시디즈 | WATCHLIST | 64.08 | strong_price_momentum | 1.94% | 0.42x | Top 20 by conservative v2 price signal score |
-| 2 | 038680 | 에스넷 | WATCHLIST | 62.14 | price_momentum | 2.09% | 10.88x | Top 20 by conservative v2 price signal score |
-| 3 | 036530 | SNT홀딩스 | HOLD | 50.04 | price_momentum | 3.85% | 0.74x | Top 20 by conservative v2 price signal score |
-| 4 | 005710 |  | HOLD | 48.98 | neutral | 2.45% | 0.51x | Top 20 by conservative v2 price signal score |
-| 5 | 230360 |  | HOLD | 47.98 | price_momentum | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 6 | 008930 |  | HOLD | 45.30 | neutral | -3.17% | 0.21x | Top 20 by conservative v2 price signal score |
-| 7 | 001470 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 8 | 023440 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 9 | 052770 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 10 | 068240 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 11 | 069460 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 12 | 183490 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 13 | 210120 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 14 | 288330 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 15 | 380540 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
-| 16 | 012160 |  | HOLD | 44.04 | price_momentum | 22.85% | 0.32x | Top 20 by conservative v2 price signal score |
-| 17 | 033310 |  | HOLD | 43.38 | neutral | 1.31% | 0.09x | Top 20 by conservative v2 price signal score |
-| 18 | 084870 | 티비에이치글로벌 | HOLD | 43.28 | neutral | -3.12% | 0.28x | Top 20 by conservative v2 price signal score |
-| 19 | 040910 |  | HOLD | 43.09 | neutral | 2.33% | 0.03x | Top 20 by conservative v2 price signal score |
-| 20 | 024720 |  | HOLD | 42.57 | neutral | -1.75% | 0.26x | Top 20 by conservative v2 price signal score |
+| 1 | 134790 |  | WATCHLIST | 65.71 | strong_price_momentum | 1.67% | 0.84x | Top 20 by conservative v2 price signal score |
+| 2 | 038680 |  | WATCHLIST | 60.14 | price_momentum | 1.34% | 11.82x | Top 20 by conservative v2 price signal score |
+| 3 | 008930 |  | HOLD | 54.41 | price_momentum | 0.45% | 0.56x | Top 20 by conservative v2 price signal score |
+| 4 | 036530 |  | HOLD | 51.91 | price_momentum | 4.46% | 0.99x | Top 20 by conservative v2 price signal score |
+| 5 | 005710 |  | HOLD | 51.24 | neutral | 2.65% | 0.83x | Top 20 by conservative v2 price signal score |
+| 6 | 230360 |  | HOLD | 47.98 | price_momentum | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 7 | 215380 | 우정바이오 | HOLD | 46.47 | price_momentum | 0.20% | 4.32x | Top 20 by conservative v2 price signal score |
+| 8 | 004380 |  | HOLD | 45.77 | neutral | 3.22% | 0.81x | Top 20 by conservative v2 price signal score |
+| 9 | 001470 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 10 | 023440 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 11 | 052770 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 12 | 068240 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 13 | 069460 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 14 | 210120 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 15 | 288330 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 16 | 380540 |  | HOLD | 45.00 | neutral | 0.00% | 0.00x | Top 20 by conservative v2 price signal score |
+| 17 | 040910 |  | HOLD | 43.94 | neutral | 2.98% | 0.30x | Top 20 by conservative v2 price signal score |
+| 18 | 084870 |  | HOLD | 43.35 | neutral | -3.07% | 0.30x | Top 20 by conservative v2 price signal score |
+| 19 | 290720 |  | HOLD | 43.18 | neutral | -2.82% | 0.65x | Top 20 by conservative v2 price signal score |
+| 20 | 322780 |  | HOLD | 43.06 | price_momentum | 3.23% | 0.28x | Top 20 by conservative v2 price signal score |
 
 ## Notes
 

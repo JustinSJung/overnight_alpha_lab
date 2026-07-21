@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-07-21
 
-Generated at: 2026-07-21 02:14:01
+Generated at: 2026-07-21 05:14:42
 
 ML dataset source: `data/processed/ml_dataset_20260721.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260721.csv`
@@ -27,19 +27,15 @@ base_recommendation_score_v3
 
 ## Summary
 
-- Total rows: **10**
-- positive_candidate: **5**
-- strong_volume_market_adjusted_candidate: **3**
-- watchlist_candidate: **1**
-- risk_or_avoid_review: **1**
+- Total rows: **5**
+- risk_or_avoid_review: **4**
+- strong_volume_market_adjusted_candidate: **1**
 
 ## Strong Volume + Market-Adjusted Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 038680 | 에스넷 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 110.00 | 0.00 | 0.00 | 110.00 | N/A | N/A | N/A |
-| 1970-01-01 | 100840 | SNT에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 110.00 | 0.00 | 0.00 | 110.00 | N/A | N/A | N/A |
-| 1970-01-01 | 036530 | SNT홀딩스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 90.00 | 0.00 | 0.00 | 90.00 | N/A | N/A | N/A |
+| 1970-01-01 | 215380 | 우정바이오 | merger | volatile | pending | pending | insufficient_volume_baseline | 61.00 | 0.00 | 0.00 | 61.00 | N/A | N/A | N/A |
 
 ## Strong Market-Adjusted Candidates
 
@@ -51,19 +47,11 @@ No candidates in this section.
 
 ## Positive Candidates
 
-| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 46.00 | 0.00 | 0.00 | 46.00 | N/A | N/A | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 46.00 | 0.00 | 0.00 | 46.00 | N/A | N/A | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 46.00 | 0.00 | 0.00 | 46.00 | N/A | N/A | N/A |
-| 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 36.00 | 0.00 | 0.00 | 36.00 | N/A | N/A | N/A |
-| 1970-01-01 | 084870 | 티비에이치글로벌 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 36.00 | 0.00 | 0.00 | 36.00 | N/A | N/A | N/A |
+No candidates in this section.
 
 ## Watchlist Candidates
 
-| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 134790 | 시디즈 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 21.00 | 0.00 | 0.00 | 21.00 | N/A | N/A | N/A |
+No candidates in this section.
 
 ## Volatile Watchlist
 
@@ -77,7 +65,10 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 004710 | 한솔테크닉스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -60.00 | 0.00 | 0.00 | -60.00 | N/A | N/A | N/A |
+| 1970-01-01 | 127120 | 제이에스링크 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -25.00 | 0.00 | 0.00 | -25.00 | N/A | N/A | N/A |
+| 1970-01-01 | 009810 | 플레이그램 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
+| 1970-01-01 | 009810 | 플레이그램 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -80.00 | 0.00 | 0.00 | -80.00 | N/A | N/A | N/A |
 
 ## General Review
 

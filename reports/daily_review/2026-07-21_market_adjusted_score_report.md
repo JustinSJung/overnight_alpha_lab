@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-21
 
-Generated at: 2026-07-21 02:14:00
+Generated at: 2026-07-21 05:14:41
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260721.csv`
 
@@ -28,32 +28,27 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **10**
+- Total rows: **5**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **10**
+- neutral_adjustment: **5**
 
 ## Market-Adjusted Result Counts
 
-- pending: **10**
+- pending: **5**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 134790 | 시디즈 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 038680 | 에스넷 | positive | pending | 0 | N/A |
-| 1970-01-01 | 036530 | SNT홀딩스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 100840 | SNT에너지 | positive | pending | 0 | N/A |
-| 1970-01-01 | 084870 | 티비에이치글로벌 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 084870 | 티비에이치글로벌 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 248070 | 솔루엠 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 004710 | 한솔테크닉스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 127120 | 제이에스링크 | negative | pending | 0 | N/A |
+| 1970-01-01 | 215380 | 우정바이오 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 009810 | 플레이그램 | negative | pending | 0 | N/A |
+| 1970-01-01 | 009810 | 플레이그램 | negative | pending | 0 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | 0 | N/A |
 
 ## Next Step
 

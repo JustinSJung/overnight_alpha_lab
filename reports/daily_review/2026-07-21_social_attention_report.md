@@ -8,23 +8,20 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **7**
+- Total rows: **4**
 - High attention rows: **0**
-- Medium attention rows: **3**
+- Medium attention rows: **0**
 - Rumor-noise detected rows: **0**
-- Risk-noise detected rows: **2**
+- Risk-noise detected rows: **3**
 
 ## Top Social Attention Signals
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
-| 036530 | SNT홀딩스 | supply_contract | 10.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 038680 | 에스넷 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 100840 | SNT에너지 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 084870 | 티비에이치글로벌 | major_shareholder_change | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
-| 004710 | 한솔테크닉스 | paid_in_capital_increase | 3.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
-| 134790 | 시디즈 | major_shareholder_change | 3.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
-| 248070 | 솔루엠 | major_shareholder_change | 3.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 127120 | 제이에스링크 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 215380 | 우정바이오 | merger | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 009810 | 플레이그램 | paid_in_capital_increase | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 183490 | 엔지켐생명과학 | lawsuit | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
 
 ## Interpretation
 

@@ -8,31 +8,28 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 78 |
-| Insider or Major Holder Disclosure | 15 |
-| Major Shareholder Change | 3 |
-| Supply Contract | 3 |
-| Paid-in Capital Increase | 1 |
+| Insider or Major Holder Disclosure | 80 |
+| Other | 16 |
+| Paid-in Capital Increase | 2 |
+| Merger | 1 |
+| Lawsuit | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
-| 시디즈 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260721 |
-| 에스넷 | 단일판매ㆍ공급계약체결(자율공시)               | Supply Contract | 20260721 |
-| SNT홀딩스 | 단일판매ㆍ공급계약체결(자회사의 주요경영사항)               | Supply Contract | 20260721 |
-| SNT에너지 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260721 |
-| 티비에이치글로벌 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260721 |
-| 솔루엠 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260721 |
-| 한솔테크닉스 | 유상증자또는주식관련사채등의청약결과(자율공시)               | Paid-in Capital Increase | 20260721 |
+| 제이에스링크 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260721 |
+| 우정바이오 | [기재정정]주요사항보고서(회사합병결정) | Merger | 20260721 |
+| 플레이그램 | 유상증자또는주식관련사채등의발행결과(자율공시)               | Paid-in Capital Increase | 20260721 |
+| 엔지켐생명과학 | 소송등의판결ㆍ결정              (주주명부열람등사가처분) | Lawsuit | 20260721 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 22
-- Supply contract disclosures: 3
-- Financing-related disclosures: 1
-- Insider or major holder disclosures: 15
+- Classified non-other events: 84
+- Supply contract disclosures: 0
+- Financing-related disclosures: 2
+- Insider or major holder disclosures: 80
 
 ## Model Notes
 
