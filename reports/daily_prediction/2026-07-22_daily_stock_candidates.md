@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-22
 
-Generated at: 2026-07-22 10:29:37
+Generated at: 2026-07-22 23:18:54
 
 ML dataset: `data/processed/ml_dataset_20260722.csv`
 
@@ -72,181 +72,181 @@ The recommender also reads past error notes and applies event-type level confide
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 2. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 3. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 4. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 5. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 6. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 7. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 8. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 9. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ### 10. 스트라드비젼 (475040)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **132.00**
+- Base recommendation score: **145.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
+- Adjusted recommendation score: **145.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 스트라드비젼, 237억 규모 소프트웨어 공급 계약 | 스트라드비젼, 글로벌 멀티비전 소프트웨어 공급→2백37억 1천만 원 수주 | [속보] 스트라드비젼, 237억원 규모 멀티비전 인지 소프트웨어 공급계약...
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 11. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 23일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-7월 23일] 美 증시, 알파벳 실적 경계감 속 소폭 ... | [주요공시] SK하이닉스, 스트라드비젼, 삼성에피스홀딩스, KC코트렐, KG케...
 
 ## Volatile Watchlist
 

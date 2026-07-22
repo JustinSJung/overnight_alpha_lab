@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-07-22
 
-Generated at: 2026-07-22 10:29:35
+Generated at: 2026-07-22 23:18:52
 
 ML dataset source: `data/processed/ml_dataset_20260722.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260722.csv`
@@ -28,35 +28,35 @@ base_recommendation_score_v3
 ## Summary
 
 - Total rows: **279**
-- strong_volume_market_adjusted_candidate: **212**
+- strong_volume_market_adjusted_candidate: **210**
 - risk_or_avoid_review: **65**
-- positive_candidate: **1**
+- positive_candidate: **3**
 - watchlist_candidate: **1**
 
 ## Strong Volume + Market-Adjusted Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 140.00 | 0.00 | 0.00 | 140.00 | N/A | N/A | N/A |
 
 ## Strong Market-Adjusted Candidates
 
@@ -70,7 +70,9 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 002990 | 금호건설 | investment_decision | volatile | pending | pending | insufficient_volume_baseline | 41.00 | 0.00 | 0.00 | 41.00 | N/A | N/A | N/A |
+| 1970-01-01 | 009420 | 한올바이오파마 | investment_decision | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
+| 1970-01-01 | 005960 | 동부건설 | investment_decision | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 002990 | 금호건설 | investment_decision | volatile | pending | pending | insufficient_volume_baseline | 46.00 | 0.00 | 0.00 | 46.00 | N/A | N/A | N/A |
 
 ## Watchlist Candidates
 
@@ -90,26 +92,26 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 203650 | 드림시큐리티 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -40.00 | 0.00 | 0.00 | -40.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -50.00 | 0.00 | 0.00 | -50.00 | N/A | N/A | N/A |
 
 ## General Review
 

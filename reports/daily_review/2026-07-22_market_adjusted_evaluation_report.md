@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-22
 
-Generated at: 2026-07-22 10:29:31
+Generated at: 2026-07-22 23:18:48
 
 Source feature file: `data/processed/market_adjusted_features_20260722.csv`
 

@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-07-22
 
-Generated at: 2026-07-22 10:29:32
+Generated at: 2026-07-22 23:18:49
 
 ML dataset source: `data/processed/ml_dataset_20260722.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260722.csv`
@@ -38,26 +38,26 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
+| 1970-01-01 | 475040 | 스트라드비젼 | supply_contract | positive | pending | pending | 140.00 | 0.00 | 140.00 | N/A |
 
 ## Watchlist Candidates
 
@@ -73,26 +73,26 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 203650 | 드림시큐리티 | convertible_bond | negative | pending | pending | -40.00 | 0.00 | -40.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 183490 | 엔지켐생명과학 | lawsuit | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
 
 ## General Review
 

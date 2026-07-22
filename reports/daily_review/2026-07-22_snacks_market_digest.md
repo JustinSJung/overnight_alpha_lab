@@ -9,9 +9,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 ## Summary
 
 - Snacks articles analyzed: **3**
-- US market attention signals: **15**
-- Macro risk signals: **3**
-- Korea relevance signals: **80**
+- US market attention signals: **16**
+- Macro risk signals: **8**
+- Korea relevance signals: **76**
 
 ## Top Global Themes
 
@@ -23,9 +23,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 
 | Rank | Title | Top Theme | Attention | Macro Risk | Korea Relevance | URL |
 |---:|---|---|---:|---:|---:|---|
-| 1 | ⚔️ Sing In Me, O Muse, Of AMC | ai_semiconductor | 5 | 1 | 24 | https://sherwood.news/snacks/newsletters/sing-in-me-o-muse-of-amc/ |
-| 2 | Is Kimi K3 the next DeepSeek Moment | ai_semiconductor | 6 | 2 | 35 | https://sherwood.news/snacks/newsletters/is-kimi-k3-the-next-deepseek-moment/ |
-| 3 | 🎮 Doing GameStop's Bidding | ai_semiconductor | 4 | 0 | 21 | https://sherwood.news/snacks/newsletters/doing-gamestops-bidding/ |
+| 1 | 🏋️‍♂️ Weight-Loss Wars | ai_semiconductor | 5 | 5 | 17 | https://sherwood.news/snacks/newsletters/weight-loss-wars/ |
+| 2 | ⚔️ Sing In Me, O Muse, Of AMC | ai_semiconductor | 5 | 1 | 24 | https://sherwood.news/snacks/newsletters/sing-in-me-o-muse-of-amc/ |
+| 3 | Is Kimi K3 the next DeepSeek Moment | ai_semiconductor | 6 | 2 | 35 | https://sherwood.news/snacks/newsletters/is-kimi-k3-the-next-deepseek-moment/ |
 
 ## Interpretation
 

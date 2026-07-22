@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-22
 
-Generated at: 2026-07-22 10:29:31
+Generated at: 2026-07-22 23:18:49
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260722.csv`
 
