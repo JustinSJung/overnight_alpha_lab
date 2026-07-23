@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-23
 
-Generated at: 2026-07-23 00:17:26
+Generated at: 2026-07-23 03:21:09
 
 ML dataset: `data/processed/ml_dataset_20260723.csv`
 
@@ -37,17 +37,17 @@ The recommender also applies event-type performance adjustments based on histori
 
 | Event Type | Total | Evaluated | Success Rate | Avg Next Close | Total Adj |
 |---|---:|---:|---:|---:|---:|
-| bonus_issue | 2 | 0 | N/A | Not available | 0.00 |
+| bonus_issue | 14 | 0 | N/A | Not available | 0.00 |
 | convertible_bond | 76 | 0 | N/A | Not available | 0.00 |
 | disclosure_violation | 20 | 0 | N/A | Not available | 0.00 |
 | earnings_guidance | 2 | 0 | N/A | Not available | 0.00 |
 | investment_decision | 40 | 0 | N/A | Not available | 0.00 |
 | lawsuit | 51 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 86 | 0 | N/A | Not available | 0.00 |
-| merger | 35 | 0 | N/A | Not available | 0.00 |
-| paid_in_capital_increase | 76 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 87 | 0 | N/A | Not available | 0.00 |
+| merger | 37 | 0 | N/A | Not available | 0.00 |
+| paid_in_capital_increase | 83 | 0 | N/A | Not available | 0.00 |
 | spin_off | 2 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 94 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 93 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -55,36 +55,198 @@ The recommender also reads past error notes and applies event-type level confide
 
 | Event Type | Notes | Success | Failure | Pending | Adjustment |
 |---|---:|---:|---:|---:|---:|
-| bonus_issue | 2 | 0 | 0 | 2 | 0.00 |
+| bonus_issue | 14 | 0 | 0 | 14 | 0.00 |
 | convertible_bond | 76 | 0 | 0 | 76 | 0.00 |
 | disclosure_violation | 20 | 0 | 0 | 20 | 0.00 |
 | earnings_guidance | 2 | 0 | 0 | 2 | 0.00 |
 | investment_decision | 40 | 0 | 0 | 40 | 0.00 |
 | lawsuit | 51 | 0 | 0 | 51 | 0.00 |
-| major_shareholder_change | 86 | 0 | 0 | 86 | 0.00 |
-| merger | 35 | 0 | 0 | 35 | 0.00 |
-| paid_in_capital_increase | 76 | 0 | 0 | 76 | 0.00 |
+| major_shareholder_change | 87 | 0 | 0 | 87 | 0.00 |
+| merger | 37 | 0 | 0 | 37 | 0.00 |
+| paid_in_capital_increase | 83 | 0 | 0 | 83 | 0.00 |
 | spin_off | 2 | 0 | 0 | 2 | 0.00 |
 
 ## Positive Candidates
 
-### 1. 삼성전기 (009150)
+### 1. 뉴로메카 (348340)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **109.00**
+- Base recommendation score: **97.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **109.00**
+- Adjusted recommendation score: **97.00**
 - Risk level: **LOW**
-- Event type: `supply_contract`
+- Event type: `bonus_issue`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]주요사항보고서(유무상증자결정)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 코스피, 상승출발…반도체주 일제히 반등 | 삼성전기, AI 서버용 MLCC 3,000억 공급 계약 | 미국증시 나스닥 하락에도...코스피·코스닥 '상승 출발'
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 휴머노이드 로봇주 급등…피지컬 AI 기대감에 뭉칫돈 유입 뚜렷 | 코스피, 장중 7,166 찍고 6,797로 밀려...상승폭 대부분 반납 | [속보] 레인보우로보틱스 두산로보틱스 휴림로봇 등 주가↑…국내 로봇...
+
+### 2. 뉴로메카 (348340)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **97.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **97.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 휴머노이드 로봇주 급등…피지컬 AI 기대감에 뭉칫돈 유입 뚜렷 | 코스피, 장중 7,166 찍고 6,797로 밀려...상승폭 대부분 반납 | [속보] 레인보우로보틱스 두산로보틱스 휴림로봇 등 주가↑…국내 로봇...
+
+### 3. 뉴로메카 (348340)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **97.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **97.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 휴머노이드 로봇주 급등…피지컬 AI 기대감에 뭉칫돈 유입 뚜렷 | 코스피, 장중 7,166 찍고 6,797로 밀려...상승폭 대부분 반납 | [속보] 레인보우로보틱스 두산로보틱스 휴림로봇 등 주가↑…국내 로봇...
+
+### 4. 뉴로메카 (348340)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **97.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **97.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(유무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 휴머노이드 로봇주 급등…피지컬 AI 기대감에 뭉칫돈 유입 뚜렷 | 코스피, 장중 7,166 찍고 6,797로 밀려...상승폭 대부분 반납 | [속보] 레인보우로보틱스 두산로보틱스 휴림로봇 등 주가↑…국내 로봇...
+
+### 5. 티앤엘 (340570)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **77.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **77.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 주요사항보고서(무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 티앤엘, 100% 무상증자 결정 | 티앤엘, 무상증자 결의→주권매매거래 7월23일 정지 | 코스닥 제약업종 톱50 시총 전년비 27조원↓
+
+### 6. 티앤엘 (340570)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **77.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **77.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 주요사항보고서(무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 티앤엘, 100% 무상증자 결정 | 티앤엘, 무상증자 결의→주권매매거래 7월23일 정지 | 코스닥 제약업종 톱50 시총 전년비 27조원↓
+
+### 7. 티앤엘 (340570)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **77.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **77.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 주요사항보고서(무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 티앤엘, 100% 무상증자 결정 | 티앤엘, 무상증자 결의→주권매매거래 7월23일 정지 | 코스닥 제약업종 톱50 시총 전년비 27조원↓
+
+### 8. 티앤엘 (340570)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **77.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **77.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 주요사항보고서(무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 티앤엘, 100% 무상증자 결정 | 티앤엘, 무상증자 결의→주권매매거래 7월23일 정지 | 코스닥 제약업종 톱50 시총 전년비 27조원↓
+
+### 9. 티앤엘 (340570)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **77.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **77.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 주요사항보고서(무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 티앤엘, 100% 무상증자 결정 | 티앤엘, 무상증자 결의→주권매매거래 7월23일 정지 | 코스닥 제약업종 톱50 시총 전년비 27조원↓
+
+### 10. 티앤엘 (340570)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **77.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **77.00**
+- Risk level: **LOW**
+- Event type: `bonus_issue`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 주요사항보고서(무상증자결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 0. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 티앤엘, 100% 무상증자 결정 | 티앤엘, 무상증자 결의→주권매매거래 7월23일 정지 | 코스닥 제약업종 톱50 시총 전년비 27조원↓
 
 ## Volatile Watchlist
 
@@ -96,23 +258,7 @@ No candidates in this section.
 
 ## Risk / Avoid Review List
 
-### 1. 엔지켐생명과학 (183490)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **negative**
-- Base recommendation score: **-58.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-58.00**
-- Risk level: **HIGH**
-- Event type: `lawsuit`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 소송등의판결ㆍ결정              (임시주주총회개최금지 가처분)
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is lawsuit. Initial direction is negative. Event score is -75. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [오늘의 증시일정] 엘에스일렉트릭·삼성E&A·한국가스공사 등 | 7월 22일 주식시장 주요공시 | [주간 미디어동향] 유튜브, 개정 정보통신망법 '1호 신고' 김어준 영상 ...
+No candidates in this section.
 
 ## Data Readiness
 

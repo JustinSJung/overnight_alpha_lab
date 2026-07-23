@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-23
 
-Generated at: 2026-07-23 00:17:23
+Generated at: 2026-07-23 03:21:05
 
 Source ML dataset: `data/processed/ml_dataset_20260723.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **2**
-- Rows with price file found: **2**
+- Total rows: **4200**
+- Rows with price file found: **4200**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **2**
+- insufficient_volume_baseline: **4200**
 
 ## Interpretation
 
@@ -35,8 +35,36 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260723 | 009150 | 삼성전기 | supply_contract | positive | N/A | 1,212,394 | N/A | N/A | 1,093,489 | N/A |
-| 20260723 | 183490 | 엔지켐생명과학 | lawsuit | negative | N/A | 0 | N/A | N/A | 0 | N/A |
+| 20260723 | 006490 | 프리티 | major_shareholder_change | volatile | N/A | 237,703 | N/A | N/A | 398,599 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
 
 ## Next Step
 

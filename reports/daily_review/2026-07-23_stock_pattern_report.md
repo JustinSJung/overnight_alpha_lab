@@ -1,6 +1,6 @@
 # Stock-Specific Historical Pattern Report - 2026-07-23
 
-Generated at: 2026-07-23 00:17:27
+Generated at: 2026-07-23 03:21:10
 
 ## Purpose
 
@@ -12,10 +12,10 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **484**
-- Number of stocks in history: **189**
+- Total error-note rows: **505**
+- Number of stocks in history: **193**
 - Stocks with evaluated reactions: **0**
-- Stocks with pending-only reactions: **189**
+- Stocks with pending-only reactions: **193**
 
 Most stock-level rows are still pending. Stock-level success rates will become meaningful after next-day price reactions are evaluated.
 
@@ -36,6 +36,8 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 018700 | 졸스 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 189330 | 씨이랩 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 263800 | 데이타솔루션 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 340570 | 티앤엘 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | bonus_issue | mostly_pending |
+| 348340 | 뉴로메카 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | bonus_issue | mostly_pending |
 | 475040 | 스트라드비젼 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 068270 | 셀트리온 | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | investment_decision | mostly_pending |
 | 013810 | 스페코 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
@@ -45,7 +47,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 440110 | 파두 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 000500 | 가온전선 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 007460 | 에이프로젠 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | investment_decision | mostly_pending |
-| 023440 | 제이스코홀딩스 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 023440 | 제이스코홀딩스 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 043260 | 성호전자 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 069460 | 대호에이엘 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | lawsuit | mostly_pending |
 | 148250 | 알엔투테크놀로지 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | lawsuit | mostly_pending |
@@ -54,6 +56,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 297570 | 아틀라스링크 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 320000 | 한울반도체 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 348370 | 엔켐 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | merger | mostly_pending |
+| 397030 | 에이프릴바이오 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 900120 | 씨엑스아이 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 001840 | 이화공영 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 005960 | 동부건설 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | supply_contract | mostly_pending |
@@ -95,7 +98,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 321370 | 센서뷰 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 340930 | 유일에너테크 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 354200 | 엔젠바이오 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
-| 465770 | STX그린로지스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 465770 | STX그린로지스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
 | 000520 | 삼일제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 002020 | 코오롱 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 002070 | 비비안 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
@@ -116,9 +119,9 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 006040 | 동원산업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
 | 006220 | 제주은행 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
 | 006360 | GS건설 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 006490 | 프리티 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 006740 | 블루산업개발 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
 | 008470 | 부스타 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | bonus_issue | mostly_pending |
-| 009150 | 삼성전기 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 009320 | 아진전자부품 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 009420 | 한올바이오파마 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
 | 010130 | 고려아연 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
@@ -174,7 +177,9 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 137400 | 피엔티 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 144510 | 지씨셀 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
 | 159910 | 에코글로우 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 176750 | 듀켐바이오 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
 | 187870 | 디바이스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 191410 | 육일씨엔에쓰 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
 | 200230 | 텔콘RF제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 203650 | 드림시큐리티 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 216080 | 제테마 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
@@ -204,7 +209,6 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 380540 | 옵티코어 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 389680 | 유디엠텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 396470 | 워트 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
-| 397030 | 에이프릴바이오 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
 | 419540 | 비스토스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 431190 | 케이쓰리아이 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 452260 | 한화갤러리아 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |

@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-23
 
-Generated at: 2026-07-23 00:17:22
+Generated at: 2026-07-23 03:21:04
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260723.csv`
 
@@ -28,24 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **2**
+- Total rows: **23**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **2**
+- neutral_adjustment: **23**
 
 ## Market-Adjusted Result Counts
 
-- pending: **2**
+- pending: **23**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 009150 | 삼성전기 | positive | pending | 0 | N/A |
+| 1970-01-01 | 006490 | 프리티 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
+| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
+| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
+| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
+| 1970-01-01 | 191410 | 육일씨엔에쓰 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 397030 | 에이프릴바이오 | negative | pending | 0 | N/A |
+| 1970-01-01 | 397030 | 에이프릴바이오 | negative | pending | 0 | N/A |
+| 1970-01-01 | 397030 | 에이프릴바이오 | negative | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
+| 1970-01-01 | 176750 | 듀켐바이오 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | 0 | N/A |
+| 1970-01-01 | 348340 | 뉴로메카 | negative | pending | 0 | N/A |
 
 ## Next Step
 

@@ -18,22 +18,51 @@ This report is for research and portfolio demonstration purposes only. It is not
 
 ## Summary
 
-- Total candidate rows: **2**
+- Total candidate rows: **82**
 - Rows with active learned-rule adjustment: **0**
 
 ## Candidate Buckets
 
 | Bucket | Count |
 |---|---:|
-| positive_candidate | 1 |
-| risk_or_avoid_review | 1 |
+| watchlist_candidate | 70 |
+| risk_or_avoid_review | 11 |
+| general_review | 1 |
 
 ## Top Candidates
 
 | stock_code | corp_name | event_type | prediction_direction | base_event_score_v4 | market_adjusted_score_adjustment | trading_volume_score_adjustment | learned_event_score_adjustment | final_learned_rule_score | candidate_bucket | learning_label | evaluated_count | success_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 009150 | 삼성전기 | supply_contract | positive | 70.0 | 0.0 | 0.0 | 0.0 | 70.0 | positive_candidate | hold_insufficient_data | 0 | 0.00% |
-| 183490 | 엔지켐생명과학 | lawsuit | negative | -75.0 | 0.0 | 0.0 | 0.0 | -75.0 | risk_or_avoid_review | hold_insufficient_data | 0 | 0.00% |
+| 348340 | 뉴로메카 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 348340 | 뉴로메카 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 348340 | 뉴로메카 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 348340 | 뉴로메카 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
+| 340570 | 티앤엘 | bonus_issue | positive | 60.0 | 0.0 | 0.0 | 0.0 | 60.0 | watchlist_candidate | hold_insufficient_data | 0 | 0.00% |
 
 ## Interpretation
 
