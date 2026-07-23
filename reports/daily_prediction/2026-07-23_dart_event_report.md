@@ -8,36 +8,48 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 80 |
-| Insider or Major Holder Disclosure | 10 |
-| Bonus Issue | 3 |
-| Paid-in Capital Increase | 3 |
+| Other | 74 |
+| Major Shareholder Change | 6 |
+| Insider or Major Holder Disclosure | 5 |
+| Investment Decision | 4 |
+| Lawsuit | 3 |
+| Supply Contract | 3 |
+| Convertible Bond | 3 |
 | Merger | 2 |
-| Major Shareholder Change | 1 |
-| Lawsuit | 1 |
 
 ## Key Disclosures
 
 | Company | Disclosure | Event Type | Date |
 |---|---|---|---|
-| 프리티 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260723 |
-| 뉴로메카 | [기재정정]주요사항보고서(유무상증자결정) | Bonus Issue | 20260723 |
-| 육일씨엔에쓰 | 합병등종료보고서(자산양수도) | Merger | 20260723 |
-| 에이프릴바이오 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260723 |
-| 에이프릴바이오 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260723 |
-| 티앤엘 | 주요사항보고서(무상증자결정) | Bonus Issue | 20260723 |
-| 티앤엘 | 주권매매거래정지              (무상증자) | Bonus Issue | 20260723 |
-| 듀켐바이오 | [첨부정정]주요사항보고서(회사합병결정) | Merger | 20260723 |
-| 엔지켐생명과학 | [기재정정]소송등의판결ㆍ결정              (경영권 분쟁 소송)(검사인 선임) | Lawsuit | 20260723 |
-| 뉴로메카 | 유상증자최종발행가액확정               | Paid-in Capital Increase | 20260723 |
+| 오스코텍 | 최대주주변경을수반하는주식담보제공계약체결               | Major Shareholder Change | 20260723 |
+| 오스코텍 | [기재정정]최대주주변경               | Major Shareholder Change | 20260723 |
+| 미래산업 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260723 |
+| 휴맥스홀딩스 | [기재정정]주요사항보고서(회사합병결정) | Merger | 20260723 |
+| 넥스턴앤롤코리아 | [기재정정]최대주주변경을수반하는주식담보제공계약체결               | Major Shareholder Change | 20260723 |
+| 코아스 | 소송등의제기ㆍ신청(자율공시:일정금액미만의청구)               | Lawsuit | 20260723 |
+| 남광토건 | 투자판단관련주요경영사항               | Investment Decision | 20260723 |
+| 태원물산 | [기재정정]소송등의제기ㆍ신청(경영권분쟁소송)               | Lawsuit | 20260723 |
+| NH투자증권 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260723 |
+| 조이웍스앤코 | 주요사항보고서(자기전환사채만기전취득결정) | Convertible Bond | 20260723 |
+| 대아티아이 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260723 |
+| 유안타증권 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260723 |
+| 휴맥스 | [기재정정]증권신고서(합병) | Merger | 20260723 |
+| 조이웍스앤코 | [기재정정]주요사항보고서(전환사채권발행결정) | Convertible Bond | 20260723 |
+| SK | 투자판단관련주요경영사항(자회사의 주요경영사항)               | Investment Decision | 20260723 |
+| 대원산업 | 소송등의제기ㆍ신청(경영권분쟁소송)              (이사회의사록 열람 및 등사 허가신청) | Lawsuit | 20260723 |
+| 엑시온그룹 | [기재정정]주요사항보고서(자기전환사채만기전취득결정) | Convertible Bond | 20260723 |
+| HB솔루션 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260723 |
+| SK텔레콤 | 투자판단관련주요경영사항               | Investment Decision | 20260723 |
+| 에스트래픽 | [기재정정]최대주주변경을수반하는주식담보제공계약체결               | Major Shareholder Change | 20260723 |
+| 금호건설 | 투자판단관련주요경영사항               | Investment Decision | 20260723 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 20
-- Supply contract disclosures: 0
+- Classified non-other events: 26
+- Supply contract disclosures: 3
 - Financing-related disclosures: 3
-- Insider or major holder disclosures: 10
+- Insider or major holder disclosures: 5
 
 ## Model Notes
 

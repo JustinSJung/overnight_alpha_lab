@@ -8,7 +8,7 @@ This audit documents the conservative v2 price ranker. It is diagnostic only and
 - v1 score: breakout score, 5-day return, 20-day return, volume ratio, volatility penalty, and small social/ML context adjustments.
 - v2 score: base momentum plus moderate volume/liquidity confirmation, minus volatility, overextension, reversal, news risk, attention noise, and market regime penalties.
 - Score version: **v2_conservative_ranker**
-- Broad candidate pool count: **136**
+- Broad candidate pool count: **151**
 - Selected monitoring picks: **20**
 
 ## Suspected Failure Modes
@@ -30,15 +30,15 @@ This audit documents the conservative v2 price ranker. It is diagnostic only and
 
 | Component | Average |
 |---|---:|
-| final_price_signal_score_v2 | 36.58 |
-| base_momentum_score | 44.65 |
-| volume_confirmation_score | -1.35 |
-| volatility_penalty | 6.03 |
-| overextension_penalty | 0.84 |
-| reversal_risk_penalty | 1.44 |
-| news_risk_penalty | 0.28 |
-| attention_noise_penalty | 0.07 |
-| market_regime_penalty | 0.04 |
+| final_price_signal_score_v2 | 39.28 |
+| base_momentum_score | 47.31 |
+| volume_confirmation_score | -0.67 |
+| volatility_penalty | 6.21 |
+| overextension_penalty | 1.32 |
+| reversal_risk_penalty | 1.58 |
+| news_risk_penalty | 0.25 |
+| attention_noise_penalty | 0.16 |
+| market_regime_penalty | 0.07 |
 
 ## Notes
 

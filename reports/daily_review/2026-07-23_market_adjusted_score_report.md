@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-23
 
-Generated at: 2026-07-23 03:21:04
+Generated at: 2026-07-23 23:15:38
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260723.csv`
 
@@ -28,42 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **23**
+- Total rows: **39**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **23**
+- neutral_adjustment: **39**
 
 ## Market-Adjusted Result Counts
 
-- pending: **23**
+- pending: **39**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 006490 | 프리티 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
-| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
-| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
-| 1970-01-01 | 348340 | 뉴로메카 | positive | pending | 0 | N/A |
-| 1970-01-01 | 191410 | 육일씨엔에쓰 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 397030 | 에이프릴바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 397030 | 에이프릴바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 397030 | 에이프릴바이오 | negative | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 340570 | 티앤엘 | positive | pending | 0 | N/A |
-| 1970-01-01 | 176750 | 듀켐바이오 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 183490 | 엔지켐생명과학 | negative | pending | 0 | N/A |
-| 1970-01-01 | 348340 | 뉴로메카 | negative | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 039200 | 오스코텍 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 025560 | 미래산업 | positive | pending | 0 | N/A |
+| 1970-01-01 | 028080 | 휴맥스홀딩스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 089140 | 넥스턴앤롤코리아 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 071950 | 코아스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 001260 | 남광토건 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 001420 | 태원물산 | negative | pending | 0 | N/A |
+| 1970-01-01 | 005940 | NH투자증권 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 309930 | 조이웍스앤코 | negative | pending | 0 | N/A |
+| 1970-01-01 | 309930 | 조이웍스앤코 | negative | pending | 0 | N/A |
+| 1970-01-01 | 309930 | 조이웍스앤코 | negative | pending | 0 | N/A |
+| 1970-01-01 | 309930 | 조이웍스앤코 | negative | pending | 0 | N/A |
+| 1970-01-01 | 045390 | 대아티아이 | positive | pending | 0 | N/A |
 
 ## Next Step
 

@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-23
 
-Generated at: 2026-07-23 03:21:05
+Generated at: 2026-07-23 23:15:39
 
 Source ML dataset: `data/processed/ml_dataset_20260723.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4200**
-- Rows with price file found: **4200**
+- Total rows: **8235**
+- Rows with price file found: **8235**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **4200**
+- insufficient_volume_baseline: **8235**
 
 ## Interpretation
 
@@ -35,36 +35,36 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260723 | 006490 | 프리티 | major_shareholder_change | volatile | N/A | 237,703 | N/A | N/A | 398,599 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
-| 20260723 | 348340 | 뉴로메카 | bonus_issue | positive | N/A | 214,132 | N/A | N/A | 140,435 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
+| 20260723 | 039200 | 오스코텍 | major_shareholder_change | volatile | N/A | 304,001 | N/A | N/A | 235,656 | N/A |
 
 ## Next Step
 

@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-23
 
-Generated at: 2026-07-23 03:21:06
+Generated at: 2026-07-23 23:15:39
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260723.csv`
 
@@ -23,52 +23,52 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4200**
+- Total rows: **8235**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **4200**
+- neutral_volume_adjustment: **8235**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **4200**
+- insufficient_volume_baseline: **8235**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
-| 20260723 | 006490 | 프리티 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260723 | 348340 | 뉴로메카 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260723 | 039200 | 오스코텍 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 
