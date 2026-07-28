@@ -20,3 +20,4 @@
 2026-07-23,2026-07-23 23:15:41,100,100,21,21,21,39,151,151,0,0,0,True,True,data/raw/dart_disclosures_20260723.csv,data/processed/ml_dataset_20260723.csv
 2026-07-24,2026-07-24 01:56:48,100,100,3,3,3,3,3,3,0,0,0,True,True,data/raw/dart_disclosures_20260724.csv,data/processed/ml_dataset_20260724.csv
 2026-07-27,2026-07-27 23:24:37,100,100,23,23,23,75,903,903,0,0,0,True,True,data/raw/dart_disclosures_20260727.csv,data/processed/ml_dataset_20260727.csv
+2026-07-28,2026-07-28 23:19:22,100,100,22,22,22,29,31,31,0,0,0,True,True,data/raw/dart_disclosures_20260728.csv,data/processed/ml_dataset_20260728.csv
