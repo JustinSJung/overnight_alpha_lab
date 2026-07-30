@@ -211,6 +211,57 @@ def rolling_success_metrics(df: pd.DataFrame, days: int) -> dict:
     }
 
 
+def date_key(df: pd.DataFrame, column: str) -> pd.Series:
+    if df.empty:
+        return pd.Series(dtype=str)
+    if column not in df.columns:
+        return pd.Series([""] * len(df), index=df.index, dtype=object)
+    parsed = pd.to_datetime(df[column], errors="coerce")
+    return parsed.dt.strftime("%Y-%m-%d").fillna(df[column].astype(str).replace("nan", ""))
+
+
+def price_evaluation_key(df: pd.DataFrame) -> pd.Series:
+    if df.empty:
+        return pd.Series(dtype=str)
+    if "candidate_id" in df.columns:
+        candidate_id = df["candidate_id"].astype(str).str.strip()
+        valid = ~candidate_id.isin(["", "nan", "None", "<NA>"])
+    else:
+        candidate_id = pd.Series([""] * len(df), index=df.index, dtype=object)
+        valid = pd.Series([False] * len(df), index=df.index)
+
+    if "score_version" in df.columns:
+        score_version = df["score_version"].astype(str).str.strip()
+        score_version = score_version.where(
+            ~score_version.isin(["", "nan", "None", "<NA>"]),
+            "legacy_or_unknown",
+        )
+    else:
+        score_version = pd.Series(["legacy_or_unknown"] * len(df), index=df.index, dtype=object)
+
+    fallback = (
+        df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
+        + "|"
+        + date_key(df, "signal_date")
+        + "|"
+        + date_key(df, "prediction_date")
+        + "|"
+        + score_version
+    )
+    return candidate_id.where(valid, fallback)
+
+
+def dedupe_price_evaluations(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+    working = df.copy()
+    working["dashboard_price_evaluation_key"] = price_evaluation_key(working)
+    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
+    if sort_columns:
+        working = working.sort_values(sort_columns)
+    return working.drop_duplicates(subset=["dashboard_price_evaluation_key"], keep="last")
+
+
 def format_metric_value(value, suffix=""):
     if value is None:
         return "Insufficient data / 데이터 부족"
@@ -254,6 +305,17 @@ def ranking_status_class(value):
     return "badge-gray"
 
 
+def integrity_status_class(value):
+    text = str(value or "").lower()
+    if "clean" in text or "available" in text:
+        return "badge-green"
+    if "duplicate" in text or "missing" in text or "inverted" in text:
+        return "badge-red"
+    if "weak" in text:
+        return "badge-orange"
+    return "badge-gray"
+
+
 def file_mtime(path):
     if path is None or not path.exists():
         return None
@@ -285,6 +347,8 @@ def build_metrics():
     latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
     latest_diagnostics_path = latest_file(PROCESSED_DIR, "price_signal_diagnostics_summary_*.csv")
     latest_diagnostics = read_csv(latest_diagnostics_path)
+    latest_integrity_path = latest_file(PROCESSED_DIR, "evaluation_integrity_audit_summary_*.csv")
+    latest_integrity = read_csv(latest_integrity_path)
     latest_news_items_path = latest_file(Path("data/raw"), "news_provider_items_*.csv")
     latest_news_features_path = latest_file(PROCESSED_DIR, "news_provider_features_*.csv")
     latest_news_status_path = latest_file(PROCESSED_DIR, "news_provider_status_*.csv")
@@ -296,6 +360,7 @@ def build_metrics():
     latest_naver_news = read_csv(latest_naver_news_path)
     latest_snacks_raw = read_csv(latest_snacks_raw_path)
     all_price_eval = read_all_csv(PREDICTIONS_DIR, "price_candidate_evaluation_*.csv")
+    unique_price_eval = dedupe_price_evaluations(all_price_eval)
 
     if not latest_ml_df.empty and "stock_code" in latest_ml_df.columns:
         latest_ml_df["stock_code"] = latest_ml_df["stock_code"].apply(normalize_stock_code)
@@ -340,7 +405,7 @@ def build_metrics():
     rolling_7d_evaluated_count = 0
     rolling_30d_evaluated_count = 0
 
-    price_results = success_series(all_price_eval, "success_close_t1")
+    price_results = success_series(unique_price_eval, "success_close_t1")
     if not price_results.empty:
         price_evaluated_count = int(price_results.isin(["success", "failure"]).sum())
         price_success_count = int((price_results == "success").sum())
@@ -349,15 +414,15 @@ def build_metrics():
         if price_evaluated_count > 0:
             price_success_rate = price_success_count / price_evaluated_count
 
-    benchmark_results = explicit_result_series(all_price_eval, "success_excess_t1")
+    benchmark_results = explicit_result_series(unique_price_eval, "success_excess_t1")
     if not benchmark_results.empty:
         benchmark_evaluated_count = int(benchmark_results.isin([RESULT_SUCCESS, RESULT_FAILURE]).sum())
         benchmark_success_count = int((benchmark_results == RESULT_SUCCESS).sum())
         if benchmark_evaluated_count > 0:
             benchmark_success_rate = round(safe_percentage(benchmark_success_count, benchmark_evaluated_count), 2)
 
-    rolling_7d = rolling_success_metrics(all_price_eval, 7)
-    rolling_30d = rolling_success_metrics(all_price_eval, 30)
+    rolling_7d = rolling_success_metrics(unique_price_eval, 7)
+    rolling_30d = rolling_success_metrics(unique_price_eval, 30)
     rolling_7d_success_rate = rolling_7d["success_rate"]
     rolling_30d_success_rate = rolling_30d["success_rate"]
     rolling_7d_evaluated_count = rolling_7d["evaluated_count"]
@@ -427,6 +492,16 @@ def build_metrics():
     v2_evaluated_count = first_row_value(latest_diagnostics, "v2_evaluated_count", 0)
     ranking_diagnosis_en = first_row_value(latest_diagnostics, "ranking_diagnosis_en", "Insufficient v2 data")
     ranking_diagnosis_ko = first_row_value(latest_diagnostics, "ranking_diagnosis_ko", "v2 데이터 부족")
+    integrity_total_rows = first_row_value(latest_integrity, "total_evaluation_rows", None)
+    integrity_unique_keys = first_row_value(latest_integrity, "unique_evaluation_keys", None)
+    integrity_duplicate_rows = first_row_value(latest_integrity, "duplicate_rows", None)
+    integrity_duplicate_rate = first_row_value(latest_integrity, "duplicate_rate", None)
+    integrity_v2_evaluated_count = first_row_value(latest_integrity, "v2_evaluated_count", v2_evaluated_count)
+    integrity_v2_success_rate = first_row_value(latest_integrity, "v2_success_rate", None)
+    integrity_benchmark_coverage = first_row_value(latest_integrity, "benchmark_adjusted_coverage_rate", None)
+    integrity_duplicate_status = first_row_value(latest_integrity, "duplicate_status", "Insufficient data")
+    integrity_benchmark_status = first_row_value(latest_integrity, "benchmark_status", "Insufficient data")
+    integrity_ranking_status = first_row_value(latest_integrity, "ranking_status", ranking_diagnosis_en)
 
     google_status_en = None
     google_status_ko = "데이터 부족"
@@ -510,6 +585,16 @@ def build_metrics():
         "v2_evaluated_count": v2_evaluated_count,
         "ranking_diagnosis_en": ranking_diagnosis_en,
         "ranking_diagnosis_ko": ranking_diagnosis_ko,
+        "integrity_total_rows": integrity_total_rows,
+        "integrity_unique_keys": integrity_unique_keys,
+        "integrity_duplicate_rows": integrity_duplicate_rows,
+        "integrity_duplicate_rate": integrity_duplicate_rate,
+        "integrity_v2_evaluated_count": integrity_v2_evaluated_count,
+        "integrity_v2_success_rate": integrity_v2_success_rate,
+        "integrity_benchmark_coverage": integrity_benchmark_coverage,
+        "integrity_duplicate_status": integrity_duplicate_status,
+        "integrity_benchmark_status": integrity_benchmark_status,
+        "integrity_ranking_status": integrity_ranking_status,
         "naver_status_en": naver_status_en,
         "naver_status_ko": naver_status_ko,
         "google_status_en": google_status_en,
@@ -581,6 +666,9 @@ def build_html(metrics, stock_data):
         "LOW CONFIDENCE": "badge-red",
     }.get(str(metrics.get("confidence_status", "")).upper(), "badge-gray")
     ranking_class = ranking_status_class(metrics.get("ranking_diagnosis_en"))
+    duplicate_class = integrity_status_class(metrics.get("integrity_duplicate_status"))
+    benchmark_integrity_class = integrity_status_class(metrics.get("integrity_benchmark_status"))
+    ranking_integrity_class = integrity_status_class(metrics.get("integrity_ranking_status"))
     benchmark_helper = ""
     if metrics.get("benchmark_success_rate") is None:
         benchmark_helper = "\n".join([
@@ -1143,6 +1231,60 @@ def build_html(metrics, stock_data):
           </div>
         </div>
         <p class="hero-note">{metrics["confidence_status_ko"]}. {metrics["confidence_comment"]}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Evaluation Integrity <span class="heading-ko">평가 무결성</span></h2>
+          <p class="section-subtitle">This audit checks duplicate cumulative evaluation rows, v2-only performance, benchmark coverage, and learned-rule activation. 누적 평가 중복, v2 전용 성과, 시장 대비 평가 커버리지, 학습 규칙 활성화를 점검합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">Evaluation Status</div>
+          <div class="ko-desc">평가 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["integrity_duplicate_status"], "중복 가능성" if str(metrics["integrity_duplicate_status"]).lower().find("duplicate") >= 0 else "평가 정상", duplicate_class)}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Total Evaluation Rows</div>
+          <div class="ko-desc">전체 평가 행 수</div>
+          {render_kpi_value(metrics["integrity_total_rows"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Unique Evaluation Keys</div>
+          <div class="ko-desc">고유 평가 키</div>
+          {render_kpi_value(metrics["integrity_unique_keys"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Duplicate Rows</div>
+          <div class="ko-desc">중복 행 수</div>
+          {render_kpi_value(metrics["integrity_duplicate_rows"])}
+          <div class="muted-helper">Duplicate rate: {format_metric_value(metrics["integrity_duplicate_rate"], "%")}<br>중복률: {format_metric_value(metrics["integrity_duplicate_rate"], "%")}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Evaluated Cases</div>
+          <div class="ko-desc">v2 평가 완료</div>
+          {render_kpi_value(metrics["integrity_v2_evaluated_count"])}
+          <div class="muted-helper">V2 success rate: {format_metric_value(metrics["integrity_v2_success_rate"], "%")}<br>v2 성공률: {format_metric_value(metrics["integrity_v2_success_rate"], "%")}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Coverage</div>
+          <div class="ko-desc">시장 대비 평가 커버리지</div>
+          {render_kpi_value(metrics["integrity_benchmark_coverage"], "%")}
+          <div class="kpi-value-small">{render_status_pill(metrics["integrity_benchmark_status"], "시장 대비 평가 누락" if str(metrics["integrity_benchmark_status"]).lower().find("missing") >= 0 else "시장 대비 평가 가능", benchmark_integrity_class)}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Ranking Integrity</div>
+          <div class="ko-desc">랭킹 무결성</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["integrity_ranking_status"], "랭킹 역방향" if str(metrics["integrity_ranking_status"]).lower().find("inverted") >= 0 else "랭킹 점검", ranking_integrity_class)}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Active Learned Rules</div>
+          <div class="ko-desc">활성 학습 규칙</div>
+          {render_kpi_value(metrics["active_learned_rule_count"])}
+        </div>
       </div>
     </section>
 

@@ -132,6 +132,7 @@ run_optional "Generating learned event rules..." python src/models/auto_rule_upd
 run_optional "Generating learned-rule daily candidate report..." python src/models/learned_rule_daily_recommender.py
 run_optional "Running supplementary news providers..." python src/news_providers/provider_runner.py
 run_optional "[23/24] Generating price signal diagnostics report..." python src/report_generator/price_signal_diagnostics_report.py
+run_optional "Generating evaluation integrity audit..." python src/report_generator/evaluation_integrity_audit.py
 run_optional "[24/24] Generating GitHub Pages dashboard..." python src/report_generator/dashboard_generator.py
 
 finish_success
