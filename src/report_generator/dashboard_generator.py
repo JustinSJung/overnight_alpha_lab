@@ -346,6 +346,8 @@ def build_metrics():
     latest_learned_rules = read_csv(latest_file(PROCESSED_DIR, "learned_event_rules_*.csv"))
     latest_price_candidate_rules_path = latest_file(PROCESSED_DIR, "price_candidate_learned_rules_*.csv")
     latest_price_candidate_rules = read_csv(latest_price_candidate_rules_path)
+    latest_v2_performance_path = latest_file(PROCESSED_DIR, "v2_performance_summary_*.csv")
+    latest_v2_performance = read_csv(latest_v2_performance_path)
     latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
     latest_diagnostics_path = latest_file(PROCESSED_DIR, "price_signal_diagnostics_summary_*.csv")
     latest_diagnostics = read_csv(latest_diagnostics_path)
@@ -514,6 +516,9 @@ def build_metrics():
     price_candidate_boost_rule_count = 0
     price_candidate_penalize_rule_count = 0
     price_candidate_watch_rule_count = 0
+    suspicious_price_rule_count = 0
+    top_suspicious_price_rule = "N/A"
+    top_suspicious_price_rule_reason = "N/A"
     top_positive_price_rule = "N/A"
     top_negative_price_rule = "N/A"
     latest_price_rule_update_time = file_mtime(latest_price_candidate_rules_path)
@@ -522,6 +527,22 @@ def build_metrics():
         price_candidate_boost_rule_count = int((actions == "boost").sum())
         price_candidate_penalize_rule_count = int((actions == "penalize").sum())
         price_candidate_watch_rule_count = int((actions == "watch").sum())
+        if "suspicious_flag" in latest_price_candidate_rules.columns:
+            suspicious_mask = latest_price_candidate_rules["suspicious_flag"].astype(str).str.lower().isin(["true", "1", "yes"])
+            suspicious_price_rule_count = int(suspicious_mask.sum())
+            suspicious_rules = latest_price_candidate_rules[suspicious_mask].copy()
+            if not suspicious_rules.empty:
+                if "lift_vs_baseline" in suspicious_rules.columns:
+                    suspicious_rules["lift_vs_baseline"] = pd.to_numeric(
+                        suspicious_rules["lift_vs_baseline"],
+                        errors="coerce",
+                    )
+                    suspicious_rules = suspicious_rules.sort_values("lift_vs_baseline", ascending=False)
+                top_suspicious = suspicious_rules.iloc[0]
+                top_suspicious_price_rule = (
+                    f"{top_suspicious.get('rule_group', '')}={top_suspicious.get('rule_value', '')}"
+                )
+                top_suspicious_price_rule_reason = str(top_suspicious.get("suspicious_reason", "N/A"))
         if "lift_vs_baseline" in latest_price_candidate_rules.columns:
             ranked_rules = latest_price_candidate_rules.copy()
             ranked_rules["lift_vs_baseline"] = pd.to_numeric(ranked_rules["lift_vs_baseline"], errors="coerce")
@@ -531,6 +552,36 @@ def build_metrics():
                 negative = ranked_rules.sort_values("lift_vs_baseline", ascending=True).iloc[0]
                 top_positive_price_rule = f"{positive.get('rule_group', '')}={positive.get('rule_value', '')} ({positive.get('lift_vs_baseline', '')}pp)"
                 top_negative_price_rule = f"{negative.get('rule_group', '')}={negative.get('rule_value', '')} ({negative.get('lift_vs_baseline', '')}pp)"
+
+    v2_monitor_evaluated = first_row_value(latest_v2_performance, "v2_evaluated_cases", 0)
+    v2_monitor_raw_success_rate = first_row_value(latest_v2_performance, "v2_raw_success_rate", None)
+    v2_monitor_benchmark_success_rate = first_row_value(
+        latest_v2_performance,
+        "v2_benchmark_adjusted_success_rate",
+        None,
+    )
+    v2_monitor_benchmark_coverage_rate = first_row_value(latest_v2_performance, "v2_benchmark_coverage_rate", None)
+    v2_monitor_selected_evaluated = first_row_value(latest_v2_performance, "v2_selected_pick_evaluated_cases", 0)
+    v2_monitor_selected_success_rate = first_row_value(latest_v2_performance, "v2_selected_pick_success_rate", None)
+    v2_monitor_non_selected_evaluated = first_row_value(latest_v2_performance, "v2_non_selected_evaluated_cases", 0)
+    v2_monitor_non_selected_success_rate = first_row_value(latest_v2_performance, "v2_non_selected_success_rate", None)
+    v2_monitor_top_10_success_rate = first_row_value(latest_v2_performance, "v2_top_10_success_rate", None)
+    v2_monitor_top_20_success_rate = first_row_value(latest_v2_performance, "v2_top_20_success_rate", None)
+    v2_monitor_top_10_evaluated = first_row_value(latest_v2_performance, "v2_top_10_evaluated_cases", 0)
+    v2_monitor_top_20_evaluated = first_row_value(latest_v2_performance, "v2_top_20_evaluated_cases", 0)
+    v2_monitor_diagnosis_en = first_row_value(latest_v2_performance, "v2_diagnosis_en", "Insufficient data")
+    v2_monitor_diagnosis_ko = first_row_value(latest_v2_performance, "v2_diagnosis_ko", "데이터 부족")
+    v2_monitor_benchmark_diagnosis_en = first_row_value(
+        latest_v2_performance,
+        "v2_benchmark_diagnosis_en",
+        "Benchmark data unavailable",
+    )
+    v2_monitor_benchmark_diagnosis_ko = first_row_value(
+        latest_v2_performance,
+        "v2_benchmark_diagnosis_ko",
+        "시장 기준 데이터 부족",
+    )
+    latest_v2_monitor_update_time = file_mtime(latest_v2_performance_path)
 
     google_status_en = None
     google_status_ko = "데이터 부족"
@@ -633,9 +684,29 @@ def build_metrics():
         "price_candidate_boost_rule_count": price_candidate_boost_rule_count,
         "price_candidate_penalize_rule_count": price_candidate_penalize_rule_count,
         "price_candidate_watch_rule_count": price_candidate_watch_rule_count,
+        "suspicious_price_rule_count": suspicious_price_rule_count,
+        "top_suspicious_price_rule": top_suspicious_price_rule,
+        "top_suspicious_price_rule_reason": top_suspicious_price_rule_reason,
         "top_positive_price_rule": top_positive_price_rule,
         "top_negative_price_rule": top_negative_price_rule,
         "latest_price_rule_update_time": latest_price_rule_update_time,
+        "v2_monitor_evaluated": v2_monitor_evaluated,
+        "v2_monitor_raw_success_rate": v2_monitor_raw_success_rate,
+        "v2_monitor_benchmark_success_rate": v2_monitor_benchmark_success_rate,
+        "v2_monitor_benchmark_coverage_rate": v2_monitor_benchmark_coverage_rate,
+        "v2_monitor_selected_evaluated": v2_monitor_selected_evaluated,
+        "v2_monitor_selected_success_rate": v2_monitor_selected_success_rate,
+        "v2_monitor_non_selected_evaluated": v2_monitor_non_selected_evaluated,
+        "v2_monitor_non_selected_success_rate": v2_monitor_non_selected_success_rate,
+        "v2_monitor_top_10_success_rate": v2_monitor_top_10_success_rate,
+        "v2_monitor_top_20_success_rate": v2_monitor_top_20_success_rate,
+        "v2_monitor_top_10_evaluated": v2_monitor_top_10_evaluated,
+        "v2_monitor_top_20_evaluated": v2_monitor_top_20_evaluated,
+        "v2_monitor_diagnosis_en": v2_monitor_diagnosis_en,
+        "v2_monitor_diagnosis_ko": v2_monitor_diagnosis_ko,
+        "v2_monitor_benchmark_diagnosis_en": v2_monitor_benchmark_diagnosis_en,
+        "v2_monitor_benchmark_diagnosis_ko": v2_monitor_benchmark_diagnosis_ko,
+        "latest_v2_monitor_update_time": latest_v2_monitor_update_time,
         "naver_status_en": naver_status_en,
         "naver_status_ko": naver_status_ko,
         "google_status_en": google_status_en,
@@ -707,6 +778,9 @@ def build_html(metrics, stock_data):
         "LOW CONFIDENCE": "badge-red",
     }.get(str(metrics.get("confidence_status", "")).upper(), "badge-gray")
     ranking_class = ranking_status_class(metrics.get("ranking_diagnosis_en"))
+    v2_monitor_class = ranking_status_class(metrics.get("v2_monitor_diagnosis_en"))
+    v2_benchmark_class = integrity_status_class(metrics.get("v2_monitor_benchmark_diagnosis_en"))
+    suspicious_rule_class = "badge-red" if safe_float(metrics.get("suspicious_price_rule_count", 0)) > 0 else "badge-green"
     duplicate_class = integrity_status_class(metrics.get("integrity_duplicate_status"))
     benchmark_integrity_class = integrity_status_class(metrics.get("integrity_benchmark_status"))
     ranking_integrity_class = integrity_status_class(metrics.get("integrity_ranking_status"))
@@ -718,6 +792,12 @@ def build_html(metrics, stock_data):
             '            시장 기준 평가 데이터가 쌓이면 표시됩니다.',
             '          </div>',
         ])
+    benchmark_warning = ""
+    if metrics.get("v2_monitor_benchmark_coverage_rate") is None or safe_float(metrics.get("v2_monitor_benchmark_coverage_rate")) < 30:
+        benchmark_warning = (
+            "Benchmark coverage is still below 30%, so market-relative v2 conclusions remain provisional.<br>"
+            "시장 기준 커버리지가 아직 30% 미만이므로 v2 시장 대비 판단은 임시 진단입니다."
+        )
 
     html = f"""<!DOCTYPE html>
 <html lang="ko">
@@ -1278,6 +1358,75 @@ def build_html(metrics, stock_data):
     <section class="section">
       <div class="section-heading">
         <div>
+          <h2>V2 Performance Monitor <span class="heading-ko">v2 성과 추적</span></h2>
+          <p class="section-subtitle">This layer monitors only v2_conservative_ranker after candidate-level deduplication. 후보 생성과 점수 산식은 변경하지 않고 v2 성과만 추적합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">V2 Diagnosis</div>
+          <div class="ko-desc">v2 진단</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["v2_monitor_diagnosis_en"], metrics["v2_monitor_diagnosis_ko"], v2_monitor_class)}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Evaluated Cases</div>
+          <div class="ko-desc">v2 평가 완료</div>
+          {render_kpi_value(metrics["v2_monitor_evaluated"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Raw Success Rate</div>
+          <div class="ko-desc">v2 원시 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_raw_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">v2 시장 대비 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_benchmark_success_rate"], "%")}
+          <div class="muted-helper">Coverage: {format_metric_value(metrics["v2_monitor_benchmark_coverage_rate"], "%")}<br>커버리지: {format_metric_value(metrics["v2_monitor_benchmark_coverage_rate"], "%")}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Selected Pick Success Rate</div>
+          <div class="ko-desc">선별 후보 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_selected_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v2_monitor_selected_evaluated"])}<br>평가 완료: {format_metric_value(metrics["v2_monitor_selected_evaluated"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Non-Selected Success Rate</div>
+          <div class="ko-desc">비선별 후보 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_non_selected_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v2_monitor_non_selected_evaluated"])}<br>평가 완료: {format_metric_value(metrics["v2_monitor_non_selected_evaluated"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Top 10 Success Rate</div>
+          <div class="ko-desc">v2 일별 Top 10 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_top_10_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v2_monitor_top_10_evaluated"])}<br>평가 완료: {format_metric_value(metrics["v2_monitor_top_10_evaluated"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Top 20 Success Rate</div>
+          <div class="ko-desc">v2 일별 Top 20 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_top_20_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v2_monitor_top_20_evaluated"])}<br>평가 완료: {format_metric_value(metrics["v2_monitor_top_20_evaluated"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Coverage Warning</div>
+          <div class="ko-desc">시장 기준 커버리지 경고</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["v2_monitor_benchmark_diagnosis_en"], metrics["v2_monitor_benchmark_diagnosis_ko"], v2_benchmark_class)}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Latest V2 Monitor Update</div>
+          <div class="ko-desc">최근 v2 모니터 갱신</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["latest_v2_monitor_update_time"], "최근 갱신", "badge-gray")}</div>
+        </div>
+      </div>
+      <div class="note section">
+        {benchmark_warning or "V2 monitoring should be judged over several new trading days, not a single run.<br>v2 성과는 단일 실행이 아니라 며칠 이상의 신규 거래일 누적으로 판단해야 합니다."}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
           <h2>Evaluation Integrity <span class="heading-ko">평가 무결성</span></h2>
           <p class="section-subtitle">This audit checks duplicate cumulative evaluation rows, v2-only performance, benchmark coverage, and learned-rule activation. 누적 평가 중복, v2 전용 성과, 시장 대비 평가 커버리지, 학습 규칙 활성화를 점검합니다.</p>
         </div>
@@ -1414,6 +1563,40 @@ def build_html(metrics, stock_data):
           <div class="ko-desc">최근 룰 갱신</div>
           <div class="kpi-value-small">{render_status_pill(metrics["latest_price_rule_update_time"], "최근 룰 갱신", "badge-gray")}</div>
         </div>
+      </div>
+      <div class="note section">
+        Suspicious rules are diagnostic only and are not applied to scoring.<br>
+        의심 룰은 진단용이며 점수 산식에 자동 반영하지 않습니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Suspicious Learned Rules <span class="heading-ko">의심 학습 룰</span></h2>
+          <p class="section-subtitle">These flags catch risky-looking learned rules before anyone treats them as score logic. 위험해 보이는 학습 룰을 점수 산식으로 오해하지 않도록 따로 표시합니다.</p>
+        </div>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Suspicious Rule Count</div>
+          <div class="ko-desc">의심 룰 수</div>
+          {render_kpi_value(metrics["suspicious_price_rule_count"])}
+        </div>
+        <div class="card">
+          <div class="label">Top Suspicious Rule</div>
+          <div class="ko-desc">대표 의심 룰</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["top_suspicious_price_rule"], "대표 의심 룰", suspicious_rule_class)}</div>
+        </div>
+        <div class="card">
+          <div class="label">Suspicious Reason</div>
+          <div class="ko-desc">의심 사유</div>
+          <div class="muted-helper">{metrics["top_suspicious_price_rule_reason"]}</div>
+        </div>
+      </div>
+      <div class="note section">
+        Suspicious rules are diagnostic only and are not applied to scoring.<br>
+        의심 룰은 진단용이며 점수 산식에 자동 반영하지 않습니다.
       </div>
     </section>
 

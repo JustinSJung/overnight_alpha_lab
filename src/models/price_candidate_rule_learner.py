@@ -188,6 +188,33 @@ def recommended_action(evaluated_count: int, lift: float | None) -> str:
     return "neutral"
 
 
+def rule_date_series(df: pd.DataFrame) -> pd.Series:
+    if df.empty:
+        return pd.Series(dtype=str)
+    dates = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
+    for column in ["signal_date", "prediction_date", "candidate_date"]:
+        if column in df.columns:
+            dates = dates.fillna(pd.to_datetime(df[column], errors="coerce"))
+    return dates.dt.strftime("%Y-%m-%d").fillna("unknown")
+
+
+def suspicious_rule_reason(rule_group: str, rule_value: str, action: str, evaluated_count: int, lift: float | None, date_coverage_count: int) -> str:
+    reasons = []
+    risky_boost_rules = {
+        ("news_risk_penalty", "high"),
+        ("reversal_risk_penalty", "high"),
+        ("overextension_penalty", "high"),
+        ("attention_noise_penalty", "high"),
+    }
+    if action == "boost" and (rule_group, rule_value) in risky_boost_rules:
+        reasons.append("boost_on_semantically_risky_bucket")
+    if evaluated_count < 100 and lift is not None and abs(lift) >= 10:
+        reasons.append("large_lift_with_under_100_cases")
+    if date_coverage_count <= 2:
+        reasons.append("only_one_or_two_signal_dates")
+    return "; ".join(reasons)
+
+
 def summarize_rules(evaluations: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     if evaluations.empty:
         return pd.DataFrame(), {"baseline_success_rate": None, "baseline_evaluated_count": 0}
@@ -204,6 +231,7 @@ def summarize_rules(evaluations: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     baseline_evaluated = len(working)
     baseline_success_rate = round(success_total / baseline_evaluated * 100, 2)
     working["normalized_result"] = result
+    working["rule_date"] = rule_date_series(working)
 
     group_columns = [
         "score_version_bucket",
@@ -229,10 +257,21 @@ def summarize_rules(evaluations: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
             success_rate = round(success_count / evaluated_count * 100, 2) if evaluated_count else None
             lift = round(success_rate - baseline_success_rate, 2) if success_rate is not None else None
             action = recommended_action(evaluated_count, lift)
+            rule_group = column.replace("_bucket", "")
+            rule_value = str(value)
+            date_coverage_count = int(group["rule_date"].nunique(dropna=True)) if "rule_date" in group.columns else 0
+            suspicious_reason = suspicious_rule_reason(
+                rule_group,
+                rule_value,
+                action,
+                evaluated_count,
+                lift,
+                date_coverage_count,
+            )
             rows.append(
                 {
-                    "rule_group": column.replace("_bucket", ""),
-                    "rule_value": str(value),
+                    "rule_group": rule_group,
+                    "rule_value": rule_value,
                     "evaluated_count": evaluated_count,
                     "success_count": success_count,
                     "failure_count": failure_count,
@@ -241,6 +280,9 @@ def summarize_rules(evaluations: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
                     "lift_vs_baseline": lift,
                     "confidence_level": confidence_level(evaluated_count),
                     "recommended_action": action,
+                    "suspicious_flag": bool(suspicious_reason),
+                    "suspicious_reason": suspicious_reason,
+                    "date_coverage_count": date_coverage_count,
                 }
             )
 
@@ -269,6 +311,7 @@ def write_report(rules: pd.DataFrame, summary: dict, output_csv: Path) -> Path:
     boost_count = int((rules.get("recommended_action", pd.Series(dtype=str)) == "boost").sum()) if not rules.empty else 0
     penalize_count = int((rules.get("recommended_action", pd.Series(dtype=str)) == "penalize").sum()) if not rules.empty else 0
     watch_count = int((rules.get("recommended_action", pd.Series(dtype=str)) == "watch").sum()) if not rules.empty else 0
+    suspicious_count = int((rules.get("suspicious_flag", pd.Series(dtype=bool)) == True).sum()) if not rules.empty else 0
 
     lines = [
         f"# Price Candidate Learned Rules Report - {today_display}",
@@ -284,8 +327,10 @@ def write_report(rules: pd.DataFrame, summary: dict, output_csv: Path) -> Path:
         f"- Boost rules: **{boost_count}**",
         f"- Penalize rules: **{penalize_count}**",
         f"- Watch rules: **{watch_count}**",
+        f"- Suspicious rules: **{suspicious_count}**",
         "",
         "Conservative activation uses at least 50 evaluated rows and +/-3 percentage points lift versus baseline.",
+        "Suspicious rules are diagnostic only and are not applied to scoring.",
         "",
         "## Learned Rule Table",
         "",
@@ -305,6 +350,9 @@ def write_report(rules: pd.DataFrame, summary: dict, output_csv: Path) -> Path:
             "lift_vs_baseline",
             "confidence_level",
             "recommended_action",
+            "suspicious_flag",
+            "suspicious_reason",
+            "date_coverage_count",
         ]
         lines.append("| " + " | ".join(columns) + " |")
         lines.append("|" + "|".join(["---"] * len(columns)) + "|")
@@ -331,17 +379,27 @@ def main():
     boost_count = int((rules.get("recommended_action", pd.Series(dtype=str)) == "boost").sum()) if not rules.empty else 0
     penalize_count = int((rules.get("recommended_action", pd.Series(dtype=str)) == "penalize").sum()) if not rules.empty else 0
     watch_count = int((rules.get("recommended_action", pd.Series(dtype=str)) == "watch").sum()) if not rules.empty else 0
+    suspicious_count = int((rules.get("suspicious_flag", pd.Series(dtype=bool)) == True).sum()) if not rules.empty else 0
     print(f"Price candidate learned rules saved to: {output_csv}")
     print(f"Price candidate learned rules report saved to: {report_path}")
     print(f"rules count: {len(rules)}")
     print(f"boost rules count: {boost_count}")
     print(f"penalize rules count: {penalize_count}")
     print(f"watch rules count: {watch_count}")
+    print(f"suspicious rules count: {suspicious_count}")
     if not rules.empty:
         positive = rules.sort_values("lift_vs_baseline", ascending=False).iloc[0]
         negative = rules.sort_values("lift_vs_baseline", ascending=True).iloc[0]
         print(f"top positive rule: {positive['rule_group']}={positive['rule_value']} ({positive['lift_vs_baseline']}pp)")
         print(f"top negative rule: {negative['rule_group']}={negative['rule_value']} ({negative['lift_vs_baseline']}pp)")
+        suspicious = rules[rules.get("suspicious_flag", False) == True]
+        if not suspicious.empty:
+            top_suspicious = suspicious.sort_values("lift_vs_baseline", ascending=False).iloc[0]
+            print(
+                "top suspicious rule: "
+                f"{top_suspicious['rule_group']}={top_suspicious['rule_value']} "
+                f"({top_suspicious['suspicious_reason']})"
+            )
 
 
 if __name__ == "__main__":

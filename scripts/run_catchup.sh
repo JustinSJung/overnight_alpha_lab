@@ -134,6 +134,7 @@ run_optional "Generating learned-rule daily candidate report..." python src/mode
 run_optional "Running supplementary news providers..." python src/news_providers/provider_runner.py
 run_optional "Generating evaluation integrity audit..." python src/report_generator/evaluation_integrity_audit.py
 run_optional "Generating price candidate learned rules..." python src/models/price_candidate_rule_learner.py
+run_optional "Generating v2 performance monitor..." python src/report_generator/v2_performance_monitor.py
 run_optional "[23/24] Generating price signal diagnostics report..." python src/report_generator/price_signal_diagnostics_report.py
 run_optional "[24/24] Generating GitHub Pages dashboard..." python src/report_generator/dashboard_generator.py
 

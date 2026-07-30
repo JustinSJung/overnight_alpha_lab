@@ -557,6 +557,75 @@
     <section class="section">
       <div class="section-heading">
         <div>
+          <h2>V2 Performance Monitor <span class="heading-ko">v2 성과 추적</span></h2>
+          <p class="section-subtitle">This layer monitors only v2_conservative_ranker after candidate-level deduplication. 후보 생성과 점수 산식은 변경하지 않고 v2 성과만 추적합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">V2 Diagnosis</div>
+          <div class="ko-desc">v2 진단</div>
+          <div class="kpi-value-small"><span class="status-pill badge-orange">Weak<br>약함</span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Evaluated Cases</div>
+          <div class="ko-desc">v2 평가 완료</div>
+          <div class="kpi-value">3064</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Raw Success Rate</div>
+          <div class="ko-desc">v2 원시 성공률</div>
+          <div class="kpi-value">47.52%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">v2 시장 대비 성공률</div>
+          <div class="kpi-value">47.47%</div>
+          <div class="muted-helper">Coverage: 24.48%<br>커버리지: 24.48%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Selected Pick Success Rate</div>
+          <div class="ko-desc">선별 후보 성공률</div>
+          <div class="kpi-value">48.66%</div>
+          <div class="muted-helper">Evaluated cases: 187<br>평가 완료: 187</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Non-Selected Success Rate</div>
+          <div class="ko-desc">비선별 후보 성공률</div>
+          <div class="kpi-value">47.45%</div>
+          <div class="muted-helper">Evaluated cases: 2877<br>평가 완료: 2877</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Top 10 Success Rate</div>
+          <div class="ko-desc">v2 일별 Top 10 성공률</div>
+          <div class="kpi-value">43.75%</div>
+          <div class="muted-helper">Evaluated cases: 48<br>평가 완료: 48</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V2 Top 20 Success Rate</div>
+          <div class="ko-desc">v2 일별 Top 20 성공률</div>
+          <div class="kpi-value">44.19%</div>
+          <div class="muted-helper">Evaluated cases: 86<br>평가 완료: 86</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Coverage Warning</div>
+          <div class="ko-desc">시장 기준 커버리지 경고</div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">Benchmark coverage still low<br>시장 기준 커버리지 낮음</span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Latest V2 Monitor Update</div>
+          <div class="ko-desc">최근 v2 모니터 갱신</div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30 14:43:12<br>최근 갱신</span></div>
+        </div>
+      </div>
+      <div class="note section">
+        Benchmark coverage is still below 30%, so market-relative v2 conclusions remain provisional.<br>시장 기준 커버리지가 아직 30% 미만이므로 v2 시장 대비 판단은 임시 진단입니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
           <h2>Evaluation Integrity <span class="heading-ko">평가 무결성</span></h2>
           <p class="section-subtitle">This audit checks duplicate cumulative evaluation rows, v2-only performance, benchmark coverage, and learned-rule activation. 누적 평가 중복, v2 전용 성과, 시장 대비 평가 커버리지, 학습 규칙 활성화를 점검합니다.</p>
         </div>
@@ -570,30 +639,30 @@
         <div class="card kpi-card">
           <div class="label">Total Evaluation Rows</div>
           <div class="ko-desc">전체 평가 행 수</div>
-          <div class="kpi-value">15399</div>
+          <div class="kpi-value">15398</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Unique Evaluation Keys</div>
           <div class="ko-desc">고유 평가 키</div>
-          <div class="kpi-value">2169</div>
+          <div class="kpi-value">2168</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Duplicate Rows</div>
           <div class="ko-desc">중복 행 수</div>
           <div class="kpi-value">13230</div>
-          <div class="muted-helper">Duplicate rate: 85.91%<br>중복률: 85.91%</div>
+          <div class="muted-helper">Duplicate rate: 85.92%<br>중복률: 85.92%</div>
         </div>
         <div class="card kpi-card">
           <div class="label">V2 Evaluated Cases</div>
           <div class="ko-desc">v2 평가 완료</div>
           <div class="kpi-value">3064</div>
-          <div class="muted-helper">V2 success rate: 47.52%<br>v2 성공률: 47.52%</div>
+          <div class="muted-helper">V2 success rate: 47.16%<br>v2 성공률: 47.16%</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Coverage</div>
           <div class="ko-desc">시장 대비 평가 커버리지</div>
-          <div class="kpi-value">7.25%</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 대비 평가 가능</span></div>
+          <div class="kpi-value">0.0%</div>
+          <div class="kpi-value-small"><span class="status-pill badge-red">Stale<br>시장 대비 평가 가능</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Ranking Integrity</div>
@@ -619,12 +688,12 @@
         <div class="card kpi-card">
           <div class="label">Benchmark Status</div>
           <div class="ko-desc">시장 기준 상태</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 기준 상태</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-red">Stale<br>시장 기준 상태</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Latest Date</div>
           <div class="ko-desc">시장 지수 최신일</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30<br>시장 지수 최신일</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-06-26<br>시장 지수 최신일</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Price Signal Latest Date</div>
@@ -634,18 +703,18 @@
         <div class="card kpi-card">
           <div class="label">Benchmark Rows Available</div>
           <div class="ko-desc">시장 지수 행 수</div>
-          <div class="kpi-value">84</div>
+          <div class="kpi-value">80</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark-Adjusted Evaluated Cases</div>
           <div class="ko-desc">시장 대비 평가 완료</div>
-          <div class="kpi-value">1116</div>
+          <div class="kpi-value">0</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Coverage Rate</div>
           <div class="ko-desc">시장 대비 커버리지</div>
-          <div class="kpi-value">7.25%</div>
-          <div class="muted-helper">Benchmark-adjusted success rate: 48.39%<br>시장 대비 성공률: 48.39%</div>
+          <div class="kpi-value">0.0%</div>
+          <div class="muted-helper">Benchmark-adjusted success rate: Insufficient data / 데이터 부족<br>시장 대비 성공률: Insufficient data / 데이터 부족</div>
         </div>
       </div>
     </section>
@@ -691,8 +760,42 @@
         <div class="card kpi-card">
           <div class="label">Latest Rule Update</div>
           <div class="ko-desc">최근 룰 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30 04:10:18<br>최근 룰 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30 14:42:06<br>최근 룰 갱신</span></div>
         </div>
+      </div>
+      <div class="note section">
+        Suspicious rules are diagnostic only and are not applied to scoring.<br>
+        의심 룰은 진단용이며 점수 산식에 자동 반영하지 않습니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Suspicious Learned Rules <span class="heading-ko">의심 학습 룰</span></h2>
+          <p class="section-subtitle">These flags catch risky-looking learned rules before anyone treats them as score logic. 위험해 보이는 학습 룰을 점수 산식으로 오해하지 않도록 따로 표시합니다.</p>
+        </div>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Suspicious Rule Count</div>
+          <div class="ko-desc">의심 룰 수</div>
+          <div class="kpi-value">10</div>
+        </div>
+        <div class="card">
+          <div class="label">Top Suspicious Rule</div>
+          <div class="ko-desc">대표 의심 룰</div>
+          <div class="kpi-value-small"><span class="status-pill badge-red">news_risk_penalty=high<br>대표 의심 룰</span></div>
+        </div>
+        <div class="card">
+          <div class="label">Suspicious Reason</div>
+          <div class="ko-desc">의심 사유</div>
+          <div class="muted-helper">large_lift_with_under_100_cases; only_one_or_two_signal_dates</div>
+        </div>
+      </div>
+      <div class="note section">
+        Suspicious rules are diagnostic only and are not applied to scoring.<br>
+        의심 룰은 진단용이며 점수 산식에 자동 반영하지 않습니다.
       </div>
     </section>
 
@@ -957,7 +1060,7 @@
       <div class="section-heading">
         <div>
           <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-07-30 04:10:19. Latest ML dataset rows: 16. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
+          <p class="section-subtitle">Latest generated at 2026-07-30 14:43:31. Latest ML dataset rows: 16. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">
