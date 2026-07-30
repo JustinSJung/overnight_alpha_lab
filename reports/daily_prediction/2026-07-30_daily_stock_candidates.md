@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-30
 
-Generated at: 2026-07-30 01:54:18
+Generated at: 2026-07-30 02:43:28
 
 ML dataset: `data/processed/ml_dataset_20260730.csv`
 
@@ -43,11 +43,11 @@ The recommender also applies event-type performance adjustments based on histori
 | earnings_guidance | 2 | 0 | N/A | Not available | 0.00 |
 | investment_decision | 65 | 0 | N/A | Not available | 0.00 |
 | lawsuit | 56 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 164 | 0 | N/A | Not available | 0.00 |
-| merger | 37 | 0 | N/A | Not available | 0.00 |
-| paid_in_capital_increase | 94 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 165 | 0 | N/A | Not available | 0.00 |
+| merger | 41 | 0 | N/A | Not available | 0.00 |
+| paid_in_capital_increase | 95 | 0 | N/A | Not available | 0.00 |
 | spin_off | 5 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 120 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 116 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -61,9 +61,9 @@ The recommender also reads past error notes and applies event-type level confide
 | earnings_guidance | 2 | 0 | 0 | 2 | 0.00 |
 | investment_decision | 65 | 0 | 0 | 65 | 0.00 |
 | lawsuit | 56 | 0 | 0 | 56 | 0.00 |
-| major_shareholder_change | 164 | 0 | 0 | 164 | 0.00 |
-| merger | 37 | 0 | 0 | 37 | 0.00 |
-| paid_in_capital_increase | 94 | 0 | 0 | 94 | 0.00 |
+| major_shareholder_change | 165 | 0 | 0 | 165 | 0.00 |
+| merger | 41 | 0 | 0 | 41 | 0.00 |
+| paid_in_capital_increase | 95 | 0 | 0 | 95 | 0.00 |
 | spin_off | 5 | 0 | 0 | 5 | 0.00 |
 
 ## Positive Candidates
@@ -72,75 +72,21 @@ The recommender also reads past error notes and applies event-type level confide
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **130.00**
+- Base recommendation score: **135.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
+- Adjusted recommendation score: **135.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 지엔씨에너지, AI센터 비상발전기 359억원 수주 | 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승
 
-### 2. 지엔씨에너지 (119850)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **130.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
-
-### 3. 지엔씨에너지 (119850)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **130.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
-
-### 4. 지엔씨에너지 (119850)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **130.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
-
-### 5. 지엔씨에너지 (119850)
+### 2. 미래산업 (025560)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -156,101 +102,117 @@ The recommender also reads past error notes and applies event-type level confide
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
+- Related news examples: 전남광주특별시의회 안전건설위원회, '공공주택·첨단3지구' 현장 점검 | 與 "순방 성과, 입법·예산으로 뒷받침…체감 성과 만들 것" | 與 "당정간 유기적 협력 통해 자본시장 안정·투자자 보호에 총력"
 
-### 6. 지엔씨에너지 (119850)
+### 3. 기가비스 (420770)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **130.00**
+- Base recommendation score: **122.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
+- Adjusted recommendation score: **122.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 7월 29일 주식시장 주요공시 | [N2 모닝 경제 브리핑-7월 30일] 美 증시, 연준 매파 기조·중동 긴장에... | [오늘의 주요공시] SK하이닉스·GS건설·삼성물산 등
 
-### 7. 지엔씨에너지 (119850)
+### 4. 디와이피엔에프 (104460)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **130.00**
+- Base recommendation score: **122.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
+- Adjusted recommendation score: **122.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [데이터 뉴스룸] 기계·장비業 50곳 중 7개월 새 시총 100% 넘게 뛴 4곳은... | 기계주 하루 만에 와르르… 로봇주만 살아 남았다
+
+### 5. 베노티앤알 (206400)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **109.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **109.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 베노티앤알, 자인아이디와 블라인드 등 공급 계약 체결 | 레인보우로보틱스, 로봇 상장기업 브랜드평판 1위…두산·LIG D&A 順 | [데이터 뉴스룸] 건설業 50곳 중 60% 7개월 새 시총 하락에 울상…대우건...
 
-### 8. 지엔씨에너지 (119850)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **130.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
-
-### 9. 지엔씨에너지 (119850)
+### 6. 피앤에스로보틱스 (460940)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **130.00**
+- Base recommendation score: **104.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
+- Adjusted recommendation score: **104.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
-
-### 10. 지엔씨에너지 (119850)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **130.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **130.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 지엔씨에너지, 359억 규모 국가 AI컴퓨팅센터 비상발전기 수주…‘3대 메... | 지엔씨에너지 주가, 7월 30일 장중 29,900원 4.55% 상승 | [1% 초고수의 개장 선택] '삼성증권' 사고 '한화오션' 줄였다
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 피앤에스로보틱스, 멕시코 텔레톤 재단과 Walkbot-G 공급 계약 체결 | [52주] 신저가만 517개 ... 지수 하락 반전 | [빅웨이브로보틱스 IPO] 잇단 정정 속 고평가 논란...유진투자증권 주관...
 
 ## Volatile Watchlist
 
-No candidates in this section.
+### 1. 한중엔시에스 (107640)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **52.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **52.00**
+- Risk level: **MEDIUM**
+- Event type: `merger`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | 7월 29일 주식시장 주요공시 | 7월 30일 개장 전 주요 공시
+
+### 2. 일양약품 (007570)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **20.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **20.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서(최대주주변경시)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 일양약품 ‘하이네콜’, 상반기 처방액 59억원 | 일양약품 '하이네콜정', 베타네콜 제제 시장 1위 유지 | 부교감신경 조절로 방광 기능 개선…일양약품 하이네콜, 베타네콜 치료...
 
 ## General Watchlist
 
@@ -258,7 +220,113 @@ No candidates in this section.
 
 ## Risk / Avoid Review List
 
-No candidates in this section.
+### 1. 유니켐 (011330)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-68.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-68.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 유상증자또는주식관련사채등의발행결과(자율공시)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 1. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 유니켐, 최대주주 50억 유증 납입 완료…“매출 확대·신사업 투자 본격... | “이번엔 15억 횡령”… 유니켐 의혹 터진 KBS 드라마, 과거 잡음 재점화 | 유니켐 "안창현 횡령 혐의 법적 대응…드라마 제작 차질 없어"
+
+### 2. 그린리소스 (402490)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-66.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-66.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 유상증자결정(종속회사의주요경영사항)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 씨이케이, 105억원 규모 투자유치 | [속보] 그린리소스 종속회사 씨이케이, 100억원 규모 제3자배정 유상증... | 현대차 그린수소 생산·SMR 기술… 포스코 희토류, KAI 민항기 협력
+
+### 3. 그린리소스 (402490)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-66.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-66.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 유상증자결정(종속회사의주요경영사항)              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 씨이케이, 105억원 규모 투자유치 | [속보] 그린리소스 종속회사 씨이케이, 100억원 규모 제3자배정 유상증... | 현대차 그린수소 생산·SMR 기술… 포스코 희토류, KAI 민항기 협력
+
+### 4. 모다이노칩 (080420)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **volatile**
+- Base recommendation score: **41.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **41.00**
+- Risk level: **HIGH**
+- Event type: `merger`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 3. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼성전자 독주… 7월 스마트폰 관련 상장기업 브랜드평판 정상 | [데이터 뉴스룸] 유통·상사業 50곳 시총 100조 원대 진입…신세계·롯데... | [52주] 신저가만 181개... 코스닥 하락 지속
+
+### 5. 모다이노칩 (080420)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **volatile**
+- Base recommendation score: **41.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **41.00**
+- Risk level: **HIGH**
+- Event type: `merger`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 3. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼성전자 독주… 7월 스마트폰 관련 상장기업 브랜드평판 정상 | [데이터 뉴스룸] 유통·상사業 50곳 시총 100조 원대 진입…신세계·롯데... | [52주] 신저가만 181개... 코스닥 하락 지속
+
+### 6. 모다이노칩 (080420)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **volatile**
+- Base recommendation score: **41.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **41.00**
+- Risk level: **HIGH**
+- Event type: `merger`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 3. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼성전자 독주… 7월 스마트폰 관련 상장기업 브랜드평판 정상 | [데이터 뉴스룸] 유통·상사業 50곳 시총 100조 원대 진입…신세계·롯데... | [52주] 신저가만 181개... 코스닥 하락 지속
 
 ## Data Readiness
 

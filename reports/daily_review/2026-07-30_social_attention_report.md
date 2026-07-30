@@ -8,24 +8,27 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **8**
-- High attention rows: **0**
+- Total rows: **11**
+- High attention rows: **1**
 - Medium attention rows: **6**
-- Rumor-noise detected rows: **1**
-- Risk-noise detected rows: **3**
+- Rumor-noise detected rows: **0**
+- Risk-noise detected rows: **7**
 
 ## Top Social Attention Signals
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
+| 025560 | 미래산업 | supply_contract | 13.5 | 0 | 0 | high_attention | no_rumor_signal | no_risk_noise |
+| 460940 | 피앤에스로보틱스 | supply_contract | 9.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
 | 119850 | 지엔씨에너지 | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 119850 | 지엔씨에너지 | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 119850 | 지엔씨에너지 | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 119850 | 지엔씨에너지 | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 206400 | 베노티앤알 | supply_contract | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 011330 | 유니켐 | paid_in_capital_increase | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
 | 104460 | 디와이피엔에프 | supply_contract | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 440110 | 파두 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 011330 | 유니켐 | paid_in_capital_increase | 3.5 | 4 | 3 | low_attention | medium_rumor_noise | risk_noise_detected |
-| 402490 | 그린리소스 | paid_in_capital_increase | 3.5 | 0 | 6 | low_attention | no_rumor_signal | risk_noise_detected |
+| 420770 | 기가비스 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 107640 | 한중엔시에스 | merger | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 080420 | 모다이노칩 | merger | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 402490 | 그린리소스 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 007570 | 일양약품 | major_shareholder_change | 3.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
 
 ## Interpretation
 

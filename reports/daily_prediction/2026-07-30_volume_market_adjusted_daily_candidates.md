@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-07-30
 
-Generated at: 2026-07-30 01:54:15
+Generated at: 2026-07-30 02:43:26
 
 ML dataset source: `data/processed/ml_dataset_20260730.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260730.csv`
@@ -27,34 +27,23 @@ base_recommendation_score_v3
 
 ## Summary
 
-- Total rows: **68**
-- strong_volume_market_adjusted_candidate: **66**
-- risk_or_avoid_review: **2**
+- Total rows: **14**
+- strong_volume_market_adjusted_candidate: **7**
+- positive_candidate: **3**
+- risk_or_avoid_review: **3**
+- watchlist_candidate: **1**
 
 ## Strong Volume + Market-Adjusted Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
+| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 025560 | 미래산업 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 125.00 | 0.00 | 0.00 | 125.00 | N/A | N/A | N/A |
+| 1970-01-01 | 420770 | 기가비스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 120.00 | 0.00 | 0.00 | 120.00 | N/A | N/A | N/A |
+| 1970-01-01 | 104460 | 디와이피엔에프 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 120.00 | 0.00 | 0.00 | 120.00 | N/A | N/A | N/A |
+| 1970-01-01 | 206400 | 베노티앤알 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 110.00 | 0.00 | 0.00 | 110.00 | N/A | N/A | N/A |
+| 1970-01-01 | 460940 | 피앤에스로보틱스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 105.00 | 0.00 | 0.00 | 105.00 | N/A | N/A | N/A |
+| 1970-01-01 | 107640 | 한중엔시에스 | merger | volatile | pending | pending | insufficient_volume_baseline | 61.00 | 0.00 | 0.00 | 61.00 | N/A | N/A | N/A |
 
 ## Strong Market-Adjusted Candidates
 
@@ -66,11 +55,17 @@ No candidates in this section.
 
 ## Positive Candidates
 
-No candidates in this section.
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 080420 | 모다이노칩 | merger | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
+| 1970-01-01 | 080420 | 모다이노칩 | merger | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
+| 1970-01-01 | 080420 | 모다이노칩 | merger | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
 
 ## Watchlist Candidates
 
-No candidates in this section.
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 007570 | 일양약품 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
 
 ## Volatile Watchlist
 
@@ -84,8 +79,9 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 402490 | 그린리소스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
-| 1970-01-01 | 011330 | 유니켐 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -75.00 | 0.00 | 0.00 | -75.00 | N/A | N/A | N/A |
+| 1970-01-01 | 402490 | 그린리소스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
+| 1970-01-01 | 402490 | 그린리소스 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -55.00 | 0.00 | 0.00 | -55.00 | N/A | N/A | N/A |
+| 1970-01-01 | 011330 | 유니켐 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -60.00 | 0.00 | 0.00 | -60.00 | N/A | N/A | N/A |
 
 ## General Review
 
