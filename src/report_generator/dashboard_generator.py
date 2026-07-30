@@ -309,9 +309,9 @@ def integrity_status_class(value):
     text = str(value or "").lower()
     if "clean" in text or "available" in text:
         return "badge-green"
-    if "duplicate" in text or "missing" in text or "inverted" in text:
+    if "duplicate" in text or "missing" in text or "inverted" in text or "stale" in text:
         return "badge-red"
-    if "weak" in text:
+    if "weak" in text or "partial" in text:
         return "badge-orange"
     return "badge-gray"
 
@@ -344,6 +344,8 @@ def build_metrics():
     latest_volume_score = read_csv(latest_file(PROCESSED_DIR, "trading_volume_score_adjustments_*.csv"))
     latest_social_attention = read_csv(latest_file(PROCESSED_DIR, "social_attention_features_*.csv"))
     latest_learned_rules = read_csv(latest_file(PROCESSED_DIR, "learned_event_rules_*.csv"))
+    latest_price_candidate_rules_path = latest_file(PROCESSED_DIR, "price_candidate_learned_rules_*.csv")
+    latest_price_candidate_rules = read_csv(latest_price_candidate_rules_path)
     latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
     latest_diagnostics_path = latest_file(PROCESSED_DIR, "price_signal_diagnostics_summary_*.csv")
     latest_diagnostics = read_csv(latest_diagnostics_path)
@@ -499,9 +501,36 @@ def build_metrics():
     integrity_v2_evaluated_count = first_row_value(latest_integrity, "v2_evaluated_count", v2_evaluated_count)
     integrity_v2_success_rate = first_row_value(latest_integrity, "v2_success_rate", None)
     integrity_benchmark_coverage = first_row_value(latest_integrity, "benchmark_adjusted_coverage_rate", None)
+    integrity_benchmark_success_rate = first_row_value(latest_integrity, "benchmark_adjusted_success_rate", None)
+    integrity_benchmark_evaluated = first_row_value(latest_integrity, "benchmark_adjusted_evaluated", benchmark_evaluated_count)
+    integrity_benchmark_rows = first_row_value(latest_integrity, "benchmark_rows_available", None)
+    benchmark_latest_date = first_row_value(latest_integrity, "benchmark_latest_date", "")
+    price_signal_latest_date = first_row_value(latest_integrity, "price_signal_latest_date", "")
     integrity_duplicate_status = first_row_value(latest_integrity, "duplicate_status", "Insufficient data")
     integrity_benchmark_status = first_row_value(latest_integrity, "benchmark_status", "Insufficient data")
     integrity_ranking_status = first_row_value(latest_integrity, "ranking_status", ranking_diagnosis_en)
+
+    price_candidate_rule_count = len(latest_price_candidate_rules)
+    price_candidate_boost_rule_count = 0
+    price_candidate_penalize_rule_count = 0
+    price_candidate_watch_rule_count = 0
+    top_positive_price_rule = "N/A"
+    top_negative_price_rule = "N/A"
+    latest_price_rule_update_time = file_mtime(latest_price_candidate_rules_path)
+    if not latest_price_candidate_rules.empty and "recommended_action" in latest_price_candidate_rules.columns:
+        actions = latest_price_candidate_rules["recommended_action"].astype(str)
+        price_candidate_boost_rule_count = int((actions == "boost").sum())
+        price_candidate_penalize_rule_count = int((actions == "penalize").sum())
+        price_candidate_watch_rule_count = int((actions == "watch").sum())
+        if "lift_vs_baseline" in latest_price_candidate_rules.columns:
+            ranked_rules = latest_price_candidate_rules.copy()
+            ranked_rules["lift_vs_baseline"] = pd.to_numeric(ranked_rules["lift_vs_baseline"], errors="coerce")
+            ranked_rules = ranked_rules.dropna(subset=["lift_vs_baseline"])
+            if not ranked_rules.empty:
+                positive = ranked_rules.sort_values("lift_vs_baseline", ascending=False).iloc[0]
+                negative = ranked_rules.sort_values("lift_vs_baseline", ascending=True).iloc[0]
+                top_positive_price_rule = f"{positive.get('rule_group', '')}={positive.get('rule_value', '')} ({positive.get('lift_vs_baseline', '')}pp)"
+                top_negative_price_rule = f"{negative.get('rule_group', '')}={negative.get('rule_value', '')} ({negative.get('lift_vs_baseline', '')}pp)"
 
     google_status_en = None
     google_status_ko = "데이터 부족"
@@ -592,9 +621,21 @@ def build_metrics():
         "integrity_v2_evaluated_count": integrity_v2_evaluated_count,
         "integrity_v2_success_rate": integrity_v2_success_rate,
         "integrity_benchmark_coverage": integrity_benchmark_coverage,
+        "integrity_benchmark_success_rate": integrity_benchmark_success_rate,
+        "integrity_benchmark_evaluated": integrity_benchmark_evaluated,
+        "integrity_benchmark_rows": integrity_benchmark_rows,
+        "benchmark_latest_date": benchmark_latest_date,
+        "price_signal_latest_date": price_signal_latest_date,
         "integrity_duplicate_status": integrity_duplicate_status,
         "integrity_benchmark_status": integrity_benchmark_status,
         "integrity_ranking_status": integrity_ranking_status,
+        "price_candidate_rule_count": price_candidate_rule_count,
+        "price_candidate_boost_rule_count": price_candidate_boost_rule_count,
+        "price_candidate_penalize_rule_count": price_candidate_penalize_rule_count,
+        "price_candidate_watch_rule_count": price_candidate_watch_rule_count,
+        "top_positive_price_rule": top_positive_price_rule,
+        "top_negative_price_rule": top_negative_price_rule,
+        "latest_price_rule_update_time": latest_price_rule_update_time,
         "naver_status_en": naver_status_en,
         "naver_status_ko": naver_status_ko,
         "google_status_en": google_status_en,
@@ -1291,6 +1332,94 @@ def build_html(metrics, stock_data):
     <section class="section">
       <div class="section-heading">
         <div>
+          <h2>Benchmark Coverage <span class="heading-ko">시장 기준 커버리지</span></h2>
+          <p class="section-subtitle">Benchmark-adjusted evaluation compares price candidates against KOSPI/KOSDAQ, using KOSPI as a fallback when market classification is missing. 시장 기준 평가는 KOSPI/KOSDAQ 대비 초과수익을 계산하며, 분류가 없으면 KOSPI를 기본값으로 사용합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">Benchmark Status</div>
+          <div class="ko-desc">시장 기준 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["integrity_benchmark_status"], "시장 기준 상태", benchmark_integrity_class)}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Latest Date</div>
+          <div class="ko-desc">시장 지수 최신일</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["benchmark_latest_date"], "시장 지수 최신일", "badge-gray")}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Price Signal Latest Date</div>
+          <div class="ko-desc">가격 신호 최신일</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["price_signal_latest_date"], "가격 신호 최신일", "badge-gray")}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Rows Available</div>
+          <div class="ko-desc">시장 지수 행 수</div>
+          {render_kpi_value(metrics["integrity_benchmark_rows"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark-Adjusted Evaluated Cases</div>
+          <div class="ko-desc">시장 대비 평가 완료</div>
+          {render_kpi_value(metrics["integrity_benchmark_evaluated"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Coverage Rate</div>
+          <div class="ko-desc">시장 대비 커버리지</div>
+          {render_kpi_value(metrics["integrity_benchmark_coverage"], "%")}
+          <div class="muted-helper">Benchmark-adjusted success rate: {format_metric_value(metrics["integrity_benchmark_success_rate"], "%")}<br>시장 대비 성공률: {format_metric_value(metrics["integrity_benchmark_success_rate"], "%")}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Price Candidate Learned Rules <span class="heading-ko">가격 후보 학습 룰</span></h2>
+          <p class="section-subtitle">These rules summarize deduped KIS price-candidate outcomes by explainable score and penalty buckets. 점수 산식은 변경하지 않고, 설명 가능한 가격 후보 그룹별 성과만 진단합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">Rule Rows</div>
+          <div class="ko-desc">학습 룰 행 수</div>
+          {render_kpi_value(metrics["price_candidate_rule_count"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Active Boost Rules</div>
+          <div class="ko-desc">상향 후보 룰</div>
+          {render_kpi_value(metrics["price_candidate_boost_rule_count"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Active Penalize Rules</div>
+          <div class="ko-desc">하향 후보 룰</div>
+          {render_kpi_value(metrics["price_candidate_penalize_rule_count"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Watch Rules</div>
+          <div class="ko-desc">관찰 룰</div>
+          {render_kpi_value(metrics["price_candidate_watch_rule_count"])}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top Positive Rule</div>
+          <div class="ko-desc">상위 긍정 룰</div>
+          <div class="muted-helper">{metrics["top_positive_price_rule"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top Negative Rule</div>
+          <div class="ko-desc">상위 부정 룰</div>
+          <div class="muted-helper">{metrics["top_negative_price_rule"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Latest Rule Update</div>
+          <div class="ko-desc">최근 룰 갱신</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["latest_price_rule_update_time"], "최근 룰 갱신", "badge-gray")}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
           <h2>KIS Price-Based Learning <span class="heading-ko">KIS 가격 기반 학습</span></h2>
           <p class="section-subtitle">Primary learning metrics are cumulative across historical price candidate evaluations. KIS 가격 후보 평가 데이터를 누적 기준으로 집계합니다.</p>
         </div>
@@ -1493,7 +1622,7 @@ def build_html(metrics, stock_data):
       <div class="section-heading">
         <div>
           <h2>Supplementary Signals <span class="heading-ko">보조 신호</span></h2>
-          <p class="section-subtitle">DART, news, Snacks, social attention, and learned rules provide context around the primary price loop. DART, 뉴스, Snacks, 관심도 분석은 가격 기반 학습을 보조합니다.</p>
+          <p class="section-subtitle">DART, news, Snacks, social attention, and DART learned rules provide context around the primary price loop. DART, 뉴스, Snacks, 관심도 분석과 DART 학습 룰은 가격 기반 학습을 보조합니다.</p>
         </div>
       </div>
       <div class="signal-grid">
@@ -1533,13 +1662,13 @@ def build_html(metrics, stock_data):
           <div class="value">{metrics["market_rows"]}</div>
         </div>
         <div class="card">
-          <div class="label">Learned Rule Types</div>
-          <div class="ko-desc">학습 대상 이벤트 유형</div>
+          <div class="label">DART Learned Rule Types</div>
+          <div class="ko-desc">DART 학습 대상 이벤트 유형</div>
           <div class="value">{metrics["learned_rule_count"]}</div>
         </div>
         <div class="card">
-          <div class="label">Active Learned Rules</div>
-          <div class="ko-desc">활성화된 학습 룰</div>
+          <div class="label">Active DART Learned Rules</div>
+          <div class="ko-desc">활성 DART 학습 룰</div>
           <div class="value">{metrics["active_learned_rule_count"]}</div>
         </div>
       </div>

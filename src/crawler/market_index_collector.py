@@ -146,6 +146,46 @@ def collect_direct_index_data(days: int = 60) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
+def collect_direct_index_data_for(index_name: str, days: int = 60) -> pd.DataFrame:
+    index_code = INDEX_CODES.get(index_name)
+    if not index_code:
+        return pd.DataFrame()
+
+    start_date, end_date = get_date_range(days)
+
+    try:
+        df = stock.get_index_ohlcv_by_date(start_date, end_date, index_code)
+    except Exception as error:
+        print(f"Direct index collection failed for {index_name}: {error}")
+        return pd.DataFrame()
+
+    if df.empty:
+        print(f"No direct index data for {index_name}")
+        return pd.DataFrame()
+
+    df = normalize_ohlcv_columns(df)
+    df["index_name"] = index_name
+    df["index_code"] = index_code
+    df["source_type"] = "direct_index"
+    df["proxy_name"] = ""
+
+    return df[
+        [
+            "date",
+            "index_name",
+            "index_code",
+            "proxy_name",
+            "source_type",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "trading_value",
+        ]
+    ]
+
+
 def collect_proxy_index_data(days: int = 60) -> pd.DataFrame:
     """
     Collect ETF proxy data if direct index collection fails.
@@ -202,25 +242,83 @@ def collect_proxy_index_data(days: int = 60) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
+def collect_proxy_index_data_for(index_name: str, days: int = 60) -> pd.DataFrame:
+    info = MARKET_PROXY_TICKERS.get(index_name)
+    if not info:
+        return pd.DataFrame()
+
+    start_date, end_date = get_date_range(days)
+    ticker = info["ticker"]
+    proxy_name = info["name"]
+
+    try:
+        df = stock.get_market_ohlcv_by_date(start_date, end_date, ticker)
+    except Exception as error:
+        print(f"Proxy collection failed for {index_name} {ticker}: {error}")
+        return pd.DataFrame()
+
+    if df.empty:
+        print(f"No proxy data for {index_name}: {ticker}")
+        return pd.DataFrame()
+
+    df = normalize_ohlcv_columns(df)
+    df["index_name"] = index_name
+    df["index_code"] = ticker
+    df["source_type"] = "etf_proxy"
+    df["proxy_name"] = proxy_name
+
+    return df[
+        [
+            "date",
+            "index_name",
+            "index_code",
+            "proxy_name",
+            "source_type",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "trading_value",
+        ]
+    ]
+
+
 def collect_market_index_data(days: int = 60) -> pd.DataFrame:
     """
     Collect market index data with fallback.
     """
 
-    print("Trying direct KOSPI/KOSDAQ index collection...")
-    direct_df = collect_direct_index_data(days=days)
+    frames = []
 
-    if not direct_df.empty:
-        print("Direct index collection succeeded.")
-        return direct_df
+    for index_name in INDEX_CODES:
+        print(f"Trying direct {index_name} index collection...")
+        df = collect_direct_index_data_for(index_name, days=days)
 
-    print("Direct index collection failed. Trying ETF proxy fallback...")
-    proxy_df = collect_proxy_index_data(days=days)
+        if df.empty:
+            print(f"Direct {index_name} collection unavailable. Trying ETF proxy fallback...")
+            df = collect_proxy_index_data_for(index_name, days=days)
 
-    if not proxy_df.empty:
-        print("ETF proxy fallback succeeded.")
-        return proxy_df
+        if not df.empty:
+            frames.append(df)
 
+    if frames:
+        index_df = pd.concat(frames, ignore_index=True)
+        available = set(index_df["index_name"].astype(str))
+
+        # If KOSDAQ remains unavailable, use KOSPI as a conservative market fallback.
+        if "KOSPI" in available and "KOSDAQ" not in available:
+            kospi_fallback = index_df[index_df["index_name"].astype(str) == "KOSPI"].copy()
+            kospi_fallback["index_name"] = "KOSDAQ"
+            kospi_fallback["source_type"] = "kospi_fallback"
+            kospi_fallback["proxy_name"] = "KOSPI fallback for missing KOSDAQ"
+            frames.append(kospi_fallback)
+            index_df = pd.concat(frames, ignore_index=True)
+
+        print("Market index collection completed.")
+        return index_df
+
+    print("No direct or proxy market index data collected.")
     return pd.DataFrame()
 
 def get_latest_error_note_stock_codes():
@@ -262,6 +360,42 @@ def get_latest_error_note_stock_codes():
     except Exception as error:
         print(f"Failed to read latest error notes for fallback lookup: {error}")
         return []
+
+
+def get_latest_price_candidate_stock_codes():
+    processed_dir = "data/processed"
+
+    if not os.path.exists(processed_dir):
+        return []
+
+    files = [
+        file for file in os.listdir(processed_dir)
+        if file.startswith("price_based_candidates_") and file.endswith(".csv")
+    ]
+
+    if not files:
+        return []
+
+    files.sort(reverse=True)
+    latest_path = os.path.join(processed_dir, files[0])
+
+    try:
+        df = pd.read_csv(latest_path)
+    except Exception as error:
+        print(f"Failed to read latest price candidates for fallback lookup: {error}")
+        return []
+
+    if "stock_code" not in df.columns:
+        return []
+
+    codes = []
+    for value in df["stock_code"].dropna().unique():
+        try:
+            codes.append(str(int(float(value))).zfill(6))
+        except Exception:
+            codes.append(str(value).strip().zfill(6))
+
+    return sorted(set(codes))
 
 
 def estimate_market_group_from_code(stock_code: str) -> str:
@@ -353,7 +487,7 @@ def collect_stock_market_lookup() -> pd.DataFrame:
 
     print("pykrx ticker list lookup failed. Trying fallback from latest error notes...")
 
-    fallback_codes = get_latest_error_note_stock_codes()
+    fallback_codes = sorted(set(get_latest_price_candidate_stock_codes() + get_latest_error_note_stock_codes()))
 
     if not fallback_codes:
         return pd.DataFrame()

@@ -19,21 +19,21 @@ Recommended safe deduplication key: `candidate_id` when available; otherwise `st
 
 | stock_code | signal_date | prediction_date | evaluation_date | score_version | candidate_id | source_file | prediction_result |
 |---|---|---|---|---|---|---|---|
-| 024720 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | 2208642a6721d2cc | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 010960 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | 0911149d5a6a91d7 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 025980 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | 19abd2d60fbabea4 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 378800 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | 2120f3cba4e93f0a | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 047040 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | 2cf5a18a2298b9f2 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 024720 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | 2208642a6721d2cc | data/predictions/price_candidate_evaluation_20260712.csv | failure |
-| 010960 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | 0911149d5a6a91d7 | data/predictions/price_candidate_evaluation_20260712.csv | success |
-| 025980 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | 19abd2d60fbabea4 | data/predictions/price_candidate_evaluation_20260712.csv | failure |
-| 378800 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | 2120f3cba4e93f0a | data/predictions/price_candidate_evaluation_20260712.csv | failure |
-| 047040 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | 2cf5a18a2298b9f2 | data/predictions/price_candidate_evaluation_20260712.csv | failure |
-| 024720 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | 2208642a6721d2cc | data/predictions/price_candidate_evaluation_20260713.csv | failure |
-| 010960 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | 0911149d5a6a91d7 | data/predictions/price_candidate_evaluation_20260713.csv | success |
-| 025980 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | 19abd2d60fbabea4 | data/predictions/price_candidate_evaluation_20260713.csv | failure |
-| 378800 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | 2120f3cba4e93f0a | data/predictions/price_candidate_evaluation_20260713.csv | failure |
-| 047040 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | 2cf5a18a2298b9f2 | data/predictions/price_candidate_evaluation_20260713.csv | failure |
+| 189330 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | d13d794b4b0bb573 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 368970 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | 02a02e89ea75282a | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 008930 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | 445bd57d12ab54d2 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 223220 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | 8cb3e3d1fc871be8 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 065770 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | bba767a7e7a60e01 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 189330 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | d13d794b4b0bb573 | data/predictions/price_candidate_evaluation_20260712.csv | failure |
+| 368970 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | 02a02e89ea75282a | data/predictions/price_candidate_evaluation_20260712.csv | success |
+| 008930 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | 445bd57d12ab54d2 | data/predictions/price_candidate_evaluation_20260712.csv | success |
+| 223220 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | 8cb3e3d1fc871be8 | data/predictions/price_candidate_evaluation_20260712.csv | pending |
+| 065770 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | bba767a7e7a60e01 | data/predictions/price_candidate_evaluation_20260712.csv | pending |
+| 189330 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | d13d794b4b0bb573 | data/predictions/price_candidate_evaluation_20260713.csv | failure |
+| 368970 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | 02a02e89ea75282a | data/predictions/price_candidate_evaluation_20260713.csv | success |
+| 008930 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | 445bd57d12ab54d2 | data/predictions/price_candidate_evaluation_20260713.csv | success |
+| 223220 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | 8cb3e3d1fc871be8 | data/predictions/price_candidate_evaluation_20260713.csv | pending |
+| 065770 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | bba767a7e7a60e01 | data/predictions/price_candidate_evaluation_20260713.csv | pending |
 
 ## v1 vs v2 Performance
 
@@ -86,10 +86,14 @@ Score decile diagnosis: **Ranking flat/random**
 
 - Benchmark-adjusted evaluated cases: **0**
 - Benchmark-adjusted coverage: **0.0%**
-- Latest market index file: `data/raw/market_index_20260730.csv`
-- Latest market index date: **2026-07-30**
+- Benchmark-adjusted success rate: **None%**
+- Benchmark rows available: **80**
+- Benchmark status: **Stale**
+- Latest market index file: `data/raw/market_index_20260627.csv`
+- Latest market index date: **2026-06-26**
+- Latest price signal date: **2026-07-30**
 - Latest candidate signal date: **2026-07-30**
-- Finding: Benchmark columns exist but no benchmark-adjusted rows are evaluated.
+- Finding: Benchmark coverage is missing because latest market index data ends at 2026-06-26, before latest price signal date 2026-07-30.
 
 ## Learning Loop Audit
 
@@ -102,7 +106,7 @@ Score decile diagnosis: **Ranking flat/random**
 ## Dashboard Status Flags
 
 - Duplicate status: **Possible duplicates**
-- Benchmark status: **Benchmark missing**
+- Benchmark status: **Stale**
 - Ranking status: **Ranking improving**
 
 ## Next Diagnostic Recommendations

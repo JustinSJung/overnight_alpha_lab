@@ -99,12 +99,13 @@ fi
 
 run_required "2/24" "Collecting KIS-first daily price data..." python src/crawler/kis_price_collector.py || exit $?
 run_required "3/24" "Building daily price signals..." python src/features/daily_price_signals.py || exit $?
+run_optional "Collecting market index data for price benchmark coverage..." python src/crawler/market_index_collector.py
 run_required "4/24" "Generating price-based daily candidates..." python src/models/price_based_daily_recommender.py || exit $?
-run_required "5/24" "Evaluating price-based candidates..." python src/evaluator/price_candidate_evaluator.py || exit $?
+run_required "5/24" "Evaluating price-based candidates with benchmark fallback..." python src/evaluator/price_candidate_evaluator.py || exit $?
 
 if [ "$DART_DATA_AVAILABLE" = "1" ]; then
     run_required "6/24" "Running pending re-evaluator..." python src/evaluator/pending_re_evaluator.py || exit $?
-    run_required "7/24" "Collecting market index data..." python src/crawler/market_index_collector.py || exit $?
+    run_optional "Market index data already collected for price benchmark coverage." true
     run_required "8/24" "Building market-adjusted features..." python src/features/market_adjusted_features.py || exit $?
     run_required "9/24" "Generating market-adjusted evaluation..." python src/evaluator/market_adjusted_evaluator.py || exit $?
     run_required "10/24" "Generating market-adjusted score adjustments..." python src/models/market_adjusted_score_integrator.py || exit $?
@@ -131,8 +132,9 @@ run_optional "Generating social attention features..." python src/features/socia
 run_optional "Generating learned event rules..." python src/models/auto_rule_updater.py
 run_optional "Generating learned-rule daily candidate report..." python src/models/learned_rule_daily_recommender.py
 run_optional "Running supplementary news providers..." python src/news_providers/provider_runner.py
-run_optional "[23/24] Generating price signal diagnostics report..." python src/report_generator/price_signal_diagnostics_report.py
 run_optional "Generating evaluation integrity audit..." python src/report_generator/evaluation_integrity_audit.py
+run_optional "Generating price candidate learned rules..." python src/models/price_candidate_rule_learner.py
+run_optional "[23/24] Generating price signal diagnostics report..." python src/report_generator/price_signal_diagnostics_report.py
 run_optional "[24/24] Generating GitHub Pages dashboard..." python src/report_generator/dashboard_generator.py
 
 finish_success

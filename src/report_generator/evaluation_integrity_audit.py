@@ -265,28 +265,47 @@ def component_failure_audit(v2_df: pd.DataFrame) -> list[dict]:
     return rows
 
 
-def benchmark_audit(evaluations: pd.DataFrame) -> dict:
+def benchmark_audit(evaluations: pd.DataFrame, signals: pd.DataFrame) -> dict:
     benchmark_columns = ["benchmark_return_t1", "excess_return_t1", "success_excess_t1"]
     present = {column: column in evaluations.columns for column in benchmark_columns}
     total = len(evaluations)
     benchmark_available = 0
     excess_evaluated = 0
+    excess_success_count = 0
     if present.get("benchmark_return_t1"):
         benchmark_available = int(pd.to_numeric(evaluations["benchmark_return_t1"], errors="coerce").notna().sum())
     if present.get("success_excess_t1"):
         excess = evaluations["success_excess_t1"].astype(str).str.lower()
         excess_evaluated = int(excess.isin([RESULT_SUCCESS, RESULT_FAILURE]).sum())
+        excess_success_count = int((excess == RESULT_SUCCESS).sum())
 
     latest_market = latest_file(RAW_DIR, "market_index_*.csv")
     market_df = read_csv(latest_market)
     market_max_date = ""
+    benchmark_rows = len(market_df)
     if not market_df.empty and "date" in market_df.columns:
         parsed = pd.to_datetime(market_df["date"], errors="coerce")
         if parsed.notna().any():
             market_max_date = parsed.max().strftime("%Y-%m-%d")
 
-    candidate_dates = pd.to_datetime(evaluations.get("signal_date"), errors="coerce")
-    latest_candidate_date = candidate_dates.max().strftime("%Y-%m-%d") if candidate_dates.notna().any() else ""
+    signal_dates = pd.to_datetime(signals.get("signal_date"), errors="coerce") if not signals.empty else pd.Series(dtype="datetime64[ns]")
+    latest_signal_date = signal_dates.max().strftime("%Y-%m-%d") if signal_dates.notna().any() else ""
+    candidate_dates = pd.to_datetime(evaluations.get("signal_date"), errors="coerce") if not evaluations.empty else pd.Series(dtype="datetime64[ns]")
+    latest_candidate_date = candidate_dates.max().strftime("%Y-%m-%d") if candidate_dates.notna().any() else latest_signal_date
+
+    coverage_rate = safe_percentage(excess_evaluated, total)
+    success_rate = safe_percentage(excess_success_count, excess_evaluated)
+    if benchmark_rows == 0:
+        status = "Missing"
+    elif market_max_date and latest_signal_date and market_max_date < latest_signal_date:
+        status = "Stale"
+    elif excess_evaluated == 0:
+        status = "Missing"
+    elif coverage_rate is not None and coverage_rate < 90:
+        status = "Partial"
+    else:
+        status = "Available"
+
     if excess_evaluated == 0 and market_max_date and latest_candidate_date and market_max_date < latest_candidate_date:
         finding = (
             f"Benchmark coverage is missing because latest market index data ends at {market_max_date}, "
@@ -299,11 +318,16 @@ def benchmark_audit(evaluations: pd.DataFrame) -> dict:
 
     return {
         "benchmark_columns_present": all(present.values()),
+        "benchmark_rows_available": benchmark_rows,
         "benchmark_return_t1_available": benchmark_available,
         "benchmark_adjusted_evaluated": excess_evaluated,
-        "benchmark_adjusted_coverage_rate": safe_percentage(excess_evaluated, total),
+        "benchmark_adjusted_success_count": excess_success_count,
+        "benchmark_adjusted_success_rate": success_rate,
+        "benchmark_adjusted_coverage_rate": coverage_rate,
+        "benchmark_status": status,
         "latest_market_index_file": str(latest_market) if latest_market else "",
         "latest_market_index_date": market_max_date,
+        "latest_price_signal_date": latest_signal_date,
         "latest_candidate_signal_date": latest_candidate_date,
         "finding": finding,
     }
@@ -432,7 +456,7 @@ def build_audit() -> dict:
     v2_rank_rows = rank_bucket_summary(v2_eval)
     decile_rows, decile_diagnosis = decile_summary(v2_eval)
     component_rows = component_failure_audit(v2_eval)
-    benchmark = benchmark_audit(evaluations)
+    benchmark = benchmark_audit(evaluations, signals)
     learned = learned_rule_audit()
 
     top20_rate = next((row["success_rate"] for row in v2_rank_rows if row["bucket"] == "Top 20"), None)
@@ -446,7 +470,7 @@ def build_audit() -> dict:
     else:
         ranking_status = "Ranking weak"
 
-    benchmark_status = "Benchmark missing" if benchmark["benchmark_adjusted_evaluated"] == 0 else "Benchmark available"
+    benchmark_status = benchmark["benchmark_status"]
     duplicate_status = "Possible duplicates" if duplicate_rows > 0 else "Evaluation clean"
 
     return {
@@ -480,6 +504,10 @@ def build_audit() -> dict:
             "score_decile_diagnosis": decile_diagnosis,
             "benchmark_adjusted_evaluated": benchmark["benchmark_adjusted_evaluated"],
             "benchmark_adjusted_coverage_rate": benchmark["benchmark_adjusted_coverage_rate"],
+            "benchmark_adjusted_success_rate": benchmark["benchmark_adjusted_success_rate"],
+            "benchmark_rows_available": benchmark["benchmark_rows_available"],
+            "benchmark_latest_date": benchmark["latest_market_index_date"],
+            "price_signal_latest_date": benchmark["latest_price_signal_date"],
             "benchmark_status": benchmark_status,
             "duplicate_status": duplicate_status,
             "active_learned_rules": learned["active_learned_rules"],
@@ -592,8 +620,12 @@ def write_report(audit: dict) -> tuple[Path, Path]:
         "",
         f"- Benchmark-adjusted evaluated cases: **{summary['benchmark_adjusted_evaluated']}**",
         f"- Benchmark-adjusted coverage: **{summary['benchmark_adjusted_coverage_rate']}%**",
+        f"- Benchmark-adjusted success rate: **{summary['benchmark_adjusted_success_rate']}%**",
+        f"- Benchmark rows available: **{summary['benchmark_rows_available']}**",
+        f"- Benchmark status: **{summary['benchmark_status']}**",
         f"- Latest market index file: `{audit['benchmark']['latest_market_index_file']}`",
         f"- Latest market index date: **{audit['benchmark']['latest_market_index_date']}**",
+        f"- Latest price signal date: **{audit['benchmark']['latest_price_signal_date']}**",
         f"- Latest candidate signal date: **{audit['benchmark']['latest_candidate_signal_date']}**",
         f"- Finding: {summary['benchmark_finding']}",
         "",
@@ -643,6 +675,10 @@ def main():
     print(f"v2 Top 100 success rate: {summary['v2_top_100_success_rate']}%")
     print(f"ranking appears: {summary['ranking_status']}")
     print(f"benchmark-adjusted coverage: {summary['benchmark_adjusted_coverage_rate']}%")
+    print(f"benchmark-adjusted evaluated cases: {summary['benchmark_adjusted_evaluated']}")
+    print(f"benchmark-adjusted success rate: {summary['benchmark_adjusted_success_rate']}%")
+    print(f"benchmark latest date: {summary['benchmark_latest_date']}")
+    print(f"price signal latest date: {summary['price_signal_latest_date']}")
     print(f"learned rules finding: {summary['learned_rule_finding']}")
 
 

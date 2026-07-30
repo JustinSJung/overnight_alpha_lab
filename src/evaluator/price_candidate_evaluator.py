@@ -145,7 +145,7 @@ def load_market_index() -> pd.DataFrame:
 
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
     df["close"] = pd.to_numeric(df["close"], errors="coerce")
-    return df.dropna(subset=["date", "close"]).sort_values("date")
+    return df.dropna(subset=["date", "close"]).sort_values(["index_name", "date"] if "index_name" in df.columns else ["date"])
 
 
 def horizon_row(future_rows: pd.DataFrame, horizon: int):
@@ -191,9 +191,13 @@ def evaluate_benchmark(
     market_group: str,
     candidate_date: pd.Timestamp,
 ):
+    requested_group = str(market_group or "").strip().upper()
+    if requested_group in {"", "UNKNOWN", "NAN", "NONE"}:
+        requested_group = "KOSPI"
+
     result = {
         "benchmark_source": "",
-        "benchmark_market_group": market_group or "",
+        "benchmark_market_group": requested_group,
         "benchmark_return_t1": pd.NA,
         "benchmark_return_t3": pd.NA,
         "benchmark_return_t5": pd.NA,
@@ -204,13 +208,19 @@ def evaluate_benchmark(
 
     benchmark_df = market_index_df.copy()
 
-    if market_group and "index_name" in benchmark_df.columns:
-        matched = benchmark_df[benchmark_df["index_name"].astype(str) == str(market_group)]
+    if "index_name" in benchmark_df.columns:
+        matched = benchmark_df[benchmark_df["index_name"].astype(str).str.upper() == requested_group]
         if not matched.empty:
             benchmark_df = matched
             result["benchmark_source"] = str(matched.iloc[-1].get("source_type", "market_index"))
         else:
-            result["benchmark_source"] = "generic_market_index"
+            fallback = benchmark_df[benchmark_df["index_name"].astype(str).str.upper() == "KOSPI"]
+            if not fallback.empty:
+                benchmark_df = fallback
+                result["benchmark_market_group"] = "KOSPI"
+                result["benchmark_source"] = "kospi_fallback"
+            else:
+                result["benchmark_source"] = "generic_market_index"
     else:
         result["benchmark_source"] = "generic_market_index"
 
@@ -419,6 +429,12 @@ def print_summary(df: pd.DataFrame) -> None:
     excess_t1_counts = result_counts(df["success_excess_t1"].astype(str))
     close_t1_evaluated = close_t1_counts[RESULT_SUCCESS] + close_t1_counts[RESULT_FAILURE]
     excess_t1_evaluated = excess_t1_counts[RESULT_SUCCESS] + excess_t1_counts[RESULT_FAILURE]
+    benchmark_t1_available = int(pd.to_numeric(df.get("benchmark_return_t1", pd.Series(dtype=float)), errors="coerce").notna().sum())
+    benchmark_latest_date = ""
+    if "next_trade_date" in df.columns:
+        parsed = pd.to_datetime(df["next_trade_date"], errors="coerce")
+        if parsed.notna().any():
+            benchmark_latest_date = parsed.max().strftime("%Y-%m-%d")
 
     print("Price candidate evaluation summary:")
     print(f"- candidates loaded: {len(df)}")
@@ -428,6 +444,9 @@ def print_summary(df: pd.DataFrame) -> None:
     print(f"- pending count: {close_t1_counts[RESULT_PENDING]}")
     print(f"- benchmark-adjusted evaluated count: {excess_t1_evaluated}")
     print(f"- benchmark-adjusted success count: {excess_t1_counts[RESULT_SUCCESS]}")
+    print(f"- benchmark_return_t1 available rows: {benchmark_t1_available}")
+    print(f"- benchmark coverage rate: {safe_percentage(excess_t1_evaluated, len(df)):.2f}%")
+    print(f"- latest evaluated next trade date: {benchmark_latest_date or 'N/A'}")
     print(f"- skipped count: {close_t1_counts[RESULT_SKIPPED]}")
 
 

@@ -593,7 +593,7 @@
           <div class="label">Benchmark Coverage</div>
           <div class="ko-desc">시장 대비 평가 커버리지</div>
           <div class="kpi-value">0.0%</div>
-          <div class="kpi-value-small"><span class="status-pill badge-red">Benchmark missing<br>시장 대비 평가 누락</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-red">Stale<br>시장 대비 평가 가능</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Ranking Integrity</div>
@@ -604,6 +604,94 @@
           <div class="label">Active Learned Rules</div>
           <div class="ko-desc">활성 학습 규칙</div>
           <div class="kpi-value">0</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Benchmark Coverage <span class="heading-ko">시장 기준 커버리지</span></h2>
+          <p class="section-subtitle">Benchmark-adjusted evaluation compares price candidates against KOSPI/KOSDAQ, using KOSPI as a fallback when market classification is missing. 시장 기준 평가는 KOSPI/KOSDAQ 대비 초과수익을 계산하며, 분류가 없으면 KOSPI를 기본값으로 사용합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">Benchmark Status</div>
+          <div class="ko-desc">시장 기준 상태</div>
+          <div class="kpi-value-small"><span class="status-pill badge-red">Stale<br>시장 기준 상태</span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Latest Date</div>
+          <div class="ko-desc">시장 지수 최신일</div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-06-26<br>시장 지수 최신일</span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Price Signal Latest Date</div>
+          <div class="ko-desc">가격 신호 최신일</div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30<br>가격 신호 최신일</span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Rows Available</div>
+          <div class="ko-desc">시장 지수 행 수</div>
+          <div class="kpi-value">80</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark-Adjusted Evaluated Cases</div>
+          <div class="ko-desc">시장 대비 평가 완료</div>
+          <div class="kpi-value">0</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Benchmark Coverage Rate</div>
+          <div class="ko-desc">시장 대비 커버리지</div>
+          <div class="kpi-value">0.0%</div>
+          <div class="muted-helper">Benchmark-adjusted success rate: Insufficient data / 데이터 부족<br>시장 대비 성공률: Insufficient data / 데이터 부족</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Price Candidate Learned Rules <span class="heading-ko">가격 후보 학습 룰</span></h2>
+          <p class="section-subtitle">These rules summarize deduped KIS price-candidate outcomes by explainable score and penalty buckets. 점수 산식은 변경하지 않고, 설명 가능한 가격 후보 그룹별 성과만 진단합니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">Rule Rows</div>
+          <div class="ko-desc">학습 룰 행 수</div>
+          <div class="kpi-value">43</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Active Boost Rules</div>
+          <div class="ko-desc">상향 후보 룰</div>
+          <div class="kpi-value">7</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Active Penalize Rules</div>
+          <div class="ko-desc">하향 후보 룰</div>
+          <div class="kpi-value">6</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Watch Rules</div>
+          <div class="ko-desc">관찰 룰</div>
+          <div class="kpi-value">11</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top Positive Rule</div>
+          <div class="ko-desc">상위 긍정 룰</div>
+          <div class="muted-helper">news_risk_penalty=high (48.3pp)</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Top Negative Rule</div>
+          <div class="ko-desc">상위 부정 룰</div>
+          <div class="muted-helper">candidate_rank=rank_11_20 (-51.7pp)</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Latest Rule Update</div>
+          <div class="ko-desc">최근 룰 갱신</div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30 12:37:51<br>최근 룰 갱신</span></div>
         </div>
       </div>
     </section>
@@ -818,7 +906,7 @@
       <div class="section-heading">
         <div>
           <h2>Supplementary Signals <span class="heading-ko">보조 신호</span></h2>
-          <p class="section-subtitle">DART, news, Snacks, social attention, and learned rules provide context around the primary price loop. DART, 뉴스, Snacks, 관심도 분석은 가격 기반 학습을 보조합니다.</p>
+          <p class="section-subtitle">DART, news, Snacks, social attention, and DART learned rules provide context around the primary price loop. DART, 뉴스, Snacks, 관심도 분석과 DART 학습 룰은 가격 기반 학습을 보조합니다.</p>
         </div>
       </div>
       <div class="signal-grid">
@@ -858,13 +946,13 @@
           <div class="value">14</div>
         </div>
         <div class="card">
-          <div class="label">Learned Rule Types</div>
-          <div class="ko-desc">학습 대상 이벤트 유형</div>
+          <div class="label">DART Learned Rule Types</div>
+          <div class="ko-desc">DART 학습 대상 이벤트 유형</div>
           <div class="value">11</div>
         </div>
         <div class="card">
-          <div class="label">Active Learned Rules</div>
-          <div class="ko-desc">활성화된 학습 룰</div>
+          <div class="label">Active DART Learned Rules</div>
+          <div class="ko-desc">활성 DART 학습 룰</div>
           <div class="value">0</div>
         </div>
       </div>
@@ -874,7 +962,7 @@
       <div class="section-heading">
         <div>
           <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-07-30 02:43:42. Latest ML dataset rows: 14. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
+          <p class="section-subtitle">Latest generated at 2026-07-30 12:38:12. Latest ML dataset rows: 14. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">
