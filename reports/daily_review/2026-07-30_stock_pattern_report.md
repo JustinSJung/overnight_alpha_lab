@@ -1,6 +1,6 @@
 # Stock-Specific Historical Pattern Report - 2026-07-30
 
-Generated at: 2026-07-30 02:43:29
+Generated at: 2026-07-30 04:10:06
 
 ## Purpose
 
@@ -12,10 +12,10 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **662**
-- Number of stocks in history: **247**
+- Total error-note rows: **664**
+- Number of stocks in history: **248**
 - Stocks with evaluated reactions: **0**
-- Stocks with pending-only reactions: **247**
+- Stocks with pending-only reactions: **248**
 
 Most stock-level rows are still pending. Stock-level success rates will become meaningful after next-day price reactions are evaluated.
 
@@ -78,6 +78,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 080420 | 모다이노칩 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | merger | mostly_pending |
 | 084870 | 티비에이치글로벌 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 087260 | 모바일어플라이언스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 107640 | 한중엔시에스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | merger | mostly_pending |
 | 179530 | 애드바이오텍 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 217730 | 강스템바이오텍 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | investment_decision | mostly_pending |
 | 290720 | 푸드나무 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
@@ -108,7 +109,6 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 096760 | JW홀딩스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 114190 | 강원에너지 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 115530 | 씨엔플러스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
-| 119850 | 지엔씨에너지 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 130660 | 한전산업 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 142760 | 모아라이프플러스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 200230 | 텔콘RF제약 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
@@ -213,10 +213,10 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 104460 | 디와이피엔에프 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 105550 | 엣지파운드리 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 106240 | 파인테크닉스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
-| 107640 | 한중엔시에스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
 | 114450 | 그린생명과학 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 115160 | 휴맥스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
 | 115480 | 씨유메디칼 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 119850 | 지엔씨에너지 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 121440 | 골프존홀딩스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
 | 123690 | 한국화장품 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
 | 127120 | 제이에스링크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
@@ -263,6 +263,7 @@ Most stock-level rows are still pending. Stock-level success rates will become m
 | 419540 | 비스토스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
 | 420770 | 기가비스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 431190 | 케이쓰리아이 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 445090 | 에이직랜드 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 452260 | 한화갤러리아 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
 | 460940 | 피앤에스로보틱스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
 | 463480 | 모티브링크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |

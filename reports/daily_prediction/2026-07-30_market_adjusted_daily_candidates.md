@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-07-30
 
-Generated at: 2026-07-30 02:43:25
+Generated at: 2026-07-30 04:10:02
 
 ML dataset source: `data/processed/ml_dataset_20260730.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260730.csv`
@@ -25,8 +25,8 @@ base_recommendation_score_v2
 
 ## Summary
 
-- Total rows: **14**
-- positive_candidate: **10**
+- Total rows: **16**
+- positive_candidate: **12**
 - risk_or_avoid_review: **3**
 - watchlist_candidate: **1**
 
@@ -38,12 +38,14 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 119850 | 지엔씨에너지 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
-| 1970-01-01 | 025560 | 미래산업 | supply_contract | positive | pending | pending | 125.00 | 0.00 | 125.00 | N/A |
+| 1970-01-01 | 445090 | 에이직랜드 | supply_contract | positive | pending | pending | 130.00 | 0.00 | 130.00 | N/A |
 | 1970-01-01 | 420770 | 기가비스 | supply_contract | positive | pending | pending | 120.00 | 0.00 | 120.00 | N/A |
 | 1970-01-01 | 104460 | 디와이피엔에프 | supply_contract | positive | pending | pending | 120.00 | 0.00 | 120.00 | N/A |
 | 1970-01-01 | 206400 | 베노티앤알 | supply_contract | positive | pending | pending | 110.00 | 0.00 | 110.00 | N/A |
+| 1970-01-01 | 025560 | 미래산업 | supply_contract | positive | pending | pending | 110.00 | 0.00 | 110.00 | N/A |
 | 1970-01-01 | 460940 | 피앤에스로보틱스 | supply_contract | positive | pending | pending | 105.00 | 0.00 | 105.00 | N/A |
+| 1970-01-01 | 107640 | 한중엔시에스 | merger | volatile | pending | pending | 61.00 | 0.00 | 61.00 | N/A |
+| 1970-01-01 | 107640 | 한중엔시에스 | merger | volatile | pending | pending | 61.00 | 0.00 | 61.00 | N/A |
 | 1970-01-01 | 107640 | 한중엔시에스 | merger | volatile | pending | pending | 61.00 | 0.00 | 61.00 | N/A |
 | 1970-01-01 | 080420 | 모다이노칩 | merger | volatile | pending | pending | 56.00 | 0.00 | 56.00 | N/A |
 | 1970-01-01 | 080420 | 모다이노칩 | merger | volatile | pending | pending | 56.00 | 0.00 | 56.00 | N/A |
@@ -63,9 +65,9 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 402490 | 그린리소스 | paid_in_capital_increase | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 402490 | 그린리소스 | paid_in_capital_increase | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
-| 1970-01-01 | 011330 | 유니켐 | paid_in_capital_increase | negative | pending | pending | -60.00 | 0.00 | -60.00 | N/A |
+| 1970-01-01 | 402490 | 그린리소스 | paid_in_capital_increase | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 402490 | 그린리소스 | paid_in_capital_increase | negative | pending | pending | -50.00 | 0.00 | -50.00 | N/A |
+| 1970-01-01 | 011330 | 유니켐 | paid_in_capital_increase | negative | pending | pending | -55.00 | 0.00 | -55.00 | N/A |
 
 ## General Review
 

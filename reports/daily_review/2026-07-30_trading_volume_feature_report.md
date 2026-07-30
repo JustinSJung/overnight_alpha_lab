@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-30
 
-Generated at: 2026-07-30 02:43:25
+Generated at: 2026-07-30 04:10:03
 
 Source ML dataset: `data/processed/ml_dataset_20260730.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **22**
-- Rows with price file found: **22**
+- Total rows: **30**
+- Rows with price file found: **30**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **22**
+- insufficient_volume_baseline: **30**
 
 ## Interpretation
 
@@ -35,6 +35,15 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
+| 20260730 | 445090 | 에이직랜드 | supply_contract | positive | N/A | 114,566 | N/A | N/A | 67,513 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
+| 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
 | 20260730 | 107640 | 한중엔시에스 | merger | volatile | N/A | 83,123 | N/A | N/A | 69,184 | N/A |
 | 20260730 | 007570 | 일양약품 | major_shareholder_change | volatile | N/A | 46,982 | N/A | N/A | 75,353 | N/A |
 | 20260730 | 206400 | 베노티앤알 | supply_contract | positive | N/A | 41,300 | N/A | N/A | 28,775 | N/A |
@@ -56,7 +65,6 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 20260730 | 402490 | 그린리소스 | paid_in_capital_increase | negative | N/A | 111,632 | N/A | N/A | 159,061 | N/A |
 | 20260730 | 402490 | 그린리소스 | paid_in_capital_increase | negative | N/A | 111,632 | N/A | N/A | 159,061 | N/A |
 | 20260730 | 104460 | 디와이피엔에프 | supply_contract | positive | N/A | 7,155 | N/A | N/A | 15,467 | N/A |
-| 20260730 | 119850 | 지엔씨에너지 | supply_contract | positive | N/A | 190,803 | N/A | N/A | 813,362 | N/A |
 
 ## Next Step
 

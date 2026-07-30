@@ -1,6 +1,6 @@
 # Automation Status Report - 2026-07-30
 
-Generated at: 2026-07-30 02:43:27
+Generated at: 2026-07-30 04:10:04
 
 ## Execution Summary
 
@@ -24,14 +24,14 @@ Generated at: 2026-07-30 02:43:27
 | Selected key events | 11 |
 | Scored key events | 11 |
 | News feature rows | 11 |
-| Error note rows | 14 |
-| ML dataset rows | 14 |
+| Error note rows | 16 |
+| ML dataset rows | 16 |
 
 ## Prediction Result Summary
 
 | Result | Rows |
 |---|---:|
-| Pending | 14 |
+| Pending | 16 |
 | Success | 0 |
 | Failure | 0 |
 | Trainable rows | 0 |

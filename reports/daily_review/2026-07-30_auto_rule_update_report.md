@@ -26,7 +26,7 @@ The original rule-based event scoring file is not overwritten. The learned rules
 | investment_decision | 65 | 0 | 0 | 0 | 65 | 0.00% | 0.0 | hold_insufficient_data |
 | lawsuit | 56 | 0 | 0 | 0 | 56 | 0.00% | 0.0 | hold_insufficient_data |
 | major_shareholder_change | 165 | 0 | 0 | 0 | 165 | 0.00% | 0.0 | hold_insufficient_data |
-| merger | 41 | 0 | 0 | 0 | 41 | 0.00% | 0.0 | hold_insufficient_data |
+| merger | 43 | 0 | 0 | 0 | 43 | 0.00% | 0.0 | hold_insufficient_data |
 | paid_in_capital_increase | 95 | 0 | 0 | 0 | 95 | 0.00% | 0.0 | hold_insufficient_data |
 | spin_off | 5 | 0 | 0 | 0 | 5 | 0.00% | 0.0 | hold_insufficient_data |
 | supply_contract | 116 | 0 | 0 | 0 | 116 | 0.00% | 0.0 | hold_insufficient_data |

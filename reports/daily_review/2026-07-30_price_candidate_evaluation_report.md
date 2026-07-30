@@ -5,10 +5,10 @@ Source CSV: `data/predictions/price_candidate_evaluation_20260730.csv`
 ## Summary
 
 - Absolute close T1 evaluated cases: 1116
-- Absolute close T1 success rate: 51.70%
-- Benchmark-adjusted T1 evaluated cases: 0
-- Benchmark-adjusted T1 success rate: 0.00%
-- Pending cases: 974
+- Absolute close T1 success rate: 52.69%
+- Benchmark-adjusted T1 evaluated cases: 1116
+- Benchmark-adjusted T1 success rate: 48.39%
+- Pending cases: 975
 - Skipped cases: 0
 - T3 return available: 1433
 - T5 return available: 962
@@ -19,18 +19,18 @@ Small samples should be interpreted conservatively; dashboard reliability uses W
 
 | Stock | Candidate Date | T1 Return | Excess T1 |
 |---|---|---:|---:|
-| 465770 | 2026-07-16 | 29.98% | 0.00% |
-| 189330 | 2026-07-07 | 29.97% | 0.00% |
-| 465770 | 2026-07-13 | 29.92% | 0.00% |
-| 012160 | 2026-07-13 | 12.10% | 0.00% |
-| 000760 | 2026-07-09 | 10.63% | 0.00% |
+| 465770 | 2026-07-16 | 29.98% | 37.12% |
+| 189330 | 2026-07-07 | 29.97% | 36.64% |
+| 465770 | 2026-07-13 | 29.92% | 32.75% |
+| 012160 | 2026-07-13 | 12.10% | 11.27% |
+| 000760 | 2026-07-09 | 10.63% | 8.16% |
 
 ## Top Failure Examples
 
 | Stock | Candidate Date | T1 Return | Excess T1 |
 |---|---|---:|---:|
-| 189330 | 2026-07-10 | -18.56% | 0.00% |
-| 036630 | 2026-07-10 | -17.25% | 0.00% |
-| 017670 | 2026-07-27 | -16.04% | 0.00% |
-| 263800 | 2026-07-10 | -16.03% | 0.00% |
-| 465770 | 2026-07-15 | -14.84% | 0.00% |
+| 189330 | 2026-07-10 | -18.56% | -14.26% |
+| 036630 | 2026-07-10 | -17.25% | -7.48% |
+| 017670 | 2026-07-27 | -16.04% | -4.85% |
+| 263800 | 2026-07-10 | -16.03% | -11.73% |
+| 465770 | 2026-07-15 | -14.84% | -9.51% |

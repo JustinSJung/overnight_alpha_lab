@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-30
 
-Generated at: 2026-07-30 02:43:24
+Generated at: 2026-07-30 04:10:02
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260730.csv`
 
@@ -28,22 +28,25 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **14**
+- Total rows: **16**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **14**
+- neutral_adjustment: **16**
 
 ## Market-Adjusted Result Counts
 
-- pending: **14**
+- pending: **16**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
+| 1970-01-01 | 445090 | 에이직랜드 | positive | pending | 0 | N/A |
+| 1970-01-01 | 107640 | 한중엔시에스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 107640 | 한중엔시에스 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 107640 | 한중엔시에스 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 007570 | 일양약품 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 206400 | 베노티앤알 | positive | pending | 0 | N/A |
@@ -57,7 +60,6 @@ The goal is to reward predictions that outperform the market and penalize result
 | 1970-01-01 | 402490 | 그린리소스 | negative | pending | 0 | N/A |
 | 1970-01-01 | 402490 | 그린리소스 | negative | pending | 0 | N/A |
 | 1970-01-01 | 104460 | 디와이피엔에프 | positive | pending | 0 | N/A |
-| 1970-01-01 | 119850 | 지엔씨에너지 | positive | pending | 0 | N/A |
 
 ## Next Step
 

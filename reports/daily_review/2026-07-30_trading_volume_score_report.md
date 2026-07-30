@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-30
 
-Generated at: 2026-07-30 02:43:25
+Generated at: 2026-07-30 04:10:03
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260730.csv`
 
@@ -23,22 +23,31 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **22**
+- Total rows: **30**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **22**
+- neutral_volume_adjustment: **30**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **22**
+- insufficient_volume_baseline: **30**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | volume_reaction_label | event_volume_ratio_20d | next_volume_ratio_20d | trading_volume_score_adjustment | trading_volume_adjustment_label |
 |---|---|---|---|---|---|---|---|---|
+| 20260730 | 445090 | 에이직랜드 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
+| 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260730 | 107640 | 한중엔시에스 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260730 | 007570 | 일양약품 | volatile | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260730 | 206400 | 베노티앤알 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
@@ -60,7 +69,6 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 20260730 | 402490 | 그린리소스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260730 | 402490 | 그린리소스 | negative | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 | 20260730 | 104460 | 디와이피엔에프 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
-| 20260730 | 119850 | 지엔씨에너지 | positive | insufficient_volume_baseline | N/A | N/A | 0.00 | neutral_volume_adjustment |
 
 ## Next Step
 
