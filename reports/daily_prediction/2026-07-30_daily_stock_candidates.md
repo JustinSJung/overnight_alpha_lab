@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-30
 
-Generated at: 2026-07-30 04:10:05
+Generated at: 2026-07-30 05:53:49
 
 ML dataset: `data/processed/ml_dataset_20260730.csv`
 
@@ -38,16 +38,16 @@ The recommender also applies event-type performance adjustments based on histori
 | Event Type | Total | Evaluated | Success Rate | Avg Next Close | Total Adj |
 |---|---:|---:|---:|---:|---:|
 | bonus_issue | 2 | 0 | N/A | Not available | 0.00 |
-| convertible_bond | 90 | 0 | N/A | Not available | 0.00 |
+| convertible_bond | 91 | 0 | N/A | Not available | 0.00 |
 | disclosure_violation | 25 | 0 | N/A | Not available | 0.00 |
 | earnings_guidance | 2 | 0 | N/A | Not available | 0.00 |
-| investment_decision | 65 | 0 | N/A | Not available | 0.00 |
+| investment_decision | 66 | 0 | N/A | Not available | 0.00 |
 | lawsuit | 56 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 165 | 0 | N/A | Not available | 0.00 |
-| merger | 43 | 0 | N/A | Not available | 0.00 |
-| paid_in_capital_increase | 95 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 166 | 0 | N/A | Not available | 0.00 |
+| merger | 37 | 0 | N/A | Not available | 0.00 |
+| paid_in_capital_increase | 102 | 0 | N/A | Not available | 0.00 |
 | spin_off | 5 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 116 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 112 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -56,199 +56,75 @@ The recommender also reads past error notes and applies event-type level confide
 | Event Type | Notes | Success | Failure | Pending | Adjustment |
 |---|---:|---:|---:|---:|---:|
 | bonus_issue | 2 | 0 | 0 | 2 | 0.00 |
-| convertible_bond | 90 | 0 | 0 | 90 | 0.00 |
+| convertible_bond | 91 | 0 | 0 | 91 | 0.00 |
 | disclosure_violation | 25 | 0 | 0 | 25 | 0.00 |
 | earnings_guidance | 2 | 0 | 0 | 2 | 0.00 |
-| investment_decision | 65 | 0 | 0 | 65 | 0.00 |
+| investment_decision | 66 | 0 | 0 | 66 | 0.00 |
 | lawsuit | 56 | 0 | 0 | 56 | 0.00 |
-| major_shareholder_change | 165 | 0 | 0 | 165 | 0.00 |
-| merger | 43 | 0 | 0 | 43 | 0.00 |
-| paid_in_capital_increase | 95 | 0 | 0 | 95 | 0.00 |
+| major_shareholder_change | 166 | 0 | 0 | 166 | 0.00 |
+| merger | 37 | 0 | 0 | 37 | 0.00 |
+| paid_in_capital_increase | 102 | 0 | 0 | 102 | 0.00 |
 | spin_off | 5 | 0 | 0 | 5 | 0.00 |
 
 ## Positive Candidates
 
-### 1. 에이직랜드 (445090)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **132.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **132.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | 온디바이스 AI·디자인하우스 호재… 시스템반도체 테마 '훨훨' | [VC 밸류업] 지앤텍벤처투자, ‘투자 성장 전략팀’ 구성…밸류업 지원...
-
-### 2. 기가비스 (420770)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **122.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **122.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 7월 29일 주식시장 주요공시 | [N2 모닝 경제 브리핑-7월 30일] 美 증시, 연준 매파 기조·중동 긴장에... | [오늘의 주요공시] SK하이닉스·GS건설·삼성물산 등
-
-### 3. 디와이피엔에프 (104460)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **122.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **122.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [데이터 뉴스룸] 기계·장비業 50곳 중 7개월 새 시총 100% 넘게 뛴 4곳은... | 기계주 하루 만에 와르르… 로봇주만 살아 남았다
-
-### 4. 미래산업 (025560)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **115.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **115.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 이 대통령 “한·칠레 FTA 진화해야…광물자원 MOU 체결” | ‘제9회 아·태 안티에이징 컨퍼런스(APAAC 2026)’ 11월 13~15일 사흘간... | [지역 이슈]광주 군공항 부지 국가산단 후보지 지정… 대한민국 반도체...
-
-### 5. 베노티앤알 (206400)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **109.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **109.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 베노티앤알, 자인아이디와 블라인드 등 공급 계약 체결 | 레인보우로보틱스, 로봇 상장기업 브랜드평판 1위…두산·LIG D&A 順 | [데이터 뉴스룸] 건설業 50곳 중 60% 7개월 새 시총 하락에 울상…대우건...
-
-### 6. 피앤에스로보틱스 (460940)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **104.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **104.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 피앤에스로보틱스 "스위스 선점시장 뚫었다…중남미 최대 텔레톤재단에... | 피앤에스로보틱스, 멕시코 텔레톤 재단과 Walkbot-G 공급 계약 체결 | [52주] 신저가만 517개 ... 지수 하락 반전
+No candidates in this section.
 
 ## Volatile Watchlist
 
-### 1. 한중엔시에스 (107640)
+### 1. 스톤브릿지벤처스 (330730)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **52.00**
+- Base recommendation score: **85.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **52.00**
+- Adjusted recommendation score: **85.00**
 - Risk level: **MEDIUM**
-- Event type: `merger`
+- Event type: `investment_decision`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Disclosure title: 투자판단관련주요경영사항              (스톤브릿지 AI글로벌 제1호 및 2호 투자조합 결성)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 한중엔시에스, 100% 자회사 에이치디시 흡수합병 | [52주] 신저가만 517개 ... 지수 하락 반전 | 7월 29일 주식시장 주요공시
+- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 동국인베스트먼트, 750억원 규모 '미래성장 벤처펀드 2호' 결성 추진 | 동국인베스트먼트, '동국 미래성장 벤처펀드 2호' 750억원 규모 결성 추... | [속보] 스톤브릿지벤처스, AI 글로벌 투자조합 2개 결성…총 약정액 325...
 
-### 2. 한중엔시에스 (107640)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **52.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **52.00**
-- Risk level: **MEDIUM**
-- Event type: `merger`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 한중엔시에스, 100% 자회사 에이치디시 흡수합병 | [52주] 신저가만 517개 ... 지수 하락 반전 | 7월 29일 주식시장 주요공시
-
-### 3. 한중엔시에스 (107640)
+### 2. 유니켐 (011330)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **52.00**
+- Base recommendation score: **19.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **52.00**
-- Risk level: **MEDIUM**
-- Event type: `merger`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 4. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 한중엔시에스, 100% 자회사 에이치디시 흡수합병 | [52주] 신저가만 517개 ... 지수 하락 반전 | 7월 29일 주식시장 주요공시
-
-### 4. 일양약품 (007570)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **20.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **20.00**
+- Adjusted recommendation score: **19.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주등소유주식변동신고서(최대주주변경시)              
+- Disclosure title: 최대주주등소유주식변동신고서              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 정유석 대표, 일양약품 최대주주 올랐다…오너 3세 승계 사실상 마무리 | 레이보우 등 6개사 7품목 공급 중단...내달 DUR 안내 | 정유석 일양약품 대표 최대주주 등극…3세 승계 마무리
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [더벨][i-point] 유니켐 최대주주, 유상증자 주금 50억 납입 완료 | 유니켐, 최대주주 50억 유증 납입 완료…“매출 확대·신사업 투자 본격... | “이번엔 15억 횡령”… 유니켐 의혹 터진 KBS 드라마, 과거 잡음 재점화
+
+### 3. 유니켐 (011330)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **19.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **19.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 최대주주등소유주식변동신고서              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [더벨][i-point] 유니켐 최대주주, 유상증자 주금 50억 납입 완료 | 유니켐, 최대주주 50억 유증 납입 완료…“매출 확대·신사업 투자 본격... | “이번엔 15억 횡령”… 유니켐 의혹 터진 KBS 드라마, 과거 잡음 재점화
 
 ## General Watchlist
 
@@ -256,113 +132,185 @@ No candidates in this section.
 
 ## Risk / Avoid Review List
 
-### 1. 유니켐 (011330)
+### 1. LB세미콘 (061970)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
-- Base recommendation score: **-66.00**
+- Base recommendation score: **-90.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-66.00**
+- Adjusted recommendation score: **-90.00**
 - Risk level: **HIGH**
 - Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 유상증자또는주식관련사채등의발행결과(자율공시)              
+- Disclosure title: 유상증자최종발행가액확정              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [더벨][i-point] 유니켐 최대주주, 유상증자 주금 50억 납입 완료 | 유니켐, 최대주주 50억 유증 납입 완료…“매출 확대·신사업 투자 본격... | “이번엔 15억 횡령”… 유니켐 의혹 터진 KBS 드라마, 과거 잡음 재점화
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
 
-### 2. 그린리소스 (402490)
+### 2. LB세미콘 (061970)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
-- Base recommendation score: **-61.00**
+- Base recommendation score: **-90.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-61.00**
+- Adjusted recommendation score: **-90.00**
 - Risk level: **HIGH**
 - Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 유상증자결정(종속회사의주요경영사항)              
+- Disclosure title: 유상증자최종발행가액확정              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 3. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 그린리소스 종속기업 씨이케이, 큐이디서 105억원 투자 유치 | 씨이케이, 105억원 규모 투자유치 | [속보] 그린리소스 종속회사 씨이케이, 100억원 규모 제3자배정 유상증...
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
 
-### 3. 그린리소스 (402490)
+### 3. LB세미콘 (061970)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
 - Expected direction: **negative**
-- Base recommendation score: **-61.00**
+- Base recommendation score: **-90.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **-61.00**
+- Adjusted recommendation score: **-90.00**
 - Risk level: **HIGH**
 - Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 유상증자결정(종속회사의주요경영사항)              
+- Disclosure title: 유상증자최종발행가액확정              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is 3. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 그린리소스 종속기업 씨이케이, 큐이디서 105억원 투자 유치 | 씨이케이, 105억원 규모 투자유치 | [속보] 그린리소스 종속회사 씨이케이, 100억원 규모 제3자배정 유상증...
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
 
-### 4. 모다이노칩 (080420)
+### 4. LB세미콘 (061970)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **volatile**
-- Base recommendation score: **41.00**
+- Expected direction: **negative**
+- Base recommendation score: **-90.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **41.00**
+- Adjusted recommendation score: **-90.00**
 - Risk level: **HIGH**
-- Event type: `merger`
+- Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Disclosure title: 유상증자최종발행가액확정              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 3. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 삼성전자 독주… 7월 스마트폰 관련 상장기업 브랜드평판 정상 | [데이터 뉴스룸] 유통·상사業 50곳 시총 100조 원대 진입…신세계·롯데... | [52주] 신저가만 181개... 코스닥 하락 지속
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
 
-### 5. 모다이노칩 (080420)
+### 5. LB세미콘 (061970)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **volatile**
-- Base recommendation score: **41.00**
+- Expected direction: **negative**
+- Base recommendation score: **-90.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **41.00**
+- Adjusted recommendation score: **-90.00**
 - Risk level: **HIGH**
-- Event type: `merger`
+- Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Disclosure title: 유상증자최종발행가액확정              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 3. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 삼성전자 독주… 7월 스마트폰 관련 상장기업 브랜드평판 정상 | [데이터 뉴스룸] 유통·상사業 50곳 시총 100조 원대 진입…신세계·롯데... | [52주] 신저가만 181개... 코스닥 하락 지속
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
 
-### 6. 모다이노칩 (080420)
+### 6. LB세미콘 (061970)
 
 - Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **volatile**
-- Base recommendation score: **41.00**
+- Expected direction: **negative**
+- Base recommendation score: **-90.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **41.00**
+- Adjusted recommendation score: **-90.00**
 - Risk level: **HIGH**
-- Event type: `merger`
+- Event type: `paid_in_capital_increase`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]주요사항보고서(회사합병결정)
+- Disclosure title: 유상증자최종발행가액확정              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is merger. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 3. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 삼성전자 독주… 7월 스마트폰 관련 상장기업 브랜드평판 정상 | [데이터 뉴스룸] 유통·상사業 50곳 시총 100조 원대 진입…신세계·롯데... | [52주] 신저가만 181개... 코스닥 하락 지속
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
+
+### 7. LB세미콘 (061970)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-90.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-90.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 유상증자최종발행가액확정              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
+
+### 8. LB세미콘 (061970)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-90.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-90.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 유상증자최종발행가액확정              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
+
+### 9. LB세미콘 (061970)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-90.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-90.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 유상증자최종발행가액확정              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
+
+### 10. LB세미콘 (061970)
+
+- Candidate type: **AVOID_OR_RISK_REVIEW**
+- Expected direction: **negative**
+- Base recommendation score: **-90.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **-90.00**
+- Risk level: **HIGH**
+- Event type: `paid_in_capital_increase`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: 유상증자최종발행가액확정              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is paid_in_capital_increase. Initial direction is negative. Event score is -70. News attention score is 5. News sentiment score is -1. Negative keyword count is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [52주] 신저가만 517개 ... 지수 하락 반전 | [주요공시] NAVER, 에코프로에이치엔, 한화에어로스페이스, 유바이오로... | 실적보다 수급이 무서웠다… 반도체 장비주 동반 급락
 
 ## Data Readiness
 

@@ -8,27 +8,26 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **11**
-- High attention rows: **1**
-- Medium attention rows: **6**
+- Total rows: **10**
+- High attention rows: **0**
+- Medium attention rows: **8**
 - Rumor-noise detected rows: **0**
-- Risk-noise detected rows: **8**
+- Risk-noise detected rows: **9**
 
 ## Top Social Attention Signals
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
-| 445090 | 에이직랜드 | supply_contract | 12.5 | 0 | 3 | high_attention | no_rumor_signal | risk_noise_detected |
-| 206400 | 베노티앤알 | supply_contract | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 460940 | 피앤에스로보틱스 | supply_contract | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 011330 | 유니켐 | paid_in_capital_increase | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 104460 | 디와이피엔에프 | supply_contract | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 420770 | 기가비스 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 025560 | 미래산업 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
-| 107640 | 한중엔시에스 | merger | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
-| 080420 | 모다이노칩 | merger | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
-| 402490 | 그린리소스 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
-| 007570 | 일양약품 | major_shareholder_change | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 403550 | 쏘카 | paid_in_capital_increase | 9.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 475580 | 에이럭스 | supply_contract | 7.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 141000 | 비아트론 | supply_contract | 7.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 011330 | 유니켐 | major_shareholder_change | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
+| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
+| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
+| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
+| 330730 | 스톤브릿지벤처스 | investment_decision | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 332290 | 누보 | convertible_bond | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
 
 ## Interpretation
 

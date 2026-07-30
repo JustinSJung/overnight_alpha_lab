@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-07-30
 
-Generated at: 2026-07-30 04:10:06
+Generated at: 2026-07-30 05:53:49
 
 ## Purpose
 
@@ -25,13 +25,13 @@ Most rows are still pending. Event-type success rates will become meaningful aft
 
 | Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| major_shareholder_change | 165 | 0 | 0 | 0 | 165 | N/A | N/A | N/A | neutral |
-| supply_contract | 116 | 0 | 0 | 0 | 116 | N/A | N/A | N/A | neutral |
-| paid_in_capital_increase | 95 | 0 | 0 | 0 | 95 | N/A | N/A | N/A | neutral |
-| convertible_bond | 90 | 0 | 0 | 0 | 90 | N/A | N/A | N/A | neutral |
-| investment_decision | 65 | 0 | 0 | 0 | 65 | N/A | N/A | N/A | neutral |
+| major_shareholder_change | 166 | 0 | 0 | 0 | 166 | N/A | N/A | N/A | neutral |
+| supply_contract | 112 | 0 | 0 | 0 | 112 | N/A | N/A | N/A | neutral |
+| paid_in_capital_increase | 102 | 0 | 0 | 0 | 102 | N/A | N/A | N/A | neutral |
+| convertible_bond | 91 | 0 | 0 | 0 | 91 | N/A | N/A | N/A | neutral |
+| investment_decision | 66 | 0 | 0 | 0 | 66 | N/A | N/A | N/A | neutral |
 | lawsuit | 56 | 0 | 0 | 0 | 56 | N/A | N/A | N/A | neutral |
-| merger | 43 | 0 | 0 | 0 | 43 | N/A | N/A | N/A | neutral |
+| merger | 37 | 0 | 0 | 0 | 37 | N/A | N/A | N/A | neutral |
 | disclosure_violation | 25 | 0 | 0 | 0 | 25 | N/A | N/A | N/A | neutral |
 | spin_off | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | neutral |
 | bonus_issue | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | neutral |

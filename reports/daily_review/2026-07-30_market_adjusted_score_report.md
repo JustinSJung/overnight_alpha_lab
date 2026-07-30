@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-30
 
-Generated at: 2026-07-30 04:10:02
+Generated at: 2026-07-30 05:53:45
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260730.csv`
 
@@ -44,22 +44,22 @@ The goal is to reward predictions that outperform the market and penalize result
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 445090 | 에이직랜드 | positive | pending | 0 | N/A |
-| 1970-01-01 | 107640 | 한중엔시에스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 107640 | 한중엔시에스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 107640 | 한중엔시에스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 007570 | 일양약품 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 206400 | 베노티앤알 | positive | pending | 0 | N/A |
-| 1970-01-01 | 080420 | 모다이노칩 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 080420 | 모다이노칩 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 080420 | 모다이노칩 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 420770 | 기가비스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 025560 | 미래산업 | positive | pending | 0 | N/A |
-| 1970-01-01 | 460940 | 피앤에스로보틱스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 011330 | 유니켐 | negative | pending | 0 | N/A |
-| 1970-01-01 | 402490 | 그린리소스 | negative | pending | 0 | N/A |
-| 1970-01-01 | 402490 | 그린리소스 | negative | pending | 0 | N/A |
-| 1970-01-01 | 104460 | 디와이피엔에프 | positive | pending | 0 | N/A |
+| 1970-01-01 | 332290 | 누보 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
+| 1970-01-01 | 330730 | 스톤브릿지벤처스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 475580 | 에이럭스 | positive | pending | 0 | N/A |
+| 1970-01-01 | 141000 | 비아트론 | positive | pending | 0 | N/A |
+| 1970-01-01 | 403550 | 쏘카 | negative | pending | 0 | N/A |
+| 1970-01-01 | 403550 | 쏘카 | negative | pending | 0 | N/A |
+| 1970-01-01 | 011330 | 유니켐 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 011330 | 유니켐 | volatile | pending | 0 | N/A |
 
 ## Next Step
 
