@@ -8,13 +8,12 @@ This report summarizes DART disclosures collected after market close and classif
 
 | Event Type | Count |
 |---|---:|
-| Other | 89 |
-| Insider or Major Holder Disclosure | 3 |
-| Paid-in Capital Increase | 3 |
-| Supply Contract | 2 |
+| Other | 90 |
+| Insider or Major Holder Disclosure | 5 |
+| Paid-in Capital Increase | 2 |
 | Convertible Bond | 1 |
 | Investment Decision | 1 |
-| Major Shareholder Change | 1 |
+| Supply Contract | 1 |
 
 ## Key Disclosures
 
@@ -25,17 +24,14 @@ This report summarizes DART disclosures collected after market close and classif
 | LB세미콘 | [기재정정]주요사항보고서(유상증자결정) | Paid-in Capital Increase | 20260730 |
 | 스톤브릿지벤처스 | 투자판단관련주요경영사항              (스톤브릿지 AI글로벌 제1호 및 2호 투자조합 결성) | Investment Decision | 20260730 |
 | 에이럭스 | 단일판매ㆍ공급계약체결               | Supply Contract | 20260730 |
-| 비아트론 | [기재정정]단일판매ㆍ공급계약체결               | Supply Contract | 20260730 |
-| 쏘카 | 유상증자결정(종속회사의주요경영사항)               | Paid-in Capital Increase | 20260730 |
-| 유니켐 | 최대주주등소유주식변동신고서               | Major Shareholder Change | 20260730 |
 
 ## Daily Insight Notes
 
 - Total disclosures collected: 100
-- Classified non-other events: 11
-- Supply contract disclosures: 2
-- Financing-related disclosures: 4
-- Insider or major holder disclosures: 3
+- Classified non-other events: 10
+- Supply contract disclosures: 1
+- Financing-related disclosures: 3
+- Insider or major holder disclosures: 5
 
 ## Model Notes
 

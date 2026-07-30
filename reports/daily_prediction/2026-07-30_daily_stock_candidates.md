@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-07-30
 
-Generated at: 2026-07-30 05:53:49
+Generated at: 2026-07-30 06:16:25
 
 ML dataset: `data/processed/ml_dataset_20260730.csv`
 
@@ -43,11 +43,11 @@ The recommender also applies event-type performance adjustments based on histori
 | earnings_guidance | 2 | 0 | N/A | Not available | 0.00 |
 | investment_decision | 66 | 0 | N/A | Not available | 0.00 |
 | lawsuit | 56 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 166 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 164 | 0 | N/A | Not available | 0.00 |
 | merger | 37 | 0 | N/A | Not available | 0.00 |
-| paid_in_capital_increase | 102 | 0 | N/A | Not available | 0.00 |
+| paid_in_capital_increase | 100 | 0 | N/A | Not available | 0.00 |
 | spin_off | 5 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 112 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 111 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -61,9 +61,9 @@ The recommender also reads past error notes and applies event-type level confide
 | earnings_guidance | 2 | 0 | 0 | 2 | 0.00 |
 | investment_decision | 66 | 0 | 0 | 66 | 0.00 |
 | lawsuit | 56 | 0 | 0 | 56 | 0.00 |
-| major_shareholder_change | 166 | 0 | 0 | 166 | 0.00 |
+| major_shareholder_change | 164 | 0 | 0 | 164 | 0.00 |
 | merger | 37 | 0 | 0 | 37 | 0.00 |
-| paid_in_capital_increase | 102 | 0 | 0 | 102 | 0.00 |
+| paid_in_capital_increase | 100 | 0 | 0 | 100 | 0.00 |
 | spin_off | 5 | 0 | 0 | 5 | 0.00 |
 
 ## Positive Candidates
@@ -76,55 +76,19 @@ No candidates in this section.
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **85.00**
+- Base recommendation score: **80.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **85.00**
+- Adjusted recommendation score: **80.00**
 - Risk level: **MEDIUM**
 - Event type: `investment_decision`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 투자판단관련주요경영사항              (스톤브릿지 AI글로벌 제1호 및 2호 투자조합 결성)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 동국인베스트먼트, 750억원 규모 '미래성장 벤처펀드 2호' 결성 추진 | 동국인베스트먼트, '동국 미래성장 벤처펀드 2호' 750억원 규모 결성 추... | [속보] 스톤브릿지벤처스, AI 글로벌 투자조합 2개 결성…총 약정액 325...
-
-### 2. 유니켐 (011330)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **19.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **19.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주등소유주식변동신고서              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [더벨][i-point] 유니켐 최대주주, 유상증자 주금 50억 납입 완료 | 유니켐, 최대주주 50억 유증 납입 완료…“매출 확대·신사업 투자 본격... | “이번엔 15억 횡령”… 유니켐 의혹 터진 KBS 드라마, 과거 잡음 재점화
-
-### 3. 유니켐 (011330)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **19.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **19.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 최대주주등소유주식변동신고서              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [더벨][i-point] 유니켐 최대주주, 유상증자 주금 50억 납입 완료 | 유니켐, 최대주주 50억 유증 납입 완료…“매출 확대·신사업 투자 본격... | “이번엔 15억 횡령”… 유니켐 의혹 터진 KBS 드라마, 과거 잡음 재점화
+- Reason: Event type is investment_decision. Initial direction is volatile. Event score is 30. News attention score is 5. News sentiment score is 9. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 동국인베스트먼트, 750억원 규모 ‘미래성장 벤처펀드 2호’ 결성 추진 | 동국인베스트먼트, 750억원 규모 '미래성장 벤처펀드 2호' 결성 추진 | 동국인베스트먼트, '동국 미래성장 벤처펀드 2호' 750억원 규모 결성 추...
 
 ## General Watchlist
 

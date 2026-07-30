@@ -1,6 +1,6 @@
 # Trading Volume Score Integration Report - 2026-07-30
 
-Generated at: 2026-07-30 05:53:46
+Generated at: 2026-07-30 06:16:22
 
 Source trading volume feature file: `data/processed/trading_volume_features_20260730.csv`
 
@@ -23,17 +23,17 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4108**
+- Total rows: **4099**
 - Total volume adjustment score: **0.00**
 - Average volume adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_volume_adjustment: **4108**
+- neutral_volume_adjustment: **4099**
 
 ## Volume Reaction Counts
 
-- insufficient_volume_baseline: **4108**
+- insufficient_volume_baseline: **4099**
 
 ## Sample Rows
 

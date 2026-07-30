@@ -8,20 +8,17 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **10**
+- Total rows: **7**
 - High attention rows: **0**
-- Medium attention rows: **8**
+- Medium attention rows: **5**
 - Rumor-noise detected rows: **0**
-- Risk-noise detected rows: **9**
+- Risk-noise detected rows: **6**
 
 ## Top Social Attention Signals
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
-| 403550 | 쏘카 | paid_in_capital_increase | 9.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
 | 475580 | 에이럭스 | supply_contract | 7.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 141000 | 비아트론 | supply_contract | 7.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 011330 | 유니켐 | major_shareholder_change | 7.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
 | 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
 | 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
 | 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |

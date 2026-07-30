@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-30
 
-Generated at: 2026-07-30 05:53:44
+Generated at: 2026-07-30 06:16:20
 
 Source feature file: `data/processed/market_adjusted_features_20260730.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **16**
-- pending: **16**
+- Total rows: **11**
+- pending: **11**
 
 ## Interpretation
 
@@ -40,11 +40,6 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 330730 | 스톤브릿지벤처스 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 475580 | 에이럭스 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 141000 | 비아트론 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 403550 | 쏘카 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 403550 | 쏘카 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 11330 | 유니켐 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 11330 | 유니켐 | volatile | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

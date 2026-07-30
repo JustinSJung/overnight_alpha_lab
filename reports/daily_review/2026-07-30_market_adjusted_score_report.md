@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-30
 
-Generated at: 2026-07-30 05:53:45
+Generated at: 2026-07-30 06:16:21
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260730.csv`
 
@@ -28,17 +28,17 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **16**
+- Total rows: **11**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **16**
+- neutral_adjustment: **11**
 
 ## Market-Adjusted Result Counts
 
-- pending: **16**
+- pending: **11**
 
 ## Sample Rows
 
@@ -55,11 +55,6 @@ The goal is to reward predictions that outperform the market and penalize result
 | 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
 | 1970-01-01 | 330730 | 스톤브릿지벤처스 | volatile | pending | 0 | N/A |
 | 1970-01-01 | 475580 | 에이럭스 | positive | pending | 0 | N/A |
-| 1970-01-01 | 141000 | 비아트론 | positive | pending | 0 | N/A |
-| 1970-01-01 | 403550 | 쏘카 | negative | pending | 0 | N/A |
-| 1970-01-01 | 403550 | 쏘카 | negative | pending | 0 | N/A |
-| 1970-01-01 | 011330 | 유니켐 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 011330 | 유니켐 | volatile | pending | 0 | N/A |
 
 ## Next Step
 
