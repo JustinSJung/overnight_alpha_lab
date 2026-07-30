@@ -8,23 +8,36 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 ## Summary
 
-- Total rows: **7**
+- Total rows: **31**
 - High attention rows: **0**
-- Medium attention rows: **5**
+- Medium attention rows: **8**
 - Rumor-noise detected rows: **0**
-- Risk-noise detected rows: **6**
+- Risk-noise detected rows: **22**
 
 ## Top Social Attention Signals
 
 | stock_code | corp_name | event_type | social_attention_score | rumor_noise_score | risk_noise_score | attention_label | rumor_label | risk_label |
 |---|---|---|---|---|---|---|---|---|
-| 475580 | 에이럭스 | supply_contract | 7.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
-| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
-| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
-| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
-| 061970 | LB세미콘 | paid_in_capital_increase | 6.5 | 0 | 9 | medium_attention | no_rumor_signal | high_risk_noise |
-| 330730 | 스톤브릿지벤처스 | investment_decision | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
-| 332290 | 누보 | convertible_bond | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 007110 | 일신석재 | supply_contract | 9.5 | 0 | 3 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 012630 | HDC | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 294870 | IPARK현대산업개발 | supply_contract | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 089140 | 넥스턴앤롤코리아 | major_shareholder_change | 9.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 013580 | 계룡건설산업 | investment_decision | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 028100 | 동아지질 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 099750 | 이지케어텍 | supply_contract | 7.5 | 0 | 0 | medium_attention | no_rumor_signal | no_risk_noise |
+| 407400 | 꿈비 | lawsuit | 6.5 | 0 | 6 | medium_attention | no_rumor_signal | risk_noise_detected |
+| 223220 | 로지스몬 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 223220 | 로지스몬 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 223220 | 로지스몬 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 223220 | 로지스몬 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 069920 | 엑시온그룹 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 069920 | 엑시온그룹 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 073640 | 테라사이언스 | paid_in_capital_increase | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 069920 | 엑시온그룹 | convertible_bond | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 069920 | 엑시온그룹 | convertible_bond | 5.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
+| 000660 | SK하이닉스 | major_shareholder_change | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 003470 | 유안타증권 | major_shareholder_change | 5.5 | 0 | 0 | low_attention | no_rumor_signal | no_risk_noise |
+| 058450 | 한주에이알티 | paid_in_capital_increase | 3.5 | 0 | 3 | low_attention | no_rumor_signal | risk_noise_detected |
 
 ## Interpretation
 

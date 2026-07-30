@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-07-30
 
-Generated at: 2026-07-30 06:16:20
+Generated at: 2026-07-30 23:22:05
 
 Source feature file: `data/processed/market_adjusted_features_20260730.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **11**
-- pending: **11**
+- Total rows: **68**
+- pending: **68**
 
 ## Interpretation
 
@@ -29,17 +29,26 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 332290 | 누보 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 61970 | LB세미콘 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 330730 | 스톤브릿지벤처스 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 475580 | 에이럭스 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 660 | SK하이닉스 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 12630 | HDC | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 12630 | HDC | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 294870 | IPARK현대산업개발 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 294870 | IPARK현대산업개발 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 58450 | 한주에이알티 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 58450 | 한주에이알티 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 378800 | 샤페론 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

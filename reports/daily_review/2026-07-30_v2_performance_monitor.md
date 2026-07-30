@@ -5,18 +5,18 @@ This report monitors `v2_conservative_ranker` only. It is diagnostic and does no
 ## Summary
 
 - V2 evaluated cases: **3064**
-- V2 success count: **1457**
-- V2 failure count: **1607**
-- V2 raw success rate: **47.55%**
+- V2 success count: **1452**
+- V2 failure count: **1612**
+- V2 raw success rate: **47.39%**
 - V2 benchmark-adjusted evaluated cases: **750**
 - V2 benchmark-adjusted success rate: **47.87%**
 - V2 benchmark coverage rate: **24.48%**
-- V2 average close_t1_return: **-0.28%**
-- V2 average excess_t1_return: **0.68%**
+- V2 average close_t1_return: **-0.26%**
+- V2 average excess_t1_return: **0.84%**
 - Selected-pick evaluated cases: **187**
 - Selected-pick success rate: **48.66%**
 - Non-selected evaluated cases: **2877**
-- Non-selected success rate: **47.48%**
+- Non-selected success rate: **47.31%**
 - V2 diagnosis: **Weak / 약함**
 - Benchmark diagnosis: **Benchmark coverage still low / 시장 기준 커버리지 낮음**
 

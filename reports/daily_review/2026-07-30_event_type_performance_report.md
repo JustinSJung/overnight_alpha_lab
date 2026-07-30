@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-07-30
 
-Generated at: 2026-07-30 06:16:26
+Generated at: 2026-07-30 23:22:13
 
 ## Purpose
 
@@ -12,11 +12,11 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **659**
+- Total error-note rows: **716**
 - Evaluated rows: **0**
 - Success rows: **0**
 - Failure rows: **0**
-- Pending rows: **659**
+- Pending rows: **716**
 - Overall success rate: **N/A**
 
 Most rows are still pending. Event-type success rates will become meaningful after next-day price reactions are evaluated.
@@ -25,14 +25,15 @@ Most rows are still pending. Event-type success rates will become meaningful aft
 
 | Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| major_shareholder_change | 164 | 0 | 0 | 0 | 164 | N/A | N/A | N/A | neutral |
-| supply_contract | 111 | 0 | 0 | 0 | 111 | N/A | N/A | N/A | neutral |
-| paid_in_capital_increase | 100 | 0 | 0 | 0 | 100 | N/A | N/A | N/A | neutral |
-| convertible_bond | 91 | 0 | 0 | 0 | 91 | N/A | N/A | N/A | neutral |
+| major_shareholder_change | 168 | 0 | 0 | 0 | 168 | N/A | N/A | N/A | neutral |
+| supply_contract | 117 | 0 | 0 | 0 | 117 | N/A | N/A | N/A | neutral |
+| convertible_bond | 114 | 0 | 0 | 0 | 114 | N/A | N/A | N/A | neutral |
+| paid_in_capital_increase | 113 | 0 | 0 | 0 | 113 | N/A | N/A | N/A | neutral |
 | investment_decision | 66 | 0 | 0 | 0 | 66 | N/A | N/A | N/A | neutral |
-| lawsuit | 56 | 0 | 0 | 0 | 56 | N/A | N/A | N/A | neutral |
+| lawsuit | 57 | 0 | 0 | 0 | 57 | N/A | N/A | N/A | neutral |
 | merger | 37 | 0 | 0 | 0 | 37 | N/A | N/A | N/A | neutral |
-| disclosure_violation | 25 | 0 | 0 | 0 | 25 | N/A | N/A | N/A | neutral |
+| disclosure_violation | 26 | 0 | 0 | 0 | 26 | N/A | N/A | N/A | neutral |
+| bond_with_warrant | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | neutral |
 | spin_off | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | neutral |
 | bonus_issue | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | neutral |
 | earnings_guidance | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | neutral |

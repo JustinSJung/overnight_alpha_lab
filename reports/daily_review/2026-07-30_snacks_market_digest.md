@@ -9,9 +9,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 ## Summary
 
 - Snacks articles analyzed: **3**
-- US market attention signals: **8**
+- US market attention signals: **7**
 - Macro risk signals: **0**
-- Korea relevance signals: **62**
+- Korea relevance signals: **59**
 
 ## Top Global Themes
 
@@ -23,9 +23,9 @@ It is used as a supplementary market-attention signal, not as direct investment 
 
 | Rank | Title | Top Theme | Attention | Macro Risk | Korea Relevance | URL |
 |---:|---|---|---:|---:|---:|---|
-| 1 | 🥵 The hot seat | ai_semiconductor | 2 | 0 | 14 | https://sherwood.news/snacks/newsletters/the-hot-seat/ |
-| 2 | 💡 Marketplace of ideas | ai_semiconductor | 4 | 0 | 20 | https://sherwood.news/snacks/newsletters/marketplace-of-ideas/ |
-| 3 | 🟢 Peptides get the green light | ai_semiconductor | 2 | 0 | 28 | https://sherwood.news/snacks/newsletters/peptides-get-the-green-light/ |
+| 1 | 📦 The Colonel’s bow-tie and Amazon’s forgotten business | ai_semiconductor | 1 | 0 | 25 | https://sherwood.news/snacks/newsletters/the-colonels-bow-tie-and-amazons-forgotten-business/ |
+| 2 | 🥵 The hot seat | ai_semiconductor | 2 | 0 | 14 | https://sherwood.news/snacks/newsletters/the-hot-seat/ |
+| 3 | 💡 Marketplace of ideas | ai_semiconductor | 4 | 0 | 20 | https://sherwood.news/snacks/newsletters/marketplace-of-ideas/ |
 
 ## Interpretation
 

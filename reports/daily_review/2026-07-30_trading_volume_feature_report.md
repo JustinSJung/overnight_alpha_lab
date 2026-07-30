@@ -1,6 +1,6 @@
 # Trading Volume Feature Report - 2026-07-30
 
-Generated at: 2026-07-30 06:16:22
+Generated at: 2026-07-30 23:22:07
 
 Source ML dataset: `data/processed/ml_dataset_20260730.csv`
 
@@ -16,12 +16,12 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **4099**
-- Rows with price file found: **4099**
+- Total rows: **32804**
+- Rows with price file found: **32804**
 
 ## Volume Reaction Label Counts
 
-- insufficient_volume_baseline: **4099**
+- insufficient_volume_baseline: **32804**
 
 ## Interpretation
 
@@ -35,36 +35,36 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | volume_reaction_label | event_day_volume | avg_volume_20d_before | event_volume_ratio_20d | next_day_volume | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 20260730 | 332290 | 누보 | convertible_bond | negative | N/A | 581,673 | N/A | N/A | 175,765 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
-| 20260730 | 061970 | LB세미콘 | paid_in_capital_increase | negative | N/A | 138,156 | N/A | N/A | 224,981 | N/A |
+| 20260730 | 000660 | SK하이닉스 | major_shareholder_change | volatile | N/A | 5,109,213 | N/A | N/A | 4,277,276 | N/A |
+| 20260730 | 012630 | HDC | supply_contract | positive | N/A | 38,312 | N/A | N/A | 80,311 | N/A |
+| 20260730 | 012630 | HDC | supply_contract | positive | N/A | 38,312 | N/A | N/A | 80,311 | N/A |
+| 20260730 | 012630 | HDC | supply_contract | positive | N/A | 38,312 | N/A | N/A | 80,311 | N/A |
+| 20260730 | 012630 | HDC | supply_contract | positive | N/A | 38,312 | N/A | N/A | 80,311 | N/A |
+| 20260730 | 294870 | IPARK현대산업개발 | supply_contract | positive | N/A | 200,262 | N/A | N/A | 181,231 | N/A |
+| 20260730 | 294870 | IPARK현대산업개발 | supply_contract | positive | N/A | 200,262 | N/A | N/A | 181,231 | N/A |
+| 20260730 | 294870 | IPARK현대산업개발 | supply_contract | positive | N/A | 200,262 | N/A | N/A | 181,231 | N/A |
+| 20260730 | 294870 | IPARK현대산업개발 | supply_contract | positive | N/A | 200,262 | N/A | N/A | 181,231 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 058450 | 한주에이알티 | paid_in_capital_increase | negative | N/A | 211,898 | N/A | N/A | 48,444 | N/A |
+| 20260730 | 378800 | 샤페론 | disclosure_violation | negative | N/A | 3,401,954 | N/A | N/A | 3,073,809 | N/A |
+| 20260730 | 223220 | 로지스몬 | paid_in_capital_increase | negative | N/A | 3,911 | N/A | N/A | 2,626 | N/A |
+| 20260730 | 223220 | 로지스몬 | paid_in_capital_increase | negative | N/A | 3,911 | N/A | N/A | 2,626 | N/A |
+| 20260730 | 223220 | 로지스몬 | paid_in_capital_increase | negative | N/A | 3,911 | N/A | N/A | 2,626 | N/A |
+| 20260730 | 223220 | 로지스몬 | paid_in_capital_increase | negative | N/A | 3,911 | N/A | N/A | 2,626 | N/A |
 
 ## Next Step
 

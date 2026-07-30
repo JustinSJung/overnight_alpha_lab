@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-07-30
 
-Generated at: 2026-07-30 06:16:21
+Generated at: 2026-07-30 23:22:05
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260730.csv`
 
@@ -28,33 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **11**
+- Total rows: **68**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **11**
+- neutral_adjustment: **68**
 
 ## Market-Adjusted Result Counts
 
-- pending: **11**
+- pending: **68**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 332290 | 누보 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 061970 | LB세미콘 | negative | pending | 0 | N/A |
-| 1970-01-01 | 330730 | 스톤브릿지벤처스 | volatile | pending | 0 | N/A |
-| 1970-01-01 | 475580 | 에이럭스 | positive | pending | 0 | N/A |
+| 1970-01-01 | 000660 | SK하이닉스 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 012630 | HDC | positive | pending | 0 | N/A |
+| 1970-01-01 | 012630 | HDC | positive | pending | 0 | N/A |
+| 1970-01-01 | 294870 | IPARK현대산업개발 | positive | pending | 0 | N/A |
+| 1970-01-01 | 294870 | IPARK현대산업개발 | positive | pending | 0 | N/A |
+| 1970-01-01 | 058450 | 한주에이알티 | negative | pending | 0 | N/A |
+| 1970-01-01 | 058450 | 한주에이알티 | negative | pending | 0 | N/A |
+| 1970-01-01 | 378800 | 샤페론 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
+| 1970-01-01 | 223220 | 로지스몬 | negative | pending | 0 | N/A |
 
 ## Next Step
 
