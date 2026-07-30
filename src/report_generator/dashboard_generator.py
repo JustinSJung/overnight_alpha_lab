@@ -23,6 +23,7 @@ PROCESSED_DIR = Path("data/processed")
 PREDICTIONS_DIR = Path("data/predictions")
 DOCS_DIR = Path("docs")
 OUTPUT_PATH = DOCS_DIR / "dashboard.html"
+DIAGNOSTICS_OUTPUT_PATH = DOCS_DIR / "diagnostics.html"
 
 CORE_STATE_PATTERNS = [
     (PROCESSED_DIR, "automation_history.csv"),
@@ -758,7 +759,7 @@ def build_stock_data(latest_ml_df):
     return list(deduped.values())
 
 
-def build_html(metrics, stock_data):
+def build_diagnostics_html(metrics, stock_data):
     stock_json = json.dumps(stock_data, ensure_ascii=False)
     success_width = min(max(safe_float(metrics.get("price_success_rate", 0)), 0), 100)
     reliability_width = min(max(safe_float(metrics.get("reliability_score", 0)), 0), 100)
@@ -2028,6 +2029,372 @@ def build_html(metrics, stock_data):
     return html
 
 
+def simple_status(value_en, value_ko, css_class="badge-gray"):
+    return render_status_pill(value_en, value_ko, css_class)
+
+
+def quality_label_from_rate(rate, good_threshold=55, moderate_threshold=50):
+    if rate is None:
+        return "Needs Improvement", "개선 필요", "badge-orange"
+    rate = safe_float(rate)
+    if rate >= good_threshold:
+        return "Good", "양호", "badge-green"
+    if rate >= moderate_threshold:
+        return "Moderate", "보통", "badge-orange"
+    return "Needs Improvement", "개선 필요", "badge-red"
+
+
+def data_status_label(metrics):
+    duplicate_rate = safe_float(metrics.get("integrity_duplicate_rate"), 0)
+    if duplicate_rate >= 20:
+        return "Needs Review", "점검 필요", "badge-orange"
+    if metrics.get("integrity_total_rows") is None:
+        return "Needs Review", "점검 필요", "badge-orange"
+    return "Good", "양호", "badge-green"
+
+
+def benchmark_status_label(metrics):
+    coverage = safe_float(metrics.get("integrity_benchmark_coverage"), 0)
+    if coverage >= 70:
+        return "Good", "양호", "badge-green"
+    if coverage >= 30:
+        return "Moderate", "보통", "badge-orange"
+    return "Needs More Data", "데이터 더 필요", "badge-orange"
+
+
+def source_status_label(has_data):
+    if has_data:
+        return "Available", "정상 수집", "badge-green"
+    return "Needs Review", "점검 필요", "badge-orange"
+
+
+def recommendation_quality_label(metrics):
+    selected_rate = metrics.get("v2_monitor_selected_success_rate")
+    non_selected_rate = metrics.get("v2_monitor_non_selected_success_rate")
+    if selected_rate is not None and non_selected_rate is not None:
+        delta = safe_float(selected_rate) - safe_float(non_selected_rate)
+        if delta >= 3:
+            return "Good", "양호", "badge-green"
+        if delta >= -3:
+            return "Moderate", "보통", "badge-orange"
+        return "Needs Improvement", "개선 필요", "badge-red"
+    return quality_label_from_rate(metrics.get("price_success_rate"))
+
+
+def build_html(metrics, stock_data):
+    success_width = min(max(safe_float(metrics.get("price_success_rate", 0)), 0), 100)
+    reliability_width = min(max(safe_float(metrics.get("reliability_score", 0)), 0), 100)
+    benchmark_width = min(max(safe_float(metrics.get("benchmark_success_rate", 0)), 0), 100)
+    evaluated_width = 0
+    price_total = metrics.get("price_evaluated_count", 0) + metrics.get("price_pending_count", 0)
+    if price_total:
+        evaluated_width = min(max(metrics.get("price_evaluated_count", 0) / price_total * 100, 0), 100)
+
+    confidence_class = {
+        "WATCHLIST": "badge-green",
+        "MODERATE CONFIDENCE": "badge-green",
+        "HIGH CONFIDENCE": "badge-green",
+        "EARLY STAGE": "badge-orange",
+        "NOT READY": "badge-orange",
+        "LOW CONFIDENCE": "badge-red",
+    }.get(str(metrics.get("confidence_status", "")).upper(), "badge-gray")
+    data_en, data_ko, data_class = data_status_label(metrics)
+    benchmark_en, benchmark_ko, benchmark_class = benchmark_status_label(metrics)
+    news_en, news_ko, news_class = source_status_label(
+        bool(metrics.get("naver_status_en") or metrics.get("google_status_en") or metrics.get("snacks_status_en"))
+    )
+    dart_en, dart_ko, dart_class = source_status_label(
+        safe_float(metrics.get("pending_count"), 0) > 0 or safe_float(metrics.get("evaluated_count"), 0) > 0
+    )
+    overall_en, overall_ko, overall_class = quality_label_from_rate(metrics.get("price_success_rate"))
+    recommendation_en, recommendation_ko, recommendation_class = recommendation_quality_label(metrics)
+    top_group_rate = metrics.get("v2_monitor_selected_success_rate") or metrics.get("top_20_success_rate")
+    last_updated = metrics.get("generated_at", "N/A")
+
+    html = f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Price-Signal Learning System</title>
+  <style>
+    :root {{
+      --bg: #f4f7fb;
+      --ink: #172033;
+      --muted: #647086;
+      --line: #e2e8f0;
+      --panel: #ffffff;
+      --green: #168a5b;
+      --green-soft: #e7f6ef;
+      --orange: #b76b00;
+      --orange-soft: #fff4df;
+      --red: #be3144;
+      --red-soft: #ffe9ed;
+      --gray: #526070;
+      --gray-soft: #edf1f5;
+      --blue: #2454a6;
+      --blue-soft: #e8efff;
+      --shadow: 0 16px 42px rgba(23, 32, 51, 0.10);
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }}
+    .container {{ max-width: 1120px; margin: 0 auto; padding: 28px 20px 44px; }}
+    .hero {{
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+      gap: 28px;
+      padding: 34px;
+      border-radius: 24px;
+      color: white;
+      background:
+        radial-gradient(circle at top left, rgba(79, 122, 255, 0.25), transparent 32%),
+        linear-gradient(135deg, #111827 0%, #1d3557 54%, #235a67 100%);
+      box-shadow: var(--shadow);
+    }}
+    .eyebrow {{ margin: 0 0 12px; color: rgba(255,255,255,0.72); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }}
+    h1 {{ margin: 0; font-size: clamp(34px, 6vw, 56px); line-height: 1.02; }}
+    h2 {{ margin: 0; font-size: 22px; }}
+    .subtitle {{ margin-top: 14px; color: rgba(255,255,255,0.86); font-size: 20px; font-weight: 650; }}
+    .hero-copy {{ max-width: 720px; margin: 18px 0 0; color: rgba(255,255,255,0.76); font-size: 15px; line-height: 1.7; }}
+    .hero-panel {{
+      min-height: 245px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+    }}
+    .badge, .status-pill {{
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: center;
+    }}
+    .badge {{ letter-spacing: 0.06em; text-transform: uppercase; }}
+    .badge-green, .status-pill.badge-green {{ color: var(--green); background: var(--green-soft); }}
+    .badge-orange, .status-pill.badge-orange {{ color: var(--orange); background: var(--orange-soft); }}
+    .badge-red, .status-pill.badge-red {{ color: var(--red); background: var(--red-soft); }}
+    .badge-gray, .status-pill.badge-gray {{ color: var(--gray); background: var(--gray-soft); }}
+    .hero-rate-label {{ margin-top: 30px; color: rgba(255,255,255,0.68); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }}
+    .hero-rate {{ margin-top: 8px; font-size: clamp(46px, 8vw, 72px); line-height: 0.95; font-weight: 850; }}
+    .hero-rate-unit {{ font-size: clamp(22px, 4vw, 34px); color: rgba(255,255,255,0.68); }}
+    .progress, .mini-bar {{ height: 9px; margin-top: 16px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.18); }}
+    .mini-bar {{ background: #e7edf5; }}
+    .progress > span, .mini-bar > span {{ display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #46d39a, #9ee6be); }}
+    .mini-bar > span {{ background: var(--blue); }}
+    .section {{ margin-top: 28px; }}
+    .section-heading {{ margin-bottom: 14px; }}
+    .heading-ko {{ display: inline-block; margin-left: 8px; color: var(--muted); font-size: 14px; font-weight: 650; }}
+    .section-subtitle {{ margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }}
+    .kpi-grid {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }}
+    .signal-grid {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }}
+    .card {{
+      min-width: 0;
+      min-height: 132px;
+      padding: 18px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 10px 26px rgba(23, 32, 51, 0.06);
+    }}
+    .card.primary {{ background: linear-gradient(180deg, #f1fff7 0%, #ffffff 100%); border-color: #bcebd4; }}
+    .label {{ margin-bottom: 8px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; line-height: 1.35; text-transform: uppercase; }}
+    .ko-desc {{ margin: 0 0 12px; color: #8190a3; font-size: 12px; }}
+    .value {{ font-size: clamp(28px, 4vw, 40px); line-height: 1; font-weight: 850; }}
+    .value.success {{ color: var(--green); }}
+    .value.warning {{ color: var(--orange); }}
+    .value.risk {{ color: var(--red); }}
+    .muted-helper {{ margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }}
+    .note {{ padding: 15px 18px; border: 1px solid #dbeafe; border-radius: 8px; background: var(--blue-soft); color: #28446d; font-size: 13px; line-height: 1.6; }}
+    .links a {{ display: inline-block; margin: 10px 10px 0 0; padding: 10px 12px; border-radius: 999px; background: var(--gray-soft); color: #24435f; text-decoration: none; font-size: 13px; font-weight: 750; }}
+    @media (max-width: 920px) {{
+      .hero {{ grid-template-columns: 1fr; padding: 26px; }}
+      .kpi-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+      .signal-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+    }}
+    @media (max-width: 620px) {{
+      .container {{ padding: 14px 12px 34px; }}
+      .hero {{ border-radius: 20px; padding: 22px; }}
+      .kpi-grid, .signal-grid {{ grid-template-columns: 1fr; }}
+    }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Overnight Alpha Lab</p>
+        <h1>Daily Price-Signal Learning System</h1>
+        <div class="subtitle">KIS Price-Based Learning Dashboard / KIS 가격 기반 학습 대시보드</div>
+        <p class="hero-copy">
+          A public research dashboard that tracks how well daily price-signal candidates are learning over time.
+          매일 생성되는 가격 신호 후보의 성과와 데이터 상태를 쉽게 확인하는 공개 연구 대시보드입니다.
+        </p>
+      </div>
+      <div class="hero-panel">
+        <span class="badge {confidence_class}">{metrics["confidence_status"]} / {metrics["confidence_status_ko"]}</span>
+        <div class="hero-rate-label">Reliability Score<br>신뢰도 점수</div>
+        <div class="hero-rate">{metrics["reliability_score"]}<span class="hero-rate-unit"> / 100</span></div>
+        <div class="progress" aria-label="Reliability score"><span style="width: {reliability_width:.0f}%"></span></div>
+        <p class="hero-copy" style="margin-top:14px;">This is a conservative reliability estimate based on completed price-candidate evaluations.<br>완료된 가격 후보 평가를 바탕으로 계산한 보수적인 신뢰도입니다.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Summary <span class="heading-ko">요약</span></h2>
+        <p class="section-subtitle">The main health indicators for the learning system. 공개용 핵심 지표만 간단히 표시합니다.</p>
+      </div>
+      <div class="kpi-grid">
+        <div class="card primary">
+          <div class="label">Reliability Score</div>
+          <div class="ko-desc">신뢰도 점수</div>
+          <div class="value">{metrics["reliability_score"]} / 100</div>
+          <div class="mini-bar"><span style="width: {reliability_width:.0f}%"></span></div>
+        </div>
+        <div class="card">
+          <div class="label">Price Success Rate</div>
+          <div class="ko-desc">가격 후보 성공률</div>
+          <div class="value success">{metrics["price_success_rate"]}%</div>
+          <div class="mini-bar"><span style="width: {success_width:.0f}%"></span></div>
+        </div>
+        <div class="card">
+          <div class="label">Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">시장 대비 성공률</div>
+          {render_kpi_value(metrics["benchmark_success_rate"], "%")}
+          <div class="mini-bar"><span style="width: {benchmark_width:.0f}%"></span></div>
+        </div>
+        <div class="card">
+          <div class="label">Evaluated Cases</div>
+          <div class="ko-desc">평가 완료 수</div>
+          <div class="value">{metrics["price_evaluated_count"]}</div>
+          <div class="mini-bar"><span style="width: {evaluated_width:.0f}%"></span></div>
+        </div>
+        <div class="card">
+          <div class="label">Last Updated</div>
+          <div class="ko-desc">최근 업데이트</div>
+          <div class="muted-helper">{last_updated}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Core Performance <span class="heading-ko">핵심 성과</span></h2>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Recent 7-Day Success Rate</div>
+          <div class="ko-desc">최근 7일 성공률</div>
+          {render_kpi_value(metrics["rolling_7d_success_rate"], "%")}
+        </div>
+        <div class="card">
+          <div class="label">Recent 30-Day Success Rate</div>
+          <div class="ko-desc">최근 30일 성공률</div>
+          {render_kpi_value(metrics["rolling_30d_success_rate"], "%")}
+        </div>
+        <div class="card">
+          <div class="label">Pending Candidates</div>
+          <div class="ko-desc">평가 대기 수</div>
+          <div class="value warning">{metrics["price_pending_count"]}</div>
+        </div>
+        <div class="card">
+          <div class="label">Today Candidate Count</div>
+          <div class="ko-desc">오늘 후보 수</div>
+          <div class="value">{metrics["price_candidate_rows"]}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>System & Data Status <span class="heading-ko">시스템 및 데이터 상태</span></h2>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Data Integrity Status</div>
+          <div class="ko-desc">데이터 무결성 상태</div>
+          <div>{simple_status(data_en, data_ko, data_class)}</div>
+          <div class="muted-helper">Public metrics use deduplicated evaluation counts.<br>공개 지표는 중복을 줄인 평가 수를 사용합니다.</div>
+        </div>
+        <div class="card">
+          <div class="label">Benchmark Coverage</div>
+          <div class="ko-desc">시장 기준 데이터 커버리지</div>
+          <div>{simple_status(benchmark_en, benchmark_ko, benchmark_class)}</div>
+          <div class="muted-helper">{format_metric_value(metrics["integrity_benchmark_coverage"], "%")}</div>
+        </div>
+        <div class="card">
+          <div class="label">News Source Status</div>
+          <div class="ko-desc">뉴스 수집 상태</div>
+          <div>{simple_status(news_en, news_ko, news_class)}</div>
+        </div>
+        <div class="card">
+          <div class="label">DART Source Status</div>
+          <div class="ko-desc">공시 데이터 상태</div>
+          <div>{simple_status(dart_en, dart_ko, dart_class)}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Recommendation Quality <span class="heading-ko">추천 품질</span></h2>
+        <p class="section-subtitle">A simple view of whether the candidate ranking is becoming useful. 후보 선별 품질을 쉬운 등급으로 표시합니다.</p>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Overall Candidate Performance</div>
+          <div class="ko-desc">전체 후보 성과</div>
+          <div>{simple_status(overall_en, overall_ko, overall_class)}</div>
+          <div class="muted-helper">{metrics["price_success_rate"]}%</div>
+        </div>
+        <div class="card">
+          <div class="label">Top Selected Group Performance</div>
+          <div class="ko-desc">상위 추천군 성과</div>
+          {render_kpi_value(top_group_rate, "%")}
+        </div>
+        <div class="card">
+          <div class="label">Recommendation Quality Diagnosis</div>
+          <div class="ko-desc">추천 품질 진단</div>
+          <div>{simple_status(recommendation_en, recommendation_ko, recommendation_class)}</div>
+        </div>
+        <div class="card">
+          <div class="label">Research Scope</div>
+          <div class="ko-desc">연구 범위</div>
+          <div class="muted-helper">Monitoring only. This dashboard does not provide investment advice or trading automation.<br>모니터링 전용이며 투자 조언이나 자동매매 기능을 제공하지 않습니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="note">
+        Primary learning is based on Korea Investment API price-candidate evaluation. DART, news, Snacks, and social attention are supplementary signals.<br>
+        주요 학습은 Korea Investment API 가격 후보 평가를 기반으로 하며, 공시/뉴스/Snacks/관심도 신호는 보조 지표입니다.
+      </div>
+      <div class="links">
+        <a href="https://github.com/JustinSJung/overnight_alpha_lab#readme" target="_blank">README</a>
+        <a href="index.html">Development Log</a>
+        <a href="https://github.com/JustinSJung/overnight_alpha_lab/tree/main/reports/daily_prediction" target="_blank">Key Reports</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+"""
+    return html
+
+
 
 def main():
     print("Generating dashboard...")
@@ -2042,11 +2409,17 @@ def main():
     stock_data = build_stock_data(latest_ml_df)
 
     html = build_html(metrics, stock_data)
+    diagnostics_html = build_diagnostics_html(metrics, stock_data)
+    html = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
+    diagnostics_html = "\n".join(line.rstrip() for line in diagnostics_html.splitlines()) + "\n"
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as file:
         file.write(html)
+    with open(DIAGNOSTICS_OUTPUT_PATH, "w", encoding="utf-8") as file:
+        file.write(diagnostics_html)
 
     print(f"Dashboard saved to: {OUTPUT_PATH}")
+    print(f"Internal diagnostics saved to: {DIAGNOSTICS_OUTPUT_PATH}")
     print(f"Embedded stock count: {len(stock_data)}")
     print("Dashboard metric summary:")
     print(f"- cumulative price evaluated cases: {metrics['price_evaluated_count']}")

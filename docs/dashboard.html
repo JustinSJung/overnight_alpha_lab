@@ -11,7 +11,6 @@
       --muted: #647086;
       --line: #e2e8f0;
       --panel: #ffffff;
-      --panel-soft: #f8fafc;
       --green: #168a5b;
       --green-soft: #e7f6ef;
       --orange: #b76b00;
@@ -24,494 +23,97 @@
       --blue-soft: #e8efff;
       --shadow: 0 16px 42px rgba(23, 32, 51, 0.10);
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
-      padding: 0;
       background: var(--bg);
       color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 28px 20px 44px;
-    }
-
+    .container { max-width: 1120px; margin: 0 auto; padding: 28px 20px 44px; }
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
       gap: 28px;
-      align-items: stretch;
       padding: 34px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at top left, rgba(79, 122, 255, 0.26), transparent 34%),
-        linear-gradient(135deg, #111827 0%, #1d3557 52%, #235a67 100%);
+      border-radius: 24px;
       color: white;
+      background:
+        radial-gradient(circle at top left, rgba(79, 122, 255, 0.25), transparent 32%),
+        linear-gradient(135deg, #111827 0%, #1d3557 54%, #235a67 100%);
       box-shadow: var(--shadow);
-      overflow: hidden;
     }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(34px, 6vw, 58px);
-      line-height: 1.02;
-      letter-spacing: 0;
-    }
-
-    .subtitle {
-      margin: 14px 0 0;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: 20px;
-      font-weight: 650;
-    }
-
-    .hero-copy {
-      margin: 18px 0 0;
-      max-width: 760px;
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
+    .eyebrow { margin: 0 0 12px; color: rgba(255,255,255,0.72); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(34px, 6vw, 56px); line-height: 1.02; }
+    h2 { margin: 0; font-size: 22px; }
+    .subtitle { margin-top: 14px; color: rgba(255,255,255,0.86); font-size: 20px; font-weight: 650; }
+    .hero-copy { max-width: 720px; margin: 18px 0 0; color: rgba(255,255,255,0.76); font-size: 15px; line-height: 1.7; }
     .hero-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 248px;
+      min-height: 245px;
       padding: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.12);
       backdrop-filter: blur(10px);
     }
-
-    .badge {
+    .badge, .status-pill {
       display: inline-flex;
       align-items: center;
       width: fit-content;
+      max-width: 100%;
       padding: 8px 12px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .badge-green {
-      color: var(--green);
-      background: var(--green-soft);
-    }
-
-    .badge-orange {
-      color: var(--orange);
-      background: var(--orange-soft);
-    }
-
-    .badge-red {
-      color: var(--red);
-      background: var(--red-soft);
-    }
-
-    .badge-gray {
-      color: var(--gray);
-      background: var(--gray-soft);
-    }
-
-    .hero-rate-label {
-      margin-top: 30px;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 12px;
-      font-weight: 750;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero-rate {
-      margin-top: 8px;
-      font-size: clamp(44px, 8vw, 72px);
-      line-height: 0.95;
-      font-weight: 850;
-    }
-
-    .hero-rate-unit {
-      font-size: clamp(22px, 4vw, 34px);
-      color: rgba(255, 255, 255, 0.68);
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.16);
-    }
-
-    .hero-stat {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      color: rgba(255, 255, 255, 0.74);
-      font-size: 13px;
-    }
-
-    .hero-stat b {
-      color: white;
-      font-size: 15px;
-    }
-
-    .progress {
-      height: 10px;
-      margin-top: 18px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.18);
-    }
-
-    .progress > span {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #46d39a, #9ee6be);
-    }
-
-    .hero-note {
-      margin-top: 12px;
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .section {
-      margin-top: 28px;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 14px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: 0;
-    }
-
-    .heading-ko {
-      display: inline-block;
-      margin-left: 8px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-    }
-
-    .section-subtitle {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .signal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      min-width: 0;
-      background: var(--panel);
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      border-radius: 8px;
-      padding: 18px;
-      box-shadow: 0 10px 26px rgba(23, 32, 51, 0.06);
-    }
-
-    .kpi-card {
-      min-height: 146px;
-      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
-      border-color: #dbeafe;
-    }
-
-    .kpi-card.primary {
-      grid-column: span 2;
-      background: linear-gradient(180deg, #f1fff7 0%, #ffffff 100%);
-      border-color: #bcebd4;
-    }
-
-    .label {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1.35;
-      margin-bottom: 10px;
-    }
-
-    .ko-desc {
-      margin-top: -4px;
-      margin-bottom: 12px;
-      color: #8190a3;
-      font-size: 12px;
-    }
-
-    .value,
-    .kpi-value {
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1;
-      font-weight: 850;
-      color: var(--ink);
-    }
-
-    .value.success,
-    .kpi-value.success {
-      color: var(--green);
-    }
-
-    .value.warning,
-    .kpi-value.warning {
-      color: var(--orange);
-    }
-
-    .value.risk,
-    .kpi-value.risk {
-      color: var(--red);
-    }
-
-    .kpi-value-small {
-      min-height: 42px;
-      display: flex;
-      align-items: center;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 100%;
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: var(--gray-soft);
-      color: #5b6678;
-      font-size: 12px;
-      font-weight: 800;
       line-height: 1.25;
       text-align: center;
-      white-space: normal;
     }
-
-    .status-pill.badge-green {
-      color: var(--green);
-      background: var(--green-soft);
-    }
-
-    .status-pill.badge-orange {
-      color: var(--orange);
-      background: var(--orange-soft);
-    }
-
-    .status-pill.badge-red {
-      color: var(--red);
-      background: var(--red-soft);
-    }
-
-    .status-pill.badge-gray {
-      color: var(--gray);
-      background: var(--gray-soft);
-    }
-
-    .muted-helper {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .mini-bar {
-      height: 8px;
-      margin-top: 16px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: #e7edf5;
-    }
-
-    .mini-bar > span {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: var(--blue);
-    }
-
-    .note {
-      padding: 15px 18px;
+    .badge { letter-spacing: 0.06em; text-transform: uppercase; }
+    .badge-green, .status-pill.badge-green { color: var(--green); background: var(--green-soft); }
+    .badge-orange, .status-pill.badge-orange { color: var(--orange); background: var(--orange-soft); }
+    .badge-red, .status-pill.badge-red { color: var(--red); background: var(--red-soft); }
+    .badge-gray, .status-pill.badge-gray { color: var(--gray); background: var(--gray-soft); }
+    .hero-rate-label { margin-top: 30px; color: rgba(255,255,255,0.68); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .hero-rate { margin-top: 8px; font-size: clamp(46px, 8vw, 72px); line-height: 0.95; font-weight: 850; }
+    .hero-rate-unit { font-size: clamp(22px, 4vw, 34px); color: rgba(255,255,255,0.68); }
+    .progress, .mini-bar { height: 9px; margin-top: 16px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.18); }
+    .mini-bar { background: #e7edf5; }
+    .progress > span, .mini-bar > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #46d39a, #9ee6be); }
+    .mini-bar > span { background: var(--blue); }
+    .section { margin-top: 28px; }
+    .section-heading { margin-bottom: 14px; }
+    .heading-ko { display: inline-block; margin-left: 8px; color: var(--muted); font-size: 14px; font-weight: 650; }
+    .section-subtitle { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+    .signal-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .card {
+      min-width: 0;
+      min-height: 132px;
+      padding: 18px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
       border-radius: 8px;
-      border: 1px solid #dbeafe;
-      background: var(--blue-soft);
-      color: #28446d;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .tool-card {
-      margin-top: 18px;
       background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 22px;
       box-shadow: 0 10px 26px rgba(23, 32, 51, 0.06);
     }
-
-    .lookup-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    input {
-      width: min(240px, 100%);
-      padding: 12px 14px;
-      font-size: 16px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      outline: none;
-      background: white;
-    }
-
-    input:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(36, 84, 166, 0.12);
-    }
-
-    button {
-      padding: 12px 16px;
-      font-size: 15px;
-      font-weight: 750;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #172033;
-      color: white;
-    }
-
-    .result {
-      margin-top: 18px;
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 18px;
-    }
-
-    .small {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 12px;
-    }
-
-    td {
-      border-bottom: 1px solid var(--line);
-      padding: 10px;
-    }
-
-    td:first-child {
-      color: var(--muted);
-      width: 220px;
-    }
-
-    .links a {
-      display: inline-block;
-      margin: 10px 10px 0 0;
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: var(--gray-soft);
-      color: #24435f;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 750;
-    }
-
+    .card.primary { background: linear-gradient(180deg, #f1fff7 0%, #ffffff 100%); border-color: #bcebd4; }
+    .label { margin-bottom: 8px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; line-height: 1.35; text-transform: uppercase; }
+    .ko-desc { margin: 0 0 12px; color: #8190a3; font-size: 12px; }
+    .value { font-size: clamp(28px, 4vw, 40px); line-height: 1; font-weight: 850; }
+    .value.success { color: var(--green); }
+    .value.warning { color: var(--orange); }
+    .value.risk { color: var(--red); }
+    .muted-helper { margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .note { padding: 15px 18px; border: 1px solid #dbeafe; border-radius: 8px; background: var(--blue-soft); color: #28446d; font-size: 13px; line-height: 1.6; }
+    .links a { display: inline-block; margin: 10px 10px 0 0; padding: 10px 12px; border-radius: 999px; background: var(--gray-soft); color: #24435f; text-decoration: none; font-size: 13px; font-weight: 750; }
     @media (max-width: 920px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 26px;
-      }
-
-      .kpi-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .kpi-card.primary {
-        grid-column: span 2;
-      }
-
-      .signal-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .hero { grid-template-columns: 1fr; padding: 26px; }
+      .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .signal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
     @media (max-width: 620px) {
-      .container {
-        padding: 14px 12px 34px;
-      }
-
-      .hero {
-        border-radius: 22px;
-        padding: 22px;
-      }
-
-      .hero-panel {
-        min-height: auto;
-      }
-
-      .kpi-grid,
-      .signal-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .kpi-card.primary {
-        grid-column: span 1;
-      }
-
-      .section-heading {
-        display: block;
-      }
-
-      td:first-child {
-        width: 45%;
-      }
+      .container { padding: 14px 12px 34px; }
+      .hero { border-radius: 20px; padding: 22px; }
+      .kpi-grid, .signal-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -523,620 +125,156 @@
         <h1>Daily Price-Signal Learning System</h1>
         <div class="subtitle">KIS Price-Based Learning Dashboard / KIS 가격 기반 학습 대시보드</div>
         <p class="hero-copy">
-          Primary learning is based on Korea Investment API price-candidate evaluation.
-          DART, news, Snacks, and social attention are supplementary signals.
+          A public research dashboard that tracks how well daily price-signal candidates are learning over time.
+          매일 생성되는 가격 신호 후보의 성과와 데이터 상태를 쉽게 확인하는 공개 연구 대시보드입니다.
         </p>
       </div>
       <div class="hero-panel">
-        <div>
-          <span class="badge badge-orange">EARLY STAGE / 초기 검증 단계</span>
-          <div class="hero-rate-label">Reliability Score<br>신뢰도 점수</div>
-          <div class="hero-rate">49.8<span class="hero-rate-unit"> / 100</span></div>
-          <div class="progress" aria-label="Reliability score">
-            <span style="width: 50%"></span>
-          </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <span>Price Success Rate / 가격 후보 성공률</span>
-              <b>52.78%</b>
-            </div>
-            <div class="hero-stat">
-              <span>Price Evaluated Cases / 가격 후보 평가 완료</span>
-              <b>1116</b>
-            </div>
-            <div class="hero-stat">
-              <span>Price Pending Candidates / 가격 후보 평가 대기</span>
-              <b>1059</b>
-            </div>
-          </div>
-        </div>
-        <p class="hero-note">초기 검증 단계. Wilson 신뢰구간 하한값 기준의 보수적 신뢰도입니다. 표본 수가 적을수록 단순 성공률보다 낮게 표시됩니다.</p>
+        <span class="badge badge-orange">EARLY STAGE / 초기 검증 단계</span>
+        <div class="hero-rate-label">Reliability Score<br>신뢰도 점수</div>
+        <div class="hero-rate">49.8<span class="hero-rate-unit"> / 100</span></div>
+        <div class="progress" aria-label="Reliability score"><span style="width: 50%"></span></div>
+        <p class="hero-copy" style="margin-top:14px;">This is a conservative reliability estimate based on completed price-candidate evaluations.<br>완료된 가격 후보 평가를 바탕으로 계산한 보수적인 신뢰도입니다.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <div>
-          <h2>V2 Performance Monitor <span class="heading-ko">v2 성과 추적</span></h2>
-          <p class="section-subtitle">This layer monitors only v2_conservative_ranker after candidate-level deduplication. 후보 생성과 점수 산식은 변경하지 않고 v2 성과만 추적합니다.</p>
-        </div>
+        <h2>Summary <span class="heading-ko">요약</span></h2>
+        <p class="section-subtitle">The main health indicators for the learning system. 공개용 핵심 지표만 간단히 표시합니다.</p>
       </div>
       <div class="kpi-grid">
-        <div class="card kpi-card">
-          <div class="label">V2 Diagnosis</div>
-          <div class="ko-desc">v2 진단</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Weak<br>약함</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">V2 Evaluated Cases</div>
-          <div class="ko-desc">v2 평가 완료</div>
-          <div class="kpi-value">3064</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">V2 Raw Success Rate</div>
-          <div class="ko-desc">v2 원시 성공률</div>
-          <div class="kpi-value">47.55%</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">V2 Benchmark-Adjusted Success Rate</div>
-          <div class="ko-desc">v2 시장 대비 성공률</div>
-          <div class="kpi-value">47.73%</div>
-          <div class="muted-helper">Coverage: 24.48%<br>커버리지: 24.48%</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Selected Pick Success Rate</div>
-          <div class="ko-desc">선별 후보 성공률</div>
-          <div class="kpi-value">49.2%</div>
-          <div class="muted-helper">Evaluated cases: 187<br>평가 완료: 187</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Non-Selected Success Rate</div>
-          <div class="ko-desc">비선별 후보 성공률</div>
-          <div class="kpi-value">47.45%</div>
-          <div class="muted-helper">Evaluated cases: 2877<br>평가 완료: 2877</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">V2 Top 10 Success Rate</div>
-          <div class="ko-desc">v2 일별 Top 10 성공률</div>
-          <div class="kpi-value">45.83%</div>
-          <div class="muted-helper">Evaluated cases: 48<br>평가 완료: 48</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">V2 Top 20 Success Rate</div>
-          <div class="ko-desc">v2 일별 Top 20 성공률</div>
-          <div class="kpi-value">45.35%</div>
-          <div class="muted-helper">Evaluated cases: 86<br>평가 완료: 86</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Benchmark Coverage Warning</div>
-          <div class="ko-desc">시장 기준 커버리지 경고</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">Benchmark coverage still low<br>시장 기준 커버리지 낮음</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Latest V2 Monitor Update</div>
-          <div class="ko-desc">최근 v2 모니터 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30 05:54:03<br>최근 갱신</span></div>
-        </div>
-      </div>
-      <div class="note section">
-        Benchmark coverage is still below 30%, so market-relative v2 conclusions remain provisional.<br>시장 기준 커버리지가 아직 30% 미만이므로 v2 시장 대비 판단은 임시 진단입니다.
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <div>
-          <h2>Evaluation Integrity <span class="heading-ko">평가 무결성</span></h2>
-          <p class="section-subtitle">This audit checks duplicate cumulative evaluation rows, v2-only performance, benchmark coverage, and learned-rule activation. 누적 평가 중복, v2 전용 성과, 시장 대비 평가 커버리지, 학습 규칙 활성화를 점검합니다.</p>
-        </div>
-      </div>
-      <div class="kpi-grid">
-        <div class="card kpi-card">
-          <div class="label">Evaluation Status</div>
-          <div class="ko-desc">평가 상태</div>
-          <div class="kpi-value-small"><span class="status-pill badge-red">Possible duplicates<br>중복 가능성</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Total Evaluation Rows</div>
-          <div class="ko-desc">전체 평가 행 수</div>
-          <div class="kpi-value">15405</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Unique Evaluation Keys</div>
-          <div class="ko-desc">고유 평가 키</div>
-          <div class="kpi-value">2175</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Duplicate Rows</div>
-          <div class="ko-desc">중복 행 수</div>
-          <div class="kpi-value">13230</div>
-          <div class="muted-helper">Duplicate rate: 85.88%<br>중복률: 85.88%</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">V2 Evaluated Cases</div>
-          <div class="ko-desc">v2 평가 완료</div>
-          <div class="kpi-value">3064</div>
-          <div class="muted-helper">V2 success rate: 47.55%<br>v2 성공률: 47.55%</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Benchmark Coverage</div>
-          <div class="ko-desc">시장 대비 평가 커버리지</div>
-          <div class="kpi-value">7.24%</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 대비 평가 가능</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Ranking Integrity</div>
-          <div class="ko-desc">랭킹 무결성</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">Ranking improving<br>랭킹 점검</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Active Learned Rules</div>
-          <div class="ko-desc">활성 학습 규칙</div>
-          <div class="kpi-value">0</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <div>
-          <h2>Benchmark Coverage <span class="heading-ko">시장 기준 커버리지</span></h2>
-          <p class="section-subtitle">Benchmark-adjusted evaluation compares price candidates against KOSPI/KOSDAQ, using KOSPI as a fallback when market classification is missing. 시장 기준 평가는 KOSPI/KOSDAQ 대비 초과수익을 계산하며, 분류가 없으면 KOSPI를 기본값으로 사용합니다.</p>
-        </div>
-      </div>
-      <div class="kpi-grid">
-        <div class="card kpi-card">
-          <div class="label">Benchmark Status</div>
-          <div class="ko-desc">시장 기준 상태</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 기준 상태</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Benchmark Latest Date</div>
-          <div class="ko-desc">시장 지수 최신일</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30<br>시장 지수 최신일</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Price Signal Latest Date</div>
-          <div class="ko-desc">가격 신호 최신일</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30<br>가격 신호 최신일</span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Benchmark Rows Available</div>
-          <div class="ko-desc">시장 지수 행 수</div>
-          <div class="kpi-value">84</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Benchmark-Adjusted Evaluated Cases</div>
-          <div class="ko-desc">시장 대비 평가 완료</div>
-          <div class="kpi-value">1116</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Benchmark Coverage Rate</div>
-          <div class="ko-desc">시장 대비 커버리지</div>
-          <div class="kpi-value">7.24%</div>
-          <div class="muted-helper">Benchmark-adjusted success rate: 48.57%<br>시장 대비 성공률: 48.57%</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <div>
-          <h2>Price Candidate Learned Rules <span class="heading-ko">가격 후보 학습 룰</span></h2>
-          <p class="section-subtitle">These rules summarize deduped KIS price-candidate outcomes by explainable score and penalty buckets. 점수 산식은 변경하지 않고, 설명 가능한 가격 후보 그룹별 성과만 진단합니다.</p>
-        </div>
-      </div>
-      <div class="kpi-grid">
-        <div class="card kpi-card">
-          <div class="label">Rule Rows</div>
-          <div class="ko-desc">학습 룰 행 수</div>
-          <div class="kpi-value">43</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Active Boost Rules</div>
-          <div class="ko-desc">상향 후보 룰</div>
-          <div class="kpi-value">7</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Active Penalize Rules</div>
-          <div class="ko-desc">하향 후보 룰</div>
-          <div class="kpi-value">5</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Watch Rules</div>
-          <div class="ko-desc">관찰 룰</div>
-          <div class="kpi-value">11</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Top Positive Rule</div>
-          <div class="ko-desc">상위 긍정 룰</div>
-          <div class="muted-helper">news_risk_penalty=high (47.22pp)</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Top Negative Rule</div>
-          <div class="ko-desc">상위 부정 룰</div>
-          <div class="muted-helper">candidate_rank=rank_11_20 (-52.78pp)</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Latest Rule Update</div>
-          <div class="ko-desc">최근 룰 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30 05:54:03<br>최근 룰 갱신</span></div>
-        </div>
-      </div>
-      <div class="note section">
-        Suspicious rules are diagnostic only and are not applied to scoring.<br>
-        의심 룰은 진단용이며 점수 산식에 자동 반영하지 않습니다.
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <div>
-          <h2>Suspicious Learned Rules <span class="heading-ko">의심 학습 룰</span></h2>
-          <p class="section-subtitle">These flags catch risky-looking learned rules before anyone treats them as score logic. 위험해 보이는 학습 룰을 점수 산식으로 오해하지 않도록 따로 표시합니다.</p>
-        </div>
-      </div>
-      <div class="signal-grid">
-        <div class="card">
-          <div class="label">Suspicious Rule Count</div>
-          <div class="ko-desc">의심 룰 수</div>
-          <div class="kpi-value">10</div>
+        <div class="card primary">
+          <div class="label">Reliability Score</div>
+          <div class="ko-desc">신뢰도 점수</div>
+          <div class="value">49.8 / 100</div>
+          <div class="mini-bar"><span style="width: 50%"></span></div>
         </div>
         <div class="card">
-          <div class="label">Top Suspicious Rule</div>
-          <div class="ko-desc">대표 의심 룰</div>
-          <div class="kpi-value-small"><span class="status-pill badge-red">news_risk_penalty=high<br>대표 의심 룰</span></div>
-        </div>
-        <div class="card">
-          <div class="label">Suspicious Reason</div>
-          <div class="ko-desc">의심 사유</div>
-          <div class="muted-helper">large_lift_with_under_100_cases; only_one_or_two_signal_dates</div>
-        </div>
-      </div>
-      <div class="note section">
-        Suspicious rules are diagnostic only and are not applied to scoring.<br>
-        의심 룰은 진단용이며 점수 산식에 자동 반영하지 않습니다.
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <div>
-          <h2>KIS Price-Based Learning <span class="heading-ko">KIS 가격 기반 학습</span></h2>
-          <p class="section-subtitle">Primary learning metrics are cumulative across historical price candidate evaluations. KIS 가격 후보 평가 데이터를 누적 기준으로 집계합니다.</p>
-        </div>
-      </div>
-      <div class="kpi-grid">
-        <div class="card kpi-card primary">
           <div class="label">Price Success Rate</div>
-          <div class="ko-desc">KIS 가격 후보 성공률</div>
+          <div class="ko-desc">가격 후보 성공률</div>
           <div class="value success">52.78%</div>
           <div class="mini-bar"><span style="width: 53%"></span></div>
         </div>
-        <div class="card kpi-card">
-          <div class="label">Price Evaluated Cases</div>
-          <div class="ko-desc">가격 후보 평가 완료</div>
-          <div class="value">1116</div>
-          <div class="mini-bar"><span style="width: 51%"></span></div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Price Success Count</div>
-          <div class="ko-desc">가격 후보 성공 수</div>
-          <div class="value success">589</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Price Failure Count</div>
-          <div class="ko-desc">가격 후보 실패 수</div>
-          <div class="value risk">527</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Price Pending Candidates</div>
-          <div class="ko-desc">가격 후보 평가 대기</div>
-          <div class="value warning">1059</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Price Candidates</div>
-          <div class="ko-desc">오늘 가격 기반 후보</div>
-          <div class="value">206</div>
-        </div>
-        <div class="card kpi-card">
+        <div class="card">
           <div class="label">Benchmark-Adjusted Success Rate</div>
           <div class="ko-desc">시장 대비 성공률</div>
           <div class="kpi-value">48.57%</div>
-          
+          <div class="mini-bar"><span style="width: 49%"></span></div>
         </div>
-        <div class="card kpi-card">
-          <div class="label">Benchmark-Adjusted Evaluated Cases</div>
-          <div class="ko-desc">시장 대비 평가 완료</div>
+        <div class="card">
+          <div class="label">Evaluated Cases</div>
+          <div class="ko-desc">평가 완료 수</div>
           <div class="value">1116</div>
+          <div class="mini-bar"><span style="width: 51%"></span></div>
         </div>
-      </div>
-      <div class="note section">
-        Reliability Score uses the Wilson lower confidence bound, so it is more conservative than raw success rate when sample size is small.<br>
-        신뢰도 점수는 Wilson 신뢰구간 하한값을 사용하므로, 표본 수가 적을 때 단순 성공률보다 보수적으로 계산됩니다.
+        <div class="card">
+          <div class="label">Last Updated</div>
+          <div class="ko-desc">최근 업데이트</div>
+          <div class="muted-helper">2026-07-30 15:12:28</div>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <div>
-          <h2>Rolling Performance <span class="heading-ko">최근 성과 추이</span></h2>
-          <p class="section-subtitle">Rolling metrics use evaluation date, or signal date when evaluation date is unavailable. 최근 평가일 기준의 단기 성과를 확인합니다.</p>
-        </div>
+        <h2>Core Performance <span class="heading-ko">핵심 성과</span></h2>
       </div>
       <div class="signal-grid">
         <div class="card">
-          <div class="label">Rolling 7-Day Success Rate</div>
+          <div class="label">Recent 7-Day Success Rate</div>
           <div class="ko-desc">최근 7일 성공률</div>
           <div class="kpi-value">52.78%</div>
         </div>
         <div class="card">
-          <div class="label">Rolling 30-Day Success Rate</div>
+          <div class="label">Recent 30-Day Success Rate</div>
           <div class="ko-desc">최근 30일 성공률</div>
           <div class="kpi-value">52.78%</div>
         </div>
         <div class="card">
-          <div class="label">Rolling 7-Day Evaluated Cases</div>
-          <div class="ko-desc">최근 7일 평가 수</div>
-          <div class="kpi-value">1116</div>
+          <div class="label">Pending Candidates</div>
+          <div class="ko-desc">평가 대기 수</div>
+          <div class="value warning">1059</div>
         </div>
         <div class="card">
-          <div class="label">Rolling 30-Day Evaluated Cases</div>
-          <div class="ko-desc">최근 30일 평가 수</div>
-          <div class="kpi-value">1116</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <div>
-          <h2>Signal Quality Diagnostics <span class="heading-ko">신호 품질 진단</span></h2>
-          <p class="section-subtitle">Rank buckets are recalculated within each signal/prediction day, then aggregated across evaluated days. 랭킹 구간은 각 일자 안에서 다시 계산한 뒤 전체 평가일에 걸쳐 누적 집계합니다.</p>
-        </div>
-      </div>
-      <div class="kpi-grid">
-        <div class="card kpi-card primary">
-          <div class="label">Overall Price Success Rate</div>
-          <div class="ko-desc">전체 가격 후보 성공률</div>
-          <div class="kpi-value success">49.99%</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Current Ranking Diagnosis</div>
-          <div class="ko-desc">현재 랭킹 진단</div>
-          <div class="kpi-value-small"><span class="status-pill badge-red">Ranking inverted<br>랭킹 역방향 가능성</span></div>
-          <div class="muted-helper">V2 evaluated cases: 3064<br>v2 평가 완료: 3064</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Score Version</div>
-          <div class="ko-desc">점수 산식 버전</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">v2_conservative_ranker<br>보수적 v2 랭커</span></div>
-          <div class="muted-helper">V2 scoring impact should be judged after several new daily runs.<br>v2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Top 10 Cumulative Success Rate</div>
-          <div class="ko-desc">일별 Top 10 누적 성공률</div>
-          <div class="kpi-value">30.3%</div>
-          <div class="muted-helper">Evaluated cases: 99<br>평가 완료: 99</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Top 20 Cumulative Success Rate</div>
-          <div class="ko-desc">일별 Top 20 누적 성공률</div>
-          <div class="kpi-value">32.31%</div>
-          <div class="muted-helper">Evaluated cases: 195<br>평가 완료: 195</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Top 50 Cumulative Success Rate</div>
-          <div class="ko-desc">일별 Top 50 누적 성공률</div>
-          <div class="kpi-value">40.14%</div>
-          <div class="muted-helper">Evaluated cases: 436<br>평가 완료: 436</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Top 100 Cumulative Success Rate</div>
-          <div class="ko-desc">일별 Top 100 누적 성공률</div>
-          <div class="kpi-value">37.5%</div>
-          <div class="muted-helper">Evaluated cases: 696<br>평가 완료: 696</div>
-        </div>
-        <div class="card kpi-card">
-          <div class="label">Candidate Pool Today</div>
-          <div class="ko-desc">오늘 평가 후보 풀</div>
+          <div class="label">Today Candidate Count</div>
+          <div class="ko-desc">오늘 후보 수</div>
           <div class="value">206</div>
         </div>
-        <div class="card kpi-card">
-          <div class="label">Selected Picks Today</div>
-          <div class="ko-desc">오늘 선별 후보 수</div>
-          <div class="value success">20</div>
-        </div>
-      </div>
-      <div class="note section">
-        Large candidate pools improve statistical reliability. Selected picks are a smaller top-ranked subset for focused monitoring.<br>
-        큰 후보 풀은 통계적 신뢰도 측정에 도움이 되며, 선별 후보는 집중 모니터링용 상위 후보입니다.<br>
-        Top N rates are cumulative per signal/prediction day, then aggregated across historical evaluations.<br>
-        Top N 성공률은 각 signal/prediction 일자별 누적 구간을 과거 평가 전체에 걸쳐 집계한 값입니다.<br>
-        V2 scoring impact should be judged after several new daily runs.<br>
-        V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.<br>
-        <span class="small">Overall performance remains close to random; ranking quality is not yet clearly proven.<br>전체 성과가 아직 무작위에 가까우며, 랭킹 품질은 명확히 입증되지 않았습니다.</span>
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <div>
-          <h2>News Source Status <span class="heading-ko">뉴스 소스 상태</span></h2>
-          <p class="section-subtitle">News providers are supplementary context and should not block the primary KIS price loop. 뉴스 provider는 보조 신호이며 KIS 가격 학습 파이프라인을 중단시키지 않습니다.</p>
-        </div>
+        <h2>System & Data Status <span class="heading-ko">시스템 및 데이터 상태</span></h2>
       </div>
       <div class="signal-grid">
         <div class="card">
-          <div class="label">Naver Status</div>
-          <div class="ko-desc">네이버 뉴스 상태</div>
-          <div class="kpi-value-small"><span class="status-pill">Available<br>수집 가능</span></div>
+          <div class="label">Data Integrity Status</div>
+          <div class="ko-desc">데이터 무결성 상태</div>
+          <div><span class="status-pill badge-orange">Needs Review<br>점검 필요</span></div>
+          <div class="muted-helper">Public metrics use deduplicated evaluation counts.<br>공개 지표는 중복을 줄인 평가 수를 사용합니다.</div>
         </div>
         <div class="card">
-          <div class="label">Google News RSS Status</div>
-          <div class="ko-desc">Google News RSS 상태</div>
-          <div class="kpi-value-small"><span class="status-pill">Available<br>수집 가능</span></div>
+          <div class="label">Benchmark Coverage</div>
+          <div class="ko-desc">시장 기준 데이터 커버리지</div>
+          <div><span class="status-pill badge-orange">Needs More Data<br>데이터 더 필요</span></div>
+          <div class="muted-helper">0.0%</div>
         </div>
         <div class="card">
-          <div class="label">Snacks Digest Status</div>
-          <div class="ko-desc">Snacks 시장 요약 상태</div>
-          <div class="kpi-value-small"><span class="status-pill">Available<br>수집 가능</span></div>
+          <div class="label">News Source Status</div>
+          <div class="ko-desc">뉴스 수집 상태</div>
+          <div><span class="status-pill badge-green">Available<br>정상 수집</span></div>
         </div>
         <div class="card">
-          <div class="label">Last News Provider Update</div>
-          <div class="ko-desc">마지막 뉴스 provider 업데이트</div>
-          <div class="kpi-value-small"><span class="status-pill">2026-07-30 05:54:01<br>업데이트 시각</span></div>
-        </div>
-        <div class="card">
-          <div class="label">News Provider Items</div>
-          <div class="ko-desc">뉴스 provider 원문 항목 수</div>
-          <div class="value">100</div>
-        </div>
-        <div class="card">
-          <div class="label">News Provider Features</div>
-          <div class="ko-desc">뉴스 provider 특징 행 수</div>
-          <div class="value">20</div>
+          <div class="label">DART Source Status</div>
+          <div class="ko-desc">공시 데이터 상태</div>
+          <div><span class="status-pill badge-green">Available<br>정상 수집</span></div>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <div>
-          <h2>Supplementary Signals <span class="heading-ko">보조 신호</span></h2>
-          <p class="section-subtitle">DART, news, Snacks, social attention, and DART learned rules provide context around the primary price loop. DART, 뉴스, Snacks, 관심도 분석과 DART 학습 룰은 가격 기반 학습을 보조합니다.</p>
-        </div>
+        <h2>Recommendation Quality <span class="heading-ko">추천 품질</span></h2>
+        <p class="section-subtitle">A simple view of whether the candidate ranking is becoming useful. 후보 선별 품질을 쉬운 등급으로 표시합니다.</p>
       </div>
       <div class="signal-grid">
         <div class="card">
-          <div class="label">DART Event Evaluated Cases</div>
-          <div class="ko-desc">DART 이벤트 평가 완료</div>
-          <div class="value">0</div>
+          <div class="label">Overall Candidate Performance</div>
+          <div class="ko-desc">전체 후보 성과</div>
+          <div><span class="status-pill badge-orange">Moderate<br>보통</span></div>
+          <div class="muted-helper">52.78%</div>
         </div>
         <div class="card">
-          <div class="label">DART Event Pending Cases</div>
-          <div class="ko-desc">DART 이벤트 평가 대기</div>
-          <div class="value warning">664</div>
+          <div class="label">Top Selected Group Performance</div>
+          <div class="ko-desc">상위 추천군 성과</div>
+          <div class="kpi-value">49.2%</div>
         </div>
         <div class="card">
-          <div class="label">DART Event Success Rate</div>
-          <div class="ko-desc">DART 이벤트 성공률</div>
-          <div class="value">0.0%</div>
+          <div class="label">Recommendation Quality Diagnosis</div>
+          <div class="ko-desc">추천 품질 진단</div>
+          <div><span class="status-pill badge-orange">Moderate<br>보통</span></div>
         </div>
         <div class="card">
-          <div class="label">Social Attention Rows</div>
-          <div class="ko-desc">관심도 분석 행 수</div>
-          <div class="value">10</div>
-        </div>
-        <div class="card">
-          <div class="label">High Attention Signals</div>
-          <div class="ko-desc">높은 관심도 신호</div>
-          <div class="value success">0</div>
-        </div>
-        <div class="card">
-          <div class="label">Risk Noise Signals</div>
-          <div class="ko-desc">리스크성 노이즈 신호</div>
-          <div class="value risk">9</div>
-        </div>
-        <div class="card">
-          <div class="label">Market-Adjusted Rows</div>
-          <div class="ko-desc">시장 조정 평가 행 수</div>
-          <div class="value">16</div>
-        </div>
-        <div class="card">
-          <div class="label">DART Learned Rule Types</div>
-          <div class="ko-desc">DART 학습 대상 이벤트 유형</div>
-          <div class="value">11</div>
-        </div>
-        <div class="card">
-          <div class="label">Active DART Learned Rules</div>
-          <div class="ko-desc">활성 DART 학습 룰</div>
-          <div class="value">0</div>
+          <div class="label">Research Scope</div>
+          <div class="ko-desc">연구 범위</div>
+          <div class="muted-helper">Monitoring only. This dashboard does not provide investment advice or trading automation.<br>모니터링 전용이며 투자 조언이나 자동매매 기능을 제공하지 않습니다.</div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-heading">
-        <div>
-          <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-07-30 05:54:05. Latest ML dataset rows: 72. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
-        </div>
+      <div class="note">
+        Primary learning is based on Korea Investment API price-candidate evaluation. DART, news, Snacks, and social attention are supplementary signals.<br>
+        주요 학습은 Korea Investment API 가격 후보 평가를 기반으로 하며, 공시/뉴스/Snacks/관심도 신호는 보조 지표입니다.
       </div>
-      <div class="tool-card">
-        <h2>Stock Quick Lookup <span class="small">종목 간단 조회</span></h2>
-        <p class="small">
-          Enter a 6-digit Korean stock code to check the latest available event summary.
-          Enter a 6-digit Korean stock code to check the latest available event summary.<br><span class="small">현재 ML 데이터셋에 포함된 종목만 즉시 조회됩니다. 예: 005930</span>
-        </p>
-        <div class="lookup-row">
-          <input id="stockInput" placeholder="6-digit stock code" maxlength="6">
-          <button onclick="searchStock()">Search / 조회</button>
-        </div>
-        <div id="stockResult" class="result" style="display:none;"></div>
-      </div>
-
-      <div class="tool-card">
-        <h2>Key Reports <span class="small">주요 리포트</span></h2>
-        <div class="links">
-          <a href="https://github.com/JustinSJung/overnight_alpha_lab#readme" target="_blank">README</a>
-          <a href="index.html">Development Log</a>
-          <a href="https://github.com/JustinSJung/overnight_alpha_lab/tree/main/reports/daily_prediction" target="_blank">Key Reports</a>
-        </div>
-        <p class="small">
-          Latest generated reports are available in the GitHub repository under reports/daily_prediction and reports/daily_review.
-          Latest generated reports are available in the GitHub repository under reports/daily_prediction and reports/daily_review.<br><span class="small">최신 리포트 파일은 GitHub 저장소의 reports/daily_prediction 및 reports/daily_review 폴더에서 확인할 수 있습니다.</span>
-        </p>
+      <div class="links">
+        <a href="https://github.com/JustinSJung/overnight_alpha_lab#readme" target="_blank">README</a>
+        <a href="index.html">Development Log</a>
+        <a href="https://github.com/JustinSJung/overnight_alpha_lab/tree/main/reports/daily_prediction" target="_blank">Key Reports</a>
       </div>
     </section>
   </div>
-
-  <script>
-    const STOCK_DATA = [{"stock_code": "332290", "corp_name": "누보", "event_type": "convertible_bond", "prediction_direction": "negative", "event_score": -60.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "061970", "corp_name": "LB세미콘", "event_type": "paid_in_capital_increase", "prediction_direction": "negative", "event_score": -70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "330730", "corp_name": "스톤브릿지벤처스", "event_type": "investment_decision", "prediction_direction": "volatile", "event_score": 30.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 10.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "475580", "corp_name": "에이럭스", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": -1.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "141000", "corp_name": "비아트론", "event_type": "supply_contract", "prediction_direction": "positive", "event_score": 70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 0.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "403550", "corp_name": "쏘카", "event_type": "paid_in_capital_increase", "prediction_direction": "negative", "event_score": -70.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 6.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}, {"stock_code": "011330", "corp_name": "유니켐", "event_type": "major_shareholder_change", "prediction_direction": "volatile", "event_score": 10.0, "confidence_level": "N/A", "news_count": 5.0, "news_sentiment_score": 2.0, "prediction_result": "pending", "next_close_return": 0.0, "error_category": "N/A"}];
-
-    function fmt(value) {
-      if (value === null || value === undefined || value === "") return "N/A";
-      return value;
-    }
-
-    function searchStock() {
-      const input = document.getElementById("stockInput").value.trim().padStart(6, "0");
-      const box = document.getElementById("stockResult");
-
-      if (!input || input.length !== 6) {
-        box.style.display = "block";
-        box.innerHTML = "<b>종목코드 6자리를 입력하세요.</b>";
-        return;
-      }
-
-      const item = STOCK_DATA.find(x => x.stock_code === input);
-
-      if (!item) {
-        box.style.display = "block";
-        box.innerHTML = `
-          <h3>조회 결과 없음</h3>
-          <p>현재 최신 ML 데이터셋에 이 종목이 없습니다.</p>
-          <p class="small">GitHub Actions 또는 로컬에서 single_stock_predictor를 별도로 실행하면 개별 리포트를 만들 수 있습니다.</p>
-        `;
-        return;
-      }
-
-      box.style.display = "block";
-      box.innerHTML = `
-        <h3>${item.corp_name} (${item.stock_code})</h3>
-        <table>
-          <tr><td>이벤트 유형</td><td>${fmt(item.event_type)}</td></tr>
-          <tr><td>예측 방향</td><td>${fmt(item.prediction_direction)}</td></tr>
-          <tr><td>이벤트 점수</td><td>${fmt(item.event_score)}</td></tr>
-          <tr><td>신뢰도 등급</td><td>${fmt(item.confidence_level)}</td></tr>
-          <tr><td>뉴스 수</td><td>${fmt(item.news_count)}</td></tr>
-          <tr><td>뉴스 감성 점수</td><td>${fmt(item.news_sentiment_score)}</td></tr>
-          <tr><td>현재 평가 결과</td><td>${fmt(item.prediction_result)}</td></tr>
-          <tr><td>다음 종가 수익률</td><td>${fmt(item.next_close_return)}</td></tr>
-          <tr><td>오답/평가 분류</td><td>${fmt(item.error_category)}</td></tr>
-        </table>
-      `;
-    }
-  </script>
 </body>
 </html>
