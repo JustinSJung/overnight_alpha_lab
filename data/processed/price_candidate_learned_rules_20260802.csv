@@ -1,0 +1,44 @@
+﻿rule_group,rule_value,evaluated_count,success_count,failure_count,success_rate,baseline_success_rate,lift_vs_baseline,confidence_level,recommended_action,suspicious_flag,suspicious_reason,date_coverage_count
+score_version,legacy_or_unknown,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+final_price_signal_score_v2,missing,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+overextension_penalty,missing,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+reversal_risk_penalty,missing,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+news_risk_penalty,missing,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+attention_noise_penalty,missing,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+volume_confirmation_score,missing,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+liquidity_score,missing,368,192,176,52.17,46.81,5.36,high,boost,False,,7
+volume_confirmation_score,high,61,38,23,62.3,46.81,15.49,low,boost,True,large_lift_with_under_100_cases,7
+overextension_penalty,high,65,38,27,58.46,46.81,11.65,low,boost,True,boost_on_semantically_risky_bucket; large_lift_with_under_100_cases,8
+candidate_rank,top_10,56,28,28,50.0,46.81,3.19,low,boost,False,,9
+reversal_risk_penalty,high,132,73,59,55.3,46.81,8.49,medium,boost,True,boost_on_semantically_risky_bucket,8
+candidate_rank,missing,294,161,133,54.76,46.81,7.95,medium,boost,False,,6
+overextension_penalty,none,823,356,467,43.26,46.81,-3.55,high,penalize,False,,8
+final_price_signal_score_v2,score_20_30,350,145,205,41.43,46.81,-5.38,high,penalize,False,,8
+reversal_risk_penalty,none,478,192,286,40.17,46.81,-6.64,high,penalize,False,,8
+candidate_rank,rank_51_100,340,129,211,37.94,46.81,-8.87,high,penalize,False,,8
+volume_confirmation_score,moderate,136,54,82,39.71,46.81,-7.1,medium,penalize,False,,8
+volume_confirmation_score,none,210,83,127,39.52,46.81,-7.29,medium,penalize,False,,8
+candidate_rank,rank_101_plus,558,264,294,47.31,46.81,0.5,high,neutral,False,,8
+selected_pick,broad_pool,1226,573,653,46.74,46.81,-0.07,high,neutral,False,,15
+volume_confirmation_score,negative,509,234,275,45.97,46.81,-0.84,high,neutral,False,,8
+final_price_signal_score_v2,score_30_40,418,192,226,45.93,46.81,-0.88,high,neutral,False,,8
+liquidity_score,basic,597,272,325,45.56,46.81,-1.25,high,neutral,False,,8
+attention_noise_penalty,none,874,393,481,44.97,46.81,-1.84,high,neutral,False,,8
+score_version,v2_conservative_ranker,916,409,507,44.65,46.81,-2.16,high,neutral,False,,8
+news_risk_penalty,none,872,386,486,44.27,46.81,-2.54,high,neutral,False,,8
+final_price_signal_score_v2,score_50_plus,53,26,27,49.06,46.81,2.25,low,neutral,False,,8
+final_price_signal_score_v2,score_lt_20,95,46,49,48.42,46.81,1.61,low,neutral,False,,8
+selected_pick,selected,58,28,30,48.28,46.81,1.47,low,neutral,False,,9
+liquidity_score,confirmed,273,134,139,49.08,46.81,2.27,medium,neutral,False,,8
+reversal_risk_penalty,medium,172,84,88,48.84,46.81,2.03,medium,neutral,False,,8
+reversal_risk_penalty,low,134,60,74,44.78,46.81,-2.03,medium,neutral,False,,8
+news_risk_penalty,high,2,2,0,100.0,46.81,53.19,insufficient,watch,True,large_lift_with_under_100_cases; only_one_or_two_signal_dates,2
+overextension_penalty,medium,9,6,3,66.67,46.81,19.86,insufficient,watch,True,large_lift_with_under_100_cases,5
+news_risk_penalty,low,14,9,5,64.29,46.81,17.48,insufficient,watch,True,large_lift_with_under_100_cases,6
+candidate_rank,rank_21_50,34,19,15,55.88,46.81,9.07,insufficient,watch,True,only_one_or_two_signal_dates,2
+attention_noise_penalty,low,4,2,2,50.0,46.81,3.19,insufficient,watch,False,,3
+overextension_penalty,low,19,9,10,47.37,46.81,0.56,insufficient,watch,False,,6
+news_risk_penalty,medium,28,12,16,42.86,46.81,-3.95,insufficient,watch,False,,8
+attention_noise_penalty,high,38,14,24,36.84,46.81,-9.97,insufficient,watch,False,,7
+liquidity_score,none,46,3,43,6.52,46.81,-40.29,insufficient,watch,True,large_lift_with_under_100_cases,8
+candidate_rank,rank_11_20,2,0,2,0.0,46.81,-46.81,insufficient,watch,True,large_lift_with_under_100_cases; only_one_or_two_signal_dates,1
