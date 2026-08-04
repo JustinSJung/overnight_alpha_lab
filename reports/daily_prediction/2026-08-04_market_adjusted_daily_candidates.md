@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-08-04
 
-Generated at: 2026-08-04 16:29:46
+Generated at: 2026-08-04 16:35:29
 
 ML dataset source: `data/processed/ml_dataset_20260804.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260804.csv`
