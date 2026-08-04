@@ -1,6 +1,6 @@
 # Model Performance History Report - 2026-08-04
 
-Generated at: 2026-08-04 16:21:29
+Generated at: 2026-08-04 16:29:49
 
 ## Purpose
 
@@ -134,6 +134,7 @@ Name: 0, dtype: object |
 | 2026-07-29 | N/A | 100 | 100 | 13 | 13 | 13 | 20 | 24 | 24 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260729.csv | data/processed/ml_dataset_20260729.csv |
 | 2026-07-30 | N/A | 100 | 100 | 21 | 21 | 21 | 68 | 280 | 280 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260730.csv | data/processed/ml_dataset_20260730.csv |
 | 2026-08-03 | N/A | 100 | 100 | 20 | 20 | 20 | 25 | 25 | 25 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260803.csv | data/processed/ml_dataset_20260803.csv |
+| 2026-08-04 | N/A | 100 | 100 | 19 | 19 | 19 | 55 | 223 | 223 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260804.csv | data/processed/ml_dataset_20260804.csv |
 
 ## Interpretation
 

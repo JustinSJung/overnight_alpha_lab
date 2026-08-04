@@ -10,7 +10,7 @@ This audit documents the conservative v2 price ranker. It is diagnostic only and
 - v3 experimental score: stability-first diagnostic ranker that favors moderate confirmed momentum and penalizes noisy extremes more strongly.
 - Score version: **v2_conservative_ranker**
 - Experimental score version: **v3_stability_ranker**
-- Broad candidate pool count: **231**
+- Broad candidate pool count: **217**
 - Selected monitoring picks: **20**
 
 ## Suspected Failure Modes
@@ -32,23 +32,23 @@ This audit documents the conservative v2 price ranker. It is diagnostic only and
 
 | Component | Average |
 |---|---:|
-| final_price_signal_score_v2 | 44.39 |
-| final_price_signal_score_v3 | 43.04 |
-| base_momentum_score | 52.08 |
-| volume_confirmation_score | -0.41 |
-| volatility_penalty | 6.17 |
-| overextension_penalty | 1.79 |
-| reversal_risk_penalty | 1.23 |
-| news_risk_penalty | 0.17 |
-| attention_noise_penalty | 0.22 |
+| final_price_signal_score_v2 | 44.29 |
+| final_price_signal_score_v3 | 42.85 |
+| base_momentum_score | 52.11 |
+| volume_confirmation_score | -0.42 |
+| volatility_penalty | 6.09 |
+| overextension_penalty | 1.84 |
+| reversal_risk_penalty | 1.19 |
+| news_risk_penalty | 0.21 |
+| attention_noise_penalty | 0.32 |
 | market_regime_penalty | 0.08 |
-| v3_momentum_quality_score | 41.51 |
-| v3_volume_quality_score | -0.05 |
-| v3_liquidity_quality_score | 2.50 |
-| v3_stability_score | 6.91 |
-| v3_overextension_penalty | 4.44 |
-| v3_reversal_penalty | 3.41 |
-| v3_noise_penalty | 0.69 |
+| v3_momentum_quality_score | 41.38 |
+| v3_volume_quality_score | -0.15 |
+| v3_liquidity_quality_score | 2.46 |
+| v3_stability_score | 7.07 |
+| v3_overextension_penalty | 4.52 |
+| v3_reversal_penalty | 3.36 |
+| v3_noise_penalty | 0.92 |
 
 ## Notes
 
