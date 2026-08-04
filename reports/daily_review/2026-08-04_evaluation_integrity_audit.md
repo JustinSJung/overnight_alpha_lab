@@ -19,21 +19,21 @@ Recommended safe deduplication key: `candidate_id` when available; otherwise `st
 
 | stock_code | signal_date | prediction_date | evaluation_date | score_version | candidate_id | source_file | prediction_result |
 |---|---|---|---|---|---|---|---|
-| 010960 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | 0911149d5a6a91d7 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 006730 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | dde001888090afdc | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 288980 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | 333a787914ba462d | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 020560 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | fd0308f1ee2cdc9e | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 008930 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | 5ce72a163b913877 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
-| 010960 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | 0911149d5a6a91d7 | data/predictions/price_candidate_evaluation_20260712.csv | success |
-| 006730 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | dde001888090afdc | data/predictions/price_candidate_evaluation_20260712.csv | failure |
-| 288980 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | 333a787914ba462d | data/predictions/price_candidate_evaluation_20260712.csv | failure |
-| 020560 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | fd0308f1ee2cdc9e | data/predictions/price_candidate_evaluation_20260712.csv | failure |
-| 008930 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | 5ce72a163b913877 | data/predictions/price_candidate_evaluation_20260712.csv | success |
-| 010960 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | 0911149d5a6a91d7 | data/predictions/price_candidate_evaluation_20260713.csv | success |
-| 006730 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | dde001888090afdc | data/predictions/price_candidate_evaluation_20260713.csv | failure |
-| 288980 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | 333a787914ba462d | data/predictions/price_candidate_evaluation_20260713.csv | failure |
-| 020560 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | fd0308f1ee2cdc9e | data/predictions/price_candidate_evaluation_20260713.csv | failure |
-| 008930 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | 5ce72a163b913877 | data/predictions/price_candidate_evaluation_20260713.csv | success |
+| 002780 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | 1f9e79d6223e57c6 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 003490 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | 3234aec8921157e1 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 253450 | 2026-07-07 | 2026-07-07 | 2026-07-10 |  | f4cc8221599d8c01 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 065770 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | bba767a7e7a60e01 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 380540 | 2026-07-09 | 2026-07-09 | 2026-07-10 |  | 755ebcef909574a1 | data/predictions/price_candidate_evaluation_20260710.csv | pending |
+| 002780 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | 1f9e79d6223e57c6 | data/predictions/price_candidate_evaluation_20260712.csv | failure |
+| 003490 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | 3234aec8921157e1 | data/predictions/price_candidate_evaluation_20260712.csv | failure |
+| 253450 | 2026-07-07 | 2026-07-07 | 2026-07-12 |  | f4cc8221599d8c01 | data/predictions/price_candidate_evaluation_20260712.csv | failure |
+| 065770 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | bba767a7e7a60e01 | data/predictions/price_candidate_evaluation_20260712.csv | pending |
+| 380540 | 2026-07-09 | 2026-07-09 | 2026-07-12 |  | 755ebcef909574a1 | data/predictions/price_candidate_evaluation_20260712.csv | pending |
+| 002780 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | 1f9e79d6223e57c6 | data/predictions/price_candidate_evaluation_20260713.csv | failure |
+| 003490 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | 3234aec8921157e1 | data/predictions/price_candidate_evaluation_20260713.csv | failure |
+| 253450 | 2026-07-07 | 2026-07-07 | 2026-07-13 |  | f4cc8221599d8c01 | data/predictions/price_candidate_evaluation_20260713.csv | failure |
+| 065770 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | bba767a7e7a60e01 | data/predictions/price_candidate_evaluation_20260713.csv | pending |
+| 380540 | 2026-07-09 | 2026-07-09 | 2026-07-13 |  | 755ebcef909574a1 | data/predictions/price_candidate_evaluation_20260713.csv | pending |
 
 ## v1 vs v2 Performance
 

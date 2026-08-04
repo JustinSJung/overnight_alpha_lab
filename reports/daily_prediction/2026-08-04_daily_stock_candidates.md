@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-08-04
 
-Generated at: 2026-08-04 16:35:34
+Generated at: 2026-08-04 23:22:13
 
 ML dataset: `data/processed/ml_dataset_20260804.csv`
 
@@ -73,111 +73,111 @@ The recommender also reads past error notes and applies event-type level confide
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **120.00**
+- Base recommendation score: **110.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **120.00**
+- Adjusted recommendation score: **110.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 6. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 금호건설, 주식회사 에스아이리얼티와 인천 영종하늘도시 A6BL 공동주택... | 금호건설 영종하늘도시 A4·6블록 공동주택 신축공사 수주, 2149억 규모 | 금호건설, 2149억 규모 영종하늘도시 공동주택 수주 [공시pick]
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 8월 5일 개장 전 주요 공시 | [N2 모닝 경제 브리핑-8월 5일] 美 증시, 미·이란 협상 진전에 질주…다... | 태백권 광역상수도 노후관 개량 2.4㎞ 갱생구간 공법 재선정
 
 ### 2. 뉴로메카 (348340)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **92.00**
+- Base recommendation score: **87.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **92.00**
+- Adjusted recommendation score: **87.00**
 - Risk level: **LOW**
 - Event type: `bonus_issue`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: 권리락              (무상증자)
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 3. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [공시] RF머트리얼즈·광동헬스바이오 '투자경고', 재영솔루텍·오이솔... | [코스닥 기관] 알테오젠·에코프로·심텍· 올릭스 폭풍매수…실리콘투... | 美, 中로봇 수입금지…"韓, 중장기 반사이익 기대"
+- Reason: Event type is bonus_issue. Initial direction is positive. Event score is 60. News attention score is 5. News sentiment score is 2. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [아주증시포커스] 단일종목 레버리지 규제 '풍선효과'? 모처럼 훈풍 불... | [공시] RF머트리얼즈·광동헬스바이오 '투자경고', 재영솔루텍·오이솔... | [코스닥 기관] 알테오젠·에코프로·심텍· 올릭스 폭풍매수…실리콘투...
 
 ## Volatile Watchlist
 
-### 1. 하나머티리얼즈 (166090)
+### 1. 디에스케이 (109740)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **55.00**
+- Base recommendation score: **42.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **55.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]최대주주변경을수반하는주식담보제공계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: IMM크레딧, 하나마이크론 EB 1000억 인수 | IMM크레딧, 하나마이크론에 교환사채 1000억원 투자 추진 | IMM크레딧, 하나마이크론에 1000억 EB 투자 [시그널]
-
-### 2. 하나머티리얼즈 (166090)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **55.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **55.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]최대주주변경을수반하는주식담보제공계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 8. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: IMM크레딧, 하나마이크론 EB 1000억 인수 | IMM크레딧, 하나마이크론에 교환사채 1000억원 투자 추진 | IMM크레딧, 하나마이크론에 1000억 EB 투자 [시그널]
-
-### 3. 디에스케이 (109740)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **37.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **37.00**
+- Adjusted recommendation score: **42.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: [기재정정]최대주주변경을수반하는주식양수도계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 5. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 차세대 배터리 수주 낭보에 2차전지 장비주 지각변동… 아이비젼웍스 상... | [52주] 신저가만 517개 ... 지수 하락 반전 | [더벨][코스닥 상장사 매물 분석] 디에스케이, 1년 걸린 M&A 성사 촉각
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 6. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [디에스케이 M&A] 인수합병 1년째 표류...잔금 656억 또다시 연기 | 차세대 배터리 수주 낭보에 2차전지 장비주 지각변동… 아이비젼웍스 상... | [52주] 신저가만 517개 ... 지수 하락 반전
 
-### 4. 디에스케이 (109740)
+### 2. 디에스케이 (109740)
 
 - Candidate type: **WATCHLIST_VOLATILE**
 - Expected direction: **volatile**
-- Base recommendation score: **37.00**
+- Base recommendation score: **42.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **37.00**
+- Adjusted recommendation score: **42.00**
 - Risk level: **MEDIUM**
 - Event type: `major_shareholder_change`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
 - Disclosure title: [기재정정]최대주주변경을수반하는주식양수도계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 5. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 차세대 배터리 수주 낭보에 2차전지 장비주 지각변동… 아이비젼웍스 상... | [52주] 신저가만 517개 ... 지수 하락 반전 | [더벨][코스닥 상장사 매물 분석] 디에스케이, 1년 걸린 M&A 성사 촉각
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 6. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: [디에스케이 M&A] 인수합병 1년째 표류...잔금 656억 또다시 연기 | 차세대 배터리 수주 낭보에 2차전지 장비주 지각변동… 아이비젼웍스 상... | [52주] 신저가만 517개 ... 지수 하락 반전
+
+### 3. 하나머티리얼즈 (166090)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **35.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **35.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]최대주주변경을수반하는주식담보제공계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 반도체 브랜드평판…삼성전자 1위 | 반도체 상장기업 브랜드평판 8월 빅데이터 분석... 1위 삼성전자, 2위 S... | [브랜드평판] 삼성전자, 반도체 상장기업 8월 1위... SK하이닉스, 한미반...
+
+### 4. 하나머티리얼즈 (166090)
+
+- Candidate type: **WATCHLIST_VOLATILE**
+- Expected direction: **volatile**
+- Base recommendation score: **35.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **35.00**
+- Risk level: **MEDIUM**
+- Event type: `major_shareholder_change`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]최대주주변경을수반하는주식담보제공계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 4. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 반도체 브랜드평판…삼성전자 1위 | 반도체 상장기업 브랜드평판 8월 빅데이터 분석... 1위 삼성전자, 2위 S... | [브랜드평판] 삼성전자, 반도체 상장기업 8월 1위... SK하이닉스, 한미반...
 
 ### 5. 한세엠케이 (069640)
 

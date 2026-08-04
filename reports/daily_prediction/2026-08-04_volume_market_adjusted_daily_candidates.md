@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-08-04
 
-Generated at: 2026-08-04 16:35:32
+Generated at: 2026-08-04 23:22:11
 
 ML dataset source: `data/processed/ml_dataset_20260804.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260804.csv`
@@ -29,18 +29,16 @@ base_recommendation_score_v3
 
 - Total rows: **223**
 - risk_or_avoid_review: **214**
-- strong_volume_market_adjusted_candidate: **5**
-- positive_candidate: **4**
+- positive_candidate: **6**
+- strong_volume_market_adjusted_candidate: **3**
 
 ## Strong Volume + Market-Adjusted Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 002990 | 금호건설 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 115.00 | 0.00 | 0.00 | 115.00 | N/A | N/A | N/A |
+| 1970-01-01 | 002990 | 금호건설 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 105.00 | 0.00 | 0.00 | 105.00 | N/A | N/A | N/A |
 | 1970-01-01 | 351320 | 넥사다이내믹스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 100.00 | 0.00 | 0.00 | 100.00 | N/A | N/A | N/A |
-| 1970-01-01 | 348340 | 뉴로메카 | bonus_issue | positive | pending | pending | insufficient_volume_baseline | 90.00 | 0.00 | 0.00 | 90.00 | N/A | N/A | N/A |
-| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 61.00 | 0.00 | 0.00 | 61.00 | N/A | N/A | N/A |
-| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 61.00 | 0.00 | 0.00 | 61.00 | N/A | N/A | N/A |
+| 1970-01-01 | 348340 | 뉴로메카 | bonus_issue | positive | pending | pending | insufficient_volume_baseline | 85.00 | 0.00 | 0.00 | 85.00 | N/A | N/A | N/A |
 
 ## Strong Market-Adjusted Candidates
 
@@ -54,8 +52,10 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 46.00 | 0.00 | 0.00 | 46.00 | N/A | N/A | N/A |
-| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 46.00 | 0.00 | 0.00 | 46.00 | N/A | N/A | N/A |
+| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 41.00 | 0.00 | 0.00 | 41.00 | N/A | N/A | N/A |
+| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 41.00 | 0.00 | 0.00 | 41.00 | N/A | N/A | N/A |
 | 1970-01-01 | 069640 | 한세엠케이 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 41.00 | 0.00 | 0.00 | 41.00 | N/A | N/A | N/A |
 | 1970-01-01 | 069640 | 한세엠케이 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 41.00 | 0.00 | 0.00 | 41.00 | N/A | N/A | N/A |
 
@@ -75,9 +75,9 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 229640 | LS에코에너지 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -10.00 | 0.00 | 0.00 | -10.00 | N/A | N/A | N/A |
 | 1970-01-01 | 092040 | 아미코젠 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -25.00 | 0.00 | 0.00 | -25.00 | N/A | N/A | N/A |
 | 1970-01-01 | 092040 | 아미코젠 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -25.00 | 0.00 | 0.00 | -25.00 | N/A | N/A | N/A |
+| 1970-01-01 | 229640 | LS에코에너지 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -30.00 | 0.00 | 0.00 | -30.00 | N/A | N/A | N/A |
 | 1970-01-01 | 223220 | 로지스몬 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -45.00 | 0.00 | 0.00 | -45.00 | N/A | N/A | N/A |
 | 1970-01-01 | 223220 | 로지스몬 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -45.00 | 0.00 | 0.00 | -45.00 | N/A | N/A | N/A |
 | 1970-01-01 | 223220 | 로지스몬 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -45.00 | 0.00 | 0.00 | -45.00 | N/A | N/A | N/A |

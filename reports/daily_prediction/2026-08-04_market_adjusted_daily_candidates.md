@@ -1,6 +1,6 @@
 # Market-Adjusted Daily Candidate Report - 2026-08-04
 
-Generated at: 2026-08-04 16:35:29
+Generated at: 2026-08-04 23:22:09
 
 ML dataset source: `data/processed/ml_dataset_20260804.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260804.csv`
@@ -37,13 +37,13 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 002990 | 금호건설 | supply_contract | positive | pending | pending | 115.00 | 0.00 | 115.00 | N/A |
+| 1970-01-01 | 002990 | 금호건설 | supply_contract | positive | pending | pending | 105.00 | 0.00 | 105.00 | N/A |
 | 1970-01-01 | 351320 | 넥사다이내믹스 | supply_contract | positive | pending | pending | 100.00 | 0.00 | 100.00 | N/A |
-| 1970-01-01 | 348340 | 뉴로메카 | bonus_issue | positive | pending | pending | 90.00 | 0.00 | 90.00 | N/A |
-| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | 61.00 | 0.00 | 61.00 | N/A |
-| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | 61.00 | 0.00 | 61.00 | N/A |
-| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
-| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | 46.00 | 0.00 | 46.00 | N/A |
+| 1970-01-01 | 348340 | 뉴로메카 | bonus_issue | positive | pending | pending | 85.00 | 0.00 | 85.00 | N/A |
+| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | 51.00 | 0.00 | 51.00 | N/A |
+| 1970-01-01 | 109740 | 디에스케이 | major_shareholder_change | volatile | pending | pending | 51.00 | 0.00 | 51.00 | N/A |
+| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | 41.00 | 0.00 | 41.00 | N/A |
+| 1970-01-01 | 166090 | 하나머티리얼즈 | major_shareholder_change | volatile | pending | pending | 41.00 | 0.00 | 41.00 | N/A |
 | 1970-01-01 | 069640 | 한세엠케이 | major_shareholder_change | volatile | pending | pending | 41.00 | 0.00 | 41.00 | N/A |
 | 1970-01-01 | 069640 | 한세엠케이 | major_shareholder_change | volatile | pending | pending | 41.00 | 0.00 | 41.00 | N/A |
 
@@ -59,9 +59,9 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | base_recommendation_score_v2 | market_adjusted_score_adjustment | final_market_adjusted_score | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 229640 | LS에코에너지 | paid_in_capital_increase | negative | pending | pending | -10.00 | 0.00 | -10.00 | N/A |
 | 1970-01-01 | 092040 | 아미코젠 | paid_in_capital_increase | negative | pending | pending | -25.00 | 0.00 | -25.00 | N/A |
 | 1970-01-01 | 092040 | 아미코젠 | paid_in_capital_increase | negative | pending | pending | -25.00 | 0.00 | -25.00 | N/A |
+| 1970-01-01 | 229640 | LS에코에너지 | paid_in_capital_increase | negative | pending | pending | -30.00 | 0.00 | -30.00 | N/A |
 | 1970-01-01 | 223220 | 로지스몬 | paid_in_capital_increase | negative | pending | pending | -45.00 | 0.00 | -45.00 | N/A |
 | 1970-01-01 | 223220 | 로지스몬 | paid_in_capital_increase | negative | pending | pending | -45.00 | 0.00 | -45.00 | N/A |
 | 1970-01-01 | 223220 | 로지스몬 | paid_in_capital_increase | negative | pending | pending | -45.00 | 0.00 | -45.00 | N/A |
