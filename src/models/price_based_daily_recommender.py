@@ -16,6 +16,7 @@ REPORT_DIR = Path("reports/daily_prediction")
 REVIEW_DIR = Path("reports/daily_review")
 SELECTED_PICK_TOP_N = 20
 SCORE_VERSION = "v2_conservative_ranker"
+EXPERIMENTAL_SCORE_VERSION = "v3_stability_ranker"
 
 
 def latest_file(directory: Path, pattern: str):
@@ -227,6 +228,129 @@ def calculate_v2_components(row, social: dict, ml_context: dict, news: dict) -> 
     }
 
 
+def calculate_v3_components(row, social: dict, ml_context: dict, news: dict) -> dict:
+    breakout_score = safe_float(row.get("breakout_score", 0))
+    return_1d = safe_float(row.get("return_1d", 0))
+    return_5d = safe_float(row.get("return_5d", 0))
+    return_20d = safe_float(row.get("return_20d", 0))
+    volume_ratio = safe_float(row.get("volume_ratio_20d", 0))
+    volatility = safe_float(row.get("volatility_20d", 0))
+    close = safe_float(row.get("close", 0))
+    ma20 = safe_float(row.get("ma20", 0))
+    distance_ma20 = (close / ma20 - 1) if close and ma20 else 0.0
+
+    # v3 is diagnostic only: favor moderate, confirmed moves and penalize noisy extremes.
+    v3_momentum_quality_score = 38
+    if 0.015 <= return_5d <= 0.10:
+        v3_momentum_quality_score += 8
+    elif 0.10 < return_5d <= 0.16:
+        v3_momentum_quality_score += 4
+    elif return_5d > 0.16:
+        v3_momentum_quality_score -= clamp((return_5d - 0.16) * 70, 0, 10)
+    elif return_5d < -0.03:
+        v3_momentum_quality_score -= clamp(abs(return_5d) * 80, 0, 8)
+
+    if 0.02 <= return_20d <= 0.22:
+        v3_momentum_quality_score += 6
+    elif return_20d > 0.22:
+        v3_momentum_quality_score -= clamp((return_20d - 0.22) * 35, 0, 8)
+    elif return_20d < -0.05:
+        v3_momentum_quality_score -= clamp(abs(return_20d) * 45, 0, 6)
+
+    v3_momentum_quality_score += clamp(breakout_score * 2.5, -3, 5)
+
+    if 1.05 <= volume_ratio <= 1.8:
+        v3_volume_quality_score = 8
+    elif 1.8 < volume_ratio <= 2.4:
+        v3_volume_quality_score = 5
+    elif 0.8 <= volume_ratio < 1.05:
+        v3_volume_quality_score = 2
+    elif volume_ratio > 2.4:
+        v3_volume_quality_score = -clamp((volume_ratio - 2.4) * 2.8, 0, 9)
+    elif volume_ratio > 0:
+        v3_volume_quality_score = -3
+    else:
+        v3_volume_quality_score = -5
+
+    v3_liquidity_quality_score = 4 if volume_ratio >= 0.9 else 1 if volume_ratio > 0 else 0
+    if 0.9 <= volume_ratio <= 2.2:
+        v3_liquidity_quality_score += 2
+
+    v3_stability_score = 10
+    v3_stability_score -= clamp(volatility * 150, 0, 12)
+    if -0.04 <= return_1d <= 0.04:
+        v3_stability_score += 4
+    if abs(distance_ma20) <= 0.10:
+        v3_stability_score += 3
+
+    v3_overextension_penalty = 0
+    if return_1d > 0.045:
+        v3_overextension_penalty += clamp((return_1d - 0.045) * 170, 0, 12)
+    if return_5d > 0.12:
+        v3_overextension_penalty += clamp((return_5d - 0.12) * 95, 0, 14)
+    if return_20d > 0.28:
+        v3_overextension_penalty += clamp((return_20d - 0.28) * 50, 0, 10)
+    if distance_ma20 > 0.12:
+        v3_overextension_penalty += clamp((distance_ma20 - 0.12) * 85, 0, 12)
+
+    v3_reversal_penalty = 0
+    if volume_ratio > 2.2 and return_1d > 0.025:
+        v3_reversal_penalty += clamp((volume_ratio - 2.2) * 3.5 + return_1d * 60, 0, 14)
+    if volume_ratio > 2.0 and return_5d > 0.12:
+        v3_reversal_penalty += clamp((volume_ratio - 2.0) * 2.5, 0, 8)
+    if volatility > 0.045:
+        v3_reversal_penalty += clamp((volatility - 0.045) * 160, 0, 10)
+
+    risk_noise = safe_float(social.get("risk_noise_score", 0))
+    hype_count = safe_float(social.get("hype_keyword_count", 0))
+    risk_label = str(social.get("risk_label", ""))
+    news_risk_score = safe_float(news.get("news_risk_score", 0))
+    negative_count = safe_float(news.get("negative_keyword_count", 0))
+    risk_keyword_count = safe_float(news.get("risk_keyword_count", 0))
+    v3_noise_penalty = clamp(
+        risk_noise * 1.4
+        + hype_count * 1.0
+        + news_risk_score * 0.9
+        + negative_count * 0.7
+        + risk_keyword_count * 1.1,
+        0,
+        14,
+    )
+    if risk_label and risk_label != "no_risk_noise":
+        v3_noise_penalty += 3
+
+    market_regime = str(row.get("market_regime_bucket", ml_context.get("market_regime_bucket", ""))).lower()
+    if any(term in market_regime for term in ["weak", "risk", "bear"]):
+        v3_noise_penalty += 2
+    if str(ml_context.get("prediction_direction", "")) == "negative":
+        v3_noise_penalty += 2
+
+    v3_final_score = clamp(
+        v3_momentum_quality_score
+        + v3_volume_quality_score
+        + v3_liquidity_quality_score
+        + v3_stability_score
+        - v3_overextension_penalty
+        - v3_reversal_penalty
+        - v3_noise_penalty,
+        0,
+        100,
+    )
+
+    return {
+        "v3_momentum_quality_score": round(v3_momentum_quality_score, 2),
+        "v3_volume_quality_score": round(v3_volume_quality_score, 2),
+        "v3_liquidity_quality_score": round(v3_liquidity_quality_score, 2),
+        "v3_stability_score": round(v3_stability_score, 2),
+        "v3_overextension_penalty": round(v3_overextension_penalty, 2),
+        "v3_reversal_penalty": round(v3_reversal_penalty, 2),
+        "v3_noise_penalty": round(v3_noise_penalty, 2),
+        "v3_final_score": round(v3_final_score, 2),
+        "final_price_signal_score_v3": round(v3_final_score, 2),
+        "experimental_score_version": EXPERIMENTAL_SCORE_VERSION,
+    }
+
+
 def score_candidate(row, social_lookup: dict[str, dict], ml_lookup: dict[str, dict], news_lookup: dict[str, dict]) -> dict:
     stock_code = normalize_stock_code(row.get("stock_code", ""))
     social = social_lookup.get(stock_code, {})
@@ -234,6 +358,7 @@ def score_candidate(row, social_lookup: dict[str, dict], ml_lookup: dict[str, di
     news = news_lookup.get(stock_code, {})
     v1_score, price_score, supplementary_score = calculate_v1_score(row, social, ml_context)
     components = calculate_v2_components(row, social, ml_context, news)
+    v3_components = calculate_v3_components(row, social, ml_context, news)
     final_score = components["final_price_signal_score_v2"]
 
     if final_score >= 75:
@@ -264,6 +389,7 @@ def score_candidate(row, social_lookup: dict[str, dict], ml_lookup: dict[str, di
         "price_score_base": round(price_score, 2),
         "supplementary_score": supplementary_score,
         **components,
+        **v3_components,
         "signal_label": row.get("signal_label", "neutral"),
         "close": row.get("close", pd.NA),
         "return_1d": row.get("return_1d", pd.NA),
@@ -355,6 +481,7 @@ def save_audit_report(candidates: pd.DataFrame) -> str:
     avg = {}
     for column in [
         "final_price_signal_score_v2",
+        "final_price_signal_score_v3",
         "base_momentum_score",
         "volume_confirmation_score",
         "volatility_penalty",
@@ -363,6 +490,13 @@ def save_audit_report(candidates: pd.DataFrame) -> str:
         "news_risk_penalty",
         "attention_noise_penalty",
         "market_regime_penalty",
+        "v3_momentum_quality_score",
+        "v3_volume_quality_score",
+        "v3_liquidity_quality_score",
+        "v3_stability_score",
+        "v3_overextension_penalty",
+        "v3_reversal_penalty",
+        "v3_noise_penalty",
     ]:
         avg[column] = safe_float(pd.to_numeric(candidates.get(column, pd.Series(dtype=float)), errors="coerce").mean())
 
@@ -376,7 +510,9 @@ def save_audit_report(candidates: pd.DataFrame) -> str:
         "",
         "- v1 score: breakout score, 5-day return, 20-day return, volume ratio, volatility penalty, and small social/ML context adjustments.",
         "- v2 score: base momentum plus moderate volume/liquidity confirmation, minus volatility, overextension, reversal, news risk, attention noise, and market regime penalties.",
+        "- v3 experimental score: stability-first diagnostic ranker that favors moderate confirmed momentum and penalizes noisy extremes more strongly.",
         f"- Score version: **{SCORE_VERSION}**",
+        f"- Experimental score version: **{EXPERIMENTAL_SCORE_VERSION}**",
         f"- Broad candidate pool count: **{len(candidates)}**",
         f"- Selected monitoring picks: **{len(selected)}**",
         "",
@@ -410,6 +546,8 @@ def save_audit_report(candidates: pd.DataFrame) -> str:
             "",
             "V2 scoring impact should be judged after several new daily runs.",
             "V2 점수 산식 효과는 며칠 이상 신규 데이터가 쌓인 뒤 판단해야 합니다.",
+            "V3 is diagnostic only and does not replace selected_pick.",
+            "V3는 진단용이며 selected_pick 기준을 대체하지 않습니다.",
         ]
     )
 
@@ -455,6 +593,17 @@ def main():
     candidates["selected_pick"] = candidates["candidate_rank"] <= SELECTED_PICK_TOP_N
     candidates["selection_reason"] = candidates["candidate_rank"].apply(
         lambda rank: f"Top {SELECTED_PICK_TOP_N} by conservative v2 price signal score"
+        if rank <= SELECTED_PICK_TOP_N
+        else "Broad evaluation pool candidate"
+    )
+    candidates["v3_rank"] = (
+        candidates["final_price_signal_score_v3"]
+        .rank(method="first", ascending=False)
+        .astype(int)
+    )
+    candidates["v3_selected_pick"] = candidates["v3_rank"] <= SELECTED_PICK_TOP_N
+    candidates["v3_selection_reason"] = candidates["v3_rank"].apply(
+        lambda rank: f"Experimental Top {SELECTED_PICK_TOP_N} by stability-first v3 score"
         if rank <= SELECTED_PICK_TOP_N
         else "Broad evaluation pool candidate"
     )

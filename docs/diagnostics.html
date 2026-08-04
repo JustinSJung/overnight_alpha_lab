@@ -557,6 +557,65 @@
     <section class="section">
       <div class="section-heading">
         <div>
+          <h2>V3 Ranker Backtest <span class="heading-ko">v3 실험 랭커 백테스트</span></h2>
+          <p class="section-subtitle">This simulates the experimental v3_stability_ranker on already-evaluated candidates. It does not alter selected picks or public claims. 이미 평가된 후보를 v3 기준으로 재정렬하는 내부 진단입니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">Historical Component Coverage</div>
+          <div class="ko-desc">과거 컴포넌트 커버리지</div>
+          <div class="kpi-value">68.06%</div>
+          <div class="muted-helper">partial historical component coverage</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 10 Success Rate</div>
+          <div class="ko-desc">v3 일별 Top 10 성공률</div>
+          <div class="kpi-value">43.59%</div>
+          <div class="muted-helper">Evaluated cases: 39<br>평가 완료: 39</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 20 Success Rate</div>
+          <div class="ko-desc">v3 일별 Top 20 성공률</div>
+          <div class="kpi-value">40.54%</div>
+          <div class="muted-helper">Evaluated cases: 74<br>평가 완료: 74</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 50 Success Rate</div>
+          <div class="ko-desc">v3 일별 Top 50 성공률</div>
+          <div class="kpi-value">35.14%</div>
+          <div class="muted-helper">Evaluated cases: 111<br>평가 완료: 111</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 20 Benchmark-Adjusted Rate</div>
+          <div class="ko-desc">v3 Top 20 시장 대비 성공률</div>
+          <div class="kpi-value">60.53%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Data Status</div>
+          <div class="ko-desc">v3 데이터 상태</div>
+          <div class="kpi-value-small"><span class="status-pill badge-green">partial historical component coverage<br>과거 컴포넌트 상태</span></div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Current Selected Group</div>
+          <div class="ko-desc">현재 선별군 성공률</div>
+          <div class="kpi-value">49.02%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Latest V3 Backtest Update</div>
+          <div class="ko-desc">최근 v3 백테스트 갱신</div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-05 01:14:07<br>최근 갱신</span></div>
+        </div>
+      </div>
+      <div class="note section">
+        V3 is an internal experiment only. Public recommendation quality remains based on conservative cumulative price-candidate evaluation.<br>
+        v3는 내부 실험 전용입니다. 공개 추천 품질 평가는 보수적인 누적 가격 후보 평가를 기준으로 합니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
           <h2>V2 Performance Monitor <span class="heading-ko">v2 성과 추적</span></h2>
           <p class="section-subtitle">This layer monitors only v2_conservative_ranker after candidate-level deduplication. 후보 생성과 점수 산식은 변경하지 않고 v2 성과만 추적합니다.</p>
         </div>
@@ -615,7 +674,7 @@
         <div class="card kpi-card">
           <div class="label">Latest V2 Monitor Update</div>
           <div class="ko-desc">최근 v2 모니터 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-03 23:24:10<br>최근 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-05 01:13:54<br>최근 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -639,30 +698,30 @@
         <div class="card kpi-card">
           <div class="label">Total Evaluation Rows</div>
           <div class="ko-desc">전체 평가 행 수</div>
-          <div class="kpi-value">20295</div>
+          <div class="kpi-value">15398</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Unique Evaluation Keys</div>
           <div class="ko-desc">고유 평가 키</div>
-          <div class="kpi-value">2632</div>
+          <div class="kpi-value">2168</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Duplicate Rows</div>
           <div class="ko-desc">중복 행 수</div>
-          <div class="kpi-value">17663</div>
-          <div class="muted-helper">Duplicate rate: 87.03%<br>중복률: 87.03%</div>
+          <div class="kpi-value">13230</div>
+          <div class="muted-helper">Duplicate rate: 85.92%<br>중복률: 85.92%</div>
         </div>
         <div class="card kpi-card">
           <div class="label">V2 Evaluated Cases</div>
           <div class="ko-desc">v2 평가 완료</div>
-          <div class="kpi-value">5053</div>
-          <div class="muted-helper">V2 success rate: 45.91%<br>v2 성공률: 45.91%</div>
+          <div class="kpi-value">3064</div>
+          <div class="muted-helper">V2 success rate: 47.16%<br>v2 성공률: 47.16%</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Coverage</div>
           <div class="ko-desc">시장 대비 평가 커버리지</div>
-          <div class="kpi-value">18.94%</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 대비 평가 가능</span></div>
+          <div class="kpi-value">0.0%</div>
+          <div class="kpi-value-small"><span class="status-pill badge-red">Stale<br>시장 대비 평가 가능</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Ranking Integrity</div>
@@ -688,33 +747,33 @@
         <div class="card kpi-card">
           <div class="label">Benchmark Status</div>
           <div class="ko-desc">시장 기준 상태</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 기준 상태</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-red">Stale<br>시장 기준 상태</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Latest Date</div>
           <div class="ko-desc">시장 지수 최신일</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-03<br>시장 지수 최신일</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-06-26<br>시장 지수 최신일</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Price Signal Latest Date</div>
           <div class="ko-desc">가격 신호 최신일</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-03<br>가격 신호 최신일</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-07-30<br>가격 신호 최신일</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Rows Available</div>
           <div class="ko-desc">시장 지수 행 수</div>
-          <div class="kpi-value">84</div>
+          <div class="kpi-value">80</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark-Adjusted Evaluated Cases</div>
           <div class="ko-desc">시장 대비 평가 완료</div>
-          <div class="kpi-value">3843</div>
+          <div class="kpi-value">0</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Coverage Rate</div>
           <div class="ko-desc">시장 대비 커버리지</div>
-          <div class="kpi-value">18.94%</div>
-          <div class="muted-helper">Benchmark-adjusted success rate: 51.29%<br>시장 대비 성공률: 51.29%</div>
+          <div class="kpi-value">0.0%</div>
+          <div class="muted-helper">Benchmark-adjusted success rate: Insufficient data / 데이터 부족<br>시장 대비 성공률: Insufficient data / 데이터 부족</div>
         </div>
       </div>
     </section>
@@ -760,7 +819,7 @@
         <div class="card kpi-card">
           <div class="label">Latest Rule Update</div>
           <div class="ko-desc">최근 룰 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-03 23:24:09<br>최근 룰 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-05 01:13:54<br>최근 룰 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -837,7 +896,7 @@
         <div class="card kpi-card">
           <div class="label">Price Candidates</div>
           <div class="ko-desc">오늘 가격 기반 후보</div>
-          <div class="value">229</div>
+          <div class="value">206</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark-Adjusted Success Rate</div>
@@ -940,7 +999,7 @@
         <div class="card kpi-card">
           <div class="label">Candidate Pool Today</div>
           <div class="ko-desc">오늘 평가 후보 풀</div>
-          <div class="value">229</div>
+          <div class="value">206</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Selected Picks Today</div>
@@ -1060,7 +1119,7 @@
       <div class="section-heading">
         <div>
           <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-08-03 23:24:12. Latest ML dataset rows: 25. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
+          <p class="section-subtitle">Latest generated at 2026-08-05 01:14:13. Latest ML dataset rows: 25. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">

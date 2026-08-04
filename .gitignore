@@ -236,6 +236,7 @@ logs/
 !data/processed/learned_event_rules_*.csv
 !data/processed/price_candidate_learned_rules_*.csv
 !data/processed/v2_performance_summary_*.csv
+!data/processed/v3_ranker_backtest_summary_*.csv
 !data/processed/market_adjusted_score_adjustments_*.csv
 !data/predictions/error_notes_*.csv
 !data/predictions/market_adjusted_evaluation_*.csv

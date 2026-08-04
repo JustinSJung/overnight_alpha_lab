@@ -349,6 +349,8 @@ def build_metrics():
     latest_price_candidate_rules = read_csv(latest_price_candidate_rules_path)
     latest_v2_performance_path = latest_file(PROCESSED_DIR, "v2_performance_summary_*.csv")
     latest_v2_performance = read_csv(latest_v2_performance_path)
+    latest_v3_backtest_path = latest_file(PROCESSED_DIR, "v3_ranker_backtest_summary_*.csv")
+    latest_v3_backtest = read_csv(latest_v3_backtest_path)
     latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
     latest_diagnostics_path = latest_file(PROCESSED_DIR, "price_signal_diagnostics_summary_*.csv")
     latest_diagnostics = read_csv(latest_diagnostics_path)
@@ -584,6 +586,28 @@ def build_metrics():
     )
     latest_v2_monitor_update_time = file_mtime(latest_v2_performance_path)
 
+    v3_component_coverage_rate = first_row_value(latest_v3_backtest, "historical_component_coverage_rate", None)
+    v3_has_enough_historical_data = first_row_value(latest_v3_backtest, "has_enough_historical_data", False)
+    v3_coverage_note = first_row_value(latest_v3_backtest, "coverage_note", "insufficient historical component coverage")
+    v3_overall_success_rate = first_row_value(latest_v3_backtest, "overall_success_rate", None)
+    v3_current_selected_success_rate = first_row_value(
+        latest_v3_backtest,
+        "current_selected_group_success_rate",
+        None,
+    )
+    v3_top_10_success_rate = first_row_value(latest_v3_backtest, "v3_top_10_success_rate", None)
+    v3_top_20_success_rate = first_row_value(latest_v3_backtest, "v3_top_20_success_rate", None)
+    v3_top_50_success_rate = first_row_value(latest_v3_backtest, "v3_top_50_success_rate", None)
+    v3_top_10_evaluated_cases = first_row_value(latest_v3_backtest, "v3_top_10_evaluated_cases", 0)
+    v3_top_20_evaluated_cases = first_row_value(latest_v3_backtest, "v3_top_20_evaluated_cases", 0)
+    v3_top_50_evaluated_cases = first_row_value(latest_v3_backtest, "v3_top_50_evaluated_cases", 0)
+    v3_top_20_benchmark_success_rate = first_row_value(
+        latest_v3_backtest,
+        "v3_top_20_benchmark_adjusted_success_rate",
+        None,
+    )
+    latest_v3_backtest_update_time = file_mtime(latest_v3_backtest_path)
+
     google_status_en = None
     google_status_ko = "데이터 부족"
     google_item_count = len(latest_news_items)
@@ -708,6 +732,19 @@ def build_metrics():
         "v2_monitor_benchmark_diagnosis_en": v2_monitor_benchmark_diagnosis_en,
         "v2_monitor_benchmark_diagnosis_ko": v2_monitor_benchmark_diagnosis_ko,
         "latest_v2_monitor_update_time": latest_v2_monitor_update_time,
+        "v3_component_coverage_rate": v3_component_coverage_rate,
+        "v3_has_enough_historical_data": v3_has_enough_historical_data,
+        "v3_coverage_note": v3_coverage_note,
+        "v3_overall_success_rate": v3_overall_success_rate,
+        "v3_current_selected_success_rate": v3_current_selected_success_rate,
+        "v3_top_10_success_rate": v3_top_10_success_rate,
+        "v3_top_20_success_rate": v3_top_20_success_rate,
+        "v3_top_50_success_rate": v3_top_50_success_rate,
+        "v3_top_10_evaluated_cases": v3_top_10_evaluated_cases,
+        "v3_top_20_evaluated_cases": v3_top_20_evaluated_cases,
+        "v3_top_50_evaluated_cases": v3_top_50_evaluated_cases,
+        "v3_top_20_benchmark_success_rate": v3_top_20_benchmark_success_rate,
+        "latest_v3_backtest_update_time": latest_v3_backtest_update_time,
         "naver_status_en": naver_status_en,
         "naver_status_ko": naver_status_ko,
         "google_status_en": google_status_en,
@@ -781,6 +818,11 @@ def build_diagnostics_html(metrics, stock_data):
     ranking_class = ranking_status_class(metrics.get("ranking_diagnosis_en"))
     v2_monitor_class = ranking_status_class(metrics.get("v2_monitor_diagnosis_en"))
     v2_benchmark_class = integrity_status_class(metrics.get("v2_monitor_benchmark_diagnosis_en"))
+    v3_data_class = (
+        "badge-green"
+        if str(metrics.get("v3_has_enough_historical_data")).lower() in ["true", "1", "yes"]
+        else "badge-orange"
+    )
     suspicious_rule_class = "badge-red" if safe_float(metrics.get("suspicious_price_rule_count", 0)) > 0 else "badge-green"
     duplicate_class = integrity_status_class(metrics.get("integrity_duplicate_status"))
     benchmark_integrity_class = integrity_status_class(metrics.get("integrity_benchmark_status"))
@@ -1353,6 +1395,65 @@ def build_diagnostics_html(metrics, stock_data):
           </div>
         </div>
         <p class="hero-note">{metrics["confidence_status_ko"]}. {metrics["confidence_comment"]}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>V3 Ranker Backtest <span class="heading-ko">v3 실험 랭커 백테스트</span></h2>
+          <p class="section-subtitle">This simulates the experimental v3_stability_ranker on already-evaluated candidates. It does not alter selected picks or public claims. 이미 평가된 후보를 v3 기준으로 재정렬하는 내부 진단입니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">Historical Component Coverage</div>
+          <div class="ko-desc">과거 컴포넌트 커버리지</div>
+          {render_kpi_value(metrics["v3_component_coverage_rate"], "%")}
+          <div class="muted-helper">{metrics["v3_coverage_note"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 10 Success Rate</div>
+          <div class="ko-desc">v3 일별 Top 10 성공률</div>
+          {render_kpi_value(metrics["v3_top_10_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v3_top_10_evaluated_cases"])}<br>평가 완료: {format_metric_value(metrics["v3_top_10_evaluated_cases"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 20 Success Rate</div>
+          <div class="ko-desc">v3 일별 Top 20 성공률</div>
+          {render_kpi_value(metrics["v3_top_20_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v3_top_20_evaluated_cases"])}<br>평가 완료: {format_metric_value(metrics["v3_top_20_evaluated_cases"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 50 Success Rate</div>
+          <div class="ko-desc">v3 일별 Top 50 성공률</div>
+          {render_kpi_value(metrics["v3_top_50_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v3_top_50_evaluated_cases"])}<br>평가 완료: {format_metric_value(metrics["v3_top_50_evaluated_cases"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Top 20 Benchmark-Adjusted Rate</div>
+          <div class="ko-desc">v3 Top 20 시장 대비 성공률</div>
+          {render_kpi_value(metrics["v3_top_20_benchmark_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">V3 Data Status</div>
+          <div class="ko-desc">v3 데이터 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["v3_coverage_note"], "과거 컴포넌트 상태", v3_data_class)}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Current Selected Group</div>
+          <div class="ko-desc">현재 선별군 성공률</div>
+          {render_kpi_value(metrics["v3_current_selected_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Latest V3 Backtest Update</div>
+          <div class="ko-desc">최근 v3 백테스트 갱신</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["latest_v3_backtest_update_time"], "최근 갱신", "badge-gray")}</div>
+        </div>
+      </div>
+      <div class="note section">
+        V3 is an internal experiment only. Public recommendation quality remains based on conservative cumulative price-candidate evaluation.<br>
+        v3는 내부 실험 전용입니다. 공개 추천 품질 평가는 보수적인 누적 가격 후보 평가를 기준으로 합니다.
       </div>
     </section>
 
@@ -2033,14 +2134,16 @@ def simple_status(value_en, value_ko, css_class="badge-gray"):
     return render_status_pill(value_en, value_ko, css_class)
 
 
-def quality_label_from_rate(rate, good_threshold=55, moderate_threshold=50):
+def quality_label_from_rate(rate, strong_threshold=55, promising_threshold=50):
     if rate is None:
         return "Needs Improvement", "개선 필요", "badge-orange"
     rate = safe_float(rate)
-    if rate >= good_threshold:
-        return "Good", "양호", "badge-green"
-    if rate >= moderate_threshold:
-        return "Moderate", "보통", "badge-orange"
+    if rate >= strong_threshold:
+        return "Strong", "강함", "badge-green"
+    if rate >= promising_threshold:
+        return "Promising", "가능성 있음", "badge-orange"
+    if rate >= 45:
+        return "Mixed", "혼재", "badge-orange"
     return "Needs Improvement", "개선 필요", "badge-red"
 
 
@@ -2069,16 +2172,49 @@ def source_status_label(has_data):
 
 
 def recommendation_quality_label(metrics):
-    selected_rate = metrics.get("v2_monitor_selected_success_rate")
-    non_selected_rate = metrics.get("v2_monitor_non_selected_success_rate")
-    if selected_rate is not None and non_selected_rate is not None:
-        delta = safe_float(selected_rate) - safe_float(non_selected_rate)
-        if delta >= 3:
-            return "Good", "양호", "badge-green"
-        if delta >= -3:
-            return "Moderate", "보통", "badge-orange"
-        return "Needs Improvement", "개선 필요", "badge-red"
-    return quality_label_from_rate(metrics.get("price_success_rate"))
+    evaluated_cases = safe_float(metrics.get("price_evaluated_count"), 0)
+    reliability_score = safe_float(metrics.get("reliability_score"), 0)
+    price_success_rate = safe_float(metrics.get("price_success_rate"), 0)
+    benchmark_success_rate = metrics.get("benchmark_success_rate")
+    benchmark_coverage = safe_float(metrics.get("integrity_benchmark_coverage"), 0)
+    selected_rate = metrics.get("v2_monitor_selected_success_rate") or metrics.get("top_20_success_rate")
+    overall_rate = metrics.get("price_success_rate")
+
+    if evaluated_cases < 300:
+        return "Insufficient Data", "데이터 부족", "badge-gray"
+
+    selected_beats_overall = (
+        selected_rate is not None
+        and overall_rate is not None
+        and safe_float(selected_rate) > safe_float(overall_rate)
+    )
+
+    if (
+        reliability_score >= 60
+        and price_success_rate >= 55
+        and benchmark_success_rate is not None
+        and safe_float(benchmark_success_rate) >= 53
+        and benchmark_coverage >= 30
+    ):
+        return "Strong", "강함", "badge-green"
+
+    if (
+        reliability_score >= 50
+        and price_success_rate >= 50
+        and benchmark_success_rate is not None
+        and safe_float(benchmark_success_rate) >= 51
+        and selected_beats_overall
+    ):
+        return "Promising", "가능성 있음", "badge-orange"
+
+    if (
+        benchmark_success_rate is not None
+        and safe_float(benchmark_success_rate) >= 50
+        and selected_beats_overall
+    ):
+        return "Mixed", "혼재", "badge-orange"
+
+    return "Needs Improvement", "개선 필요", "badge-red"
 
 
 def build_html(metrics, stock_data):
@@ -2379,6 +2515,8 @@ def build_html(metrics, stock_data):
 
     <section class="section">
       <div class="note">
+        Current performance is mixed and still under validation.<br>
+        현재 성과는 혼재되어 있으며 계속 검증 중입니다.<br><br>
         Primary learning is based on Korea Investment API price-candidate evaluation. DART, news, Snacks, and social attention are supplementary signals.<br>
         주요 학습은 Korea Investment API 가격 후보 평가를 기반으로 하며, 공시/뉴스/Snacks/관심도 신호는 보조 지표입니다.
       </div>
