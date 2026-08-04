@@ -216,6 +216,15 @@ def row_context(row: pd.Series) -> tuple[dict, dict, dict]:
 
 def add_v3_scores(df: pd.DataFrame) -> pd.DataFrame:
     working = df.copy()
+    existing_v3_columns = [column for column in working.columns if column.startswith("v3_")]
+    existing_v3_columns += [
+        column
+        for column in ["final_price_signal_score_v3", "experimental_score_version"]
+        if column in working.columns
+    ]
+    if existing_v3_columns:
+        working = working.drop(columns=list(dict.fromkeys(existing_v3_columns)))
+
     component_rows = []
     for _, row in working.iterrows():
         social, ml_context, news = row_context(row)
