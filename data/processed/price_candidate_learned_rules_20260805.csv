@@ -1,0 +1,45 @@
+﻿rule_group,rule_value,evaluated_count,success_count,failure_count,success_rate,baseline_success_rate,lift_vs_baseline,confidence_level,recommended_action,suspicious_flag,suspicious_reason,date_coverage_count
+score_version,legacy_or_unknown,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+final_price_signal_score_v2,missing,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+overextension_penalty,missing,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+reversal_risk_penalty,missing,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+news_risk_penalty,missing,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+attention_noise_penalty,missing,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+volume_confirmation_score,missing,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+liquidity_score,missing,368,190,178,51.63,41.86,9.77,high,boost,False,,7
+liquidity_score,confirmed,378,172,206,45.5,41.86,3.64,high,boost,False,,11
+volume_confirmation_score,high,84,48,36,57.14,41.86,15.28,low,boost,True,large_lift_with_under_100_cases,10
+candidate_rank,top_10,81,46,35,56.79,41.86,14.93,low,boost,True,large_lift_with_under_100_cases,12
+final_price_signal_score_v2,score_50_plus,86,47,39,54.65,41.86,12.79,low,boost,True,large_lift_with_under_100_cases,11
+selected_pick,selected,91,49,42,53.85,41.86,11.99,low,boost,True,large_lift_with_under_100_cases,12
+candidate_rank,missing,294,159,135,54.08,41.86,12.22,medium,boost,False,,6
+reversal_risk_penalty,high,179,91,88,50.84,41.86,8.98,medium,boost,True,boost_on_semantically_risky_bucket,11
+overextension_penalty,high,123,58,65,47.15,41.86,5.29,medium,boost,True,boost_on_semantically_risky_bucket,11
+liquidity_score,basic,835,324,511,38.8,41.86,-3.06,high,penalize,False,,11
+news_risk_penalty,none,1214,464,750,38.22,41.86,-3.64,high,penalize,False,,11
+overextension_penalty,none,1066,406,660,38.09,41.86,-3.77,high,penalize,False,,11
+final_price_signal_score_v2,score_20_30,472,179,293,37.92,41.86,-3.94,high,penalize,False,,11
+final_price_signal_score_v2,score_30_40,578,219,359,37.89,41.86,-3.97,high,penalize,False,,11
+candidate_rank,rank_101_plus,850,322,528,37.88,41.86,-3.98,high,penalize,False,,11
+candidate_rank,rank_51_100,377,140,237,37.14,41.86,-4.72,high,penalize,False,,10
+reversal_risk_penalty,none,658,238,420,36.17,41.86,-5.69,high,penalize,False,,11
+volume_confirmation_score,none,300,99,201,33.0,41.86,-8.86,high,penalize,False,,11
+liquidity_score,none,65,3,62,4.62,41.86,-37.24,low,penalize,True,large_lift_with_under_100_cases,11
+volume_confirmation_score,moderate,194,75,119,38.66,41.86,-3.2,medium,penalize,False,,11
+final_price_signal_score_v2,score_lt_20,142,54,88,38.03,41.86,-3.83,medium,penalize,False,,11
+reversal_risk_penalty,low,198,70,128,35.35,41.86,-6.51,medium,penalize,False,,11
+selected_pick,broad_pool,1555,640,915,41.16,41.86,-0.7,high,neutral,False,,18
+volume_confirmation_score,negative,700,277,423,39.57,41.86,-2.29,high,neutral,False,,11
+score_version,v2_conservative_ranker,1278,499,779,39.05,41.86,-2.81,high,neutral,False,,11
+attention_noise_penalty,none,1223,477,746,39.0,41.86,-2.86,high,neutral,False,,11
+attention_noise_penalty,high,50,20,30,40.0,41.86,-1.86,low,neutral,False,,9
+overextension_penalty,low,56,22,34,39.29,41.86,-2.57,low,neutral,False,,9
+reversal_risk_penalty,medium,243,100,143,41.15,41.86,-0.71,medium,neutral,False,,11
+news_risk_penalty,high,2,2,0,100.0,41.86,58.14,insufficient,watch,True,large_lift_with_under_100_cases; only_one_or_two_signal_dates,2
+news_risk_penalty,low,20,12,8,60.0,41.86,18.14,insufficient,watch,True,large_lift_with_under_100_cases,9
+candidate_rank,rank_21_50,34,19,15,55.88,41.86,14.02,insufficient,watch,True,large_lift_with_under_100_cases; only_one_or_two_signal_dates,2
+news_risk_penalty,medium,42,21,21,50.0,41.86,8.14,insufficient,watch,False,,11
+attention_noise_penalty,low,4,2,2,50.0,41.86,8.14,insufficient,watch,False,,3
+overextension_penalty,medium,33,13,20,39.39,41.86,-2.47,insufficient,watch,False,,8
+candidate_rank,rank_11_20,10,3,7,30.0,41.86,-11.86,insufficient,watch,True,large_lift_with_under_100_cases,3
+attention_noise_penalty,medium,1,0,1,0.0,41.86,-41.86,insufficient,watch,True,large_lift_with_under_100_cases; only_one_or_two_signal_dates,1
