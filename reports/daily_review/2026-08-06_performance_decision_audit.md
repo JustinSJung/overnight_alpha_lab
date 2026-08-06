@@ -4,13 +4,13 @@ This audit is diagnostic only. It does not change candidate generation, ranking 
 
 ## Summary
 
-- Raw success rate: **46.71%** (8717 evaluated)
-- Benchmark-adjusted success rate: **52.56%** (4429 evaluated)
-- Selected raw success rate: **48.51%**
-- Non-selected raw success rate: **46.62%**
-- Selected benchmark-adjusted success rate: **70.43%**
-- Non-selected benchmark-adjusted success rate: **51.46%**
-- Benchmark coverage: **50.81%**
+- Raw success rate: **45.24%** (11599 evaluated)
+- Benchmark-adjusted success rate: **52.7%** (7311 evaluated)
+- Selected raw success rate: **50.31%**
+- Non-selected raw success rate: **44.94%**
+- Selected benchmark-adjusted success rate: **69.05%**
+- Non-selected benchmark-adjusted success rate: **51.6%**
+- Benchmark coverage: **63.03%**
 - Diagnosis: **market_relative_signal_only**
 - Public metric recommendation: **selected_group_benchmark_adjusted_success_rate**
 
@@ -20,16 +20,16 @@ Raw success means the next-day close return was positive. Benchmark-adjusted suc
 
 ## Candidate Count Buckets
 
-200+: 46.71% (8717 eval)
+200+: 45.24% (11599 eval)
 
 ## Return Horizons
 
-- Close T+1 success rate: **38.22%**
-- Close T+3 success rate: **35.26%**
-- Close T+5 success rate: **29.75%**
-- Excess T+1 success rate: **51.91%**
-- Excess T+3 success rate: **56.52%**
-- Excess T+5 success rate: **58.67%**
+- Close T+1 success rate: **40.28%**
+- Close T+3 success rate: **39.0%**
+- Close T+5 success rate: **34.21%**
+- Excess T+1 success rate: **51.51%**
+- Excess T+3 success rate: **55.22%**
+- Excess T+5 success rate: **55.38%**
 
 ## Decision Guardrail
 
