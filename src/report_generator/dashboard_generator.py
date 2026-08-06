@@ -351,6 +351,8 @@ def build_metrics():
     latest_v2_performance = read_csv(latest_v2_performance_path)
     latest_v3_backtest_path = latest_file(PROCESSED_DIR, "v3_ranker_backtest_summary_*.csv")
     latest_v3_backtest = read_csv(latest_v3_backtest_path)
+    latest_performance_audit_path = latest_file(PROCESSED_DIR, "performance_decision_audit_*.csv")
+    latest_performance_audit = read_csv(latest_performance_audit_path)
     latest_price_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
     latest_diagnostics_path = latest_file(PROCESSED_DIR, "price_signal_diagnostics_summary_*.csv")
     latest_diagnostics = read_csv(latest_diagnostics_path)
@@ -608,32 +610,90 @@ def build_metrics():
     )
     latest_v3_backtest_update_time = file_mtime(latest_v3_backtest_path)
 
-    google_status_en = None
-    google_status_ko = "데이터 부족"
-    google_item_count = len(latest_news_items)
+    news_provider_status = {}
+    for provider_name in ["deepsearch_news", "google_news_rss", "gdelt", "naver_search"]:
+        news_provider_status[provider_name] = {
+            "status_en": None,
+            "status_ko": "데이터 부족",
+            "item_count": 0,
+        }
+
+    news_provider_item_count = len(latest_news_items)
     news_feature_count = len(latest_news_features)
     last_news_provider_update = file_mtime(latest_news_features_path) or file_mtime(latest_news_items_path)
 
     if not latest_news_status.empty and "source_provider" in latest_news_status.columns:
-        google_rows = latest_news_status[
-            latest_news_status["source_provider"].astype(str) == "google_news_rss"
-        ]
-        if not google_rows.empty:
-            if "updated_at" in google_rows.columns:
-                last_news_provider_update = str(google_rows.iloc[-1].get("updated_at", last_news_provider_update))
-            item_total = int(pd.to_numeric(google_rows.get("item_count", 0), errors="coerce").fillna(0).sum())
+        for provider_name in news_provider_status:
+            provider_rows = latest_news_status[
+                latest_news_status["source_provider"].astype(str) == provider_name
+            ]
+            if provider_rows.empty:
+                continue
+            if "updated_at" in provider_rows.columns:
+                last_news_provider_update = str(provider_rows.iloc[-1].get("updated_at", last_news_provider_update))
+            item_total = int(pd.to_numeric(provider_rows.get("item_count", 0), errors="coerce").fillna(0).sum())
+            statuses = provider_rows.get("status", pd.Series(dtype=str)).astype(str)
             if item_total > 0:
-                google_status_en = "Available"
-                google_status_ko = "수집 가능"
-            elif "status" in google_rows.columns and (google_rows["status"].astype(str) == "failed").any():
-                google_status_en = "Provider failed"
-                google_status_ko = "수집 실패"
+                status_en, status_ko = "Available", "수집 가능"
+            elif statuses.str.contains("missing_credentials|api_hub_not_configured", regex=True).any():
+                status_en, status_ko = "Optional", "선택 수집"
+            elif statuses.eq("failed").any():
+                status_en, status_ko = "Provider failed", "수집 실패"
             else:
-                google_status_en = "No items"
-                google_status_ko = "수집 항목 없음"
+                status_en, status_ko = "No items", "수집 항목 없음"
+            news_provider_status[provider_name] = {
+                "status_en": status_en,
+                "status_ko": status_ko,
+                "item_count": item_total,
+            }
 
-    naver_status_en = "Available" if len(latest_naver_news) > 0 else None
-    naver_status_ko = "수집 가능" if len(latest_naver_news) > 0 else "데이터 부족"
+    if len(latest_naver_news) > 0 and not news_provider_status["naver_search"]["status_en"]:
+        news_provider_status["naver_search"] = {
+            "status_en": "Available",
+            "status_ko": "수집 가능",
+            "item_count": len(latest_naver_news),
+        }
+
+    provider_available_count = sum(
+        1 for status in news_provider_status.values() if status["item_count"] > 0
+    )
+    if provider_available_count >= 2:
+        news_coverage_en, news_coverage_ko, news_coverage_class = "Available", "정상 수집", "badge-green"
+    elif provider_available_count == 1:
+        news_coverage_en, news_coverage_ko, news_coverage_class = "Partial", "일부 수집", "badge-orange"
+    else:
+        news_coverage_en, news_coverage_ko, news_coverage_class = "Needs Review", "점검 필요", "badge-orange"
+
+    news_rumor_noise_keyword_count = 0
+    news_risk_keyword_count = 0
+    if not latest_news_features.empty:
+        if "rumor_noise_keyword_count" in latest_news_features.columns:
+            news_rumor_noise_keyword_count = int(
+                pd.to_numeric(latest_news_features["rumor_noise_keyword_count"], errors="coerce").fillna(0).sum()
+            )
+        if "risk_keyword_count" in latest_news_features.columns:
+            news_risk_keyword_count = int(
+                pd.to_numeric(latest_news_features["risk_keyword_count"], errors="coerce").fillna(0).sum()
+            )
+
+    market_noise_total = news_rumor_noise_keyword_count + news_risk_keyword_count
+    if latest_news_features.empty:
+        market_noise_en, market_noise_ko, market_noise_class = "Needs Review", "점검 필요", "badge-orange"
+    elif market_noise_total >= 20:
+        market_noise_en, market_noise_ko, market_noise_class = "Needs Review", "점검 필요", "badge-orange"
+    elif market_noise_total > 0:
+        market_noise_en, market_noise_ko, market_noise_class = "Partial", "일부 신호", "badge-orange"
+    else:
+        market_noise_en, market_noise_ko, market_noise_class = "Available", "안정적", "badge-green"
+
+    naver_status_en = news_provider_status["naver_search"]["status_en"]
+    naver_status_ko = news_provider_status["naver_search"]["status_ko"]
+    google_status_en = news_provider_status["google_news_rss"]["status_en"]
+    google_status_ko = news_provider_status["google_news_rss"]["status_ko"]
+    deepsearch_status_en = news_provider_status["deepsearch_news"]["status_en"]
+    deepsearch_status_ko = news_provider_status["deepsearch_news"]["status_ko"]
+    gdelt_status_en = news_provider_status["gdelt"]["status_en"]
+    gdelt_status_ko = news_provider_status["gdelt"]["status_ko"]
     snacks_status_en = "Available" if len(latest_snacks_raw) > 0 or len(latest_snacks_market := read_csv(latest_file(PROCESSED_DIR, "snacks_market_features_*.csv"))) > 0 else None
     snacks_status_ko = "수집 가능" if snacks_status_en else "데이터 부족"
 
@@ -745,14 +805,40 @@ def build_metrics():
         "v3_top_50_evaluated_cases": v3_top_50_evaluated_cases,
         "v3_top_20_benchmark_success_rate": v3_top_20_benchmark_success_rate,
         "latest_v3_backtest_update_time": latest_v3_backtest_update_time,
+        "performance_audit_raw_success_rate": first_row_value(latest_performance_audit, "raw_success_rate", None),
+        "performance_audit_selected_raw_success_rate": first_row_value(latest_performance_audit, "selected_raw_success_rate", None),
+        "performance_audit_non_selected_raw_success_rate": first_row_value(latest_performance_audit, "non_selected_raw_success_rate", None),
+        "performance_audit_benchmark_success_rate": first_row_value(latest_performance_audit, "benchmark_adjusted_success_rate", None),
+        "performance_audit_selected_benchmark_success_rate": first_row_value(latest_performance_audit, "selected_benchmark_adjusted_success_rate", None),
+        "performance_audit_non_selected_benchmark_success_rate": first_row_value(latest_performance_audit, "non_selected_benchmark_adjusted_success_rate", None),
+        "performance_audit_diagnosis_label": first_row_value(latest_performance_audit, "diagnosis_label", "not_available"),
+        "performance_audit_public_metric_recommendation": first_row_value(latest_performance_audit, "public_metric_recommendation", "not_available"),
+        "performance_audit_candidate_count_findings": first_row_value(latest_performance_audit, "candidate_count_bucket_findings", "N/A"),
         "naver_status_en": naver_status_en,
         "naver_status_ko": naver_status_ko,
         "google_status_en": google_status_en,
         "google_status_ko": google_status_ko,
+        "deepsearch_status_en": deepsearch_status_en,
+        "deepsearch_status_ko": deepsearch_status_ko,
+        "gdelt_status_en": gdelt_status_en,
+        "gdelt_status_ko": gdelt_status_ko,
         "snacks_status_en": snacks_status_en,
         "snacks_status_ko": snacks_status_ko,
+        "news_provider_available_count": provider_available_count,
+        "news_coverage_en": news_coverage_en,
+        "news_coverage_ko": news_coverage_ko,
+        "news_coverage_class": news_coverage_class,
+        "market_noise_en": market_noise_en,
+        "market_noise_ko": market_noise_ko,
+        "market_noise_class": market_noise_class,
+        "news_rumor_noise_keyword_count": news_rumor_noise_keyword_count,
+        "news_risk_keyword_count": news_risk_keyword_count,
+        "deepsearch_item_count": news_provider_status["deepsearch_news"]["item_count"],
+        "google_item_count": news_provider_status["google_news_rss"]["item_count"],
+        "gdelt_item_count": news_provider_status["gdelt"]["item_count"],
+        "naver_item_count": news_provider_status["naver_search"]["item_count"],
         "last_news_provider_update": last_news_provider_update,
-        "news_provider_item_count": google_item_count,
+        "news_provider_item_count": news_provider_item_count,
         "news_provider_feature_count": news_feature_count,
     }, latest_ml_df
 
@@ -1871,14 +1957,28 @@ def build_diagnostics_html(metrics, stock_data):
       </div>
       <div class="signal-grid">
         <div class="card">
-          <div class="label">Naver Status</div>
-          <div class="ko-desc">네이버 뉴스 상태</div>
-          <div class="kpi-value-small">{render_status_pill(metrics["naver_status_en"], metrics["naver_status_ko"])}</div>
+          <div class="label">DeepSearch Status</div>
+          <div class="ko-desc">DeepSearch 뉴스 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["deepsearch_status_en"], metrics["deepsearch_status_ko"])}</div>
+          <div class="muted-helper">Items: {metrics["deepsearch_item_count"]}</div>
         </div>
         <div class="card">
           <div class="label">Google News RSS Status</div>
           <div class="ko-desc">Google News RSS 상태</div>
           <div class="kpi-value-small">{render_status_pill(metrics["google_status_en"], metrics["google_status_ko"])}</div>
+          <div class="muted-helper">Items: {metrics["google_item_count"]}</div>
+        </div>
+        <div class="card">
+          <div class="label">GDELT Status</div>
+          <div class="ko-desc">GDELT 뉴스 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["gdelt_status_en"], metrics["gdelt_status_ko"])}</div>
+          <div class="muted-helper">Items: {metrics["gdelt_item_count"]}</div>
+        </div>
+        <div class="card">
+          <div class="label">Naver Status</div>
+          <div class="ko-desc">네이버 뉴스 상태</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["naver_status_en"], metrics["naver_status_ko"])}</div>
+          <div class="muted-helper">Items: {metrics["naver_item_count"]}</div>
         </div>
         <div class="card">
           <div class="label">Snacks Digest Status</div>
@@ -1900,6 +2000,61 @@ def build_diagnostics_html(metrics, stock_data):
           <div class="ko-desc">뉴스 provider 특징 행 수</div>
           <div class="value">{metrics["news_provider_feature_count"]}</div>
         </div>
+        <div class="card">
+          <div class="label">Rumor / Noise Keywords</div>
+          <div class="ko-desc">루머/노이즈 키워드</div>
+          <div class="value warning">{metrics["news_rumor_noise_keyword_count"]}</div>
+        </div>
+        <div class="card">
+          <div class="label">Risk Keywords</div>
+          <div class="ko-desc">리스크 키워드</div>
+          <div class="value risk">{metrics["news_risk_keyword_count"]}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Performance Decision Audit <span class="heading-ko">성과 판단 감사</span></h2>
+          <p class="section-subtitle">Internal guardrail before any ranking formula change. 점수 산식 변경 전 내부 판단 근거입니다.</p>
+        </div>
+      </div>
+      <div class="signal-grid">
+        <div class="card">
+          <div class="label">Raw Success Rate</div>
+          <div class="ko-desc">단순 성공률</div>
+          {render_kpi_value(metrics["performance_audit_raw_success_rate"], "%")}
+        </div>
+        <div class="card">
+          <div class="label">Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">시장 대비 성공률</div>
+          {render_kpi_value(metrics["performance_audit_benchmark_success_rate"], "%")}
+        </div>
+        <div class="card">
+          <div class="label">Selected Raw Success Rate</div>
+          <div class="ko-desc">선별 후보 단순 성공률</div>
+          {render_kpi_value(metrics["performance_audit_selected_raw_success_rate"], "%")}
+        </div>
+        <div class="card">
+          <div class="label">Non-Selected Raw Success Rate</div>
+          <div class="ko-desc">비선별 후보 단순 성공률</div>
+          {render_kpi_value(metrics["performance_audit_non_selected_raw_success_rate"], "%")}
+        </div>
+        <div class="card">
+          <div class="label">Diagnosis Label</div>
+          <div class="ko-desc">진단 라벨</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["performance_audit_diagnosis_label"], "내부 진단", "badge-gray")}</div>
+        </div>
+        <div class="card">
+          <div class="label">Public Metric Recommendation</div>
+          <div class="ko-desc">공개 지표 권장 방향</div>
+          <div class="kpi-value-small">{render_status_pill(metrics["performance_audit_public_metric_recommendation"], "표시 권장", "badge-gray")}</div>
+        </div>
+      </div>
+      <div class="note section">
+        Candidate count bucket findings: {metrics["performance_audit_candidate_count_findings"]}<br>
+        후보 수 구간별 내부 진단입니다. 후보 생성이나 점수 산식은 변경하지 않습니다.
       </div>
     </section>
 
@@ -2236,9 +2391,9 @@ def build_html(metrics, stock_data):
     }.get(str(metrics.get("confidence_status", "")).upper(), "badge-gray")
     data_en, data_ko, data_class = data_status_label(metrics)
     benchmark_en, benchmark_ko, benchmark_class = benchmark_status_label(metrics)
-    news_en, news_ko, news_class = source_status_label(
-        bool(metrics.get("naver_status_en") or metrics.get("google_status_en") or metrics.get("snacks_status_en"))
-    )
+    news_en = metrics.get("news_coverage_en", "Needs Review")
+    news_ko = metrics.get("news_coverage_ko", "점검 필요")
+    news_class = metrics.get("news_coverage_class", "badge-orange")
     dart_en, dart_ko, dart_class = source_status_label(
         safe_float(metrics.get("pending_count"), 0) > 0 or safe_float(metrics.get("evaluated_count"), 0) > 0
     )
@@ -2476,6 +2631,18 @@ def build_html(metrics, stock_data):
           <div>{simple_status(news_en, news_ko, news_class)}</div>
         </div>
         <div class="card">
+          <div class="label">News Provider Coverage</div>
+          <div class="ko-desc">뉴스 소스 커버리지</div>
+          <div>{simple_status(metrics["news_coverage_en"], metrics["news_coverage_ko"], metrics["news_coverage_class"])}</div>
+          <div class="muted-helper">{metrics["news_provider_available_count"]} active provider(s)<br>활성 뉴스 소스 {metrics["news_provider_available_count"]}개</div>
+        </div>
+        <div class="card">
+          <div class="label">Market Noise Status</div>
+          <div class="ko-desc">시장 노이즈 상태</div>
+          <div>{simple_status(metrics["market_noise_en"], metrics["market_noise_ko"], metrics["market_noise_class"])}</div>
+          <div class="muted-helper">Rumor/noise: {metrics["news_rumor_noise_keyword_count"]} · Risk: {metrics["news_risk_keyword_count"]}<br>루머/노이즈: {metrics["news_rumor_noise_keyword_count"]} · 리스크: {metrics["news_risk_keyword_count"]}</div>
+        </div>
+        <div class="card">
           <div class="label">DART Source Status</div>
           <div class="ko-desc">공시 데이터 상태</div>
           <div>{simple_status(dart_en, dart_ko, dart_class)}</div>
@@ -2581,8 +2748,15 @@ def main():
     print(f"- Top 100 evaluated cases: {format_metric_value(metrics['top_100_evaluated_count'])}")
     print(f"- candidate pool today: {metrics['price_candidate_rows']}")
     print(f"- selected picks today: {metrics['selected_pick_rows']}")
-    print(f"- Google News RSS item count: {metrics['news_provider_item_count']}")
+    print(f"- performance audit diagnosis: {metrics['performance_audit_diagnosis_label']}")
+    print(f"- performance audit benchmark-adjusted success rate: {format_metric_value(metrics['performance_audit_benchmark_success_rate'], '%')}")
+    print(f"- news provider coverage: {metrics['news_coverage_en']} ({metrics['news_provider_available_count']} active)")
+    print(f"- DeepSearch item count: {metrics['deepsearch_item_count']}")
+    print(f"- Google News RSS item count: {metrics['google_item_count']}")
+    print(f"- GDELT item count: {metrics['gdelt_item_count']}")
+    print(f"- Naver item count: {metrics['naver_item_count']}")
     print(f"- news provider feature count: {metrics['news_provider_feature_count']}")
+    print(f"- rumor/noise keyword count: {metrics['news_rumor_noise_keyword_count']}")
 
 
 if __name__ == "__main__":

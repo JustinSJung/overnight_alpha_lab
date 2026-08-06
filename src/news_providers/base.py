@@ -14,6 +14,7 @@ NORMALIZED_COLUMNS = [
     "published_at",
     "summary",
     "raw_source",
+    "provider_status",
 ]
 
 
@@ -35,4 +36,5 @@ class NewsProvider(ABC):
             "published_at": item.get("published_at", ""),
             "summary": item.get("summary", ""),
             "raw_source": item.get("raw_source", ""),
+            "provider_status": item.get("provider_status", "success"),
         }

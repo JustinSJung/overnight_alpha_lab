@@ -102,6 +102,8 @@ run_required "3/24" "Building daily price signals..." python src/features/daily_
 run_optional "Collecting market index data for price benchmark coverage..." python src/crawler/market_index_collector.py
 run_required "4/24" "Generating price-based daily candidates..." python src/models/price_based_daily_recommender.py || exit $?
 run_required "5/24" "Evaluating price-based candidates with benchmark fallback..." python src/evaluator/price_candidate_evaluator.py || exit $?
+run_optional "Running supplementary news providers..." python src/news_providers/provider_runner.py
+run_optional "Generating performance decision audit..." python src/report_generator/performance_decision_audit.py
 
 if [ "$DART_DATA_AVAILABLE" = "1" ]; then
     run_required "6/24" "Running pending re-evaluator..." python src/evaluator/pending_re_evaluator.py || exit $?
@@ -131,7 +133,6 @@ run_optional "Generating Snacks market features..." python src/features/snacks_m
 run_optional "Generating social attention features..." python src/features/social_attention_features.py
 run_optional "Generating learned event rules..." python src/models/auto_rule_updater.py
 run_optional "Generating learned-rule daily candidate report..." python src/models/learned_rule_daily_recommender.py
-run_optional "Running supplementary news providers..." python src/news_providers/provider_runner.py
 run_optional "Generating evaluation integrity audit..." python src/report_generator/evaluation_integrity_audit.py
 run_optional "Generating price candidate learned rules..." python src/models/price_candidate_rule_learner.py
 run_optional "Generating v2 performance monitor..." python src/report_generator/v2_performance_monitor.py

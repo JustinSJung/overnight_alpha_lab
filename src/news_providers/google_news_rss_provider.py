@@ -17,7 +17,7 @@ from src.news_providers.base import NewsProvider
 class GoogleNewsRssProvider(NewsProvider):
     provider_name = "google_news_rss"
 
-    def __init__(self, hl: str = "ko", gl: str = "KR", ceid: str = "KR:ko", timeout: int = 10):
+    def __init__(self, hl: str = "ko", gl: str = "KR", ceid: str = "KR:ko", timeout: int = 6):
         self.hl = hl
         self.gl = gl
         self.ceid = ceid
