@@ -11,23 +11,22 @@ It is used as a supplementary market-attention signal, not as direct investment 
 - Snacks articles analyzed: **3**
 - US market attention signals: **7**
 - Macro risk signals: **0**
-- Korea relevance signals: **85**
+- Korea relevance signals: **81**
 
 ## Top Global Themes
 
 | Theme | Count |
 |---|---:|
-| ai_semiconductor | 1 |
+| ai_semiconductor | 2 |
 | energy_commodity | 1 |
-| ev_battery | 1 |
 
 ## Latest Snacks Articles
 
 | Rank | Title | Top Theme | Attention | Macro Risk | Korea Relevance | URL |
 |---:|---|---|---:|---:|---:|---|
-| 1 | 🍔 McDonald's orders a turnaround | ai_semiconductor | 2 | 0 | 33 | https://sherwood.news/snacks/newsletters/mcdonalds-orders-a-turnaround/ |
-| 2 | 🛢️ Crude diet | energy_commodity | 3 | 0 | 34 | https://sherwood.news/snacks/newsletters/crude-diet/ |
-| 3 | 💫 Orbital maneuvering | ev_battery | 2 | 0 | 18 | https://sherwood.news/snacks/newsletters/orbital-maneuvering/ |
+| 1 | 🔓 SpaceX unlocked | ai_semiconductor | 2 | 0 | 13 | https://sherwood.news/snacks/newsletters/spacex-unlocked/ |
+| 2 | 🍔 McDonald's orders a turnaround | ai_semiconductor | 2 | 0 | 34 | https://sherwood.news/snacks/newsletters/mcdonalds-orders-a-turnaround/ |
+| 3 | 🛢️ Crude diet | energy_commodity | 3 | 0 | 34 | https://sherwood.news/snacks/newsletters/crude-diet/ |
 
 ## Interpretation
 

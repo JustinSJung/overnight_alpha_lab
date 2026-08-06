@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-08-06
 
-Generated at: 2026-08-06 01:53:43
+Generated at: 2026-08-06 23:59:39
 
 ## Purpose
 
@@ -12,11 +12,11 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Overall Summary
 
-- Total error-note rows: **810**
+- Total error-note rows: **832**
 - Evaluated rows: **0**
 - Success rows: **0**
 - Failure rows: **0**
-- Pending rows: **810**
+- Pending rows: **832**
 - Overall success rate: **N/A**
 
 Most rows are still pending. Event-type success rates will become meaningful after next-day price reactions are evaluated.
@@ -25,14 +25,14 @@ Most rows are still pending. Event-type success rates will become meaningful aft
 
 | Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| major_shareholder_change | 184 | 0 | 0 | 0 | 184 | N/A | N/A | N/A | neutral |
-| paid_in_capital_increase | 142 | 0 | 0 | 0 | 142 | N/A | N/A | N/A | neutral |
-| convertible_bond | 128 | 0 | 0 | 0 | 128 | N/A | N/A | N/A | neutral |
-| supply_contract | 125 | 0 | 0 | 0 | 125 | N/A | N/A | N/A | neutral |
-| investment_decision | 72 | 0 | 0 | 0 | 72 | N/A | N/A | N/A | neutral |
+| major_shareholder_change | 194 | 0 | 0 | 0 | 194 | N/A | N/A | N/A | neutral |
+| paid_in_capital_increase | 145 | 0 | 0 | 0 | 145 | N/A | N/A | N/A | neutral |
+| convertible_bond | 130 | 0 | 0 | 0 | 130 | N/A | N/A | N/A | neutral |
+| supply_contract | 127 | 0 | 0 | 0 | 127 | N/A | N/A | N/A | neutral |
+| investment_decision | 76 | 0 | 0 | 0 | 76 | N/A | N/A | N/A | neutral |
 | lawsuit | 69 | 0 | 0 | 0 | 69 | N/A | N/A | N/A | neutral |
 | merger | 37 | 0 | 0 | 0 | 37 | N/A | N/A | N/A | neutral |
-| disclosure_violation | 31 | 0 | 0 | 0 | 31 | N/A | N/A | N/A | neutral |
+| disclosure_violation | 32 | 0 | 0 | 0 | 32 | N/A | N/A | N/A | neutral |
 | bond_with_warrant | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | neutral |
 | spin_off | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | neutral |
 | bonus_issue | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | neutral |

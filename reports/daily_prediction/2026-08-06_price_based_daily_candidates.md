@@ -6,7 +6,7 @@ Source CSV: `data/processed/price_based_candidates_20260806.csv`
 
 ## Candidate Pool Summary
 
-- Broad candidate pool count: **224**
+- Broad candidate pool count: **237**
 - Selected pick count: **20**
 - Score version: **v2_conservative_ranker**
 
@@ -17,26 +17,26 @@ Source CSV: `data/processed/price_based_candidates_20260806.csv`
 
 | Rank | Stock | Name | Action | Score | Signal | 5D Return | Volume Ratio | Selection Reason |
 |---:|---|---|---|---:|---|---:|---:|---|
-| 1 | 053580 |  | WATCHLIST | 71.68 | price_momentum | 12.97% | 1.51x | Top 20 by conservative v2 price signal score |
-| 2 | 018260 |  | WATCHLIST | 69.17 | strong_price_momentum | 16.26% | 0.42x | Top 20 by conservative v2 price signal score |
-| 3 | 330730 |  | WATCHLIST | 68.16 | strong_price_momentum | 17.15% | 0.22x | Top 20 by conservative v2 price signal score |
-| 4 | 013520 |  | WATCHLIST | 67.96 | strong_price_momentum | 17.20% | 0.52x | Top 20 by conservative v2 price signal score |
-| 5 | 332290 |  | WATCHLIST | 67.95 | strong_price_momentum | 10.02% | 0.23x | Top 20 by conservative v2 price signal score |
-| 6 | 028100 | 동아지질 | WATCHLIST | 66.81 | strong_price_momentum | 7.22% | 0.26x | Top 20 by conservative v2 price signal score |
-| 7 | 005710 |  | WATCHLIST | 66.68 | strong_price_momentum | 8.25% | 0.53x | Top 20 by conservative v2 price signal score |
-| 8 | 006060 |  | WATCHLIST | 66.15 | strong_price_momentum | 5.65% | 0.27x | Top 20 by conservative v2 price signal score |
-| 9 | 024720 |  | WATCHLIST | 63.88 | strong_price_momentum | 9.32% | 0.17x | Top 20 by conservative v2 price signal score |
-| 10 | 340570 |  | WATCHLIST | 63.47 | price_momentum | 16.24% | 0.88x | Top 20 by conservative v2 price signal score |
-| 11 | 009540 |  | WATCHLIST | 63.20 | strong_price_momentum | 7.19% | 0.15x | Top 20 by conservative v2 price signal score |
-| 12 | 039200 |  | WATCHLIST | 62.85 | strong_price_momentum | 22.89% | 0.41x | Top 20 by conservative v2 price signal score |
-| 13 | 040910 |  | WATCHLIST | 62.23 | price_momentum | 13.84% | 0.11x | Top 20 by conservative v2 price signal score |
-| 14 | 013720 |  | WATCHLIST | 61.95 | strong_price_momentum | 16.00% | 0.07x | Top 20 by conservative v2 price signal score |
-| 15 | 006730 |  | WATCHLIST | 61.31 | price_momentum | 14.11% | 1.00x | Top 20 by conservative v2 price signal score |
-| 16 | 038680 |  | WATCHLIST | 61.23 | price_momentum | 19.57% | 0.12x | Top 20 by conservative v2 price signal score |
-| 17 | 038530 |  | WATCHLIST | 60.51 | strong_price_momentum | 19.53% | 0.41x | Top 20 by conservative v2 price signal score |
-| 18 | 115480 |  | WATCHLIST | 60.26 | price_momentum | 10.15% | 0.56x | Top 20 by conservative v2 price signal score |
-| 19 | 071200 |  | WATCHLIST | 60.04 | strong_price_momentum | 29.04% | 0.52x | Top 20 by conservative v2 price signal score |
-| 20 | 144510 |  | HOLD | 59.82 | price_momentum | 13.61% | 0.62x | Top 20 by conservative v2 price signal score |
+| 1 | 005710 |  | BUY_CANDIDATE | 79.26 | strong_price_momentum | 7.78% | 1.60x | Top 20 by conservative v2 price signal score |
+| 2 | 253450 |  | BUY_CANDIDATE | 75.88 | strong_price_momentum | 16.39% | 2.14x | Top 20 by conservative v2 price signal score |
+| 3 | 084870 |  | WATCHLIST | 74.61 | price_momentum | 10.26% | 1.93x | Top 20 by conservative v2 price signal score |
+| 4 | 008930 |  | WATCHLIST | 68.05 | strong_price_momentum | 26.04% | 1.97x | Top 20 by conservative v2 price signal score |
+| 5 | 018260 |  | WATCHLIST | 67.68 | strong_price_momentum | 17.01% | 1.10x | Top 20 by conservative v2 price signal score |
+| 6 | 053580 |  | WATCHLIST | 67.10 | price_momentum | 13.30% | 1.77x | Top 20 by conservative v2 price signal score |
+| 7 | 028100 |  | WATCHLIST | 66.98 | strong_price_momentum | 7.64% | 0.95x | Top 20 by conservative v2 price signal score |
+| 8 | 003490 |  | WATCHLIST | 66.70 | strong_price_momentum | 11.56% | 0.91x | Top 20 by conservative v2 price signal score |
+| 9 | 024720 |  | WATCHLIST | 66.66 | strong_price_momentum | 11.62% | 0.95x | Top 20 by conservative v2 price signal score |
+| 10 | 006730 |  | WATCHLIST | 66.09 | price_momentum | 13.26% | 1.60x | Top 20 by conservative v2 price signal score |
+| 11 | 001630 |  | WATCHLIST | 65.75 | strong_price_momentum | 4.06% | 1.06x | Top 20 by conservative v2 price signal score |
+| 12 | 059270 |  | WATCHLIST | 65.73 | price_momentum | 25.42% | 2.46x | Top 20 by conservative v2 price signal score |
+| 13 | 000950 |  | WATCHLIST | 65.55 | price_momentum | 15.64% | 1.24x | Top 20 by conservative v2 price signal score |
+| 14 | 179530 |  | WATCHLIST | 65.44 | price_momentum | 10.86% | 1.94x | Top 20 by conservative v2 price signal score |
+| 15 | 144510 |  | WATCHLIST | 65.10 | strong_price_momentum | 14.48% | 1.09x | Top 20 by conservative v2 price signal score |
+| 16 | 020560 |  | WATCHLIST | 65.10 | strong_price_momentum | 9.97% | 0.74x | Top 20 by conservative v2 price signal score |
+| 17 | 009540 |  | WATCHLIST | 64.36 | strong_price_momentum | 8.55% | 0.42x | Top 20 by conservative v2 price signal score |
+| 18 | 007980 |  | WATCHLIST | 63.03 | price_momentum | 8.43% | 0.53x | Top 20 by conservative v2 price signal score |
+| 19 | 332290 |  | WATCHLIST | 62.26 | strong_price_momentum | 17.08% | 1.15x | Top 20 by conservative v2 price signal score |
+| 20 | 330730 |  | WATCHLIST | 62.23 | strong_price_momentum | 17.39% | 0.45x | Top 20 by conservative v2 price signal score |
 
 ## Notes
 

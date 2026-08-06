@@ -4,14 +4,14 @@ Source CSV: `data/predictions/price_candidate_evaluation_20260806.csv`
 
 ## Summary
 
-- Absolute close T1 evaluated cases: 1722
-- Absolute close T1 success rate: 42.74%
-- Benchmark-adjusted T1 evaluated cases: 1722
-- Benchmark-adjusted T1 success rate: 51.80%
-- Pending cases: 1494
+- Absolute close T1 evaluated cases: 1726
+- Absolute close T1 success rate: 42.35%
+- Benchmark-adjusted T1 evaluated cases: 1726
+- Benchmark-adjusted T1 success rate: 51.56%
+- Pending cases: 1503
 - Skipped cases: 0
-- T3 return available: 2422
-- T5 return available: 2009
+- T3 return available: 2431
+- T5 return available: 2018
 
 Small samples should be interpreted conservatively; dashboard reliability uses Wilson lower bound.
 

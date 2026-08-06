@@ -1,6 +1,6 @@
 # Model Performance History Report - 2026-08-06
 
-Generated at: 2026-08-06 01:53:40
+Generated at: 2026-08-06 23:59:36
 
 ## Purpose
 
@@ -14,22 +14,22 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary Metrics
 
-- ML dataset rows: **3531**
-- Error-note rows: **810**
-- Market-adjusted evaluation rows: **767**
-- Market-adjusted score rows: **767**
-- Trading volume score rows: **8231**
+- ML dataset rows: **3553**
+- Error-note rows: **832**
+- Market-adjusted evaluation rows: **789**
+- Market-adjusted score rows: **789**
+- Trading volume score rows: **8313**
 
 - Prediction success: **0**
 - Prediction failure: **0**
-- Prediction pending: **810**
+- Prediction pending: **832**
 - Prediction evaluated: **0**
 - Prediction success rate: **0.00%**
 
 - Market-adjusted success: **0**
 - Market-adjusted failure: **0**
 - Market-driven weak success: **0**
-- Market-adjusted pending: **767**
+- Market-adjusted pending: **789**
 
 - Total market-adjusted score adjustment: **0.00**
 - Average market-adjusted score adjustment: **0.00**
@@ -64,14 +64,14 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 2026-08-03 | 25 |
 | 2026-08-04 | 223 |
 | 2026-08-05 | 11 |
-| 2026-08-06 | 3 |
+| 2026-08-06 | 25 |
 
 ## Prediction Result Counts
 
 | count |
 |---|
 | count    pending
-count        810
+count        832
 Name: 0, dtype: object |
 
 ## Market-Adjusted Result Counts
@@ -79,7 +79,7 @@ Name: 0, dtype: object |
 | count |
 |---|
 | count    pending
-count        767
+count        789
 Name: 0, dtype: object |
 
 ## Trading Volume Adjustment Counts
@@ -87,7 +87,7 @@ Name: 0, dtype: object |
 | count |
 |---|
 | count    neutral_volume_adjustment
-count                         8231
+count                         8313
 Name: 0, dtype: object |
 
 ## Event-Type Performance Summary
@@ -96,16 +96,16 @@ Name: 0, dtype: object |
 |---|---|---|---|---|---|---|
 | bond_with_warrant | 9 | 0 | 0 | 9 | 0 | 0.00% |
 | bonus_issue | 3 | 0 | 0 | 3 | 0 | 0.00% |
-| convertible_bond | 128 | 0 | 0 | 128 | 0 | 0.00% |
-| disclosure_violation | 31 | 0 | 0 | 31 | 0 | 0.00% |
+| convertible_bond | 130 | 0 | 0 | 130 | 0 | 0.00% |
+| disclosure_violation | 32 | 0 | 0 | 32 | 0 | 0.00% |
 | earnings_guidance | 2 | 0 | 0 | 2 | 0 | 0.00% |
-| investment_decision | 72 | 0 | 0 | 72 | 0 | 0.00% |
+| investment_decision | 76 | 0 | 0 | 76 | 0 | 0.00% |
 | lawsuit | 69 | 0 | 0 | 69 | 0 | 0.00% |
-| major_shareholder_change | 184 | 0 | 0 | 184 | 0 | 0.00% |
+| major_shareholder_change | 194 | 0 | 0 | 194 | 0 | 0.00% |
 | merger | 37 | 0 | 0 | 37 | 0 | 0.00% |
-| paid_in_capital_increase | 142 | 0 | 0 | 142 | 0 | 0.00% |
+| paid_in_capital_increase | 145 | 0 | 0 | 145 | 0 | 0.00% |
 | spin_off | 8 | 0 | 0 | 8 | 0 | 0.00% |
-| supply_contract | 125 | 0 | 0 | 125 | 0 | 0.00% |
+| supply_contract | 127 | 0 | 0 | 127 | 0 | 0.00% |
 
 ## Automation History
 
@@ -138,6 +138,7 @@ Name: 0, dtype: object |
 | 2026-08-03 | N/A | 100 | 100 | 20 | 20 | 20 | 25 | 25 | 25 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260803.csv | data/processed/ml_dataset_20260803.csv |
 | 2026-08-04 | N/A | 100 | 100 | 19 | 19 | 19 | 55 | 223 | 223 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260804.csv | data/processed/ml_dataset_20260804.csv |
 | 2026-08-05 | N/A | 100 | 100 | 7 | 7 | 7 | 11 | 11 | 11 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260805.csv | data/processed/ml_dataset_20260805.csv |
+| 2026-08-06 | N/A | 84 | 84 | 3 | 3 | 3 | 3 | 3 | 3 | 0 | 0 | 0 | True | True | data/raw/dart_disclosures_20260806.csv | data/processed/ml_dataset_20260806.csv |
 
 ## Interpretation
 

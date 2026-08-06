@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-08-06
 
-Generated at: 2026-08-06 01:53:38
+Generated at: 2026-08-06 23:59:34
 
 Source feature file: `data/processed/market_adjusted_features_20260806.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **3**
-- pending: **3**
+- Total rows: **25**
+- pending: **25**
 
 ## Interpretation
 
@@ -29,9 +29,26 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 | event_date | stock_code | corp_name | prediction_direction | prediction_result | market_adjusted_result | next_close_return | market_next_close_return | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 9460 | 한창제지 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 28100 | 동아지질 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 86820 | 바이오솔루션 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 42370 | 비츠로테크 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 163730 | 핑거 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 64800 | 포니링크 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 457600 | 벡트 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 457600 | 벡트 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 488900 | 비츠로넥스텍 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 79950 | 인베니아 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 215570 | 크로넥스 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 9190 | 대양금속 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 115450 | HLB테라퓨틱스 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 376270 | HEM파마 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 199800 | 툴젠 | negative | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 43260 | 성호전자 | negative | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

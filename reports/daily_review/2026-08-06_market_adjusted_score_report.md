@@ -1,6 +1,6 @@
 # Market-Adjusted Score Integration Report - 2026-08-06
 
-Generated at: 2026-08-06 01:53:38
+Generated at: 2026-08-06 23:59:34
 
 Source evaluation file: `data/predictions/market_adjusted_evaluation_20260806.csv`
 
@@ -28,25 +28,42 @@ The goal is to reward predictions that outperform the market and penalize result
 
 ## Summary
 
-- Total rows: **3**
+- Total rows: **25**
 - Total adjustment score: **0.00**
 - Average adjustment score: **0.00**
 
 ## Adjustment Label Counts
 
-- neutral_adjustment: **3**
+- neutral_adjustment: **25**
 
 ## Market-Adjusted Result Counts
 
-- pending: **3**
+- pending: **25**
 
 ## Sample Rows
 
 | event_date | stock_code | corp_name | prediction_direction | market_adjusted_result | market_adjusted_score_adjustment | market_adjusted_next_close_return |
 |---|---|---|---|---|---|---|
-| 1970-01-01 | 009460 | 한창제지 | negative | pending | 0 | N/A |
-| 1970-01-01 | 028100 | 동아지질 | positive | pending | 0 | N/A |
-| 1970-01-01 | 086820 | 바이오솔루션 | negative | pending | 0 | N/A |
+| 1970-01-01 | 042370 | 비츠로테크 | positive | pending | 0 | N/A |
+| 1970-01-01 | 163730 | 핑거 | negative | pending | 0 | N/A |
+| 1970-01-01 | 064800 | 포니링크 | negative | pending | 0 | N/A |
+| 1970-01-01 | 457600 | 벡트 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 457600 | 벡트 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 488900 | 비츠로넥스텍 | positive | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 079950 | 인베니아 | negative | pending | 0 | N/A |
+| 1970-01-01 | 215570 | 크로넥스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 009190 | 대양금속 | volatile | pending | 0 | N/A |
+| 1970-01-01 | 115450 | HLB테라퓨틱스 | negative | pending | 0 | N/A |
+| 1970-01-01 | 376270 | HEM파마 | negative | pending | 0 | N/A |
+| 1970-01-01 | 199800 | 툴젠 | negative | pending | 0 | N/A |
+| 1970-01-01 | 043260 | 성호전자 | negative | pending | 0 | N/A |
 
 ## Next Step
 
