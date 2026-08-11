@@ -6,7 +6,7 @@ Source CSV: `data/processed/price_based_candidates_20260811.csv`
 
 ## Candidate Pool Summary
 
-- Broad candidate pool count: **250**
+- Broad candidate pool count: **263**
 - Selected pick count: **20**
 - Score version: **v2_conservative_ranker**
 
@@ -17,26 +17,26 @@ Source CSV: `data/processed/price_based_candidates_20260811.csv`
 
 | Rank | Stock | Name | Action | Score | Signal | 5D Return | Volume Ratio | Selection Reason |
 |---:|---|---|---|---:|---|---:|---:|---|
-| 1 | 024720 |  | BUY_CANDIDATE | 81.65 | strong_price_momentum | 7.61% | 2.18x | Top 20 by conservative v2 price signal score |
-| 2 | 115480 |  | BUY_CANDIDATE | 81.33 | strong_price_momentum | 5.70% | 1.65x | Top 20 by conservative v2 price signal score |
-| 3 | 002420 |  | BUY_CANDIDATE | 76.23 | price_momentum | 7.72% | 1.56x | Top 20 by conservative v2 price signal score |
-| 4 | 134790 |  | WATCHLIST | 72.03 | strong_price_momentum | 1.13% | 1.66x | Top 20 by conservative v2 price signal score |
-| 5 | 229000 |  | WATCHLIST | 71.74 | strong_price_momentum | 9.91% | 1.05x | Top 20 by conservative v2 price signal score |
-| 6 | 018260 |  | WATCHLIST | 70.96 | strong_price_momentum | 8.66% | 0.98x | Top 20 by conservative v2 price signal score |
-| 7 | 007980 |  | WATCHLIST | 70.29 | strong_price_momentum | 11.71% | 1.20x | Top 20 by conservative v2 price signal score |
-| 8 | 126880 | 제이엔케이글로벌 | WATCHLIST | 69.42 | strong_price_momentum | 7.41% | 1.06x | Top 20 by conservative v2 price signal score |
-| 9 | 064400 |  | WATCHLIST | 68.68 | strong_price_momentum | 11.16% | 0.90x | Top 20 by conservative v2 price signal score |
-| 10 | 007570 |  | WATCHLIST | 67.60 | price_momentum | 5.79% | 2.04x | Top 20 by conservative v2 price signal score |
-| 11 | 330730 |  | WATCHLIST | 67.49 | strong_price_momentum | 5.68% | 0.55x | Top 20 by conservative v2 price signal score |
-| 12 | 109070 |  | WATCHLIST | 67.03 | price_momentum | 11.78% | 3.02x | Top 20 by conservative v2 price signal score |
-| 13 | 185750 |  | WATCHLIST | 66.96 | strong_price_momentum | 5.78% | 0.93x | Top 20 by conservative v2 price signal score |
-| 14 | 028100 |  | WATCHLIST | 66.95 | strong_price_momentum | 3.31% | 0.76x | Top 20 by conservative v2 price signal score |
-| 15 | 006060 |  | WATCHLIST | 66.44 | strong_price_momentum | 2.77% | 0.95x | Top 20 by conservative v2 price signal score |
-| 16 | 112610 |  | WATCHLIST | 66.05 | strong_price_momentum | 12.30% | 0.56x | Top 20 by conservative v2 price signal score |
-| 17 | 071200 |  | WATCHLIST | 65.27 | price_momentum | 10.10% | 1.33x | Top 20 by conservative v2 price signal score |
-| 18 | 383800 |  | WATCHLIST | 65.24 | price_momentum | 4.67% | 1.32x | Top 20 by conservative v2 price signal score |
-| 19 | 005960 |  | WATCHLIST | 65.07 | strong_price_momentum | 9.73% | 0.55x | Top 20 by conservative v2 price signal score |
-| 20 | 038530 |  | WATCHLIST | 65.06 | price_momentum | 8.30% | 1.15x | Top 20 by conservative v2 price signal score |
+| 1 | 263750 | 펄어비스 | BUY_CANDIDATE | 78.49 | strong_price_momentum | 3.65% | 1.99x | Top 20 by conservative v2 price signal score |
+| 2 | 007570 |  | BUY_CANDIDATE | 76.63 | strong_price_momentum | 6.26% | 2.13x | Top 20 by conservative v2 price signal score |
+| 3 | 115480 |  | BUY_CANDIDATE | 75.39 | strong_price_momentum | 5.70% | 1.66x | Top 20 by conservative v2 price signal score |
+| 4 | 024720 |  | WATCHLIST | 73.71 | price_momentum | 7.18% | 2.30x | Top 20 by conservative v2 price signal score |
+| 5 | 253450 |  | WATCHLIST | 72.39 | strong_price_momentum | 11.16% | 1.09x | Top 20 by conservative v2 price signal score |
+| 6 | 001060 | JW중외제약 | WATCHLIST | 72.06 | strong_price_momentum | 8.47% | 1.04x | Top 20 by conservative v2 price signal score |
+| 7 | 250060 |  | WATCHLIST | 71.85 | strong_price_momentum | 10.15% | 0.82x | Top 20 by conservative v2 price signal score |
+| 8 | 002420 |  | WATCHLIST | 71.11 | price_momentum | 7.90% | 1.70x | Top 20 by conservative v2 price signal score |
+| 9 | 084870 |  | WATCHLIST | 71.02 | strong_price_momentum | 7.20% | 1.07x | Top 20 by conservative v2 price signal score |
+| 10 | 007980 |  | WATCHLIST | 70.80 | strong_price_momentum | 11.89% | 1.29x | Top 20 by conservative v2 price signal score |
+| 11 | 018260 |  | WATCHLIST | 70.43 | strong_price_momentum | 7.97% | 1.24x | Top 20 by conservative v2 price signal score |
+| 12 | 053580 |  | WATCHLIST | 70.37 | strong_price_momentum | 6.84% | 0.64x | Top 20 by conservative v2 price signal score |
+| 13 | 234300 |  | WATCHLIST | 69.30 | strong_price_momentum | 12.08% | 0.98x | Top 20 by conservative v2 price signal score |
+| 14 | 403550 |  | WATCHLIST | 69.13 | strong_price_momentum | 8.75% | 0.58x | Top 20 by conservative v2 price signal score |
+| 15 | 000950 | 전방 | WATCHLIST | 69.12 | strong_price_momentum | 6.43% | 0.52x | Top 20 by conservative v2 price signal score |
+| 16 | 134790 |  | WATCHLIST | 68.92 | strong_price_momentum | 3.84% | 2.51x | Top 20 by conservative v2 price signal score |
+| 17 | 383800 |  | WATCHLIST | 68.34 | strong_price_momentum | 5.32% | 1.37x | Top 20 by conservative v2 price signal score |
+| 18 | 141000 |  | WATCHLIST | 67.21 | strong_price_momentum | 9.40% | 0.73x | Top 20 by conservative v2 price signal score |
+| 19 | 019570 |  | WATCHLIST | 67.10 | price_momentum | 21.78% | 1.55x | Top 20 by conservative v2 price signal score |
+| 20 | 025980 |  | WATCHLIST | 66.67 | strong_price_momentum | 5.38% | 1.05x | Top 20 by conservative v2 price signal score |
 
 ## Notes
 

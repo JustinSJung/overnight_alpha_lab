@@ -2,7 +2,7 @@
 
 ## Dataset Summary
 
-- Total rows: 66
+- Total rows: 53
 - Trainable rows: 0
 
 ## Status

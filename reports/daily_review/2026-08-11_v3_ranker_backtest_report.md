@@ -6,23 +6,23 @@ It is diagnostic only and does not alter historical decisions, selected picks, o
 ## Summary
 
 - Experimental score version: **v3_stability_ranker**
-- Historical component coverage: **82.63%**
+- Historical component coverage: **82.64%**
 - Data status: **sufficient historical component coverage**
-- Overall evaluated cases: **15067**
-- Overall success rate: **42.20%**
-- Current selected group success rate: **53.92%**
+- Overall evaluated cases: **15068**
+- Overall success rate: **42.16%**
+- Current selected group success rate: **54.00%**
 - Simulated v3 Top 10 success rate: **49.45%**
-- Simulated v3 Top 20 success rate: **50.64%**
-- Simulated v3 Top 50 success rate: **48.36%**
+- Simulated v3 Top 20 success rate: **51.28%**
+- Simulated v3 Top 50 success rate: **48.68%**
 - Simulated v3 Top 20 benchmark-adjusted success rate: **54.07%**
 
 ## Rank Buckets
 
 | bucket | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_excess_t1_return | benchmark_adjusted_success_rate |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Top 10 | 91 | 45 | 46 | 49.45% | 0.69% | 0.29% | 55.70% |
-| Top 20 | 156 | 79 | 77 | 50.64% | 0.91% | -0.18% | 54.07% |
-| Top 50 | 304 | 147 | 157 | 48.36% | 1.08% | 0.16% | 55.64% |
+| Top 10 | 91 | 45 | 46 | 49.45% | 0.72% | 0.32% | 55.70% |
+| Top 20 | 156 | 80 | 76 | 51.28% | 0.93% | -0.16% | 54.07% |
+| Top 50 | 304 | 148 | 156 | 48.68% | 1.09% | 0.15% | 55.26% |
 
 ## Notes
 
