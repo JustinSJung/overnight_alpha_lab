@@ -74,19 +74,36 @@ def score_version_series(df: pd.DataFrame) -> pd.Series:
 
 
 def dedupe_key_series(df: pd.DataFrame) -> pd.Series:
+    """
+    Candidate-level identity key: candidate_id when present and valid,
+    otherwise stock_code+signal_date+prediction_date+score_version.
+    Matches price_candidate_rule_learner.py's candidate_key_series() and
+    dashboard_generator.py's price_evaluation_key() exactly. evaluation_date
+    is intentionally excluded — the same candidate can be re-evaluated on
+    multiple later calendar days (e.g. once t3/t5 returns become available),
+    and including evaluation_date in the key would keep every re-evaluation
+    as a separate "unique" row instead of collapsing them to one candidate.
+    """
     if df.empty:
         return pd.Series(dtype=str)
-    return (
+
+    if "candidate_id" in df.columns:
+        candidate_id = df["candidate_id"].astype(str).str.strip()
+        valid = ~candidate_id.isin(["", "nan", "None", "<NA>"])
+    else:
+        candidate_id = pd.Series([""] * len(df), index=df.index, dtype=object)
+        valid = pd.Series([False] * len(df), index=df.index)
+
+    fallback = (
         df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
         + "|"
         + date_key(df, "signal_date")
         + "|"
         + date_key(df, "prediction_date")
         + "|"
-        + date_key(df, "evaluation_date")
-        + "|"
         + score_version_series(df)
     )
+    return candidate_id.where(valid, fallback)
 
 
 def dedupe_evaluations(df: pd.DataFrame) -> pd.DataFrame:
@@ -94,7 +111,7 @@ def dedupe_evaluations(df: pd.DataFrame) -> pd.DataFrame:
         return df
     working = df.copy()
     working["v2_monitor_key"] = dedupe_key_series(working)
-    sort_columns = [column for column in ["evaluated_at", "source_file"] if column in working.columns]
+    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
     if sort_columns:
         working = working.sort_values(sort_columns)
     return working.drop_duplicates(subset=["v2_monitor_key"], keep="last")

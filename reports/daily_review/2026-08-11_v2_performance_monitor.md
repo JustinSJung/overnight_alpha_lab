@@ -4,30 +4,30 @@ This report monitors `v2_conservative_ranker` only. It is diagnostic and does no
 
 ## Summary
 
-- V2 evaluated cases: **13345**
-- V2 success count: **5651**
-- V2 failure count: **7694**
-- V2 raw success rate: **42.35%**
-- V2 benchmark-adjusted evaluated cases: **11031**
-- V2 benchmark-adjusted success rate: **52.28%**
-- V2 benchmark coverage rate: **82.66%**
-- V2 average close_t1_return: **0.63%**
-- V2 average excess_t1_return: **-0.29%**
-- Selected-pick evaluated cases: **992**
-- Selected-pick success rate: **53.33%**
-- Non-selected evaluated cases: **12353**
-- Non-selected success rate: **41.46%**
+- V2 evaluated cases: **1606**
+- V2 success count: **655**
+- V2 failure count: **951**
+- V2 raw success rate: **40.78%**
+- V2 benchmark-adjusted evaluated cases: **1606**
+- V2 benchmark-adjusted success rate: **53.80%**
+- V2 benchmark coverage rate: **100.00%**
+- V2 average close_t1_return: **1.11%**
+- V2 average excess_t1_return: **-0.35%**
+- Selected-pick evaluated cases: **162**
+- Selected-pick success rate: **59.26%**
+- Non-selected evaluated cases: **1444**
+- Non-selected success rate: **38.71%**
 - V2 diagnosis: **Improving / 개선 가능성**
-- Benchmark diagnosis: **Neutral / 중립**
+- Benchmark diagnosis: **Positive market-relative signal / 시장 대비 긍정 신호**
 
 ## Rank Buckets
 
 | bucket | evaluated_count | success_count | failure_count | success_rate |
 |---|---|---|---|---|
-| Top 10 | 113 | 55 | 58 | 48.67% |
-| Top 20 | 229 | 119 | 110 | 51.97% |
-| Top 50 | 539 | 296 | 243 | 54.92% |
-| Top 100 | 871 | 474 | 397 | 54.42% |
+| Top 10 | 107 | 64 | 43 | 59.81% |
+| Top 20 | 149 | 87 | 62 | 58.39% |
+| Top 50 | 201 | 117 | 84 | 58.21% |
+| Top 100 | 435 | 214 | 221 | 49.20% |
 
 ## Interpretation
 
@@ -42,7 +42,7 @@ Diagnostic only. Splits the same v2 population above by expects_positive() direc
 
 | direction | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return | benchmark_evaluated_cases | benchmark_success_rate |
 |---|---|---|---|---|---|---|---|---|---|
-| buy | 1040 | 546 | 494 | 52.50% | 0.51% | -0.60% | -0.35% | 900 | 67.67% |
-| avoid | 12305 | 5105 | 7200 | 41.49% | 0.64% | 0.30% | 0.14% | 10131 | 50.91% |
+| buy | 187 | 109 | 78 | 58.29% | 1.09% | 1.14% | 1.83% | 187 | 62.03% |
+| avoid | 1419 | 546 | 873 | 38.48% | 1.11% | 2.48% | 4.74% | 1419 | 52.71% |
 
 Buy-type candidates expect a positive move (BUY_CANDIDATE/WATCHLIST); avoid-type candidates expect a negative move (AVOID). Small buy-type sample sizes should be read conservatively.
