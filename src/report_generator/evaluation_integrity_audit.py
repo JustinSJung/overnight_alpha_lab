@@ -16,7 +16,19 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.evaluator.price_candidate_evaluator import direction_series
+from src.evaluation.metrics import (
+    RANK_BUCKETS,
+    assign_daily_rank,
+    candidate_key_series,
+    date_key,
+    dedupe_evaluations,
+    direction_series,
+    normalize_stock_code,
+    rank_bucket_rows,
+    score_version_series,
+    success_series,
+)
+from src.storage.schema import RESULT_FAILURE, RESULT_SUCCESS
 
 
 PROCESSED_DIR = Path("data/processed")
@@ -24,11 +36,7 @@ PREDICTIONS_DIR = Path("data/predictions")
 RAW_DIR = Path("data/raw")
 REPORT_DIR = Path("reports/daily_review")
 
-RESULT_SUCCESS = "success"
-RESULT_FAILURE = "failure"
-RESULT_PENDING = "pending"
 V2_VERSION = "v2_conservative_ranker"
-RANK_BUCKETS = [("Top 10", 10), ("Top 20", 20), ("Top 50", 50), ("Top 100", 100)]
 COMPONENT_COLUMNS = [
     "base_momentum_score",
     "volume_confirmation_score",
@@ -70,82 +78,8 @@ def read_all_csv(directory: Path, pattern: str) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
-def normalize_stock_code(value) -> str:
-    if value is None or pd.isna(value):
-        return ""
-    try:
-        return str(int(float(value))).zfill(6)
-    except Exception:
-        return str(value).strip().zfill(6)
-
-
-def normalize_result_series(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    result = pd.Series([RESULT_PENDING] * len(df), index=df.index, dtype=object)
-    for column in ["success_close_t1", "prediction_result", "price_candidate_result"]:
-        if column in df.columns:
-            series = df[column].astype(str).str.strip().str.lower()
-            valid = ~series.isin(["", "nan", "none", "<na>"])
-            result = result.where(~(result.eq(RESULT_PENDING) & valid), series)
-    return result
-
-
-def date_value(df: pd.DataFrame, column: str) -> pd.Series:
-    if column not in df.columns:
-        return pd.Series([""], index=df.index, dtype=object)
-    parsed = pd.to_datetime(df[column], errors="coerce")
-    return parsed.dt.strftime("%Y-%m-%d").fillna(df[column].astype(str).replace("nan", ""))
-
-
-def score_version_series(df: pd.DataFrame) -> pd.Series:
-    if "score_version" not in df.columns:
-        return pd.Series(["legacy_or_unknown"] * len(df), index=df.index, dtype=object)
-    version = df["score_version"].astype(str).str.strip()
-    return version.where(~version.isin(["", "nan", "None", "<NA>"]), "legacy_or_unknown")
-
-
-def candidate_key_series(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    if "candidate_id" in df.columns:
-        candidate_id = df["candidate_id"].astype(str).str.strip()
-        valid = ~candidate_id.isin(["", "nan", "None", "<NA>"])
-    else:
-        candidate_id = pd.Series([""] * len(df), index=df.index, dtype=object)
-        valid = pd.Series([False] * len(df), index=df.index)
-
-    fallback = (
-        df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
-        + "|"
-        + date_value(df, "signal_date")
-        + "|"
-        + date_value(df, "prediction_date")
-        + "|"
-        + score_version_series(df)
-    )
-    return candidate_id.where(valid, fallback)
-
-
 def dedupe_candidate_evaluations(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Candidate-level dedup (same key/keep='last' pattern as
-    price_candidate_rule_learner.py and dashboard_generator.py): collapses
-    repeat evaluations of the same candidate_id (or stock_code+signal_date+
-    prediction_date+score_version fallback) down to its most recent row.
-    Performance metrics below must be computed on this, not on the raw
-    concatenation of price_candidate_evaluation_*.csv files, or the same
-    candidate re-evaluated on multiple calendar days (e.g. as t3/t5 returns
-    become available) gets counted multiple times.
-    """
-    if df.empty:
-        return df
-    working = df.copy()
-    working["integrity_candidate_key"] = candidate_key_series(working)
-    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
-    if sort_columns:
-        working = working.sort_values(sort_columns)
-    return working.drop_duplicates(subset=["integrity_candidate_key"], keep="last")
+    return dedupe_evaluations(df, key_column="integrity_candidate_key")
 
 
 def exact_evaluation_key_series(df: pd.DataFrame) -> pd.Series:
@@ -154,11 +88,11 @@ def exact_evaluation_key_series(df: pd.DataFrame) -> pd.Series:
     return (
         df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
         + "|"
-        + date_value(df, "signal_date")
+        + date_key(df, "signal_date")
         + "|"
-        + date_value(df, "prediction_date")
+        + date_key(df, "prediction_date")
         + "|"
-        + date_value(df, "evaluation_date")
+        + date_key(df, "evaluation_date")
         + "|"
         + score_version_series(df)
     )
@@ -171,7 +105,7 @@ def safe_percentage(numerator: int, denominator: int):
 
 
 def evaluated_mask(df: pd.DataFrame) -> pd.Series:
-    return normalize_result_series(df).isin([RESULT_SUCCESS, RESULT_FAILURE])
+    return success_series(df).isin([RESULT_SUCCESS, RESULT_FAILURE])
 
 
 def performance_summary(df: pd.DataFrame) -> dict:
@@ -185,7 +119,7 @@ def performance_summary(df: pd.DataFrame) -> dict:
             "avg_close_t3_return": None,
             "avg_close_t5_return": None,
         }
-    result = normalize_result_series(df)
+    result = success_series(df)
     mask = result.isin([RESULT_SUCCESS, RESULT_FAILURE])
     success_count = int((result == RESULT_SUCCESS).sum())
     failure_count = int((result == RESULT_FAILURE).sum())
@@ -205,30 +139,18 @@ def performance_summary(df: pd.DataFrame) -> dict:
     return summary
 
 
-def add_v2_daily_rank(df: pd.DataFrame) -> pd.DataFrame:
-    result = df.copy()
-    result["diagnostic_rank_date"] = date_value(result, "signal_date")
-    missing_date = result["diagnostic_rank_date"].isin(["", "NaT", "nan"])
-    if missing_date.any():
-        result.loc[missing_date, "diagnostic_rank_date"] = date_value(result.loc[missing_date], "prediction_date")
-
-    score = pd.to_numeric(result.get("final_price_signal_score_v2"), errors="coerce")
-    result["diagnostic_score_v2"] = score
-    result["diagnostic_rank_v2"] = result.groupby("diagnostic_rank_date", dropna=False)[
-        "diagnostic_score_v2"
-    ].rank(method="first", ascending=False)
-    return result
-
-
-def rank_bucket_summary(v2_df: pd.DataFrame) -> list[dict]:
-    if v2_df.empty:
-        return []
-    ranked = add_v2_daily_rank(v2_df)
-    rows = []
-    for label, end in RANK_BUCKETS:
-        subset = ranked[ranked["diagnostic_rank_v2"] <= end]
-        rows.append({"bucket": label, **performance_summary(subset)})
-    return rows
+def rank_bucket_summary(v2_pool_df: pd.DataFrame) -> list[dict]:
+    """
+    v2_pool_df must be the FULL v2 candidate pool for the period (pending +
+    evaluated + skipped), not an evaluated-only subset. See
+    assign_daily_rank() in src/evaluation/metrics.py: ranking only within
+    already-evaluated rows silently drops still-pending top scorers from
+    competing for a Top-N slot, which is what previously made this script's
+    Top 50 success rate (46.29%) diverge sharply from v2_performance_monitor.py's
+    full-pool-ranked Top 50 (58.21%) on the same underlying data.
+    """
+    ranked = assign_daily_rank(v2_pool_df)
+    return rank_bucket_rows(ranked, performance_summary)
 
 
 def decile_summary(v2_df: pd.DataFrame) -> tuple[list[dict], str]:
@@ -273,7 +195,7 @@ def decile_summary(v2_df: pd.DataFrame) -> tuple[list[dict], str]:
 def component_failure_audit(v2_df: pd.DataFrame) -> list[dict]:
     if v2_df.empty:
         return []
-    result = normalize_result_series(v2_df)
+    result = success_series(v2_df)
     rows = []
     for column in COMPONENT_COLUMNS:
         if column not in v2_df.columns:
@@ -478,13 +400,14 @@ def build_audit() -> dict:
 
     deduped_evaluations = dedupe_candidate_evaluations(evaluations)
 
-    result = normalize_result_series(deduped_evaluations)
+    result = success_series(deduped_evaluations)
     v2_mask = score_version_series(deduped_evaluations).eq(V2_VERSION)
     evaluated = result.isin([RESULT_SUCCESS, RESULT_FAILURE])
+    v2_pool = deduped_evaluations[v2_mask].copy()
     v2_eval = deduped_evaluations[v2_mask & evaluated].copy()
     legacy_eval = deduped_evaluations[~v2_mask & evaluated].copy()
 
-    v2_rank_rows = rank_bucket_summary(v2_eval)
+    v2_rank_rows = rank_bucket_summary(v2_pool)
     decile_rows, decile_diagnosis = decile_summary(v2_eval)
     component_rows = component_failure_audit(v2_eval)
     benchmark = benchmark_audit(deduped_evaluations, signals)

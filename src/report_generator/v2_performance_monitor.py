@@ -16,22 +16,22 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.evaluation.metrics import safe_percentage
-from src.evaluator.price_candidate_evaluator import direction_series
-from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
+from src.evaluation.metrics import (
+    assign_daily_rank,
+    dedupe_evaluations,
+    direction_series,
+    rank_bucket_rows,
+    safe_percentage,
+    score_version_series,
+    success_series,
+)
+from src.storage.schema import RESULT_FAILURE, RESULT_SUCCESS
 
 
 PREDICTIONS_DIR = Path("data/predictions")
 PROCESSED_DIR = Path("data/processed")
 REPORT_DIR = Path("reports/daily_review")
 V2_SCORE_VERSION = "v2_conservative_ranker"
-
-RANK_BUCKETS = [
-    ("Top 10", 10),
-    ("Top 20", 20),
-    ("Top 50", 50),
-    ("Top 100", 100),
-]
 
 
 def read_all_csv(directory: Path, pattern: str) -> pd.DataFrame:
@@ -48,129 +48,10 @@ def read_all_csv(directory: Path, pattern: str) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
-def normalize_stock_code(value) -> str:
-    if value is None or pd.isna(value):
-        return ""
-    try:
-        return str(int(float(value))).zfill(6)
-    except Exception:
-        return str(value).strip().zfill(6)
-
-
-def date_key(df: pd.DataFrame, column: str) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    if column not in df.columns:
-        return pd.Series([""] * len(df), index=df.index, dtype=object)
-    parsed = pd.to_datetime(df[column], errors="coerce")
-    return parsed.dt.strftime("%Y-%m-%d").fillna(df[column].astype(str).replace("nan", ""))
-
-
-def score_version_series(df: pd.DataFrame) -> pd.Series:
-    if "score_version" not in df.columns:
-        return pd.Series(["legacy_or_unknown"] * len(df), index=df.index, dtype=object)
-    version = df["score_version"].astype(str).str.strip()
-    return version.where(~version.isin(["", "nan", "None", "<NA>"]), "legacy_or_unknown")
-
-
-def dedupe_key_series(df: pd.DataFrame) -> pd.Series:
-    """
-    Candidate-level identity key: candidate_id when present and valid,
-    otherwise stock_code+signal_date+prediction_date+score_version.
-    Matches price_candidate_rule_learner.py's candidate_key_series() and
-    dashboard_generator.py's price_evaluation_key() exactly. evaluation_date
-    is intentionally excluded — the same candidate can be re-evaluated on
-    multiple later calendar days (e.g. once t3/t5 returns become available),
-    and including evaluation_date in the key would keep every re-evaluation
-    as a separate "unique" row instead of collapsing them to one candidate.
-    """
-    if df.empty:
-        return pd.Series(dtype=str)
-
-    if "candidate_id" in df.columns:
-        candidate_id = df["candidate_id"].astype(str).str.strip()
-        valid = ~candidate_id.isin(["", "nan", "None", "<NA>"])
-    else:
-        candidate_id = pd.Series([""] * len(df), index=df.index, dtype=object)
-        valid = pd.Series([False] * len(df), index=df.index)
-
-    fallback = (
-        df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
-        + "|"
-        + date_key(df, "signal_date")
-        + "|"
-        + date_key(df, "prediction_date")
-        + "|"
-        + score_version_series(df)
-    )
-    return candidate_id.where(valid, fallback)
-
-
-def dedupe_evaluations(df: pd.DataFrame) -> pd.DataFrame:
-    if df.empty:
-        return df
-    working = df.copy()
-    working["v2_monitor_key"] = dedupe_key_series(working)
-    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
-    if sort_columns:
-        working = working.sort_values(sort_columns)
-    return working.drop_duplicates(subset=["v2_monitor_key"], keep="last")
-
-
-def normalize_result_series(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    result = pd.Series([RESULT_PENDING] * len(df), index=df.index, dtype=object)
-    for column in ["success_close_t1", "prediction_result", "price_candidate_result"]:
-        if column in df.columns:
-            series = df[column].astype(str).str.strip().str.lower()
-            valid = ~series.isin(["", "nan", "none", "<na>"])
-            result = result.where(~(result.eq(RESULT_PENDING) & valid), series)
-    return result
-
-
 def selected_pick_series(df: pd.DataFrame) -> pd.Series:
     if "selected_pick" not in df.columns:
         return pd.Series([False] * len(df), index=df.index)
     return df["selected_pick"].astype(str).str.lower().isin(["true", "1", "yes"])
-
-
-def coalesced_score(df: pd.DataFrame) -> pd.Series:
-    score = pd.Series(pd.NA, index=df.index, dtype="Float64")
-    for column in ["final_price_signal_score_v2", "final_price_signal_score", "price_candidate_score", "prediction_score"]:
-        if column in df.columns:
-            score = score.fillna(pd.to_numeric(df[column], errors="coerce"))
-    return score
-
-
-def rank_date_series(df: pd.DataFrame) -> pd.Series:
-    dates = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
-    for column in ["signal_date", "prediction_date", "candidate_date"]:
-        if column in df.columns:
-            dates = dates.fillna(pd.to_datetime(df[column], errors="coerce"))
-    return dates.dt.strftime("%Y-%m-%d").fillna("unknown")
-
-
-def add_daily_rank(df: pd.DataFrame) -> pd.DataFrame:
-    if df.empty:
-        return df
-    working = df.copy()
-    working["v2_rank_date"] = rank_date_series(working)
-    working["v2_rank_score"] = coalesced_score(working)
-    if working["v2_rank_score"].notna().any():
-        working["v2_daily_rank"] = working.groupby("v2_rank_date", dropna=False)["v2_rank_score"].rank(
-            method="first",
-            ascending=False,
-        )
-    elif "candidate_rank" in working.columns:
-        working["v2_daily_rank"] = pd.to_numeric(working["candidate_rank"], errors="coerce")
-    else:
-        working["v2_daily_rank"] = pd.NA
-
-    if "candidate_rank" in working.columns:
-        fallback_rank = pd.to_numeric(working["candidate_rank"], errors="coerce")
-        working["v2_daily_rank"] = working["v2_daily_rank"].fillna(fallback_rank)
-    return working
 
 
 def average_numeric(df: pd.DataFrame, column: str, mask: pd.Series):
@@ -190,7 +71,7 @@ def summarize_subset(df: pd.DataFrame) -> dict:
             "failure_count": 0,
             "success_rate": None,
         }
-    results = normalize_result_series(df)
+    results = success_series(df)
     evaluated = results.isin([RESULT_SUCCESS, RESULT_FAILURE])
     evaluated_count = int(evaluated.sum())
     success_count = int((results[evaluated] == RESULT_SUCCESS).sum())
@@ -209,7 +90,7 @@ def directional_summary(df: pd.DataFrame) -> dict:
     Does not feed scoring or candidate selection.
     """
     base = summarize_subset(df)
-    evaluated = normalize_result_series(df).isin([RESULT_SUCCESS, RESULT_FAILURE]) if not df.empty else pd.Series(dtype=bool)
+    evaluated = success_series(df).isin([RESULT_SUCCESS, RESULT_FAILURE]) if not df.empty else pd.Series(dtype=bool)
     benchmark_results = benchmark_success_series(df)
     benchmark_evaluated = benchmark_results.isin([RESULT_SUCCESS, RESULT_FAILURE])
     benchmark_evaluated_count = int(benchmark_evaluated.sum())
@@ -264,9 +145,9 @@ def build_monitor() -> tuple[dict, list[dict]]:
     else:
         v2 = evaluations[score_version_series(evaluations).eq(V2_SCORE_VERSION)].copy()
 
-    v2 = add_daily_rank(v2)
+    v2 = assign_daily_rank(v2, rank_column="v2_daily_rank")
     result_summary = summarize_subset(v2)
-    results = normalize_result_series(v2)
+    results = success_series(v2)
     evaluated = results.isin([RESULT_SUCCESS, RESULT_FAILURE])
 
     benchmark_results = benchmark_success_series(v2)
@@ -292,12 +173,7 @@ def build_monitor() -> tuple[dict, list[dict]]:
     buy_summary = directional_summary(v2[v2["candidate_direction"] == "buy"])
     avoid_summary = directional_summary(v2[v2["candidate_direction"] == "avoid"])
 
-    rank_rows = []
-    for label, end in RANK_BUCKETS:
-        subset = v2[pd.to_numeric(v2.get("v2_daily_rank", pd.Series(dtype=float)), errors="coerce") <= end]
-        bucket_summary = summarize_subset(subset)
-        rank_rows.append({"bucket": label, **bucket_summary})
-
+    rank_rows = rank_bucket_rows(v2, summarize_subset, rank_column="v2_daily_rank")
     rank_lookup = {row["bucket"]: row for row in rank_rows}
     diagnosis_en, diagnosis_ko = diagnose_v2(
         result_summary["evaluated_count"],

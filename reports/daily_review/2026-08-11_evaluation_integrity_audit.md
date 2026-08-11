@@ -55,10 +55,10 @@ Diagnostic only. Splits v2 performance above by expects_positive() direction; do
 
 | bucket | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return |
 |---|---|---|---|---|---|---|---|
-| Top 10 | 140 | 79 | 61 | 56.43 | 0.0094 | 0.0182 | 0.0212 |
-| Top 20 | 280 | 145 | 135 | 51.79 | 0.0051 | 0.0125 | 0.0266 |
-| Top 50 | 700 | 324 | 376 | 46.29 | 0.0081 | 0.0138 | 0.021 |
-| Top 100 | 1267 | 552 | 715 | 43.57 | 0.0073 | 0.0173 | 0.0305 |
+| Top 10 | 107 | 64 | 43 | 59.81 | 0.0093 | 0.0104 | 0.0172 |
+| Top 20 | 149 | 87 | 62 | 58.39 | 0.01 | 0.0103 | 0.0183 |
+| Top 50 | 201 | 117 | 84 | 58.21 | 0.0101 | 0.01 | 0.0088 |
+| Top 100 | 435 | 214 | 221 | 49.2 | 0.0115 | 0.0225 | 0.0133 |
 
 Ranking status: **Ranking improving**
 Score decile diagnosis: **Ranking improving**
