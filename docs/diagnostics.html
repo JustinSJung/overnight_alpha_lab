@@ -604,7 +604,7 @@
         <div class="card kpi-card">
           <div class="label">Latest V3 Backtest Update</div>
           <div class="ko-desc">최근 v3 백테스트 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-10 23:01:20<br>최근 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-11 10:38:01<br>최근 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -674,7 +674,7 @@
         <div class="card kpi-card">
           <div class="label">Latest V2 Monitor Update</div>
           <div class="ko-desc">최근 v2 모니터 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-10 23:01:16<br>최근 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-11 10:38:51<br>최근 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -819,7 +819,7 @@
         <div class="card kpi-card">
           <div class="label">Latest Rule Update</div>
           <div class="ko-desc">최근 룰 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-10 23:01:15<br>최근 룰 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-08-11 10:38:01<br>최근 룰 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -913,6 +913,53 @@
       <div class="note section">
         Reliability Score uses the Wilson lower confidence bound, so it is more conservative than raw success rate when sample size is small.<br>
         신뢰도 점수는 Wilson 신뢰구간 하한값을 사용하므로, 표본 수가 적을 때 단순 성공률보다 보수적으로 계산됩니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>Directional Breakdown <span class="heading-ko">방향별 성과 (매수형 vs 회피형)</span></h2>
+          <p class="section-subtitle">v2_conservative_ranker only, split by expected direction (expected_positive()). Diagnostic only; does not change scoring. v2_conservative_ranker 기준으로 예상 방향(expected_positive())별 성과를 나눠 봅니다. 진단 전용이며 점수 산식에는 반영하지 않습니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card primary">
+          <div class="label">Buy-Type Success Rate</div>
+          <div class="ko-desc">매수형 성공률</div>
+          <div class="kpi-value">52.5%</div>
+          <div class="muted-helper">Evaluated cases: 1040<br>평가 완료: 1040</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Buy-Type Avg T1/T3/T5 Return</div>
+          <div class="ko-desc">매수형 평균 T1/T3/T5 수익률</div>
+          <div class="muted-helper">T1: 0.51% · T3: -0.60% · T5: -0.35%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Buy-Type Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">매수형 시장 대비 성공률</div>
+          <div class="kpi-value">67.67%</div>
+        </div>
+        <div class="card kpi-card primary">
+          <div class="label">Avoid-Type Success Rate</div>
+          <div class="ko-desc">회피형 성공률</div>
+          <div class="kpi-value">41.49%</div>
+          <div class="muted-helper">Evaluated cases: 12305<br>평가 완료: 12305</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Avoid-Type Avg T1/T3/T5 Return</div>
+          <div class="ko-desc">회피형 평균 T1/T3/T5 수익률</div>
+          <div class="muted-helper">T1: 0.64% · T3: 0.30% · T5: 0.14%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Avoid-Type Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">회피형 시장 대비 성공률</div>
+          <div class="kpi-value">50.91%</div>
+        </div>
+      </div>
+      <div class="note section">
+        Buy-type sample sizes are typically much smaller than avoid-type, so buy-type conclusions should be treated as preliminary.<br>
+        매수형 표본 수는 회피형보다 훨씬 적은 경우가 많으므로, 매수형 결론은 잠정적으로 해석해야 합니다.
       </div>
     </section>
 
@@ -1188,7 +1235,7 @@
       <div class="section-heading">
         <div>
           <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-08-10 23:01:24. Latest ML dataset rows: 363. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
+          <p class="section-subtitle">Latest generated at 2026-08-11 10:38:53. Latest ML dataset rows: 363. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">

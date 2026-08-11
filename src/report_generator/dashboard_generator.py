@@ -16,6 +16,7 @@ from src.evaluation.metrics import (
     reliability_score_from_wilson,
     safe_percentage,
 )
+from src.evaluator.price_candidate_evaluator import direction_series
 from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
 
 
@@ -263,10 +264,61 @@ def dedupe_price_evaluations(df: pd.DataFrame) -> pd.DataFrame:
     return working.drop_duplicates(subset=["dashboard_price_evaluation_key"], keep="last")
 
 
+def summarize_direction_group(df: pd.DataFrame) -> dict:
+    """
+    Diagnostic-only success-rate breakdown for one candidate_direction (buy/avoid)
+    slice of the deduplicated price evaluations. Does not change scoring.
+    """
+    if df.empty:
+        return {
+            "evaluated_count": 0,
+            "success_count": 0,
+            "failure_count": 0,
+            "success_rate": None,
+            "benchmark_evaluated_count": 0,
+            "benchmark_success_count": 0,
+            "benchmark_success_rate": None,
+        }
+
+    results = success_series(df, "success_close_t1")
+    evaluated_mask = results.isin([RESULT_SUCCESS, RESULT_FAILURE])
+    evaluated_count = int(evaluated_mask.sum())
+    success_count = int((results == RESULT_SUCCESS).sum())
+    failure_count = int((results == RESULT_FAILURE).sum())
+    success_rate = round(safe_percentage(success_count, evaluated_count), 2) if evaluated_count else None
+
+    benchmark_results = explicit_result_series(df, "success_excess_t1")
+    benchmark_evaluated_mask = benchmark_results.isin([RESULT_SUCCESS, RESULT_FAILURE])
+    benchmark_evaluated_count = int(benchmark_evaluated_mask.sum())
+    benchmark_success_count = int((benchmark_results == RESULT_SUCCESS).sum())
+    benchmark_success_rate = (
+        round(safe_percentage(benchmark_success_count, benchmark_evaluated_count), 2)
+        if benchmark_evaluated_count
+        else None
+    )
+
+    return {
+        "evaluated_count": evaluated_count,
+        "success_count": success_count,
+        "failure_count": failure_count,
+        "success_rate": success_rate,
+        "benchmark_evaluated_count": benchmark_evaluated_count,
+        "benchmark_success_count": benchmark_success_count,
+        "benchmark_success_rate": benchmark_success_rate,
+    }
+
+
 def format_metric_value(value, suffix=""):
     if value is None:
         return "Insufficient data / 데이터 부족"
     return f"{value}{suffix}"
+
+
+def format_return_pct(value):
+    value = safe_float(value, None)
+    if value is None:
+        return "N/A"
+    return f"{value * 100:.2f}%"
 
 
 def render_kpi_value(value, suffix="", css_class=""):
@@ -437,6 +489,16 @@ def build_metrics():
     rolling_7d_evaluated_count = rolling_7d["evaluated_count"]
     rolling_30d_evaluated_count = rolling_30d["evaluated_count"]
 
+    if not unique_price_eval.empty:
+        candidate_direction = direction_series(unique_price_eval)
+        buy_eval = unique_price_eval[candidate_direction == "buy"]
+        avoid_eval = unique_price_eval[candidate_direction == "avoid"]
+    else:
+        buy_eval = pd.DataFrame()
+        avoid_eval = pd.DataFrame()
+    buy_direction_summary = summarize_direction_group(buy_eval)
+    avoid_direction_summary = summarize_direction_group(avoid_eval)
+
     reliability_score = reliability_score_from_wilson(
         price_success_count,
         price_evaluated_count,
@@ -587,6 +649,18 @@ def build_metrics():
         "시장 기준 데이터 부족",
     )
     latest_v2_monitor_update_time = file_mtime(latest_v2_performance_path)
+    v2_monitor_buy_evaluated = first_row_value(latest_v2_performance, "v2_buy_evaluated_cases", 0)
+    v2_monitor_buy_success_rate = first_row_value(latest_v2_performance, "v2_buy_success_rate", None)
+    v2_monitor_buy_avg_t1_return = first_row_value(latest_v2_performance, "v2_buy_avg_close_t1_return", None)
+    v2_monitor_buy_avg_t3_return = first_row_value(latest_v2_performance, "v2_buy_avg_close_t3_return", None)
+    v2_monitor_buy_avg_t5_return = first_row_value(latest_v2_performance, "v2_buy_avg_close_t5_return", None)
+    v2_monitor_buy_benchmark_success_rate = first_row_value(latest_v2_performance, "v2_buy_benchmark_success_rate", None)
+    v2_monitor_avoid_evaluated = first_row_value(latest_v2_performance, "v2_avoid_evaluated_cases", 0)
+    v2_monitor_avoid_success_rate = first_row_value(latest_v2_performance, "v2_avoid_success_rate", None)
+    v2_monitor_avoid_avg_t1_return = first_row_value(latest_v2_performance, "v2_avoid_avg_close_t1_return", None)
+    v2_monitor_avoid_avg_t3_return = first_row_value(latest_v2_performance, "v2_avoid_avg_close_t3_return", None)
+    v2_monitor_avoid_avg_t5_return = first_row_value(latest_v2_performance, "v2_avoid_avg_close_t5_return", None)
+    v2_monitor_avoid_benchmark_success_rate = first_row_value(latest_v2_performance, "v2_avoid_benchmark_success_rate", None)
 
     v3_component_coverage_rate = first_row_value(latest_v3_backtest, "historical_component_coverage_rate", None)
     v3_has_enough_historical_data = first_row_value(latest_v3_backtest, "has_enough_historical_data", False)
@@ -727,6 +801,16 @@ def build_metrics():
         "rolling_30d_success_rate": rolling_30d_success_rate,
         "rolling_7d_evaluated_count": rolling_7d_evaluated_count,
         "rolling_30d_evaluated_count": rolling_30d_evaluated_count,
+        "buy_evaluated_count": buy_direction_summary["evaluated_count"],
+        "buy_success_count": buy_direction_summary["success_count"],
+        "buy_success_rate": buy_direction_summary["success_rate"],
+        "buy_benchmark_evaluated_count": buy_direction_summary["benchmark_evaluated_count"],
+        "buy_benchmark_success_rate": buy_direction_summary["benchmark_success_rate"],
+        "avoid_evaluated_count": avoid_direction_summary["evaluated_count"],
+        "avoid_success_count": avoid_direction_summary["success_count"],
+        "avoid_success_rate": avoid_direction_summary["success_rate"],
+        "avoid_benchmark_evaluated_count": avoid_direction_summary["benchmark_evaluated_count"],
+        "avoid_benchmark_success_rate": avoid_direction_summary["benchmark_success_rate"],
 	"high_attention_count": high_attention_count,
 	"rumor_noise_count": rumor_noise_count,
 	"risk_noise_count": risk_noise_count,
@@ -792,6 +876,18 @@ def build_metrics():
         "v2_monitor_benchmark_diagnosis_en": v2_monitor_benchmark_diagnosis_en,
         "v2_monitor_benchmark_diagnosis_ko": v2_monitor_benchmark_diagnosis_ko,
         "latest_v2_monitor_update_time": latest_v2_monitor_update_time,
+        "v2_monitor_buy_evaluated": v2_monitor_buy_evaluated,
+        "v2_monitor_buy_success_rate": v2_monitor_buy_success_rate,
+        "v2_monitor_buy_avg_t1_return": v2_monitor_buy_avg_t1_return,
+        "v2_monitor_buy_avg_t3_return": v2_monitor_buy_avg_t3_return,
+        "v2_monitor_buy_avg_t5_return": v2_monitor_buy_avg_t5_return,
+        "v2_monitor_buy_benchmark_success_rate": v2_monitor_buy_benchmark_success_rate,
+        "v2_monitor_avoid_evaluated": v2_monitor_avoid_evaluated,
+        "v2_monitor_avoid_success_rate": v2_monitor_avoid_success_rate,
+        "v2_monitor_avoid_avg_t1_return": v2_monitor_avoid_avg_t1_return,
+        "v2_monitor_avoid_avg_t3_return": v2_monitor_avoid_avg_t3_return,
+        "v2_monitor_avoid_avg_t5_return": v2_monitor_avoid_avg_t5_return,
+        "v2_monitor_avoid_benchmark_success_rate": v2_monitor_avoid_benchmark_success_rate,
         "v3_component_coverage_rate": v3_component_coverage_rate,
         "v3_has_enough_historical_data": v3_has_enough_historical_data,
         "v3_coverage_note": v3_coverage_note,
@@ -927,6 +1023,12 @@ def build_diagnostics_html(metrics, stock_data):
             "Benchmark coverage is still below 30%, so market-relative v2 conclusions remain provisional.<br>"
             "시장 기준 커버리지가 아직 30% 미만이므로 v2 시장 대비 판단은 임시 진단입니다."
         )
+    buy_avg_t1_return_display = format_return_pct(metrics.get("v2_monitor_buy_avg_t1_return"))
+    buy_avg_t3_return_display = format_return_pct(metrics.get("v2_monitor_buy_avg_t3_return"))
+    buy_avg_t5_return_display = format_return_pct(metrics.get("v2_monitor_buy_avg_t5_return"))
+    avoid_avg_t1_return_display = format_return_pct(metrics.get("v2_monitor_avoid_avg_t1_return"))
+    avoid_avg_t3_return_display = format_return_pct(metrics.get("v2_monitor_avoid_avg_t3_return"))
+    avoid_avg_t5_return_display = format_return_pct(metrics.get("v2_monitor_avoid_avg_t5_return"))
 
     html = f"""<!DOCTYPE html>
 <html lang="ko">
@@ -1849,6 +1951,53 @@ def build_diagnostics_html(metrics, stock_data):
     <section class="section">
       <div class="section-heading">
         <div>
+          <h2>Directional Breakdown <span class="heading-ko">방향별 성과 (매수형 vs 회피형)</span></h2>
+          <p class="section-subtitle">v2_conservative_ranker only, split by expected direction (expected_positive()). Diagnostic only; does not change scoring. v2_conservative_ranker 기준으로 예상 방향(expected_positive())별 성과를 나눠 봅니다. 진단 전용이며 점수 산식에는 반영하지 않습니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card primary">
+          <div class="label">Buy-Type Success Rate</div>
+          <div class="ko-desc">매수형 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_buy_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v2_monitor_buy_evaluated"])}<br>평가 완료: {format_metric_value(metrics["v2_monitor_buy_evaluated"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Buy-Type Avg T1/T3/T5 Return</div>
+          <div class="ko-desc">매수형 평균 T1/T3/T5 수익률</div>
+          <div class="muted-helper">T1: {buy_avg_t1_return_display} · T3: {buy_avg_t3_return_display} · T5: {buy_avg_t5_return_display}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Buy-Type Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">매수형 시장 대비 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_buy_benchmark_success_rate"], "%")}
+        </div>
+        <div class="card kpi-card primary">
+          <div class="label">Avoid-Type Success Rate</div>
+          <div class="ko-desc">회피형 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_avoid_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {format_metric_value(metrics["v2_monitor_avoid_evaluated"])}<br>평가 완료: {format_metric_value(metrics["v2_monitor_avoid_evaluated"])}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Avoid-Type Avg T1/T3/T5 Return</div>
+          <div class="ko-desc">회피형 평균 T1/T3/T5 수익률</div>
+          <div class="muted-helper">T1: {avoid_avg_t1_return_display} · T3: {avoid_avg_t3_return_display} · T5: {avoid_avg_t5_return_display}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Avoid-Type Benchmark-Adjusted Success Rate</div>
+          <div class="ko-desc">회피형 시장 대비 성공률</div>
+          {render_kpi_value(metrics["v2_monitor_avoid_benchmark_success_rate"], "%")}
+        </div>
+      </div>
+      <div class="note section">
+        Buy-type sample sizes are typically much smaller than avoid-type, so buy-type conclusions should be treated as preliminary.<br>
+        매수형 표본 수는 회피형보다 훨씬 적은 경우가 많으므로, 매수형 결론은 잠정적으로 해석해야 합니다.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
           <h2>Rolling Performance <span class="heading-ko">최근 성과 추이</span></h2>
           <p class="section-subtitle">Rolling metrics use evaluation date, or signal date when evaluation date is unavailable. 최근 평가일 기준의 단기 성과를 확인합니다.</p>
         </div>
@@ -2399,6 +2548,8 @@ def build_html(metrics, stock_data):
     )
     overall_en, overall_ko, overall_class = quality_label_from_rate(metrics.get("price_success_rate"))
     recommendation_en, recommendation_ko, recommendation_class = recommendation_quality_label(metrics)
+    buy_en, buy_ko, buy_class = quality_label_from_rate(metrics.get("buy_success_rate"))
+    avoid_en, avoid_ko, avoid_class = quality_label_from_rate(metrics.get("avoid_success_rate"))
     top_group_rate = metrics.get("v2_monitor_selected_success_rate") or metrics.get("top_20_success_rate")
     last_updated = metrics.get("generated_at", "N/A")
 
@@ -2555,10 +2706,11 @@ def build_html(metrics, stock_data):
           <div class="mini-bar"><span style="width: {reliability_width:.0f}%"></span></div>
         </div>
         <div class="card">
-          <div class="label">Price Success Rate</div>
-          <div class="ko-desc">가격 후보 성공률</div>
+          <div class="label">Price Success Rate (All, Reference)</div>
+          <div class="ko-desc">가격 후보 성공률 (전체, 참고용)</div>
           <div class="value success">{metrics["price_success_rate"]}%</div>
           <div class="mini-bar"><span style="width: {success_width:.0f}%"></span></div>
+          <div class="muted-helper">Blends buy-type and avoid-type candidates. See directional breakdown below.<br>매수형과 회피형 후보를 합산한 값입니다. 아래 방향별 성과를 함께 확인하세요.</div>
         </div>
         <div class="card">
           <div class="label">Benchmark-Adjusted Success Rate</div>
@@ -2583,8 +2735,21 @@ def build_html(metrics, stock_data):
     <section class="section">
       <div class="section-heading">
         <h2>Core Performance <span class="heading-ko">핵심 성과</span></h2>
+        <p class="section-subtitle">Buy-type and avoid-type candidates are evaluated in opposite directions, so their success rates are shown separately as the primary metrics. 매수형과 회피형 후보는 성공 방향이 반대이므로 방향별 성과를 핵심 지표로 우선 표시합니다.</p>
       </div>
       <div class="signal-grid">
+        <div class="card primary">
+          <div class="label">Buy-Type Candidate Success Rate</div>
+          <div class="ko-desc">매수형 후보 성과</div>
+          {render_kpi_value(metrics["buy_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {metrics["buy_evaluated_count"]}<br>평가 완료: {metrics["buy_evaluated_count"]}</div>
+        </div>
+        <div class="card primary">
+          <div class="label">Avoid-Type Candidate Success Rate</div>
+          <div class="ko-desc">회피형 후보 성과</div>
+          {render_kpi_value(metrics["avoid_success_rate"], "%")}
+          <div class="muted-helper">Evaluated cases: {metrics["avoid_evaluated_count"]}<br>평가 완료: {metrics["avoid_evaluated_count"]}</div>
+        </div>
         <div class="card">
           <div class="label">Recent 7-Day Success Rate</div>
           <div class="ko-desc">최근 7일 성공률</div>
@@ -2657,8 +2822,20 @@ def build_html(metrics, stock_data):
       </div>
       <div class="signal-grid">
         <div class="card">
-          <div class="label">Overall Candidate Performance</div>
-          <div class="ko-desc">전체 후보 성과</div>
+          <div class="label">Buy-Type Recommendation Quality</div>
+          <div class="ko-desc">매수형 추천 품질</div>
+          <div>{simple_status(buy_en, buy_ko, buy_class)}</div>
+          <div class="muted-helper">{format_metric_value(metrics["buy_success_rate"], "%")} · {metrics["buy_evaluated_count"]} evaluated<br>{format_metric_value(metrics["buy_success_rate"], "%")} · 평가 완료 {metrics["buy_evaluated_count"]}건</div>
+        </div>
+        <div class="card">
+          <div class="label">Avoid-Type Recommendation Quality</div>
+          <div class="ko-desc">회피형 추천 품질</div>
+          <div>{simple_status(avoid_en, avoid_ko, avoid_class)}</div>
+          <div class="muted-helper">{format_metric_value(metrics["avoid_success_rate"], "%")} · {metrics["avoid_evaluated_count"]} evaluated<br>{format_metric_value(metrics["avoid_success_rate"], "%")} · 평가 완료 {metrics["avoid_evaluated_count"]}건</div>
+        </div>
+        <div class="card">
+          <div class="label">Overall Candidate Performance (All, Reference)</div>
+          <div class="ko-desc">전체 후보 성과 (혼합, 참고용)</div>
           <div>{simple_status(overall_en, overall_ko, overall_class)}</div>
           <div class="muted-helper">{metrics["price_success_rate"]}%</div>
         </div>

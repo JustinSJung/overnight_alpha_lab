@@ -135,6 +135,7 @@ run_optional "Generating learned event rules..." python src/models/auto_rule_upd
 run_optional "Generating learned-rule daily candidate report..." python src/models/learned_rule_daily_recommender.py
 run_optional "Generating evaluation integrity audit..." python src/report_generator/evaluation_integrity_audit.py
 run_optional "Generating price candidate learned rules..." python src/models/price_candidate_rule_learner.py
+run_optional "Generating directional penalty diagnostics..." python src/report_generator/directional_penalty_diagnostics.py
 run_optional "Generating v2 performance monitor..." python src/report_generator/v2_performance_monitor.py
 run_optional "Generating v3 ranker backtest report..." python src/report_generator/v3_ranker_backtest_report.py
 run_optional "[23/24] Generating price signal diagnostics report..." python src/report_generator/price_signal_diagnostics_report.py

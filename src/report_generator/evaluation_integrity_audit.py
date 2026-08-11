@@ -5,10 +5,18 @@ This report is diagnostic only. It does not change score weights, place orders,
 or delete historical data.
 """
 
+import sys
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.evaluator.price_candidate_evaluator import direction_series
 
 
 PROCESSED_DIR = Path("data/processed")
@@ -459,6 +467,13 @@ def build_audit() -> dict:
     benchmark = benchmark_audit(evaluations, signals)
     learned = learned_rule_audit()
 
+    v2_eval = v2_eval.copy()
+    v2_eval["candidate_direction"] = direction_series(v2_eval)
+    v2_buy_eval = v2_eval[v2_eval["candidate_direction"] == "buy"]
+    v2_avoid_eval = v2_eval[v2_eval["candidate_direction"] == "avoid"]
+    v2_buy_performance = performance_summary(v2_buy_eval)
+    v2_avoid_performance = performance_summary(v2_avoid_eval)
+
     top20_rate = next((row["success_rate"] for row in v2_rank_rows if row["bucket"] == "Top 20"), None)
     v2_success_rate = performance_summary(v2_eval)["success_rate"]
     if top20_rate is None or len(v2_eval) < 30:
@@ -513,9 +528,21 @@ def build_audit() -> dict:
             "active_learned_rules": learned["active_learned_rules"],
             "learned_rule_finding": learned["finding"],
             "benchmark_finding": benchmark["finding"],
+            "v2_buy_evaluated_count": v2_buy_performance["evaluated_count"],
+            "v2_buy_success_rate": v2_buy_performance["success_rate"],
+            "v2_buy_avg_close_t1_return": v2_buy_performance["avg_close_t1_return"],
+            "v2_buy_avg_close_t3_return": v2_buy_performance["avg_close_t3_return"],
+            "v2_buy_avg_close_t5_return": v2_buy_performance["avg_close_t5_return"],
+            "v2_avoid_evaluated_count": v2_avoid_performance["evaluated_count"],
+            "v2_avoid_success_rate": v2_avoid_performance["success_rate"],
+            "v2_avoid_avg_close_t1_return": v2_avoid_performance["avg_close_t1_return"],
+            "v2_avoid_avg_close_t3_return": v2_avoid_performance["avg_close_t3_return"],
+            "v2_avoid_avg_close_t5_return": v2_avoid_performance["avg_close_t5_return"],
         },
         "legacy_performance": performance_summary(legacy_eval),
         "v2_performance": performance_summary(v2_eval),
+        "v2_buy_performance": v2_buy_performance,
+        "v2_avoid_performance": v2_avoid_performance,
         "v2_rank_rows": v2_rank_rows,
         "decile_rows": decile_rows,
         "component_rows": component_rows,
@@ -566,6 +593,27 @@ def write_report(audit: dict) -> tuple[Path, Path]:
             ],
             [
                 "score_version",
+                "evaluated_count",
+                "success_count",
+                "failure_count",
+                "success_rate",
+                "avg_close_t1_return",
+                "avg_close_t3_return",
+                "avg_close_t5_return",
+            ],
+        ),
+        "",
+        "## v2 Directional Breakdown (Buy vs Avoid)",
+        "",
+        "Diagnostic only. Splits v2 performance above by expects_positive() direction; does not change scoring or candidate selection.",
+        "",
+        *table(
+            [
+                {"direction": "buy", **audit["v2_buy_performance"]},
+                {"direction": "avoid", **audit["v2_avoid_performance"]},
+            ],
+            [
+                "direction",
                 "evaluated_count",
                 "success_count",
                 "failure_count",
@@ -680,6 +728,8 @@ def main():
     print(f"benchmark latest date: {summary['benchmark_latest_date']}")
     print(f"price signal latest date: {summary['price_signal_latest_date']}")
     print(f"learned rules finding: {summary['learned_rule_finding']}")
+    print(f"v2 buy-type: {summary['v2_buy_evaluated_count']} evaluated, {summary['v2_buy_success_rate']}% success rate")
+    print(f"v2 avoid-type: {summary['v2_avoid_evaluated_count']} evaluated, {summary['v2_avoid_success_rate']}% success rate")
 
 
 if __name__ == "__main__":

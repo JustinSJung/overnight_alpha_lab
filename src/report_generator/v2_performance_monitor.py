@@ -17,6 +17,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.evaluation.metrics import safe_percentage
+from src.evaluator.price_candidate_evaluator import direction_series
 from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
 
 
@@ -185,6 +186,29 @@ def summarize_subset(df: pd.DataFrame) -> dict:
     }
 
 
+def directional_summary(df: pd.DataFrame) -> dict:
+    """
+    Diagnostic-only breakdown of a v2 subset by candidate direction (buy/avoid).
+    Does not feed scoring or candidate selection.
+    """
+    base = summarize_subset(df)
+    evaluated = normalize_result_series(df).isin([RESULT_SUCCESS, RESULT_FAILURE]) if not df.empty else pd.Series(dtype=bool)
+    benchmark_results = benchmark_success_series(df)
+    benchmark_evaluated = benchmark_results.isin([RESULT_SUCCESS, RESULT_FAILURE])
+    benchmark_evaluated_count = int(benchmark_evaluated.sum())
+    benchmark_success_count = int((benchmark_results[benchmark_evaluated] == RESULT_SUCCESS).sum())
+    return {
+        **base,
+        "avg_close_t1_return": average_numeric(df, "close_t1_return", evaluated),
+        "avg_close_t3_return": average_numeric(df, "close_t3_return", evaluated),
+        "avg_close_t5_return": average_numeric(df, "close_t5_return", evaluated),
+        "benchmark_evaluated_cases": benchmark_evaluated_count,
+        "benchmark_success_rate": round(safe_percentage(benchmark_success_count, benchmark_evaluated_count), 2)
+        if benchmark_evaluated_count
+        else None,
+    }
+
+
 def benchmark_success_series(df: pd.DataFrame) -> pd.Series:
     if "success_excess_t1" not in df.columns:
         return pd.Series([""] * len(df), index=df.index, dtype=object)
@@ -247,6 +271,10 @@ def build_monitor() -> tuple[dict, list[dict]]:
     selected_summary = summarize_subset(v2[selected_mask])
     non_selected_summary = summarize_subset(v2[~selected_mask])
 
+    v2["candidate_direction"] = direction_series(v2)
+    buy_summary = directional_summary(v2[v2["candidate_direction"] == "buy"])
+    avoid_summary = directional_summary(v2[v2["candidate_direction"] == "avoid"])
+
     rank_rows = []
     for label, end in RANK_BUCKETS:
         subset = v2[pd.to_numeric(v2.get("v2_daily_rank", pd.Series(dtype=float)), errors="coerce") <= end]
@@ -293,6 +321,24 @@ def build_monitor() -> tuple[dict, list[dict]]:
         "v2_diagnosis_ko": diagnosis_ko,
         "v2_benchmark_diagnosis_en": benchmark_diagnosis_en,
         "v2_benchmark_diagnosis_ko": benchmark_diagnosis_ko,
+        "v2_buy_evaluated_cases": buy_summary["evaluated_count"],
+        "v2_buy_success_count": buy_summary["success_count"],
+        "v2_buy_failure_count": buy_summary["failure_count"],
+        "v2_buy_success_rate": buy_summary["success_rate"],
+        "v2_buy_avg_close_t1_return": buy_summary["avg_close_t1_return"],
+        "v2_buy_avg_close_t3_return": buy_summary["avg_close_t3_return"],
+        "v2_buy_avg_close_t5_return": buy_summary["avg_close_t5_return"],
+        "v2_buy_benchmark_evaluated_cases": buy_summary["benchmark_evaluated_cases"],
+        "v2_buy_benchmark_success_rate": buy_summary["benchmark_success_rate"],
+        "v2_avoid_evaluated_cases": avoid_summary["evaluated_count"],
+        "v2_avoid_success_count": avoid_summary["success_count"],
+        "v2_avoid_failure_count": avoid_summary["failure_count"],
+        "v2_avoid_success_rate": avoid_summary["success_rate"],
+        "v2_avoid_avg_close_t1_return": avoid_summary["avg_close_t1_return"],
+        "v2_avoid_avg_close_t3_return": avoid_summary["avg_close_t3_return"],
+        "v2_avoid_avg_close_t5_return": avoid_summary["avg_close_t5_return"],
+        "v2_avoid_benchmark_evaluated_cases": avoid_summary["benchmark_evaluated_cases"],
+        "v2_avoid_benchmark_success_rate": avoid_summary["benchmark_success_rate"],
     }
     return summary, rank_rows
 
@@ -371,6 +417,30 @@ def write_outputs(summary: dict, rank_rows: list[dict]) -> tuple[Path, Path]:
             "- Weak means selected and non-selected performance are within +/-3 percentage points.",
             "- Inverted means selected picks trail non-selected candidates by more than 3 percentage points.",
             "- Benchmark coverage below 30% should be treated as incomplete market-relative evidence.",
+            "",
+            "## Directional Breakdown (Buy vs Avoid)",
+            "",
+            "Diagnostic only. Splits the same v2 population above by expects_positive() direction; does not change scoring or candidate selection.",
+            "",
+            "| direction | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return | benchmark_evaluated_cases | benchmark_success_rate |",
+            "|---|---|---|---|---|---|---|---|---|---|",
+            (
+                "| buy | "
+                f"{summary['v2_buy_evaluated_cases']} | {summary['v2_buy_success_count']} | {summary['v2_buy_failure_count']} | "
+                f"{format_percent(summary['v2_buy_success_rate'])} | {format_return(summary['v2_buy_avg_close_t1_return'])} | "
+                f"{format_return(summary['v2_buy_avg_close_t3_return'])} | {format_return(summary['v2_buy_avg_close_t5_return'])} | "
+                f"{summary['v2_buy_benchmark_evaluated_cases']} | {format_percent(summary['v2_buy_benchmark_success_rate'])} |"
+            ),
+            (
+                "| avoid | "
+                f"{summary['v2_avoid_evaluated_cases']} | {summary['v2_avoid_success_count']} | {summary['v2_avoid_failure_count']} | "
+                f"{format_percent(summary['v2_avoid_success_rate'])} | {format_return(summary['v2_avoid_avg_close_t1_return'])} | "
+                f"{format_return(summary['v2_avoid_avg_close_t3_return'])} | {format_return(summary['v2_avoid_avg_close_t5_return'])} | "
+                f"{summary['v2_avoid_benchmark_evaluated_cases']} | {format_percent(summary['v2_avoid_benchmark_success_rate'])} |"
+            ),
+            "",
+            "Buy-type candidates expect a positive move (BUY_CANDIDATE/WATCHLIST); avoid-type candidates expect a negative move (AVOID). "
+            "Small buy-type sample sizes should be read conservatively.",
         ]
     )
     report_path.write_text("\n".join(lines), encoding="utf-8")
@@ -392,6 +462,14 @@ def main():
     print(f"v2 Top 20 success rate: {format_percent(summary['v2_top_20_success_rate'])}")
     print(f"v2 diagnosis: {summary['v2_diagnosis_en']} / {summary['v2_diagnosis_ko']}")
     print(f"benchmark coverage status: {summary['v2_benchmark_diagnosis_en']} / {summary['v2_benchmark_diagnosis_ko']}")
+    print(
+        f"v2 buy-type: {summary['v2_buy_evaluated_cases']} evaluated, "
+        f"{format_percent(summary['v2_buy_success_rate'])} success rate"
+    )
+    print(
+        f"v2 avoid-type: {summary['v2_avoid_evaluated_cases']} evaluated, "
+        f"{format_percent(summary['v2_avoid_success_rate'])} success rate"
+    )
 
 
 if __name__ == "__main__":

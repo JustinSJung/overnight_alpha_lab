@@ -151,10 +151,11 @@
           <div class="mini-bar"><span style="width: 41%"></span></div>
         </div>
         <div class="card">
-          <div class="label">Price Success Rate</div>
-          <div class="ko-desc">가격 후보 성공률</div>
+          <div class="label">Price Success Rate (All, Reference)</div>
+          <div class="ko-desc">가격 후보 성공률 (전체, 참고용)</div>
           <div class="value success">42.76%</div>
           <div class="mini-bar"><span style="width: 43%"></span></div>
+          <div class="muted-helper">Blends buy-type and avoid-type candidates. See directional breakdown below.<br>매수형과 회피형 후보를 합산한 값입니다. 아래 방향별 성과를 함께 확인하세요.</div>
         </div>
         <div class="card">
           <div class="label">Benchmark-Adjusted Success Rate</div>
@@ -171,7 +172,7 @@
         <div class="card">
           <div class="label">Last Updated</div>
           <div class="ko-desc">최근 업데이트</div>
-          <div class="muted-helper">2026-08-10 23:01:24</div>
+          <div class="muted-helper">2026-08-11 10:38:53</div>
         </div>
       </div>
     </section>
@@ -179,8 +180,21 @@
     <section class="section">
       <div class="section-heading">
         <h2>Core Performance <span class="heading-ko">핵심 성과</span></h2>
+        <p class="section-subtitle">Buy-type and avoid-type candidates are evaluated in opposite directions, so their success rates are shown separately as the primary metrics. 매수형과 회피형 후보는 성공 방향이 반대이므로 방향별 성과를 핵심 지표로 우선 표시합니다.</p>
       </div>
       <div class="signal-grid">
+        <div class="card primary">
+          <div class="label">Buy-Type Candidate Success Rate</div>
+          <div class="ko-desc">매수형 후보 성과</div>
+          <div class="kpi-value">49.08%</div>
+          <div class="muted-helper">Evaluated cases: 271<br>평가 완료: 271</div>
+        </div>
+        <div class="card primary">
+          <div class="label">Avoid-Type Candidate Success Rate</div>
+          <div class="ko-desc">회피형 후보 성과</div>
+          <div class="kpi-value">41.76%</div>
+          <div class="muted-helper">Evaluated cases: 1705<br>평가 완료: 1705</div>
+        </div>
         <div class="card">
           <div class="label">Recent 7-Day Success Rate</div>
           <div class="ko-desc">최근 7일 성공률</div>
@@ -253,8 +267,20 @@
       </div>
       <div class="signal-grid">
         <div class="card">
-          <div class="label">Overall Candidate Performance</div>
-          <div class="ko-desc">전체 후보 성과</div>
+          <div class="label">Buy-Type Recommendation Quality</div>
+          <div class="ko-desc">매수형 추천 품질</div>
+          <div><span class="status-pill badge-orange">Mixed<br>혼재</span></div>
+          <div class="muted-helper">49.08% · 271 evaluated<br>49.08% · 평가 완료 271건</div>
+        </div>
+        <div class="card">
+          <div class="label">Avoid-Type Recommendation Quality</div>
+          <div class="ko-desc">회피형 추천 품질</div>
+          <div><span class="status-pill badge-red">Needs Improvement<br>개선 필요</span></div>
+          <div class="muted-helper">41.76% · 1705 evaluated<br>41.76% · 평가 완료 1705건</div>
+        </div>
+        <div class="card">
+          <div class="label">Overall Candidate Performance (All, Reference)</div>
+          <div class="ko-desc">전체 후보 성과 (혼합, 참고용)</div>
           <div><span class="status-pill badge-red">Needs Improvement<br>개선 필요</span></div>
           <div class="muted-helper">42.76%</div>
         </div>
