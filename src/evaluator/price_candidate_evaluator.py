@@ -173,6 +173,37 @@ def expected_positive(row) -> Optional[bool]:
     return None
 
 
+def candidate_direction_label(expects_positive: Optional[bool]) -> Optional[str]:
+    if expects_positive is True:
+        return "buy"
+    if expects_positive is False:
+        return "avoid"
+    return None
+
+
+def direction_series(df: pd.DataFrame) -> pd.Series:
+    """
+    Return "buy" / "avoid" / None per row, reusing expected_positive() so every
+    caller derives direction the same way. Falls back to a row-wise recompute
+    for historical evaluation CSVs saved before candidate_direction existed.
+    """
+
+    if df.empty:
+        return pd.Series(dtype=object)
+
+    if "candidate_direction" in df.columns:
+        column = df["candidate_direction"].astype(str).str.strip().str.lower()
+        valid = column.isin(["buy", "avoid"])
+        if valid.all():
+            return column
+    else:
+        column = pd.Series([None] * len(df), index=df.index, dtype=object)
+        valid = pd.Series([False] * len(df), index=df.index)
+
+    computed = df.apply(lambda row: candidate_direction_label(expected_positive(row)), axis=1)
+    return column.where(valid, computed)
+
+
 def classify_success(value, expects_positive: Optional[bool]):
     if pd.isna(value) or expects_positive is None:
         return RESULT_PENDING
@@ -255,6 +286,7 @@ def evaluate_row(
     result.update(
         {
             "candidate_id": candidate_id_for_row(row),
+            "candidate_direction": candidate_direction_label(expects_positive),
             "signal_date": signal_date,
             "prediction_date": prediction_date,
             "evaluation_date": datetime.today().strftime("%Y-%m-%d"),
