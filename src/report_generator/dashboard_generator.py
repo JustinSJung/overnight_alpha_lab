@@ -13,10 +13,13 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from src.evaluation.metrics import (
     classify_confidence_status,
+    dedupe_evaluations,
+    direction_series,
+    normalize_stock_code,
     reliability_score_from_wilson,
     safe_percentage,
+    success_series,
 )
-from src.evaluator.price_candidate_evaluator import direction_series
 from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
 
 
@@ -80,16 +83,6 @@ def has_core_state_files() -> bool:
     return False
 
 
-def normalize_stock_code(value):
-    if pd.isna(value):
-        return ""
-
-    try:
-        return str(int(float(value))).zfill(6)
-    except Exception:
-        return str(value).strip().zfill(6)
-
-
 def safe_get(row, column, default="N/A"):
     if column not in row:
         return default
@@ -109,46 +102,6 @@ def safe_float(value, default=0.0):
         return float(value)
     except Exception:
         return default
-
-
-def evaluation_result_series(df: pd.DataFrame) -> pd.Series:
-    """
-    Return price evaluation result values across supported schema versions.
-    """
-
-    if df.empty:
-        return pd.Series(dtype=str)
-
-    if "prediction_result" in df.columns and "price_candidate_result" in df.columns:
-        primary = df["prediction_result"].astype(str)
-        fallback = df["price_candidate_result"].astype(str)
-        return primary.where(~primary.isin(["", "nan", "None"]), fallback)
-
-    if "prediction_result" in df.columns:
-        return df["prediction_result"].astype(str)
-
-    if "price_candidate_result" in df.columns:
-        return df["price_candidate_result"].astype(str)
-
-    return pd.Series(dtype=str)
-
-
-def success_series(df: pd.DataFrame, success_column: str) -> pd.Series:
-    """
-    Return success/failure/pending values with backward-compatible fallback.
-    """
-
-    if df.empty:
-        return pd.Series(dtype=str)
-
-    fallback = evaluation_result_series(df)
-
-    if success_column in df.columns:
-        primary = df[success_column].astype(str)
-        missing = primary.isin(["", "nan", "None", "<NA>"])
-        return primary.where(~missing, fallback)
-
-    return fallback
 
 
 def count_results(series: pd.Series) -> dict:
@@ -213,55 +166,8 @@ def rolling_success_metrics(df: pd.DataFrame, days: int) -> dict:
     }
 
 
-def date_key(df: pd.DataFrame, column: str) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    if column not in df.columns:
-        return pd.Series([""] * len(df), index=df.index, dtype=object)
-    parsed = pd.to_datetime(df[column], errors="coerce")
-    return parsed.dt.strftime("%Y-%m-%d").fillna(df[column].astype(str).replace("nan", ""))
-
-
-def price_evaluation_key(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    if "candidate_id" in df.columns:
-        candidate_id = df["candidate_id"].astype(str).str.strip()
-        valid = ~candidate_id.isin(["", "nan", "None", "<NA>"])
-    else:
-        candidate_id = pd.Series([""] * len(df), index=df.index, dtype=object)
-        valid = pd.Series([False] * len(df), index=df.index)
-
-    if "score_version" in df.columns:
-        score_version = df["score_version"].astype(str).str.strip()
-        score_version = score_version.where(
-            ~score_version.isin(["", "nan", "None", "<NA>"]),
-            "legacy_or_unknown",
-        )
-    else:
-        score_version = pd.Series(["legacy_or_unknown"] * len(df), index=df.index, dtype=object)
-
-    fallback = (
-        df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
-        + "|"
-        + date_key(df, "signal_date")
-        + "|"
-        + date_key(df, "prediction_date")
-        + "|"
-        + score_version
-    )
-    return candidate_id.where(valid, fallback)
-
-
 def dedupe_price_evaluations(df: pd.DataFrame) -> pd.DataFrame:
-    if df.empty:
-        return df
-    working = df.copy()
-    working["dashboard_price_evaluation_key"] = price_evaluation_key(working)
-    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
-    if sort_columns:
-        working = working.sort_values(sort_columns)
-    return working.drop_duplicates(subset=["dashboard_price_evaluation_key"], keep="last")
+    return dedupe_evaluations(df, key_column="dashboard_price_evaluation_key")
 
 
 def summarize_direction_group(df: pd.DataFrame) -> dict:

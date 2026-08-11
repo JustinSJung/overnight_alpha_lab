@@ -5,18 +5,31 @@ This is a research-only learning layer. It does not change candidate scoring,
 place orders, or replace the DART learned-rule updater.
 """
 
+import sys
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.evaluation.metrics import (
+    candidate_key_series,
+    dedupe_evaluations as _dedupe_evaluations,
+    normalize_stock_code,
+    score_version_series,
+    success_series,
+)
+from src.storage.schema import RESULT_FAILURE, RESULT_SUCCESS
+
+
 PROCESSED_DIR = Path("data/processed")
 PREDICTIONS_DIR = Path("data/predictions")
 REPORT_DIR = Path("reports/daily_review")
 
-RESULT_SUCCESS = "success"
-RESULT_FAILURE = "failure"
 MIN_EVALUATED_COUNT = 50
 BOOST_LIFT_THRESHOLD = 3.0
 PENALIZE_LIFT_THRESHOLD = -3.0
@@ -36,72 +49,8 @@ def read_all_csv(directory: Path, pattern: str) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
-def normalize_stock_code(value) -> str:
-    if value is None or pd.isna(value):
-        return ""
-    try:
-        return str(int(float(value))).zfill(6)
-    except Exception:
-        return str(value).strip().zfill(6)
-
-
-def date_key(df: pd.DataFrame, column: str) -> pd.Series:
-    if column not in df.columns:
-        return pd.Series([""] * len(df), index=df.index, dtype=object)
-    parsed = pd.to_datetime(df[column], errors="coerce")
-    return parsed.dt.strftime("%Y-%m-%d").fillna(df[column].astype(str).replace("nan", ""))
-
-
-def score_version_series(df: pd.DataFrame) -> pd.Series:
-    if "score_version" not in df.columns:
-        return pd.Series(["legacy_or_unknown"] * len(df), index=df.index, dtype=object)
-    version = df["score_version"].astype(str).str.strip()
-    return version.where(~version.isin(["", "nan", "None", "<NA>"]), "legacy_or_unknown")
-
-
-def candidate_key_series(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    if "candidate_id" in df.columns:
-        candidate_id = df["candidate_id"].astype(str).str.strip()
-        valid = ~candidate_id.isin(["", "nan", "None", "<NA>"])
-    else:
-        candidate_id = pd.Series([""] * len(df), index=df.index, dtype=object)
-        valid = pd.Series([False] * len(df), index=df.index)
-
-    fallback = (
-        df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
-        + "|"
-        + date_key(df, "signal_date")
-        + "|"
-        + date_key(df, "prediction_date")
-        + "|"
-        + score_version_series(df)
-    )
-    return candidate_id.where(valid, fallback)
-
-
-def normalize_result_series(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    result = pd.Series(["pending"] * len(df), index=df.index, dtype=object)
-    for column in ["success_close_t1", "prediction_result", "price_candidate_result"]:
-        if column in df.columns:
-            series = df[column].astype(str).str.strip().str.lower()
-            valid = ~series.isin(["", "nan", "none", "<na>"])
-            result = result.where(~(result.eq("pending") & valid), series)
-    return result
-
-
 def dedupe_evaluations(df: pd.DataFrame) -> pd.DataFrame:
-    if df.empty:
-        return df
-    working = df.copy()
-    working["candidate_learning_key"] = candidate_key_series(working)
-    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
-    if sort_columns:
-        working = working.sort_values(sort_columns)
-    return working.drop_duplicates(subset=["candidate_learning_key"], keep="last")
+    return _dedupe_evaluations(df, key_column="candidate_learning_key")
 
 
 def bucket_numeric(series: pd.Series, edges: list[float], labels: list[str]) -> pd.Series:
@@ -220,7 +169,7 @@ def summarize_rules(evaluations: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         return pd.DataFrame(), {"baseline_success_rate": None, "baseline_evaluated_count": 0}
 
     working = build_group_columns(evaluations)
-    result = normalize_result_series(working)
+    result = success_series(working)
     evaluated = result.isin([RESULT_SUCCESS, RESULT_FAILURE])
     working = working[evaluated].copy()
     result = result[evaluated]

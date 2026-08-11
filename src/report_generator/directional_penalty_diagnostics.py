@@ -18,16 +18,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.evaluator.price_candidate_evaluator import direction_series
-from src.models.price_candidate_rule_learner import (
-    PREDICTIONS_DIR,
-    RESULT_FAILURE,
-    RESULT_SUCCESS,
-    bucket_numeric,
-    dedupe_evaluations,
-    normalize_result_series,
-    read_all_csv,
-)
+from src.evaluation.metrics import dedupe_evaluations, direction_series, success_series
+from src.models.price_candidate_rule_learner import PREDICTIONS_DIR, bucket_numeric, read_all_csv
+from src.storage.schema import RESULT_FAILURE, RESULT_SUCCESS
 
 
 REPORT_DIR = Path("reports/daily_review")
@@ -55,7 +48,7 @@ def momentum_tertile_series(values: pd.Series) -> pd.Series:
 def direction_summary(df: pd.DataFrame) -> dict:
     if df.empty:
         return {"evaluated_count": 0, "success_count": 0, "success_rate": None}
-    result = normalize_result_series(df)
+    result = success_series(df)
     evaluated = result.isin([RESULT_SUCCESS, RESULT_FAILURE])
     evaluated_count = int(evaluated.sum())
     success_count = int((result == RESULT_SUCCESS).sum())
@@ -71,7 +64,7 @@ def cross_tab(df: pd.DataFrame, penalty_column: str) -> list[dict]:
     working["penalty_bucket"] = bucket_numeric(working[penalty_column], PENALTY_SPECS[penalty_column], PENALTY_LABELS)
     working["momentum_tertile"] = momentum_tertile_series(working["base_momentum_score"])
 
-    result = normalize_result_series(working)
+    result = success_series(working)
     evaluated_mask = result.isin([RESULT_SUCCESS, RESULT_FAILURE])
     working = working[evaluated_mask].copy()
     result = result[evaluated_mask]

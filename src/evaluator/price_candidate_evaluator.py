@@ -15,7 +15,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.evaluation.metrics import safe_percentage
+from src.evaluation.metrics import (
+    candidate_direction_label,
+    expected_positive,
+    safe_percentage,
+)
 from src.storage.schema import (
     RESULT_FAILURE,
     RESULT_PENDING,
@@ -160,48 +164,6 @@ def return_from_base(base_close, target_close):
     if base_close in (None, 0) or target_close is None:
         return pd.NA
     return round((target_close - base_close) / base_close, 4)
-
-
-def expected_positive(row) -> Optional[bool]:
-    action = str(row.get("candidate_action", ""))
-    direction = str(row.get("prediction_direction", ""))
-
-    if direction in {"positive", "neutral_positive"} or action in {"BUY_CANDIDATE", "WATCHLIST"}:
-        return True
-    if direction == "negative" or action == "AVOID":
-        return False
-    return None
-
-
-def candidate_direction_label(expects_positive: Optional[bool]) -> Optional[str]:
-    if expects_positive is True:
-        return "buy"
-    if expects_positive is False:
-        return "avoid"
-    return None
-
-
-def direction_series(df: pd.DataFrame) -> pd.Series:
-    """
-    Return "buy" / "avoid" / None per row, reusing expected_positive() so every
-    caller derives direction the same way. Falls back to a row-wise recompute
-    for historical evaluation CSVs saved before candidate_direction existed.
-    """
-
-    if df.empty:
-        return pd.Series(dtype=object)
-
-    if "candidate_direction" in df.columns:
-        column = df["candidate_direction"].astype(str).str.strip().str.lower()
-        valid = column.isin(["buy", "avoid"])
-        if valid.all():
-            return column
-    else:
-        column = pd.Series([None] * len(df), index=df.index, dtype=object)
-        valid = pd.Series([False] * len(df), index=df.index)
-
-    computed = df.apply(lambda row: candidate_direction_label(expected_positive(row)), axis=1)
-    return column.where(valid, computed)
 
 
 def classify_success(value, expects_positive: Optional[bool]):
