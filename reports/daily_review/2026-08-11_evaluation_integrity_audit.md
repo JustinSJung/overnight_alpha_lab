@@ -39,8 +39,8 @@ Recommended safe deduplication key: `candidate_id` when available; otherwise `st
 
 | score_version | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return |
 |---|---|---|---|---|---|---|---|
-| v1/unknown | 7492 | 3869 | 3623 | 51.64 | -0.0125 | -0.0102 | -0.0335 |
-| v2_conservative_ranker | 13345 | 5651 | 7694 | 42.35 | 0.0063 | 0.0024 | 0.0011 |
+| v1/unknown | 370 | 190 | 180 | 51.35 | -0.0115 | -0.0037 | -0.0257 |
+| v2_conservative_ranker | 1606 | 655 | 951 | 40.78 | 0.0111 | 0.0237 | 0.0456 |
 
 ## v2 Directional Breakdown (Buy vs Avoid)
 
@@ -48,17 +48,17 @@ Diagnostic only. Splits v2 performance above by expects_positive() direction; do
 
 | direction | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return |
 |---|---|---|---|---|---|---|---|
-| buy | 1040 | 546 | 494 | 52.5 | 0.0051 | -0.006 | -0.0035 |
-| avoid | 12305 | 5105 | 7200 | 41.49 | 0.0064 | 0.003 | 0.0014 |
+| buy | 187 | 109 | 78 | 58.29 | 0.0109 | 0.0114 | 0.0183 |
+| avoid | 1419 | 546 | 873 | 38.48 | 0.0111 | 0.0248 | 0.0474 |
 
 ## v2 Rank Bucket Performance
 
 | bucket | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return |
 |---|---|---|---|---|---|---|---|
-| Top 10 | 140 | 72 | 68 | 51.43 | 0.0091 | -0.0168 | -0.0254 |
-| Top 20 | 280 | 154 | 126 | 55.0 | 0.0107 | -0.0087 | -0.0286 |
-| Top 50 | 700 | 388 | 312 | 55.43 | 0.0086 | 0.0095 | 0.0023 |
-| Top 100 | 1400 | 656 | 744 | 46.86 | 0.0114 | 0.0198 | 0.0157 |
+| Top 10 | 140 | 79 | 61 | 56.43 | 0.0094 | 0.0182 | 0.0212 |
+| Top 20 | 280 | 145 | 135 | 51.79 | 0.0051 | 0.0125 | 0.0266 |
+| Top 50 | 700 | 324 | 376 | 46.29 | 0.0081 | 0.0138 | 0.021 |
+| Top 100 | 1267 | 552 | 715 | 43.57 | 0.0073 | 0.0173 | 0.0305 |
 
 Ranking status: **Ranking improving**
 Score decile diagnosis: **Ranking improving**
@@ -67,35 +67,35 @@ Score decile diagnosis: **Ranking improving**
 
 | decile | evaluated_count | success_count | failure_count | success_rate | avg_final_price_signal_score_v2 | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return |
 |---|---|---|---|---|---|---|---|---|
-| D1 | 1335 | 568 | 767 | 42.55 | 16.8 | 0.0037 | 0.0202 | 0.0329 |
-| D2 | 1334 | 593 | 741 | 44.45 | 21.72 | 0.0017 | -0.0092 | -0.0213 |
-| D3 | 1335 | 508 | 827 | 38.05 | 24.79 | 0.0087 | 0.018 | 0.0226 |
-| D4 | 1334 | 519 | 815 | 38.91 | 27.39 | 0.0155 | 0.0111 | 0.0003 |
-| D5 | 1335 | 582 | 753 | 43.6 | 29.65 | 0.008 | 0.0095 | -0.0109 |
-| D6 | 1334 | 469 | 865 | 35.16 | 31.85 | 0.0123 | 0.0044 | -0.0032 |
-| D7 | 1334 | 556 | 778 | 41.68 | 34.19 | 0.0031 | 0.0029 | -0.0069 |
-| D8 | 1335 | 574 | 761 | 43.0 | 36.24 | -0.0002 | -0.0277 | -0.0165 |
-| D9 | 1334 | 617 | 717 | 46.25 | 38.34 | 0.0063 | -0.0044 | 0.0119 |
-| D10 | 1335 | 665 | 670 | 49.81 | 60.52 | 0.0041 | -0.0024 | 0.0048 |
+| D1 | 161 | 60 | 101 | 37.27 | 17.1 | 0.0125 | 0.0505 | 0.0859 |
+| D2 | 161 | 68 | 93 | 42.24 | 22.36 | 0.0054 | 0.0109 | 0.0256 |
+| D3 | 160 | 52 | 108 | 32.5 | 25.57 | 0.0227 | 0.049 | 0.08 |
+| D4 | 161 | 62 | 99 | 38.51 | 28.27 | 0.0158 | 0.0241 | 0.0391 |
+| D5 | 160 | 53 | 107 | 33.12 | 30.49 | 0.0104 | 0.0447 | 0.0615 |
+| D6 | 161 | 68 | 93 | 42.24 | 32.88 | 0.006 | 0.0018 | 0.0119 |
+| D7 | 160 | 67 | 93 | 41.88 | 35.12 | 0.0027 | 0.0123 | 0.0347 |
+| D8 | 161 | 63 | 98 | 39.13 | 37.23 | 0.0172 | 0.0086 | 0.0258 |
+| D9 | 160 | 66 | 94 | 41.25 | 42.62 | 0.0076 | 0.0136 | 0.0551 |
+| D10 | 161 | 96 | 65 | 59.63 | 66.92 | 0.0107 | 0.0118 | 0.0099 |
 
 ## v2 Component Failure Associations
 
 | component | success_avg | failure_avg | failure_minus_success |
 |---|---|---|---|
-| base_momentum_score | 43.023 | 39.995 | -3.0279 |
-| volume_confirmation_score | -0.5222 | -0.658 | -0.1358 |
-| liquidity_score | 2.312 | 2.0818 | -0.2302 |
-| overextension_penalty | 2.0601 | 1.0453 | -1.0148 |
-| reversal_risk_penalty | 2.1907 | 1.5658 | -0.6249 |
-| news_risk_penalty | 0.1609 | 0.0863 | -0.0746 |
-| attention_noise_penalty | 0.2206 | 0.2227 | 0.0021 |
-| market_regime_penalty | 0.0711 | 0.0554 | -0.0158 |
+| base_momentum_score | 46.1616 | 41.2739 | -4.8876 |
+| volume_confirmation_score | -0.3573 | -0.6167 | -0.2594 |
+| liquidity_score | 2.345 | 2.0894 | -0.2557 |
+| overextension_penalty | 2.482 | 1.3664 | -1.1156 |
+| reversal_risk_penalty | 2.2017 | 1.6126 | -0.5891 |
+| news_risk_penalty | 0.2656 | 0.1062 | -0.1594 |
+| attention_noise_penalty | 0.2429 | 0.2102 | -0.0327 |
+| market_regime_penalty | 0.0672 | 0.0463 | -0.0209 |
 
 ## Benchmark-Adjusted Evaluation Audit
 
-- Benchmark-adjusted evaluated cases: **14357**
-- Benchmark-adjusted coverage: **35.34%**
-- Benchmark-adjusted success rate: **51.73%**
+- Benchmark-adjusted evaluated cases: **1976**
+- Benchmark-adjusted coverage: **46.69%**
+- Benchmark-adjusted success rate: **53.09%**
 - Benchmark rows available: **84**
 - Benchmark status: **Partial**
 - Latest market index file: `data/raw/market_index_20260810.csv`

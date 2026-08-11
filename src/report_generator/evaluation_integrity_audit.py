@@ -127,6 +127,27 @@ def candidate_key_series(df: pd.DataFrame) -> pd.Series:
     return candidate_id.where(valid, fallback)
 
 
+def dedupe_candidate_evaluations(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Candidate-level dedup (same key/keep='last' pattern as
+    price_candidate_rule_learner.py and dashboard_generator.py): collapses
+    repeat evaluations of the same candidate_id (or stock_code+signal_date+
+    prediction_date+score_version fallback) down to its most recent row.
+    Performance metrics below must be computed on this, not on the raw
+    concatenation of price_candidate_evaluation_*.csv files, or the same
+    candidate re-evaluated on multiple calendar days (e.g. as t3/t5 returns
+    become available) gets counted multiple times.
+    """
+    if df.empty:
+        return df
+    working = df.copy()
+    working["integrity_candidate_key"] = candidate_key_series(working)
+    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
+    if sort_columns:
+        working = working.sort_values(sort_columns)
+    return working.drop_duplicates(subset=["integrity_candidate_key"], keep="last")
+
+
 def exact_evaluation_key_series(df: pd.DataFrame) -> pd.Series:
     if df.empty:
         return pd.Series(dtype=str)
@@ -455,16 +476,18 @@ def build_audit() -> dict:
             evaluations.groupby("integrity_candidate_key")["source_file"].nunique().gt(1).sum()
         )
 
-    result = normalize_result_series(evaluations)
-    v2_mask = score_version_series(evaluations).eq(V2_VERSION)
+    deduped_evaluations = dedupe_candidate_evaluations(evaluations)
+
+    result = normalize_result_series(deduped_evaluations)
+    v2_mask = score_version_series(deduped_evaluations).eq(V2_VERSION)
     evaluated = result.isin([RESULT_SUCCESS, RESULT_FAILURE])
-    v2_eval = evaluations[v2_mask & evaluated].copy()
-    legacy_eval = evaluations[~v2_mask & evaluated].copy()
+    v2_eval = deduped_evaluations[v2_mask & evaluated].copy()
+    legacy_eval = deduped_evaluations[~v2_mask & evaluated].copy()
 
     v2_rank_rows = rank_bucket_summary(v2_eval)
     decile_rows, decile_diagnosis = decile_summary(v2_eval)
     component_rows = component_failure_audit(v2_eval)
-    benchmark = benchmark_audit(evaluations, signals)
+    benchmark = benchmark_audit(deduped_evaluations, signals)
     learned = learned_rule_audit()
 
     v2_eval = v2_eval.copy()
