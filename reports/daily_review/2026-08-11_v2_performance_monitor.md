@@ -4,19 +4,19 @@ This report monitors `v2_conservative_ranker` only. It is diagnostic and does no
 
 ## Summary
 
-- V2 evaluated cases: **1606**
-- V2 success count: **655**
-- V2 failure count: **951**
-- V2 raw success rate: **40.78%**
-- V2 benchmark-adjusted evaluated cases: **1606**
-- V2 benchmark-adjusted success rate: **53.80%**
+- V2 evaluated cases: **1722**
+- V2 success count: **707**
+- V2 failure count: **1015**
+- V2 raw success rate: **41.06%**
+- V2 benchmark-adjusted evaluated cases: **1722**
+- V2 benchmark-adjusted success rate: **53.14%**
 - V2 benchmark coverage rate: **100.00%**
-- V2 average close_t1_return: **1.11%**
-- V2 average excess_t1_return: **-0.35%**
-- Selected-pick evaluated cases: **162**
-- Selected-pick success rate: **59.26%**
-- Non-selected evaluated cases: **1444**
-- Non-selected success rate: **38.71%**
+- V2 average close_t1_return: **1.04%**
+- V2 average excess_t1_return: **-0.32%**
+- Selected-pick evaluated cases: **182**
+- Selected-pick success rate: **57.14%**
+- Non-selected evaluated cases: **1540**
+- Non-selected success rate: **39.16%**
 - V2 diagnosis: **Improving / 개선 가능성**
 - Benchmark diagnosis: **Positive market-relative signal / 시장 대비 긍정 신호**
 
@@ -24,10 +24,10 @@ This report monitors `v2_conservative_ranker` only. It is diagnostic and does no
 
 | bucket | evaluated_count | success_count | failure_count | success_rate |
 |---|---|---|---|---|
-| Top 10 | 107 | 64 | 43 | 59.81% |
-| Top 20 | 149 | 87 | 62 | 58.39% |
-| Top 50 | 201 | 117 | 84 | 58.21% |
-| Top 100 | 435 | 214 | 221 | 49.20% |
+| Top 10 | 117 | 68 | 49 | 58.12% |
+| Top 20 | 169 | 95 | 74 | 56.21% |
+| Top 50 | 251 | 136 | 115 | 54.18% |
+| Top 100 | 489 | 235 | 254 | 48.06% |
 
 ## Interpretation
 
@@ -42,7 +42,7 @@ Diagnostic only. Splits the same v2 population above by expects_positive() direc
 
 | direction | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return | benchmark_evaluated_cases | benchmark_success_rate |
 |---|---|---|---|---|---|---|---|---|---|
-| buy | 187 | 109 | 78 | 58.29% | 1.09% | 1.14% | 1.83% | 187 | 62.03% |
-| avoid | 1419 | 546 | 873 | 38.48% | 1.11% | 2.48% | 4.74% | 1419 | 52.71% |
+| buy | 241 | 130 | 111 | 53.94% | 0.73% | 1.25% | 2.02% | 241 | 56.43% |
+| avoid | 1481 | 577 | 904 | 38.96% | 1.09% | 2.55% | 4.80% | 1481 | 52.60% |
 
 Buy-type candidates expect a positive move (BUY_CANDIDATE/WATCHLIST); avoid-type candidates expect a negative move (AVOID). Small buy-type sample sizes should be read conservatively.
