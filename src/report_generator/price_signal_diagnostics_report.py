@@ -234,8 +234,11 @@ def rolling_success_rate(df: pd.DataFrame, days: int):
     if df.empty:
         return None
 
+    # signal_date first -- see dashboard_generator.rolling_success_metrics()
+    # for why evaluation_date (re-stamped to today on every re-score) must
+    # not take priority here.
     dates = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
-    for column in ["evaluation_date", "evaluated_at", "signal_date", "candidate_date"]:
+    for column in ["signal_date", "candidate_date", "evaluation_date", "evaluated_at"]:
         if column in df.columns:
             dates = dates.fillna(pd.to_datetime(df[column], errors="coerce"))
 
