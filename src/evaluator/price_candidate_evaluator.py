@@ -17,6 +17,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from src.evaluation.metrics import (
     candidate_direction_label,
+    dedupe_evaluations,
     expected_positive,
     safe_percentage,
 )
@@ -107,6 +108,42 @@ def read_candidates() -> pd.DataFrame:
     df["candidate_id"] = df.apply(candidate_id_for_row, axis=1)
     df = df.drop_duplicates(subset=["candidate_id"], keep="last")
     return df
+
+
+def load_prior_resolved_evaluations() -> dict[str, dict]:
+    """
+    Candidate_id -> {"success_close_t1", "evaluation_date"} for the most
+    recent prior evaluation snapshot of each candidate (across all existing
+    price_candidate_evaluation_*.csv files). Used so evaluate_row() can keep
+    evaluation_date stable for candidates that were already resolved to the
+    same success/failure outcome, instead of re-stamping it to today on
+    every re-run.
+    """
+    frames = []
+    for path in sorted(PREDICTIONS_DIR.glob("price_candidate_evaluation_*.csv")):
+        try:
+            df = pd.read_csv(path)
+            df["source_file"] = str(path)
+            frames.append(df)
+        except Exception:
+            continue
+
+    if not frames:
+        return {}
+
+    combined = pd.concat(frames, ignore_index=True)
+    unique = dedupe_evaluations(combined, key_column="candidate_evaluation_key")
+
+    lookup = {}
+    for _, row in unique.iterrows():
+        candidate_id = row.get("candidate_id")
+        if candidate_id is None or pd.isna(candidate_id):
+            continue
+        lookup[str(candidate_id)] = {
+            "success_close_t1": row.get("success_close_t1"),
+            "evaluation_date": row.get("evaluation_date"),
+        }
+    return lookup
 
 
 def normalize_price_df(path: Path) -> pd.DataFrame:
@@ -236,6 +273,7 @@ def evaluate_row(
     row,
     market_lookup: dict[str, str],
     market_index_df: pd.DataFrame,
+    prior_evaluations: dict[str, dict] | None = None,
 ) -> dict:
     stock_code = normalize_stock_code(row.get("stock_code", ""))
     candidate_date = candidate_date_value(row)
@@ -342,6 +380,16 @@ def evaluate_row(
     result["prediction_result"] = t1_result
     result["price_candidate_result"] = t1_result
     result["evaluation_status"] = "evaluated" if t1_result in {RESULT_SUCCESS, RESULT_FAILURE} else RESULT_PENDING
+
+    if t1_result in {RESULT_SUCCESS, RESULT_FAILURE} and prior_evaluations:
+        prior = prior_evaluations.get(result["candidate_id"])
+        if (
+            prior is not None
+            and prior.get("success_close_t1") == t1_result
+            and prior.get("evaluation_date")
+            and not pd.isna(prior.get("evaluation_date"))
+        ):
+            result["evaluation_date"] = prior["evaluation_date"]
 
     return result
 
@@ -454,11 +502,12 @@ def main():
 
     market_lookup = load_market_lookup()
     market_index_df = load_market_index()
+    prior_evaluations = load_prior_resolved_evaluations()
 
     rows = []
     for _, row in candidates.iterrows():
         try:
-            rows.append(evaluate_row(row, market_lookup, market_index_df))
+            rows.append(evaluate_row(row, market_lookup, market_index_df, prior_evaluations))
         except Exception as error:
             stock_code = normalize_stock_code(row.get("stock_code", ""))
             print(f"Price candidate evaluation skipped for {stock_code}: {error}")

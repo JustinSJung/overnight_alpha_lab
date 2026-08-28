@@ -156,7 +156,14 @@ def dedupe_evaluations(df: pd.DataFrame, key_column: str = "candidate_evaluation
         return df
     working = df.copy()
     working[key_column] = candidate_key_series(working)
-    sort_columns = [column for column in ["evaluation_date", "evaluated_at", "source_file"] if column in working.columns]
+    # evaluated_at/source_file first: they are stamped fresh on every run
+    # regardless of outcome, so they stay monotonic with real run recency.
+    # evaluation_date can now be preserved (not re-stamped) once a candidate
+    # is resolved to success/failure, so it can no longer be trusted as the
+    # primary "most recent snapshot" sort key -- a resolved row's pinned,
+    # older evaluation_date would otherwise sort before a later transient
+    # pending blip and get dropped by keep="last".
+    sort_columns = [column for column in ["evaluated_at", "source_file", "evaluation_date"] if column in working.columns]
     if sort_columns:
         working = working.sort_values(sort_columns)
     return working.drop_duplicates(subset=[key_column], keep="last")

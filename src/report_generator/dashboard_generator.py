@@ -127,8 +127,13 @@ def rolling_success_metrics(df: pd.DataFrame, days: int) -> dict:
             "evaluated_count": 0,
         }
 
+    # signal_date first: it identifies when the trade signal actually occurred.
+    # evaluation_date is when the row was last (re-)scored, which is
+    # re-stamped to today on every pipeline run regardless of the signal's
+    # age -- using it first collapses every rolling window onto the same
+    # handful of recent evaluation runs instead of the signal's real date.
     date_source = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
-    for column in ["evaluation_date", "evaluated_at", "signal_date", "candidate_date"]:
+    for column in ["signal_date", "candidate_date", "evaluation_date", "evaluated_at"]:
         if column in df.columns:
             parsed = pd.to_datetime(df[column], errors="coerce")
             date_source = date_source.fillna(parsed)
