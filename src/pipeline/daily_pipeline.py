@@ -12,10 +12,16 @@ This script:
 
 import os
 import subprocess
-from datetime import datetime
+import sys
+from pathlib import Path
 
 import pandas as pd
-from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.crawler.dart_collector import kst_business_day_yyyymmdd
 
 KEY_EVENT_TYPES = [
     "supply_contract",
@@ -60,7 +66,10 @@ def get_latest_processed_file(processed_dir: str = "data/processed") -> str:
 
 
 def today_yyyymmdd() -> str:
-    return datetime.today().strftime("%Y%m%d")
+    # Must match dart_collector.py's kst_business_day_yyyymmdd() exactly --
+    # this names/looks up the same day's dart_disclosures_*.csv file that
+    # dart_collector.py just wrote.
+    return kst_business_day_yyyymmdd()
 
 
 def raw_dart_file_for_today() -> Path:
@@ -112,7 +121,7 @@ def save_selected_events(df: pd.DataFrame) -> str:
     output_dir = "data/processed"
     os.makedirs(output_dir, exist_ok=True)
 
-    today = datetime.today().strftime("%Y%m%d")
+    today = today_yyyymmdd()
     output_path = f"{output_dir}/selected_key_events_{today}.csv"
 
     df.to_csv(output_path, index=False, encoding="utf-8-sig")
