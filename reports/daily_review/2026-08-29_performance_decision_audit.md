@@ -25,11 +25,11 @@ Raw success means the next-day close return was positive. Benchmark-adjusted suc
 ## Return Horizons
 
 - Close T+1 success rate: **43.49%**
-- Close T+3 success rate: **47.25%**
-- Close T+5 success rate: **47.15%**
-- Excess T+1 success rate: **47.43%**
+- Close T+3 success rate: **47.3%**
+- Close T+5 success rate: **47.26%**
+- Excess T+1 success rate: **47.44%**
 - Excess T+3 success rate: **46.3%**
-- Excess T+5 success rate: **45.25%**
+- Excess T+5 success rate: **45.29%**
 
 ## Decision Guardrail
 

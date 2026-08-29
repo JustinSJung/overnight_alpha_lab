@@ -1,6 +1,6 @@
 # Event-Type Performance Report - 2026-08-29
 
-Generated at: 2026-08-29 12:18:21
+Generated at: 2026-08-29 12:41:59
 
 ## Purpose
 

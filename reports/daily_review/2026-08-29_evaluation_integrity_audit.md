@@ -39,8 +39,8 @@ Recommended safe deduplication key: `candidate_id` when available; otherwise `st
 
 | score_version | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return |
 |---|---|---|---|---|---|---|---|
-| v1/unknown | 403 | 200 | 203 | 49.63 | -0.0152 | -0.0072 | -0.0178 |
-| v2_conservative_ranker | 2985 | 1235 | 1750 | 41.37 | 0.0063 | 0.0231 | 0.0309 |
+| v1/unknown | 403 | 200 | 203 | 49.63 | -0.0152 | 0.0044 | -0.0007 |
+| v2_conservative_ranker | 2985 | 1235 | 1750 | 41.37 | 0.0063 | 0.0217 | 0.0309 |
 
 ## v2 Directional Breakdown (Buy vs Avoid)
 
@@ -49,7 +49,7 @@ Diagnostic only. Splits v2 performance above by expects_positive() direction; do
 | direction | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return |
 |---|---|---|---|---|---|---|---|
 | buy | 543 | 229 | 314 | 42.17 | -0.0006 | -0.0035 | -0.0103 |
-| avoid | 2442 | 1006 | 1436 | 41.2 | 0.0078 | 0.029 | 0.0408 |
+| avoid | 2442 | 1006 | 1436 | 41.2 | 0.0078 | 0.0273 | 0.0408 |
 
 ## v2 Rank Bucket Performance
 
@@ -72,7 +72,7 @@ Score decile diagnosis: **Ranking flat/random**
 | D3 | 299 | 110 | 189 | 36.79 | 27.67 | 0.0208 | 0.0348 | 0.0517 |
 | D4 | 298 | 122 | 176 | 40.94 | 30.41 | 0.004 | 0.0323 | 0.0393 |
 | D5 | 299 | 131 | 168 | 43.81 | 32.78 | 0.0026 | 0.0118 | 0.0105 |
-| D6 | 298 | 124 | 174 | 41.61 | 34.84 | 0.0041 | 0.0346 | 0.0412 |
+| D6 | 298 | 124 | 174 | 41.61 | 34.84 | 0.0041 | 0.0204 | 0.0412 |
 | D7 | 298 | 125 | 173 | 41.95 | 36.78 | 0.0063 | 0.0158 | 0.0248 |
 | D8 | 299 | 127 | 172 | 42.47 | 38.74 | 0.0076 | 0.0237 | 0.0408 |
 | D9 | 298 | 123 | 175 | 41.28 | 58.08 | -0.0029 | -0.0088 | -0.0115 |

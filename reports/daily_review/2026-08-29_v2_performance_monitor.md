@@ -43,6 +43,6 @@ Diagnostic only. Splits the same v2 population above by expects_positive() direc
 | direction | evaluated_count | success_count | failure_count | success_rate | avg_close_t1_return | avg_close_t3_return | avg_close_t5_return | benchmark_evaluated_cases | benchmark_success_rate |
 |---|---|---|---|---|---|---|---|---|---|
 | buy | 543 | 229 | 314 | 42.17% | -0.06% | -0.35% | -1.03% | 543 | 41.62% |
-| avoid | 2442 | 1006 | 1436 | 41.20% | 0.78% | 2.90% | 4.08% | 2442 | 50.86% |
+| avoid | 2442 | 1006 | 1436 | 41.20% | 0.78% | 2.73% | 4.08% | 2442 | 50.86% |
 
 Buy-type candidates expect a positive move (BUY_CANDIDATE/WATCHLIST); avoid-type candidates expect a negative move (AVOID). Small buy-type sample sizes should be read conservatively.
