@@ -56,8 +56,8 @@ Cells with fewer than 20 evaluated cases are flagged `insufficient` and should b
 | none | T2_mid | 770 | 284 | 486 | 36.88 | ok |
 | none | T3_high | 444 | 211 | 233 | 47.52 | ok |
 | low | T1_low | 14 | 3 | 11 | 21.43 | insufficient |
-| low | T2_mid | 19 | 9 | 10 | 47.37 | insufficient |
-| low | T3_high | 34 | 12 | 22 | 35.29 | ok |
+| low | T2_mid | 20 | 9 | 11 | 45.0 | ok |
+| low | T3_high | 33 | 12 | 21 | 36.36 | ok |
 | medium | T1_low | 9 | 5 | 4 | 55.56 | insufficient |
 | medium | T2_mid | 13 | 4 | 9 | 30.77 | insufficient |
 | medium | T3_high | 34 | 16 | 18 | 47.06 | ok |
@@ -80,8 +80,8 @@ Cells with fewer than 20 evaluated cases are flagged `insufficient` and should b
 | medium | T2_mid | 119 | 54 | 65 | 45.38 | ok |
 | medium | T3_high | 279 | 135 | 144 | 48.39 | ok |
 | high | T1_low | 101 | 46 | 55 | 45.54 | ok |
-| high | T2_mid | 47 | 25 | 22 | 53.19 | ok |
-| high | T3_high | 242 | 134 | 108 | 55.37 | ok |
+| high | T2_mid | 48 | 25 | 23 | 52.08 | ok |
+| high | T3_high | 241 | 134 | 107 | 55.6 | ok |
 | missing | missing | 302 | 176 | 126 | 58.28 | ok |
 
 ## Notes
