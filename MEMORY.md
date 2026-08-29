@@ -107,3 +107,23 @@ but is the closer match to CI.
   candidates get evaluated -- the 2026-08-11 snapshot numbers earlier in
   this file, 59.81/58.39/58.21/49.20, are from a few hours earlier the same
   day, before this CI run added ~4,200 new evaluation rows).
+
+## "DART Source Status" dashboard card means "connected," not "fully collected"
+
+**What**: `dashboard_generator.py`'s DART Source Status card
+(`source_status_label()`, called with
+`pending_count > 0 or evaluated_count > 0` at the card's call site) only
+checks whether `error_notes_*.csv` produced at least one row that day. It
+has never checked completeness against what DART actually published.
+
+**Why it matters**: `dart_collector.py` fetched only DART's `list.json`
+page 1 (100 rows) with no pagination until the `fix/dart-pagination` fix
+(2026-08-29). On ordinary trading days `total_count` has been observed at
+451-2,069, so this card showed "Available / 정상 수집" on days when
+roughly 80-95% of that day's disclosures were silently missing. The card
+was never wrong about *connectivity*, only silent about *coverage* --
+worth remembering next time this label (or a similar
+any-row-present-means-OK check elsewhere) comes up for improvement, e.g.
+surfacing `fetched_rows`/`total_count` from
+`dart_disclosures_meta_*.json` on the card instead of a bare existence
+check.
