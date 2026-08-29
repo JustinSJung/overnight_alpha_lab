@@ -11,6 +11,7 @@ directional_penalty_diagnostics.py -- import from here instead of
 adding another local copy.
 """
 
+import hashlib
 import math
 import sys
 from pathlib import Path
@@ -110,39 +111,53 @@ def score_version_series(df: pd.DataFrame) -> pd.Series:
     return version.where(~version.isin(["", "nan", "None", "<NA>"]), "legacy_or_unknown")
 
 
-def candidate_key_series(df: pd.DataFrame) -> pd.Series:
+def stable_prediction_id_series(df: pd.DataFrame) -> pd.Series:
     """
-    Candidate-level identity key: candidate_id when present and valid,
-    otherwise stock_code+signal_date+prediction_date+score_version.
+    stable_prediction_id = sha1(stock_code | signal_date | score_version)[:16].
 
-    evaluation_date is intentionally excluded. The same real-world candidate
-    gets re-evaluated on multiple later calendar days as t3/t5 returns
-    become available; including evaluation_date in the key would keep every
-    re-evaluation snapshot as a separate "unique" candidate instead of
-    collapsing them to one, which is what caused v2_performance_monitor.py's
-    "v2 evaluated cases" to run ~6.5x higher than the candidate-key-based
-    count used elsewhere.
+    Deliberately excludes candidate_action, prediction_date, and
+    price_candidate_score. All three legitimately change between re-scoring
+    passes of the SAME real-world prediction: candidate_action flips near
+    its scoring thresholds (~1.3% of (stock_code, signal_date) pairs
+    measured across the full history), and prediction_date/score are
+    re-stamped on every re-run (same-day workflow_dispatch reruns,
+    weekend/holiday reruns that carry a stale signal_date forward, or a
+    long-unresolved candidate re-scored on an ordinary later day). The
+    legacy candidate_id (stock_code|candidate_date|action|score, computed in
+    price_candidate_evaluator.py::candidate_id_for_row()) incorporated
+    exactly those unstable fields, which fragmented ~10% of the historical
+    candidate pool into duplicate identities for what was really one
+    prediction re-scored multiple times (see fix/stable-prediction-identity
+    investigation notes).
+
+    Always computed fresh from stock_code/signal_date/score_version --
+    never read from a stored column -- so the result is identical whether
+    the row already carries a stable_prediction_id column (new rows) or
+    not (legacy rows read from older CSVs): no separate fallback path is
+    needed.
     """
     if df.empty:
         return pd.Series(dtype=str)
 
-    if "candidate_id" in df.columns:
-        candidate_id = df["candidate_id"].astype(str).str.strip()
-        valid = ~candidate_id.isin(["", "nan", "None", "<NA>"])
-    else:
-        candidate_id = pd.Series([""] * len(df), index=df.index, dtype=object)
-        valid = pd.Series([False] * len(df), index=df.index)
+    stock_code = df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
+    raw = stock_code + "|" + date_key(df, "signal_date") + "|" + score_version_series(df)
+    return raw.apply(lambda value: hashlib.sha1(value.encode("utf-8")).hexdigest()[:16])
 
-    fallback = (
-        df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
-        + "|"
-        + date_key(df, "signal_date")
-        + "|"
-        + date_key(df, "prediction_date")
-        + "|"
-        + score_version_series(df)
-    )
-    return candidate_id.where(valid, fallback)
+
+def candidate_key_series(df: pd.DataFrame) -> pd.Series:
+    """
+    Candidate-level identity key, now always stable_prediction_id_series()
+    (stock_code|signal_date|score_version).
+
+    This replaces the previous candidate_id-based key. candidate_id
+    incorporated prediction_date and price_candidate_score, both of which
+    legitimately change between re-scoring passes of the same real-world
+    prediction -- see stable_prediction_id_series() docstring. The legacy
+    candidate_id column is left untouched in stored CSVs and is still
+    written by price_candidate_evaluator.py for backward compatibility, but
+    is no longer used to compute this identity key.
+    """
+    return stable_prediction_id_series(df)
 
 
 def dedupe_evaluations(df: pd.DataFrame, key_column: str = "candidate_evaluation_key") -> pd.DataFrame:
