@@ -21,16 +21,16 @@ The original rule-based event scoring file is not overwritten. The learned rules
 |---|---|---|---|---|---|---|---|---|
 | bond_with_warrant | 10 | 0 | 0 | 0 | 10 | 0.00% | 0.0 | hold_insufficient_data |
 | bonus_issue | 3 | 0 | 0 | 0 | 3 | 0.00% | 0.0 | hold_insufficient_data |
-| convertible_bond | 213 | 0 | 0 | 0 | 213 | 0.00% | 0.0 | hold_insufficient_data |
+| convertible_bond | 247 | 0 | 0 | 0 | 247 | 0.00% | 0.0 | hold_insufficient_data |
 | disclosure_violation | 48 | 0 | 0 | 0 | 48 | 0.00% | 0.0 | hold_insufficient_data |
 | earnings_guidance | 4 | 0 | 0 | 0 | 4 | 0.00% | 0.0 | hold_insufficient_data |
-| investment_decision | 88 | 0 | 0 | 0 | 88 | 0.00% | 0.0 | hold_insufficient_data |
-| lawsuit | 88 | 0 | 0 | 0 | 88 | 0.00% | 0.0 | hold_insufficient_data |
-| major_shareholder_change | 328 | 0 | 0 | 0 | 328 | 0.00% | 0.0 | hold_insufficient_data |
-| merger | 51 | 0 | 0 | 0 | 51 | 0.00% | 0.0 | hold_insufficient_data |
-| paid_in_capital_increase | 194 | 0 | 0 | 0 | 194 | 0.00% | 0.0 | hold_insufficient_data |
-| spin_off | 12 | 0 | 0 | 0 | 12 | 0.00% | 0.0 | hold_insufficient_data |
-| supply_contract | 189 | 0 | 0 | 0 | 189 | 0.00% | 0.0 | hold_insufficient_data |
+| investment_decision | 92 | 0 | 0 | 0 | 92 | 0.00% | 0.0 | hold_insufficient_data |
+| lawsuit | 91 | 0 | 0 | 0 | 91 | 0.00% | 0.0 | hold_insufficient_data |
+| major_shareholder_change | 420 | 0 | 0 | 0 | 420 | 0.00% | 0.0 | hold_insufficient_data |
+| merger | 61 | 0 | 0 | 0 | 61 | 0.00% | 0.0 | hold_insufficient_data |
+| paid_in_capital_increase | 256 | 0 | 0 | 0 | 256 | 0.00% | 0.0 | hold_insufficient_data |
+| spin_off | 18 | 0 | 0 | 0 | 18 | 0.00% | 0.0 | hold_insufficient_data |
+| supply_contract | 243 | 0 | 0 | 0 | 243 | 0.00% | 0.0 | hold_insufficient_data |
 
 ## Interpretation
 

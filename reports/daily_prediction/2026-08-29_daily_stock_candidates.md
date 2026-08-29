@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-08-29
 
-Generated at: 2026-08-29 12:41:58
+Generated at: 2026-08-29 13:22:47
 
 ML dataset: `data/processed/ml_dataset_20260829.csv`
 
@@ -19,17 +19,17 @@ The recommender now applies a stock-specific historical adjustment. Stocks with 
 | Stock | Company | Total | Evaluated | Success Rate | Avg Next Close | Pattern Label | Stock Adj |
 |---|---|---:|---:|---:|---:|---|---:|
 | 950220 | 네오이뮨텍 | 2 | 0 | N/A | Not available | mostly_pending | 0.00 |
+| 000180 | 성창기업지주 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 000210 | DL | 2 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 000500 | 가온전선 | 4 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 000520 | 삼일제약 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
+| 000640 | 동아쏘시오홀딩스 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 000660 | SK하이닉스 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 000950 | 전방 | 7 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 0009K0 | 에임드바이오 | 3 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 001040 | CJ | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
-| 001060 | JW중외제약 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
+| 001060 | JW중외제약 | 2 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 001260 | 남광토건 | 4 | 0 | N/A | Not available | mostly_pending | 0.00 |
-| 001340 | PKC | 2 | 0 | N/A | Not available | mostly_pending | 0.00 |
-| 001420 | 태원물산 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
 
 ## Event-Type Success Rate Adjustment
 
@@ -39,16 +39,16 @@ The recommender also applies event-type performance adjustments based on histori
 |---|---:|---:|---:|---:|---:|
 | bond_with_warrant | 10 | 0 | N/A | Not available | 0.00 |
 | bonus_issue | 3 | 0 | N/A | Not available | 0.00 |
-| convertible_bond | 213 | 0 | N/A | Not available | 0.00 |
+| convertible_bond | 247 | 0 | N/A | Not available | 0.00 |
 | disclosure_violation | 48 | 0 | N/A | Not available | 0.00 |
 | earnings_guidance | 4 | 0 | N/A | Not available | 0.00 |
-| investment_decision | 88 | 0 | N/A | Not available | 0.00 |
-| lawsuit | 88 | 0 | N/A | Not available | 0.00 |
-| major_shareholder_change | 328 | 0 | N/A | Not available | 0.00 |
-| merger | 51 | 0 | N/A | Not available | 0.00 |
-| paid_in_capital_increase | 194 | 0 | N/A | Not available | 0.00 |
-| spin_off | 12 | 0 | N/A | Not available | 0.00 |
-| supply_contract | 189 | 0 | N/A | Not available | 0.00 |
+| investment_decision | 92 | 0 | N/A | Not available | 0.00 |
+| lawsuit | 91 | 0 | N/A | Not available | 0.00 |
+| major_shareholder_change | 420 | 0 | N/A | Not available | 0.00 |
+| merger | 61 | 0 | N/A | Not available | 0.00 |
+| paid_in_capital_increase | 256 | 0 | N/A | Not available | 0.00 |
+| spin_off | 18 | 0 | N/A | Not available | 0.00 |
+| supply_contract | 243 | 0 | N/A | Not available | 0.00 |
 
 ## Error-Note Learning Adjustment
 
@@ -58,18 +58,126 @@ The recommender also reads past error notes and applies event-type level confide
 |---|---:|---:|---:|---:|---:|
 | bond_with_warrant | 10 | 0 | 0 | 10 | 0.00 |
 | bonus_issue | 3 | 0 | 0 | 3 | 0.00 |
-| convertible_bond | 213 | 0 | 0 | 213 | 0.00 |
+| convertible_bond | 247 | 0 | 0 | 247 | 0.00 |
 | disclosure_violation | 48 | 0 | 0 | 48 | 0.00 |
 | earnings_guidance | 4 | 0 | 0 | 4 | 0.00 |
-| investment_decision | 88 | 0 | 0 | 88 | 0.00 |
-| lawsuit | 88 | 0 | 0 | 88 | 0.00 |
-| major_shareholder_change | 328 | 0 | 0 | 328 | 0.00 |
-| merger | 51 | 0 | 0 | 51 | 0.00 |
-| paid_in_capital_increase | 194 | 0 | 0 | 194 | 0.00 |
+| investment_decision | 92 | 0 | 0 | 92 | 0.00 |
+| lawsuit | 91 | 0 | 0 | 91 | 0.00 |
+| major_shareholder_change | 420 | 0 | 0 | 420 | 0.00 |
+| merger | 61 | 0 | 0 | 61 | 0.00 |
+| paid_in_capital_increase | 256 | 0 | 0 | 256 | 0.00 |
 
 ## Positive Candidates
 
-### 1. 삼일씨엔에스 (004440)
+### 1. 진흥기업 (002780)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **140.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **140.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: '해링턴플레이스 오룡역', 대치동 전문가 초청 대입 전략 설명회 개최 | 국가물산업클러스터, 지능형자동차부품진흥원와 손잡고 기업지원 강화 | 중기부, '2026년 상반기 적극행정 우수사례' 15건 선정
+
+### 2. 진흥기업 (002780)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **140.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **140.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: '해링턴플레이스 오룡역', 대치동 전문가 초청 대입 전략 설명회 개최 | 국가물산업클러스터, 지능형자동차부품진흥원와 손잡고 기업지원 강화 | 중기부, '2026년 상반기 적극행정 우수사례' 15건 선정
+
+### 3. 강원에너지 (114190)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **137.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **137.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경영권 매각 에넥스, 인수자 측 자금 모집 난항… 관리종목 지정 가능성... | "도내 상장사 실적 턴어라운드"…상반기 순이익 1887억 흑자 전환 | 배터리 새 먹거리 열린다… ESS·BBU 기대에 2차전지주 '휘파람'
+
+### 4. 강원에너지 (114190)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **137.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **137.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경영권 매각 에넥스, 인수자 측 자금 모집 난항… 관리종목 지정 가능성... | "도내 상장사 실적 턴어라운드"…상반기 순이익 1887억 흑자 전환 | 배터리 새 먹거리 열린다… ESS·BBU 기대에 2차전지주 '휘파람'
+
+### 5. 강원에너지 (114190)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **137.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **137.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경영권 매각 에넥스, 인수자 측 자금 모집 난항… 관리종목 지정 가능성... | "도내 상장사 실적 턴어라운드"…상반기 순이익 1887억 흑자 전환 | 배터리 새 먹거리 열린다… ESS·BBU 기대에 2차전지주 '휘파람'
+
+### 6. 강원에너지 (114190)
+
+- Candidate type: **POSITIVE_CANDIDATE**
+- Expected direction: **positive**
+- Base recommendation score: **137.00**
+- Error-note adjustment score: **0.00**
+- Event-type performance adjustment score: **0.00**
+- Stock-specific pattern adjustment score: **0.00**
+- Adjusted recommendation score: **137.00**
+- Risk level: **LOW**
+- Event type: `supply_contract`
+- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Next open return data: Not available
+- Next close return data: Not available
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 10. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 경영권 매각 에넥스, 인수자 측 자금 모집 난항… 관리종목 지정 가능성... | "도내 상장사 실적 턴어라운드"…상반기 순이익 1887억 흑자 전환 | 배터리 새 먹거리 열린다… ESS·BBU 기대에 2차전지주 '휘파람'
+
+### 7. 자이에스앤디 (317400)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -81,301 +189,69 @@ The recommender also reads past error notes and applies event-type level confide
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 해상풍력 타워 및 하부구조물 글로벌 공급망 확보… 풍력 테마주에 매수... | [이넷뉴스 브랜드평판] 두산에너빌리티, 풍력에너지 상장기업 8월 1위·... | 신재생에너지주 조정 본격화?... 풍력 관련주 대부분 '뚝 뚝'
+- Related news examples: 삼전닉스 덕분에 18조 번다고?…뒤에서 방긋 웃는 이 종목 [주末머니] | 자이에스앤디, 남양주 진접4지구 공동주택 개발사업 수주 | [오늘의 주요공시] 삼성바이오로직스ㆍ한화엔진ㆍ대우건설 등
 
-### 2. 네오셈 (253590)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **122.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **122.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결(자율공시)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 7. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: HBM4 넘어 첨단 패키징까지…반도체 장비주 상승세 확산 | 차세대 반도체 영토 확장… 티엘비, CXL 모멘텀 타고 매수세 폭발 | HBM과 후공정 장비주 동반 강세… 반도체 업종 전반 강한 반등 장세 주도
-
-### 3. 한신공영 (004960)
+### 8. 자이에스앤디 (317400)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **115.00**
+- Base recommendation score: **132.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **115.00**
+- Adjusted recommendation score: **132.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 김태규 "3,814억 울산 트램 멈춰선 안 돼"…사업은 이미 시작, 김상욱 '... | 김태규 의원, 울산 트램 정책토론회 "국가사업 기회 포기 안 돼" | ‘의왕역 한신더휴’ 최종 청약 경쟁률 8.59대 1…총 421명 몰렸다
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼전닉스 덕분에 18조 번다고?…뒤에서 방긋 웃는 이 종목 [주末머니] | 자이에스앤디, 남양주 진접4지구 공동주택 개발사업 수주 | [오늘의 주요공시] 삼성바이오로직스ㆍ한화엔진ㆍ대우건설 등
 
-### 4. 한신공영 (004960)
+### 9. 자이에스앤디 (317400)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **115.00**
+- Base recommendation score: **132.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **115.00**
+- Adjusted recommendation score: **132.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 김태규 "3,814억 울산 트램 멈춰선 안 돼"…사업은 이미 시작, 김상욱 '... | 김태규 의원, 울산 트램 정책토론회 "국가사업 기회 포기 안 돼" | ‘의왕역 한신더휴’ 최종 청약 경쟁률 8.59대 1…총 421명 몰렸다
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼전닉스 덕분에 18조 번다고?…뒤에서 방긋 웃는 이 종목 [주末머니] | 자이에스앤디, 남양주 진접4지구 공동주택 개발사업 수주 | [오늘의 주요공시] 삼성바이오로직스ㆍ한화엔진ㆍ대우건설 등
 
-### 5. 한신공영 (004960)
+### 10. 자이에스앤디 (317400)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
-- Base recommendation score: **115.00**
+- Base recommendation score: **132.00**
 - Error-note adjustment score: **0.00**
 - Event-type performance adjustment score: **0.00**
 - Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **115.00**
+- Adjusted recommendation score: **132.00**
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
+- Disclosure title: 단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 김태규 "3,814억 울산 트램 멈춰선 안 돼"…사업은 이미 시작, 김상욱 '... | 김태규 의원, 울산 트램 정책토론회 "국가사업 기회 포기 안 돼" | ‘의왕역 한신더휴’ 최종 청약 경쟁률 8.59대 1…총 421명 몰렸다
-
-### 6. 한신공영 (004960)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **115.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **115.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 5. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 김태규 "3,814억 울산 트램 멈춰선 안 돼"…사업은 이미 시작, 김상욱 '... | 김태규 의원, 울산 트램 정책토론회 "국가사업 기회 포기 안 돼" | ‘의왕역 한신더휴’ 최종 청약 경쟁률 8.59대 1…총 421명 몰렸다
-
-### 7. 태영건설 (009410)
-
-- Candidate type: **POSITIVE_CANDIDATE**
-- Expected direction: **positive**
-- Base recommendation score: **94.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **94.00**
-- Risk level: **LOW**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 2. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 금리가 오르면 부동산 계산법이 바뀐다[0과 1로 보는 부동산세상] | 계룡건설, ‘세종국책연구단지 제2청사’ 수주 초읽기 | 주택사업 부진...건설사, 정비·공공공사서 일감 확보
+- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
+- Related news examples: 삼전닉스 덕분에 18조 번다고?…뒤에서 방긋 웃는 이 종목 [주末머니] | 자이에스앤디, 남양주 진접4지구 공동주택 개발사업 수주 | [오늘의 주요공시] 삼성바이오로직스ㆍ한화엔진ㆍ대우건설 등
 
 ## Volatile Watchlist
 
-### 1. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 2. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 3. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 4. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 5. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 6. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 7. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 8. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 9. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
-
-### 10. 아이큐어 (175250)
-
-- Candidate type: **WATCHLIST_VOLATILE**
-- Expected direction: **volatile**
-- Base recommendation score: **14.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **14.00**
-- Risk level: **MEDIUM**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 기타시장안내(최대주주의의무보유관련)              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 1. Negative keyword count is 2. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 아이큐어, 250억 유증 납입 완료…신신제약도 주주 합류 | [HIT알공] 삼성바이오 3조 유상증자…중외, 보팡글루타이드 당뇨 3상 | [오늘의 증시일정] PI첨단소재ㆍDMSㆍ동방메디컬 등
+No candidates in this section.
 
 ## General Watchlist
 
@@ -383,59 +259,7 @@ No candidates in this section.
 
 ## Risk / Avoid Review List
 
-### 1. SK디앤디 (210980)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **positive**
-- Base recommendation score: **15.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **15.00**
-- Risk level: **HIGH**
-- Event type: `supply_contract`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is -9. Negative keyword count is 10. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: [마감시황]코스피 6788.88 마감, 외국인·기관 매도에 나흘 만에 하락 | [EBN 데이터센터] 코스피, 대형주 부진에 6800선 하회…외국인·기관 '팔... | SK디앤디, 240% 유상증자 현실화에 8%대 급락 [핫종목]
-
-### 2. 아우딘퓨쳐스 (227610)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **volatile**
-- Base recommendation score: **16.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **16.00**
-- Risk level: **HIGH**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]최대주주변경을수반하는주식담보제공계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 2. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 인디 브랜드 흥행 열풍에 화장품업종 花色도네… 실적 기대감 고조 | 화장품주 이틀째 약세...대형주 부진 속 중소형주 강세 | 북미·일본 넘어 유럽·중동 시장 개척…화장품 밸류체인 동반 휘파람
-
-### 3. 아우딘퓨쳐스 (227610)
-
-- Candidate type: **AVOID_OR_RISK_REVIEW**
-- Expected direction: **volatile**
-- Base recommendation score: **16.00**
-- Error-note adjustment score: **0.00**
-- Event-type performance adjustment score: **0.00**
-- Stock-specific pattern adjustment score: **0.00**
-- Adjusted recommendation score: **16.00**
-- Risk level: **HIGH**
-- Event type: `major_shareholder_change`
-- Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: [기재정정]최대주주변경을수반하는주식담보제공계약체결              
-- Next open return data: Not available
-- Next close return data: Not available
-- Reason: Event type is major_shareholder_change. Initial direction is volatile. Event score is 10. News attention score is 5. News sentiment score is 2. Negative keyword count is 3. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 인디 브랜드 흥행 열풍에 화장품업종 花色도네… 실적 기대감 고조 | 화장품주 이틀째 약세...대형주 부진 속 중소형주 강세 | 북미·일본 넘어 유럽·중동 시장 개척…화장품 밸류체인 동반 휘파람
+No candidates in this section.
 
 ## Data Readiness
 

@@ -1,6 +1,6 @@
 # Volume + Market-Adjusted Daily Candidate Report - 2026-08-29
 
-Generated at: 2026-08-29 12:41:56
+Generated at: 2026-08-29 13:22:44
 
 ML dataset source: `data/processed/ml_dataset_20260829.csv`
 Market-adjusted score source: `data/processed/market_adjusted_score_adjustments_20260829.csv`
@@ -27,23 +27,37 @@ base_recommendation_score_v3
 
 ## Summary
 
-- Total rows: **113**
-- watchlist_candidate: **98**
-- strong_volume_market_adjusted_candidate: **7**
-- risk_or_avoid_review: **7**
-- positive_candidate: **1**
+- Total rows: **951**
+- watchlist_candidate: **351**
+- risk_or_avoid_review: **239**
+- strong_volume_market_adjusted_candidate: **237**
+- positive_candidate: **105**
+- volatile_watchlist: **19**
 
 ## Strong Volume + Market-Adjusted Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 004440 | 삼일씨엔에스 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
-| 1970-01-01 | 253590 | 네오셈 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 120.00 | 0.00 | 0.00 | 120.00 | N/A | N/A | N/A |
-| 1970-01-01 | 004960 | 한신공영 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 110.00 | 0.00 | 0.00 | 110.00 | N/A | N/A | N/A |
-| 1970-01-01 | 004960 | 한신공영 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 110.00 | 0.00 | 0.00 | 110.00 | N/A | N/A | N/A |
-| 1970-01-01 | 004960 | 한신공영 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 110.00 | 0.00 | 0.00 | 110.00 | N/A | N/A | N/A |
-| 1970-01-01 | 004960 | 한신공영 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 110.00 | 0.00 | 0.00 | 110.00 | N/A | N/A | N/A |
-| 1970-01-01 | 009410 | 태영건설 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 95.00 | 0.00 | 0.00 | 95.00 | N/A | N/A | N/A |
+| 1970-01-01 | 114190 | 강원에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 135.00 | 0.00 | 0.00 | 135.00 | N/A | N/A | N/A |
+| 1970-01-01 | 114190 | 강원에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 135.00 | 0.00 | 0.00 | 135.00 | N/A | N/A | N/A |
+| 1970-01-01 | 114190 | 강원에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 135.00 | 0.00 | 0.00 | 135.00 | N/A | N/A | N/A |
+| 1970-01-01 | 114190 | 강원에너지 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 135.00 | 0.00 | 0.00 | 135.00 | N/A | N/A | N/A |
+| 1970-01-01 | 002780 | 진흥기업 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 135.00 | 0.00 | 0.00 | 135.00 | N/A | N/A | N/A |
+| 1970-01-01 | 002780 | 진흥기업 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 135.00 | 0.00 | 0.00 | 135.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
+| 1970-01-01 | 317400 | 자이에스앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 130.00 | 0.00 | 0.00 | 130.00 | N/A | N/A | N/A |
 
 ## Strong Market-Adjusted Candidates
 
@@ -57,17 +71,36 @@ No candidates in this section.
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1970-01-01 | 210980 | SK디앤디 | supply_contract | positive | pending | pending | insufficient_volume_baseline | 40.00 | 0.00 | 0.00 | 40.00 | N/A | N/A | N/A |
+| 1970-01-01 | 032350 | 롯데관광개발 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
+| 1970-01-01 | 032350 | 롯데관광개발 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
+| 1970-01-01 | 032350 | 롯데관광개발 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 56.00 | 0.00 | 0.00 | 56.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
+| 1970-01-01 | 090370 | 메타랩스 | merger | volatile | pending | pending | insufficient_volume_baseline | 51.00 | 0.00 | 0.00 | 51.00 | N/A | N/A | N/A |
 
 ## Watchlist Candidates
 
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 003470 | 유안타증권 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 31.00 | 0.00 | 0.00 | 31.00 | N/A | N/A | N/A |
+| 1970-01-01 | 009290 | 광동제약 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 31.00 | 0.00 | 0.00 | 31.00 | N/A | N/A | N/A |
 | 1970-01-01 | 227610 | 아우딘퓨쳐스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 31.00 | 0.00 | 0.00 | 31.00 | N/A | N/A | N/A |
 | 1970-01-01 | 227610 | 아우딘퓨쳐스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 31.00 | 0.00 | 0.00 | 31.00 | N/A | N/A | N/A |
-| 1970-01-01 | 175250 | 아이큐어 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
-| 1970-01-01 | 175250 | 아이큐어 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
-| 1970-01-01 | 175250 | 아이큐어 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
+| 1970-01-01 | 268280 | 미원에스씨 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 31.00 | 0.00 | 0.00 | 31.00 | N/A | N/A | N/A |
 | 1970-01-01 | 175250 | 아이큐어 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
 | 1970-01-01 | 175250 | 아이큐어 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
 | 1970-01-01 | 175250 | 아이큐어 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 26.00 | 0.00 | 0.00 | 26.00 | N/A | N/A | N/A |
@@ -86,7 +119,27 @@ No candidates in this section.
 
 ## Volatile Watchlist
 
-No candidates in this section.
+| event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030530 | 원익홀딩스 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 214330 | 금호에이치티 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 214330 | 금호에이치티 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 214330 | 금호에이치티 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 030000 | 제일기획 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | 16.00 | 0.00 | 0.00 | 16.00 | N/A | N/A | N/A |
+| 1970-01-01 | 002360 | SH에너지화학 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | -4.00 | 0.00 | 0.00 | -4.00 | N/A | N/A | N/A |
+| 1970-01-01 | 002360 | SH에너지화학 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | -4.00 | 0.00 | 0.00 | -4.00 | N/A | N/A | N/A |
+| 1970-01-01 | 044380 | 주연테크 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | -4.00 | 0.00 | 0.00 | -4.00 | N/A | N/A | N/A |
+| 1970-01-01 | 044380 | 주연테크 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | -4.00 | 0.00 | 0.00 | -4.00 | N/A | N/A | N/A |
+| 1970-01-01 | 044380 | 주연테크 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | -4.00 | 0.00 | 0.00 | -4.00 | N/A | N/A | N/A |
+| 1970-01-01 | 044380 | 주연테크 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | -4.00 | 0.00 | 0.00 | -4.00 | N/A | N/A | N/A |
+| 1970-01-01 | 044380 | 주연테크 | major_shareholder_change | volatile | pending | pending | insufficient_volume_baseline | -4.00 | 0.00 | 0.00 | -4.00 | N/A | N/A | N/A |
 
 ## High-Attention Risk Review
 
@@ -97,12 +150,25 @@ No candidates in this section.
 | event_date | stock_code | corp_name | event_type | prediction_direction | prediction_result | market_adjusted_result | volume_reaction_label | base_recommendation_score_v3 | market_adjusted_score_adjustment | trading_volume_score_adjustment | final_volume_market_adjusted_score | market_adjusted_next_close_return | event_volume_ratio_20d | next_volume_ratio_20d |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
-| 1970-01-01 | 053060 | 세동 | lawsuit | negative | pending | pending | insufficient_volume_baseline | -60.00 | 0.00 | 0.00 | -60.00 | N/A | N/A | N/A |
-| 1970-01-01 | 033790 | 피노 | paid_in_capital_increase | negative | pending | pending | insufficient_volume_baseline | -65.00 | 0.00 | 0.00 | -65.00 | N/A | N/A | N/A |
-| 1970-01-01 | 065420 | 에스아이리소스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
-| 1970-01-01 | 065420 | 에스아이리소스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
-| 1970-01-01 | 065420 | 에스아이리소스 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -70.00 | 0.00 | 0.00 | -70.00 | N/A | N/A | N/A |
-| 1970-01-01 | 079950 | 인베니아 | disclosure_violation | negative | pending | pending | insufficient_volume_baseline | -105.00 | 0.00 | 0.00 | -105.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
+| 1970-01-01 | 105550 | 엣지파운드리 | convertible_bond | negative | pending | pending | insufficient_volume_baseline | -15.00 | 0.00 | 0.00 | -15.00 | N/A | N/A | N/A |
 
 ## General Review
 

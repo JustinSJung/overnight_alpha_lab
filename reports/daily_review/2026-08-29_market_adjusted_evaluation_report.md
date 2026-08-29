@@ -1,6 +1,6 @@
 # Market-Adjusted Evaluation Report - 2026-08-29
 
-Generated at: 2026-08-29 12:41:54
+Generated at: 2026-08-29 13:22:31
 
 Source feature file: `data/processed/market_adjusted_features_20260829.csv`
 
@@ -14,8 +14,8 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary
 
-- Total rows: **27**
-- pending: **27**
+- Total rows: **292**
+- pending: **292**
 
 ## Interpretation
 
@@ -41,14 +41,14 @@ This report is generated for research and portfolio purposes only. It is not fin
 | 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
 | 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 79950 | 인베니아 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 65420 | 에스아이리소스 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 65420 | 에스아이리소스 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 65420 | 에스아이리소스 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 33790 | 피노 | negative | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 210980 | SK디앤디 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 9410 | 태영건설 | positive | pending | pending | N/A | N/A | N/A |
-| 1970-01-01 | 253590 | 네오셈 | positive | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
+| 1970-01-01 | 175250 | 아이큐어 | volatile | pending | pending | N/A | N/A | N/A |
 
 ## Next Step
 

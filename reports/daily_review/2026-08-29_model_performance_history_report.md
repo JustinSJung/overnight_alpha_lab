@@ -1,6 +1,6 @@
 # Model Performance History Report - 2026-08-29
 
-Generated at: 2026-08-29 12:41:57
+Generated at: 2026-08-29 13:22:45
 
 ## Purpose
 
@@ -14,22 +14,22 @@ This report is generated for research and portfolio purposes only. It is not fin
 
 ## Summary Metrics
 
-- ML dataset rows: **4952**
-- Error-note rows: **1228**
-- Market-adjusted evaluation rows: **1185**
-- Market-adjusted score rows: **1185**
-- Trading volume score rows: **17481**
+- ML dataset rows: **5790**
+- Error-note rows: **1493**
+- Market-adjusted evaluation rows: **1450**
+- Market-adjusted score rows: **1450**
+- Trading volume score rows: **184725**
 
 - Prediction success: **0**
 - Prediction failure: **0**
-- Prediction pending: **1228**
+- Prediction pending: **1493**
 - Prediction evaluated: **0**
 - Prediction success rate: **0.00%**
 
 - Market-adjusted success: **0**
 - Market-adjusted failure: **0**
 - Market-driven weak success: **0**
-- Market-adjusted pending: **1185**
+- Market-adjusted pending: **1450**
 
 - Total market-adjusted score adjustment: **0.00**
 - Average market-adjusted score adjustment: **0.00**
@@ -76,7 +76,7 @@ This report is generated for research and portfolio purposes only. It is not fin
 | count |
 |---|
 | count    pending
-count       1228
+count       1493
 Name: 0, dtype: object |
 
 ## Market-Adjusted Result Counts
@@ -84,7 +84,7 @@ Name: 0, dtype: object |
 | count |
 |---|
 | count    pending
-count       1185
+count       1450
 Name: 0, dtype: object |
 
 ## Trading Volume Adjustment Counts
@@ -92,7 +92,7 @@ Name: 0, dtype: object |
 | count |
 |---|
 | count    neutral_volume_adjustment
-count                        17481
+count                       184725
 Name: 0, dtype: object |
 
 ## Event-Type Performance Summary
@@ -101,16 +101,16 @@ Name: 0, dtype: object |
 |---|---|---|---|---|---|---|
 | bond_with_warrant | 10 | 0 | 0 | 10 | 0 | 0.00% |
 | bonus_issue | 3 | 0 | 0 | 3 | 0 | 0.00% |
-| convertible_bond | 213 | 0 | 0 | 213 | 0 | 0.00% |
+| convertible_bond | 247 | 0 | 0 | 247 | 0 | 0.00% |
 | disclosure_violation | 48 | 0 | 0 | 48 | 0 | 0.00% |
 | earnings_guidance | 4 | 0 | 0 | 4 | 0 | 0.00% |
-| investment_decision | 88 | 0 | 0 | 88 | 0 | 0.00% |
-| lawsuit | 88 | 0 | 0 | 88 | 0 | 0.00% |
-| major_shareholder_change | 328 | 0 | 0 | 328 | 0 | 0.00% |
-| merger | 51 | 0 | 0 | 51 | 0 | 0.00% |
-| paid_in_capital_increase | 194 | 0 | 0 | 194 | 0 | 0.00% |
-| spin_off | 12 | 0 | 0 | 12 | 0 | 0.00% |
-| supply_contract | 189 | 0 | 0 | 189 | 0 | 0.00% |
+| investment_decision | 92 | 0 | 0 | 92 | 0 | 0.00% |
+| lawsuit | 91 | 0 | 0 | 91 | 0 | 0.00% |
+| major_shareholder_change | 420 | 0 | 0 | 420 | 0 | 0.00% |
+| merger | 61 | 0 | 0 | 61 | 0 | 0.00% |
+| paid_in_capital_increase | 256 | 0 | 0 | 256 | 0 | 0.00% |
+| spin_off | 18 | 0 | 0 | 18 | 0 | 0.00% |
+| supply_contract | 243 | 0 | 0 | 243 | 0 | 0.00% |
 
 ## Automation History
 
