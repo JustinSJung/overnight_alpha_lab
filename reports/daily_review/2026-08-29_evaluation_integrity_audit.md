@@ -19,21 +19,21 @@ Recommended safe deduplication key: `candidate_id` when available; otherwise `st
 
 | stock_code | signal_date | prediction_date | evaluation_date | score_version | candidate_id | source_file | prediction_result |
 |---|---|---|---|---|---|---|---|
-| 003070 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260707.csv |  |
 | 069460 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260707.csv |  |
-| 322780 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260707.csv |  |
-| 321370 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260707.csv |  |
-| 003070 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
+| 0126Z0 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260707.csv |  |
+| 347700 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260707.csv |  |
+| 187870 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260707.csv |  |
 | 069460 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
-| 322780 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
-| 321370 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
-| 003070 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
+| 0126Z0 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
+| 347700 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
+| 187870 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
 | 069460 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
-| 321370 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
-| 322780 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
-| 003070 |  |  | 2026-07-20 |  | f1d2502f0ec6bc0d | data/predictions/price_candidate_evaluation_20260720.csv | failure |
+| 0126Z0 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
+| 187870 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
+| 347700 |  |  |  |  |  | data/predictions/price_candidate_evaluation_20260709.csv |  |
 | 069460 |  |  | 2026-07-20 |  | 6ddc663d233d1452 | data/predictions/price_candidate_evaluation_20260720.csv | pending |
-| 322780 |  |  | 2026-07-20 |  | 588b4708dca67cf1 | data/predictions/price_candidate_evaluation_20260720.csv | success |
+| 0126Z0 |  |  | 2026-07-20 |  | 2ab2d2b2d8fba094 | data/predictions/price_candidate_evaluation_20260720.csv | success |
+| 347700 |  |  | 2026-07-20 |  | 88a6b82b07d4d16e | data/predictions/price_candidate_evaluation_20260720.csv | success |
 
 ## v1 vs v2 Performance
 
