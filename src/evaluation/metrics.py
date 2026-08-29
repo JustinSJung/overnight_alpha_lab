@@ -14,6 +14,7 @@ adding another local copy.
 import hashlib
 import math
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
@@ -24,7 +25,24 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
+from src.storage.schema import (
+    EVALUATION_STATE_DATA_UNAVAILABLE,
+    EVALUATION_STATE_EVALUATED,
+    EVALUATION_STATE_NOT_SCORED,
+    EVALUATION_STATE_WAITING_FOR_OUTCOME,
+    EVALUATION_WAIT_TIMEOUT_DAYS,
+    REASON_INITIAL_ACTION_HOLD,
+    REASON_INVALID_CANDIDATE_IDENTITY,
+    REASON_MALFORMED_PRICE_DATA,
+    REASON_NEUTRAL_DIRECTION,
+    REASON_PRICE_FILE_MISSING,
+    REASON_PRICE_HISTORY_GAP_TIMEOUT,
+    REASON_T1_NOT_AVAILABLE,
+    RESULT_FAILURE,
+    RESULT_PENDING,
+    RESULT_SKIPPED,
+    RESULT_SUCCESS,
+)
 
 
 def wilson_lower_bound(success: int, total: int, z: float = 1.96) -> float:
@@ -210,6 +228,103 @@ def success_series(df: pd.DataFrame, success_column: str = "success_close_t1") -
             valid = ~series.isin(["", "nan", "none", "<na>"])
             result = result.where(~(result.eq(RESULT_PENDING) & valid), series)
     return result
+
+
+def _blank(value) -> bool:
+    return value is None or (isinstance(value, float) and pd.isna(value)) or str(value).strip() == ""
+
+
+def _derive_state_for_row(row, as_of: pd.Timestamp) -> tuple[str, Optional[str], Optional[str]]:
+    """
+    Row-level fallback for legacy rows that predate the persisted
+    evaluation_state/evaluation_result/reason_code columns. Reconstructs the
+    same classification evaluate_row() would have assigned, from whatever
+    older columns/notes that row actually has. Not exact for every historical
+    edge case (evaluation_note free text is the only signal for some
+    branches), but matches the current code's own branches wherever the
+    needed signal survived onto the row.
+    """
+    outcome = str(row.get("success_close_t1", "")).strip().lower()
+    if outcome in (RESULT_SUCCESS, RESULT_FAILURE):
+        return EVALUATION_STATE_EVALUATED, outcome, None
+
+    prediction_result = str(row.get("prediction_result", "")).strip().lower()
+    note = str(row.get("evaluation_note", "")).strip() if not _blank(row.get("evaluation_note")) else ""
+
+    if prediction_result == RESULT_SKIPPED:
+        # Both "Invalid candidate stock code or date." and "Price file
+        # error: ..." set prediction_result=skipped; the note text is the
+        # only way left to tell them apart on a legacy row.
+        if note.startswith("Price file error"):
+            return EVALUATION_STATE_DATA_UNAVAILABLE, None, REASON_MALFORMED_PRICE_DATA
+        return EVALUATION_STATE_DATA_UNAVAILABLE, None, REASON_INVALID_CANDIDATE_IDENTITY
+
+    if note == "No price file found.":
+        return EVALUATION_STATE_DATA_UNAVAILABLE, None, REASON_PRICE_FILE_MISSING
+
+    if note == "No next trading day price data available yet.":
+        # Legacy rows don't record whether previous_rows or future_rows was
+        # the empty one, so age-vs-timeout is the best available signal
+        # (matches the fix/evaluation-state-model investigation's
+        # age-based reclassification of the pre-migration "waiting_or_data_gap"
+        # bucket).
+        signal_date_parsed = pd.to_datetime(row.get("signal_date"), errors="coerce")
+        if pd.isna(signal_date_parsed):
+            return EVALUATION_STATE_WAITING_FOR_OUTCOME, None, REASON_T1_NOT_AVAILABLE
+        age_days = (as_of - signal_date_parsed).days
+        if age_days > EVALUATION_WAIT_TIMEOUT_DAYS:
+            return EVALUATION_STATE_DATA_UNAVAILABLE, None, REASON_PRICE_HISTORY_GAP_TIMEOUT
+        return EVALUATION_STATE_WAITING_FOR_OUTCOME, None, REASON_T1_NOT_AVAILABLE
+
+    # note is blank: either not_scored (no directional target) or a
+    # degenerate close_t1_return despite having a direction.
+    initial_action = row.get("initial_candidate_action")
+    if _blank(initial_action):
+        initial_action = row.get("candidate_action", "")
+    expects_positive = expected_positive({"candidate_action": initial_action, "prediction_direction": ""})
+    if expects_positive is None:
+        reason = REASON_INITIAL_ACTION_HOLD if str(initial_action).strip() == "HOLD" else REASON_NEUTRAL_DIRECTION
+        return EVALUATION_STATE_NOT_SCORED, None, reason
+    return EVALUATION_STATE_DATA_UNAVAILABLE, None, REASON_MALFORMED_PRICE_DATA
+
+
+def derive_evaluation_state(df: pd.DataFrame, as_of: Optional[pd.Timestamp] = None) -> pd.DataFrame:
+    """
+    Returns a DataFrame (same index as df) with columns evaluation_state,
+    evaluation_result, reason_code for every row.
+
+    Additive/backward-compatible: if a row already carries a persisted,
+    non-blank evaluation_state (written by evaluate_row() going forward),
+    that value is trusted as-is. Only rows from before this columns existed
+    (or where it's blank) get derived from older proxies (evaluation_note,
+    success_close_t1, initial_candidate_action, signal_date) via
+    _derive_state_for_row() -- no historical CSV is rewritten; this is a
+    pure read-time view.
+    """
+    if df.empty:
+        return pd.DataFrame(columns=["evaluation_state", "evaluation_result", "reason_code"])
+
+    if as_of is None:
+        as_of = pd.Timestamp(datetime.today().date())
+
+    has_persisted_column = "evaluation_state" in df.columns
+    states, evaluation_results, reasons = [], [], []
+    for _, row in df.iterrows():
+        persisted = row.get("evaluation_state") if has_persisted_column else None
+        if not _blank(persisted):
+            states.append(persisted)
+            evaluation_results.append(row.get("evaluation_result") if not _blank(row.get("evaluation_result")) else None)
+            reasons.append(row.get("reason_code") if not _blank(row.get("reason_code")) else None)
+            continue
+        state, evaluation_result, reason = _derive_state_for_row(row, as_of)
+        states.append(state)
+        evaluation_results.append(evaluation_result)
+        reasons.append(reason)
+
+    return pd.DataFrame(
+        {"evaluation_state": states, "evaluation_result": evaluation_results, "reason_code": reasons},
+        index=df.index,
+    )
 
 
 # ---------------------------------------------------------------------------
