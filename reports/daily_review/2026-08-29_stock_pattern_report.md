@@ -1,0 +1,406 @@
+# Stock-Specific Historical Pattern Report - 2026-08-29
+
+Generated at: 2026-08-29 11:45:47
+
+## Purpose
+
+This report summarizes historical prediction and event-reaction patterns by stock code. It helps identify whether specific stocks tend to react differently to disclosure events.
+
+## Important Notice
+
+This report is generated for research and portfolio purposes only. It is not financial advice or a buy/sell recommendation.
+
+## Overall Summary
+
+- Total error-note rows: **1228**
+- Number of stocks in history: **366**
+- Stocks with evaluated reactions: **0**
+- Stocks with pending-only reactions: **366**
+
+Most stock-level rows are still pending. Stock-level success rates will become meaningful after next-day price reactions are evaluated.
+
+## Stock Pattern Table
+
+| Stock | Company | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Common Event | Risk Note |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|
+| 351320 | 넥사다이내믹스 | 47 | 0 | 0 | 0 | 47 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 065420 | 에스아이리소스 | 35 | 0 | 0 | 0 | 35 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 006060 | 화승인더스트리 | 28 | 0 | 0 | 0 | 28 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 084180 | 수성웹툰 | 28 | 0 | 0 | 0 | 28 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 002420 | 세기상사 | 27 | 0 | 0 | 0 | 27 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 003100 | 선광 | 27 | 0 | 0 | 0 | 27 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 373200 | 엑스플러스 | 27 | 0 | 0 | 0 | 27 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 223220 | 로지스몬 | 23 | 0 | 0 | 0 | 23 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 043260 | 성호전자 | 22 | 0 | 0 | 0 | 22 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 069920 | 엑시온그룹 | 19 | 0 | 0 | 0 | 19 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 003470 | 유안타증권 | 18 | 0 | 0 | 0 | 18 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 083660 | CSA 코스믹 | 16 | 0 | 0 | 0 | 16 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 183490 | 엔지켐생명과학 | 16 | 0 | 0 | 0 | 16 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 208640 | 썸에이지 | 16 | 0 | 0 | 0 | 16 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 215090 | 솔디펜스 | 16 | 0 | 0 | 0 | 16 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 383800 | LX홀딩스 | 16 | 0 | 0 | 0 | 16 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 060900 | 에이전트AI | 14 | 0 | 0 | 0 | 14 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 089140 | 넥스턴앤롤코리아 | 14 | 0 | 0 | 0 | 14 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 175250 | 아이큐어 | 14 | 0 | 0 | 0 | 14 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 001470 | 삼부토건 | 13 | 0 | 0 | 0 | 13 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 061040 | 알에프텍 | 13 | 0 | 0 | 0 | 13 | N/A | N/A | N/A | merger | mostly_pending |
+| 109070 | 주성코퍼레이션 | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 128940 | 한미약품 | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 276730 | 한울앤제주 | 12 | 0 | 0 | 0 | 12 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 011000 | 진원생명과학 | 10 | 0 | 0 | 0 | 10 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 085660 | 차바이오텍 | 10 | 0 | 0 | 0 | 10 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 340810 | 시선AI | 10 | 0 | 0 | 0 | 10 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 228670 | 레이 | 9 | 0 | 0 | 0 | 9 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 009190 | 대양금속 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 018700 | 졸스 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 039200 | 오스코텍 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 148250 | 알엔투테크놀로지 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 189330 | 씨이랩 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 223310 | 사토시홀딩스 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 263800 | 데이타솔루션 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 309930 | 조이웍스앤코 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 366030 | 나인앤컴퍼니 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 475040 | 스트라드비젼 | 8 | 0 | 0 | 0 | 8 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 000950 | 전방 | 7 | 0 | 0 | 0 | 7 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 002020 | 코오롱 | 7 | 0 | 0 | 0 | 7 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 069460 | 대호에이엘 | 7 | 0 | 0 | 0 | 7 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 178320 | 서진시스템 | 7 | 0 | 0 | 0 | 7 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 294870 | IPARK현대산업개발 | 7 | 0 | 0 | 0 | 7 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 007460 | 에이프로젠 | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 008930 | 한미사이언스 | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 012630 | HDC | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 068270 | 셀트리온 | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 288980 | 모아데이타 | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 900120 | 씨엑스아이 | 6 | 0 | 0 | 0 | 6 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 003070 | 코오롱글로벌 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 005960 | 동부건설 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 013810 | 스페코 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 017940 | E1 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 024720 | 콜마홀딩스 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 028260 | 삼성물산 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 033310 | 엠투엔 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 034730 | SK | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 130660 | 한전산업 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 210120 | 캔버스엔 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 210980 | SK디앤디 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 290560 | 파라택시스이더리움 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | merger | mostly_pending |
+| 291230 | 엔피 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 347700 | 스피어 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 348370 | 엔켐 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | merger | mostly_pending |
+| 440110 | 파두 | 5 | 0 | 0 | 0 | 5 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 000500 | 가온전선 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 001260 | 남광토건 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 010960 | 삼호개발 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 017670 | SK텔레콤 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 023440 | 제이스코홀딩스 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 062970 | 한국첨단소재 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 069640 | 한세엠케이 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 073190 | 듀오백 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 187660 | 페니트리움바이오 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 243070 | 휴온스 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | merger | mostly_pending |
+| 276040 | 스코넥 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 297570 | 아틀라스링크 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 320000 | 한울반도체 | 4 | 0 | 0 | 0 | 4 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 0009K0 | 에임드바이오 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 001840 | 이화공영 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 002990 | 금호건설 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 005820 | 원림 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 020560 | 아시아나항공 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | merger | mostly_pending |
+| 028100 | 동아지질 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 031860 | 디에이치엑스컴퍼니 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 038880 | 아이에이 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 047040 | 대우건설 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 052770 | 아이톡시 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 059270 | 해성에어로보틱스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 060230 | 제이케이시냅스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 066430 | 아이로보틱스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 066790 | 씨씨에스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 079950 | 인베니아 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 084870 | 티비에이치글로벌 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 087260 | 모바일어플라이언스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 142760 | 모아라이프플러스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 179530 | 애드바이오텍 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 215480 | 토박스코리아 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 217730 | 강스템바이오텍 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 227610 | 아우딘퓨쳐스 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 290720 | 푸드나무 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 322780 | 코퍼스코리아 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 375500 | DL이앤씨 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 378800 | 샤페론 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 900300 | 오가닉티코스메틱 | 3 | 0 | 0 | 0 | 3 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 000210 | DL | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 001340 | PKC | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 001740 | SK네트웍스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 002210 | 동성제약 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 002810 | 삼영무역 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | merger | mostly_pending |
+| 003490 | 대한항공 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | merger | mostly_pending |
+| 004250 | 엔피씨 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 004440 | 삼일씨엔에스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 004780 | 대륙제관 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 004960 | 한신공영 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 004990 | 롯데지주 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 005710 | 대원산업 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 006260 | LS | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 006360 | GS건설 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 006370 | 대구백화점 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 006730 | 서부T&D | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 009410 | 태영건설 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 009810 | 플레이그램 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 010130 | 고려아연 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 011300 | 우성머티리얼스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 012510 | 더존비즈온 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 013700 | 까뮤이앤씨 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 016250 | SGC E&C | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 017810 | 풀무원 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 025620 | 차AI헬스케어 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 032580 | 피델릭스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 033530 | SJG세종 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | merger | mostly_pending |
+| 038530 | 케이바이오랩스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 054220 | 비츠로시스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 054930 | 유신 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 058450 | 한주에이알티 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 058730 | 다스코 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 064400 | LG씨엔에스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 071950 | 코아스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 073640 | 테라사이언스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 074610 | 이엔플러스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 079190 | 케스피온 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | merger | mostly_pending |
+| 082270 | 젬백스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 083470 | 이엠앤아이 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 089860 | 롯데렌탈 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 092040 | 아미코젠 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 096760 | JW홀딩스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 105550 | 엣지파운드리 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 109740 | 디에스케이 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 114190 | 강원에너지 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 115530 | 씨엔플러스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 121440 | 골프존홀딩스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 166090 | 하나머티리얼즈 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 200230 | 텔콘RF제약 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 205500 | 넥써쓰 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 211270 | AP위성 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 216400 | 인바이츠바이오코아 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 224060 | 더코디 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 226330 | 신테카바이오 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 234300 | 에스트래픽 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 236810 | 엔비티 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | earnings_guidance | mostly_pending |
+| 248070 | 솔루엠 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 252500 | 세화피앤씨 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 255220 | SG | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 261200 | 덴티스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 263750 | 펄어비스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | earnings_guidance | mostly_pending |
+| 272110 | 케이엔제이 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 290270 | 휴네시온 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 296640 | 이노에이엑스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 299660 | 셀리드 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 300080 | 플리토 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 307870 | 비투엔 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 321370 | 센서뷰 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 340360 | 다보링크 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 340930 | 유일에너테크 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 354200 | 엔젠바이오 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 380540 | 옵티코어 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 389680 | 유디엠텍 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 397030 | 에이프릴바이오 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 407400 | 꿈비 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 457600 | 벡트 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 465770 | STX그린로지스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 473980 | 노머스 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 950220 | 네오이뮨텍 | 2 | 0 | 0 | 0 | 2 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 000520 | 삼일제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 000660 | SK하이닉스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 001040 | CJ | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 001060 | JW중외제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 001420 | 태원물산 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 001630 | 종근당홀딩스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 002070 | 비비안 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 002460 | HS화성 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 002780 | 진흥기업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 002880 | 디와이에이 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 003060 | 에이프로젠바이오로직스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 003350 | 한국화장품제조 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 003520 | 영진약품 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 004140 | 동방 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 004800 | 효성 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 004890 | 동일산업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 005320 | 온타이드 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 005610 | 삼립 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 005690 | 파미셀 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 005940 | NH투자증권 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 006040 | 동원산업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 006220 | 제주은행 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 006740 | 블루산업개발 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 007110 | 일신석재 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 007570 | 일양약품 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 008470 | 부스타 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | bonus_issue | mostly_pending |
+| 009160 | SIMPAC | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 009320 | 아진전자부품 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 009420 | 한올바이오파마 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 009540 | HD한국조선해양 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 009620 | 삼보산업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 009830 | 한화솔루션 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 010060 | OCI홀딩스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 010400 | 우진아이엔에스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 010780 | 아이에스동서 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 011420 | 갤럭시아에스엠 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 011810 | STX | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 011930 | 신성이엔지 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 012170 | 아센디오 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 0126Z0 | 삼성에피스홀딩스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 013580 | 계룡건설산업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 014970 | 삼륭물산 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 018260 | 삼성에스디에스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 018500 | 동원금속 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 019490 | 엑시큐어하이트론 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 019680 | 대교 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 020150 | 롯데에너지머티리얼즈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 020710 | 시공테크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 023760 | 한국캐피탈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 025560 | 미래산업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 025950 | 동신건설 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 025980 | 아난티 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 027040 | 서울전자통신 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 027580 | 상보 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 028050 | 삼성E&A | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 028080 | 휴맥스홀딩스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
+| 029460 | 케이씨 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 030610 | 교보증권 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 032800 | 판타지오 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 033270 | 유나이티드 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 033540 | 파라텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 033790 | 피노 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 034230 | 파라다이스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 036620 | 감성코퍼레이션 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 036630 | 세종텔레콤 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 040910 | 아이씨디 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 042370 | 비츠로테크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 042940 | 상지건설 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 043090 | 더테크놀로지 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 045390 | 대아티아이 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 046120 | 오르비텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 047920 | HLB제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 049950 | 미래컴퍼니 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 052710 | 아모텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 053060 | 세동 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 053580 | 웹케시 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 053950 | 경남제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 054940 | 엑사이엔씨 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 055550 | 신한지주 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 056730 | CNT85 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 058820 | CMG제약 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 064350 | 현대로템 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 064800 | 포니링크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 065650 | 하이퍼코퍼레이션 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 065770 | CS | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 066410 | 버킷스튜디오 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 068240 | 다원시스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 071050 | 한국금융지주 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 071200 | 인피니트헬스케어 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 071850 | 캐스텍코리아 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 078350 | 한양디지텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 078590 | 휴림에이텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 079160 | CJ CGV | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 079900 | 전진건설로봇 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 080010 | 이상네트웍스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 083640 | 인콘 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 083790 | CG인바이츠 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 088390 | 이녹스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 088790 | 진도 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 089230 | THE E&M | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 091590 | 남화토건 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 095270 | 웨이브일렉트로 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 096240 | 크레버스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 097230 | HJ중공업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 097780 | 에코볼트 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
+| 099750 | 이지케어텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 104460 | 디와이피엔에프 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 106240 | 파인테크닉스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 107640 | 한중엔시에스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 114450 | 그린생명과학 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 115160 | 휴맥스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
+| 115450 | HLB테라퓨틱스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 115480 | 씨유메디칼 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 119850 | 지엔씨에너지 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 122640 | 예스티 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 123690 | 한국화장품 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 123750 | 알톤 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 127120 | 제이에스링크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 131100 | 티엔엔터테인먼트 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 131760 | 파인텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 134790 | 시디즈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 137400 | 피엔티 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 144510 | 지씨셀 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 159910 | 에코글로우 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 163730 | 핑거 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 178780 | 일월지엠엘 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 185750 | 종근당 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 187870 | 디바이스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 192820 | 코스맥스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
+| 196450 | 코아시아씨엠 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 199150 | 데이터스트림즈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 199800 | 툴젠 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 203650 | 드림시큐리티 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 215570 | 크로넥스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 216080 | 제테마 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 217190 | 제너셈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 226340 | 본느 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 229000 | 젠큐릭스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | merger | mostly_pending |
+| 229640 | LS에코에너지 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 235980 | 메드팩토 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 241590 | 화승엔터프라이즈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 241840 | 에이스토리 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 247660 | 나노씨엠에스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 250060 | 모비스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 253590 | 네오셈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 267250 | HD현대 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 268280 | 미원에스씨 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 270520 | 앱튼 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 277880 | 티에스아이 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 282720 | 금양그린파워 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 288620 | 에스프리즘 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+| 294090 | 이오플로우 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 296160 | 프로젠 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 297890 | HB솔루션 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 298040 | 효성중공업 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 302430 | 이노메트리 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 305090 | 마이크로디지탈 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 318060 | 그래피 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 333620 | 엔시스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 337840 | 유엑스엔 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 341170 | 퓨쳐메디신 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 348340 | 뉴로메카 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | bonus_issue | mostly_pending |
+| 348950 | 제이알글로벌리츠 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 352940 | 인바이오 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | disclosure_violation | mostly_pending |
+| 356860 | 티엘비 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | bonus_issue | mostly_pending |
+| 363280 | 티와이홀딩스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 368970 | 오에스피 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 376270 | HEM파마 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 389500 | 에스비비테크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 396470 | 워트 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 403490 | 우듬지팜 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | spin_off | mostly_pending |
+| 418620 | E8 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | paid_in_capital_increase | mostly_pending |
+| 419540 | 비스토스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | convertible_bond | mostly_pending |
+| 431190 | 케이쓰리아이 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 452260 | 한화갤러리아 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 463480 | 모티브링크 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | major_shareholder_change | mostly_pending |
+| 468530 | 프로티나 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | investment_decision | mostly_pending |
+| 475400 | 씨메스로보틱스 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 484870 | 엠앤씨솔루션 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 488900 | 비츠로넥스텍 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 490470 | 세미파이브 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | supply_contract | mostly_pending |
+| 950160 | 코오롱티슈진 | 1 | 0 | 0 | 0 | 1 | N/A | N/A | N/A | lawsuit | mostly_pending |
+
+## How to Read This Report
+
+- Total: total error-note rows for the stock.
+- Evaluated: rows with success or failure status.
+- Pending: rows waiting for next trading day price data.
+- Success Rate: success / evaluated rows.
+- Avg Next Open: average next-day open return for the stock.
+- Avg Next Close: average next-day close return for the stock.
+- Common Event: most frequent event type for the stock.
+- Risk Note: simple stock-level historical interpretation.
+
+## Next Step
+
+The next step is to use stock-specific patterns as another adjustment layer in the daily recommender.
