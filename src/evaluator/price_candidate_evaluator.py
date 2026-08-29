@@ -17,9 +17,9 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from src.evaluation.metrics import (
     candidate_direction_label,
-    dedupe_evaluations,
     expected_positive,
     safe_percentage,
+    stable_prediction_id_series,
 )
 from src.storage.schema import (
     RESULT_FAILURE,
@@ -106,18 +106,46 @@ def read_candidates() -> pd.DataFrame:
         df["stock_code"] = df["stock_code"].apply(normalize_stock_code)
 
     df["candidate_id"] = df.apply(candidate_id_for_row, axis=1)
-    df = df.drop_duplicates(subset=["candidate_id"], keep="last")
+    df["stable_prediction_id"] = stable_prediction_id_series(df)
+
+    # Dedup on stable_prediction_id, not legacy candidate_id: candidate_id
+    # hashes in prediction_date/candidate_action/price_candidate_score, all
+    # of which drift between re-scoring passes of the same real-world
+    # signal (same-day workflow_dispatch reruns overwrite that day's
+    # price_based_candidates_{date}.csv in place; weekend/holiday reruns
+    # carry a stale signal_date into a new day's file). Deduping on
+    # candidate_id let every such revision survive into the evaluation
+    # pool as if it were a separate candidate. keep="last" (sorted by
+    # source file, i.e. the most recently generated price_based_candidates
+    # file) keeps the most recent revision's score/action, matching
+    # dedupe_evaluations()'s same "latest snapshot wins" behavior.
+    sort_columns = [column for column in ["candidate_source_file"] if column in df.columns]
+    if sort_columns:
+        df = df.sort_values(sort_columns)
+    df = df.drop_duplicates(subset=["stable_prediction_id"], keep="last")
     return df
 
 
-def load_prior_resolved_evaluations() -> dict[str, dict]:
+def load_prediction_history() -> tuple[dict[str, dict], dict[str, dict]]:
     """
-    Candidate_id -> {"success_close_t1", "evaluation_date"} for the most
-    recent prior evaluation snapshot of each candidate (across all existing
-    price_candidate_evaluation_*.csv files). Used so evaluate_row() can keep
-    evaluation_date stable for candidates that were already resolved to the
-    same success/failure outcome, instead of re-stamping it to today on
-    every re-run.
+    Reads all existing price_candidate_evaluation_*.csv files once and
+    returns (prior_resolved, initial_snapshots), both keyed by
+    stable_prediction_id, both derived from the SAME evaluated_at/
+    source_file-sorted frame (ascending) so "latest" and "initial" are
+    picked with exactly symmetric tie-breaking -- only which end of the
+    same sorted sequence differs (keep="last" vs keep="first"):
+
+    - prior_resolved: stable_prediction_id -> {"success_close_t1",
+      "evaluation_date"} for the most recent prior snapshot (keep="last").
+      Used so evaluate_row() can keep evaluation_date stable for
+      predictions already resolved to the same success/failure outcome,
+      instead of re-stamping it to today on every re-run.
+    - initial_snapshots: stable_prediction_id -> {"candidate_action",
+      "prediction_direction"} of the EARLIEST known snapshot (keep=
+      "first"). This is what evaluate_row() uses to classify
+      success/failure -- see its docstring for why: a prediction's
+      outcome must be judged against the action it actually made at
+      signal_date, not whatever a later re-scoring pass changed it to.
     """
     frames = []
     for path in sorted(PREDICTIONS_DIR.glob("price_candidate_evaluation_*.csv")):
@@ -129,21 +157,35 @@ def load_prior_resolved_evaluations() -> dict[str, dict]:
             continue
 
     if not frames:
-        return {}
+        return {}, {}
 
     combined = pd.concat(frames, ignore_index=True)
-    unique = dedupe_evaluations(combined, key_column="candidate_evaluation_key")
+    combined["stable_prediction_id"] = stable_prediction_id_series(combined)
+    sort_columns = [column for column in ["evaluated_at", "source_file"] if column in combined.columns]
+    if sort_columns:
+        combined = combined.sort_values(sort_columns)
 
-    lookup = {}
-    for _, row in unique.iterrows():
-        candidate_id = row.get("candidate_id")
-        if candidate_id is None or pd.isna(candidate_id):
+    prior_resolved = {}
+    for _, row in combined.drop_duplicates(subset=["stable_prediction_id"], keep="last").iterrows():
+        stable_prediction_id = row.get("stable_prediction_id")
+        if stable_prediction_id is None or pd.isna(stable_prediction_id):
             continue
-        lookup[str(candidate_id)] = {
+        prior_resolved[str(stable_prediction_id)] = {
             "success_close_t1": row.get("success_close_t1"),
             "evaluation_date": row.get("evaluation_date"),
         }
-    return lookup
+
+    initial_snapshots = {}
+    for _, row in combined.drop_duplicates(subset=["stable_prediction_id"], keep="first").iterrows():
+        stable_prediction_id = row.get("stable_prediction_id")
+        if stable_prediction_id is None or pd.isna(stable_prediction_id):
+            continue
+        initial_snapshots[str(stable_prediction_id)] = {
+            "candidate_action": str(row.get("candidate_action", "")),
+            "prediction_direction": str(row.get("prediction_direction", "")),
+        }
+
+    return prior_resolved, initial_snapshots
 
 
 def normalize_price_df(path: Path) -> pd.DataFrame:
@@ -274,18 +316,58 @@ def evaluate_row(
     market_lookup: dict[str, str],
     market_index_df: pd.DataFrame,
     prior_evaluations: dict[str, dict] | None = None,
+    initial_snapshots: dict[str, dict] | None = None,
 ) -> dict:
     stock_code = normalize_stock_code(row.get("stock_code", ""))
     candidate_date = candidate_date_value(row)
-    expects_positive = expected_positive(row)
 
     result = row.to_dict()
     signal_date = row.get("signal_date", row.get("candidate_date", ""))
     prediction_date = row.get("prediction_date", row.get("candidate_date", signal_date))
 
+    stable_prediction_id = str(row.get("stable_prediction_id", ""))
+    latest_candidate_action = str(row.get("candidate_action", ""))
+    initial_snapshot = (initial_snapshots or {}).get(stable_prediction_id)
+    if initial_snapshot is not None:
+        # A prior revision (possibly from an earlier calendar day, possibly
+        # a same-day rerun) already exists for this stable_prediction_id --
+        # use ITS action/direction, not this row's, so a later re-scoring
+        # pass (e.g. WATCHLIST -> HOLD) can never redefine what an already-
+        # existing prediction's outcome is being judged against. See
+        # load_prediction_history(): initial_snapshot is the earliest
+        # snapshot (keep="first") on the same evaluated_at/source_file
+        # ascending sort that keep="last" uses for "latest" -- symmetric
+        # tie-breaking, just opposite ends of the same sequence.
+        initial_candidate_action = initial_snapshot.get("candidate_action", "")
+        initial_prediction_direction = initial_snapshot.get("prediction_direction", "")
+    else:
+        # No prior history -- this row IS the first-ever observation of
+        # this stable_prediction_id, so its own action/direction is, by
+        # definition, the initial one.
+        initial_candidate_action = latest_candidate_action
+        initial_prediction_direction = str(row.get("prediction_direction", ""))
+
+    # Directional target is fixed to the INITIAL action/direction -- never
+    # the latest/current row's -- so success/failure is always judged
+    # against what the prediction actually said at signal_date, immune to
+    # later revisions (including ones that arrive after the outcome was
+    # already observable, which would otherwise be look-ahead/evaluation
+    # drift).
+    expects_positive = expected_positive(
+        {
+            "candidate_action": initial_candidate_action,
+            "prediction_direction": initial_prediction_direction,
+        }
+    )
+    action_changed = bool(initial_candidate_action != latest_candidate_action)
+
     result.update(
         {
             "candidate_id": candidate_id_for_row(row),
+            "stable_prediction_id": stable_prediction_id,
+            "initial_candidate_action": initial_candidate_action,
+            "latest_candidate_action": latest_candidate_action,
+            "action_changed": action_changed,
             "candidate_direction": candidate_direction_label(expects_positive),
             "signal_date": signal_date,
             "prediction_date": prediction_date,
@@ -382,7 +464,7 @@ def evaluate_row(
     result["evaluation_status"] = "evaluated" if t1_result in {RESULT_SUCCESS, RESULT_FAILURE} else RESULT_PENDING
 
     if t1_result in {RESULT_SUCCESS, RESULT_FAILURE} and prior_evaluations:
-        prior = prior_evaluations.get(result["candidate_id"])
+        prior = prior_evaluations.get(stable_prediction_id)
         if (
             prior is not None
             and prior.get("success_close_t1") == t1_result
@@ -502,12 +584,25 @@ def main():
 
     market_lookup = load_market_lookup()
     market_index_df = load_market_index()
-    prior_evaluations = load_prior_resolved_evaluations()
+    # prior_evaluations/initial_snapshots are both keyed by stable_prediction_id
+    # (stock_code|signal_date|score_version), not legacy candidate_id.
+    # Note on which action success/failure judging uses: classify_success()
+    # in evaluate_row() is judged against initial_snapshot's action/direction
+    # (the EARLIEST known revision for this stable_prediction_id), never the
+    # current row's -- see evaluate_row()'s docstring comments. This is a
+    # deliberate fix: judging against the latest revision let a later
+    # re-score (e.g. WATCHLIST -> HOLD, arriving after the outcome was
+    # already observable) silently redefine what an existing prediction's
+    # outcome was being judged against -- a look-ahead/evaluation-drift
+    # risk. latest_candidate_action/action_changed are still recorded on
+    # every row as diagnostic revision info, just no longer used to decide
+    # success/failure.
+    prior_evaluations, initial_snapshots = load_prediction_history()
 
     rows = []
     for _, row in candidates.iterrows():
         try:
-            rows.append(evaluate_row(row, market_lookup, market_index_df, prior_evaluations))
+            rows.append(evaluate_row(row, market_lookup, market_index_df, prior_evaluations, initial_snapshots))
         except Exception as error:
             stock_code = normalize_stock_code(row.get("stock_code", ""))
             print(f"Price candidate evaluation skipped for {stock_code}: {error}")

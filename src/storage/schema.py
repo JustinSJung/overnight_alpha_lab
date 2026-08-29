@@ -32,6 +32,10 @@ PRICE_CANDIDATE_COLUMNS = [
 
 PRICE_EVALUATION_COLUMNS = [
     "candidate_id",
+    "stable_prediction_id",
+    "initial_candidate_action",
+    "latest_candidate_action",
+    "action_changed",
     "stock_code",
     "signal_date",
     "prediction_date",

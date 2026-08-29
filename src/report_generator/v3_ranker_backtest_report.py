@@ -16,7 +16,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.evaluation.metrics import safe_percentage
+from src.evaluation.metrics import dedupe_evaluations, safe_percentage
 from src.models.price_based_daily_recommender import EXPERIMENTAL_SCORE_VERSION, calculate_v3_components
 from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
 
@@ -54,58 +54,6 @@ def read_all_csv(directory: Path, pattern: str) -> pd.DataFrame:
     if not frames:
         return pd.DataFrame()
     return pd.concat(frames, ignore_index=True)
-
-
-def normalize_stock_code(value) -> str:
-    if value is None or pd.isna(value):
-        return ""
-    try:
-        return str(int(float(value))).zfill(6)
-    except Exception:
-        return str(value).strip().zfill(6)
-
-
-def date_key(df: pd.DataFrame, column: str) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    if column not in df.columns:
-        return pd.Series([""] * len(df), index=df.index, dtype=object)
-    parsed = pd.to_datetime(df[column], errors="coerce")
-    return parsed.dt.strftime("%Y-%m-%d").fillna(df[column].astype(str).replace("nan", ""))
-
-
-def score_version_series(df: pd.DataFrame) -> pd.Series:
-    if "score_version" not in df.columns:
-        return pd.Series(["legacy_or_unknown"] * len(df), index=df.index, dtype=object)
-    version = df["score_version"].astype(str).str.strip()
-    return version.where(~version.isin(["", "nan", "None", "<NA>"]), "legacy_or_unknown")
-
-
-def dedupe_key_series(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-    return (
-        df.get("stock_code", pd.Series([""] * len(df), index=df.index)).apply(normalize_stock_code)
-        + "|"
-        + date_key(df, "signal_date")
-        + "|"
-        + date_key(df, "prediction_date")
-        + "|"
-        + date_key(df, "evaluation_date")
-        + "|"
-        + score_version_series(df)
-    )
-
-
-def dedupe_evaluations(df: pd.DataFrame) -> pd.DataFrame:
-    if df.empty:
-        return df
-    working = df.copy()
-    working["v3_backtest_key"] = dedupe_key_series(working)
-    sort_columns = [column for column in ["evaluated_at", "source_file"] if column in working.columns]
-    if sort_columns:
-        working = working.sort_values(sort_columns)
-    return working.drop_duplicates(subset=["v3_backtest_key"], keep="last")
 
 
 def normalize_result_series(df: pd.DataFrame) -> pd.Series:
