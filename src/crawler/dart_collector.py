@@ -5,7 +5,9 @@ This script collects disclosure list data from OpenDART
 and saves the result as a CSV file under data/raw.
 """
 
+import json
 import os
+import time
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -16,6 +18,10 @@ from dotenv import load_dotenv
 
 DART_LIST_URL = "https://opendart.fss.or.kr/api/list.json"
 KST = ZoneInfo("Asia/Seoul")
+PAGE_COUNT = 100
+MAX_PAGE_RETRIES = 3
+RETRY_BACKOFF_SECONDS = 2
+BETWEEN_PAGE_SLEEP_SECONDS = 0.3
 
 
 def kst_business_day_yyyymmdd(now_utc: datetime | None = None) -> str:
@@ -56,38 +62,144 @@ def get_dart_api_key() -> str:
     return api_key
 
 
-def collect_disclosures(date_yyyymmdd: str) -> pd.DataFrame:
-    """Collect DART disclosure list for a specific date."""
-    api_key = get_dart_api_key()
-
+def fetch_page(api_key: str, date_yyyymmdd: str, page_no: int) -> dict | None:
+    """
+    Fetch one page of the DART disclosure list, retrying transient failures
+    up to MAX_PAGE_RETRIES times. Returns the parsed JSON response, or None
+    if every attempt failed.
+    """
     params = {
         "crtfc_key": api_key,
         "bgn_de": date_yyyymmdd,
         "end_de": date_yyyymmdd,
-        "page_no": 1,
-        "page_count": 100,
+        "page_no": page_no,
+        "page_count": PAGE_COUNT,
     }
 
-    response = requests.get(DART_LIST_URL, params=params, timeout=10)
-    response.raise_for_status()
+    for attempt in range(1, MAX_PAGE_RETRIES + 1):
+        try:
+            response = requests.get(DART_LIST_URL, params=params, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+        except Exception as error:
+            print(f"  page {page_no} attempt {attempt}/{MAX_PAGE_RETRIES} failed: {error}")
+            if attempt < MAX_PAGE_RETRIES:
+                time.sleep(RETRY_BACKOFF_SECONDS * attempt)
+            continue
 
-    data = response.json()
+        if data.get("status") != "000":
+            print(
+                f"  page {page_no} attempt {attempt}/{MAX_PAGE_RETRIES} returned "
+                f"status={data.get('status')}, message={data.get('message')}"
+            )
+            if attempt < MAX_PAGE_RETRIES:
+                time.sleep(RETRY_BACKOFF_SECONDS * attempt)
+            continue
 
-    status = data.get("status")
-    message = data.get("message")
+        return data
 
-    if status != "000":
-        print(f"DART API returned status={status}, message={message}")
-        return pd.DataFrame()
+    return None
 
-    disclosures = data.get("list", [])
 
-    if not disclosures:
-        print("No disclosures found.")
-        return pd.DataFrame()
+def collect_disclosures(date_yyyymmdd: str) -> tuple[pd.DataFrame, dict]:
+    """
+    Collect the FULL DART disclosure list for a specific date, paging
+    through every page the API reports (not just the first PAGE_COUNT
+    rows). A single-page fetch was silently truncating most days: DART's
+    page_count cap is 100 but total_count has been observed at 451-2,069
+    on ordinary trading days, so the old code was keeping roughly 5-20% of
+    each day's disclosures with no signal that anything was missing.
 
-    df = pd.DataFrame(disclosures)
-    return df
+    Returns (disclosures_df, meta) where meta records total_count,
+    total_page, fetched_rows, failed_pages, and a "complete"/"partial"/
+    "empty"/"error" status -- so callers/logs never have to guess whether
+    a day's data is whole.
+    """
+    api_key = get_dart_api_key()
+
+    first_page = fetch_page(api_key, date_yyyymmdd, 1)
+    if first_page is None:
+        print(f"DART API request failed for page 1 of {date_yyyymmdd} after {MAX_PAGE_RETRIES} attempts.")
+        return pd.DataFrame(), {
+            "date": date_yyyymmdd,
+            "total_count": None,
+            "total_page": None,
+            "fetched_rows": 0,
+            "pages_fetched": 0,
+            "failed_pages": [1],
+            "status": "error",
+        }
+
+    total_count = first_page.get("total_count", 0) or 0
+    total_page = first_page.get("total_page", 1) or 1
+
+    all_items = list(first_page.get("list", []))
+    pages_fetched = 1
+    failed_pages: list[int] = []
+
+    for page_no in range(2, total_page + 1):
+        time.sleep(BETWEEN_PAGE_SLEEP_SECONDS)
+        page = fetch_page(api_key, date_yyyymmdd, page_no)
+        if page is None:
+            print(f"  page {page_no}/{total_page} of {date_yyyymmdd}: giving up after {MAX_PAGE_RETRIES} attempts.")
+            failed_pages.append(page_no)
+            continue
+        items = page.get("list", [])
+        if not items:
+            # An empty page mid-range means we've reached the end of real
+            # data even if total_page implied more -- stop, don't keep
+            # requesting pages that can only ever come back empty.
+            print(f"  page {page_no}/{total_page} of {date_yyyymmdd}: empty, stopping pagination early.")
+            break
+        all_items.extend(items)
+        pages_fetched += 1
+
+    fetched_rows = len(all_items)
+
+    if not all_items:
+        status = "empty"
+    elif failed_pages:
+        status = "partial"
+    elif fetched_rows != total_count:
+        # Fetched every page the API told us about but the row count still
+        # doesn't reconcile -- not the failure mode this fix targets, but
+        # worth flagging rather than silently trusting the total.
+        print(
+            f"WARNING: {date_yyyymmdd} fetched_rows ({fetched_rows}) does not match "
+            f"total_count ({total_count}) even though all {total_page} pages were fetched."
+        )
+        status = "partial"
+    else:
+        status = "complete"
+
+    meta = {
+        "date": date_yyyymmdd,
+        "total_count": total_count,
+        "total_page": total_page,
+        "fetched_rows": fetched_rows,
+        "pages_fetched": pages_fetched,
+        "failed_pages": failed_pages,
+        "status": status,
+    }
+
+    print(
+        f"DART collection for {date_yyyymmdd}: status={status}, "
+        f"fetched_rows={fetched_rows}/{total_count}, "
+        f"pages_fetched={pages_fetched}/{total_page}, failed_pages={failed_pages}"
+    )
+
+    if status == "partial":
+        print(
+            f"WARNING: DART collection INCOMPLETE for {date_yyyymmdd} -- "
+            f"only {fetched_rows}/{total_count} disclosures collected "
+            f"({len(failed_pages)} page(s) failed). Downstream key-event "
+            f"selection for this date is working from partial data."
+        )
+
+    if not all_items:
+        return pd.DataFrame(), meta
+
+    return pd.DataFrame(all_items), meta
 
 
 def save_raw_data(df: pd.DataFrame, date_yyyymmdd: str) -> str:
@@ -101,12 +213,30 @@ def save_raw_data(df: pd.DataFrame, date_yyyymmdd: str) -> str:
     return output_path
 
 
+def save_collection_meta(meta: dict) -> str:
+    """
+    Persist pagination/completeness metadata alongside the raw CSV, so a
+    partial collection is a durable, inspectable fact rather than something
+    only visible in that run's console log.
+    """
+    output_dir = "data/raw"
+    os.makedirs(output_dir, exist_ok=True)
+
+    output_path = f"{output_dir}/dart_disclosures_meta_{meta['date']}.json"
+    with open(output_path, "w", encoding="utf-8") as file:
+        json.dump(meta, file, ensure_ascii=False, indent=2)
+
+    return output_path
+
+
 def main():
     today = kst_business_day_yyyymmdd()
 
     print(f"Collecting DART disclosures for {today}...")
 
-    df = collect_disclosures(today)
+    df, meta = collect_disclosures(today)
+    meta_path = save_collection_meta(meta)
+    print(f"Saved collection metadata to: {meta_path}")
 
     if df.empty:
         print("No data saved.")
