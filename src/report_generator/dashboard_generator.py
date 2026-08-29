@@ -14,13 +14,21 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.evaluation.metrics import (
     classify_confidence_status,
     dedupe_evaluations,
+    derive_evaluation_state,
     direction_series,
     normalize_stock_code,
     reliability_score_from_wilson,
     safe_percentage,
     success_series,
 )
-from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
+from src.storage.schema import (
+    EVALUATION_STATE_DATA_UNAVAILABLE,
+    EVALUATION_STATE_NOT_SCORED,
+    EVALUATION_STATE_WAITING_FOR_OUTCOME,
+    RESULT_FAILURE,
+    RESULT_PENDING,
+    RESULT_SUCCESS,
+)
 
 
 PROCESSED_DIR = Path("data/processed")
@@ -386,6 +394,22 @@ def build_metrics():
         if price_evaluated_count > 0:
             price_success_rate = price_success_count / price_evaluated_count
 
+    waiting_for_outcome_count = 0
+    not_scored_count = 0
+    data_unavailable_count = 0
+    data_unavailable_reason_counts: dict = {}
+    if not unique_price_eval.empty:
+        derived_state = derive_evaluation_state(unique_price_eval)
+        state_series = derived_state["evaluation_state"]
+        waiting_for_outcome_count = int((state_series == EVALUATION_STATE_WAITING_FOR_OUTCOME).sum())
+        not_scored_count = int((state_series == EVALUATION_STATE_NOT_SCORED).sum())
+        data_unavailable_count = int((state_series == EVALUATION_STATE_DATA_UNAVAILABLE).sum())
+        data_unavailable_reason_counts = (
+            derived_state.loc[state_series == EVALUATION_STATE_DATA_UNAVAILABLE, "reason_code"]
+            .value_counts(dropna=False)
+            .to_dict()
+        )
+
     benchmark_results = explicit_result_series(unique_price_eval, "success_excess_t1")
     if not benchmark_results.empty:
         benchmark_evaluated_count = int(benchmark_results.isin([RESULT_SUCCESS, RESULT_FAILURE]).sum())
@@ -703,6 +727,10 @@ def build_metrics():
         "price_success_count": price_success_count,
         "price_failure_count": price_failure_count,
         "price_pending_count": price_pending_count,
+        "waiting_for_outcome_count": waiting_for_outcome_count,
+        "not_scored_count": not_scored_count,
+        "data_unavailable_count": data_unavailable_count,
+        "data_unavailable_reason_counts": data_unavailable_reason_counts,
         "price_success_rate": round(price_success_rate * 100, 2),
         "reliability_score": round(reliability_score, 1),
         "benchmark_evaluated_count": benchmark_evaluated_count,
@@ -1832,9 +1860,19 @@ def build_diagnostics_html(metrics, stock_data):
           <div class="value risk">{metrics["price_failure_count"]}</div>
         </div>
         <div class="card kpi-card">
-          <div class="label">Price Pending Candidates</div>
-          <div class="ko-desc">가격 후보 평가 대기</div>
-          <div class="value warning">{metrics["price_pending_count"]}</div>
+          <div class="label">Waiting for Outcome</div>
+          <div class="ko-desc">결과 대기 (reason: t1_not_available)</div>
+          <div class="value warning">{metrics["waiting_for_outcome_count"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Not Scored</div>
+          <div class="ko-desc">평가 대상 아님 (HOLD / neutral direction)</div>
+          <div class="value">{metrics["not_scored_count"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">Data Unavailable</div>
+          <div class="ko-desc">데이터 없음 &mdash; {", ".join(f"{reason}: {count}" for reason, count in metrics["data_unavailable_reason_counts"].items()) or "n/a"}</div>
+          <div class="value risk">{metrics["data_unavailable_count"]}</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Price Candidates</div>
@@ -2672,9 +2710,22 @@ def build_html(metrics, stock_data):
           {render_kpi_value(metrics["rolling_30d_success_rate"], "%")}
         </div>
         <div class="card">
-          <div class="label">Pending Candidates</div>
-          <div class="ko-desc">평가 대기 수</div>
-          <div class="value warning">{metrics["price_pending_count"]}</div>
+          <div class="label">Waiting for Outcome</div>
+          <div class="ko-desc">결과 대기</div>
+          <div class="value warning">{metrics["waiting_for_outcome_count"]}</div>
+          <div class="muted-helper">Still waiting for future price data to confirm the result.<br>미래 가격 데이터가 아직 도착하지 않아 대기 중입니다.</div>
+        </div>
+        <div class="card">
+          <div class="label">Not Scored</div>
+          <div class="ko-desc">평가 대상 아님</div>
+          <div class="value">{metrics["not_scored_count"]}</div>
+          <div class="muted-helper">Not a buy/avoid directional call, so no success/failure applies.<br>매수/회피 방향성 판단이 아니므로 성공/실패를 매기지 않습니다.</div>
+        </div>
+        <div class="card">
+          <div class="label">Data Unavailable</div>
+          <div class="ko-desc">데이터 없음</div>
+          <div class="value risk">{metrics["data_unavailable_count"]}</div>
+          <div class="muted-helper">Price data needed to resolve this prediction is missing or never arrived.<br>판정에 필요한 가격 데이터가 없거나 끝내 도착하지 않았습니다.</div>
         </div>
         <div class="card">
           <div class="label">Today Candidate Count</div>

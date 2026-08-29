@@ -22,6 +22,19 @@ from src.evaluation.metrics import (
     stable_prediction_id_series,
 )
 from src.storage.schema import (
+    EVALUATION_STATE_DATA_UNAVAILABLE,
+    EVALUATION_STATE_EVALUATED,
+    EVALUATION_STATE_NOT_SCORED,
+    EVALUATION_STATE_WAITING_FOR_OUTCOME,
+    EVALUATION_WAIT_TIMEOUT_DAYS,
+    REASON_INITIAL_ACTION_HOLD,
+    REASON_INSUFFICIENT_PRICE_HISTORY,
+    REASON_INVALID_CANDIDATE_IDENTITY,
+    REASON_MALFORMED_PRICE_DATA,
+    REASON_NEUTRAL_DIRECTION,
+    REASON_PRICE_FILE_MISSING,
+    REASON_PRICE_HISTORY_GAP_TIMEOUT,
+    REASON_T1_NOT_AVAILABLE,
     RESULT_FAILURE,
     RESULT_PENDING,
     RESULT_SKIPPED,
@@ -397,6 +410,12 @@ def evaluate_row(
             "price_candidate_result": RESULT_PENDING,
             "evaluation_status": RESULT_PENDING,
             "evaluation_note": "",
+            # New state model (additive, backward-compatible -- see
+            # src/storage/schema.py). Every return path below sets these
+            # explicitly; these are just defensive fallbacks.
+            "evaluation_state": None,
+            "evaluation_result": None,
+            "reason_code": None,
         }
     )
 
@@ -405,11 +424,15 @@ def evaluate_row(
         result["price_candidate_result"] = RESULT_SKIPPED
         result["prediction_result"] = RESULT_SKIPPED
         result["evaluation_note"] = "Invalid candidate stock code or date."
+        result["evaluation_state"] = EVALUATION_STATE_DATA_UNAVAILABLE
+        result["reason_code"] = REASON_INVALID_CANDIDATE_IDENTITY
         return result
 
     price_path = latest_price_file(stock_code)
     if price_path is None:
         result["evaluation_note"] = "No price file found."
+        result["evaluation_state"] = EVALUATION_STATE_DATA_UNAVAILABLE
+        result["reason_code"] = REASON_PRICE_FILE_MISSING
         return result
 
     try:
@@ -419,13 +442,45 @@ def evaluate_row(
         result["price_candidate_result"] = RESULT_SKIPPED
         result["prediction_result"] = RESULT_SKIPPED
         result["evaluation_note"] = f"Price file error: {error}"
+        result["evaluation_state"] = EVALUATION_STATE_DATA_UNAVAILABLE
+        result["reason_code"] = REASON_MALFORMED_PRICE_DATA
         return result
 
     previous_rows = price_df[price_df["date"] <= candidate_date]
     future_rows = price_df[price_df["date"] > candidate_date]
 
-    if previous_rows.empty or future_rows.empty:
+    if previous_rows.empty:
+        # No price history reaches back to signal_date at all -- this isn't
+        # "waiting," there is nothing to wait for; a longer timeout won't
+        # fix a gap in the price series itself. Immediate data_unavailable,
+        # no EVALUATION_WAIT_TIMEOUT_DAYS grace period (that timeout is only
+        # for the future_rows-empty case below).
         result["evaluation_note"] = "No next trading day price data available yet."
+        result["evaluation_state"] = EVALUATION_STATE_DATA_UNAVAILABLE
+        result["reason_code"] = REASON_INSUFFICIENT_PRICE_HISTORY
+        return result
+
+    if future_rows.empty:
+        # History exists up to signal_date, but no trading day after it has
+        # priced in yet. Genuinely time-bound: still within
+        # EVALUATION_WAIT_TIMEOUT_DAYS of signal_date -> waiting_for_outcome;
+        # past it -> the price feed for this stock has stopped advancing,
+        # so treat it as data_unavailable instead of waiting forever.
+        signal_date_parsed = pd.to_datetime(signal_date, errors="coerce")
+        age_days = None
+        if not pd.isna(signal_date_parsed):
+            age_days = (pd.Timestamp(datetime.today().date()) - signal_date_parsed).days
+
+        result["evaluation_note"] = "No next trading day price data available yet."
+        if age_days is not None and age_days > EVALUATION_WAIT_TIMEOUT_DAYS:
+            result["evaluation_state"] = EVALUATION_STATE_DATA_UNAVAILABLE
+            result["reason_code"] = REASON_PRICE_HISTORY_GAP_TIMEOUT
+        else:
+            # age_days is None only when signal_date itself doesn't parse --
+            # too rare/ambiguous to force a data_unavailable verdict, so it
+            # stays waiting_for_outcome by default rather than guessing.
+            result["evaluation_state"] = EVALUATION_STATE_WAITING_FOR_OUTCOME
+            result["reason_code"] = REASON_T1_NOT_AVAILABLE
         return result
 
     base_close = previous_rows.iloc[-1]["close"]
@@ -462,6 +517,28 @@ def evaluate_row(
     result["prediction_result"] = t1_result
     result["price_candidate_result"] = t1_result
     result["evaluation_status"] = "evaluated" if t1_result in {RESULT_SUCCESS, RESULT_FAILURE} else RESULT_PENDING
+
+    if t1_result in {RESULT_SUCCESS, RESULT_FAILURE}:
+        result["evaluation_state"] = EVALUATION_STATE_EVALUATED
+        result["evaluation_result"] = t1_result
+        result["reason_code"] = None
+    elif expects_positive is None:
+        # No directional target at signal_date (initial action was
+        # HOLD/neutral) -- close_t1_return above may well be a real,
+        # already-computed number, it's just never graded because there's
+        # nothing to grade it against.
+        result["evaluation_state"] = EVALUATION_STATE_NOT_SCORED
+        result["evaluation_result"] = None
+        result["reason_code"] = (
+            REASON_INITIAL_ACTION_HOLD if initial_candidate_action == "HOLD" else REASON_NEUTRAL_DIRECTION
+        )
+    else:
+        # expects_positive was defined but close_t1_return itself came back
+        # NaN (e.g. a degenerate base_close) -- a data-quality problem, not
+        # a missing-direction one.
+        result["evaluation_state"] = EVALUATION_STATE_DATA_UNAVAILABLE
+        result["evaluation_result"] = None
+        result["reason_code"] = REASON_MALFORMED_PRICE_DATA
 
     if t1_result in {RESULT_SUCCESS, RESULT_FAILURE} and prior_evaluations:
         prior = prior_evaluations.get(stable_prediction_id)
