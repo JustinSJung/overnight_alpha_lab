@@ -32,15 +32,15 @@ This audit documents the conservative v2 price ranker. It is diagnostic only and
 
 | Component | Average |
 |---|---:|
-| final_price_signal_score_v2 | 48.93 |
-| final_price_signal_score_v3 | 47.35 |
+| final_price_signal_score_v2 | 48.45 |
+| final_price_signal_score_v3 | 46.68 |
 | base_momentum_score | 56.10 |
 | volume_confirmation_score | -0.79 |
 | volatility_penalty | 5.27 |
 | overextension_penalty | 2.04 |
 | reversal_risk_penalty | 0.73 |
-| news_risk_penalty | 0.27 |
-| attention_noise_penalty | 0.13 |
+| news_risk_penalty | 0.22 |
+| attention_noise_penalty | 0.66 |
 | market_regime_penalty | 0.19 |
 | v3_momentum_quality_score | 43.58 |
 | v3_volume_quality_score | -1.36 |
@@ -48,7 +48,7 @@ This audit documents the conservative v2 price ranker. It is diagnostic only and
 | v3_stability_score | 9.28 |
 | v3_overextension_penalty | 3.85 |
 | v3_reversal_penalty | 2.11 |
-| v3_noise_penalty | 0.84 |
+| v3_noise_penalty | 1.58 |
 
 ## Notes
 

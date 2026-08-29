@@ -1,6 +1,6 @@
 # Daily Stock Candidate Report - 2026-08-29
 
-Generated at: 2026-08-29 13:22:47
+Generated at: 2026-08-29 23:19:04
 
 ML dataset: `data/processed/ml_dataset_20260829.csv`
 
@@ -28,8 +28,8 @@ The recommender now applies a stock-specific historical adjustment. Stocks with 
 | 000950 | 전방 | 7 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 0009K0 | 에임드바이오 | 3 | 0 | N/A | Not available | mostly_pending | 0.00 |
 | 001040 | CJ | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
-| 001060 | JW중외제약 | 2 | 0 | N/A | Not available | mostly_pending | 0.00 |
-| 001260 | 남광토건 | 4 | 0 | N/A | Not available | mostly_pending | 0.00 |
+| 451220 | 아이엠티 | 1 | 0 | N/A | Not available | mostly_pending | 0.00 |
+| 440110 | 파두 | 5 | 0 | N/A | Not available | mostly_pending | 0.00 |
 
 ## Event-Type Success Rate Adjustment
 
@@ -195,7 +195,7 @@ The recommender also reads past error notes and applies event-type level confide
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
 - Related news examples: 삼전닉스 덕분에 18조 번다고?…뒤에서 방긋 웃는 이 종목 [주末머니] | 자이에스앤디, 남양주 진접4지구 공동주택 개발사업 수주 | [오늘의 주요공시] 삼성바이오로직스ㆍ한화엔진ㆍ대우건설 등
 
-### 8. 자이에스앤디 (317400)
+### 8. 삼일씨엔에스 (004440)
 
 - Candidate type: **POSITIVE_CANDIDATE**
 - Expected direction: **positive**
@@ -207,11 +207,11 @@ The recommender also reads past error notes and applies event-type level confide
 - Risk level: **LOW**
 - Event type: `supply_contract`
 - Stock-specific evaluated cases: 0, success rate: 0.00%, avg next close: 0.00%, pattern: mostly_pending
-- Disclosure title: 단일판매ㆍ공급계약체결              
+- Disclosure title: [기재정정]단일판매ㆍ공급계약체결              
 - Next open return data: Not available
 - Next close return data: Not available
 - Reason: Event type is supply_contract. Initial direction is positive. Event score is 70. News attention score is 5. News sentiment score is 9. Negative keyword count is 1. Historical error notes did not change the score. Event-type performance did not change the score. Stock-specific history did not change the score. Stock pattern label is mostly_pending.
-- Related news examples: 삼전닉스 덕분에 18조 번다고?…뒤에서 방긋 웃는 이 종목 [주末머니] | 자이에스앤디, 남양주 진접4지구 공동주택 개발사업 수주 | [오늘의 주요공시] 삼성바이오로직스ㆍ한화엔진ㆍ대우건설 등
+- Related news examples: 해상풍력 타워 및 하부구조물 글로벌 공급망 확보… 풍력 테마주에 매수... | [이넷뉴스 브랜드평판] 두산에너빌리티, 풍력에너지 상장기업 8월 1위·... | 신재생에너지주 조정 본격화?... 풍력 관련주 대부분 '뚝 뚝'
 
 ### 9. 자이에스앤디 (317400)
 

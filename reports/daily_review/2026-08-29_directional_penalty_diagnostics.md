@@ -52,15 +52,15 @@ Cells with fewer than 20 evaluated cases are flagged `insufficient` and should b
 
 | penalty_bucket | momentum_tertile | evaluated_count | success_count | failure_count | success_rate | confidence_flag |
 |---|---|---|---|---|---|---|
-| none | T1_low | 745 | 272 | 473 | 36.51 | ok |
-| none | T2_mid | 751 | 278 | 473 | 37.02 | ok |
-| none | T3_high | 430 | 203 | 227 | 47.21 | ok |
-| low | T1_low | 14 | 3 | 11 | 21.43 | insufficient |
-| low | T2_mid | 20 | 9 | 11 | 45.0 | ok |
+| none | T1_low | 746 | 272 | 474 | 36.46 | ok |
+| none | T2_mid | 753 | 280 | 473 | 37.18 | ok |
+| none | T3_high | 427 | 201 | 226 | 47.07 | ok |
+| low | T1_low | 15 | 3 | 12 | 20.0 | insufficient |
+| low | T2_mid | 19 | 9 | 10 | 47.37 | insufficient |
 | low | T3_high | 33 | 12 | 21 | 36.36 | ok |
 | medium | T1_low | 9 | 5 | 4 | 55.56 | insufficient |
-| medium | T2_mid | 13 | 4 | 9 | 30.77 | insufficient |
-| medium | T3_high | 34 | 16 | 18 | 47.06 | ok |
+| medium | T2_mid | 14 | 5 | 9 | 35.71 | insufficient |
+| medium | T3_high | 33 | 15 | 18 | 45.45 | ok |
 | high | T1_low | 29 | 8 | 21 | 27.59 | ok |
 | high | T2_mid | 20 | 11 | 9 | 55.0 | ok |
 | high | T3_high | 276 | 150 | 126 | 54.35 | ok |
@@ -70,8 +70,8 @@ Cells with fewer than 20 evaluated cases are flagged `insufficient` and should b
 
 | penalty_bucket | momentum_tertile | evaluated_count | success_count | failure_count | success_rate | confidence_flag |
 |---|---|---|---|---|---|---|
-| none | T1_low | 399 | 134 | 265 | 33.58 | ok |
-| none | T2_mid | 486 | 173 | 313 | 35.6 | ok |
+| none | T1_low | 401 | 134 | 267 | 33.42 | ok |
+| none | T2_mid | 484 | 173 | 311 | 35.74 | ok |
 | none | T3_high | 132 | 54 | 78 | 40.91 | ok |
 | low | T1_low | 163 | 50 | 113 | 30.67 | ok |
 | low | T2_mid | 152 | 50 | 102 | 32.89 | ok |
@@ -80,8 +80,8 @@ Cells with fewer than 20 evaluated cases are flagged `insufficient` and should b
 | medium | T2_mid | 117 | 53 | 64 | 45.3 | ok |
 | medium | T3_high | 276 | 134 | 142 | 48.55 | ok |
 | high | T1_low | 96 | 43 | 53 | 44.79 | ok |
-| high | T2_mid | 49 | 26 | 23 | 53.06 | ok |
-| high | T3_high | 227 | 123 | 104 | 54.19 | ok |
+| high | T2_mid | 53 | 29 | 24 | 54.72 | ok |
+| high | T3_high | 223 | 120 | 103 | 53.81 | ok |
 | missing | missing | 291 | 170 | 121 | 58.42 | ok |
 
 ## Notes

@@ -10,8 +10,8 @@ This layer does not treat rumors as facts. It only treats rumor-like language as
 
 - Total rows: **122**
 - High attention rows: **6**
-- Medium attention rows: **52**
-- Rumor-noise detected rows: **2**
+- Medium attention rows: **53**
+- Rumor-noise detected rows: **3**
 - Risk-noise detected rows: **65**
 
 ## Top Social Attention Signals
