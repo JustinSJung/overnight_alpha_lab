@@ -8,6 +8,7 @@ data/raw/kis_quotes_YYYYMMDD.csv
 
 import os
 import sys
+import threading
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
@@ -28,6 +29,54 @@ from src.crawler.kis_client import KISClient, KISCredentialsMissing, normalize_s
 
 RAW_DIR = Path("data/raw")
 PROCESSED_DIR = Path("data/processed")
+
+# pykrx's internal requests.get()/post() calls (pykrx/website/comm/webio.py)
+# pass no explicit timeout, so urllib3 sets the connect/read socket timeout
+# to None -- i.e. block forever -- regardless of socket.setdefaulttimeout().
+# (Traced through urllib3.util.timeout.Timeout.connect_timeout/read_timeout
+# and urllib3.util.connection.create_connection's
+# `if timeout is not _DEFAULT_TIMEOUT: sock.settimeout(timeout)`: the global
+# socket default is only consulted for the library's own unpassed-argument
+# sentinel, never for an explicitly passed None, which is what requests
+# constructs when no timeout kwarg is given.) A single unresponsive KRX
+# connection can therefore hang the whole collection run indefinitely, which
+# is what happened in Pipeline #83 (run 35290807940, 2026-09-18).
+PYKRX_FALLBACK_TIMEOUT_SECONDS = 20
+
+
+class PykrxTimeoutError(Exception):
+    """Raised when a pykrx fallback call exceeds PYKRX_FALLBACK_TIMEOUT_SECONDS."""
+
+
+def _run_with_timeout(func, args: tuple, timeout_seconds: float):
+    """
+    Runs func(*args) on a daemon thread and enforces a wall-clock timeout.
+
+    A daemon thread (not concurrent.futures.ThreadPoolExecutor) is used
+    deliberately: ThreadPoolExecutor registers an untimed atexit join
+    (concurrent.futures.thread._python_exit calls t.join() with no timeout
+    for every worker thread ever created) that would block interpreter
+    shutdown forever on a hung worker, reproducing the same unbounded hang
+    one level up. A daemon thread is simply abandoned and does not block
+    process exit if it never returns.
+    """
+    outcome: dict = {}
+
+    def _target():
+        try:
+            outcome["value"] = func(*args)
+        except Exception as error:
+            outcome["error"] = error
+
+    thread = threading.Thread(target=_target, daemon=True)
+    thread.start()
+    thread.join(timeout=timeout_seconds)
+
+    if thread.is_alive():
+        raise PykrxTimeoutError(f"pykrx call did not return within {timeout_seconds}s")
+    if "error" in outcome:
+        raise outcome["error"]
+    return outcome.get("value")
 DEFAULT_STOCK_CODES = [
     "005930",
     "000660",
@@ -187,7 +236,11 @@ def collect_for_stock(
             print(f"KIS price collection failed for {stock_code}: {error}")
             print(f"Falling back to pykrx for {stock_code}.")
 
-    fallback_df = collect_with_pykrx(stock_code, start_date, end_date)
+    fallback_df = _run_with_timeout(
+        collect_with_pykrx,
+        (stock_code, start_date, end_date),
+        PYKRX_FALLBACK_TIMEOUT_SECONDS,
+    )
     return fallback_df, quote
 
 
@@ -212,11 +265,16 @@ def main():
         print("Using pykrx fallback.")
 
     saved_count = 0
+    pykrx_timeout_count = 0
     quotes = []
 
     for stock_code in stock_codes:
         try:
             df, quote = collect_for_stock(stock_code, start_date, end_date, kis_client)
+        except PykrxTimeoutError as error:
+            pykrx_timeout_count += 1
+            print(f"Price collection skipped for {stock_code}: {error}")
+            continue
         except Exception as error:
             print(f"Price collection skipped for {stock_code}: {error}")
             continue
@@ -235,6 +293,8 @@ def main():
     if quotes:
         quote_path = save_quotes(quotes)
         print(f"Saved {len(quotes)} KIS quotes: {quote_path}")
+
+    print(f"pykrx fallback timeouts (>{PYKRX_FALLBACK_TIMEOUT_SECONDS}s, stock skipped): {pykrx_timeout_count}")
 
     if saved_count == 0:
         print("No price files were saved.")
