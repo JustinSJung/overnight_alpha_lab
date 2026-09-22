@@ -55,3 +55,4 @@
 2026-09-16,2026-09-16 01:20:07,561,561,88,88,88,367,1362,0,1003,359,1362,True,True,data/raw/dart_disclosures_20260915.csv,data/processed/ml_dataset_20260916.csv
 2026-09-17,2026-09-17 01:41:27,626,626,59,59,59,212,320,0,84,236,320,True,True,data/raw/dart_disclosures_20260916.csv,data/processed/ml_dataset_20260917.csv
 2026-09-21,2026-09-21 01:03:36,695,695,82,82,82,208,1120,0,88,1032,1120,True,True,data/raw/dart_disclosures_20260918.csv,data/processed/ml_dataset_20260921.csv
+2026-09-22,2026-09-22 02:11:36,508,508,79,79,79,301,2575,0,275,2300,2575,True,True,data/raw/dart_disclosures_20260921.csv,data/processed/ml_dataset_20260922.csv

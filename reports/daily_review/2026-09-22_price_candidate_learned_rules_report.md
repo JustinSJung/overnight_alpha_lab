@@ -1,0 +1,67 @@
+# Price Candidate Learned Rules Report - 2026-09-22
+
+This report learns diagnostic groups from deduped KIS price-candidate evaluations. It does not change score weights or place trades.
+
+## Summary
+
+- Source CSV: `data/processed/price_candidate_learned_rules_20260922.csv`
+- Baseline evaluated count: **7204**
+- Baseline success rate: **46.02%**
+- Total rule rows: **45**
+- Boost rules: **3**
+- Penalize rules: **8**
+- Watch rules: **4**
+- Suspicious rules: **5**
+
+Conservative activation uses at least 50 evaluated rows and +/-3 percentage points lift versus baseline.
+Suspicious rules are diagnostic only and are not applied to scoring.
+
+## Learned Rule Table
+
+| rule_group | rule_value | evaluated_count | success_count | failure_count | success_rate | baseline_success_rate | lift_vs_baseline | confidence_level | recommended_action | suspicious_flag | suspicious_reason | date_coverage_count |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| reversal_risk_penalty | high | 565 | 287 | 278 | 50.8 | 46.02 | 4.78 | high | boost | True | boost_on_semantically_risky_bucket | 41 |
+| candidate_rank | missing | 330 | 166 | 164 | 50.3 | 46.02 | 4.28 | high | boost | False |  | 6 |
+| overextension_penalty | high | 674 | 334 | 340 | 49.55 | 46.02 | 3.53 | high | boost | True | boost_on_semantically_risky_bucket | 41 |
+| volume_confirmation_score | moderate | 519 | 222 | 297 | 42.77 | 46.02 | -3.25 | high | penalize | False |  | 41 |
+| reversal_risk_penalty | low | 762 | 315 | 447 | 41.34 | 46.02 | -4.68 | high | penalize | False |  | 41 |
+| volume_confirmation_score | none | 1012 | 379 | 633 | 37.45 | 46.02 | -8.57 | high | penalize | False |  | 41 |
+| candidate_rank | rank_51_100 | 363 | 132 | 231 | 36.36 | 46.02 | -9.66 | high | penalize | False |  | 17 |
+| news_risk_penalty | medium | 100 | 42 | 58 | 42.0 | 46.02 | -4.02 | medium | penalize | False |  | 36 |
+| news_risk_penalty | high | 173 | 72 | 101 | 41.62 | 46.02 | -4.4 | medium | penalize | False |  | 28 |
+| overextension_penalty | low | 181 | 73 | 108 | 40.33 | 46.02 | -5.69 | medium | penalize | False |  | 39 |
+| liquidity_score | none | 285 | 17 | 268 | 5.96 | 46.02 | -40.06 | medium | penalize | False |  | 41 |
+| reversal_risk_penalty | medium | 961 | 471 | 490 | 49.01 | 46.02 | 2.99 | high | neutral | False |  | 41 |
+| score_version | legacy_or_unknown | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| final_price_signal_score_v2 | missing | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| overextension_penalty | missing | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| reversal_risk_penalty | missing | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| news_risk_penalty | missing | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| attention_noise_penalty | missing | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| volume_confirmation_score | missing | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| liquidity_score | missing | 398 | 194 | 204 | 48.74 | 46.02 | 2.72 | high | neutral | False |  | 7 |
+| liquidity_score | confirmed | 1097 | 525 | 572 | 47.86 | 46.02 | 1.84 | high | neutral | False |  | 41 |
+| volume_confirmation_score | negative | 5030 | 2403 | 2627 | 47.77 | 46.02 | 1.75 | high | neutral | False |  | 41 |
+| liquidity_score | basic | 5424 | 2579 | 2845 | 47.55 | 46.02 | 1.53 | high | neutral | False |  | 41 |
+| final_price_signal_score_v2 | score_30_40 | 3951 | 1845 | 2106 | 46.7 | 46.02 | 0.68 | high | neutral | False |  | 41 |
+| candidate_rank | rank_101_plus | 5557 | 2589 | 2968 | 46.59 | 46.02 | 0.57 | high | neutral | False |  | 41 |
+| selected_pick | broad_pool | 6579 | 3034 | 3545 | 46.12 | 46.02 | 0.1 | high | neutral | False |  | 48 |
+| candidate_rank | top_10 | 352 | 162 | 190 | 46.02 | 46.02 | 0.0 | high | neutral | False |  | 42 |
+| news_risk_penalty | none | 6513 | 2996 | 3517 | 46.0 | 46.02 | -0.02 | high | neutral | False |  | 41 |
+| score_version | v2_conservative_ranker | 6806 | 3121 | 3685 | 45.86 | 46.02 | -0.16 | high | neutral | False |  | 41 |
+| attention_noise_penalty | none | 6337 | 2901 | 3436 | 45.78 | 46.02 | -0.24 | high | neutral | False |  | 41 |
+| attention_noise_penalty | high | 422 | 193 | 229 | 45.73 | 46.02 | -0.29 | high | neutral | False |  | 33 |
+| overextension_penalty | none | 5813 | 2653 | 3160 | 45.64 | 46.02 | -0.38 | high | neutral | False |  | 41 |
+| reversal_risk_penalty | none | 4518 | 2048 | 2470 | 45.33 | 46.02 | -0.69 | high | neutral | False |  | 41 |
+| selected_pick | selected | 625 | 281 | 344 | 44.96 | 46.02 | -1.06 | high | neutral | False |  | 42 |
+| final_price_signal_score_v2 | score_20_30 | 1525 | 684 | 841 | 44.85 | 46.02 | -1.17 | high | neutral | False |  | 41 |
+| candidate_rank | rank_21_50 | 329 | 147 | 182 | 44.68 | 46.02 | -1.34 | high | neutral | False |  | 27 |
+| final_price_signal_score_v2 | score_lt_20 | 316 | 141 | 175 | 44.62 | 46.02 | -1.4 | high | neutral | False |  | 41 |
+| final_price_signal_score_v2 | score_50_plus | 965 | 422 | 543 | 43.73 | 46.02 | -2.29 | high | neutral | False |  | 41 |
+| volume_confirmation_score | high | 245 | 117 | 128 | 47.76 | 46.02 | 1.74 | medium | neutral | False |  | 40 |
+| overextension_penalty | medium | 138 | 61 | 77 | 44.2 | 46.02 | -1.82 | medium | neutral | False |  | 37 |
+| candidate_rank | rank_11_20 | 273 | 119 | 154 | 43.59 | 46.02 | -2.43 | medium | neutral | False |  | 34 |
+| final_price_signal_score_v2 | score_40_50 | 49 | 29 | 20 | 59.18 | 46.02 | 13.16 | insufficient | watch | True | large_lift_with_under_100_cases | 5 |
+| attention_noise_penalty | low | 33 | 19 | 14 | 57.58 | 46.02 | 11.56 | insufficient | watch | True | large_lift_with_under_100_cases | 16 |
+| attention_noise_penalty | medium | 14 | 8 | 6 | 57.14 | 46.02 | 11.12 | insufficient | watch | True | large_lift_with_under_100_cases | 8 |
+| news_risk_penalty | low | 20 | 11 | 9 | 55.0 | 46.02 | 8.98 | insufficient | watch | False |  | 10 |
