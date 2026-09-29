@@ -1,0 +1,13 @@
+﻿event_type,total_count,success_count,failure_count,pending_count,evaluated_count,success_rate,failure_rate,pending_rate,raw_learned_adjustment,confidence_multiplier,learned_event_score_adjustment,learning_label,learning_reason,minimum_required_evaluated_count,market_adjusted_success_count,market_adjusted_failure_count,market_adjusted_pending_count,market_adjusted_evaluated_count,market_adjusted_success_rate,social_rows,high_attention_count,rumor_noise_count,risk_noise_count,avg_social_attention_score,avg_rumor_noise_score,avg_risk_noise_score
+paid_in_capital_increase,1569,684,514,371,1198,0.571,0.429,0.2365,5,1.0,5.0,mild_positive_learning,성공률이 기준보다 약간 높아 소폭 상향합니다.,5,0,0,317,0,0,10.0,0.0,0.0,10.0,4.7,0.0,4.5
+major_shareholder_change,1584,347,698,539,1045,0.3321,0.6679,0.3403,-10,1.0,-10.0,negative_learning,성공률이 낮아 해당 이벤트 유형 점수를 하향합니다.,5,0,0,471,0,0,11.0,1.0,0.0,4.0,6.86,0.0,1.09
+supply_contract,899,175,446,278,621,0.2818,0.7182,0.3092,-10,1.0,-10.0,negative_learning,성공률이 낮아 해당 이벤트 유형 점수를 하향합니다.,5,0,0,250,0,0,26.0,10.0,1.0,2.0,10.73,0.15,0.23
+convertible_bond,858,298,272,288,570,0.5228,0.4772,0.3357,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,252,0,0,25.0,0.0,0.0,25.0,5.46,0.0,3.48
+investment_decision,333,120,107,106,227,0.5286,0.4714,0.3183,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,93,0,0,7.0,0.0,0.0,5.0,6.36,0.0,2.14
+lawsuit,318,113,92,113,205,0.5512,0.4488,0.3553,5,1.0,5.0,mild_positive_learning,성공률이 기준보다 약간 높아 소폭 상향합니다.,5,0,0,105,0,0,11.0,0.0,0.0,11.0,3.5,0.0,4.36
+merger,200,25,95,80,120,0.2083,0.7917,0.4,-15,1.0,-15.0,strong_negative_learning,성공률이 매우 낮아 해당 이벤트 유형 점수를 강하게 하향합니다.,5,0,0,63,0,0,3.0,0.0,0.0,0.0,6.17,0.0,0.0
+disclosure_violation,126,38,33,55,71,0.5352,0.4648,0.4365,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,48,0,0,1.0,0.0,0.0,1.0,3.5,0.0,3.0
+bond_with_warrant,74,6,57,11,63,0.0952,0.9048,0.1486,-15,1.0,-15.0,strong_negative_learning,성공률이 매우 낮아 해당 이벤트 유형 점수를 강하게 하향합니다.,5,0,0,11,0,0,2.0,0.0,0.0,2.0,4.5,0.0,3.0
+bonus_issue,65,29,33,3,62,0.4677,0.5323,0.0462,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,3,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+spin_off,73,15,34,24,49,0.3061,0.6939,0.3288,-10,1.0,-10.0,negative_learning,성공률이 낮아 해당 이벤트 유형 점수를 하향합니다.,5,0,0,21,0,0,1.0,0.0,0.0,1.0,5.5,0.0,6.0
+earnings_guidance,6,2,0,4,2,1.0,0.0,0.6667,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,4,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
