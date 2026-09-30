@@ -5,8 +5,11 @@ Price action is the primary signal. DART, news, social attention, and learned
 rules are treated as supplementary context when available.
 """
 
+import json
+import math
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 import pandas as pd
 
@@ -14,9 +17,52 @@ import pandas as pd
 PROCESSED_DIR = Path("data/processed")
 REPORT_DIR = Path("reports/daily_prediction")
 REVIEW_DIR = Path("reports/daily_review")
+MODELS_DIR = Path("data/models")
 SELECTED_PICK_TOP_N = 20
 SCORE_VERSION = "v2_conservative_ranker"
 EXPERIMENTAL_SCORE_VERSION = "v3_stability_ranker"
+AVOID_MODEL_PATH = MODELS_DIR / "avoid_lr_model_v1_20260930.json"
+
+
+def load_avoid_model() -> Optional[dict]:
+    if not AVOID_MODEL_PATH.exists():
+        return None
+    try:
+        with open(AVOID_MODEL_PATH, encoding="utf-8") as handle:
+            return json.load(handle)
+    except Exception:
+        return None
+
+
+_AVOID_MODEL = load_avoid_model()
+
+
+def score_avoid_candidate(components: dict) -> Optional[float]:
+    """
+    Diagnostic-only AVOID quality score (avoid_lr_model_v1) on a 0-100 scale.
+    Purely informational -- does not affect candidate_action,
+    final_price_signal_score, or selected_pick.
+
+    Must be called with generation-time (day-of) component values, i.e. from
+    inside score_candidate() before any later re-scoring pass touches this
+    candidate. The model was trained on the "first snapshot" feature policy
+    (see data/models/avoid_lr_model_v1_20260930.json), and score_candidate()
+    is itself the very first snapshot for any given candidate, so calling it
+    here is train/serve consistent by construction -- no separate "initial
+    feature" lookup is needed.
+    """
+    if _AVOID_MODEL is None:
+        return None
+
+    z = _AVOID_MODEL["intercept"]
+    for feature in _AVOID_MODEL["features"]:
+        value = safe_float(components.get(feature))
+        stats = _AVOID_MODEL["standardization"][feature]
+        standardized = (value - stats["mean"]) / stats["std"]
+        z += _AVOID_MODEL["coefficients"][feature] * standardized
+
+    probability = 1.0 / (1.0 + math.exp(-z))
+    return round(probability * 100, 2)
 
 
 def latest_file(directory: Path, pattern: str):
@@ -374,8 +420,11 @@ def score_candidate(row, social_lookup: dict[str, dict], ml_lookup: dict[str, di
         action = "HOLD"
         direction = "neutral"
 
+    avoid_model_score = score_avoid_candidate(components) if action == "AVOID" else None
+
     return {
         "stock_code": stock_code,
+        "avoid_model_score": avoid_model_score,
         "candidate_date": row.get("signal_date", datetime.today().strftime("%Y-%m-%d")),
         "candidate_pool_date": row.get("signal_date", datetime.today().strftime("%Y-%m-%d")),
         "signal_date": row.get("signal_date", datetime.today().strftime("%Y-%m-%d")),

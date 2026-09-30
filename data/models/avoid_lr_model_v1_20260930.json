@@ -1,0 +1,60 @@
+{
+  "model_version": "avoid_lr_model_v1",
+  "trained_at": "2026-09-30",
+  "direction": "avoid",
+  "purpose": "diagnostic_quality_score_not_used_for_selection",
+  "feature_snapshot_policy": "first_snapshot_per_stable_prediction_id (day-of features, before any re-scoring)",
+  "features": [
+    "liquidity_score",
+    "base_momentum_score",
+    "volume_confirmation_score"
+  ],
+  "excluded_features_not_significant": [
+    "volatility_penalty",
+    "overextension_penalty",
+    "reversal_risk_penalty",
+    "news_risk_penalty",
+    "attention_noise_penalty",
+    "healthy_context_score"
+  ],
+  "standardization": {
+    "liquidity_score": {"mean": 2.007298, "std": 0.528300},
+    "base_momentum_score": {"mean": 41.032709, "std": 8.520276},
+    "volume_confirmation_score": {"mean": -1.481409, "std": 1.263007}
+  },
+  "intercept": -0.11458938590136115,
+  "coefficients": {
+    "liquidity_score": 0.45875222732684495,
+    "base_momentum_score": 0.07410211250922259,
+    "volume_confirmation_score": -0.24270460652832332
+  },
+  "statsmodels_coefficients": {
+    "liquidity_score": {"coef": 0.4594, "std_err": 0.0375, "p_value": 0.0000},
+    "base_momentum_score": {"coef": 0.0742, "std_err": 0.0255, "p_value": 0.0036},
+    "volume_confirmation_score": {"coef": -0.2430, "std_err": 0.0295, "p_value": 0.0000}
+  },
+  "statsmodels_intercept": {"coef": -0.1147, "std_err": 0.0255, "p_value": 0.0000},
+  "training_sample_size": 6577,
+  "training_target_positive_rate": 0.477573,
+  "walk_forward_auc": {
+    "note": "computed on the 9-feature model prior to feature pruning; the 3-feature refined model was re-checked and reproduces the same pattern (see walk_forward_auc_refined_3feature)",
+    "half1_train_half2_test": 0.543,
+    "third1_train_third2_test": 0.591,
+    "third1and2_train_third3_test": 0.539
+  },
+  "walk_forward_auc_refined_3feature": {
+    "half1_train_half2_test": 0.541,
+    "third1_train_third2_test": 0.590,
+    "third1and2_train_third3_test": 0.533
+  },
+  "walk_forward_top20pct_uplift_pp_refined_3feature": {
+    "half1_train_half2_test": 1.93,
+    "third1_train_third2_test": 9.22,
+    "third1and2_train_third3_test": 2.30
+  },
+  "comparison_v2_raw_score_auc_same_test_windows": {
+    "half1_train_half2_test": 0.495,
+    "third1_train_third2_test": 0.490,
+    "third1and2_train_third3_test": 0.498
+  }
+}

@@ -320,6 +320,8 @@ def build_metrics():
     latest_price_candidate_rules = read_csv(latest_price_candidate_rules_path)
     latest_v2_performance_path = latest_file(PROCESSED_DIR, "v2_performance_summary_*.csv")
     latest_v2_performance = read_csv(latest_v2_performance_path)
+    latest_avoid_model_path = latest_file(PROCESSED_DIR, "avoid_model_score_summary_*.csv")
+    latest_avoid_model = read_csv(latest_avoid_model_path)
     latest_v3_backtest_path = latest_file(PROCESSED_DIR, "v3_ranker_backtest_summary_*.csv")
     latest_v3_backtest = read_csv(latest_v3_backtest_path)
     latest_performance_audit_path = latest_file(PROCESSED_DIR, "performance_decision_audit_*.csv")
@@ -500,6 +502,19 @@ def build_metrics():
     ranking_diagnosis_ko = first_row_value(latest_diagnostics, "ranking_diagnosis_ko", "v2 데이터 부족")
     integrity_total_rows = first_row_value(latest_integrity, "total_evaluation_rows", None)
     integrity_unique_keys = first_row_value(latest_integrity, "unique_evaluation_keys", None)
+
+    avoid_model_has_scores = first_row_value(latest_avoid_model, "has_model_scores", False)
+    avoid_model_available_n = first_row_value(latest_avoid_model, "model_available_n", 0)
+    avoid_model_overall_n = first_row_value(latest_avoid_model, "overall_n", 0)
+    avoid_model_overall_rate = first_row_value(latest_avoid_model, "overall_rate", None)
+    avoid_model_top20_n = first_row_value(latest_avoid_model, "model_n_20%", 0)
+    avoid_model_top20_rate = first_row_value(latest_avoid_model, "model_success_rate_20%", None)
+    avoid_model_top20_wilson = first_row_value(latest_avoid_model, "model_wilson_20%", None)
+    avoid_model_top20_insufficient = first_row_value(latest_avoid_model, "model_insufficient_20%", True)
+    v2_avoid_top20_n = first_row_value(latest_avoid_model, "v2_n_20%", 0)
+    v2_avoid_top20_rate = first_row_value(latest_avoid_model, "v2_success_rate_20%", None)
+    v2_avoid_top20_wilson = first_row_value(latest_avoid_model, "v2_wilson_20%", None)
+    v2_avoid_top20_insufficient = first_row_value(latest_avoid_model, "v2_insufficient_20%", True)
     integrity_duplicate_rows = first_row_value(latest_integrity, "duplicate_rows", None)
     integrity_duplicate_rate = first_row_value(latest_integrity, "duplicate_rate", None)
     integrity_v2_evaluated_count = first_row_value(latest_integrity, "v2_evaluated_count", v2_evaluated_count)
@@ -792,6 +807,18 @@ def build_metrics():
         "price_candidate_boost_rule_count": price_candidate_boost_rule_count,
         "price_candidate_penalize_rule_count": price_candidate_penalize_rule_count,
         "price_candidate_watch_rule_count": price_candidate_watch_rule_count,
+        "avoid_model_has_scores": avoid_model_has_scores,
+        "avoid_model_available_n": avoid_model_available_n,
+        "avoid_model_overall_n": avoid_model_overall_n,
+        "avoid_model_overall_rate": avoid_model_overall_rate,
+        "avoid_model_top20_n": avoid_model_top20_n,
+        "avoid_model_top20_rate": avoid_model_top20_rate,
+        "avoid_model_top20_wilson": avoid_model_top20_wilson,
+        "avoid_model_top20_insufficient": avoid_model_top20_insufficient,
+        "v2_avoid_top20_n": v2_avoid_top20_n,
+        "v2_avoid_top20_rate": v2_avoid_top20_rate,
+        "v2_avoid_top20_wilson": v2_avoid_top20_wilson,
+        "v2_avoid_top20_insufficient": v2_avoid_top20_insufficient,
         "suspicious_price_rule_count": suspicious_price_rule_count,
         "top_suspicious_price_rule": top_suspicious_price_rule,
         "top_suspicious_price_rule_reason": top_suspicious_price_rule_reason,
@@ -1703,6 +1730,35 @@ def build_diagnostics_html(metrics, stock_data):
           <div class="label">Active Learned Rules</div>
           <div class="ko-desc">활성 학습 규칙</div>
           {render_kpi_value(metrics["active_learned_rule_count"])}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <h2>AVOID Model Score <span class="heading-ko">회피 모델 점수 (연구용)</span></h2>
+          <p class="section-subtitle">Diagnostic-only logistic regression score for AVOID-direction candidates (avoid_lr_model_v1). Does not affect candidate_action, final_price_signal_score, or selected_pick. Internal diagnostics only -- not shown on the public dashboard. 회피형 후보 전용 진단용 점수이며 실제 후보 선별에는 반영되지 않습니다. 내부 진단 전용이며 공개 대시보드에는 표시되지 않습니다.</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="card kpi-card">
+          <div class="label">AVOID Model Score — Top 20% Performance</div>
+          <div class="ko-desc">회피 모델 점수 상위 20% 성과</div>
+          {render_kpi_value(metrics["avoid_model_top20_rate"], "%") if not metrics["avoid_model_top20_insufficient"] else '<div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient sample<br>표본 부족</span></div>'}
+          <div class="muted-helper">N={metrics["avoid_model_top20_n"]}, Wilson={metrics["avoid_model_top20_wilson"]}<br>표본수={metrics["avoid_model_top20_n"]}, Wilson 신뢰도={metrics["avoid_model_top20_wilson"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">v2 Raw Score — Top 20% Performance (AVOID only)</div>
+          <div class="ko-desc">기존 v2 점수 상위 20% 성과 (회피형만)</div>
+          {render_kpi_value(metrics["v2_avoid_top20_rate"], "%") if not metrics["v2_avoid_top20_insufficient"] else '<div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient sample<br>표본 부족</span></div>'}
+          <div class="muted-helper">N={metrics["v2_avoid_top20_n"]}, Wilson={metrics["v2_avoid_top20_wilson"]}<br>표본수={metrics["v2_avoid_top20_n"]}, Wilson 신뢰도={metrics["v2_avoid_top20_wilson"]}</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="label">AVOID Candidates with Model Score</div>
+          <div class="ko-desc">회피 모델 점수 보유 후보 수</div>
+          {render_kpi_value(metrics["avoid_model_available_n"])}
+          <div class="muted-helper">Overall AVOID evaluated pool: {metrics["avoid_model_overall_n"]}, success rate {metrics["avoid_model_overall_rate"]}%<br>전체 회피형 평가 완료: {metrics["avoid_model_overall_n"]}건, 성공률 {metrics["avoid_model_overall_rate"]}%</div>
         </div>
       </div>
     </section>
