@@ -1,0 +1,63 @@
+# Event-Type Performance Report - 2026-10-09
+
+Generated at: 2026-10-09 02:47:52
+
+## Purpose
+
+This report summarizes prediction performance by disclosure event type. It helps identify which event types have historically produced stronger or weaker prediction results.
+
+## Important Notice
+
+This report is generated for research and portfolio purposes only. It is not financial advice or a buy/sell recommendation.
+
+## Overall Summary
+
+- Total error-note rows: **7237**
+- Evaluated rows: **4977**
+- Success rows: **2190**
+- Failure rows: **2787**
+- Pending rows: **2260**
+- Overall success rate: **44.00%**
+
+## Best Event Types So Far
+
+- `earnings_guidance`: success rate 100.00% from 2 evaluated cases.
+- `paid_in_capital_increase`: success rate 58.70% from 1385 evaluated cases.
+- `lawsuit`: success rate 56.63% from 249 evaluated cases.
+
+## Weak Event Types So Far
+
+- `bond_with_warrant`: success rate 9.23% from 65 evaluated cases.
+- `merger`: success rate 19.70% from 264 evaluated cases.
+- `supply_contract`: success rate 29.01% from 724 evaluated cases.
+
+## Event-Type Performance Table
+
+| Event Type | Total | Evaluated | Success | Failure | Pending | Success Rate | Avg Next Open | Avg Next Close | Bias |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| paid_in_capital_increase | 1903 | 1385 | 813 | 572 | 518 | 58.70% | -4.92% | 0.35% | positive |
+| major_shareholder_change | 1815 | 1182 | 402 | 780 | 633 | 34.01% | -10.09% | -0.68% | conservative |
+| supply_contract | 1050 | 724 | 210 | 514 | 326 | 29.01% | -2.40% | -0.72% | conservative |
+| convertible_bond | 965 | 633 | 336 | 297 | 332 | 53.08% | -5.53% | 1.05% | positive |
+| merger | 359 | 264 | 52 | 212 | 95 | 19.70% | -14.80% | 0.59% | conservative |
+| investment_decision | 366 | 251 | 131 | 120 | 115 | 52.19% | -5.64% | 0.09% | positive |
+| lawsuit | 369 | 249 | 141 | 108 | 120 | 56.63% | -12.29% | -0.52% | positive |
+| bonus_issue | 93 | 90 | 41 | 49 | 3 | 45.56% | 1.37% | 0.40% | conservative |
+| disclosure_violation | 147 | 77 | 38 | 39 | 70 | 49.35% | -13.35% | -0.12% | conservative |
+| bond_with_warrant | 77 | 65 | 6 | 59 | 12 | 9.23% | -0.84% | 0.07% | conservative |
+| spin_off | 87 | 55 | 18 | 37 | 32 | 32.73% | -38.23% | 0.50% | conservative |
+| earnings_guidance | 6 | 2 | 2 | 0 | 4 | 100.00% | 1.78% | 2.14% | positive |
+
+## How to Read This Report
+
+- Total: total error-note rows for the event type.
+- Evaluated: rows with success or failure status.
+- Pending: rows waiting for next trading day price data.
+- Success Rate: success / evaluated rows.
+- Avg Next Open: average next-day open return.
+- Avg Next Close: average next-day close return.
+- Bias: confidence adjustment direction based on historical error notes.
+
+## Next Step
+
+The next step is to use this report to improve event-type weights in the daily recommender.
