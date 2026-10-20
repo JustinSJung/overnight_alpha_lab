@@ -1,0 +1,13 @@
+﻿event_type,total_count,success_count,failure_count,pending_count,evaluated_count,success_rate,failure_rate,pending_rate,raw_learned_adjustment,confidence_multiplier,learned_event_score_adjustment,learning_label,learning_reason,minimum_required_evaluated_count,market_adjusted_success_count,market_adjusted_failure_count,market_adjusted_pending_count,market_adjusted_evaluated_count,market_adjusted_success_rate,social_rows,high_attention_count,rumor_noise_count,risk_noise_count,avg_social_attention_score,avg_rumor_noise_score,avg_risk_noise_score
+paid_in_capital_increase,2196,965,711,520,1676,0.5758,0.4242,0.2368,5,1.0,5.0,mild_positive_learning,성공률이 기준보다 약간 높아 소폭 상향합니다.,5,0,0,466,0,0,6.0,0.0,0.0,6.0,4.33,0.0,6.0
+major_shareholder_change,2120,525,962,633,1487,0.3531,0.6469,0.2986,-5,1.0,-5.0,mild_negative_learning,성공률이 낮아 해당 이벤트 유형 점수를 소폭 하향합니다.,5,0,0,565,0,0,14.0,1.0,0.0,3.0,5.71,0.0,1.07
+supply_contract,1231,270,635,326,905,0.2983,0.7017,0.2648,-10,1.0,-10.0,negative_learning,성공률이 낮아 해당 이벤트 유형 점수를 하향합니다.,5,0,0,298,0,0,26.0,0.0,0.0,6.0,7.88,0.0,1.38
+convertible_bond,1087,396,359,332,755,0.5245,0.4755,0.3054,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,296,0,0,8.0,0.0,0.0,8.0,5.38,0.0,3.75
+merger,418,63,260,95,323,0.195,0.805,0.2273,-15,1.0,-15.0,strong_negative_learning,성공률이 매우 낮아 해당 이벤트 유형 점수를 강하게 하향합니다.,5,0,0,78,0,0,5.0,0.0,1.0,1.0,5.76,0.8,1.2
+lawsuit,413,170,122,121,292,0.5822,0.4178,0.293,5,1.0,5.0,mild_positive_learning,성공률이 기준보다 약간 높아 소폭 상향합니다.,5,0,0,113,0,0,5.0,0.0,0.0,5.0,4.3,0.0,4.8
+investment_decision,394,153,126,115,279,0.5484,0.4516,0.2919,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,102,0,0,10.0,1.0,1.0,2.0,7.2,0.4,0.9
+bond_with_warrant,117,25,80,12,105,0.2381,0.7619,0.1026,-15,1.0,-15.0,strong_negative_learning,성공률이 매우 낮아 해당 이벤트 유형 점수를 강하게 하향합니다.,5,0,0,12,0,0,1.0,0.0,0.0,1.0,5.5,0.0,3.0
+bonus_issue,102,41,58,3,99,0.4141,0.5859,0.0294,-5,1.0,-5.0,mild_negative_learning,성공률이 낮아 해당 이벤트 유형 점수를 소폭 하향합니다.,5,0,0,3,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+disclosure_violation,168,48,50,70,98,0.4898,0.5102,0.4167,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,63,0,0,2.0,0.0,0.0,2.0,4.5,0.0,3.0
+spin_off,112,41,39,32,80,0.5125,0.4875,0.2857,0,1.0,0.0,neutral_learning,성공률이 중립 구간이므로 조정하지 않습니다.,5,0,0,29,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+earnings_guidance,8,4,0,4,4,1.0,0.0,0.5,0,0.0,0.0,hold_insufficient_data,평가 완료 데이터가 부족하여 자동 조정을 보류합니다.,5,0,0,4,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
