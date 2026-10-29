@@ -1,0 +1,339 @@
+{
+  "partitions": {
+    "train": {
+      "rows": 616595,
+      "dates": 744,
+      "start": "2023-02-01",
+      "end": "2026-02-20",
+      "latest_label": "2026-02-27"
+    },
+    "probability_calibration": {
+      "rows": 32332,
+      "dates": 38,
+      "start": "2026-03-03",
+      "end": "2026-04-23",
+      "latest_label": "2026-04-30"
+    },
+    "policy_calibration": {
+      "rows": 28360,
+      "dates": 34,
+      "start": "2026-05-04",
+      "end": "2026-06-23",
+      "latest_label": "2026-06-30"
+    }
+  },
+  "policy": null,
+  "policy_trials": [
+    {
+      "threshold": 0.55,
+      "metrics": {
+        "cases": 20,
+        "dates": 7,
+        "success_count": 2,
+        "failure_count": 18,
+        "pooled_success_rate": 0.1,
+        "date_success_rate": 0.07619047619047618,
+        "date_success_lower": null,
+        "all_date_net_proxy": -0.015268596224386796,
+        "all_date_net_lower": -0.04288573889219599,
+        "alpha": 0.00625
+      },
+      "passed": false
+    },
+    {
+      "threshold": 0.6,
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.00625
+      },
+      "passed": false
+    },
+    {
+      "threshold": 0.65,
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.00625
+      },
+      "passed": false
+    },
+    {
+      "threshold": 0.7,
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.00625
+      },
+      "passed": false
+    }
+  ],
+  "results": {
+    "development_audit": {
+      "status": "prequential_historical_development_only",
+      "probabilities": {
+        "fixed_base": {
+          "target": "target",
+          "date_brier": 0.2498588309164541,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5375744793266889,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        },
+        "case_memory": {
+          "target": "target",
+          "date_brier": 0.24471631955490294,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5146503302834028,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        },
+        "recent_prior": {
+          "target": "target",
+          "date_brier": 0.24665693631975688,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        },
+        "fixed_average": {
+          "target": "target",
+          "date_brier": 0.24157446766207355,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5371482870753099,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        },
+        "adaptive": {
+          "target": "target",
+          "date_brier": 0.24387189616186788,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5296236416049283,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        }
+      },
+      "paired_brier": {
+        "fixed_base": {
+          "date_brier_delta": -0.0059869347545861845,
+          "lower_95": -0.029813931396400192,
+          "upper_95": 0.02575995788920232
+        },
+        "case_memory": {
+          "date_brier_delta": -0.000844423393035054,
+          "lower_95": -0.0021742537223963933,
+          "upper_95": 0.0005297469180918408
+        },
+        "recent_prior": {
+          "date_brier_delta": -0.0027850401578889475,
+          "lower_95": -0.009917075727929055,
+          "upper_95": 0.0022974011748464504
+        },
+        "fixed_average": {
+          "date_brier_delta": 0.0022974284997943433,
+          "lower_95": -0.004235983869176681,
+          "upper_95": 0.01189722718945914
+        }
+      },
+      "policy": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.05
+      },
+      "top20": {
+        "fixed_base": {
+          "absolute_success_rate": 0.47340425531914887,
+          "net_return_proxy": 0.013427759330343594,
+          "excess_vs_pool": 0.0165523923587951
+        },
+        "case_memory": {
+          "absolute_success_rate": 0.4521276595744681,
+          "net_return_proxy": -0.0024960265480899004,
+          "excess_vs_pool": 0.0006286064803616073
+        },
+        "fixed_average": {
+          "absolute_success_rate": 0.448936170212766,
+          "net_return_proxy": 0.016432722620779418,
+          "excess_vs_pool": 0.019557355649230914
+        },
+        "adaptive": {
+          "absolute_success_rate": 0.45744680851063835,
+          "net_return_proxy": 0.005343036595060169,
+          "excess_vs_pool": 0.00846766962351168
+        },
+        "return_20d": {
+          "absolute_success_rate": 0.3627659574468085,
+          "net_return_proxy": -0.02724635963223476,
+          "excess_vs_pool": -0.024121726603783256
+        },
+        "random_mean": {
+          "absolute_success_rate": 0.4115638297872341,
+          "net_return_proxy": -0.002750406747811436,
+          "excess_vs_pool": 0.00037422628064007034
+        }
+      },
+      "paired_top20_returns": {
+        "fixed_base": {
+          "mean": -0.008084722735283422,
+          "lower": -0.032191561349266304,
+          "upper": 0.014589745001996135
+        },
+        "case_memory": {
+          "mean": 0.007839063143150072,
+          "lower": 0.002297902262309242,
+          "upper": 0.014317449551602237
+        },
+        "fixed_average": {
+          "mean": -0.011089686025719239,
+          "lower": -0.03976400531341576,
+          "upper": 0.01330943422491061
+        },
+        "return_20d": {
+          "mean": 0.03258939622729493,
+          "lower": 0.005992019609266302,
+          "upper": 0.05741231914611782
+        },
+        "random_mean": {
+          "mean": 0.00809344334287161,
+          "lower": -0.005489354220241678,
+          "upper": 0.018882775005066025
+        }
+      }
+    },
+    "short_recent_tail": {
+      "status": "unavailable_no_complete_outcome_dates"
+    }
+  },
+  "availability": {
+    "issued_dates": 113,
+    "issued_predictions": 94639,
+    "resolved_batch_updates": 86,
+    "last_weights": [
+      0.19092635959477722,
+      0.40653422086866514,
+      0.4025394195365576
+    ]
+  },
+  "coverage": {
+    "development_audit": {
+      "issued_dates": 62,
+      "complete_dates": 47,
+      "evaluated_rows": 39463
+    },
+    "short_recent_tail": {
+      "issued_dates": 7,
+      "complete_dates": 0,
+      "evaluated_rows": 0
+    }
+  },
+  "screen_reasons": [
+    "no_policy_passed_separate_policy_calibration",
+    "insufficient_external_policy_evidence",
+    "external_60_percent_success_lower_not_established",
+    "external_positive_net_proxy_not_established",
+    "weak_daily_discrimination",
+    "probability_advantage_over_all_controls_not_established",
+    "top20_advantage_over_all_references_not_established"
+  ],
+  "development_screen_passed": false,
+  "recommendation_gate_passed": false,
+  "protocol": {
+    "experiment": "delayed_feedback_case_memory_router_v1",
+    "data_root": "data/ml_history/kis_updated_20261020",
+    "labels_as_of": "2026-10-20",
+    "probability_calibration_start": "2026-03-02",
+    "policy_calibration_start": "2026-05-04",
+    "evaluation_start": "2026-07-01",
+    "periods": {
+      "development_audit": [
+        "2026-07-01",
+        "2026-09-30"
+      ],
+      "short_recent_tail": [
+        "2026-10-01",
+        "2026-10-13"
+      ]
+    },
+    "primary_period": "development_audit",
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "memory_sample_per_date": 32,
+    "memory_dates": 252,
+    "memory_neighbors": 128,
+    "memory_half_life_dates": 60,
+    "prior_dates": 60,
+    "prior_strength_dates": 5,
+    "min_neighbor_dates": 20,
+    "max_neighbor_rms_distance": 1.5,
+    "memory_seed": 42,
+    "router_learning_rate": 2,
+    "router_loss_discount": 0.98,
+    "router_weight_floor": 0.05,
+    "policy_thresholds": [
+      0.55,
+      0.6,
+      0.65,
+      0.7
+    ],
+    "policy_daily_cap": 5,
+    "policy_max_base_case_disagreement": 0.1,
+    "policy_min_cases": 100,
+    "policy_min_dates": 20,
+    "policy_min_date_success": 0.65,
+    "policy_min_success_lower": 0.55,
+    "primary_top_k": 20,
+    "random_replicates": 100,
+    "bootstrap_samples": 5000,
+    "bootstrap_block_sessions": 5,
+    "bootstrap_seed": 42,
+    "memory_availability": "Only label_available_date strictly before issuance close date. Sample keys use input eligibility, not future outcome presence. Neighbor votes aggregate by source date before smoothing.",
+    "router_availability": "Issue predictions for ALL eligible inputs first. Update each frozen past batch once, only after ALL batch outcomes are known strictly before current date. Missing batch outcomes delay updates, never partial-score them.",
+    "controls": "Same frozen Extra Trees and calibration for all methods, case memory alone, recent date prior alone, fixed uniform average, adaptive mixture, momentum and random. Adaptive must not win merely by becoming the recent prior.",
+    "evaluation_role": "Prequential HISTORICAL DEVELOPMENT replay. Earlier evaluation outcomes may enter memory and router only after actual label availability. NOT a static heldout model or independent new validation.",
+    "production_promotion": false,
+    "candidate_pool_change": false,
+    "test_search": false,
+    "world_first_or_guarantee_claim": false
+  },
+  "protocol_sha256": "16ca3f9942ef6eba0d30518a026e723dab8a9bac771945fe8af65f18c695531e",
+  "implementation_sha256": {
+    "src/models/adaptive_memory.py": "48a9ba52846b73adf0b1638ee24739fabe4269836d554553e4e1b79c86b30341",
+    "src/models/distributional_selector.py": "ae8bcfb6b07484d4333cc7fb564cf3f03af7a67ff1513567a03bcfaa5cbbb060",
+    "src/models/selected_price_model.py": "747523c9bb87298ad8ace7d1731908f3f3a1a7a7d48d57b6c1cfa030043db4c2",
+    "src/models/relative_price_selection.py": "c9c0f28995cb90bcef88dc63c617f14dbb77c2ffd5aadce9d661e82fa202b9ef",
+    "src/models/monthly_price_walkforward.py": "fb5219587a0a28437cca4095d72cf62e9c7477b8e0a035677974dbbc60808834",
+    "src/models/price_forecaster.py": "f7352f580c58c1322224902c5780aa57004bbcd2dad87310797e696306bf6bc0",
+    "src/features/ohlcv_information.py": "ed6d8e45f4eb8793f2786c27e36f7dde34450240be9f5f78e0483d3ce5ea3261",
+    "src/features/price_learning_dataset.py": "a0542901b050dc4b737e1f6f90885233bc9c554069ac6d1cbb88fdf6f195c88e",
+    "src/features/completed_price_dataset.py": "e231fb988f58309635abf2357a338c6c8818c8e42a019c00a461cea7993989d7"
+  },
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_memory_router/runs/20261021T064727Z_35a382c3"
+}

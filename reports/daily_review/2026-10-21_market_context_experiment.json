@@ -1,0 +1,808 @@
+{
+  "protocol": {
+    "experiment": "market_context_date_balance_v1",
+    "data_root": "data/ml_history/kis_expanded_20261019",
+    "training_as_of": "2026-06-30",
+    "calibration_start": "2025-02-13",
+    "development_test_start": "2025-10-20",
+    "arms": [
+      "price_row",
+      "price_date",
+      "market_row",
+      "market_date"
+    ],
+    "shared_rows": "All arms use identical observations with complete base and market features",
+    "date_weights": "Inverse observations per signal_date, normalized to mean 1 within each fitting/scoring partition",
+    "weighted_stages": [
+      "scaler",
+      "classifier",
+      "training_cv_loss",
+      "calibrator",
+      "regressor",
+      "calibration_constant",
+      "training_return_median"
+    ],
+    "market_proxy": "Completed-close aggregates of the observed candidate universe, not an exchange index",
+    "market_min_stocks": 100,
+    "features": [
+      "market_return_1d",
+      "market_return_5d",
+      "market_return_20d",
+      "market_volatility_20d",
+      "market_up_fraction",
+      "market_above_ma20_fraction",
+      "market_dispersion_1d",
+      "market_volume_ratio_20d",
+      "relative_return_5d",
+      "relative_return_20d"
+    ],
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "probability_threshold": 0.6,
+    "classifier_selection": "Existing logistic/gradient-boosting candidates; three purged training-only expanding folds",
+    "test_role": "Previously inspected dates: development comparison, not an untouched final test",
+    "production_promotion": false,
+    "threshold_tuning_on_test": false,
+    "candidate_pool_change": false
+  },
+  "data": {
+    "feature_version": "price_market_context_v1",
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "unique_price_observations": 730148,
+    "training_rows": 685620,
+    "signal_dates": 826,
+    "target_definition": "close_t_plus_horizon / signal_close - 1 > cost_assumption",
+    "execution_note": "Close-to-close research target; not an executable next-open trading return.",
+    "universe_note": "Historical collected universe; not a survivorship-free whole-market backtest.",
+    "history_provenance": {
+      "source": "kis_adjusted_daily",
+      "retrieved_at": "2026-10-21T00:53:54.685833+00:00",
+      "scope": "expanded_current_universe_research",
+      "stocks": 901,
+      "historical_limitations": "Current observed universe and retrospectively adjusted prices; not a survivorship-free point-in-time universe.",
+      "requested_stocks": 901,
+      "failed_stocks": 0,
+      "unreadable_stocks": 0
+    },
+    "data_root": "/Users/justin/Desktop/overnight_alpha_lab/data/ml_history/kis_expanded_20261019",
+    "common_rows": 685620,
+    "rows_excluded_for_market_context": 0,
+    "common_dataset_sha256": "e4482c55342c26285fd4faef160f32e70eb40f42d8fe2c9396275031a573cab3",
+    "evaluation_role": "Previously inspected historical dates: development comparison, not an untouched final test.",
+    "experiment_protocol_sha256": "4226b42d9373a0ce0616086c4da4df9797e31ac508441b42a3112bbe872e25f6",
+    "implementation_sha256": {
+      "src/models/market_context_experiment.py": "4482d7f808c3165674a7ebc198a579ce5d612081f9f07a939c8a4a3b5a8b5e28",
+      "src/features/market_context.py": "d4396c6267d4ebb9409d3ca6aaa093534c50184daef78c3cabb49ac88cb732d7",
+      "src/models/price_forecaster.py": "8c5a3809733c02e964bc170e07c583fa5c8f5980fbf506e0f3f9e11a2dd67bdf"
+    }
+  },
+  "results": [
+    {
+      "variant": "price_row",
+      "classifier": "hist_gradient_boosting",
+      "features": [
+        "return_1d",
+        "return_5d",
+        "return_20d",
+        "volume_ratio_20d",
+        "volatility_20d",
+        "breakout_score",
+        "distance_ma5",
+        "distance_ma20",
+        "ma5_vs_ma20"
+      ],
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_context/price_row/runs/20261021T040048Z_4b8d62bf0f_1ecb11",
+      "test": {
+        "evaluated_rows": 141304,
+        "signal_dates": 166,
+        "base_rate": 0.4209788824095567,
+        "accuracy_at_half": 0.5708401743758138,
+        "majority_class_accuracy": 0.5790211175904433,
+        "balanced_accuracy": 0.5060584461102977,
+        "roc_auc": 0.515569002515538,
+        "brier_score": 0.2443146606151731,
+        "baseline_brier_score": 0.24397113575735196,
+        "return_mae": 0.06875559832905402,
+        "selected_count": 1081,
+        "selected_dates": 105,
+        "selected_success_rate": 0.6827012025901943,
+        "selected_mean_net_return_proxy": 0.04760119967720476,
+        "selected_daily_mean_net_return_proxy": -0.004392426209274806,
+        "selected_daily_return_lower_95": -0.029619819607526035,
+        "recommendation_gate_passed": false,
+        "gate_reasons": [
+          "weak_out_of_time_discrimination",
+          "probabilities_do_not_beat_constant_baseline",
+          "positive_daily_return_edge_not_established",
+          "development_experiment_requires_future_validation"
+        ],
+        "baseline_return_mae": 0.06901200528093901,
+        "date_brier": 0.2442442652805674,
+        "common_date_baseline_brier": 0.24385059429036368,
+        "date_log_loss": 0.6815637309997139,
+        "date_return_mae": 0.06885087617913584,
+        "mean_daily_cross_section_auc": 0.5216833458824752,
+        "daily_auc_dates": 166,
+        "selected_date_success_rate": 0.4536965606101468,
+        "selected_top_two_date_share": 0.44495837187789083,
+        "all_dates_mean_net_return_proxy": -0.002778341879360571,
+        "all_dates_return_lower_95": -0.01875424841373102,
+        "common_date_baseline_return_mae": 0.06910378084711409,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 8232,
+            "mean_probability": 0.3870073462244322,
+            "observed_rate": 0.36673955296404276
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 131991,
+            "mean_probability": 0.44769861695946556,
+            "observed_rate": 0.4222181815426809
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 1081,
+            "mean_probability": 0.6248633278519183,
+            "observed_rate": 0.6827012025901943
+          }
+        ]
+      },
+      "partitions": {
+        "train": {
+          "rows": 398764,
+          "start": "2023-02-01",
+          "end": "2025-02-05",
+          "positive_rate": 0.4134525684364687,
+          "latest_label_available": "2025-02-12"
+        },
+        "calibration": {
+          "rows": 137002,
+          "start": "2025-02-13",
+          "end": "2025-10-10",
+          "positive_rate": 0.43565787360768454,
+          "latest_label_available": "2025-10-17"
+        },
+        "test": {
+          "rows": 141304,
+          "start": "2025-10-20",
+          "end": "2026-06-23",
+          "positive_rate": 0.4209788824095567,
+          "latest_label_available": "2026-06-30"
+        }
+      },
+      "monthly": [
+        {
+          "month": "2025-10",
+          "rows": 8583,
+          "auc": 0.5324232685371615,
+          "date_brier": 0.23278602373105337,
+          "baseline_date_brier": 0.23334632709134895
+        },
+        {
+          "month": "2025-11",
+          "rows": 17170,
+          "auc": 0.5211338641792446,
+          "date_brier": 0.2506498238203562,
+          "baseline_date_brier": 0.25127482057268186
+        },
+        {
+          "month": "2025-12",
+          "rows": 18040,
+          "auc": 0.5205874309166585,
+          "date_brier": 0.24151922526224862,
+          "baseline_date_brier": 0.2415960630061578
+        },
+        {
+          "month": "2026-01",
+          "rows": 18115,
+          "auc": 0.538903904089499,
+          "date_brier": 0.2533133537227715,
+          "baseline_date_brier": 0.2545440972655448
+        },
+        {
+          "month": "2026-02",
+          "rows": 14692,
+          "auc": 0.4826653090870465,
+          "date_brier": 0.24486614697868544,
+          "baseline_date_brier": 0.2427504709819057
+        },
+        {
+          "month": "2026-03",
+          "rows": 18111,
+          "auc": 0.5911945346725137,
+          "date_brier": 0.24048389428677183,
+          "baseline_date_brier": 0.247795617548977
+        },
+        {
+          "month": "2026-04",
+          "rows": 18233,
+          "auc": 0.5584318744549811,
+          "date_brier": 0.2595553956305155,
+          "baseline_date_brier": 0.261207573513561
+        },
+        {
+          "month": "2026-05",
+          "rows": 14781,
+          "auc": 0.5223051115302937,
+          "date_brier": 0.23034511435628457,
+          "baseline_date_brier": 0.2155838582605652
+        },
+        {
+          "month": "2026-06",
+          "rows": 13579,
+          "auc": 0.6513531415548712,
+          "date_brier": 0.23393063270167386,
+          "baseline_date_brier": 0.23398459768237975
+        }
+      ],
+      "regimes": [
+        {
+          "regime": "down_or_flat_proxy",
+          "rows": 55474,
+          "auc": 0.5306719609001876,
+          "date_brier": 0.2431870901673754
+        },
+        {
+          "regime": "up_proxy",
+          "rows": 85830,
+          "auc": 0.5112070121361544,
+          "date_brier": 0.2449246255019285
+        }
+      ]
+    },
+    {
+      "variant": "price_date",
+      "classifier": "hist_gradient_boosting",
+      "features": [
+        "return_1d",
+        "return_5d",
+        "return_20d",
+        "volume_ratio_20d",
+        "volatility_20d",
+        "breakout_score",
+        "distance_ma5",
+        "distance_ma20",
+        "ma5_vs_ma20"
+      ],
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_context/price_date/runs/20261021T040054Z_4b8d62bf0f_03e379",
+      "test": {
+        "evaluated_rows": 141304,
+        "signal_dates": 166,
+        "base_rate": 0.4209788824095567,
+        "accuracy_at_half": 0.5710312517692351,
+        "majority_class_accuracy": 0.5790211175904433,
+        "balanced_accuracy": 0.5059573176088863,
+        "roc_auc": 0.5158240678501571,
+        "brier_score": 0.2442910568348213,
+        "baseline_brier_score": 0.24397595140771072,
+        "return_mae": 0.06875443389725656,
+        "selected_count": 1044,
+        "selected_dates": 104,
+        "selected_success_rate": 0.6791187739463601,
+        "selected_mean_net_return_proxy": 0.046422988639332134,
+        "selected_daily_mean_net_return_proxy": -0.001557069581494916,
+        "selected_daily_return_lower_95": -0.025512753071351264,
+        "recommendation_gate_passed": false,
+        "gate_reasons": [
+          "weak_out_of_time_discrimination",
+          "probabilities_do_not_beat_constant_baseline",
+          "positive_daily_return_edge_not_established",
+          "development_experiment_requires_future_validation"
+        ],
+        "baseline_return_mae": 0.06901254734058317,
+        "date_brier": 0.24422028407973884,
+        "common_date_baseline_brier": 0.24385059429036368,
+        "date_log_loss": 0.6815156803975637,
+        "date_return_mae": 0.0688497558997048,
+        "mean_daily_cross_section_auc": 0.5215895417685417,
+        "daily_auc_dates": 166,
+        "selected_date_success_rate": 0.4724992672679663,
+        "selected_top_two_date_share": 0.4434865900383142,
+        "all_dates_mean_net_return_proxy": -0.0009755134727438034,
+        "all_dates_return_lower_95": -0.014966236733627193,
+        "common_date_baseline_return_mae": 0.06910378084711409,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 7538,
+            "mean_probability": 0.3866918303355267,
+            "observed_rate": 0.36163438577872115
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 132722,
+            "mean_probability": 0.447404337465763,
+            "observed_rate": 0.42231883184400476
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 1044,
+            "mean_probability": 0.626405823137256,
+            "observed_rate": 0.6791187739463601
+          }
+        ]
+      },
+      "partitions": {
+        "train": {
+          "rows": 398764,
+          "start": "2023-02-01",
+          "end": "2025-02-05",
+          "positive_rate": 0.4134525684364687,
+          "latest_label_available": "2025-02-12"
+        },
+        "calibration": {
+          "rows": 137002,
+          "start": "2025-02-13",
+          "end": "2025-10-10",
+          "positive_rate": 0.43565787360768454,
+          "latest_label_available": "2025-10-17"
+        },
+        "test": {
+          "rows": 141304,
+          "start": "2025-10-20",
+          "end": "2026-06-23",
+          "positive_rate": 0.4209788824095567,
+          "latest_label_available": "2026-06-30"
+        }
+      },
+      "monthly": [
+        {
+          "month": "2025-10",
+          "rows": 8583,
+          "auc": 0.5323498740951709,
+          "date_brier": 0.23281689660865607,
+          "baseline_date_brier": 0.23334632709134895
+        },
+        {
+          "month": "2025-11",
+          "rows": 17170,
+          "auc": 0.5215278847997522,
+          "date_brier": 0.2506290376218763,
+          "baseline_date_brier": 0.25127482057268186
+        },
+        {
+          "month": "2025-12",
+          "rows": 18040,
+          "auc": 0.5192059014497182,
+          "date_brier": 0.24154579176786486,
+          "baseline_date_brier": 0.2415960630061578
+        },
+        {
+          "month": "2026-01",
+          "rows": 18115,
+          "auc": 0.5393908751675481,
+          "date_brier": 0.25328912037536094,
+          "baseline_date_brier": 0.2545440972655448
+        },
+        {
+          "month": "2026-02",
+          "rows": 14692,
+          "auc": 0.4833494207755522,
+          "date_brier": 0.24482797612345253,
+          "baseline_date_brier": 0.2427504709819057
+        },
+        {
+          "month": "2026-03",
+          "rows": 18111,
+          "auc": 0.5907869660797871,
+          "date_brier": 0.24054382148387315,
+          "baseline_date_brier": 0.247795617548977
+        },
+        {
+          "month": "2026-04",
+          "rows": 18233,
+          "auc": 0.5570625844866961,
+          "date_brier": 0.25957891608380695,
+          "baseline_date_brier": 0.261207573513561
+        },
+        {
+          "month": "2026-05",
+          "rows": 14781,
+          "auc": 0.523116854406156,
+          "date_brier": 0.23010989727469558,
+          "baseline_date_brier": 0.2155838582605652
+        },
+        {
+          "month": "2026-06",
+          "rows": 13579,
+          "auc": 0.650964017117337,
+          "date_brier": 0.23387963335353268,
+          "baseline_date_brier": 0.23398459768237975
+        }
+      ],
+      "regimes": [
+        {
+          "regime": "down_or_flat_proxy",
+          "rows": 55474,
+          "auc": 0.531145913768998,
+          "date_brier": 0.2431406227398664
+        },
+        {
+          "regime": "up_proxy",
+          "rows": 85830,
+          "auc": 0.5111136727929162,
+          "date_brier": 0.24491511563510227
+        }
+      ]
+    },
+    {
+      "variant": "market_row",
+      "classifier": "hist_gradient_boosting",
+      "features": [
+        "return_1d",
+        "return_5d",
+        "return_20d",
+        "volume_ratio_20d",
+        "volatility_20d",
+        "breakout_score",
+        "distance_ma5",
+        "distance_ma20",
+        "ma5_vs_ma20",
+        "market_return_1d",
+        "market_return_5d",
+        "market_return_20d",
+        "market_volatility_20d",
+        "market_up_fraction",
+        "market_above_ma20_fraction",
+        "market_dispersion_1d",
+        "market_volume_ratio_20d",
+        "relative_return_5d",
+        "relative_return_20d"
+      ],
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_context/market_row/runs/20261021T040100Z_b25eb669ba_c6bc91",
+      "test": {
+        "evaluated_rows": 141304,
+        "signal_dates": 166,
+        "base_rate": 0.4209788824095567,
+        "accuracy_at_half": 0.5797995810451225,
+        "majority_class_accuracy": 0.5790211175904433,
+        "balanced_accuracy": 0.5143227992769928,
+        "roc_auc": 0.5118187530418117,
+        "brier_score": 0.24428337624738658,
+        "baseline_brier_score": 0.24397113575735196,
+        "return_mae": 0.07015789023177263,
+        "selected_count": 0,
+        "selected_dates": 0,
+        "selected_success_rate": null,
+        "selected_mean_net_return_proxy": null,
+        "selected_daily_mean_net_return_proxy": null,
+        "selected_daily_return_lower_95": null,
+        "recommendation_gate_passed": false,
+        "gate_reasons": [
+          "insufficient_fixed_policy_selection_history",
+          "weak_out_of_time_discrimination",
+          "probabilities_do_not_beat_constant_baseline",
+          "selected_precision_lift_below_3_percentage_points",
+          "positive_daily_return_edge_not_established",
+          "return_forecast_does_not_beat_training_median",
+          "development_experiment_requires_future_validation"
+        ],
+        "baseline_return_mae": 0.06901200528093901,
+        "date_brier": 0.2442190527597414,
+        "common_date_baseline_brier": 0.24385059429036368,
+        "date_log_loss": 0.6815456400615452,
+        "date_return_mae": 0.07027782846073541,
+        "mean_daily_cross_section_auc": 0.5196341708488477,
+        "daily_auc_dates": 166,
+        "selected_date_success_rate": null,
+        "selected_top_two_date_share": null,
+        "all_dates_mean_net_return_proxy": 0.0,
+        "all_dates_return_lower_95": 0.0,
+        "common_date_baseline_return_mae": 0.06910378084711409,
+        "calibration_bins": [
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 141304,
+            "mean_probability": 0.452726121195796,
+            "observed_rate": 0.4209788824095567
+          }
+        ]
+      },
+      "partitions": {
+        "train": {
+          "rows": 398764,
+          "start": "2023-02-01",
+          "end": "2025-02-05",
+          "positive_rate": 0.4134525684364687,
+          "latest_label_available": "2025-02-12"
+        },
+        "calibration": {
+          "rows": 137002,
+          "start": "2025-02-13",
+          "end": "2025-10-10",
+          "positive_rate": 0.43565787360768454,
+          "latest_label_available": "2025-10-17"
+        },
+        "test": {
+          "rows": 141304,
+          "start": "2025-10-20",
+          "end": "2026-06-23",
+          "positive_rate": 0.4209788824095567,
+          "latest_label_available": "2026-06-30"
+        }
+      },
+      "monthly": [
+        {
+          "month": "2025-10",
+          "rows": 8583,
+          "auc": 0.4448125051027334,
+          "date_brier": 0.23402913689659802,
+          "baseline_date_brier": 0.23334632709134895
+        },
+        {
+          "month": "2025-11",
+          "rows": 17170,
+          "auc": 0.5529039263992375,
+          "date_brier": 0.2494078182642524,
+          "baseline_date_brier": 0.25127482057268186
+        },
+        {
+          "month": "2025-12",
+          "rows": 18040,
+          "auc": 0.5221252102258698,
+          "date_brier": 0.24162933894765104,
+          "baseline_date_brier": 0.2415960630061578
+        },
+        {
+          "month": "2026-01",
+          "rows": 18115,
+          "auc": 0.4668875209140294,
+          "date_brier": 0.25440013075108786,
+          "baseline_date_brier": 0.2545440972655448
+        },
+        {
+          "month": "2026-02",
+          "rows": 14692,
+          "auc": 0.523490758642603,
+          "date_brier": 0.24284619979901936,
+          "baseline_date_brier": 0.2427504709819057
+        },
+        {
+          "month": "2026-03",
+          "rows": 18111,
+          "auc": 0.6375382999837337,
+          "date_brier": 0.24034209047858104,
+          "baseline_date_brier": 0.247795617548977
+        },
+        {
+          "month": "2026-04",
+          "rows": 18233,
+          "auc": 0.6203987046074845,
+          "date_brier": 0.2553455531839047,
+          "baseline_date_brier": 0.261207573513561
+        },
+        {
+          "month": "2026-05",
+          "rows": 14781,
+          "auc": 0.552403261793873,
+          "date_brier": 0.23049991528294528,
+          "baseline_date_brier": 0.2155838582605652
+        },
+        {
+          "month": "2026-06",
+          "rows": 13579,
+          "auc": 0.7158168268830538,
+          "date_brier": 0.24082038865125538,
+          "baseline_date_brier": 0.23398459768237975
+        }
+      ],
+      "regimes": [
+        {
+          "regime": "down_or_flat_proxy",
+          "rows": 55474,
+          "auc": 0.5217373817897651,
+          "date_brier": 0.2441683498251741
+        },
+        {
+          "regime": "up_proxy",
+          "rows": 85830,
+          "auc": 0.5141125589967387,
+          "date_brier": 0.24425168336119565
+        }
+      ]
+    },
+    {
+      "variant": "market_date",
+      "classifier": "hist_gradient_boosting",
+      "features": [
+        "return_1d",
+        "return_5d",
+        "return_20d",
+        "volume_ratio_20d",
+        "volatility_20d",
+        "breakout_score",
+        "distance_ma5",
+        "distance_ma20",
+        "ma5_vs_ma20",
+        "market_return_1d",
+        "market_return_5d",
+        "market_return_20d",
+        "market_volatility_20d",
+        "market_up_fraction",
+        "market_above_ma20_fraction",
+        "market_dispersion_1d",
+        "market_volume_ratio_20d",
+        "relative_return_5d",
+        "relative_return_20d"
+      ],
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_context/market_date/runs/20261021T040108Z_b25eb669ba_6b710e",
+      "test": {
+        "evaluated_rows": 141304,
+        "signal_dates": 166,
+        "base_rate": 0.4209788824095567,
+        "accuracy_at_half": 0.582021740361207,
+        "majority_class_accuracy": 0.5790211175904433,
+        "balanced_accuracy": 0.5164917617975077,
+        "roc_auc": 0.512073920492188,
+        "brier_score": 0.24430977962094377,
+        "baseline_brier_score": 0.24397595140771072,
+        "return_mae": 0.07004597996674912,
+        "selected_count": 0,
+        "selected_dates": 0,
+        "selected_success_rate": null,
+        "selected_mean_net_return_proxy": null,
+        "selected_daily_mean_net_return_proxy": null,
+        "selected_daily_return_lower_95": null,
+        "recommendation_gate_passed": false,
+        "gate_reasons": [
+          "insufficient_fixed_policy_selection_history",
+          "weak_out_of_time_discrimination",
+          "probabilities_do_not_beat_constant_baseline",
+          "selected_precision_lift_below_3_percentage_points",
+          "positive_daily_return_edge_not_established",
+          "return_forecast_does_not_beat_training_median",
+          "development_experiment_requires_future_validation"
+        ],
+        "baseline_return_mae": 0.06901254734058317,
+        "date_brier": 0.24424305729822743,
+        "common_date_baseline_brier": 0.24385059429036368,
+        "date_log_loss": 0.6815913415644196,
+        "date_return_mae": 0.07016442337878462,
+        "mean_daily_cross_section_auc": 0.5198179817854608,
+        "daily_auc_dates": 166,
+        "selected_date_success_rate": null,
+        "selected_top_two_date_share": null,
+        "all_dates_mean_net_return_proxy": 0.0,
+        "all_dates_return_lower_95": 0.0,
+        "common_date_baseline_return_mae": 0.06910378084711409,
+        "calibration_bins": [
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 141304,
+            "mean_probability": 0.45194508614603823,
+            "observed_rate": 0.4209788824095567
+          }
+        ]
+      },
+      "partitions": {
+        "train": {
+          "rows": 398764,
+          "start": "2023-02-01",
+          "end": "2025-02-05",
+          "positive_rate": 0.4134525684364687,
+          "latest_label_available": "2025-02-12"
+        },
+        "calibration": {
+          "rows": 137002,
+          "start": "2025-02-13",
+          "end": "2025-10-10",
+          "positive_rate": 0.43565787360768454,
+          "latest_label_available": "2025-10-17"
+        },
+        "test": {
+          "rows": 141304,
+          "start": "2025-10-20",
+          "end": "2026-06-23",
+          "positive_rate": 0.4209788824095567,
+          "latest_label_available": "2026-06-30"
+        }
+      },
+      "monthly": [
+        {
+          "month": "2025-10",
+          "rows": 8583,
+          "auc": 0.4591733104811752,
+          "date_brier": 0.2338258791844952,
+          "baseline_date_brier": 0.23334632709134895
+        },
+        {
+          "month": "2025-11",
+          "rows": 17170,
+          "auc": 0.5445221277456098,
+          "date_brier": 0.24966397490215853,
+          "baseline_date_brier": 0.25127482057268186
+        },
+        {
+          "month": "2025-12",
+          "rows": 18040,
+          "auc": 0.5140916708419969,
+          "date_brier": 0.2416379699198894,
+          "baseline_date_brier": 0.2415960630061578
+        },
+        {
+          "month": "2026-01",
+          "rows": 18115,
+          "auc": 0.45867822115060997,
+          "date_brier": 0.2546544810210201,
+          "baseline_date_brier": 0.2545440972655448
+        },
+        {
+          "month": "2026-02",
+          "rows": 14692,
+          "auc": 0.5476641271134713,
+          "date_brier": 0.24256865441282002,
+          "baseline_date_brier": 0.2427504709819057
+        },
+        {
+          "month": "2026-03",
+          "rows": 18111,
+          "auc": 0.6322394896151218,
+          "date_brier": 0.24036161178075593,
+          "baseline_date_brier": 0.247795617548977
+        },
+        {
+          "month": "2026-04",
+          "rows": 18233,
+          "auc": 0.6179720581852913,
+          "date_brier": 0.2554772878475711,
+          "baseline_date_brier": 0.261207573513561
+        },
+        {
+          "month": "2026-05",
+          "rows": 14781,
+          "auc": 0.5512854128767585,
+          "date_brier": 0.2294989539476029,
+          "baseline_date_brier": 0.2155838582605652
+        },
+        {
+          "month": "2026-06",
+          "rows": 13579,
+          "auc": 0.7255378039936924,
+          "date_brier": 0.24174532973383137,
+          "baseline_date_brier": 0.23398459768237975
+        }
+      ],
+      "regimes": [
+        {
+          "regime": "down_or_flat_proxy",
+          "rows": 55474,
+          "auc": 0.5239806859020122,
+          "date_brier": 0.244320547782384
+        },
+        {
+          "regime": "up_proxy",
+          "rows": 85830,
+          "auc": 0.5131986689468735,
+          "date_brier": 0.2441931871846613
+        }
+      ]
+    }
+  ]
+}

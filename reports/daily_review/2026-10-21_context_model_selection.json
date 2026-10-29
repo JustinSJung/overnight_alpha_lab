@@ -1,0 +1,466 @@
+{
+  "selected_arm": "ohlcv_19",
+  "selected_family": "extra_trees",
+  "choices": {
+    "ohlcv_19": {
+      "family": "extra_trees",
+      "scores": {
+        "linear": 0.24449692628594083,
+        "hgb_shallow": 0.24359912882853169,
+        "hgb_medium": 0.24349726628003343,
+        "extra_trees": 0.24338432260031154,
+        "fixed_mean": 0.2434782335405925
+      },
+      "constant_brier": 0.24492822247434695,
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "rows": 143102,
+            "dates": 181,
+            "start": "2023-02-01",
+            "end": "2023-10-26",
+            "latest_label": "2023-11-02"
+          },
+          "validation": {
+            "rows": 152565,
+            "dates": 186,
+            "start": "2023-11-03",
+            "end": "2024-08-05",
+            "latest_label": "2024-08-12"
+          }
+        },
+        {
+          "fold": 2,
+          "train": {
+            "rows": 295549,
+            "dates": 367,
+            "start": "2023-02-01",
+            "end": "2024-07-29",
+            "latest_label": "2024-08-05"
+          },
+          "validation": {
+            "rows": 156917,
+            "dates": 186,
+            "start": "2024-08-06",
+            "end": "2025-05-16",
+            "latest_label": "2025-05-23"
+          }
+        },
+        {
+          "fold": 3,
+          "train": {
+            "rows": 452358,
+            "dates": 553,
+            "start": "2023-02-01",
+            "end": "2025-05-09",
+            "latest_label": "2025-05-16"
+          },
+          "validation": {
+            "rows": 159978,
+            "dates": 186,
+            "start": "2025-05-19",
+            "end": "2026-02-20",
+            "latest_label": "2026-02-27"
+          }
+        }
+      ]
+    },
+    "ohlcv_market_29": {
+      "family": "linear",
+      "scores": {
+        "linear": 0.24614375360803575,
+        "hgb_shallow": 0.24962017700870512,
+        "hgb_medium": 0.2518180096274772,
+        "extra_trees": 0.247128075977378,
+        "fixed_mean": 0.24706013643704944
+      },
+      "constant_brier": 0.24492822247434695,
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "rows": 143102,
+            "dates": 181,
+            "start": "2023-02-01",
+            "end": "2023-10-26",
+            "latest_label": "2023-11-02"
+          },
+          "validation": {
+            "rows": 152565,
+            "dates": 186,
+            "start": "2023-11-03",
+            "end": "2024-08-05",
+            "latest_label": "2024-08-12"
+          }
+        },
+        {
+          "fold": 2,
+          "train": {
+            "rows": 295549,
+            "dates": 367,
+            "start": "2023-02-01",
+            "end": "2024-07-29",
+            "latest_label": "2024-08-05"
+          },
+          "validation": {
+            "rows": 156917,
+            "dates": 186,
+            "start": "2024-08-06",
+            "end": "2025-05-16",
+            "latest_label": "2025-05-23"
+          }
+        },
+        {
+          "fold": 3,
+          "train": {
+            "rows": 452358,
+            "dates": 553,
+            "start": "2023-02-01",
+            "end": "2025-05-09",
+            "latest_label": "2025-05-16"
+          },
+          "validation": {
+            "rows": 159978,
+            "dates": 186,
+            "start": "2025-05-19",
+            "end": "2026-02-20",
+            "latest_label": "2026-02-27"
+          }
+        }
+      ]
+    }
+  },
+  "partitions": {
+    "train": {
+      "rows": 616595,
+      "dates": 744,
+      "start": "2023-02-01",
+      "end": "2026-02-20",
+      "latest_label": "2026-02-27"
+    },
+    "calibration": {
+      "rows": 64704,
+      "dates": 77,
+      "start": "2026-03-03",
+      "end": "2026-06-23",
+      "latest_label": "2026-06-30"
+    }
+  },
+  "fit_as_of": "2026-06-30",
+  "cohort_excluded_rows": 0,
+  "results": {
+    "development_audit": {
+      "ohlcv_19": {
+        "date_brier": 0.2496270816092933,
+        "common_date_baseline_brier": 0.2503523664806903,
+        "date_log_loss": 0.6926387127450299,
+        "date_return_mae": 0.07142478166062549,
+        "mean_daily_cross_section_auc": 0.5367614551401109,
+        "daily_auc_dates": 62,
+        "selected_date_success_rate": 0.6875,
+        "selected_top_two_date_share": 0.45454545454545453,
+        "all_dates_mean_net_return_proxy": 0.017393780450277868,
+        "all_dates_return_lower_95": -0.00036789379561033385,
+        "evaluated_rows": 52002,
+        "signal_dates": 62,
+        "roc_auc": 0.55328668039751,
+        "brier_score": 0.24960763625894108,
+        "own_baseline_brier_score": 0.250341139936508,
+        "own_date_baseline_brier": 0.2503523664806903,
+        "return_mae": 0.07148919691830544,
+        "baseline_return_mae": 0.07192339851040404,
+        "selected_count": 11,
+        "selected_dates": 8,
+        "selected_success_rate": 0.7272727272727273,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0,
+              0.2
+            ],
+            "count": 7,
+            "mean_probability": 0.19391953777001553,
+            "observed_rate": 0.14285714285714285
+          },
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 37012,
+            "mean_probability": 0.36905286233443996,
+            "observed_rate": 0.4304279693072517
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 14972,
+            "mean_probability": 0.4247599529218888,
+            "observed_rate": 0.5034731498797755
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 11,
+            "mean_probability": 0.6218859079934687,
+            "observed_rate": 0.7272727272727273
+          }
+        ],
+        "empirical_interval_coverage": 0.9084611082938203,
+        "empirical_interval_width": 0.34025244270227917
+      },
+      "ohlcv_market_29": {
+        "date_brier": 0.252745302045183,
+        "common_date_baseline_brier": 0.2503523664806903,
+        "date_log_loss": 0.7005004792059883,
+        "date_return_mae": 0.07086580769117219,
+        "mean_daily_cross_section_auc": 0.5170612715415077,
+        "daily_auc_dates": 62,
+        "selected_date_success_rate": 0.8495762711864407,
+        "selected_top_two_date_share": 0.9682539682539683,
+        "all_dates_mean_net_return_proxy": 0.010245924707035555,
+        "all_dates_return_lower_95": -0.0022015565080081216,
+        "evaluated_rows": 52002,
+        "signal_dates": 62,
+        "roc_auc": 0.5364282332404648,
+        "brier_score": 0.2526897761244906,
+        "own_baseline_brier_score": 0.250341139936508,
+        "own_date_baseline_brier": 0.2503523664806903,
+        "return_mae": 0.07093806373818533,
+        "baseline_return_mae": 0.07192339851040404,
+        "selected_count": 63,
+        "selected_dates": 4,
+        "selected_success_rate": 0.8888888888888888,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0,
+              0.2
+            ],
+            "count": 2,
+            "mean_probability": 0.02311346565611263,
+            "observed_rate": 0.0
+          },
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 34020,
+            "mean_probability": 0.3270034597487235,
+            "observed_rate": 0.4389182833627278
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 17914,
+            "mean_probability": 0.45082985629937106,
+            "observed_rate": 0.47393100368426927
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 66,
+            "mean_probability": 0.6146278258217601,
+            "observed_rate": 0.8484848484848485
+          }
+        ],
+        "empirical_interval_coverage": 0.9099070566234075,
+        "empirical_interval_width": 0.3504453253648082
+      }
+    },
+    "short_recent_tail": {
+      "ohlcv_19": {
+        "date_brier": 0.20339542589795334,
+        "common_date_baseline_brier": 0.20652283514799105,
+        "date_log_loss": 0.5981951294006795,
+        "date_return_mae": 0.07379980479439194,
+        "mean_daily_cross_section_auc": 0.510167324231652,
+        "daily_auc_dates": 7,
+        "selected_date_success_rate": 0.0,
+        "selected_top_two_date_share": 1.0,
+        "all_dates_mean_net_return_proxy": -0.003750830564784059,
+        "all_dates_return_lower_95": null,
+        "evaluated_rows": 5853,
+        "signal_dates": 7,
+        "roc_auc": 0.5313025210084035,
+        "brier_score": 0.2033644210614207,
+        "own_baseline_brier_score": 0.20649900601371987,
+        "own_date_baseline_brier": 0.20652283514799105,
+        "return_mae": 0.07382339687004379,
+        "baseline_return_mae": 0.07473825502192677,
+        "selected_count": 1,
+        "selected_dates": 1,
+        "selected_success_rate": 0.0,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 3903,
+            "mean_probability": 0.36918409577455574,
+            "observed_rate": 0.21060722521137587
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 1949,
+            "mean_probability": 0.43120512694095997,
+            "observed_rate": 0.2786044125192406
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 1,
+            "mean_probability": 0.6292806095591993,
+            "observed_rate": 0.0
+          }
+        ],
+        "empirical_interval_coverage": 0.906618657558067,
+        "empirical_interval_width": 0.34025244270227917
+      },
+      "ohlcv_market_29": {
+        "date_brier": 0.18457979378710956,
+        "common_date_baseline_brier": 0.20652283514799105,
+        "date_log_loss": 0.5571515101491331,
+        "date_return_mae": 0.07373818914546025,
+        "mean_daily_cross_section_auc": 0.44851546673736,
+        "daily_auc_dates": 7,
+        "selected_date_success_rate": null,
+        "selected_top_two_date_share": null,
+        "all_dates_mean_net_return_proxy": 0.0,
+        "all_dates_return_lower_95": null,
+        "evaluated_rows": 5853,
+        "signal_dates": 7,
+        "roc_auc": 0.5842187224540166,
+        "brier_score": 0.18453209513092203,
+        "own_baseline_brier_score": 0.20649900601371987,
+        "own_date_baseline_brier": 0.20652283514799105,
+        "return_mae": 0.07376154237115719,
+        "baseline_return_mae": 0.07473825502192677,
+        "selected_count": 0,
+        "selected_dates": 0,
+        "selected_success_rate": null,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 5828,
+            "mean_probability": 0.32078310015679556,
+            "observed_rate": 0.23318462594371997
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 25,
+            "mean_probability": 0.4227156960274535,
+            "observed_rate": 0.24
+          }
+        ],
+        "empirical_interval_coverage": 0.9354657821583857,
+        "empirical_interval_width": 0.3504453253648082
+      }
+    }
+  },
+  "paired": {
+    "development_audit": {
+      "date_brier_delta": 0.003118220435889677,
+      "lower_95": -0.00979387048337137,
+      "upper_95": 0.012760592483103949
+    },
+    "short_recent_tail": {
+      "date_brier_delta": -0.01881563211084377,
+      "lower_95": null,
+      "upper_95": null
+    }
+  },
+  "protocol": {
+    "experiment": "ohlcv_and_market_training_only_selection_v1",
+    "data_root": "data/ml_history/kis_updated_20261020",
+    "labels_as_of": "2026-10-20",
+    "calibration_start": "2026-03-02",
+    "test_start": "2026-07-01",
+    "periods": {
+      "development_audit": [
+        "2026-07-01",
+        "2026-09-30"
+      ],
+      "short_recent_tail": [
+        "2026-10-01",
+        "2026-10-13"
+      ]
+    },
+    "primary_period": "development_audit",
+    "feature_sets": [
+      "ohlcv_19",
+      "ohlcv_market_29"
+    ],
+    "candidates": [
+      "linear",
+      "hgb_shallow",
+      "hgb_medium",
+      "extra_trees",
+      "fixed_mean"
+    ],
+    "cv_splits": 3,
+    "market_min_stocks": 100,
+    "selection": "Lowest training-only date-balanced OOF raw Brier across all ten feature/family configurations; deterministic feature/family tie break. External results cannot change selection.",
+    "control": "Best training-only OHLCV-19 family refit on exactly the same rows/dates. Context arm separately selects its family inside training.",
+    "market_definition": "Completed same-day observed-universe equal-weight return, breadth, volume, dispersion and stock-relative momentum. NOT a tradable index or KOSPI/KOSDAQ.",
+    "cohort": "One shared cohort finite in all 29 causal features; report excluded rows and never change production universe.",
+    "target": "Five observed sessions close return > 0.003; unchanged absolute target",
+    "probability_threshold": 0.6,
+    "cost_assumption": 0.003,
+    "regressor": "Each arm uses its own features with the unchanged absolute-error regressor and calibration residual bounds. Return outputs are conditional-median proxies, not expected means.",
+    "evaluation_role": "Already inspected historical development dates, NOT new independent validation. October tail is short diagnostic only.",
+    "production_promotion": false,
+    "candidate_pool_change": false,
+    "hyperparameter_search_on_test": false
+  },
+  "protocol_sha256": "9c9c3e5c07149d86c38e3f09e08599a9f9dc1d9325985e70eb10ab66d28acf2f",
+  "implementation_sha256": {
+    "src/models/context_model_selection.py": "b167f2fb5923c84c364f7e85806f419f111589d22b8040dcc925c39a36670472",
+    "src/models/selected_price_model.py": "747523c9bb87298ad8ace7d1731908f3f3a1a7a7d48d57b6c1cfa030043db4c2",
+    "src/features/market_context.py": "d4396c6267d4ebb9409d3ca6aaa093534c50184daef78c3cabb49ac88cb732d7",
+    "src/features/ohlcv_information.py": "ed6d8e45f4eb8793f2786c27e36f7dde34450240be9f5f78e0483d3ce5ea3261",
+    "src/features/price_learning_dataset.py": "a0542901b050dc4b737e1f6f90885233bc9c554069ac6d1cbb88fdf6f195c88e",
+    "src/features/completed_price_dataset.py": "e231fb988f58309635abf2357a338c6c8818c8e42a019c00a461cea7993989d7",
+    "src/models/price_forecaster.py": "f7352f580c58c1322224902c5780aa57004bbcd2dad87310797e696306bf6bc0",
+    "src/models/monthly_price_walkforward.py": "fb5219587a0a28437cca4095d72cf62e9c7477b8e0a035677974dbbc60808834",
+    "src/models/ohlcv_information_experiment.py": "d81d21432efde01221f5e149b9959e2f1bc6c6ff8df4692139a11635b5c73a3a",
+    "src/models/market_context_experiment.py": "34eaa56688448903d6340e14c192566c58913d5349d24c0221a6f5b8b7270b94"
+  },
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_context_selected/runs/20261021T055001Z_6b053112",
+  "development_screen_passed": false,
+  "screen_reasons": [
+    "paired_probability_improvement_not_established",
+    "does_not_beat_known_constant_probability",
+    "weak_cross_sectional_discrimination",
+    "insufficient_fixed_policy_cases_or_dates",
+    "positive_policy_net_proxy_not_established",
+    "context_not_selected_inside_training"
+  ],
+  "recommendation_gate_passed": false
+}

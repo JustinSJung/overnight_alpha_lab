@@ -10,8 +10,14 @@ data/processed/daily_price_signals_YYYYMMDD.csv
 
 from datetime import datetime
 from pathlib import Path
+import sys
 
 import pandas as pd
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+from src.crawler.market_clock import completed_price_cutoff
 
 
 RAW_DIR = Path("data/raw")
@@ -79,8 +85,9 @@ def normalize_price_df(df: pd.DataFrame) -> pd.DataFrame:
     return df.sort_values("date")
 
 
-def calculate_signal(price_df: pd.DataFrame, source_file: Path) -> dict:
+def calculate_signal(price_df: pd.DataFrame, source_file: Path, cutoff=None) -> dict:
     df = normalize_price_df(price_df)
+    df = df[df['date'] <= pd.Timestamp(cutoff or completed_price_cutoff())]
 
     if len(df) < 20:
         return {}

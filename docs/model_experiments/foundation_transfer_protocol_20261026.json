@@ -1,0 +1,43 @@
+{
+  "experiment": "next_open_foundation_transfer_v1",
+  "data_root": "data/ml_history/kis_updated_20261022",
+  "labels_as_of": "2026-10-22",
+  "fit_as_of": "2026-04-30",
+  "asset_dir": "data/models/price_foundation_assets/chronos_bolt_tiny_2024",
+  "model_id": "amazon/chronos-bolt-tiny",
+  "model_revision": "6904c2c38d12fb281d38cbf589c9171bfc050066",
+  "pretrained_available_from": "2024-11-26",
+  "asset_hashes": {
+    "config.json": "278f0086733031635fb1c861cb01c1bad6477420c7fcb19381a2993e335785e0",
+    "model.safetensors": "75068728d376d2bec670379eeef4bfb4d24c0cfe24d957451f8d19b447030a32"
+  },
+  "training_sessions": 252,
+  "calibration_sessions": 60,
+  "training_samples_per_date": 32,
+  "sequence_sessions": 128,
+  "batch_size": 128,
+  "threads": 2,
+  "seed": 42,
+  "shuffle_seed": 713,
+  "logistic_C": 0.1,
+  "calibration_l2": 0.05,
+  "horizon_sessions": 5,
+  "cost_assumption": 0.003,
+  "daily_cap": 5,
+  "probability_threshold": 0.6,
+  "bootstrap_samples": 5000,
+  "bootstrap_block_sessions": 5,
+  "primary_comparisons": 2,
+  "periods": {
+    "earlier_development": ["2026-05-04", "2026-06-30"],
+    "primary_development": ["2026-07-01", "2026-09-30"],
+    "recent_development": ["2026-10-01", "2026-10-15"]
+  },
+  "primary_arm": "foundation_augmented",
+  "controls": ["price_only", "foundation_shuffled"],
+  "production_promotion": false,
+  "candidate_pool_change": false,
+  "historical_role": "Repeatedly inspected development history, never independent validation",
+  "quantile_note": "Separate open and close forecast ratios are input features, not a joint return distribution or confidence interval",
+  "compute_note": "Input-only date sampling restricts supervised fitting cost, never the inference candidate pool"
+}

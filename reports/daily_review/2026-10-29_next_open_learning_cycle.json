@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-10-29T15:09:25.470195+09:00",
+  "price_date": "2026-10-28",
+  "learning_state": "new_mature_labels_learned",
+  "new_mature_labels": 2486,
+  "fit_label_cutoff": "2026-10-28",
+  "model_trained_at": "2026-10-29T06:09:25.399766+00:00",
+  "dataset_sha256": "bc365c7205d5035f25e0c4d7d23fb2faa414db5eb51177054025f3d410a91d66",
+  "recording_state": "outside_recording_window_originals_preserved",
+  "new_frozen_predictions": 0,
+  "original_registry_files": 2,
+  "later_duplicate_candidates_not_used": 0,
+  "evidence_scope": "First timely recorded model batch per signal date, same next-open target; evolving learning system, not one static model",
+  "forward": {
+    "recorded_candidates": 1667,
+    "evaluated_cases": 830,
+    "unresolved_cases": 837,
+    "states": {
+      "awaiting_future_sessions": 834,
+      "resolved": 830,
+      "exit_price_unavailable": 2,
+      "entry_price_unavailable": 1
+    },
+    "pooled_success_rate": 0.21204819277108433,
+    "date_brier": 0.22781972177772075,
+    "frozen_baseline_date_brier": 0.22016528278464115,
+    "recommendation_enabled": false,
+    "status": "incomplete_forward_outcomes",
+    "fixed_policy": {
+      "selected_cases": 7,
+      "selected_dates": 2,
+      "evaluated_cases": 5,
+      "unresolved_cases": 2,
+      "outcome_coverage": 0.7142857142857143,
+      "conditional_success_rate": 0.4,
+      "conditional_date_success_rate": 0.4,
+      "conditional_mean_net_return_proxy": -0.006309963405298991,
+      "all_date_net_return_proxy": null,
+      "all_date_net_lower_95": null,
+      "unknown_states": {
+        "awaiting_future_sessions": 2
+      }
+    }
+  },
+  "recommendation_enabled": false
+}

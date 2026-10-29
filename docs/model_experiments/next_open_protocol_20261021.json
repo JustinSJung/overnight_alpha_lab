@@ -1,0 +1,23 @@
+{
+  "experiment": "execution_target_audit_v1",
+  "data_root": "data/ml_history/kis_updated_20261020",
+  "labels_as_of": "2026-10-20",
+  "calibration_start": "2026-03-02",
+  "evaluation_start": "2026-05-04",
+  "periods": {
+    "policy_diagnostic": ["2026-05-04", "2026-06-30"],
+    "historical_development": ["2026-07-01", "2026-09-30"],
+    "recent_tail": ["2026-10-01", "2026-10-13"]
+  },
+  "algorithm": "extra_trees_fixed_existing_parameters",
+  "features": "existing_19_ohlcv_only",
+  "horizon_sessions": 5,
+  "cost_assumption": 0.003,
+  "probability_threshold": 0.6,
+  "daily_selection_cap": 5,
+  "comparison": "Same rows, algorithm and temporal partitions; only training target differs. Both are evaluated against next-open labels.",
+  "historical_role": "Repeatedly inspected development history, not independent validation",
+  "unknown_outcomes": "Retain input candidates and rank before joining outcomes; report unresolved picks, never replace them with lower-ranked resolved stocks",
+  "production_promotion": false,
+  "candidate_pool_change": false
+}

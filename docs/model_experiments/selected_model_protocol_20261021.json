@@ -1,0 +1,29 @@
+{
+  "experiment": "training_only_model_selection_v1",
+  "data_root": "data/ml_history/kis_updated_20261020",
+  "labels_as_of": "2026-10-20",
+  "calibration_start": "2026-03-02",
+  "test_start": "2026-07-01",
+  "periods": {
+    "development_audit": ["2026-07-01", "2026-09-30"],
+    "short_recent_tail": ["2026-10-01", "2026-10-13"]
+  },
+  "primary_period": "development_audit",
+  "cv_splits": 3,
+  "candidates": ["linear", "hgb_shallow", "hgb_medium", "extra_trees", "fixed_mean"],
+  "selection": "Lowest date-equal out-of-fold raw Brier within training only, deterministic name tie-break; constant fold-training prevalence is a reference, not an optimized candidate",
+  "ensemble": "Fixed unweighted mean of all four candidate raw probabilities; no test-chosen weights",
+  "calibration": "Separate March-June period sigmoid calibration AFTER training-only family selection; it does not select the family",
+  "anchor": "Existing shallow HGB retrained on identical new train/calibration rows; not the older differently timed artifact",
+  "weights": "Equal signal-date weights for classifier, scaling, calibration, regression and evaluation",
+  "target": "Unchanged five observed sessions close return > 0.003",
+  "probability_threshold": 0.6,
+  "cost_assumption": 0.003,
+  "return_point": "Shared absolute-error HGB conditional-median proxy, not mathematical expected return",
+  "return_interval": "Date-weighted 5th/95th percentiles of calibration residuals around the shared point model; empirical 90% band, not a conformal guarantee under time/stock dependence",
+  "development_screen": "Original information-experiment screen plus selected date-equal interval coverage at least 0.85; no automatic production promotion even if passed",
+  "evaluation_role": "Previously inspected historical development audit; short October tail is diagnostic only, too short for confidence. No claim of fresh independent evidence",
+  "hyperparameter_search_on_test": false,
+  "candidate_pool_change": false,
+  "production_promotion": false
+}

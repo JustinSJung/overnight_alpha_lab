@@ -1,0 +1,332 @@
+{
+  "protocol": {
+    "experiment": "relative_selection_v1",
+    "data_root": "data/ml_history/kis_expanded_20261019",
+    "labels_as_of": "2026-06-30",
+    "calibration_start": "2025-02-13",
+    "evaluation_start": "2025-10-20",
+    "evaluation_end": "2026-06-23",
+    "features": [
+      "return_1d",
+      "return_5d",
+      "return_20d",
+      "volume_ratio_20d",
+      "volatility_20d",
+      "breakout_score",
+      "distance_ma5",
+      "distance_ma20",
+      "ma5_vs_ma20"
+    ],
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "minimum_stocks_per_date": 100,
+    "reference": "Equal-weight same-signal-date input-eligible candidate universe, not a market index; benchmark includes the candidate itself",
+    "relative_target": "Five-session stock return strictly exceeds same-date universe mean return; costs cancel for equal-cost relative comparison",
+    "absolute_target": "Unchanged: five-session close return strictly exceeds 0.003",
+    "missing_outcomes": "Determine eligibility without future outcomes; exclude entire incomplete-outcome dates, report all excluded dates/counts, do not silently select only resolved stocks",
+    "label_availability": "Relative labels become known only when every input-eligible constituent outcome on that date is known; use the maximum constituent availability date",
+    "classifier": "hist_gradient_boosting",
+    "training": "Fixed existing HGB hyperparameters; equal signal-date weights; no model/window/feature selection on evaluation",
+    "calibration": "Separate date-weighted sigmoid calibration; identical settings for relative and absolute controls",
+    "ranking": "Descending calibrated probability, stock_code ascending for ties; never use future returns to rank",
+    "primary_top_k": 20,
+    "secondary_top_k": 10,
+    "baselines": [
+      "equal_weight_pool",
+      "descending_return_20d",
+      "deterministic_random",
+      "matched_absolute_classifier"
+    ],
+    "random_seed_start": 42,
+    "random_replicates": 100,
+    "date_weighted_evaluation": true,
+    "bootstrap_samples": 5000,
+    "bootstrap_block_sessions": 5,
+    "bootstrap_seed": 42,
+    "development_screen": "At least 100 complete evaluation dates and 95% complete-date coverage; primary Top20 paired return difference positive against all four baselines with Bonferroni simultaneous 95% family coverage; Top20 absolute net-proxy lower 95% bound positive. This is not a deployment gate.",
+    "evaluation_role": "Previously inspected dates: retrospective development experiment, not new untouched or prospective validation",
+    "new_target_is_not_absolute_confidence": true,
+    "production_promotion": false,
+    "candidate_pool_change": false
+  },
+  "protocol_sha256": "658701b6db02c5158ae36ec91fd222d270e7de198e5c71d322a70e8c639899b6",
+  "dataset_sha256": "b719c4a35e8b90ce7f4c9409263c9473275aadc313871738cc227126c8dd1007",
+  "implementation_sha256": {
+    "src/models/relative_price_selection.py": "c9c0f28995cb90bcef88dc63c617f14dbb77c2ffd5aadce9d661e82fa202b9ef",
+    "src/features/price_learning_dataset.py": "a0542901b050dc4b737e1f6f90885233bc9c554069ac6d1cbb88fdf6f195c88e",
+    "src/features/completed_price_dataset.py": "e231fb988f58309635abf2357a338c6c8818c8e42a019c00a461cea7993989d7",
+    "src/models/price_forecaster.py": "f7352f580c58c1322224902c5780aa57004bbcd2dad87310797e696306bf6bc0"
+  },
+  "recorded_at": "2026-10-21T04:32:16.530427+00:00",
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_relative_selection/20261021T043216Z_abe350aa",
+  "fit_as_of": "2025-10-17",
+  "partitions": {
+    "train": {
+      "rows": 398764,
+      "dates": 490,
+      "start": "2023-02-01",
+      "end": "2025-02-05",
+      "latest_label": "2025-02-12"
+    },
+    "calibration": {
+      "rows": 137002,
+      "dates": 160,
+      "start": "2025-02-13",
+      "end": "2025-10-10",
+      "latest_label": "2025-10-17"
+    },
+    "test": {
+      "rows": 141304,
+      "dates": 166,
+      "start": "2025-10-20",
+      "end": "2026-06-23",
+      "latest_label": "2026-06-30"
+    }
+  },
+  "probabilities": {
+    "relative": {
+      "target": "relative_target",
+      "date_brier": 0.24186760370377047,
+      "known_constant_date_brier": 0.24201484745096322,
+      "mean_daily_auc": 0.5190165364942597,
+      "auc_dates": 166,
+      "known_calibration_prior": 0.41587427179358044,
+      "calibration_slope": 1.136066815138713
+    },
+    "absolute_control": {
+      "target": "target",
+      "date_brier": 0.24425842820899957,
+      "known_constant_date_brier": 0.24385059429036385,
+      "mean_daily_auc": 0.5211655879174214,
+      "auc_dates": 166,
+      "known_calibration_prior": 0.43582099927182927,
+      "calibration_slope": 0.767533805048847
+    }
+  },
+  "coverage": {
+    "eligible_dates": 166,
+    "included_dates": 166,
+    "evaluated_rows": 141304,
+    "excluded_dates": []
+  },
+  "portfolios": {
+    "pool": {
+      "dates": 166,
+      "selected_cases": 141304,
+      "absolute_success_rate": 0.4200022614282029,
+      "relative_success_rate": 0.4104775018509274,
+      "mean_return": -0.0015623128468478175,
+      "net_return_proxy": -0.004562312846847821,
+      "excess_vs_pool": 0.0
+    },
+    "relative_top20": {
+      "dates": 166,
+      "selected_cases": 3320,
+      "absolute_success_rate": 0.41295180722891556,
+      "relative_success_rate": 0.4295180722891566,
+      "mean_return": -0.0034594689372174072,
+      "net_return_proxy": -0.00645946893721741,
+      "excess_vs_pool": -0.0018971560903695889
+    },
+    "absolute_top20": {
+      "dates": 166,
+      "selected_cases": 3320,
+      "absolute_success_rate": 0.4240963855421687,
+      "relative_success_rate": 0.41536144578313244,
+      "mean_return": -0.003357077547410391,
+      "net_return_proxy": -0.0063570775474103966,
+      "excess_vs_pool": -0.0017947647005625747
+    },
+    "momentum_top20": {
+      "dates": 166,
+      "selected_cases": 3320,
+      "absolute_success_rate": 0.40993975903614466,
+      "relative_success_rate": 0.41716867469879526,
+      "mean_return": 0.0063124254274331765,
+      "net_return_proxy": 0.0033124254274331743,
+      "excess_vs_pool": 0.007874738274280995
+    },
+    "relative_top10": {
+      "dates": 166,
+      "selected_cases": 1660,
+      "absolute_success_rate": 0.40963855421686746,
+      "relative_success_rate": 0.4367469879518072,
+      "mean_return": -0.004611635336288117,
+      "net_return_proxy": -0.00761163533628812,
+      "excess_vs_pool": -0.0030493224894403005
+    },
+    "absolute_top10": {
+      "dates": 166,
+      "selected_cases": 1660,
+      "absolute_success_rate": 0.4168674698795181,
+      "relative_success_rate": 0.41325301204819276,
+      "mean_return": -0.005235695150001263,
+      "net_return_proxy": -0.008235695150001264,
+      "excess_vs_pool": -0.0036733823031534444
+    },
+    "momentum_top10": {
+      "dates": 166,
+      "selected_cases": 1660,
+      "absolute_success_rate": 0.4108433734939759,
+      "relative_success_rate": 0.4210843373493976,
+      "mean_return": 0.012413673637342285,
+      "net_return_proxy": 0.009413673637342284,
+      "excess_vs_pool": 0.013975986484190106
+    },
+    "random_top20": {
+      "dates": 166,
+      "selected_cases": 3320,
+      "absolute_success_rate": 0.4199126506024096,
+      "relative_success_rate": 0.41068674698795177,
+      "mean_return": -0.0013262011687147543,
+      "net_return_proxy": -0.0043262011687147574,
+      "excess_vs_pool": 0.00023611167813306332
+    },
+    "random_top10": {
+      "dates": 166,
+      "selected_cases": 1660,
+      "absolute_success_rate": 0.41877108433734944,
+      "relative_success_rate": 0.41032530120481914,
+      "mean_return": -0.0015751248073050475,
+      "net_return_proxy": -0.00457512480730505,
+      "excess_vs_pool": -1.281196045723131e-05
+    }
+  },
+  "primary_paired": {
+    "pool": {
+      "mean": -0.0018971560903695889,
+      "lower": -0.011596759470961737,
+      "upper": 0.007391015484833288
+    },
+    "absolute_top20": {
+      "mean": -0.00010239138980701418,
+      "lower": -0.008033346322522542,
+      "upper": 0.00727896801551087
+    },
+    "momentum_top20": {
+      "mean": -0.009771894364650584,
+      "lower": -0.03637842545958374,
+      "upper": 0.013884382654210605
+    },
+    "random_top20": {
+      "mean": -0.002133267768502653,
+      "lower": -0.011680933243709156,
+      "upper": 0.007087454713868878
+    }
+  },
+  "primary_net_interval": {
+    "mean": -0.00645946893721741,
+    "lower": -0.020733187390754287,
+    "upper": 0.006930477219442654
+  },
+  "monthly": [
+    {
+      "month": "2025-10",
+      "dates": 10,
+      "relative_excess": 0.00027961536911780255,
+      "relative_net": -0.009060268043004594,
+      "absolute_excess": -0.004198121379424047,
+      "momentum_excess": 0.004937916308263944,
+      "random_excess": 0.00044915693404400624
+    },
+    {
+      "month": "2025-11",
+      "dates": 20,
+      "relative_excess": -0.0012231013949863063,
+      "relative_net": -0.000713511014333584,
+      "absolute_excess": 0.002122095346512839,
+      "momentum_excess": -0.02796787559549297,
+      "random_excess": -0.00038948281170665233
+    },
+    {
+      "month": "2025-12",
+      "dates": 21,
+      "relative_excess": -0.024058210671303298,
+      "relative_net": -0.022891487510464596,
+      "absolute_excess": -0.013915210809334676,
+      "momentum_excess": 0.05448864397087502,
+      "random_excess": 0.00021332256890690927
+    },
+    {
+      "month": "2026-01",
+      "dates": 21,
+      "relative_excess": 0.007022307084233688,
+      "relative_net": 0.02796785964256428,
+      "absolute_excess": 0.02810696881869131,
+      "momentum_excess": -0.008587185917344526,
+      "random_excess": -0.00017127065934719404
+    },
+    {
+      "month": "2026-02",
+      "dates": 17,
+      "relative_excess": -0.027689840138682052,
+      "relative_net": -0.04211593147032242,
+      "absolute_excess": -0.04270263160993973,
+      "momentum_excess": 0.0025537350942996776,
+      "random_excess": -0.0003926503059278014
+    },
+    {
+      "month": "2026-03",
+      "dates": 21,
+      "relative_excess": 0.004723509780403954,
+      "relative_net": 0.013381129809319058,
+      "absolute_excess": -0.0076385405348446,
+      "momentum_excess": 0.04727469059843085,
+      "random_excess": 0.0007905006535844462
+    },
+    {
+      "month": "2026-04",
+      "dates": 22,
+      "relative_excess": -0.007566756667167998,
+      "relative_net": 0.016276183395994136,
+      "absolute_excess": 0.0005837567600691424,
+      "momentum_excess": -0.006385619250494975,
+      "random_excess": 0.00038222882362235584
+    },
+    {
+      "month": "2026-05",
+      "dates": 18,
+      "relative_excess": 0.014512414453892845,
+      "relative_net": -0.042178400762764606,
+      "absolute_excess": -0.0009427981388758754,
+      "momentum_excess": 0.00863745868078926,
+      "random_excess": 0.0003524605299397362
+    },
+    {
+      "month": "2026-06",
+      "dates": 16,
+      "relative_excess": 0.021329418875774664,
+      "relative_net": -0.014868779351112037,
+      "absolute_excess": 0.018378953422066475,
+      "momentum_excess": -0.012369896792483431,
+      "random_excess": 0.001058172073744979
+    }
+  ],
+  "random_seed_dispersion": {
+    "20": {
+      "replicates": 100,
+      "mean_return_seed_quantiles": [
+        -0.0045409160900668245,
+        -0.0014311409591798506,
+        0.0022815414743011706
+      ]
+    },
+    "10": {
+      "replicates": 100,
+      "mean_return_seed_quantiles": [
+        -0.006290077991203255,
+        -0.001733061388587595,
+        0.0035205492719746568
+      ]
+    }
+  },
+  "development_screen_passed": false,
+  "screen_reasons": [
+    "no_clear_advantage_vs_pool",
+    "no_clear_advantage_vs_absolute_top20",
+    "no_clear_advantage_vs_momentum_top20",
+    "no_clear_advantage_vs_random_top20",
+    "absolute_net_proxy_lower_bound_not_positive"
+  ],
+  "recommendation_gate_passed": false
+}

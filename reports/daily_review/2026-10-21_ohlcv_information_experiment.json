@@ -1,0 +1,310 @@
+{
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_ohlcv/20261021T051534Z_3b0bbeb4",
+  "protocol": {
+    "experiment": "ohlcv_information_ablation_v1",
+    "data_root": "data/ml_history/kis_expanded_20261019",
+    "labels_as_of": "2026-10-19",
+    "calibration_start": "2025-02-13",
+    "test_start": "2025-10-20",
+    "periods": {
+      "earlier_development": [
+        "2025-10-20",
+        "2026-06-23"
+      ],
+      "later_chronological_audit": [
+        "2026-07-01",
+        "2026-09-30"
+      ]
+    },
+    "primary_period": "later_chronological_audit",
+    "features_added": [
+      "overnight_gap",
+      "intraday_return",
+      "intraday_range",
+      "close_position",
+      "downside_volatility_20d",
+      "up_day_fraction_20d",
+      "volume_trend_5_20",
+      "log_traded_value_proxy_20d",
+      "range_mean_20d",
+      "gap_volatility_20d"
+    ],
+    "classifier": "Existing fixed HGB parameters, no model or parameter search",
+    "target": "Unchanged: close after five observed quote sessions / signal close - 1 > 0.003",
+    "weights": "Equal weight per signal date in training, calibration, regression and evaluation",
+    "cohort": "Common complete feature/outcome rows shared by baseline and enriched arms; report exclusions",
+    "probability_threshold": 0.6,
+    "cost_assumption": 0.003,
+    "policy": "Probability >= 0.6 AND predicted return > 0.003; unchanged across arms and periods",
+    "primary_screen": "Later period: enriched paired date-Brier upper 95% delta below zero, date Brier beats past calibration constant, mean daily AUC >= 0.55, at least 100 policy rows on 20 dates, block lower 95% policy net-proxy return positive",
+    "uncertainty": "5000 paired circular resamples of five signal dates, seed 42; primary Brier contrast predeclared",
+    "evaluation_note": "Historical development and later chronological audit, not claimed untouched final validation; current universe and retrospectively adjusted prices remain biased",
+    "new_information_note": "Uses existing as-of OHLCV fields previously ignored. No present-day fundamentals backfilled into history. Volume*close is a liquidity proxy, not actual traded value.",
+    "production_promotion": false,
+    "candidate_pool_change": false
+  },
+  "protocol_sha256": "97622765b3c70a26753bf8ac49fb29864b79ed58d33ff1ddb2bfea2b0d0c14bf",
+  "implementation_sha256": {
+    "src/models/ohlcv_information_experiment.py": "d81d21432efde01221f5e149b9959e2f1bc6c6ff8df4692139a11635b5c73a3a",
+    "src/features/ohlcv_information.py": "ed6d8e45f4eb8793f2786c27e36f7dde34450240be9f5f78e0483d3ce5ea3261",
+    "src/features/price_learning_dataset.py": "a0542901b050dc4b737e1f6f90885233bc9c554069ac6d1cbb88fdf6f195c88e",
+    "src/models/price_forecaster.py": "f7352f580c58c1322224902c5780aa57004bbcd2dad87310797e696306bf6bc0",
+    "src/models/monthly_price_walkforward.py": "fb5219587a0a28437cca4095d72cf62e9c7477b8e0a035677974dbbc60808834",
+    "src/models/market_context_experiment.py": "34eaa56688448903d6340e14c192566c58913d5349d24c0221a6f5b8b7270b94"
+  },
+  "fit_as_of": "2025-10-17",
+  "partitions": {
+    "train": {
+      "rows": 398764,
+      "dates": 490,
+      "start": "2023-02-01",
+      "end": "2025-02-05",
+      "latest_label": "2025-02-12"
+    },
+    "calibration": {
+      "rows": 137002,
+      "dates": 160,
+      "start": "2025-02-13",
+      "end": "2025-10-10",
+      "latest_label": "2025-10-17"
+    }
+  },
+  "cohort_excluded_rows": 0,
+  "results": {
+    "earlier_development": {
+      "baseline": {
+        "date_brier": 0.24422028407973884,
+        "common_date_baseline_brier": 0.24385059429036368,
+        "date_log_loss": 0.6815156803975637,
+        "date_return_mae": 0.0688497558997048,
+        "mean_daily_cross_section_auc": 0.5215895417685417,
+        "daily_auc_dates": 166,
+        "selected_date_success_rate": 0.4724992672679663,
+        "selected_top_two_date_share": 0.4434865900383142,
+        "all_dates_mean_net_return_proxy": -0.0009755134727438034,
+        "all_dates_return_lower_95": -0.014966236733627193,
+        "evaluated_rows": 141304,
+        "signal_dates": 166,
+        "roc_auc": 0.5158240678501571,
+        "brier_score": 0.2442910568348213,
+        "own_baseline_brier_score": 0.24397595140771072,
+        "own_date_baseline_brier": 0.24385059429036368,
+        "return_mae": 0.06875443389725656,
+        "baseline_return_mae": 0.06901200528093901,
+        "selected_count": 1044,
+        "selected_dates": 104,
+        "selected_success_rate": 0.6791187739463601,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 7538,
+            "mean_probability": 0.3866918303355267,
+            "observed_rate": 0.36163438577872115
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 132722,
+            "mean_probability": 0.447404337465763,
+            "observed_rate": 0.42231883184400476
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 1044,
+            "mean_probability": 0.626405823137256,
+            "observed_rate": 0.6791187739463601
+          }
+        ]
+      },
+      "enriched": {
+        "date_brier": 0.2440361190244175,
+        "common_date_baseline_brier": 0.24385059429036368,
+        "date_log_loss": 0.6811356522389772,
+        "date_return_mae": 0.06868799418695762,
+        "mean_daily_cross_section_auc": 0.5336722301138831,
+        "daily_auc_dates": 166,
+        "selected_date_success_rate": 0.4536746702222658,
+        "selected_top_two_date_share": 0.30858310626702995,
+        "all_dates_mean_net_return_proxy": 0.012042354159651445,
+        "all_dates_return_lower_95": -0.013655853321049287,
+        "evaluated_rows": 141304,
+        "signal_dates": 166,
+        "roc_auc": 0.5284780384103298,
+        "brier_score": 0.24409762145193797,
+        "own_baseline_brier_score": 0.24397595140771072,
+        "own_date_baseline_brier": 0.24385059429036368,
+        "return_mae": 0.06859400919563328,
+        "baseline_return_mae": 0.06901200528093901,
+        "selected_count": 1468,
+        "selected_dates": 139,
+        "selected_success_rate": 0.5708446866485014,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 12665,
+            "mean_probability": 0.3856352056072336,
+            "observed_rate": 0.3671535728385314
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 127169,
+            "mean_probability": 0.45013325773791923,
+            "observed_rate": 0.4246160620906038
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 1470,
+            "mean_probability": 0.632162178269545,
+            "observed_rate": 0.5700680272108843
+          }
+        ]
+      }
+    },
+    "later_chronological_audit": {
+      "baseline": {
+        "date_brier": 0.24567963036910706,
+        "common_date_baseline_brier": 0.2478985262929542,
+        "date_log_loss": 0.6844651182647978,
+        "date_return_mae": 0.07151527409870259,
+        "mean_daily_cross_section_auc": 0.5243732241278157,
+        "daily_auc_dates": 62,
+        "selected_date_success_rate": 0.5357337107337108,
+        "selected_top_two_date_share": 0.34615384615384615,
+        "all_dates_mean_net_return_proxy": -0.004528708490179119,
+        "all_dates_return_lower_95": -0.046881254687411236,
+        "evaluated_rows": 52002,
+        "signal_dates": 62,
+        "roc_auc": 0.543055923488925,
+        "brier_score": 0.24567512273700015,
+        "own_baseline_brier_score": 0.2478913521634972,
+        "own_date_baseline_brier": 0.2478985262929542,
+        "return_mae": 0.07158122144368453,
+        "baseline_return_mae": 0.07195954590440494,
+        "selected_count": 156,
+        "selected_dates": 39,
+        "selected_success_rate": 0.7051282051282052,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 3123,
+            "mean_probability": 0.3860265123089072,
+            "observed_rate": 0.3861671469740634
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 48723,
+            "mean_probability": 0.44555989653532685,
+            "observed_rate": 0.4548570490322845
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 156,
+            "mean_probability": 0.6228731441263758,
+            "observed_rate": 0.7051282051282052
+          }
+        ]
+      },
+      "enriched": {
+        "date_brier": 0.24496822898391468,
+        "common_date_baseline_brier": 0.2478985262929542,
+        "date_log_loss": 0.6830166636604091,
+        "date_return_mae": 0.07143668576209024,
+        "mean_daily_cross_section_auc": 0.5344885725666823,
+        "daily_auc_dates": 62,
+        "selected_date_success_rate": 0.5141049527550738,
+        "selected_top_two_date_share": 0.363395225464191,
+        "all_dates_mean_net_return_proxy": 0.017608477962948534,
+        "all_dates_return_lower_95": -0.029255794306367818,
+        "evaluated_rows": 52002,
+        "signal_dates": 62,
+        "roc_auc": 0.5530950825299037,
+        "brier_score": 0.24495791681518592,
+        "own_baseline_brier_score": 0.2478913521634972,
+        "own_date_baseline_brier": 0.2478985262929542,
+        "return_mae": 0.07150072311115671,
+        "baseline_return_mae": 0.07195954590440494,
+        "selected_count": 377,
+        "selected_dates": 56,
+        "selected_success_rate": 0.6949602122015915,
+        "recommendation_gate_passed": false,
+        "calibration_bins": [
+          {
+            "range": [
+              0.2,
+              0.4
+            ],
+            "count": 5605,
+            "mean_probability": 0.3867845804917631,
+            "observed_rate": 0.3807314897413024
+          },
+          {
+            "range": [
+              0.4,
+              0.6
+            ],
+            "count": 46018,
+            "mean_probability": 0.4472314879469793,
+            "observed_rate": 0.45810335086270587
+          },
+          {
+            "range": [
+              0.6,
+              0.8
+            ],
+            "count": 379,
+            "mean_probability": 0.6237388051598749,
+            "observed_rate": 0.6939313984168866
+          }
+        ]
+      }
+    }
+  },
+  "paired": {
+    "earlier_development": {
+      "date_brier_delta": -0.0001841650553212904,
+      "lower_95": -0.0005390005930546949,
+      "upper_95": 0.00018998821219854943
+    },
+    "later_chronological_audit": {
+      "date_brier_delta": -0.0007114013851923248,
+      "lower_95": -0.0014596413989841608,
+      "upper_95": -8.784657082439e-06
+    }
+  },
+  "development_screen_passed": false,
+  "screen_reasons": [
+    "weak_cross_sectional_discrimination",
+    "positive_policy_net_proxy_not_established"
+  ],
+  "recommendation_gate_passed": false,
+  "dataset_sha256": "5c80f09881bf52d08d05a88f8b0af903bc1671c7d4a7e63ab7ac948b5d19dac2"
+}

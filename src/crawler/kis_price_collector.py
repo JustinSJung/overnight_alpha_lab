@@ -24,6 +24,7 @@ except Exception:  # pragma: no cover - optional runtime dependency guard
     stock = None
 
 from src.crawler.kis_client import KISClient, KISCredentialsMissing, normalize_stock_code
+from src.crawler.market_clock import completed_price_cutoff
 
 
 RAW_DIR = Path("data/raw")
@@ -42,8 +43,8 @@ DEFAULT_STOCK_CODES = [
 ]
 
 
-def date_range(days: int = 120) -> tuple[str, str]:
-    end_date = datetime.today()
+def date_range(days: int = 120, now=None) -> tuple[str, str]:
+    end_date = completed_price_cutoff(now)
     start_date = end_date - timedelta(days=days)
     return start_date.strftime("%Y%m%d"), end_date.strftime("%Y%m%d")
 
@@ -182,12 +183,16 @@ def collect_for_stock(
                 print(f"KIS quote skipped for {stock_code}: {error}")
 
             if not df.empty:
-                return df, quote
+                df = df[pd.to_datetime(df['date'], errors='coerce') <= pd.Timestamp(end_date)].copy()
+                if not df.empty:
+                    return df, quote
         except Exception as error:
             print(f"KIS price collection failed for {stock_code}: {error}")
             print(f"Falling back to pykrx for {stock_code}.")
 
     fallback_df = collect_with_pykrx(stock_code, start_date, end_date)
+    if not fallback_df.empty:
+        fallback_df = fallback_df[pd.to_datetime(fallback_df['date'], errors='coerce') <= pd.Timestamp(end_date)].copy()
     return fallback_df, quote
 
 

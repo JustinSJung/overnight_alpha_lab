@@ -1,0 +1,28 @@
+{
+  "experiment": "ohlcv_and_market_training_only_selection_v1",
+  "data_root": "data/ml_history/kis_updated_20261020",
+  "labels_as_of": "2026-10-20",
+  "calibration_start": "2026-03-02",
+  "test_start": "2026-07-01",
+  "periods": {
+    "development_audit": ["2026-07-01", "2026-09-30"],
+    "short_recent_tail": ["2026-10-01", "2026-10-13"]
+  },
+  "primary_period": "development_audit",
+  "feature_sets": ["ohlcv_19", "ohlcv_market_29"],
+  "candidates": ["linear", "hgb_shallow", "hgb_medium", "extra_trees", "fixed_mean"],
+  "cv_splits": 3,
+  "market_min_stocks": 100,
+  "selection": "Lowest training-only date-balanced OOF raw Brier across all ten feature/family configurations; deterministic feature/family tie break. External results cannot change selection.",
+  "control": "Best training-only OHLCV-19 family refit on exactly the same rows/dates. Context arm separately selects its family inside training.",
+  "market_definition": "Completed same-day observed-universe equal-weight return, breadth, volume, dispersion and stock-relative momentum. NOT a tradable index or KOSPI/KOSDAQ.",
+  "cohort": "One shared cohort finite in all 29 causal features; report excluded rows and never change production universe.",
+  "target": "Five observed sessions close return > 0.003; unchanged absolute target",
+  "probability_threshold": 0.6,
+  "cost_assumption": 0.003,
+  "regressor": "Each arm uses its own features with the unchanged absolute-error regressor and calibration residual bounds. Return outputs are conditional-median proxies, not expected means.",
+  "evaluation_role": "Already inspected historical development dates, NOT new independent validation. October tail is short diagnostic only.",
+  "production_promotion": false,
+  "candidate_pool_change": false,
+  "hyperparameter_search_on_test": false
+}

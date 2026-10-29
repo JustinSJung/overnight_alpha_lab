@@ -1,0 +1,382 @@
+{
+  "policy": null,
+  "policy_trials": [
+    {
+      "policy": {
+        "probability_floor": 0.55,
+        "downside_ceiling": 0.1
+      },
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.55,
+        "downside_ceiling": 0.2
+      },
+      "metrics": {
+        "cases": 1,
+        "dates": 1,
+        "success_count": 1,
+        "failure_count": 0,
+        "pooled_success_rate": 1.0,
+        "date_success_rate": 1.0,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.00022136222910216813,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.55,
+        "downside_ceiling": 0.3
+      },
+      "metrics": {
+        "cases": 121,
+        "dates": 27,
+        "success_count": 41,
+        "failure_count": 80,
+        "pooled_success_rate": 0.33884297520661155,
+        "date_success_rate": 0.328395061728395,
+        "date_success_lower": 0.13320242656449552,
+        "all_date_net_proxy": -0.035040036335627654,
+        "all_date_net_lower": -0.1087413187300323,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.6,
+        "downside_ceiling": 0.1
+      },
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.6,
+        "downside_ceiling": 0.2
+      },
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.6,
+        "downside_ceiling": 0.3
+      },
+      "metrics": {
+        "cases": 41,
+        "dates": 16,
+        "success_count": 18,
+        "failure_count": 23,
+        "pooled_success_rate": 0.43902439024390244,
+        "date_success_rate": 0.34375,
+        "date_success_lower": null,
+        "all_date_net_proxy": -0.022948377216664224,
+        "all_date_net_lower": -0.0937231835401641,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.65,
+        "downside_ceiling": 0.1
+      },
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.65,
+        "downside_ceiling": 0.2
+      },
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    },
+    {
+      "policy": {
+        "probability_floor": 0.65,
+        "downside_ceiling": 0.3
+      },
+      "metrics": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.002777777777777778
+      },
+      "passed": false
+    }
+  ],
+  "partitions": {
+    "train": {
+      "rows": 616595,
+      "dates": 744,
+      "start": "2023-02-01",
+      "end": "2026-02-20",
+      "latest_label": "2026-02-27"
+    },
+    "probability_calibration": {
+      "rows": 32332,
+      "dates": 38,
+      "start": "2026-03-03",
+      "end": "2026-04-23",
+      "latest_label": "2026-04-30"
+    },
+    "policy_calibration": {
+      "rows": 28360,
+      "dates": 34,
+      "start": "2026-05-04",
+      "end": "2026-06-23",
+      "latest_label": "2026-06-30"
+    }
+  },
+  "results": {
+    "development_audit": {
+      "status": "historical_development_only",
+      "policy": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.05
+      },
+      "probability": {
+        "target": "target",
+        "date_brier": 0.23914851645033425,
+        "known_constant_date_brier": 0.2568844953363994,
+        "mean_daily_auc": 0.5395894766382876,
+        "auc_dates": 47,
+        "known_calibration_prior": 0.5320397058997834
+      },
+      "binary_probability": {
+        "target": "target",
+        "date_brier": 0.24985883091645383,
+        "known_constant_date_brier": 0.2568844953363994,
+        "mean_daily_auc": 0.5375744793266889,
+        "auc_dates": 47,
+        "known_calibration_prior": 0.5320397058997834
+      },
+      "top20": {
+        "distribution_utility": {
+          "absolute_success_rate": 0.47021276595744677,
+          "net_return_proxy": 0.022373926179673705,
+          "excess_vs_pool": 0.025498559208125212
+        },
+        "binary_control": {
+          "absolute_success_rate": 0.47340425531914887,
+          "net_return_proxy": 0.013427759330343594,
+          "excess_vs_pool": 0.0165523923587951
+        },
+        "momentum": {
+          "absolute_success_rate": 0.3627659574468085,
+          "net_return_proxy": -0.02724635963223476,
+          "excess_vs_pool": -0.024121726603783256
+        },
+        "random_mean": {
+          "absolute_success_rate": 0.4115638297872341,
+          "net_return_proxy": -0.002750406747811436,
+          "excess_vs_pool": 0.00037422628064007034
+        }
+      },
+      "paired_top20": {
+        "binary_control": {
+          "mean": 0.008946166849330108,
+          "lower": -0.0022917855158290984,
+          "upper": 0.0218778097878979
+        },
+        "momentum": {
+          "mean": 0.04962028581190846,
+          "lower": 0.009248541223768428,
+          "upper": 0.09363744227403765
+        },
+        "random_mean": {
+          "mean": 0.025124332927485147,
+          "lower": -0.002481041765753514,
+          "upper": 0.05403087420921228
+        }
+      }
+    },
+    "short_recent_tail": {
+      "status": "unavailable_no_complete_outcome_dates"
+    }
+  },
+  "coverage": {
+    "eligible_dates": 905,
+    "complete_dates": 878,
+    "included_rows": 729313,
+    "by_period": {
+      "development_audit": {
+        "eligible_dates": 62,
+        "complete_dates": 47,
+        "evaluated_rows": 39463
+      },
+      "short_recent_tail": {
+        "eligible_dates": 7,
+        "complete_dates": 0,
+        "evaluated_rows": 0
+      }
+    }
+  },
+  "screen_reasons": [
+    "no_policy_passed_separate_policy_calibration",
+    "insufficient_external_policy_cases_or_dates",
+    "external_60_percent_success_lower_not_established",
+    "external_positive_net_proxy_not_established",
+    "top20_advantage_over_all_references_not_established"
+  ],
+  "development_screen_passed": false,
+  "recommendation_gate_passed": false,
+  "protocol": {
+    "experiment": "selective_distributional_payoff_v1",
+    "data_root": "data/ml_history/kis_updated_20261020",
+    "labels_as_of": "2026-10-20",
+    "probability_calibration_start": "2026-03-02",
+    "policy_calibration_start": "2026-05-04",
+    "evaluation_start": "2026-07-01",
+    "periods": {
+      "development_audit": [
+        "2026-07-01",
+        "2026-09-30"
+      ],
+      "short_recent_tail": [
+        "2026-10-01",
+        "2026-10-13"
+      ]
+    },
+    "primary_period": "development_audit",
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "return_bin_edges": [
+      -0.03,
+      0.003,
+      0.03
+    ],
+    "bin_boundary": "right-closed; loss <= -3%, non-positive net (-3%, 0.3%], gain (0.3%, 3%], strong gain >3%",
+    "ensemble_seeds": [
+      17,
+      42,
+      73
+    ],
+    "features": "existing_19_ohlcv_only",
+    "utility_return_clip": [
+      -0.2,
+      0.2
+    ],
+    "policy_probability_floors": [
+      0.55,
+      0.6,
+      0.65
+    ],
+    "policy_downside_ceilings": [
+      0.1,
+      0.2,
+      0.3
+    ],
+    "policy_max_disagreement": 0.05,
+    "policy_daily_cap": 5,
+    "policy_min_cases": 100,
+    "policy_min_dates": 20,
+    "policy_min_date_success": 0.65,
+    "policy_min_success_lower": 0.55,
+    "policy_selection": "Policy-calibration only. Nine pre-fixed policies x two bounds, Bonferroni alpha 0.05/18; require block lower bounds, minimum samples and positive all-date net proxy lower bound. Choose highest lower net bound, deterministic ties. If none pass, abstain. Never retune on external scores.",
+    "primary_top_k": 20,
+    "random_replicates": 100,
+    "bootstrap_samples": 5000,
+    "bootstrap_block_sessions": 5,
+    "bootstrap_seed": 42,
+    "minimum_stocks_per_date": 100,
+    "evaluation_role": "Already inspected historical development dates; not independent final validation",
+    "unavailable_period_behavior": "Required primary period must have complete outcome dates; optional diagnostic periods without complete dates are reported unavailable, never filled or recomputed after dropping individual stocks",
+    "inspiration": [
+      "https://arxiv.org/abs/1907.00208",
+      "https://arxiv.org/abs/2310.01262"
+    ],
+    "novelty_claim": false,
+    "conformal_guarantee_claim": false,
+    "production_promotion": false,
+    "candidate_pool_change": false,
+    "test_hyperparameter_search": false
+  },
+  "protocol_sha256": "7013a9f3cbecd26a93379a7a6acfd981878ed6ffcdb7f313b55c000c28fd9621",
+  "implementation_sha256": {
+    "src/models/distributional_selector.py": "ae8bcfb6b07484d4333cc7fb564cf3f03af7a67ff1513567a03bcfaa5cbbb060",
+    "src/models/selected_price_model.py": "747523c9bb87298ad8ace7d1731908f3f3a1a7a7d48d57b6c1cfa030043db4c2",
+    "src/models/relative_price_selection.py": "c9c0f28995cb90bcef88dc63c617f14dbb77c2ffd5aadce9d661e82fa202b9ef",
+    "src/models/price_forecaster.py": "f7352f580c58c1322224902c5780aa57004bbcd2dad87310797e696306bf6bc0",
+    "src/features/ohlcv_information.py": "ed6d8e45f4eb8793f2786c27e36f7dde34450240be9f5f78e0483d3ce5ea3261",
+    "src/features/price_learning_dataset.py": "a0542901b050dc4b737e1f6f90885233bc9c554069ac6d1cbb88fdf6f195c88e",
+    "src/features/completed_price_dataset.py": "e231fb988f58309635abf2357a338c6c8818c8e42a019c00a461cea7993989d7"
+  },
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_distribution_selector/runs/20261021T060422Z_0e4c251e"
+}

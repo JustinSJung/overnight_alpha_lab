@@ -1,0 +1,824 @@
+{
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_selective_gate/runs/20261023T005508Z_f00a131f",
+  "results": {
+    "earlier_development": {
+      "input_candidates": 32590,
+      "evaluated_cases": 32420,
+      "unresolved_cases": 170,
+      "signal_dates": 39,
+      "probabilities": {
+        "monthly_base": {
+          "date_brier": 0.24166616470064012,
+          "mean_forecast": 0.4559654301252179,
+          "observed_success_rate": 0.30478099938309683
+        },
+        "probability_only": {
+          "date_brier": 0.24632233796353156,
+          "mean_forecast": 0.44331574148328023,
+          "observed_success_rate": 0.30478099938309683
+        },
+        "learned_gate": {
+          "date_brier": 0.2536871033467755,
+          "mean_forecast": 0.45053406699301213,
+          "observed_success_rate": 0.30478099938309683
+        }
+      },
+      "selections": {
+        "top5_monthly_base": {
+          "selected_cases": 195,
+          "selected_dates": 39,
+          "evaluated_cases": 186,
+          "unresolved_cases": 9,
+          "outcome_coverage": 0.9538461538461539,
+          "conditional_success_rate": 0.3548387096774194,
+          "conditional_date_success_rate": 0.34487179487179487,
+          "conditional_mean_net_return_proxy": -0.0300645226279074,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 7,
+            "entry_price_unavailable": 2
+          }
+        },
+        "top5_probability_only": {
+          "selected_cases": 195,
+          "selected_dates": 39,
+          "evaluated_cases": 195,
+          "unresolved_cases": 0,
+          "outcome_coverage": 1.0,
+          "conditional_success_rate": 0.27692307692307694,
+          "conditional_date_success_rate": 0.2769230769230768,
+          "conditional_mean_net_return_proxy": -0.05145427006009327,
+          "all_date_net_return_proxy": -0.05145427006009326,
+          "all_date_net_lower_95": -0.08927189748573651,
+          "unknown_states": {}
+        },
+        "top5_learned_gate": {
+          "selected_cases": 195,
+          "selected_dates": 39,
+          "evaluated_cases": 193,
+          "unresolved_cases": 2,
+          "outcome_coverage": 0.9897435897435898,
+          "conditional_success_rate": 0.32642487046632124,
+          "conditional_date_success_rate": 0.32692307692307687,
+          "conditional_mean_net_return_proxy": -0.04711451933302087,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 2
+          }
+        },
+        "matched_policy_monthly_base": {
+          "selected_cases": 5,
+          "selected_dates": 1,
+          "evaluated_cases": 5,
+          "unresolved_cases": 0,
+          "outcome_coverage": 1.0,
+          "conditional_success_rate": 0.2,
+          "conditional_date_success_rate": 0.2,
+          "conditional_mean_net_return_proxy": -0.03802424952335901,
+          "all_date_net_return_proxy": -0.0009749807570092054,
+          "all_date_net_lower_95": -0.0029249422710276164,
+          "unknown_states": {}
+        },
+        "matched_policy_probability_only": {
+          "selected_cases": 5,
+          "selected_dates": 1,
+          "evaluated_cases": 5,
+          "unresolved_cases": 0,
+          "outcome_coverage": 1.0,
+          "conditional_success_rate": 0.2,
+          "conditional_date_success_rate": 0.2,
+          "conditional_mean_net_return_proxy": -0.050442070240279156,
+          "all_date_net_return_proxy": -0.0012933864164174143,
+          "all_date_net_lower_95": -0.0038801592492522428,
+          "unknown_states": {}
+        },
+        "matched_policy_learned_gate": {
+          "selected_cases": 5,
+          "selected_dates": 1,
+          "evaluated_cases": 5,
+          "unresolved_cases": 0,
+          "outcome_coverage": 1.0,
+          "conditional_success_rate": 0.6,
+          "conditional_date_success_rate": 0.6,
+          "conditional_mean_net_return_proxy": -0.01560683705504049,
+          "all_date_net_return_proxy": -0.0004001753091036023,
+          "all_date_net_lower_95": -0.001200525927310807,
+          "unknown_states": {}
+        }
+      },
+      "primary_top5_comparisons": {
+        "monthly_base": {
+          "conditional_date_success_difference": -0.025000000000000005,
+          "paired_complete_dates": 32,
+          "total_dates": 39,
+          "unresolved_selected_across_arms": 11,
+          "family_adjusted_lower": -0.158724645030426,
+          "family_adjusted_upper": 0.11666666666666667,
+          "complete_period_lower": null,
+          "interpretation": "Conditional on complete paired selected outcomes; not full policy evidence if any are unknown"
+        },
+        "probability_only": {
+          "conditional_date_success_difference": 0.037837837837837826,
+          "paired_complete_dates": 37,
+          "total_dates": 39,
+          "unresolved_selected_across_arms": 2,
+          "family_adjusted_lower": -0.08537695590327168,
+          "family_adjusted_upper": 0.1675675675675676,
+          "complete_period_lower": null,
+          "interpretation": "Conditional on complete paired selected outcomes; not full policy evidence if any are unknown"
+        }
+      }
+    },
+    "primary_development": {
+      "input_candidates": 52017,
+      "evaluated_cases": 51483,
+      "unresolved_cases": 534,
+      "signal_dates": 62,
+      "probabilities": {
+        "monthly_base": {
+          "date_brier": 0.260827579137082,
+          "mean_forecast": 0.3460991068556592,
+          "observed_success_rate": 0.44564225084008313
+        },
+        "probability_only": {
+          "date_brier": 0.2670820566969487,
+          "mean_forecast": 0.3679171441787911,
+          "observed_success_rate": 0.44564225084008313
+        },
+        "learned_gate": {
+          "date_brier": 0.2762305338313921,
+          "mean_forecast": 0.2978144809456006,
+          "observed_success_rate": 0.44564225084008313
+        }
+      },
+      "selections": {
+        "top5_monthly_base": {
+          "selected_cases": 310,
+          "selected_dates": 62,
+          "evaluated_cases": 288,
+          "unresolved_cases": 22,
+          "outcome_coverage": 0.9290322580645162,
+          "conditional_success_rate": 0.4895833333333333,
+          "conditional_date_success_rate": 0.485752688172043,
+          "conditional_mean_net_return_proxy": 0.028558121366402053,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 11,
+            "entry_price_unavailable": 8,
+            "price_discontinuity_requires_review": 3
+          }
+        },
+        "top5_probability_only": {
+          "selected_cases": 310,
+          "selected_dates": 62,
+          "evaluated_cases": 297,
+          "unresolved_cases": 13,
+          "outcome_coverage": 0.9580645161290322,
+          "conditional_success_rate": 0.3939393939393939,
+          "conditional_date_success_rate": 0.3943548387096774,
+          "conditional_mean_net_return_proxy": -0.031098809712815003,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 6,
+            "entry_price_unavailable": 4,
+            "price_discontinuity_requires_review": 3
+          }
+        },
+        "top5_learned_gate": {
+          "selected_cases": 310,
+          "selected_dates": 62,
+          "evaluated_cases": 306,
+          "unresolved_cases": 4,
+          "outcome_coverage": 0.9870967741935484,
+          "conditional_success_rate": 0.5196078431372549,
+          "conditional_date_success_rate": 0.5185483870967742,
+          "conditional_mean_net_return_proxy": 0.039035546275056315,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 4
+          }
+        },
+        "matched_policy_monthly_base": {
+          "selected_cases": 0,
+          "selected_dates": 0,
+          "evaluated_cases": 0,
+          "unresolved_cases": 0,
+          "outcome_coverage": null,
+          "conditional_success_rate": null,
+          "conditional_date_success_rate": null,
+          "conditional_mean_net_return_proxy": null,
+          "all_date_net_return_proxy": 0.0,
+          "all_date_net_lower_95": 0.0,
+          "unknown_states": {}
+        },
+        "matched_policy_probability_only": {
+          "selected_cases": 0,
+          "selected_dates": 0,
+          "evaluated_cases": 0,
+          "unresolved_cases": 0,
+          "outcome_coverage": null,
+          "conditional_success_rate": null,
+          "conditional_date_success_rate": null,
+          "conditional_mean_net_return_proxy": null,
+          "all_date_net_return_proxy": 0.0,
+          "all_date_net_lower_95": 0.0,
+          "unknown_states": {}
+        },
+        "matched_policy_learned_gate": {
+          "selected_cases": 0,
+          "selected_dates": 0,
+          "evaluated_cases": 0,
+          "unresolved_cases": 0,
+          "outcome_coverage": null,
+          "conditional_success_rate": null,
+          "conditional_date_success_rate": null,
+          "conditional_mean_net_return_proxy": null,
+          "all_date_net_return_proxy": 0.0,
+          "all_date_net_lower_95": 0.0,
+          "unknown_states": {}
+        }
+      },
+      "primary_top5_comparisons": {
+        "monthly_base": {
+          "conditional_date_success_difference": 0.022222222222222233,
+          "paired_complete_dates": 45,
+          "total_dates": 62,
+          "unresolved_selected_across_arms": 26,
+          "family_adjusted_lower": -0.08095238095238096,
+          "family_adjusted_upper": 0.1230769230769231,
+          "complete_period_lower": null,
+          "interpretation": "Conditional on complete paired selected outcomes; not full policy evidence if any are unknown"
+        },
+        "probability_only": {
+          "conditional_date_success_difference": 0.14615384615384613,
+          "paired_complete_dates": 52,
+          "total_dates": 62,
+          "unresolved_selected_across_arms": 17,
+          "family_adjusted_lower": 0.007999999999999993,
+          "family_adjusted_upper": 0.28738920454545447,
+          "complete_period_lower": null,
+          "interpretation": "Conditional on complete paired selected outcomes; not full policy evidence if any are unknown"
+        }
+      }
+    },
+    "recent_development": {
+      "input_candidates": 7535,
+      "evaluated_cases": 7440,
+      "unresolved_cases": 95,
+      "signal_dates": 9,
+      "probabilities": {
+        "monthly_base": {
+          "date_brier": 0.2361409194200444,
+          "mean_forecast": 0.46392968446605576,
+          "observed_success_rate": 0.2814516129032258
+        },
+        "probability_only": {
+          "date_brier": 0.22020093540183808,
+          "mean_forecast": 0.41764790597632395,
+          "observed_success_rate": 0.2814516129032258
+        },
+        "learned_gate": {
+          "date_brier": 0.21047900504944272,
+          "mean_forecast": 0.35806791267968174,
+          "observed_success_rate": 0.2814516129032258
+        }
+      },
+      "selections": {
+        "top5_monthly_base": {
+          "selected_cases": 45,
+          "selected_dates": 9,
+          "evaluated_cases": 43,
+          "unresolved_cases": 2,
+          "outcome_coverage": 0.9555555555555556,
+          "conditional_success_rate": 0.27906976744186046,
+          "conditional_date_success_rate": 0.288888888888889,
+          "conditional_mean_net_return_proxy": -0.012978074899559917,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "entry_price_unavailable": 2
+          }
+        },
+        "top5_probability_only": {
+          "selected_cases": 45,
+          "selected_dates": 9,
+          "evaluated_cases": 43,
+          "unresolved_cases": 2,
+          "outcome_coverage": 0.9555555555555556,
+          "conditional_success_rate": 0.27906976744186046,
+          "conditional_date_success_rate": 0.288888888888889,
+          "conditional_mean_net_return_proxy": -0.012978074899559917,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "entry_price_unavailable": 2
+          }
+        },
+        "top5_learned_gate": {
+          "selected_cases": 45,
+          "selected_dates": 9,
+          "evaluated_cases": 44,
+          "unresolved_cases": 1,
+          "outcome_coverage": 0.9777777777777777,
+          "conditional_success_rate": 0.3181818181818182,
+          "conditional_date_success_rate": 0.3111111111111111,
+          "conditional_mean_net_return_proxy": -0.04039506034950144,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "price_discontinuity_requires_review": 1
+          }
+        },
+        "matched_policy_monthly_base": {
+          "selected_cases": 0,
+          "selected_dates": 0,
+          "evaluated_cases": 0,
+          "unresolved_cases": 0,
+          "outcome_coverage": null,
+          "conditional_success_rate": null,
+          "conditional_date_success_rate": null,
+          "conditional_mean_net_return_proxy": null,
+          "all_date_net_return_proxy": 0.0,
+          "all_date_net_lower_95": null,
+          "unknown_states": {}
+        },
+        "matched_policy_probability_only": {
+          "selected_cases": 0,
+          "selected_dates": 0,
+          "evaluated_cases": 0,
+          "unresolved_cases": 0,
+          "outcome_coverage": null,
+          "conditional_success_rate": null,
+          "conditional_date_success_rate": null,
+          "conditional_mean_net_return_proxy": null,
+          "all_date_net_return_proxy": 0.0,
+          "all_date_net_lower_95": null,
+          "unknown_states": {}
+        },
+        "matched_policy_learned_gate": {
+          "selected_cases": 0,
+          "selected_dates": 0,
+          "evaluated_cases": 0,
+          "unresolved_cases": 0,
+          "outcome_coverage": null,
+          "conditional_success_rate": null,
+          "conditional_date_success_rate": null,
+          "conditional_mean_net_return_proxy": null,
+          "all_date_net_return_proxy": 0.0,
+          "all_date_net_lower_95": null,
+          "unknown_states": {}
+        }
+      },
+      "primary_top5_comparisons": {
+        "monthly_base": {
+          "conditional_date_success_difference": 0.17142857142857143,
+          "paired_complete_dates": 7,
+          "total_dates": 9,
+          "unresolved_selected_across_arms": 3,
+          "family_adjusted_lower": null,
+          "family_adjusted_upper": null,
+          "complete_period_lower": null,
+          "interpretation": "Conditional on complete paired selected outcomes; not full policy evidence if any are unknown"
+        },
+        "probability_only": {
+          "conditional_date_success_difference": 0.17142857142857143,
+          "paired_complete_dates": 7,
+          "total_dates": 9,
+          "unresolved_selected_across_arms": 3,
+          "family_adjusted_lower": null,
+          "family_adjusted_upper": null,
+          "complete_period_lower": null,
+          "interpretation": "Conditional on complete paired selected outcomes; not full policy evidence if any are unknown"
+        }
+      }
+    }
+  },
+  "fits": {
+    "base": [
+      {
+        "month": "2025-07",
+        "as_of": "2025-06-30",
+        "train": {
+          "rows": 410432,
+          "dates": 504,
+          "start": "2023-02-20",
+          "end": "2025-03-17",
+          "latest_label": "2025-03-24"
+        },
+        "calibration": {
+          "rows": 50959,
+          "dates": 60,
+          "start": "2025-03-25",
+          "end": "2025-06-23",
+          "latest_label": "2025-06-30"
+        }
+      },
+      {
+        "month": "2025-08",
+        "as_of": "2025-07-31",
+        "train": {
+          "rows": 411971,
+          "dates": 504,
+          "start": "2023-03-24",
+          "end": "2025-04-17",
+          "latest_label": "2025-04-24"
+        },
+        "calibration": {
+          "rows": 51242,
+          "dates": 60,
+          "start": "2025-04-25",
+          "end": "2025-07-24",
+          "latest_label": "2025-07-31"
+        }
+      },
+      {
+        "month": "2025-09",
+        "as_of": "2025-08-29",
+        "train": {
+          "rows": 413390,
+          "dates": 504,
+          "start": "2023-04-21",
+          "end": "2025-05-20",
+          "latest_label": "2025-05-27"
+        },
+        "calibration": {
+          "rows": 51415,
+          "dates": 60,
+          "start": "2025-05-28",
+          "end": "2025-08-22",
+          "latest_label": "2025-08-29"
+        }
+      },
+      {
+        "month": "2025-10",
+        "as_of": "2025-09-30",
+        "train": {
+          "rows": 414936,
+          "dates": 504,
+          "start": "2023-05-25",
+          "end": "2025-06-23",
+          "latest_label": "2025-06-30"
+        },
+        "calibration": {
+          "rows": 51512,
+          "dates": 60,
+          "start": "2025-07-01",
+          "end": "2025-09-23",
+          "latest_label": "2025-09-30"
+        }
+      },
+      {
+        "month": "2025-11",
+        "as_of": "2025-10-31",
+        "train": {
+          "rows": 416205,
+          "dates": 504,
+          "start": "2023-06-22",
+          "end": "2025-07-17",
+          "latest_label": "2025-07-24"
+        },
+        "calibration": {
+          "rows": 51484,
+          "dates": 60,
+          "start": "2025-07-25",
+          "end": "2025-10-24",
+          "latest_label": "2025-10-31"
+        }
+      },
+      {
+        "month": "2025-12",
+        "as_of": "2025-11-28",
+        "train": {
+          "rows": 417585,
+          "dates": 504,
+          "start": "2023-07-20",
+          "end": "2025-08-14",
+          "latest_label": "2025-08-22"
+        },
+        "calibration": {
+          "rows": 51439,
+          "dates": 60,
+          "start": "2025-08-25",
+          "end": "2025-11-21",
+          "latest_label": "2025-11-28"
+        }
+      },
+      {
+        "month": "2026-01",
+        "as_of": "2025-12-30",
+        "train": {
+          "rows": 418984,
+          "dates": 504,
+          "start": "2023-08-21",
+          "end": "2025-09-15",
+          "latest_label": "2025-09-22"
+        },
+        "calibration": {
+          "rows": 51390,
+          "dates": 60,
+          "start": "2025-09-23",
+          "end": "2025-12-22",
+          "latest_label": "2025-12-30"
+        }
+      },
+      {
+        "month": "2026-02",
+        "as_of": "2026-01-30",
+        "train": {
+          "rows": 420214,
+          "dates": 504,
+          "start": "2023-09-19",
+          "end": "2025-10-21",
+          "latest_label": "2025-10-28"
+        },
+        "calibration": {
+          "rows": 51438,
+          "dates": 60,
+          "start": "2025-10-29",
+          "end": "2026-01-23",
+          "latest_label": "2026-01-30"
+        }
+      },
+      {
+        "month": "2026-03",
+        "as_of": "2026-02-27",
+        "train": {
+          "rows": 421108,
+          "dates": 504,
+          "start": "2023-10-19",
+          "end": "2025-11-13",
+          "latest_label": "2025-11-20"
+        },
+        "calibration": {
+          "rows": 51528,
+          "dates": 60,
+          "start": "2025-11-21",
+          "end": "2026-02-20",
+          "latest_label": "2026-02-27"
+        }
+      },
+      {
+        "month": "2026-04",
+        "as_of": "2026-03-31",
+        "train": {
+          "rows": 422173,
+          "dates": 504,
+          "start": "2023-11-17",
+          "end": "2025-12-12",
+          "latest_label": "2025-12-19"
+        },
+        "calibration": {
+          "rows": 51601,
+          "dates": 60,
+          "start": "2025-12-22",
+          "end": "2026-03-24",
+          "latest_label": "2026-03-31"
+        }
+      },
+      {
+        "month": "2026-05",
+        "as_of": "2026-04-30",
+        "train": {
+          "rows": 423264,
+          "dates": 504,
+          "start": "2023-12-19",
+          "end": "2026-01-16",
+          "latest_label": "2026-01-23"
+        },
+        "calibration": {
+          "rows": 50854,
+          "dates": 60,
+          "start": "2026-01-26",
+          "end": "2026-04-23",
+          "latest_label": "2026-04-30"
+        }
+      },
+      {
+        "month": "2026-06",
+        "as_of": "2026-05-29",
+        "train": {
+          "rows": 424090,
+          "dates": 504,
+          "start": "2024-01-17",
+          "end": "2026-02-11",
+          "latest_label": "2026-02-23"
+        },
+        "calibration": {
+          "rows": 49770,
+          "dates": 60,
+          "start": "2026-02-24",
+          "end": "2026-05-21",
+          "latest_label": "2026-05-29"
+        }
+      },
+      {
+        "month": "2026-07",
+        "as_of": "2026-06-30",
+        "train": {
+          "rows": 425043,
+          "dates": 504,
+          "start": "2024-02-19",
+          "end": "2026-03-18",
+          "latest_label": "2026-03-25"
+        },
+        "calibration": {
+          "rows": 49412,
+          "dates": 60,
+          "start": "2026-03-26",
+          "end": "2026-06-23",
+          "latest_label": "2026-06-30"
+        }
+      },
+      {
+        "month": "2026-08",
+        "as_of": "2026-07-31",
+        "train": {
+          "rows": 425418,
+          "dates": 504,
+          "start": "2024-03-21",
+          "end": "2026-04-17",
+          "latest_label": "2026-04-24"
+        },
+        "calibration": {
+          "rows": 49814,
+          "dates": 60,
+          "start": "2026-04-27",
+          "end": "2026-07-24",
+          "latest_label": "2026-07-31"
+        }
+      },
+      {
+        "month": "2026-09",
+        "as_of": "2026-08-31",
+        "train": {
+          "rows": 424992,
+          "dates": 504,
+          "start": "2024-04-19",
+          "end": "2026-05-19",
+          "latest_label": "2026-05-27"
+        },
+        "calibration": {
+          "rows": 50256,
+          "dates": 60,
+          "start": "2026-05-28",
+          "end": "2026-08-24",
+          "latest_label": "2026-08-31"
+        }
+      },
+      {
+        "month": "2026-10",
+        "as_of": "2026-09-30",
+        "train": {
+          "rows": 425442,
+          "dates": 504,
+          "start": "2024-05-22",
+          "end": "2026-06-18",
+          "latest_label": "2026-06-25"
+        },
+        "calibration": {
+          "rows": 49881,
+          "dates": 60,
+          "start": "2026-06-26",
+          "end": "2026-09-21",
+          "latest_label": "2026-09-30"
+        }
+      }
+    ],
+    "gate": [
+      {
+        "month": "2026-05",
+        "as_of": "2026-04-30",
+        "train": {
+          "rows": 108136,
+          "dates": 126,
+          "start": "2025-08-26",
+          "end": "2026-03-05",
+          "latest_label": "2026-03-12"
+        },
+        "calibration": {
+          "rows": 25019,
+          "dates": 30,
+          "start": "2026-03-13",
+          "end": "2026-04-23",
+          "latest_label": "2026-04-30"
+        }
+      },
+      {
+        "month": "2026-06",
+        "as_of": "2026-05-29",
+        "train": {
+          "rows": 108123,
+          "dates": 126,
+          "start": "2025-09-19",
+          "end": "2026-03-31",
+          "latest_label": "2026-04-07"
+        },
+        "calibration": {
+          "rows": 24134,
+          "dates": 30,
+          "start": "2026-04-08",
+          "end": "2026-05-21",
+          "latest_label": "2026-05-29"
+        }
+      },
+      {
+        "month": "2026-07",
+        "as_of": "2026-06-30",
+        "train": {
+          "rows": 107123,
+          "dates": 126,
+          "start": "2025-10-27",
+          "end": "2026-04-29",
+          "latest_label": "2026-05-08"
+        },
+        "calibration": {
+          "rows": 25026,
+          "dates": 30,
+          "start": "2026-05-11",
+          "end": "2026-06-23",
+          "latest_label": "2026-06-30"
+        }
+      },
+      {
+        "month": "2026-08",
+        "as_of": "2026-07-31",
+        "train": {
+          "rows": 106340,
+          "dates": 126,
+          "start": "2025-11-26",
+          "end": "2026-06-04",
+          "latest_label": "2026-06-11"
+        },
+        "calibration": {
+          "rows": 25202,
+          "dates": 30,
+          "start": "2026-06-12",
+          "end": "2026-07-24",
+          "latest_label": "2026-07-31"
+        }
+      },
+      {
+        "month": "2026-09",
+        "as_of": "2026-08-31",
+        "train": {
+          "rows": 106056,
+          "dates": 126,
+          "start": "2025-12-24",
+          "end": "2026-07-02",
+          "latest_label": "2026-07-09"
+        },
+        "calibration": {
+          "rows": 24964,
+          "dates": 30,
+          "start": "2026-07-10",
+          "end": "2026-08-24",
+          "latest_label": "2026-08-31"
+        }
+      },
+      {
+        "month": "2026-10",
+        "as_of": "2026-09-30",
+        "train": {
+          "rows": 105626,
+          "dates": 126,
+          "start": "2026-01-26",
+          "end": "2026-07-31",
+          "latest_label": "2026-08-07"
+        },
+        "calibration": {
+          "rows": 24746,
+          "dates": 30,
+          "start": "2026-08-10",
+          "end": "2026-09-21",
+          "latest_label": "2026-09-30"
+        }
+      }
+    ],
+    "current_gate": {
+      "train": {
+        "rows": 105163,
+        "dates": 126,
+        "start": "2026-02-13",
+        "end": "2026-08-21",
+        "latest_label": "2026-08-28"
+      },
+      "calibration": {
+        "rows": 24759,
+        "dates": 30,
+        "start": "2026-08-31",
+        "end": "2026-10-15",
+        "latest_label": "2026-10-22"
+      }
+    }
+  },
+  "recommendation_gate_passed": false,
+  "gate_reasons": [
+    "requires_genuine_new_future_validation"
+  ],
+  "protocol_sha256": "3f8e804dcc5481229374b05e18b4cd61f4ed51a361dbd5d54eab3d15164aa787"
+}

@@ -1517,7 +1517,7 @@ def build_diagnostics_html(metrics, stock_data):
   <div class="container">
     <section class="hero">
       <div>
-        <p class="eyebrow">Overnight Alpha Lab</p>
+        <p class="eyebrow">Overnight Alpha Lab · Beta / 검증 중 베타</p>
         <h1>Daily Price-Signal Learning System</h1>
         <div class="subtitle">KIS Price-Based Learning Dashboard / KIS 가격 기반 학습 대시보드</div>
         <p class="hero-copy">
@@ -2527,6 +2527,16 @@ def recommendation_quality_label(metrics):
 
 
 def build_html(metrics, stock_data):
+    from src.report_generator.price_model_panel import (
+        PANEL_CSS, load_public_forecast, model_status, render_model_panel,
+    )
+    ml_data = load_public_forecast(DOCS_DIR / 'price_model.json')
+    ml_status_en, ml_status_ko, ml_status_class = model_status(ml_data)
+    ml_section, ml_script = render_model_panel(ml_data)
+    from src.report_generator.reliability_goal_panel import render_goal_progress
+    goal_progress = render_goal_progress(DOCS_DIR / 'reliability_goal.json')
+    if goal_progress:
+        ml_section = ml_section.replace('<div class="ml-status-grid">', goal_progress + '<div class="ml-status-grid">', 1)
     success_width = min(max(safe_float(metrics.get("price_success_rate", 0)), 0), 100)
     reliability_width = min(max(safe_float(metrics.get("reliability_score", 0)), 0), 100)
     benchmark_width = min(max(safe_float(metrics.get("benchmark_success_rate", 0)), 0), 100)
@@ -2565,6 +2575,7 @@ def build_html(metrics, stock_data):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Price-Signal Learning System</title>
   <style>
+    {PANEL_CSS}
     :root {{
       --bg: #f4f7fb;
       --ink: #172033;
@@ -2681,32 +2692,30 @@ def build_html(metrics, stock_data):
   <div class="container">
     <section class="hero">
       <div>
-        <p class="eyebrow">Overnight Alpha Lab</p>
+        <p class="eyebrow">Overnight Alpha Lab · Beta / 검증 중 베타</p>
         <h1>Daily Price-Signal Learning System</h1>
         <div class="subtitle">KIS Price-Based Learning Dashboard / KIS 가격 기반 학습 대시보드</div>
-        <p class="hero-copy">
-          A public research dashboard that tracks how well daily price-signal candidates are learning over time.
-          매일 생성되는 가격 신호 후보의 성과와 데이터 상태를 쉽게 확인하는 공개 연구 대시보드입니다.
-        </p>
+        <p class="hero-copy">학습 모델의 종목별 가격 예측, 추천 판단과 실제 검증 결과를 확인합니다.<br>공시·뉴스·관심도는 보조 신호이며 자동 주문은 실행하지 않습니다.</p>
       </div>
       <div class="hero-panel">
-        <span class="badge {confidence_class}">{metrics["confidence_status"]} / {metrics["confidence_status_ko"]}</span>
-        <div class="hero-rate-label">Reliability Score<br>신뢰도 점수</div>
-        <div class="hero-rate">{metrics["reliability_score"]}<span class="hero-rate-unit"> / 100</span></div>
-        <div class="progress" aria-label="Reliability score"><span style="width: {reliability_width:.0f}%"></span></div>
-        <p class="hero-copy" style="margin-top:14px;">This is a conservative reliability estimate based on completed price-candidate evaluations.<br>완료된 가격 후보 평가를 바탕으로 계산한 보수적인 신뢰도입니다.</p>
+        <span class="badge {ml_status_class}" id="ml-hero-badge">{ml_status_en}</span>
+        <div class="hero-rate-label">ML Forecast Status<br>학습 모델 예측 상태</div>
+        <div class="hero-rate" id="ml-hero-state" style="font-size:36px;line-height:1.25;">{ml_status_ko}</div>
+        <p class="hero-copy" style="margin-top:14px;">추천은 모델 성능과 미래 예측 검증 기준을 통과한 경우에만 제공합니다. 기존 가격 신호 평가 점수는 ML 예측 정확도가 아닙니다.</p>
       </div>
     </section>
 
+    {ml_section}
+
     <section class="section">
       <div class="section-heading">
-        <h2>Summary <span class="heading-ko">요약</span></h2>
-        <p class="section-subtitle">The main health indicators for the learning system. 공개용 핵심 지표만 간단히 표시합니다.</p>
+        <h2>Price Signal Track Record <span class="heading-ko">기존 가격 신호 기록</span></h2>
+        <p class="section-subtitle">누적 가격 후보 평가입니다. 위 학습 모델의 미래 예측 성과와는 별도로 집계됩니다.</p>
       </div>
       <div class="kpi-grid">
         <div class="card primary">
-          <div class="label">Reliability Score</div>
-          <div class="ko-desc">신뢰도 점수</div>
+          <div class="label">Historical Signal Score</div>
+          <div class="ko-desc">기존 가격 신호 평가 점수</div>
           <div class="value">{metrics["reliability_score"]} / 100</div>
           <div class="mini-bar"><span style="width: {reliability_width:.0f}%"></span></div>
         </div>
@@ -2739,7 +2748,7 @@ def build_html(metrics, stock_data):
 
     <section class="section">
       <div class="section-heading">
-        <h2>Core Performance <span class="heading-ko">핵심 성과</span></h2>
+        <h2>Historical Signal Performance <span class="heading-ko">기존 가격 신호 성과</span></h2>
         <p class="section-subtitle">Buy-type and avoid-type candidates are evaluated in opposite directions, so their success rates are shown separately as the primary metrics. 매수형과 회피형 후보는 성공 방향이 반대이므로 방향별 성과를 핵심 지표로 우선 표시합니다.</p>
       </div>
       <div class="signal-grid">
@@ -2835,7 +2844,7 @@ def build_html(metrics, stock_data):
 
     <section class="section">
       <div class="section-heading">
-        <h2>Recommendation Quality <span class="heading-ko">추천 품질</span></h2>
+        <h2>Historical Candidate Quality <span class="heading-ko">기존 후보 선별 품질</span></h2>
         <p class="section-subtitle">A simple view of whether the candidate ranking is becoming useful. 후보 선별 품질을 쉬운 등급으로 표시합니다.</p>
       </div>
       <div class="signal-grid">
@@ -2889,6 +2898,7 @@ def build_html(metrics, stock_data):
       </div>
     </section>
   </div>
+  {ml_script}
 </body>
 </html>
 """
@@ -2910,6 +2920,18 @@ def main():
 
     html = build_html(metrics, stock_data)
     diagnostics_html = build_diagnostics_html(metrics, stock_data)
+    from src.report_generator.nature_model_diagnostics import render_nature_diagnostics
+    nature_research = render_nature_diagnostics(DOCS_DIR.parent)
+    if nature_research:
+        diagnostics_html = diagnostics_html.replace('<div class="container">', '<div class="container">' + nature_research, 1)
+    from src.report_generator.selective_model_diagnostics import render_selective_diagnostics
+    selective_research = render_selective_diagnostics(DOCS_DIR.parent)
+    if selective_research:
+        diagnostics_html = diagnostics_html.replace('<div class="container">', '<div class="container">' + selective_research, 1)
+    from src.report_generator.extended_model_diagnostics import render_extended_diagnostics
+    extended_research = render_extended_diagnostics(DOCS_DIR.parent)
+    if extended_research:
+        diagnostics_html = diagnostics_html.replace('<div class="container">', '<div class="container">' + extended_research, 1)
     html = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
     diagnostics_html = "\n".join(line.rstrip() for line in diagnostics_html.splitlines()) + "\n"
 

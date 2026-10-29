@@ -1,0 +1,332 @@
+{
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_next_open/runs/20261021T070314Z_f78e5a74",
+  "raw_audit": {
+    "rows": 796665,
+    "duplicate_dates": 0,
+    "invalid_dates": 0,
+    "weekend_dates": 0,
+    "nonfinite_ohlcv": 0,
+    "nonpositive_close": 0,
+    "negative_volume": 0,
+    "zero_volume": 27178,
+    "invalid_active_candles": 0,
+    "exceptional_one_day_moves": 26
+  },
+  "dataset": {
+    "target_version": "next_open_to_fifth_close_v1",
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "target_definition": "close_on_fifth_session / next_session_open - 1 > cost",
+    "execution_note": "Hypothetical next-open entry / fifth-close exit; not guaranteed fills. Fixed round-trip cost does not model queueing, taxes by product, impact or delisting proceeds.",
+    "calendar_note": "Union of observed universe dates, not an authoritative exchange calendar.",
+    "discontinuity_rule": "Absolute one-session close change above 30.5% inside holding interval, or entry intraday change above 30.5%, requires review. Not proof of error.",
+    "input_candidates": 751899,
+    "resolved_candidates": 744579,
+    "label_status_counts": {
+      "resolved": 744579,
+      "awaiting_future_sessions": 4165,
+      "exit_price_unavailable": 1913,
+      "entry_price_unavailable": 934,
+      "price_discontinuity_requires_review": 279,
+      "missing_session_prices": 29
+    },
+    "universe_note": "Current observed universe and retrospectively adjusted prices; survivorship bias remains."
+  },
+  "partitions": {
+    "train": {
+      "rows": 614781,
+      "dates": 744,
+      "start": "2023-02-01",
+      "end": "2026-02-20",
+      "latest_label": "2026-02-27"
+    },
+    "calibration": {
+      "rows": 31902,
+      "dates": 38,
+      "start": "2026-03-03",
+      "end": "2026-04-23",
+      "latest_label": "2026-04-30"
+    }
+  },
+  "results": {
+    "policy_diagnostic": {
+      "same_close_trained_control": {
+        "input_candidates": 32590,
+        "signal_dates": 39,
+        "evaluated_cases": 32420,
+        "unresolved_cases": 170,
+        "date_brier": 0.27700150738652923,
+        "past_constant_date_brier": 0.25473970329933343,
+        "mean_daily_auc": 0.5183632382675954,
+        "top20": {
+          "selected_cases": 780,
+          "selected_dates": 39,
+          "evaluated_cases": 763,
+          "unresolved_cases": 17,
+          "outcome_coverage": 0.9782051282051282,
+          "conditional_success_rate": 0.37745740498034075,
+          "conditional_date_success_rate": 0.3760785195769715,
+          "conditional_mean_net_return_proxy": -0.02722234153003854,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 14,
+            "entry_price_unavailable": 3
+          }
+        },
+        "fixed_policy": {
+          "selected_cases": 195,
+          "selected_dates": 39,
+          "evaluated_cases": 189,
+          "unresolved_cases": 6,
+          "outcome_coverage": 0.9692307692307692,
+          "conditional_success_rate": 0.3492063492063492,
+          "conditional_date_success_rate": 0.34102564102564104,
+          "conditional_mean_net_return_proxy": -0.036171537115081524,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 5,
+            "entry_price_unavailable": 1
+          }
+        }
+      },
+      "next_open_trained": {
+        "input_candidates": 32590,
+        "signal_dates": 39,
+        "evaluated_cases": 32420,
+        "unresolved_cases": 170,
+        "date_brier": 0.26376743082655296,
+        "past_constant_date_brier": 0.25473970329933343,
+        "mean_daily_auc": 0.5166600457056335,
+        "top20": {
+          "selected_cases": 780,
+          "selected_dates": 39,
+          "evaluated_cases": 761,
+          "unresolved_cases": 19,
+          "outcome_coverage": 0.9756410256410256,
+          "conditional_success_rate": 0.3508541392904074,
+          "conditional_date_success_rate": 0.34940583295846456,
+          "conditional_mean_net_return_proxy": -0.029692451697712972,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 14,
+            "entry_price_unavailable": 5
+          }
+        },
+        "fixed_policy": {
+          "selected_cases": 194,
+          "selected_dates": 39,
+          "evaluated_cases": 188,
+          "unresolved_cases": 6,
+          "outcome_coverage": 0.9690721649484536,
+          "conditional_success_rate": 0.35106382978723405,
+          "conditional_date_success_rate": 0.3431623931623931,
+          "conditional_mean_net_return_proxy": -0.03136240009741155,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 5,
+            "entry_price_unavailable": 1
+          }
+        }
+      }
+    },
+    "historical_development": {
+      "same_close_trained_control": {
+        "input_candidates": 52017,
+        "signal_dates": 62,
+        "evaluated_cases": 51483,
+        "unresolved_cases": 534,
+        "date_brier": 0.2507626517419572,
+        "past_constant_date_brier": 0.2514088879352742,
+        "mean_daily_auc": 0.5350801222279267,
+        "top20": {
+          "selected_cases": 1240,
+          "selected_dates": 62,
+          "evaluated_cases": 1193,
+          "unresolved_cases": 47,
+          "outcome_coverage": 0.9620967741935483,
+          "conditional_success_rate": 0.4526404023470243,
+          "conditional_date_success_rate": 0.45184954004238936,
+          "conditional_mean_net_return_proxy": 0.010415756785416596,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 26,
+            "entry_price_unavailable": 15,
+            "price_discontinuity_requires_review": 4,
+            "missing_session_prices": 2
+          }
+        },
+        "fixed_policy": {
+          "selected_cases": 310,
+          "selected_dates": 62,
+          "evaluated_cases": 287,
+          "unresolved_cases": 23,
+          "outcome_coverage": 0.9258064516129032,
+          "conditional_success_rate": 0.47038327526132406,
+          "conditional_date_success_rate": 0.47284946236559144,
+          "conditional_mean_net_return_proxy": 0.011931866403380195,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 12,
+            "entry_price_unavailable": 8,
+            "price_discontinuity_requires_review": 2,
+            "missing_session_prices": 1
+          }
+        }
+      },
+      "next_open_trained": {
+        "input_candidates": 52017,
+        "signal_dates": 62,
+        "evaluated_cases": 51483,
+        "unresolved_cases": 534,
+        "date_brier": 0.2474097654556091,
+        "past_constant_date_brier": 0.2514088879352742,
+        "mean_daily_auc": 0.53686435418582,
+        "top20": {
+          "selected_cases": 1240,
+          "selected_dates": 62,
+          "evaluated_cases": 1200,
+          "unresolved_cases": 40,
+          "outcome_coverage": 0.967741935483871,
+          "conditional_success_rate": 0.4608333333333333,
+          "conditional_date_success_rate": 0.4588396196056238,
+          "conditional_mean_net_return_proxy": 0.011396633142250288,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 20,
+            "entry_price_unavailable": 15,
+            "price_discontinuity_requires_review": 4,
+            "missing_session_prices": 1
+          }
+        },
+        "fixed_policy": {
+          "selected_cases": 298,
+          "selected_dates": 62,
+          "evaluated_cases": 282,
+          "unresolved_cases": 16,
+          "outcome_coverage": 0.9463087248322147,
+          "conditional_success_rate": 0.49645390070921985,
+          "conditional_date_success_rate": 0.49166666666666675,
+          "conditional_mean_net_return_proxy": 0.022965699892909454,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 9,
+            "entry_price_unavailable": 6,
+            "price_discontinuity_requires_review": 1
+          }
+        }
+      }
+    },
+    "recent_tail": {
+      "same_close_trained_control": {
+        "input_candidates": 5867,
+        "signal_dates": 7,
+        "evaluated_cases": 5783,
+        "unresolved_cases": 84,
+        "date_brier": 0.2679237227861599,
+        "past_constant_date_brier": 0.2562675305538926,
+        "mean_daily_auc": 0.513968587674718,
+        "top20": {
+          "selected_cases": 140,
+          "selected_dates": 7,
+          "evaluated_cases": 135,
+          "unresolved_cases": 5,
+          "outcome_coverage": 0.9642857142857143,
+          "conditional_success_rate": 0.3333333333333333,
+          "conditional_date_success_rate": 0.34068504594820387,
+          "conditional_mean_net_return_proxy": 0.003908113794180555,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "exit_price_unavailable": 3,
+            "entry_price_unavailable": 2
+          }
+        },
+        "fixed_policy": {
+          "selected_cases": 35,
+          "selected_dates": 7,
+          "evaluated_cases": 34,
+          "unresolved_cases": 1,
+          "outcome_coverage": 0.9714285714285714,
+          "conditional_success_rate": 0.38235294117647056,
+          "conditional_date_success_rate": 0.39285714285714285,
+          "conditional_mean_net_return_proxy": -0.019132564006312733,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "entry_price_unavailable": 1
+          }
+        }
+      },
+      "next_open_trained": {
+        "input_candidates": 5867,
+        "signal_dates": 7,
+        "evaluated_cases": 5783,
+        "unresolved_cases": 84,
+        "date_brier": 0.2559605604074944,
+        "past_constant_date_brier": 0.2562675305538926,
+        "mean_daily_auc": 0.5158050708187234,
+        "top20": {
+          "selected_cases": 140,
+          "selected_dates": 7,
+          "evaluated_cases": 136,
+          "unresolved_cases": 4,
+          "outcome_coverage": 0.9714285714285714,
+          "conditional_success_rate": 0.2426470588235294,
+          "conditional_date_success_rate": 0.2468253968253968,
+          "conditional_mean_net_return_proxy": -0.038002908369589805,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "entry_price_unavailable": 2,
+            "exit_price_unavailable": 2
+          }
+        },
+        "fixed_policy": {
+          "selected_cases": 35,
+          "selected_dates": 7,
+          "evaluated_cases": 32,
+          "unresolved_cases": 3,
+          "outcome_coverage": 0.9142857142857143,
+          "conditional_success_rate": 0.1875,
+          "conditional_date_success_rate": 0.21666666666666665,
+          "conditional_mean_net_return_proxy": -0.04403159393880074,
+          "all_date_net_return_proxy": null,
+          "all_date_net_lower_95": null,
+          "unknown_states": {
+            "entry_price_unavailable": 2,
+            "exit_price_unavailable": 1
+          }
+        }
+      }
+    }
+  },
+  "paired_brier": {
+    "policy_diagnostic": {
+      "date_brier_delta": -0.013234076559976318,
+      "lower_95": -0.018774825382598864,
+      "upper_95": -0.007194496116706574
+    },
+    "historical_development": {
+      "date_brier_delta": -0.003352886286348036,
+      "lower_95": -0.007099860349761063,
+      "upper_95": 0.0011921109735777886
+    },
+    "recent_tail": {
+      "date_brier_delta": -0.011963162378665506,
+      "lower_95": null,
+      "upper_95": null
+    }
+  },
+  "recommendation_gate_passed": false,
+  "gate_reasons": [
+    "no_independent_next_open_forward_evidence"
+  ]
+}

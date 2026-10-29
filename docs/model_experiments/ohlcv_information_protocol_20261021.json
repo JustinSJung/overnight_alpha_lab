@@ -1,0 +1,26 @@
+{
+  "experiment": "ohlcv_information_ablation_v1",
+  "data_root": "data/ml_history/kis_expanded_20261019",
+  "labels_as_of": "2026-10-19",
+  "calibration_start": "2025-02-13",
+  "test_start": "2025-10-20",
+  "periods": {
+    "earlier_development": ["2025-10-20", "2026-06-23"],
+    "later_chronological_audit": ["2026-07-01", "2026-09-30"]
+  },
+  "primary_period": "later_chronological_audit",
+  "features_added": ["overnight_gap", "intraday_return", "intraday_range", "close_position", "downside_volatility_20d", "up_day_fraction_20d", "volume_trend_5_20", "log_traded_value_proxy_20d", "range_mean_20d", "gap_volatility_20d"],
+  "classifier": "Existing fixed HGB parameters, no model or parameter search",
+  "target": "Unchanged: close after five observed quote sessions / signal close - 1 > 0.003",
+  "weights": "Equal weight per signal date in training, calibration, regression and evaluation",
+  "cohort": "Common complete feature/outcome rows shared by baseline and enriched arms; report exclusions",
+  "probability_threshold": 0.6,
+  "cost_assumption": 0.003,
+  "policy": "Probability >= 0.6 AND predicted return > 0.003; unchanged across arms and periods",
+  "primary_screen": "Later period: enriched paired date-Brier upper 95% delta below zero, date Brier beats past calibration constant, mean daily AUC >= 0.55, at least 100 policy rows on 20 dates, block lower 95% policy net-proxy return positive",
+  "uncertainty": "5000 paired circular resamples of five signal dates, seed 42; primary Brier contrast predeclared",
+  "evaluation_note": "Historical development and later chronological audit, not claimed untouched final validation; current universe and retrospectively adjusted prices remain biased",
+  "new_information_note": "Uses existing as-of OHLCV fields previously ignored. No present-day fundamentals backfilled into history. Volume*close is a liquidity proxy, not actual traded value.",
+  "production_promotion": false,
+  "candidate_pool_change": false
+}

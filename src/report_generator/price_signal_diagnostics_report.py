@@ -16,7 +16,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.evaluation.metrics import reliability_score_from_wilson, safe_percentage
+from src.evaluation.metrics import (
+    dedupe_evaluations,
+    reliability_score_from_wilson,
+    safe_percentage,
+    success_series,
+)
 from src.storage.schema import RESULT_FAILURE, RESULT_PENDING, RESULT_SUCCESS
 
 
@@ -67,19 +72,7 @@ def read_all_csv(directory: Path, pattern: str) -> pd.DataFrame:
 
 
 def normalize_result_series(df: pd.DataFrame) -> pd.Series:
-    if df.empty:
-        return pd.Series(dtype=str)
-
-    result = pd.Series([RESULT_PENDING] * len(df), index=df.index, dtype=object)
-
-    for column in ["success_close_t1", "prediction_result", "price_candidate_result"]:
-        if column in df.columns:
-            series = df[column].astype(str).str.lower()
-            valid = ~series.isin(["", "nan", "none", "<na>"])
-            missing = result.isin([RESULT_PENDING]) & valid
-            result.loc[missing] = series.loc[missing]
-
-    return result
+    return success_series(df, "success_close_t1")
 
 
 def score_columns(df: pd.DataFrame) -> list[str]:
@@ -365,8 +358,14 @@ def summarize_penalties_by_bucket(evaluations: pd.DataFrame, rank_rows: list[dic
 
 
 def build_diagnostics():
-    evaluations = add_rank_bucket(read_all_csv(PREDICTIONS_DIR, "price_candidate_evaluation_*.csv"))
-    candidates = add_rank_bucket(read_all_csv(PROCESSED_DIR, "price_based_candidates_*.csv"))
+    evaluations = add_rank_bucket(dedupe_evaluations(
+        read_all_csv(PREDICTIONS_DIR, "price_candidate_evaluation_*.csv"),
+        key_column="diagnostic_evaluation_key",
+    ))
+    candidates = add_rank_bucket(dedupe_evaluations(
+        read_all_csv(PROCESSED_DIR, "price_based_candidates_*.csv"),
+        key_column="diagnostic_candidate_key",
+    ))
     signals = read_all_csv(PROCESSED_DIR, "daily_price_signals_*.csv")
     latest_candidates = read_csv(latest_file(PROCESSED_DIR, "price_based_candidates_*.csv"))
 
@@ -598,6 +597,9 @@ def write_report(data):
         "이 진단 리포트는 KIS 가격 후보 풀의 랭킹 품질을 점검하기 위한 것이며 투자 조언이 아닙니다.",
         "",
         "## Overall Performance",
+        "",
+        "Evaluation snapshots are deduplicated by the shared stable prediction identity before counting outcomes or assigning daily ranks.",
+        "평가 수와 일별 순위는 공통 예측 식별자로 반복 스냅샷을 제거한 뒤 집계합니다.",
         "",
         f"- Cumulative evaluated cases: **{summary['evaluated_count']}**",
         f"- Success count: **{summary['success_count']}**",

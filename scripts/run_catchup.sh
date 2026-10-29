@@ -99,6 +99,17 @@ fi
 
 run_required "2/24" "Collecting KIS-first daily price data..." python src/crawler/kis_price_collector.py || exit $?
 run_required "3/24" "Building daily price signals..." python src/features/daily_price_signals.py || exit $?
+if [ -n "${PRICE_ML_HISTORY_ROOT:-}" ]; then
+    run_optional "Learning newly matured next-open outcomes and preserving original forecasts..." bash scripts/price_model.sh learn-next-open --data-root "$PRICE_ML_HISTORY_ROOT" --report "reports/daily_review/${TODAY}_next_open_learning_cycle.json"
+    ML_GOAL_ARGS=(--data-root "$PRICE_ML_HISTORY_ROOT")
+    if [ -n "${PRICE_ML_BENCHMARK_ROOT:-}" ]; then
+        ML_GOAL_ARGS+=(--benchmark-root "$PRICE_ML_BENCHMARK_ROOT")
+    fi
+    run_optional "Checking the fixed reliability goal against real original forecasts..." bash scripts/price_model.sh goal-audit "${ML_GOAL_ARGS[@]}" --report "reports/daily_review/${TODAY}_reliability_goal_status.json"
+else
+    log "ML learning skipped: no verified PRICE_ML_HISTORY_ROOT configured."
+    log "Existing ML forecasts are retained without refreshing their dates or replacing the next-open model with legacy forecasts."
+fi
 run_optional "Collecting market index data for price benchmark coverage..." python src/crawler/market_index_collector.py
 run_required "4/24" "Generating price-based daily candidates..." python src/models/price_based_daily_recommender.py || exit $?
 run_required "5/24" "Evaluating price-based candidates with benchmark fallback..." python src/evaluator/price_candidate_evaluator.py || exit $?

@@ -1,0 +1,22 @@
+{
+  "experiment": "market_context_date_balance_v1",
+  "data_root": "data/ml_history/kis_expanded_20261019",
+  "training_as_of": "2026-06-30",
+  "calibration_start": "2025-02-13",
+  "development_test_start": "2025-10-20",
+  "arms": ["price_row", "price_date", "market_row", "market_date"],
+  "shared_rows": "All arms use identical observations with complete base and market features",
+  "date_weights": "Inverse observations per signal_date, normalized to mean 1 within each fitting/scoring partition",
+  "weighted_stages": ["scaler", "classifier", "training_cv_loss", "calibrator", "regressor", "calibration_constant", "training_return_median"],
+  "market_proxy": "Completed-close aggregates of the observed candidate universe, not an exchange index",
+  "market_min_stocks": 100,
+  "features": ["market_return_1d", "market_return_5d", "market_return_20d", "market_volatility_20d", "market_up_fraction", "market_above_ma20_fraction", "market_dispersion_1d", "market_volume_ratio_20d", "relative_return_5d", "relative_return_20d"],
+  "horizon_sessions": 5,
+  "cost_assumption": 0.003,
+  "probability_threshold": 0.6,
+  "classifier_selection": "Existing logistic/gradient-boosting candidates; three purged training-only expanding folds",
+  "test_role": "Previously inspected dates: development comparison, not an untouched final test",
+  "production_promotion": false,
+  "threshold_tuning_on_test": false,
+  "candidate_pool_change": false
+}

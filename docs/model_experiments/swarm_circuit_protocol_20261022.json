@@ -1,0 +1,18 @@
+{
+  "experiment": "signed_peer_messages_v1",
+  "parent_model_root": "data/models/price_neural_circuit",
+  "data_root": "data/ml_history/kis_updated_20261021",
+  "primary_model": "peer_ncp_real",
+  "arms": ["local_ncp", "peer_ncp_real", "peer_ncp_shuffled", "peer_gru_real"],
+  "graph_top_k": 4,
+  "minimum_half_pairs": 120,
+  "minimum_abs_correlation": 0.08,
+  "shuffle_seed": 713,
+  "primary_comparisons": 3,
+  "family_alpha": 0.05,
+  "graph_note": "Signed one-session lag associations of active-stock returns after subtracting the observed-universe daily mean. Same sign and minimum absolute correlation in both training halves; graph frozen before calibration/evaluation. Associations are not causality.",
+  "comparison_note": "The real peer graph must beat a degree/weight-matched shuffled graph, the already-fitted local NCP, and a GRU with identical real peer inputs. Same original candidate pool and fixed fitting endpoints.",
+  "production_promotion": false,
+  "new_algorithm_discovery_claim": false,
+  "nature_guarantee_claim": false
+}

@@ -1,0 +1,19 @@
+{
+  "experiment": "expanded_current_universe_history_v1",
+  "requested_stocks": 901,
+  "universe_file": "data/ml_training_snapshots/main_51e4efa/data/processed/daily_price_signals_20261020.csv",
+  "history_start": "2023-01-01",
+  "history_end": "2026-10-19",
+  "training_as_of": "2026-06-30",
+  "calibration_start": "2025-02-13",
+  "test_start": "2025-10-20",
+  "horizon_sessions": 5,
+  "cost_assumption": 0.003,
+  "probability_threshold": 0.60,
+  "feature_count": 9,
+  "model_selection": "three purged expanding folds inside training only",
+  "historical_test_role": "development evidence: same dates were inspected in the earlier pilot; not a new untouched final test",
+  "future_validation": "freeze a separate model and timestamped predictions before observing future outcomes",
+  "production_promotion": false,
+  "candidate_pool_change": false
+}

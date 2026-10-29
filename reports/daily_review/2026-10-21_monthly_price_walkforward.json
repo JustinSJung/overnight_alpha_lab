@@ -1,0 +1,1029 @@
+{
+  "protocol": {
+    "experiment": "monthly_price_walkforward_v1",
+    "data_root": "data/ml_history/kis_expanded_20261019",
+    "labels_as_of": "2026-06-30",
+    "evaluation_start": "2025-10-20",
+    "evaluation_end": "2026-06-23",
+    "training_windows": [
+      252,
+      504
+    ],
+    "calibration_sessions": 60,
+    "classifier": "hist_gradient_boosting",
+    "training_weights": "unchanged: equal observations",
+    "features": [
+      "return_1d",
+      "return_5d",
+      "return_20d",
+      "volume_ratio_20d",
+      "volatility_20d",
+      "breakout_score",
+      "distance_ma5",
+      "distance_ma20",
+      "ma5_vs_ma20"
+    ],
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "probability_threshold": 0.6,
+    "monthly_fit_as_of": "Last observed quote session before the calendar month, including the first partial evaluation month",
+    "calibration_policy": "Latest 60 signal dates with labels already available at fit-as-of",
+    "training_policy": "Latest 252 or 504 signal dates strictly before calibration, with all training labels available before calibration starts",
+    "fixed_controls": "One frozen copy of each window's first monthly model, with identical anchor information and hyperparameters",
+    "past_evaluation_labels": "Earlier evaluated months may enter later fitting only after their outcomes have become available; old predictions are never recomputed",
+    "common_reference": "Monthly known calibration-period class prevalence, identical across training-window sizes",
+    "future_month_labels_in_bundles": false,
+    "evaluation_role": "Previously inspected historical dates: retrospective development replay, not prospective validation",
+    "window_selection_on_evaluation": false,
+    "production_promotion": false,
+    "candidate_pool_change": false
+  },
+  "protocol_sha256": "9b59e54675ec1579569b80243607d5df2a37497246a20336892e3f1b66d4d2b7",
+  "dataset_sha256": "4b8d62bf0f6cf6cdc7d1570a422246e3531fc7b96982434eca5fc0738d192189",
+  "results": {
+    "frozen_252": {
+      "date_brier": 0.24363220259856017,
+      "common_date_baseline_brier": 0.24650904195190473,
+      "date_log_loss": 0.6803471640401016,
+      "date_return_mae": 0.0689437632160064,
+      "mean_daily_cross_section_auc": 0.5273306236369478,
+      "daily_auc_dates": 166,
+      "selected_date_success_rate": 0.4874252980276683,
+      "selected_top_two_date_share": 0.32164531355360754,
+      "all_dates_mean_net_return_proxy": -0.004127634817386939,
+      "all_dates_return_lower_95": -0.022994490903264785,
+      "evaluated_rows": 141304,
+      "signal_dates": 166,
+      "roc_auc": 0.5239639497162549,
+      "brier_score": 0.2437514795092346,
+      "own_baseline_brier_score": 0.24398760836611424,
+      "own_date_baseline_brier": 0.24380351360969874,
+      "return_mae": 0.06884413432788207,
+      "baseline_return_mae": 0.06903288267086329,
+      "selected_count": 1483,
+      "selected_dates": 125,
+      "selected_success_rate": 0.6264329062710722,
+      "recommendation_gate_passed": false,
+      "calibration_bins": [
+        {
+          "range": [
+            0.2,
+            0.4
+          ],
+          "count": 46074,
+          "mean_probability": 0.37595862913250133,
+          "observed_rate": 0.39219516430090723
+        },
+        {
+          "range": [
+            0.4,
+            0.6
+          ],
+          "count": 93747,
+          "mean_probability": 0.4373628459311073,
+          "observed_rate": 0.43187515333824017
+        },
+        {
+          "range": [
+            0.6,
+            0.8
+          ],
+          "count": 1483,
+          "mean_probability": 0.6376381252270779,
+          "observed_rate": 0.6264329062710722
+        }
+      ]
+    },
+    "monthly_252": {
+      "date_brier": 0.2477207597849228,
+      "common_date_baseline_brier": 0.24650904195190473,
+      "date_log_loss": 0.6885967858742709,
+      "date_return_mae": 0.06890656891497837,
+      "mean_daily_cross_section_auc": 0.5275549555102228,
+      "daily_auc_dates": 166,
+      "selected_date_success_rate": 0.4264723679208018,
+      "selected_top_two_date_share": 0.22156505914467697,
+      "all_dates_mean_net_return_proxy": -0.0012165346008198535,
+      "all_dates_return_lower_95": -0.013472852397096296,
+      "evaluated_rows": 141304,
+      "signal_dates": 166,
+      "roc_auc": 0.5008276183184728,
+      "brier_score": 0.24769745649076755,
+      "own_baseline_brier_score": 0.24654318149020174,
+      "own_date_baseline_brier": 0.24650904195190473,
+      "return_mae": 0.06880982093808301,
+      "baseline_return_mae": 0.06908417655014476,
+      "selected_count": 2198,
+      "selected_dates": 77,
+      "selected_success_rate": 0.4049135577797998,
+      "recommendation_gate_passed": false,
+      "calibration_bins": [
+        {
+          "range": [
+            0.2,
+            0.4
+          ],
+          "count": 25521,
+          "mean_probability": 0.38213314951403643,
+          "observed_rate": 0.3955174170291133
+        },
+        {
+          "range": [
+            0.4,
+            0.6
+          ],
+          "count": 113485,
+          "mean_probability": 0.4554020993424607,
+          "observed_rate": 0.4271577741551747
+        },
+        {
+          "range": [
+            0.6,
+            0.8
+          ],
+          "count": 2298,
+          "mean_probability": 0.624981796178213,
+          "observed_rate": 0.39860748476936464
+        }
+      ]
+    },
+    "frozen_504": {
+      "date_brier": 0.2440968662422477,
+      "common_date_baseline_brier": 0.24650904195190473,
+      "date_log_loss": 0.6812895535170375,
+      "date_return_mae": 0.06886928268640284,
+      "mean_daily_cross_section_auc": 0.5269641120643858,
+      "daily_auc_dates": 166,
+      "selected_date_success_rate": 0.49458451083526206,
+      "selected_top_two_date_share": 0.3122460824143935,
+      "all_dates_mean_net_return_proxy": 0.004793226812220951,
+      "all_dates_return_lower_95": -0.013941305154427944,
+      "evaluated_rows": 141304,
+      "signal_dates": 166,
+      "roc_auc": 0.520563742888329,
+      "brier_score": 0.2442129888484957,
+      "own_baseline_brier_score": 0.24398760836611424,
+      "own_date_baseline_brier": 0.24380351360969874,
+      "return_mae": 0.06877307260391109,
+      "baseline_return_mae": 0.06902916620968236,
+      "selected_count": 1723,
+      "selected_dates": 132,
+      "selected_success_rate": 0.5908299477655252,
+      "recommendation_gate_passed": false,
+      "calibration_bins": [
+        {
+          "range": [
+            0.2,
+            0.4
+          ],
+          "count": 41688,
+          "mean_probability": 0.37078568359853037,
+          "observed_rate": 0.391743427365189
+        },
+        {
+          "range": [
+            0.4,
+            0.6
+          ],
+          "count": 97892,
+          "mean_probability": 0.4369947509729025,
+          "observed_rate": 0.4304437543415192
+        },
+        {
+          "range": [
+            0.6,
+            0.8
+          ],
+          "count": 1724,
+          "mean_probability": 0.6400662234858469,
+          "observed_rate": 0.5904872389791184
+        }
+      ]
+    },
+    "monthly_504": {
+      "date_brier": 0.2472525959475293,
+      "common_date_baseline_brier": 0.24650904195190473,
+      "date_log_loss": 0.6876458959258176,
+      "date_return_mae": 0.06886142303533511,
+      "mean_daily_cross_section_auc": 0.5276240120037488,
+      "daily_auc_dates": 166,
+      "selected_date_success_rate": 0.40593544445515495,
+      "selected_top_two_date_share": 0.3444857496902107,
+      "all_dates_mean_net_return_proxy": -0.015547830836299244,
+      "all_dates_return_lower_95": -0.03186519720848183,
+      "evaluated_rows": 141304,
+      "signal_dates": 166,
+      "roc_auc": 0.5043767430004047,
+      "brier_score": 0.24723446211645228,
+      "own_baseline_brier_score": 0.24654318149020174,
+      "own_date_baseline_brier": 0.24650904195190473,
+      "return_mae": 0.0687651347237933,
+      "baseline_return_mae": 0.06903097547058387,
+      "selected_count": 2421,
+      "selected_dates": 102,
+      "selected_success_rate": 0.5130111524163569,
+      "recommendation_gate_passed": false,
+      "calibration_bins": [
+        {
+          "range": [
+            0.2,
+            0.4
+          ],
+          "count": 23350,
+          "mean_probability": 0.38029394504196,
+          "observed_rate": 0.3840256959314775
+        },
+        {
+          "range": [
+            0.4,
+            0.6
+          ],
+          "count": 115508,
+          "mean_probability": 0.4564034560764921,
+          "observed_rate": 0.42652456972677216
+        },
+        {
+          "range": [
+            0.6,
+            0.8
+          ],
+          "count": 2446,
+          "mean_probability": 0.6437030731517402,
+          "observed_rate": 0.5118560915780866
+        }
+      ]
+    }
+  },
+  "paired": {
+    "252": {
+      "date_brier_delta": 0.004088557186362679,
+      "lower_95": -0.0017471901768022636,
+      "upper_95": 0.010481755344105033
+    },
+    "504": {
+      "date_brier_delta": 0.0031557297052815553,
+      "lower_95": -0.002338792434961846,
+      "upper_95": 0.009177803226072664
+    }
+  },
+  "monthly": [
+    {
+      "month": "2025-10",
+      "variant": "frozen_252",
+      "rows": 8583,
+      "auc": 0.5494591800130315,
+      "date_brier": 0.2276015334795453,
+      "baseline_date_brier": 0.22837734114934882
+    },
+    {
+      "month": "2025-10",
+      "variant": "monthly_252",
+      "rows": 8583,
+      "auc": 0.5494591800130315,
+      "date_brier": 0.2276015334795453,
+      "baseline_date_brier": 0.22837734114934882
+    },
+    {
+      "month": "2025-10",
+      "variant": "frozen_504",
+      "rows": 8583,
+      "auc": 0.5457454515765915,
+      "date_brier": 0.22802649037804637,
+      "baseline_date_brier": 0.22837734114934882
+    },
+    {
+      "month": "2025-10",
+      "variant": "monthly_504",
+      "rows": 8583,
+      "auc": 0.5457454515765915,
+      "date_brier": 0.22802649037804637,
+      "baseline_date_brier": 0.22837734114934882
+    },
+    {
+      "month": "2025-11",
+      "variant": "frozen_252",
+      "rows": 17170,
+      "auc": 0.5101819044871069,
+      "date_brier": 0.2541902356050315,
+      "baseline_date_brier": 0.25425601049763447
+    },
+    {
+      "month": "2025-11",
+      "variant": "monthly_252",
+      "rows": 17170,
+      "auc": 0.5144481092937587,
+      "date_brier": 0.2536172626223744,
+      "baseline_date_brier": 0.25425601049763447
+    },
+    {
+      "month": "2025-11",
+      "variant": "frozen_504",
+      "rows": 17170,
+      "auc": 0.5172953341367731,
+      "date_brier": 0.25360672344710006,
+      "baseline_date_brier": 0.25425601049763447
+    },
+    {
+      "month": "2025-11",
+      "variant": "monthly_504",
+      "rows": 17170,
+      "auc": 0.5174688864688781,
+      "date_brier": 0.2533611095623068,
+      "baseline_date_brier": 0.25425601049763447
+    },
+    {
+      "month": "2025-12",
+      "variant": "frozen_252",
+      "rows": 18040,
+      "auc": 0.524694899118608,
+      "date_brier": 0.24067697231597848,
+      "baseline_date_brier": 0.24048793848706962
+    },
+    {
+      "month": "2025-12",
+      "variant": "monthly_252",
+      "rows": 18040,
+      "auc": 0.5238710479303036,
+      "date_brier": 0.24042322529343077,
+      "baseline_date_brier": 0.24048793848706962
+    },
+    {
+      "month": "2025-12",
+      "variant": "frozen_504",
+      "rows": 18040,
+      "auc": 0.5260577982069066,
+      "date_brier": 0.24071285167473855,
+      "baseline_date_brier": 0.24048793848706962
+    },
+    {
+      "month": "2025-12",
+      "variant": "monthly_504",
+      "rows": 18040,
+      "auc": 0.530768868954185,
+      "date_brier": 0.24029725979068145,
+      "baseline_date_brier": 0.24048793848706962
+    },
+    {
+      "month": "2026-01",
+      "variant": "frozen_252",
+      "rows": 18115,
+      "auc": 0.5346120650048274,
+      "date_brier": 0.257146432547009,
+      "baseline_date_brier": 0.258860043197719
+    },
+    {
+      "month": "2026-01",
+      "variant": "monthly_252",
+      "rows": 18115,
+      "auc": 0.5377031004680632,
+      "date_brier": 0.257611133034464,
+      "baseline_date_brier": 0.258860043197719
+    },
+    {
+      "month": "2026-01",
+      "variant": "frozen_504",
+      "rows": 18115,
+      "auc": 0.5404938359824214,
+      "date_brier": 0.25729985871748146,
+      "baseline_date_brier": 0.258860043197719
+    },
+    {
+      "month": "2026-01",
+      "variant": "monthly_504",
+      "rows": 18115,
+      "auc": 0.5428337680642884,
+      "date_brier": 0.25754321679398906,
+      "baseline_date_brier": 0.258860043197719
+    },
+    {
+      "month": "2026-02",
+      "variant": "frozen_252",
+      "rows": 14692,
+      "auc": 0.5044385901018189,
+      "date_brier": 0.24393711672958135,
+      "baseline_date_brier": 0.24397077754136381
+    },
+    {
+      "month": "2026-02",
+      "variant": "monthly_252",
+      "rows": 14692,
+      "auc": 0.5067432568197082,
+      "date_brier": 0.24466095766129722,
+      "baseline_date_brier": 0.24397077754136381
+    },
+    {
+      "month": "2026-02",
+      "variant": "frozen_504",
+      "rows": 14692,
+      "auc": 0.5030648280172965,
+      "date_brier": 0.24438098081601056,
+      "baseline_date_brier": 0.24397077754136381
+    },
+    {
+      "month": "2026-02",
+      "variant": "monthly_504",
+      "rows": 14692,
+      "auc": 0.4997133073158846,
+      "date_brier": 0.2451411832863861,
+      "baseline_date_brier": 0.24397077754136381
+    },
+    {
+      "month": "2026-03",
+      "variant": "frozen_252",
+      "rows": 18111,
+      "auc": 0.5970777988217586,
+      "date_brier": 0.24022538777231084,
+      "baseline_date_brier": 0.24946001604784537
+    },
+    {
+      "month": "2026-03",
+      "variant": "monthly_252",
+      "rows": 18111,
+      "auc": 0.5867567543605923,
+      "date_brier": 0.24485275863955497,
+      "baseline_date_brier": 0.24946001604784537
+    },
+    {
+      "month": "2026-03",
+      "variant": "frozen_504",
+      "rows": 18111,
+      "auc": 0.5897981698755351,
+      "date_brier": 0.24054058218804616,
+      "baseline_date_brier": 0.24946001604784537
+    },
+    {
+      "month": "2026-03",
+      "variant": "monthly_504",
+      "rows": 18111,
+      "auc": 0.592850704591639,
+      "date_brier": 0.2435359078838748,
+      "baseline_date_brier": 0.24946001604784537
+    },
+    {
+      "month": "2026-04",
+      "variant": "frozen_252",
+      "rows": 18233,
+      "auc": 0.552244163089537,
+      "date_brier": 0.2660320510370693,
+      "baseline_date_brier": 0.2551607110363062
+    },
+    {
+      "month": "2026-04",
+      "variant": "monthly_252",
+      "rows": 18233,
+      "auc": 0.5697132451834881,
+      "date_brier": 0.2533261776460082,
+      "baseline_date_brier": 0.2551607110363062
+    },
+    {
+      "month": "2026-04",
+      "variant": "frozen_504",
+      "rows": 18233,
+      "auc": 0.5538047335610349,
+      "date_brier": 0.26629206504935504,
+      "baseline_date_brier": 0.2551607110363062
+    },
+    {
+      "month": "2026-04",
+      "variant": "monthly_504",
+      "rows": 18233,
+      "auc": 0.5716658022012937,
+      "date_brier": 0.2537299076789791,
+      "baseline_date_brier": 0.2551607110363062
+    },
+    {
+      "month": "2026-05",
+      "variant": "frozen_252",
+      "rows": 14781,
+      "auc": 0.520152452261149,
+      "date_brier": 0.21880740073503607,
+      "baseline_date_brier": 0.24216167077035294
+    },
+    {
+      "month": "2026-05",
+      "variant": "monthly_252",
+      "rows": 14781,
+      "auc": 0.5060825103100717,
+      "date_brier": 0.26378207601659615,
+      "baseline_date_brier": 0.24216167077035294
+    },
+    {
+      "month": "2026-05",
+      "variant": "frozen_504",
+      "rows": 14781,
+      "auc": 0.5147038393553659,
+      "date_brier": 0.22126566302437212,
+      "baseline_date_brier": 0.24216167077035294
+    },
+    {
+      "month": "2026-05",
+      "variant": "monthly_504",
+      "rows": 14781,
+      "auc": 0.5125713154313323,
+      "date_brier": 0.26200916213040537,
+      "baseline_date_brier": 0.24216167077035294
+    },
+    {
+      "month": "2026-06",
+      "variant": "frozen_252",
+      "rows": 13579,
+      "auc": 0.6298807652275342,
+      "date_brier": 0.22787072616716178,
+      "baseline_date_brier": 0.23166815345727693
+    },
+    {
+      "month": "2026-06",
+      "variant": "monthly_252",
+      "rows": 13579,
+      "auc": 0.5769980973251394,
+      "date_brier": 0.23076040774905315,
+      "baseline_date_brier": 0.23166815345727693
+    },
+    {
+      "month": "2026-06",
+      "variant": "frozen_504",
+      "rows": 13579,
+      "auc": 0.6395697784591605,
+      "date_brier": 0.22889857749427434,
+      "baseline_date_brier": 0.23166815345727693
+    },
+    {
+      "month": "2026-06",
+      "variant": "monthly_504",
+      "rows": 13579,
+      "auc": 0.6320913736263472,
+      "date_brier": 0.22886979720440095,
+      "baseline_date_brier": 0.23166815345727693
+    }
+  ],
+  "fits": [
+    {
+      "month": "2025-10",
+      "window": 252,
+      "as_of": "2025-09-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2025-10/runs/20261021T041435Z_757bab2e3d_c973e0",
+      "partitions": {
+        "train": {
+          "rows": 212216,
+          "signal_dates": 252,
+          "start": "2024-06-07",
+          "end": "2025-06-23",
+          "latest_label_available": "2025-06-30",
+          "positive_rate": 0.4244119199306367
+        },
+        "calibration": {
+          "rows": 51660,
+          "signal_dates": 60,
+          "start": "2025-07-01",
+          "end": "2025-09-23",
+          "latest_label_available": "2025-09-30",
+          "positive_rate": 0.40574912891986065
+        }
+      },
+      "test_start": "2025-10-20",
+      "test_end": "2025-10-31"
+    },
+    {
+      "month": "2025-10",
+      "window": 504,
+      "as_of": "2025-09-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2025-10/runs/20261021T041436Z_e811c1651a_5fbefc",
+      "partitions": {
+        "train": {
+          "rows": 416116,
+          "signal_dates": 504,
+          "start": "2023-05-25",
+          "end": "2025-06-23",
+          "latest_label_available": "2025-06-30",
+          "positive_rate": 0.4199357871362793
+        },
+        "calibration": {
+          "rows": 51660,
+          "signal_dates": 60,
+          "start": "2025-07-01",
+          "end": "2025-09-23",
+          "latest_label_available": "2025-09-30",
+          "positive_rate": 0.40574912891986065
+        }
+      },
+      "test_start": "2025-10-20",
+      "test_end": "2025-10-31"
+    },
+    {
+      "month": "2025-11",
+      "window": 252,
+      "as_of": "2025-10-31",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2025-11/runs/20261021T041438Z_52c4755477_b9f92f",
+      "partitions": {
+        "train": {
+          "rows": 212796,
+          "signal_dates": 252,
+          "start": "2024-07-03",
+          "end": "2025-07-17",
+          "latest_label_available": "2025-07-24",
+          "positive_rate": 0.4332835203669242
+        },
+        "calibration": {
+          "rows": 51655,
+          "signal_dates": 60,
+          "start": "2025-07-25",
+          "end": "2025-10-24",
+          "latest_label_available": "2025-10-31",
+          "positive_rate": 0.40894395508663245
+        }
+      },
+      "test_start": "2025-11-03",
+      "test_end": "2025-11-28"
+    },
+    {
+      "month": "2025-11",
+      "window": 504,
+      "as_of": "2025-10-31",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2025-11/runs/20261021T041439Z_5cb758485d_5ff75b",
+      "partitions": {
+        "train": {
+          "rows": 417400,
+          "signal_dates": 504,
+          "start": "2023-06-22",
+          "end": "2025-07-17",
+          "latest_label_available": "2025-07-24",
+          "positive_rate": 0.4210924772400575
+        },
+        "calibration": {
+          "rows": 51655,
+          "signal_dates": 60,
+          "start": "2025-07-25",
+          "end": "2025-10-24",
+          "latest_label_available": "2025-10-31",
+          "positive_rate": 0.40894395508663245
+        }
+      },
+      "test_start": "2025-11-03",
+      "test_end": "2025-11-28"
+    },
+    {
+      "month": "2025-12",
+      "window": 252,
+      "as_of": "2025-11-28",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2025-12/runs/20261021T041441Z_ddde2ff007_f3f914",
+      "partitions": {
+        "train": {
+          "rows": 213502,
+          "signal_dates": 252,
+          "start": "2024-07-31",
+          "end": "2025-08-14",
+          "latest_label_available": "2025-08-22",
+          "positive_rate": 0.43149947073095335
+        },
+        "calibration": {
+          "rows": 51599,
+          "signal_dates": 60,
+          "start": "2025-08-25",
+          "end": "2025-11-21",
+          "latest_label_available": "2025-11-28",
+          "positive_rate": 0.4049497083276808
+        }
+      },
+      "test_start": "2025-12-01",
+      "test_end": "2025-12-30"
+    },
+    {
+      "month": "2025-12",
+      "window": 504,
+      "as_of": "2025-11-28",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2025-12/runs/20261021T041442Z_f0eb8d3501_194cfe",
+      "partitions": {
+        "train": {
+          "rows": 418808,
+          "signal_dates": 504,
+          "start": "2023-07-20",
+          "end": "2025-08-14",
+          "latest_label_available": "2025-08-22",
+          "positive_rate": 0.4200970373058776
+        },
+        "calibration": {
+          "rows": 51599,
+          "signal_dates": 60,
+          "start": "2025-08-25",
+          "end": "2025-11-21",
+          "latest_label_available": "2025-11-28",
+          "positive_rate": 0.4049497083276808
+        }
+      },
+      "test_start": "2025-12-01",
+      "test_end": "2025-12-30"
+    },
+    {
+      "month": "2026-01",
+      "window": 252,
+      "as_of": "2025-12-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2026-01/runs/20261021T041444Z_528e23694b_8be6b3",
+      "partitions": {
+        "train": {
+          "rows": 214144,
+          "signal_dates": 252,
+          "start": "2024-08-30",
+          "end": "2025-09-15",
+          "latest_label_available": "2025-09-22",
+          "positive_rate": 0.4378735803945009
+        },
+        "calibration": {
+          "rows": 51544,
+          "signal_dates": 60,
+          "start": "2025-09-23",
+          "end": "2025-12-22",
+          "latest_label_available": "2025-12-30",
+          "positive_rate": 0.4091261834549123
+        }
+      },
+      "test_start": "2026-01-02",
+      "test_end": "2026-01-30"
+    },
+    {
+      "month": "2026-01",
+      "window": 504,
+      "as_of": "2025-12-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2026-01/runs/20261021T041445Z_fa7343512d_8bd4d5",
+      "partitions": {
+        "train": {
+          "rows": 420211,
+          "signal_dates": 504,
+          "start": "2023-08-21",
+          "end": "2025-09-15",
+          "latest_label_available": "2025-09-22",
+          "positive_rate": 0.42406790874108485
+        },
+        "calibration": {
+          "rows": 51544,
+          "signal_dates": 60,
+          "start": "2025-09-23",
+          "end": "2025-12-22",
+          "latest_label_available": "2025-12-30",
+          "positive_rate": 0.4091261834549123
+        }
+      },
+      "test_start": "2026-01-02",
+      "test_end": "2026-01-30"
+    },
+    {
+      "month": "2026-02",
+      "window": 252,
+      "as_of": "2026-01-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2026-02/runs/20261021T041447Z_29d06d460b_67e463",
+      "partitions": {
+        "train": {
+          "rows": 214672,
+          "signal_dates": 252,
+          "start": "2024-10-07",
+          "end": "2025-10-21",
+          "latest_label_available": "2025-10-28",
+          "positive_rate": 0.4296834240143102
+        },
+        "calibration": {
+          "rows": 51584,
+          "signal_dates": 60,
+          "start": "2025-10-29",
+          "end": "2026-01-23",
+          "latest_label_available": "2026-01-30",
+          "positive_rate": 0.454036135235732
+        }
+      },
+      "test_start": "2026-02-02",
+      "test_end": "2026-02-27"
+    },
+    {
+      "month": "2026-02",
+      "window": 504,
+      "as_of": "2026-01-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2026-02/runs/20261021T041448Z_da258266a4_716fa7",
+      "partitions": {
+        "train": {
+          "rows": 421463,
+          "signal_dates": 504,
+          "start": "2023-09-19",
+          "end": "2025-10-21",
+          "latest_label_available": "2025-10-28",
+          "positive_rate": 0.4214557387006689
+        },
+        "calibration": {
+          "rows": 51584,
+          "signal_dates": 60,
+          "start": "2025-10-29",
+          "end": "2026-01-23",
+          "latest_label_available": "2026-01-30",
+          "positive_rate": 0.454036135235732
+        }
+      },
+      "test_start": "2026-02-02",
+      "test_end": "2026-02-27"
+    },
+    {
+      "month": "2026-03",
+      "window": 252,
+      "as_of": "2026-02-27",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2026-03/runs/20261021T041450Z_428ba8120c_dfd939",
+      "partitions": {
+        "train": {
+          "rows": 214992,
+          "signal_dates": 252,
+          "start": "2024-10-31",
+          "end": "2025-11-13",
+          "latest_label_available": "2025-11-20",
+          "positive_rate": 0.4297601771228697
+        },
+        "calibration": {
+          "rows": 51674,
+          "signal_dates": 60,
+          "start": "2025-11-21",
+          "end": "2026-02-20",
+          "latest_label_available": "2026-02-27",
+          "positive_rate": 0.49417502031969657
+        }
+      },
+      "test_start": "2026-03-03",
+      "test_end": "2026-03-31"
+    },
+    {
+      "month": "2026-03",
+      "window": 504,
+      "as_of": "2026-02-27",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2026-03/runs/20261021T041451Z_9f6aa2cf1b_f862eb",
+      "partitions": {
+        "train": {
+          "rows": 422348,
+          "signal_dates": 504,
+          "start": "2023-10-19",
+          "end": "2025-11-13",
+          "latest_label_available": "2025-11-20",
+          "positive_rate": 0.4242212582988436
+        },
+        "calibration": {
+          "rows": 51674,
+          "signal_dates": 60,
+          "start": "2025-11-21",
+          "end": "2026-02-20",
+          "latest_label_available": "2026-02-27",
+          "positive_rate": 0.49417502031969657
+        }
+      },
+      "test_start": "2026-03-03",
+      "test_end": "2026-03-31"
+    },
+    {
+      "month": "2026-04",
+      "window": 252,
+      "as_of": "2026-03-31",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2026-04/runs/20261021T041453Z_8a5b9dbc3a_af1260",
+      "partitions": {
+        "train": {
+          "rows": 215364,
+          "signal_dates": 252,
+          "start": "2024-11-29",
+          "end": "2025-12-12",
+          "latest_label_available": "2025-12-19",
+          "positive_rate": 0.43953957021600637
+        },
+        "calibration": {
+          "rows": 51785,
+          "signal_dates": 60,
+          "start": "2025-12-22",
+          "end": "2026-03-24",
+          "latest_label_available": "2026-03-31",
+          "positive_rate": 0.4646133050111036
+        }
+      },
+      "test_start": "2026-04-01",
+      "test_end": "2026-04-30"
+    },
+    {
+      "month": "2026-04",
+      "window": 504,
+      "as_of": "2026-03-31",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2026-04/runs/20261021T041454Z_c2a4ee19d8_3226e9",
+      "partitions": {
+        "train": {
+          "rows": 423419,
+          "signal_dates": 504,
+          "start": "2023-11-17",
+          "end": "2025-12-12",
+          "latest_label_available": "2025-12-19",
+          "positive_rate": 0.42131316733542895
+        },
+        "calibration": {
+          "rows": 51785,
+          "signal_dates": 60,
+          "start": "2025-12-22",
+          "end": "2026-03-24",
+          "latest_label_available": "2026-03-31",
+          "positive_rate": 0.4646133050111036
+        }
+      },
+      "test_start": "2026-04-01",
+      "test_end": "2026-04-30"
+    },
+    {
+      "month": "2026-05",
+      "window": 252,
+      "as_of": "2026-04-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2026-05/runs/20261021T041456Z_278909f4a4_7a6dc0",
+      "partitions": {
+        "train": {
+          "rows": 215758,
+          "signal_dates": 252,
+          "start": "2025-01-03",
+          "end": "2026-01-16",
+          "latest_label_available": "2026-01-23",
+          "positive_rate": 0.43308706977261563
+        },
+        "calibration": {
+          "rows": 51343,
+          "signal_dates": 60,
+          "start": "2026-01-26",
+          "end": "2026-04-23",
+          "latest_label_available": "2026-04-30",
+          "positive_rate": 0.4866486181173675
+        }
+      },
+      "test_start": "2026-05-04",
+      "test_end": "2026-05-29"
+    },
+    {
+      "month": "2026-05",
+      "window": 504,
+      "as_of": "2026-04-30",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2026-05/runs/20261021T041457Z_9438e6e1b6_c9670a",
+      "partitions": {
+        "train": {
+          "rows": 424516,
+          "signal_dates": 504,
+          "start": "2023-12-19",
+          "end": "2026-01-16",
+          "latest_label_available": "2026-01-23",
+          "positive_rate": 0.420153775122728
+        },
+        "calibration": {
+          "rows": 51343,
+          "signal_dates": 60,
+          "start": "2026-01-26",
+          "end": "2026-04-23",
+          "latest_label_available": "2026-04-30",
+          "positive_rate": 0.4866486181173675
+        }
+      },
+      "test_start": "2026-05-04",
+      "test_end": "2026-05-29"
+    },
+    {
+      "month": "2026-06",
+      "window": 252,
+      "as_of": "2026-05-29",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_252/2026-06/runs/20261021T041459Z_59ef41de83_76e0d5",
+      "partitions": {
+        "train": {
+          "rows": 216065,
+          "signal_dates": 252,
+          "start": "2025-02-04",
+          "end": "2026-02-11",
+          "latest_label_available": "2026-02-23",
+          "positive_rate": 0.44543077314696966
+        },
+        "calibration": {
+          "rows": 50357,
+          "signal_dates": 60,
+          "start": "2026-02-24",
+          "end": "2026-05-21",
+          "latest_label_available": "2026-05-29",
+          "positive_rate": 0.42234446055166114
+        }
+      },
+      "test_start": "2026-06-01",
+      "test_end": "2026-06-23"
+    },
+    {
+      "month": "2026-06",
+      "window": 504,
+      "as_of": "2026-05-29",
+      "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_forecaster_walkforward/window_504/2026-06/runs/20261021T041500Z_9aa9ed528d_398889",
+      "partitions": {
+        "train": {
+          "rows": 425359,
+          "signal_dates": 504,
+          "start": "2024-01-17",
+          "end": "2026-02-11",
+          "latest_label_available": "2026-02-23",
+          "positive_rate": 0.42653617297388796
+        },
+        "calibration": {
+          "rows": 50357,
+          "signal_dates": 60,
+          "start": "2026-02-24",
+          "end": "2026-05-21",
+          "latest_label_available": "2026-05-29",
+          "positive_rate": 0.42234446055166114
+        }
+      },
+      "test_start": "2026-06-01",
+      "test_end": "2026-06-23"
+    }
+  ]
+}

@@ -33,6 +33,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install isolated ML dependencies
+        run: |
+          python -m venv .venv-ml
+          .venv-ml/bin/python -m pip install -r requirements-ml.txt
+
       - name: Create environment file
         run: |
           echo "DART_API_KEY=${{ secrets.DART_API_KEY }}" >> .env
@@ -92,6 +97,17 @@ jobs:
 
           exit $EXIT_CODE
 
+      - name: Preserve supervised model and validation artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: supervised-price-model-${{ github.run_id }}
+          path: |
+            data/models/price_forecaster_challengers/
+            data/models/price_forecaster_expanded/
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Commit generated reports and dashboard
         run: |
           git config user.name "github-actions"
@@ -119,11 +135,13 @@ jobs:
           git add data/predictions/market_adjusted_evaluation_*.csv || true
           git add data/predictions/price_based_candidates_*.csv || true
           git add data/predictions/price_candidate_evaluation_*.csv || true
+          git add data/predictions/ml_price_forecasts_*.csv || true
           git add reports/daily_prediction/*.md || true
           git add reports/daily_review/*.md || true
           git add reports/single_stock/*.md || true
           git add docs/*.md || true
           git add docs/*.html || true
+          git add docs/price_model.json || true
           git add docs/posts/*.md || true
 
           if git diff --cached --quiet; then

@@ -1,0 +1,4 @@
+-r requirements-ml.txt
+torch==2.6.0
+chronos-forecasting==2.2.2
+transformers==4.57.3

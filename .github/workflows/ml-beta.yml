@@ -1,0 +1,91 @@
+name: ML Beta
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 7 * * 1-5"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: overnight-alpha-pipeline
+  cancel-in-progress: false
+
+jobs:
+  refresh-beta:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      LOKY_MAX_CPU_COUNT: "2"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-ml.txt
+
+      - name: Install isolated prediction runtime
+        run: |
+          python -m venv .venv-ml
+          .venv-ml/bin/python -m pip install -r requirements-ml.txt
+
+      - name: Validate model and publication rules
+        run: |
+          .venv-ml/bin/python -W error::RuntimeWarning -m unittest discover -s tests
+          bash -n scripts/price_model.sh scripts/run_catchup.sh scripts/publish_ml_beta.sh
+
+      - name: Restore disposable learning state
+        id: state
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/ml_beta_state/
+            data/models/price_next_open_current/
+          key: ml-beta-linux-py312-v1-${{ hashFiles('requirements-ml.txt') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ml-beta-linux-py312-v1-${{ hashFiles('requirements-ml.txt') }}-
+
+      - name: Collect completed prices and learn new outcomes
+        env:
+          KIS_APP_KEY: ${{ secrets.KIS_APP_KEY }}
+          KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
+          KIS_ENV: ${{ secrets.KIS_ENV }}
+        run: bash scripts/price_model.sh release-beta
+
+      - name: Preserve resumable price and model state
+        if: always() && steps.state.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/ml_beta_state/
+            data/models/price_next_open_current/
+          key: ${{ steps.state.outputs.cache-primary-key }}
+
+      - name: Publish beta forecasts and regenerate dashboard
+        run: bash scripts/publish_ml_beta.sh
+
+      - name: Request Pages deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --jq '{status: .status}'
+
+      - name: Preserve original forecasts if publication fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ml-beta-originals-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            data/predictions/ml_next_open_forward_*.csv
+            data/predictions/ml_next_open_forward_*.manifest.json
+            reports/daily_review/*_ml_beta_release*.json
+          if-no-files-found: warn
+          retention-days: 90

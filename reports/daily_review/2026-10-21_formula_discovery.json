@@ -1,0 +1,485 @@
+{
+  "retained_formulas": 3,
+  "formula_audit": [
+    {
+      "formula_index": 0,
+      "expression": "add(add(rank__range_mean_20d, rank__downside_volatility_20d), rank__distance_ma20)",
+      "nodes": 5,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10693920068779586,
+      "max_identity_correlation": 0.9037679576288674,
+      "survival_block_daily_ic": [
+        0.11555803711872675,
+        0.08344902342898287,
+        0.08145706695005263
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": true
+    },
+    {
+      "formula_index": 1,
+      "expression": "add(rank__range_mean_20d, rank__volatility_20d)",
+      "nodes": 3,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10257060085736762,
+      "max_identity_correlation": 0.9744241918136343,
+      "survival_block_daily_ic": [
+        0.1179102976947775,
+        0.08329040696561027,
+        0.09198532488477282
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": true
+    },
+    {
+      "formula_index": 2,
+      "expression": "add(add(rank__range_mean_20d, rank__volatility_20d), rank__distance_ma20)",
+      "nodes": 5,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10248007558803558,
+      "max_identity_correlation": 0.8774410179215525,
+      "survival_block_daily_ic": [
+        0.11205281905789717,
+        0.08280535253476869,
+        0.0765446402802014
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": true
+    },
+    {
+      "formula_index": 3,
+      "expression": "rank__range_mean_20d",
+      "nodes": 1,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10192813286250288,
+      "max_identity_correlation": 1.0,
+      "survival_block_daily_ic": [
+        0.12337966589919681,
+        0.09017435947112516,
+        0.10340402531370718
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": false
+    },
+    {
+      "formula_index": 4,
+      "expression": "rank__range_mean_20d",
+      "nodes": 1,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10192813286250288,
+      "max_identity_correlation": 1.0,
+      "survival_block_daily_ic": [
+        0.12337966589919681,
+        0.09017435947112516,
+        0.10340402531370718
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": false
+    },
+    {
+      "formula_index": 5,
+      "expression": "rank__range_mean_20d",
+      "nodes": 1,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10192813286250288,
+      "max_identity_correlation": 1.0,
+      "survival_block_daily_ic": [
+        0.12337966589919681,
+        0.09017435947112516,
+        0.10340402531370718
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": false
+    },
+    {
+      "formula_index": 6,
+      "expression": "rank__range_mean_20d",
+      "nodes": 1,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10192813286250288,
+      "max_identity_correlation": 1.0,
+      "survival_block_daily_ic": [
+        0.12337966589919681,
+        0.09017435947112516,
+        0.10340402531370718
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": false
+    },
+    {
+      "formula_index": 7,
+      "expression": "rank__range_mean_20d",
+      "nodes": 1,
+      "orientation_from_prefix": -1,
+      "prefix_correlation": -0.10192813286250288,
+      "max_identity_correlation": 1.0,
+      "survival_block_daily_ic": [
+        0.12337966589919681,
+        0.09017435947112516,
+        0.10340402531370718
+      ],
+      "survival_block_ic_dates": [
+        92,
+        92,
+        91
+      ],
+      "retained": false
+    }
+  ],
+  "discovery_partitions": {
+    "sample": {
+      "rows": 29696,
+      "dates": 464,
+      "start": "2023-02-01",
+      "end": "2024-12-20",
+      "latest_label": "2024-12-30"
+    },
+    "prefix": {
+      "rows": 376763,
+      "dates": 464,
+      "start": "2023-02-01",
+      "end": "2024-12-20",
+      "latest_label": "2024-12-30"
+    },
+    "survival": {
+      "rows": 235606,
+      "dates": 275,
+      "start": "2025-01-02",
+      "end": "2026-02-20",
+      "latest_label": "2026-02-27"
+    }
+  },
+  "partitions": {
+    "train": {
+      "rows": 616595,
+      "dates": 744,
+      "start": "2023-02-01",
+      "end": "2026-02-20",
+      "latest_label": "2026-02-27"
+    },
+    "probability_calibration": {
+      "rows": 32332,
+      "dates": 38,
+      "start": "2026-03-03",
+      "end": "2026-04-23",
+      "latest_label": "2026-04-30"
+    },
+    "policy_calibration": {
+      "rows": 28360,
+      "dates": 34,
+      "start": "2026-05-04",
+      "end": "2026-06-23",
+      "latest_label": "2026-06-30"
+    }
+  },
+  "policy": null,
+  "policy_trials": [
+    {
+      "threshold": 0.55,
+      "metrics": {
+        "cases": 170,
+        "dates": 34,
+        "success_count": 46,
+        "failure_count": 124,
+        "pooled_success_rate": 0.27058823529411763,
+        "date_success_rate": 0.27058823529411763,
+        "date_success_lower": 0.15882352941176475,
+        "all_date_net_proxy": -0.0721568461714039,
+        "all_date_net_lower": -0.1377456108440865,
+        "alpha": 0.00625
+      },
+      "passed": false
+    },
+    {
+      "threshold": 0.6,
+      "metrics": {
+        "cases": 162,
+        "dates": 34,
+        "success_count": 40,
+        "failure_count": 122,
+        "pooled_success_rate": 0.24691358024691357,
+        "date_success_rate": 0.2392156862745098,
+        "date_success_lower": 0.13725490196078433,
+        "all_date_net_proxy": -0.08288621288035841,
+        "all_date_net_lower": -0.14008550404846745,
+        "alpha": 0.00625
+      },
+      "passed": false
+    },
+    {
+      "threshold": 0.65,
+      "metrics": {
+        "cases": 98,
+        "dates": 26,
+        "success_count": 33,
+        "failure_count": 65,
+        "pooled_success_rate": 0.336734693877551,
+        "date_success_rate": 0.34102564102564104,
+        "date_success_lower": 0.2088515625,
+        "all_date_net_proxy": -0.05150109698703437,
+        "all_date_net_lower": -0.11513856985969044,
+        "alpha": 0.00625
+      },
+      "passed": false
+    },
+    {
+      "threshold": 0.7,
+      "metrics": {
+        "cases": 15,
+        "dates": 11,
+        "success_count": 7,
+        "failure_count": 8,
+        "pooled_success_rate": 0.4666666666666667,
+        "date_success_rate": 0.37878787878787873,
+        "date_success_lower": null,
+        "all_date_net_proxy": -0.018231446431215652,
+        "all_date_net_lower": -0.07622570740706673,
+        "alpha": 0.00625
+      },
+      "passed": false
+    }
+  ],
+  "results": {
+    "development_audit": {
+      "status": "historical_development_only",
+      "probabilities": {
+        "rank_control": {
+          "target": "target",
+          "date_brier": 0.2563526790220131,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5115216671648737,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        },
+        "formula_augmented": {
+          "target": "target",
+          "date_brier": 0.2563532046866338,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5115297209800079,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        },
+        "tree_control": {
+          "target": "target",
+          "date_brier": 0.24985883091645383,
+          "known_constant_date_brier": 0.2568844953363994,
+          "mean_daily_auc": 0.5375744793266889,
+          "auc_dates": 47,
+          "known_calibration_prior": 0.5320397058997834
+        }
+      },
+      "paired_brier": {
+        "rank_control": {
+          "date_brier_delta": 5.256646207072718e-07,
+          "lower_95": -1.8987063209898139e-06,
+          "upper_95": 2.46008577059579e-06
+        },
+        "tree_control": {
+          "date_brier_delta": 0.00649437377017999,
+          "lower_95": 0.003977511731926352,
+          "upper_95": 0.00916555197587018
+        }
+      },
+      "policy": {
+        "cases": 0,
+        "dates": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "pooled_success_rate": null,
+        "date_success_rate": null,
+        "date_success_lower": null,
+        "all_date_net_proxy": 0.0,
+        "all_date_net_lower": 0.0,
+        "alpha": 0.05
+      },
+      "top20": {
+        "formula_augmented": {
+          "absolute_success_rate": 0.4053191489361702,
+          "net_return_proxy": 0.0032482246300899156,
+          "excess_vs_pool": 0.006372857658541421
+        },
+        "rank_control": {
+          "absolute_success_rate": 0.4053191489361702,
+          "net_return_proxy": 0.0032482246300899156,
+          "excess_vs_pool": 0.006372857658541421
+        },
+        "tree_control": {
+          "absolute_success_rate": 0.47340425531914887,
+          "net_return_proxy": 0.013427759330343594,
+          "excess_vs_pool": 0.0165523923587951
+        },
+        "return_20d": {
+          "absolute_success_rate": 0.3627659574468085,
+          "net_return_proxy": -0.02724635963223476,
+          "excess_vs_pool": -0.024121726603783256
+        },
+        "random_mean": {
+          "absolute_success_rate": 0.4115638297872341,
+          "net_return_proxy": -0.002750406747811436,
+          "excess_vs_pool": 0.00037422628064007034
+        }
+      },
+      "paired_top20_returns": {
+        "rank_control": {
+          "mean": 0.0,
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "tree_control": {
+          "mean": -0.010179534700253682,
+          "lower": -0.03085039882632864,
+          "upper": 0.01334782387319983
+        },
+        "return_20d": {
+          "mean": 0.030494584262324674,
+          "lower": -0.013835139148820258,
+          "upper": 0.08238403229907028
+        },
+        "random_mean": {
+          "mean": 0.0059986313779013525,
+          "lower": -0.023636211903686755,
+          "upper": 0.03599774819792202
+        }
+      }
+    },
+    "short_recent_tail": {
+      "status": "unavailable_no_complete_outcome_dates"
+    }
+  },
+  "coverage": {
+    "development_audit": {
+      "eligible_dates": 62,
+      "complete_dates": 47,
+      "evaluated_rows": 39463
+    },
+    "short_recent_tail": {
+      "eligible_dates": 7,
+      "complete_dates": 0,
+      "evaluated_rows": 0
+    }
+  },
+  "screen_reasons": [
+    "no_high_reliability_policy_passed_policy_calibration",
+    "insufficient_external_policy_evidence",
+    "external_60_percent_success_lower_not_established",
+    "external_positive_net_proxy_not_established",
+    "probability_advantage_over_both_controls_not_established",
+    "top20_advantage_over_all_references_not_established"
+  ],
+  "development_screen_passed": false,
+  "recommendation_gate_passed": false,
+  "implementation_sha256": {
+    "src/models/formula_discovery.py": "43c02dcc6f26caffd96d674b3e42f80d93d1b2fb16ce3383ed7cc89a748b7da1",
+    "src/models/distributional_selector.py": "ae8bcfb6b07484d4333cc7fb564cf3f03af7a67ff1513567a03bcfaa5cbbb060",
+    "src/models/selected_price_model.py": "747523c9bb87298ad8ace7d1731908f3f3a1a7a7d48d57b6c1cfa030043db4c2",
+    "src/models/relative_price_selection.py": "c9c0f28995cb90bcef88dc63c617f14dbb77c2ffd5aadce9d661e82fa202b9ef",
+    "src/models/monthly_price_walkforward.py": "fb5219587a0a28437cca4095d72cf62e9c7477b8e0a035677974dbbc60808834",
+    "src/models/price_forecaster.py": "f7352f580c58c1322224902c5780aa57004bbcd2dad87310797e696306bf6bc0",
+    "src/features/ohlcv_information.py": "ed6d8e45f4eb8793f2786c27e36f7dde34450240be9f5f78e0483d3ce5ea3261",
+    "src/features/price_learning_dataset.py": "a0542901b050dc4b737e1f6f90885233bc9c554069ac6d1cbb88fdf6f195c88e",
+    "src/features/completed_price_dataset.py": "e231fb988f58309635abf2357a338c6c8818c8e42a019c00a461cea7993989d7"
+  },
+  "protocol_sha256": "34267efa3ad3294b3fcc0743751d4bd9d283a9e540db06a99f53e04bc28c76e8",
+  "protocol": {
+    "experiment": "bounded_genetic_signal_discovery_v1",
+    "data_root": "data/ml_history/kis_updated_20261020",
+    "labels_as_of": "2026-10-20",
+    "formula_validation_start": "2025-01-02",
+    "probability_calibration_start": "2026-03-02",
+    "policy_calibration_start": "2026-05-04",
+    "evaluation_start": "2026-07-01",
+    "periods": {
+      "development_audit": [
+        "2026-07-01",
+        "2026-09-30"
+      ],
+      "short_recent_tail": [
+        "2026-10-01",
+        "2026-10-13"
+      ]
+    },
+    "primary_period": "development_audit",
+    "formula_population": 128,
+    "formula_generations": 6,
+    "formula_hall_of_fame": 24,
+    "formula_candidates": 8,
+    "formula_sample_per_date": 64,
+    "formula_seed": 42,
+    "formula_functions": [
+      "add",
+      "sub",
+      "mul",
+      "div",
+      "abs",
+      "neg",
+      "max",
+      "min"
+    ],
+    "formula_parsimony": 0.001,
+    "formula_min_nodes": 3,
+    "formula_max_nodes": 25,
+    "formula_min_mean_daily_ic": 0.01,
+    "formula_min_positive_blocks": 2,
+    "formula_min_ic_dates_per_block": 20,
+    "formula_identity_correlation_ceiling": 0.995,
+    "formula_output_clip": 10,
+    "discovery_target": "Within-date percentile rank of clipped five-session return, learned only from mature prefix labels",
+    "inputs": "19 causal OHLCV values plus their same-close eligible-universe percentile ranks; rank population fixed before looking at outcomes",
+    "selection": "Generate formulas on purged prefix only, orient on prefix only, retain nontrivial/nonredundant formulas stable in three subsequent TRAIN-only blocks. No evolution on calibration/policy/external outcomes.",
+    "downstream": "Fixed weighted standard-scaler/logistic C=0.3 for rank-only and rank+formula arms; matched raw-19 Extra Trees as additional control. Same training/calibration/cohort; no test selection.",
+    "policy_thresholds": [
+      0.55,
+      0.6,
+      0.65,
+      0.7
+    ],
+    "policy_daily_cap": 5,
+    "policy_min_cases": 100,
+    "policy_min_dates": 20,
+    "policy_min_date_success": 0.65,
+    "policy_min_success_lower": 0.55,
+    "primary_top_k": 20,
+    "random_replicates": 100,
+    "bootstrap_samples": 5000,
+    "bootstrap_block_sessions": 5,
+    "bootstrap_seed": 42,
+    "minimum_stocks_per_date": 100,
+    "horizon_sessions": 5,
+    "cost_assumption": 0.003,
+    "missing_evaluation": "Exclude whole dates with incomplete outcomes and report coverage. Empty optional periods are unavailable; empty primary fails. Never drop individual unresolved stocks then rerank.",
+    "evaluation_role": "Previously viewed historical development dates, not new independent final evidence",
+    "production_promotion": false,
+    "candidate_pool_change": false,
+    "test_search": false,
+    "world_first_or_guarantee_claim": false
+  },
+  "run_dir": "/Users/justin/Desktop/overnight_alpha_lab/data/models/price_formula_discovery/runs/20261021T061858Z_046af611"
+}

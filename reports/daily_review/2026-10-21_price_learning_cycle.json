@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-10-21T14:21:14.422646+09:00",
+  "price_date": "2026-10-20",
+  "stock_count": 839,
+  "recording_state": "outside_recording_window_no_backdated_forecast",
+  "new_frozen_predictions": 0,
+  "graded_files": 0,
+  "forward": {
+    "recorded": 0,
+    "resolved": 0,
+    "pending": 0,
+    "signal_dates": 0,
+    "passed": false,
+    "integrity_issues": 0
+  },
+  "recommendation_enabled": false,
+  "note": "No backdating, original overwrites, model promotion, or orders. Re-run after fresh completed close and before next open."
+}
