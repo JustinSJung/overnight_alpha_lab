@@ -1,11 +1,11 @@
 {
   "schema": "model_improvement_status_v1",
-  "generated_at": "2026-10-29T17:29:33.062743+09:00",
+  "generated_at": "2026-10-29T17:49:00.674262+09:00",
   "status": "collecting_forward_evidence",
   "active_family": "extra_trees_504",
   "previous_family": "extra_trees_504",
   "action": "retain",
-  "protocol_sha256": "9506d8a52de760f0da4de4a1bdd265e432de738d517a53ade32e960df07643bc",
+  "protocol_sha256": "bcc198875a5243258c026eeeef3624e5e844a66e541c61807bb54965fcc243f8",
   "challenger_count": 3,
   "candidate_goals": {
     "auto_linear_504_v1": {

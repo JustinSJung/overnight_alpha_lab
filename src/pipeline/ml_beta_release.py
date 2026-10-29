@@ -134,14 +134,17 @@ def release_beta(state_dir, universe, model_dir, ledger_dir, public_output, goal
     publication = state_dir / 'publication'
     publication.mkdir(parents=True, exist_ok=True)
     staged_price, staged_goal = publication / 'price_model.json', publication / 'reliability_goal.json'
+    from src.pipeline.original_forecast_cache import copy_improvement_originals, copy_primary_originals
+    copy_primary_originals(state_dir / 'primary_originals', ledger_dir)
     if os.getenv('GITHUB_ACTIONS') == 'true' and Path(model_dir).resolve().is_relative_to(state_dir.resolve()):
         migrate_cached_model(ROOT / 'data/models/price_next_open_current', model_dir)
     from src.models.improvement_families import BASELINE
-    from src.pipeline.model_improvement import ARCHIVE, PROTOCOL_PATH, audit_improvement, permitted_serving_family, record_challengers
+    from src.pipeline.model_improvement import ARCHIVE, PROTOCOL_PATH, audit_improvement, load_protocol, permitted_serving_family, record_challengers
     improvement_path = report_path.parent / 'model_improvement_status.json'
     improvement = dict(active_family=BASELINE)
     family = BASELINE
     try:
+        copy_improvement_originals(state_dir / 'improvement_originals', ARCHIVE, load_protocol()[0])
         improvement = audit_improvement(history, benchmark, ARCHIVE, PROTOCOL_PATH, improvement_path,
                                         now=None if live_clock else now)
         family = permitted_serving_family(improvement, improvement['price_date'])
@@ -153,12 +156,14 @@ def release_beta(state_dir, universe, model_dir, ledger_dir, public_output, goal
     learning = run_cycle(history, model_dir, ledger_dir, staged_price,
                          report_path.with_name(report_path.stem + '_learning.json'), now=None if live_clock else now,
                          family=family, promotion=improvement)
+    copy_primary_originals(ledger_dir, state_dir / 'primary_originals')
     improvement['activation'] = ('existing_original_preserved' if not learning['publication_uses_current_model']
                                  else 'current_model_used')
     if improvement['status'] != 'audit_unavailable':
         try:
             improvement.update(record_challengers(history, state_dir / 'challengers', ARCHIVE,
                                PROTOCOL_PATH, model_dir, now=None if live_clock else now))
+            copy_improvement_originals(ARCHIVE, state_dir / 'improvement_originals', load_protocol()[0])
         except Exception as error:
             improvement.update(recording='challenger_recording_unavailable', recording_error_type=type(error).__name__)
         write_json(improvement, improvement_path)

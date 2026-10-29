@@ -94,6 +94,11 @@ class ModelImprovementTests(unittest.TestCase):
             self.assertEqual(later, 0)
             self.assertNotIn('PRIVATE_FIXTURE', str(batches[0][1]))
             self.assertNotIn('/never/publish', str(batches[0][1]))
+            from src.pipeline.original_forecast_cache import copy_improvement_originals
+            restored = Path(directory) / 'restored'
+            self.assertEqual(copy_improvement_originals(directory, restored, protocol()), 2)
+            restored_batches, _ = read_trials(restored, protocol())
+            pd.testing.assert_frame_equal(batches[0][0], restored_batches[0][0])
 
     def test_modified_original_or_missing_manifest_blocks_evaluation(self):
         frame, models, now = original_fixture()

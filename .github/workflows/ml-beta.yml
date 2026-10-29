@@ -26,6 +26,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Fast-forward to latest main before learning
+        run: |
+          git fetch origin main
+          git merge --ff-only origin/main
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -54,6 +59,7 @@ jobs:
             ml-beta-linux-py312-v1-${{ hashFiles('requirements-ml.txt') }}-
 
       - name: Collect completed prices and learn new outcomes
+        timeout-minutes: 120
         env:
           KIS_APP_KEY: ${{ secrets.KIS_APP_KEY }}
           KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}

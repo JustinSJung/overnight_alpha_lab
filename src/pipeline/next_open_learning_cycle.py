@@ -28,6 +28,8 @@ ORIGINAL_NAME = re.compile(r'ml_next_open_forward_[0-9]{8}_[0-9a-f]{16}\.csv')
 
 def collect_originals(ledger_dir, model_root, registry):
     """Keep original bytes; primary issuance per date is chosen BEFORE grading."""
+    if any(not (Path(ledger_dir) / name).is_file() for name in registry):
+        raise ValueError('Registered originals are missing; synchronize or recover them before learning.')
     identities = {}
     for path in sorted((Path(model_root) / 'runs').glob('*/model_metadata.json')):
         metadata = json.loads(path.read_text())

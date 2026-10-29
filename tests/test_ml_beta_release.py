@@ -9,6 +9,7 @@ from src.evaluator.next_open_provenance import read_provenance, seal_provenance
 from src.features.next_open_dataset import TARGET_VERSION
 from src.pipeline.ml_beta_release import compact_cached_models, compact_snapshots, configured_codes, migrate_cached_model, refresh_snapshot, release_beta
 from src.pipeline.next_open_learning_cycle import collect_originals
+from src.pipeline.original_forecast_cache import copy_primary_originals
 
 
 def snapshot(path, codes, end='2026-10-28'):
@@ -25,6 +26,29 @@ def snapshot(path, codes, end='2026-10-28'):
 
 
 class MLBetaReleaseTests(unittest.TestCase):
+    def test_cached_originals_restore_exact_bytes_and_never_overwrite_divergent_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source, restored = root / 'cache', root / 'checkout'
+            source.mkdir()
+            path = source / ('ml_next_open_forward_20261021_' + 'a' * 16 + '.csv')
+            path.write_text('immutable original fixture\n')
+            seal_provenance(path, dict(dataset_sha256='a' * 64, trained_at='2026-10-21T15:00:00+09:00',
+                as_of='2026-10-20', baseline_probability=.5, target_version=TARGET_VERSION))
+            self.assertEqual(copy_primary_originals(source, restored), 2)
+            self.assertEqual((restored / path.name).read_bytes(), path.read_bytes())
+            self.assertEqual(copy_primary_originals(source, restored), 0)
+            (restored / path.name).write_text('changed locally\n')
+            with self.assertRaisesRegex(ValueError, 'Conflicting'):
+                copy_primary_originals(source, restored)
+            self.assertEqual((restored / path.name).read_text(), 'changed locally\n')
+
+    def test_missing_registered_original_is_detected_before_any_new_recording(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with self.assertRaisesRegex(ValueError, 'missing'):
+                collect_originals(root, root / 'model', {'ml_next_open_forward_20261021_missing.csv': 'hash'})
+
     def test_explicit_universe_is_not_reduced_to_selected_stocks(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'universe.json'

@@ -74,6 +74,12 @@ eligible stock. Originals are Git-persisted under `data/model_improvement/origin
 each file is bounded to 2 MB. Estimators stay in the disposable ML state cache,
 compacted to two bundles per family while provenance is retained.
 
+Queued runs fast-forward to the latest main before installing/testing the runtime.
+Primary and challenger originals also have checksum-verified recovery copies in
+the disposable cache, so a failed publication cannot cause a new timestamp to
+replace an already issued prediction. Missing registered originals stop learning
+before recording; divergent bytes require review and are never overwritten.
+
 `reports/daily_review/model_improvement_status.json` records decisions and reasons.
 The public dashboard shows only the phase and sample progress, not internal
 family IDs or code-like rule strings. Both missing data and audit failures fail
