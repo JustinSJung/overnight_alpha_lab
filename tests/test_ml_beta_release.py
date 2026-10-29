@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch
 from src.crawler.price_learning_history import file_digest
 from src.evaluator.next_open_provenance import read_provenance, seal_provenance
 from src.features.next_open_dataset import TARGET_VERSION
-from src.pipeline.ml_beta_release import compact_snapshots, configured_codes, refresh_snapshot, release_beta
+from src.pipeline.ml_beta_release import compact_cached_models, compact_snapshots, configured_codes, migrate_cached_model, refresh_snapshot, release_beta
 from src.pipeline.next_open_learning_cycle import collect_originals
 
 
@@ -107,6 +107,43 @@ class MLBetaReleaseTests(unittest.TestCase):
             path.write_text(path.read_text() + '\n')
             with self.assertRaisesRegex(ValueError, 'changed'):
                 read_provenance(path)
+
+    def test_cache_compaction_keeps_original_metadata_and_leaves_local_model_roots_alone(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            state, model = root / 'state', root / 'state/model'
+            for name in ['run_1', 'run_2', 'run_3']:
+                path = model / 'runs' / name
+                path.mkdir(parents=True)
+                (path / 'model.joblib').write_bytes(b'fixture')
+                (path / 'model_metadata.json').write_text('{}')
+            (model / 'latest.json').write_text(json.dumps({'run_dir': str(model / 'runs/run_3')}))
+            compact_cached_models(root / 'unrelated', model)
+            self.assertTrue((model / 'runs/run_1/model.joblib').exists())
+            compact_cached_models(state, model)
+            self.assertFalse((model / 'runs/run_1/model.joblib').exists())
+            self.assertEqual(len(list(model.glob('runs/*/model_metadata.json'))), 3)
+            self.assertEqual(len(list(model.glob('runs/*/model.joblib'))), 2)
+
+    def test_cached_model_migration_relocates_pointer_without_refitting_or_changing_original(self):
+        import joblib
+        from src.models.next_open_price_model import COLUMNS, load_model
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source, destination = root / 'shared', root / 'state/model'
+            run = source / 'runs/fixture'
+            run.mkdir(parents=True)
+            bundle = {'metadata': dict(target_version=TARGET_VERSION, features=COLUMNS, recommendation_enabled=False)}
+            joblib.dump(bundle, run / 'model.joblib')
+            (run / 'model_metadata.json').write_text(json.dumps(bundle['metadata']))
+            digest = file_digest(run / 'model.joblib')
+            (source / 'latest.json').write_text(json.dumps(dict(run_dir=str(run), model_sha256=digest)))
+            before = (source / 'latest.json').read_bytes()
+            self.assertTrue(migrate_cached_model(source, destination))
+            self.assertEqual(load_model(destination)['metadata'], bundle['metadata'])
+            self.assertEqual((source / 'latest.json').read_bytes(), before)
+            self.assertEqual(file_digest(destination / 'runs/fixture/model.joblib'), digest)
+            self.assertFalse(migrate_cached_model(source, destination))
 
 
 if __name__ == '__main__':

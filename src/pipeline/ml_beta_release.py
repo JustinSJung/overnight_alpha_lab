@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from datetime import datetime
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -73,6 +74,42 @@ def compact_snapshots(folder, active):
             shutil.rmtree(path)
 
 
+def compact_cached_models(state_dir, model_dir):
+    """Limit only disposable CI bundles; retain every provenance metadata file."""
+    state_dir, model_dir = Path(state_dir).resolve(), Path(model_dir).resolve()
+    if not model_dir.is_relative_to(state_dir) or not (model_dir / 'latest.json').is_file():
+        return
+    runs = model_dir / 'runs'
+    current = Path(json.loads((model_dir / 'latest.json').read_text())['run_dir']).resolve()
+    candidates = sorted(path for path in runs.glob('*') if path.is_dir() and not path.is_symlink())
+    keep = set(candidates[-2:]) | {current}
+    for path in candidates:
+        bundle = path / 'model.joblib'
+        if path not in keep and bundle.is_file() and not bundle.is_symlink():
+            bundle.unlink()
+
+
+def migrate_cached_model(source, destination):
+    source, destination = Path(source).resolve(), Path(destination).resolve()
+    if (destination / 'latest.json').exists() or not (source / 'latest.json').exists():
+        return False
+    from src.models.next_open_price_model import load_model
+    load_model(source)
+    pointer = json.loads((source / 'latest.json').read_text())
+    old_run = Path(pointer['run_dir']).resolve()
+    if not old_run.is_relative_to(source / 'runs'):
+        raise ValueError('Cached model pointer escaped its own root.')
+    new_run = destination / 'runs' / old_run.name
+    new_run.mkdir(parents=True, exist_ok=True)
+    for name in ['model.joblib', 'model_metadata.json']:
+        shutil.copy2(old_run / name, new_run / name)
+    if (source / 'forward_registry.json').exists():
+        shutil.copy2(source / 'forward_registry.json', destination / 'forward_registry.json')
+    write_json(dict(run_dir=str(new_run), model_sha256=pointer['model_sha256']), destination / 'latest.json')
+    load_model(destination)
+    return True
+
+
 def release_beta(state_dir, universe, model_dir, ledger_dir, public_output, goal_output,
                  report_path, goal_path, client=None, now=None):
     live_clock = now is None
@@ -97,6 +134,8 @@ def release_beta(state_dir, universe, model_dir, ledger_dir, public_output, goal
     publication = state_dir / 'publication'
     publication.mkdir(parents=True, exist_ok=True)
     staged_price, staged_goal = publication / 'price_model.json', publication / 'reliability_goal.json'
+    if os.getenv('GITHUB_ACTIONS') == 'true' and Path(model_dir).resolve().is_relative_to(state_dir.resolve()):
+        migrate_cached_model(ROOT / 'data/models/price_next_open_current', model_dir)
     learning = run_cycle(history, model_dir, ledger_dir, staged_price,
                          report_path.with_name(report_path.stem + '_learning.json'), now=None if live_clock else now)
     goal = report_goal(history, ledger_dir, benchmark, goal_path, staged_goal,
@@ -117,6 +156,7 @@ def release_beta(state_dir, universe, model_dir, ledger_dir, public_output, goal
     write_json(result, report_path)
     compact_snapshots(state_dir / 'prices', history)
     compact_snapshots(state_dir / 'benchmark', benchmark)
+    compact_cached_models(state_dir, model_dir)
     return result
 
 

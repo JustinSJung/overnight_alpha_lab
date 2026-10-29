@@ -58,10 +58,11 @@ jobs:
           KIS_APP_KEY: ${{ secrets.KIS_APP_KEY }}
           KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
           KIS_ENV: ${{ secrets.KIS_ENV }}
-        run: bash scripts/price_model.sh release-beta
+        run: bash scripts/price_model.sh release-beta --model-dir data/ml_beta_state/current_model
 
       - name: Preserve resumable price and model state
         if: always() && steps.state.outcome == 'success'
+        continue-on-error: true
         uses: actions/cache/save@v4
         with:
           path: |
