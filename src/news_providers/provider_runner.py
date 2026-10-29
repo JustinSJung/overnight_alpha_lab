@@ -247,8 +247,9 @@ def run_provider(provider: NewsProvider, query: str, max_items: int) -> tuple[li
         rows = provider.fetch(query, max_items=max_items)
         return rows, provider_status_row(provider.provider_name, query, "success", len(rows))
     except Exception as error:
-        print(f"{provider.provider_name} failed for query '{query}': {str(error)[:160]}")
-        return [], provider_status_row(provider.provider_name, query, "failed", 0, str(error))
+        error_type = type(error).__name__
+        print(f"{provider.provider_name} failed: {error_type}")
+        return [], provider_status_row(provider.provider_name, query, "failed", 0, error_type)
 
 
 def run_naver_provider(query: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
@@ -260,8 +261,9 @@ def run_naver_provider(query: str) -> tuple[list[dict[str, Any]], dict[str, Any]
         rows = fetch_naver_news(query, max_items=3)
         return rows, provider_status_row("naver_search", query, "success", len(rows))
     except Exception as error:
-        print(f"naver_search failed for query '{query}': {str(error)[:160]}")
-        return [], provider_status_row("naver_search", query, "failed", 0, str(error))
+        error_type = type(error).__name__
+        print(f"naver_search failed: {error_type}")
+        return [], provider_status_row("naver_search", query, "failed", 0, error_type)
 
 
 def main():

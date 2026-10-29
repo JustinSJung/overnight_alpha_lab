@@ -187,6 +187,26 @@ class NewsLearningTests(unittest.TestCase):
             load.assert_not_called()
             self.assertEqual(result['mature_news_rows'], 0)
 
+    def test_legacy_provider_error_does_not_expose_credential_in_url(self):
+        from src.news_providers.provider_runner import run_provider
+        provider = Mock(provider_name='configured_feed')
+        provider.is_available.return_value = True
+        provider.fetch.side_effect = RuntimeError('https://api.example/?api_key=SECRET_TEST_VALUE')
+        with patch('builtins.print') as output:
+            rows, status = run_provider(provider, 'Samsung', 5)
+        self.assertEqual(rows, [])
+        self.assertEqual(status['error_message'], 'RuntimeError')
+        self.assertNotIn('SECRET_TEST_VALUE', str(output.call_args_list))
+
+    def test_same_story_can_be_company_news_and_global_context_without_double_count(self):
+        with tempfile.TemporaryDirectory() as directory:
+            archive_batch([item(), item(topic='semiconductors')], [request()], catalog(), directory,
+                          '2026-10-29T06:00Z')
+            rows, statuses, _ = read_archive(directory)
+            features = add_news_features(prices(), rows, statuses)
+            self.assertEqual(features.news_count_24h.tolist(), [1, 0])
+            self.assertEqual(features.global_news_count_24h.tolist(), [1, 1])
+
     def test_matched_models_use_identical_purged_rows_and_do_not_promote(self):
         rng = np.random.default_rng(11)
         days = pd.bdate_range('2025-01-01', periods=60)

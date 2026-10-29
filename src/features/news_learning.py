@@ -114,7 +114,8 @@ def archive_batch(items, requests, catalog, root, now=None):
             domain = urlsplit(canonical_url(publisher)).hostname
             query = clean_text(item.get('query'))[:180]
             provider = str(item.get('source_provider', 'unknown'))[:40]
-            identifier = hashlib.sha256((provider + '|' + url + '|' + title).encode()).hexdigest()
+            topic = str(item.get('topic', 'company'))[:40]
+            identifier = hashlib.sha256((provider + '|' + url + '|' + title + '|' + topic).encode()).hexdigest()
             if identifier in seen:
                 continue
             seen.add(identifier)
@@ -127,7 +128,7 @@ def archive_batch(items, requests, catalog, root, now=None):
                 link=url, source_domain=domain, source_provider=provider, query=query,
                 published_at=published.isoformat(), first_seen_at=observed.isoformat(),
                 available_at=max(observed, published).isoformat(), stock_codes=linked,
-                topic=str(item.get('topic', 'company'))[:40],
+                topic=topic,
                 positive_terms=term_count(text, POSITIVE),
                 negative_terms=term_count(text, NEGATIVE),
                 risk_terms=term_count(text, RISK)))

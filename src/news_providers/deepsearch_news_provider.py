@@ -67,7 +67,7 @@ class DeepSearchNewsProvider(NewsProvider):
                         "title": first_present(item, ["title", "title_ko", "headline", "name"]),
                         "link": first_present(item, ["content_url", "url", "link", "news_url"]),
                         "published_at": first_present(item, ["published_at", "published_date", "created_at", "date"]),
-                        "summary": first_present(item, ["summary", "description", "briefing", "content"]),
+                        "summary": first_present(item, ["summary", "description", "briefing"]),
                         "raw_source": first_present(
                             item,
                             ["publisher", "publisher_name", "provider", "source", "press"],

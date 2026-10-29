@@ -3,6 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 # This job can only publish small immutable metadata batches, never models or credentials.
+.venv-ml/bin/python -c 'from src.features.news_learning import read_archive; read_archive("data/news_learning")'
 git add -- data/news_learning/*.jsonl data/news_learning/*.manifest.json
 if git diff --cached --quiet; then exit 0; fi
 git config user.name github-actions

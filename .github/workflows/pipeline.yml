@@ -127,7 +127,11 @@ jobs:
           git add data/processed/price_signal_diagnostics_summary_*.csv || true
           git add data/processed/news_provider_features_*.csv || true
           git add data/processed/news_provider_status_*.csv || true
-          git add data/news_learning/*.jsonl data/news_learning/*.manifest.json || true
+          if .venv-ml/bin/python -c 'from src.features.news_learning import read_archive; read_archive("data/news_learning")'; then
+            git add data/news_learning/*.jsonl data/news_learning/*.manifest.json || true
+          else
+            echo "News archive validation failed; no incomplete observations will be committed."
+          fi
           git add data/processed/market_adjusted_score_adjustments_*.csv || true
           git add -f data/raw/market_index_*.csv || true
           git add data/raw/snacks_newsletters_*.csv || true

@@ -49,13 +49,13 @@
   "recommendation_enabled": false,
   "production_model_changed": false,
   "interpretation": "Development comparison only; not independent high-confidence certification",
-  "generated_at": "2026-10-29T07:36:02.194344+00:00",
+  "generated_at": "2026-10-29T07:45:26.957749+00:00",
   "as_of": "2026-10-28",
-  "archive_batches": 1,
-  "archived_headlines": 211,
-  "linked_headlines": 138,
-  "global_headlines": 20,
+  "archive_batches": 2,
+  "archived_headlines": 331,
+  "linked_headlines": 226,
+  "global_headlines": 40,
   "social_media_collected": false,
-  "news_archive_sha256": "600cda1d6a978a51344079e1060757ff279ee96516fe37bb5a997e7b267c0482",
-  "implementation_sha256": "c0de053af431606ab7450124f3555cca1233d4133e72c1bb4095b283e9717a95"
+  "news_archive_sha256": "79086e3928c5c90e5d12462cfcd41bcceaa8766a9f310092d599b209af2d1ad3",
+  "implementation_sha256": "c5e8be83ad762c2216bce55a65334995531a158461b2b9200f0e7a7cc40bdbd0"
 }
