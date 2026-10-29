@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-29T17:54:03.288666+09:00",
+  "generated_at": "2026-10-29T18:03:54.677233+09:00",
   "price_date": "2026-10-29",
-  "learning_state": "implementation_changed_retrained",
+  "learning_state": "no_new_fit_rows_model_preserved",
   "new_mature_labels": 0,
   "serving_family": "extra_trees_504",
   "publication_uses_current_model": false,

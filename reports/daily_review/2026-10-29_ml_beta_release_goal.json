@@ -1,6 +1,6 @@
 {
   "schema": "price_reliability_goal_report_v1",
-  "generated_at": "2026-10-29T17:56:54.651077+09:00",
+  "generated_at": "2026-10-29T18:04:53.796766+09:00",
   "price_date": "2026-10-29",
   "goal": {
     "schema": "price_reliability_goal_v1",

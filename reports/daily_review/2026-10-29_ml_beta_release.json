@@ -1,11 +1,11 @@
 {
   "schema": "ml_beta_release_v1",
-  "generated_at": "2026-10-29T17:57:56.645644+09:00",
+  "generated_at": "2026-10-29T18:05:56.023246+09:00",
   "status": "beta_under_validation",
   "universe_count": 901,
   "price_date": "2026-10-29",
   "new_mature_labels": 0,
-  "learning_state": "implementation_changed_retrained",
+  "learning_state": "no_new_fit_rows_model_preserved",
   "recording_state": "date_already_recorded_first_original_preserved",
   "new_frozen_predictions": 0,
   "model_trained_at": "2026-10-29T08:54:03.170334+00:00",
