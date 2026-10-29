@@ -2527,6 +2527,8 @@ def recommendation_quality_label(metrics):
 
 
 def build_html(metrics, stock_data):
+    from src.report_generator.news_learning_panel import render_news_learning_card
+    news_learning_card = render_news_learning_card(PROJECT_ROOT / 'reports/daily_review/news_learning_status.json')
     from src.report_generator.price_model_panel import (
         PANEL_CSS, load_public_forecast, model_status, render_model_panel,
     )
@@ -2822,6 +2824,7 @@ def build_html(metrics, stock_data):
           <div class="ko-desc">뉴스 수집 상태</div>
           <div>{simple_status(news_en, news_ko, news_class)}</div>
         </div>
+        {news_learning_card}
         <div class="card">
           <div class="label">News Provider Coverage</div>
           <div class="ko-desc">뉴스 소스 커버리지</div>

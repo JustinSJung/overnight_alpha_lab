@@ -147,6 +147,7 @@ def release_beta(state_dir, universe, model_dir, ledger_dir, public_output, goal
     except Exception as error:
         # News is a separately audited challenger; it cannot stop or replace price publication.
         write_json(dict(status='news_comparison_unavailable', error_type=type(error).__name__,
+                        generated_at=datetime.now(KST).isoformat(),
                         recommendation_enabled=False, production_model_changed=False), news_status)
     from src.report_generator.price_model_panel import load_public_forecast
     from src.report_generator.supervised_forecast_report import write_payload

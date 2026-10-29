@@ -207,6 +207,34 @@ class NewsLearningTests(unittest.TestCase):
             self.assertEqual(features.news_count_24h.tolist(), [1, 0])
             self.assertEqual(features.global_news_count_24h.tolist(), [1, 1])
 
+    def test_public_card_does_not_claim_validation_or_render_raw_research_strings(self):
+        from src.report_generator.news_learning_panel import render_news_learning_card
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'status.json'
+            now = datetime(2026, 10, 29, tzinfo=timezone.utc)
+            data = dict(status='accumulating_point_in_time_news', generated_at=now.isoformat(),
+                        mature_news_dates=0, mature_news_rows=0, recommendation_enabled=False,
+                        production_model_changed=False, raw_rule='<script>unsafe()</script>')
+            path.write_text(json.dumps(data))
+            html = render_news_learning_card(path, now)
+            self.assertIn('학습용 이력 축적 중', html)
+            self.assertIn('아직 적용하지 않습니다', html)
+            self.assertNotIn('<script>', html)
+            data['recommendation_enabled'] = True
+            path.write_text(json.dumps(data))
+            self.assertIn('점검 필요', render_news_learning_card(path, now))
+
+    def test_public_card_detects_stale_and_missing_status_without_fabricating_success(self):
+        from src.report_generator.news_learning_panel import render_news_learning_card
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'status.json'
+            now = datetime(2026, 10, 29, tzinfo=timezone.utc)
+            self.assertIn('데이터 연결 대기', render_news_learning_card(path, now))
+            path.write_text(json.dumps(dict(status='accumulating_point_in_time_news',
+                generated_at='2026-10-01T00:00:00+00:00', recommendation_enabled=False,
+                production_model_changed=False)))
+            self.assertIn('상태 갱신 필요', render_news_learning_card(path, now))
+
     def test_matched_models_use_identical_purged_rows_and_do_not_promote(self):
         rng = np.random.default_rng(11)
         days = pd.bdate_range('2025-01-01', periods=60)
