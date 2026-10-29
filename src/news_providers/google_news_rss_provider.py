@@ -46,6 +46,7 @@ class GoogleNewsRssProvider(NewsProvider):
         rows = []
 
         for item in root.findall("./channel/item")[:max_items]:
+            source = item.find("source")
             title = text_or_empty(item.find("title"))
             link = text_or_empty(item.find("link"))
             published_raw = text_or_empty(item.find("pubDate"))
@@ -65,7 +66,8 @@ class GoogleNewsRssProvider(NewsProvider):
                         "link": link,
                         "published_at": published_at,
                         "summary": summary,
-                        "raw_source": "Google News RSS",
+                        "raw_source": text_or_empty(source) or "Google News RSS",
+                        "publisher_url": source.get("url", "") if source is not None else "",
                     },
                 )
             )

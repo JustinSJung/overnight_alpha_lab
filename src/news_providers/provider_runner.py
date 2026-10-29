@@ -321,6 +321,13 @@ def main():
     features_df.to_csv(features_path, index=False, encoding="utf-8-sig")
     status_df.to_csv(status_path, index=False, encoding="utf-8-sig")
 
+    try:
+        from src.crawler.learning_news_collector import load_catalog
+        from src.features.news_learning import archive_batch
+        archive_batch(all_items, status_rows, load_catalog(), PROJECT_ROOT / 'data/news_learning')
+    except Exception as error:
+        print('Point-in-time news archive skipped safely: ' + type(error).__name__)
+
     print(f"News provider raw items saved to: {raw_path}")
     print(f"News provider features saved to: {features_path}")
     print(f"News provider status saved to: {status_path}")

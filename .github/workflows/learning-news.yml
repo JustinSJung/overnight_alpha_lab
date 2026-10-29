@@ -1,0 +1,49 @@
+name: News Learning Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:20, 11:20, 14:20, 16:20 and 20:20 KST, including global weekend events.
+    - cron: "20 23,2,5,7,11 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: overnight-alpha-news-observations
+  cancel-in-progress: false
+
+jobs:
+  collect-news:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-ml.txt
+      - name: Install isolated learning runtime
+        run: |
+          python -m venv .venv-ml
+          .venv-ml/bin/python -m pip install -r requirements-ml.txt
+      - name: Validate point-in-time news rules
+        run: .venv-ml/bin/python -m unittest tests.test_news_learning
+      - name: Collect public headline metadata
+        run: bash scripts/price_model.sh collect-learning-news
+      - name: Persist immutable observations
+        run: bash scripts/publish_learning_news.sh
+      - name: Preserve observations if publication fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: learning-news-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/news_learning/
+          if-no-files-found: warn
+          retention-days: 90

@@ -114,6 +114,7 @@ run_optional "Collecting market index data for price benchmark coverage..." pyth
 run_required "4/24" "Generating price-based daily candidates..." python src/models/price_based_daily_recommender.py || exit $?
 run_required "5/24" "Evaluating price-based candidates with benchmark fallback..." python src/evaluator/price_candidate_evaluator.py || exit $?
 run_optional "Running supplementary news providers..." python src/news_providers/provider_runner.py
+run_optional "Preserving news and disclosure observation times for ML..." bash scripts/price_model.sh collect-learning-news --local-only
 run_optional "Generating performance decision audit..." python src/report_generator/performance_decision_audit.py
 
 if [ "$DART_DATA_AVAILABLE" = "1" ]; then

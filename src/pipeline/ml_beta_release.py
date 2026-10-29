@@ -140,6 +140,14 @@ def release_beta(state_dir, universe, model_dir, ledger_dir, public_output, goal
                          report_path.with_name(report_path.stem + '_learning.json'), now=None if live_clock else now)
     goal = report_goal(history, ledger_dir, benchmark, goal_path, staged_goal,
                        report_path.with_name(report_path.stem + '_goal.json'), now=None if live_clock else now)
+    from src.models.news_shadow_model import run_shadow
+    news_status = report_path.parent / 'news_learning_status.json'
+    try:
+        run_shadow(history, ROOT / 'data/news_learning', news_status, learning['price_date'])
+    except Exception as error:
+        # News is a separately audited challenger; it cannot stop or replace price publication.
+        write_json(dict(status='news_comparison_unavailable', error_type=type(error).__name__,
+                        recommendation_enabled=False, production_model_changed=False), news_status)
     from src.report_generator.price_model_panel import load_public_forecast
     from src.report_generator.supervised_forecast_report import write_payload
     if load_public_forecast(staged_price) is None:

@@ -15,6 +15,7 @@ NORMALIZED_COLUMNS = [
     "summary",
     "raw_source",
     "provider_status",
+    "publisher_url",
 ]
 
 
@@ -37,4 +38,5 @@ class NewsProvider(ABC):
             "summary": item.get("summary", ""),
             "raw_source": item.get("raw_source", ""),
             "provider_status": item.get("provider_status", "success"),
+            "publisher_url": item.get("publisher_url", ""),
         }
