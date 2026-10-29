@@ -1,0 +1,81 @@
+﻿source_provider,query,status,provider_status,item_count,error_message,updated_at
+deepsearch_news,161000,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:23
+google_news_rss,161000,success,success,5,,2026-10-08 04:05:23
+gdelt,161000,failed,failed,0,<urlopen error _ssl.c:999: The handshake operation timed out>,2026-10-08 04:05:30
+naver_search,161000,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:30
+deepsearch_news,142210,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:30
+google_news_rss,142210,success,success,5,,2026-10-08 04:05:30
+gdelt,142210,failed,failed,0,<urlopen error _ssl.c:999: The handshake operation timed out>,2026-10-08 04:05:36
+naver_search,142210,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:36
+deepsearch_news,445090,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:36
+google_news_rss,445090,success,success,5,,2026-10-08 04:05:36
+gdelt,445090,failed,failed,0,<urlopen error _ssl.c:999: The handshake operation timed out>,2026-10-08 04:05:42
+naver_search,445090,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:42
+deepsearch_news,045300,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:42
+google_news_rss,045300,success,success,5,,2026-10-08 04:05:43
+gdelt,045300,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:43
+naver_search,045300,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:43
+deepsearch_news,373220,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:43
+google_news_rss,373220,success,success,5,,2026-10-08 04:05:43
+gdelt,373220,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:43
+naver_search,373220,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:43
+deepsearch_news,059090,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:43
+google_news_rss,059090,success,success,5,,2026-10-08 04:05:43
+gdelt,059090,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:43
+naver_search,059090,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:43
+deepsearch_news,145720,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:43
+google_news_rss,145720,success,success,5,,2026-10-08 04:05:44
+gdelt,145720,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:44
+naver_search,145720,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:44
+deepsearch_news,윤성에프앤씨,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:44
+google_news_rss,윤성에프앤씨,success,success,5,,2026-10-08 04:05:45
+gdelt,윤성에프앤씨,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:45
+naver_search,윤성에프앤씨,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+deepsearch_news,006400,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+google_news_rss,006400,success,success,5,,2026-10-08 04:05:45
+gdelt,006400,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:45
+naver_search,006400,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+deepsearch_news,023150,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+google_news_rss,023150,success,success,5,,2026-10-08 04:05:45
+gdelt,023150,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:45
+naver_search,023150,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+deepsearch_news,007280,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+google_news_rss,007280,success,success,5,,2026-10-08 04:05:45
+gdelt,007280,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:45
+naver_search,007280,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+deepsearch_news,0013V0,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:45
+google_news_rss,0013V0,success,success,5,,2026-10-08 04:05:46
+gdelt,0013V0,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:46
+naver_search,0013V0,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:46
+deepsearch_news,333050,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:46
+google_news_rss,333050,success,success,5,,2026-10-08 04:05:46
+gdelt,333050,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:46
+naver_search,333050,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:46
+deepsearch_news,137400,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:46
+google_news_rss,137400,success,success,5,,2026-10-08 04:05:46
+gdelt,137400,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:46
+naver_search,137400,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:46
+deepsearch_news,096770,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:46
+google_news_rss,096770,success,success,5,,2026-10-08 04:05:47
+gdelt,096770,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:47
+naver_search,096770,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:47
+deepsearch_news,148250,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:47
+google_news_rss,148250,success,success,5,,2026-10-08 04:05:47
+gdelt,148250,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:47
+naver_search,148250,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:47
+deepsearch_news,009290,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:47
+google_news_rss,009290,success,success,5,,2026-10-08 04:05:47
+gdelt,009290,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:47
+naver_search,009290,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:47
+deepsearch_news,089230,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:47
+google_news_rss,089230,success,success,5,,2026-10-08 04:05:48
+gdelt,089230,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:48
+naver_search,089230,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:48
+deepsearch_news,011930,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:48
+google_news_rss,011930,success,success,5,,2026-10-08 04:05:48
+gdelt,011930,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:48
+naver_search,011930,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:48
+deepsearch_news,101400,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:48
+google_news_rss,101400,success,success,5,,2026-10-08 04:05:48
+gdelt,101400,skipped_after_repeated_failures,skipped_after_repeated_failures,0,Provider disabled for this run after repeated failures.,2026-10-08 04:05:48
+naver_search,101400,skipped_missing_credentials,skipped_missing_credentials,0,,2026-10-08 04:05:48
