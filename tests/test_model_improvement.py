@@ -228,6 +228,22 @@ class ModelImprovementTests(unittest.TestCase):
             path.write_text(json.dumps(result))
             self.assertIn('점검 필요', render_model_improvement_card(path, now.to_pydatetime()))
 
+    def test_public_recorded_days_are_distinct_from_selected_outcome_days(self):
+        from src.report_generator.model_improvement_panel import render_model_improvement_card
+        frames = {name: pd.DataFrame() for name in FAMILIES}
+        now = pd.Timestamp('2026-10-29T18:00:00+09:00')
+        result = choose_family(frames, [], goal(), protocol(), None, now)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'status.json'
+            result.update(original_batches=0, recording='new_prospective_batch_recorded')
+            path.write_text(json.dumps(result))
+            html = render_model_improvement_card(path, now.to_pydatetime())
+            self.assertIn('사전 예측 1일', html)
+            self.assertIn('선택 후보 평가 0일', html)
+            result.update(original_batches=1, recording='original_batch_preserved')
+            path.write_text(json.dumps(result))
+            self.assertIn('사전 예측 1일', render_model_improvement_card(path, now.to_pydatetime()))
+
 
 if __name__ == '__main__':
     unittest.main()

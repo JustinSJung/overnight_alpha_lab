@@ -29,9 +29,13 @@ def render_model_improvement_card(path, now=None):
             goals = data['candidate_goals']
             count = data['challenger_count']
             dates = [item['selected_signal_dates'] for item in goals.values()]
+            recorded = data.get('original_batches', 0)
+            if type(recorded) is not int or recorded < 0:
+                raise ValueError('Invalid recorded forecast count.')
+            recorded += int(data.get('recording') == 'new_prospective_batch_recorded')
             if count != 3 or len(goals) != count or any(type(day) is not int or day < 0 for day in dates):
                 raise ValueError('Invalid comparison counts.')
-            details = f'<div class="muted-helper">후보 모델 {count}개 · 평가 완료 {max(dates, default=0):,}일</div>'
+            details = f'<div class="muted-helper">후보 모델 {count}개 · 사전 예측 {recorded:,}일<br>선택 후보 평가 {max(dates, default=0):,}일</div>'
             if data['status'] == 'collecting_forward_evidence':
                 en, ko, color = 'Learning & Comparing', '학습·비교 검증 중', 'badge-orange'
                 note = '후보 모델을 학습하고 사전 예측 결과를 축적합니다. 기준 통과 전에는 기존 모델을 유지합니다.'
