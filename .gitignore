@@ -290,6 +290,6 @@ data/predictions/ml_selective_forward_*.manifest.json
 data/predictions/ml_neural_circuit_forward_*.manifest.json
 data/predictions/ml_swarm_circuit_forward_*.manifest.json
 !data/predictions/ml_price_forecasts_*.csv
-!data/predictions/ml_next_open_forward_*.csv
+!data/predictions/ml_next_open_forward_[0-9]*.csv
 data/ml_beta_state/
 !data/processed/ml_stock_catalog.csv

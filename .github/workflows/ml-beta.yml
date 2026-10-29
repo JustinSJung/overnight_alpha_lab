@@ -84,8 +84,8 @@ jobs:
         with:
           name: ml-beta-originals-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            data/predictions/ml_next_open_forward_*.csv
-            data/predictions/ml_next_open_forward_*.manifest.json
+            data/predictions/ml_next_open_forward_[0-9]*.csv
+            data/predictions/ml_next_open_forward_[0-9]*.manifest.json
             reports/daily_review/*_ml_beta_release*.json
           if-no-files-found: warn
           retention-days: 90
