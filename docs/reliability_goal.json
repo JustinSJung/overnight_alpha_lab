@@ -1,6 +1,6 @@
 {
   "schema": "public_reliability_goal_v1",
-  "generated_at": "2026-10-29T18:04:53.796766+09:00",
+  "generated_at": "2026-10-29T23:41:25.967179+09:00",
   "price_date": "2026-10-29",
   "target_success_rate": 0.6,
   "target_lower": 0.6,
