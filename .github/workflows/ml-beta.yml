@@ -87,6 +87,8 @@ jobs:
           path: |
             data/predictions/ml_next_open_forward_[0-9]*.csv
             data/predictions/ml_next_open_forward_[0-9]*.manifest.json
+            data/model_improvement/originals/
+            reports/daily_review/model_improvement_status.json
             reports/daily_review/*_ml_beta_release*.json
           if-no-files-found: warn
           retention-days: 90

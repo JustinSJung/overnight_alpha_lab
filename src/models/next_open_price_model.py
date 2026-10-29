@@ -22,6 +22,7 @@ from src.features.completed_price_dataset import HISTORY_FEATURE_VERSION
 from src.features.next_open_dataset import TARGET_VERSION, build_next_open_dataset, valid_candle
 from src.features.price_learning_dataset import load_snapshots, temporal_partitions
 from src.models.monthly_price_walkforward import monthly_split, paired_interval
+from src.models.improvement_families import BASELINE, family_spec
 from src.models.price_forecaster import date_weights, fit_estimator, json_text, resolve_stock
 from src.models.relative_price_selection import block_interval, rank_candidates
 from src.models.selected_price_model import (
@@ -46,7 +47,7 @@ def load_inputs(data_root, as_of):
     return prepare_selected_features(raw, COLUMNS), provenance
 
 
-def fit_classifier(train, calibration, reference=False):
+def fit_classifier(train, calibration, reference=False, family=BASELINE):
     def labels(part):
         return part.same_close_return_reference.gt(.003).astype(int) if reference else part.target.astype(int)
     if train.label_available_date.max() >= calibration.signal_date.min():
@@ -54,7 +55,7 @@ def fit_classifier(train, calibration, reference=False):
     if labels(train).nunique() != 2 or labels(calibration).nunique() != 2:
         raise ValueError('Both target classes required.')
     with threadpool_limits(limits=2):
-        model = fit_estimator(factories()['extra_trees'], train[COLUMNS], labels(train), date_weights(train))
+        model = fit_estimator(factories()[family_spec(family)['factory']], train[COLUMNS], labels(train), date_weights(train))
         calibrator = LogisticRegression(C=1., solver='liblinear', max_iter=1000, random_state=42)
         calibrator.fit(to_logits(model.predict_proba(calibration[COLUMNS])[:, 1]), labels(calibration),
                        sample_weight=date_weights(calibration))
@@ -147,7 +148,8 @@ def implementation_digest():
     digest = hashlib.sha256()
     for path in [Path(__file__), ROOT / 'src/features/next_open_dataset.py',
                  ROOT / 'src/features/ohlcv_information.py', ROOT / 'src/models/selected_price_model.py',
-                 ROOT / 'src/models/price_forecaster.py', ROOT / 'src/models/monthly_price_walkforward.py']:
+                 ROOT / 'src/models/price_forecaster.py', ROOT / 'src/models/monthly_price_walkforward.py',
+                 ROOT / 'src/models/improvement_families.py']:
         digest.update(str(path.relative_to(ROOT)).encode())
         digest.update(path.read_bytes())
     return digest.hexdigest()
@@ -265,27 +267,28 @@ def load_model(model_root):
     return bundle
 
 
-def fit_current(data_root, output_root, as_of):
+def fit_current(data_root, output_root, as_of, family=BASELINE):
     """Fit a fixed recent-data protocol for FUTURE evaluation, never past scoring."""
     if pd.Timestamp(as_of).date() > completed_price_cutoff():
         raise ValueError('Completed labels only.')
     inputs, provenance = load_inputs(data_root, as_of)
     cohort, dataset_metadata = build_next_open_dataset(inputs, as_of)
     known = cohort[cohort.target.notna()].copy()
-    train, calibration = monthly_split(known, as_of, training_sessions=504, calibration_sessions=60)
-    bundle = fit_classifier(train, calibration)
+    spec = family_spec(family)
+    train, calibration = monthly_split(known, as_of, training_sessions=spec['training_sessions'],
+                                       calibration_sessions=spec['calibration_sessions'])
+    bundle = fit_classifier(train, calibration, family=family)
     digest = fit_data_digest(train, calibration, COLUMNS)
     bundle['metadata'] = dict(
-        target_version=TARGET_VERSION, features=COLUMNS, dataset_sha256=digest,
+        target_version=TARGET_VERSION, features=COLUMNS, dataset_sha256=digest, model_family=family,
         trained_at=datetime.now(timezone.utc).isoformat(), as_of=str(calibration.label_available_date.max().date()),
         requested_as_of=str(pd.Timestamp(as_of).date()),
         data_root=str(Path(data_root).resolve()), horizon_sessions=5, cost_assumption=.003,
         status='RESEARCH_ONLY', recommendation_enabled=False, history_provenance=provenance,
         baseline_probability=float(np.average(calibration.target, weights=date_weights(calibration))),
         partitions={'train': partition_info(train), 'calibration': partition_info(calibration)},
-        fitting_protocol={'training_sessions': 504, 'calibration_sessions': 60,
-                          'algorithm': 'fixed_extra_trees', 'features': COLUMNS,
-                          'selection': 'No parameter search or historical performance-based promotion'},
+        fitting_protocol={**spec, 'features': COLUMNS,
+                          'selection': 'Prespecified family; no historical performance-based promotion'},
         evaluation_role='New forward-only challenger; recent calibration outcomes are NOT independent test results',
         dataset=dataset_metadata)
     bundle['metadata']['implementation_sha256'] = implementation_digest()

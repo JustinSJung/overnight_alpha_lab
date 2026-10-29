@@ -16,6 +16,7 @@ from src.evaluator.forward_price_forecast import valid_record_time
 from src.evaluator.next_open_provenance import read_provenance
 from src.features.next_open_dataset import TARGET_VERSION, build_next_open_dataset
 from src.models.monthly_price_walkforward import monthly_split
+from src.models.improvement_families import BASELINE, family_spec
 from src.models.next_open_price_model import (
     ROOT, fit_current, freeze, grade, implementation_digest, load_inputs, load_model,
 )
@@ -86,7 +87,7 @@ def collect_originals(ledger_dir, model_root, registry):
     return pd.concat(chosen, ignore_index=True), entries, excluded
 
 
-def run_cycle(data_root, model_root, ledger_dir, public_output, report_path, now=None):
+def run_cycle(data_root, model_root, ledger_dir, public_output, report_path, now=None, family=BASELINE, promotion=None):
     live_clock = now is None
     now = now or datetime.now(KST)
     if now.tzinfo is None:
@@ -96,6 +97,10 @@ def run_cycle(data_root, model_root, ledger_dir, public_output, report_path, now
     inputs, _ = load_inputs(data_root, cutoff)
     origin = inputs.signal_date.max()
     cutoff = min(pd.Timestamp(cutoff), pd.Timestamp(origin)).date()
+    if family != BASELINE:
+        from src.pipeline.model_improvement import permitted_serving_family
+        if promotion is None or permitted_serving_family(promotion, cutoff) != family:
+            raise ValueError('Cannot serve an unvalidated challenger.')
     model_root, ledger_dir = Path(model_root), Path(ledger_dir)
     registry_path = model_root / 'forward_registry.json'
     registry = json.loads(registry_path.read_text()) if registry_path.exists() else {}
@@ -107,7 +112,8 @@ def run_cycle(data_root, model_root, ledger_dir, public_output, report_path, now
         graded, evidence = grade(ledger, inputs, cutoff, now)
     cohort, _ = build_next_open_dataset(inputs, cutoff)
     known = cohort[cohort.target.notna()].copy()
-    train, calibration = monthly_split(known, cutoff, 504, 60)
+    spec = family_spec(family)
+    train, calibration = monthly_split(known, cutoff, spec['training_sessions'], spec['calibration_sessions'])
     expected_digest = fit_data_digest(train, calibration, COLUMNS)
     previous = load_model(model_root) if (model_root / 'latest.json').exists() else None
     previous_cutoff = None
@@ -120,14 +126,19 @@ def run_cycle(data_root, model_root, ledger_dir, public_output, report_path, now
         raise ValueError('Do not replace a newer learning state with an older cutoff.')
     new_labels = int(known.label_available_date.gt(previous_cutoff).sum()) if previous is not None else len(known)
     implementation_changed = (previous is not None and previous['metadata'].get('implementation_sha256') != implementation_digest())
-    if previous is not None and previous['metadata']['dataset_sha256'] == expected_digest and not repair_cutoff_metadata and not implementation_changed:
+    family_changed = previous is not None and previous['metadata'].get('model_family', BASELINE) != family
+    if previous is not None and previous['metadata']['dataset_sha256'] == expected_digest and not repair_cutoff_metadata and not implementation_changed and not family_changed:
         learning_state = 'no_new_fit_rows_model_preserved'
         bundle = previous
     else:
-        fit_current(data_root, model_root, cutoff)
+        if family == BASELINE:
+            fit_current(data_root, model_root, cutoff)
+        else:
+            fit_current(data_root, model_root, cutoff, family=family)
         bundle = load_model(model_root)
         learning_state = ('fit_cutoff_metadata_repaired' if repair_cutoff_metadata and not new_labels
                           else 'new_mature_labels_learned' if new_labels
+                          else 'validated_model_family_changed' if family_changed
                           else 'implementation_changed_retrained' if implementation_changed else 'revised_fit_data_relearned')
     if live_clock:
         now = datetime.now(KST)
@@ -159,8 +170,13 @@ def run_cycle(data_root, model_root, ledger_dir, public_output, report_path, now
         from src.report_generator.supervised_forecast_report import write_payload
         payload = build_payload(bundle, data_root, evidence, graded, now)
         write_payload(payload, public_output)
+    current_original = (ledger[pd.to_datetime(ledger.signal_date).eq(origin)] if not ledger.empty else pd.DataFrame())
+    publication_uses_current = (current_original.empty or
+        (current_original.model_dataset_sha256.eq(bundle['metadata']['dataset_sha256']).all()
+         and current_original.model_trained_at.eq(bundle['metadata']['trained_at']).all()))
     summary = dict(generated_at=now.isoformat(), price_date=str(origin.date()),
-                   learning_state=learning_state, new_mature_labels=new_labels,
+                   learning_state=learning_state, new_mature_labels=new_labels, serving_family=family,
+                   publication_uses_current_model=bool(publication_uses_current),
                    fit_label_cutoff=bundle['metadata']['as_of'], model_trained_at=bundle['metadata']['trained_at'],
                    dataset_sha256=bundle['metadata']['dataset_sha256'],
                    recording_state=recording, new_frozen_predictions=fresh,

@@ -15,6 +15,13 @@ stage_outputs() {
     if [ -f reports/daily_review/news_learning_status.json ]; then
         git add reports/daily_review/news_learning_status.json
     fi
+    if [ -f reports/daily_review/model_improvement_status.json ]; then
+        git add reports/daily_review/model_improvement_status.json
+    fi
+    if compgen -G 'data/model_improvement/originals/*.csv' > /dev/null; then
+        "$PYTHON" -c 'from src.pipeline.model_improvement import load_protocol, read_trials; read_trials("data/model_improvement/originals", load_protocol()[0])'
+        git add -- data/model_improvement/originals/*.csv data/model_improvement/originals/*.manifest.json
+    fi
 }
 
 regenerate

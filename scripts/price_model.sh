@@ -8,6 +8,10 @@ if [ -x .venv-ml/bin/python ]; then
     PYTHON=.venv-ml/bin/python
 fi
 COMMAND="${1:-}"
+if [ "$COMMAND" = "improve-model" ]; then
+    shift
+    exec "$PYTHON" -m src.pipeline.model_improvement "$@"
+fi
 if [ "$COMMAND" = "collect-learning-news" ]; then
     shift
     exec "$PYTHON" -m src.crawler.learning_news_collector "$@"
