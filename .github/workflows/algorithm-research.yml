@@ -1,0 +1,97 @@
+name: Algorithm Research
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [ML Beta]
+    branches: [main]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: overnight-alpha-pipeline
+  cancel-in-progress: false
+
+jobs:
+  offline-research:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_repository.full_name == github.repository))
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+      pages: write
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      LOKY_MAX_CPU_COUNT: "2"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use latest registered source and memory
+        run: |
+          git fetch origin main
+          git merge --ff-only origin/main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-ml.txt
+
+      - name: Prepare isolated numerical runtime
+        run: |
+          python -m venv .venv-ml
+          .venv-ml/bin/python -m pip install -r requirements-ml.txt
+
+      - name: Validate research and production boundaries
+        run: |
+          .venv-ml/bin/python -W error::RuntimeWarning -m unittest discover -s tests
+          bash -n scripts/publish_algorithm_research.sh scripts/price_model.sh
+
+      - name: Read disposable completed-price cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/ml_beta_state/
+            data/models/price_next_open_current/
+          key: read-only-research-${{ github.run_id }}
+          restore-keys: |
+            ml-beta-linux-py312-v1-${{ hashFiles('requirements-ml.txt') }}-
+
+      - name: Run two budgeted offline research trials
+        timeout-minutes: 12
+        run: bash scripts/price_model.sh research-algorithms
+
+      - name: Publish research memory without model promotion
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh auth setup-git
+          bash scripts/publish_algorithm_research.sh
+
+      - name: Request dashboard deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --jq '{status:.status}'
+
+      - name: Preserve research records if publication fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: algorithm-research-${{ github.run_id }}
+          path: |
+            data/algorithm_research/event_*.json
+            data/algorithm_research/head.json
+            reports/daily_review/algorithm_research_status.json
+            reports/daily_review/algorithm_research_report.md
+          if-no-files-found: warn
+          retention-days: 90

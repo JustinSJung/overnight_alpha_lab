@@ -2531,6 +2531,8 @@ def build_html(metrics, stock_data):
     news_learning_card = render_news_learning_card(PROJECT_ROOT / 'reports/daily_review/news_learning_status.json')
     from src.report_generator.model_improvement_panel import render_model_improvement_card
     improvement_card = render_model_improvement_card(PROJECT_ROOT / 'reports/daily_review/model_improvement_status.json')
+    from src.report_generator.algorithm_research_panel import render_algorithm_research_card
+    algorithm_research_card = render_algorithm_research_card(PROJECT_ROOT / 'reports/daily_review/algorithm_research_status.json')
     from src.report_generator.price_model_panel import (
         PANEL_CSS, load_public_forecast, model_status, render_model_panel,
     )
@@ -2828,6 +2830,7 @@ def build_html(metrics, stock_data):
         </div>
         {news_learning_card}
         {improvement_card}
+        {algorithm_research_card}
         <div class="card">
           <div class="label">News Provider Coverage</div>
           <div class="ko-desc">뉴스 소스 커버리지</div>

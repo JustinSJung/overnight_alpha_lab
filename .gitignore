@@ -292,4 +292,6 @@ data/predictions/ml_swarm_circuit_forward_*.manifest.json
 !data/predictions/ml_price_forecasts_*.csv
 !data/predictions/ml_next_open_forward_[0-9]*.csv
 data/ml_beta_state/
+data/algorithm_research/.lock
+data/algorithm_research/.head.tmp
 !data/processed/ml_stock_catalog.csv

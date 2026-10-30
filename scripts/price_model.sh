@@ -8,6 +8,10 @@ if [ -x .venv-ml/bin/python ]; then
     PYTHON=.venv-ml/bin/python
 fi
 COMMAND="${1:-}"
+if [ "$COMMAND" = "research-algorithms" ]; then
+    shift
+    exec "$PYTHON" -m src.research.runner "$@"
+fi
 if [ "$COMMAND" = "improve-model" ]; then
     shift
     exec "$PYTHON" -m src.pipeline.model_improvement "$@"

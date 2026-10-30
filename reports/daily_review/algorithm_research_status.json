@@ -1,0 +1,16 @@
+{
+  "schema": "algorithm_research_status_v1",
+  "generated_at": "2026-10-30T00:19:27.337080+00:00",
+  "status": "snapshot_already_researched",
+  "llm_enabled": false,
+  "paid_api_calls": false,
+  "future_validation_required": true,
+  "automatic_orders": false,
+  "trials_reserved": 2,
+  "trials_completed": 2,
+  "trials_failed": 0,
+  "trials_incomplete": 0,
+  "research_screen_passed": 0,
+  "production_promotion": false,
+  "recommendation_enabled": false
+}

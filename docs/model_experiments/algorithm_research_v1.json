@@ -1,0 +1,19 @@
+{
+  "schema": "offline_algorithm_research_v1",
+  "proposal_mode": "memory_guided_numerical_program_search",
+  "training_sessions": 252,
+  "calibration_sessions": 60,
+  "folds": 3,
+  "screen_sessions": 20,
+  "horizon_sessions": 5,
+  "cost_assumption": 0.003,
+  "probability_threshold": 0.6,
+  "daily_selection_cap": 5,
+  "max_trials_per_snapshot": 2,
+  "max_trials_total": 120,
+  "worker_timeout_seconds": 300,
+  "paid_api_calls": false,
+  "production_promotion": false,
+  "recommendation_enabled": false,
+  "automatic_orders": false
+}
