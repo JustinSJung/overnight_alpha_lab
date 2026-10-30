@@ -1,7 +1,7 @@
 {
   "schema": "public_reliability_goal_v1",
-  "generated_at": "2026-10-30T09:48:31.053838+09:00",
-  "price_date": "2026-10-29",
+  "generated_at": "2026-10-30T23:44:41.958071+09:00",
+  "price_date": "2026-10-30",
   "target_success_rate": 0.6,
   "target_lower": 0.6,
   "minimum_cases": 300,
@@ -11,7 +11,7 @@
   "goal_passed": false,
   "evaluated_cases": 0,
   "selected_signal_dates": 0,
-  "recorded_candidates": 2496,
+  "recorded_candidates": 3329,
   "actual_success_rate": null,
   "actual_success_lower": null,
   "recommendation_enabled": false

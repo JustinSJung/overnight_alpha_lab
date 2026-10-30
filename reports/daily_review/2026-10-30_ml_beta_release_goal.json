@@ -1,7 +1,7 @@
 {
   "schema": "price_reliability_goal_report_v1",
-  "generated_at": "2026-10-30T09:48:31.053838+09:00",
-  "price_date": "2026-10-29",
+  "generated_at": "2026-10-30T23:44:41.958071+09:00",
+  "price_date": "2026-10-30",
   "goal": {
     "schema": "price_reliability_goal_v1",
     "agreed_at": "2026-10-26",
@@ -62,16 +62,17 @@
         "no_scheduled_mature_originals"
       ],
       "pre_registration_candidates": 1667,
-      "recorded_candidates": 2496,
-      "recorded_issue_dates": 3,
+      "recorded_candidates": 3329,
+      "recorded_issue_dates": 4,
       "later_duplicate_batches_or_candidates_excluded": 829,
       "original_hashes": {
         "ml_next_open_forward_20261021_98ed5285bba06867.csv": "f675e446bdf635207966439ec7b1a9be626600086d8362fd351272be62ac52c6",
         "ml_next_open_forward_20261022_d877041fcdd2f2bf.csv": "25459df96b4b9e279afd67b2e02b4c3d53cf093e1f01642f10d81d656ebbc86d",
         "ml_next_open_forward_20261029_73b8ef8af442dd4c.csv": "0e1543626f76688600737ad3d9967ad190fc0e0d8a7f6cff077dbb961c3c03f6",
-        "ml_next_open_forward_20261029_855daab70f713327.csv": "f47180ce7e83f6ed7ee53a5c44b0e75cdbf4cb130abcb010c6d45c953f41f951"
+        "ml_next_open_forward_20261029_855daab70f713327.csv": "f47180ce7e83f6ed7ee53a5c44b0e75cdbf4cb130abcb010c6d45c953f41f951",
+        "ml_next_open_forward_20261030_30c0d0ed300e9833.csv": "81925304477e7b7984755e959e5f54dd5e915c6cc433e90d8b2434ea7387ef2a"
       },
-      "recorded_origin_price_revised_rows": 1002
+      "recorded_origin_price_revised_rows": 1645
     },
     "neural_circuit_v1": {
       "status": "insufficient_future_evidence",
