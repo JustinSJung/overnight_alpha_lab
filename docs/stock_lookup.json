@@ -1,0 +1,842 @@
+{
+  "schema": "stock_lookup_v1",
+  "scope": "lookup_only_not_evaluation",
+  "generated_at": "2026-10-30T00:49:02.226310+00:00",
+  "price_date": "2026-10-29",
+  "primary_sha256": "0b59f07ef330f11d91e66d148f08d2e4365aee3290d4f163964311949b87027e",
+  "recommendation_enabled": false,
+  "states": {
+    "000210": "available",
+    "000300": "inactive",
+    "000520": "available",
+    "000660": "available",
+    "000720": "available",
+    "001840": "inactive",
+    "002990": "available",
+    "003350": "available",
+    "003540": "available",
+    "004250": "available",
+    "005610": "available",
+    "005940": "available",
+    "006040": "available",
+    "006260": "available",
+    "006340": "available",
+    "006980": "available",
+    "009150": "available",
+    "009410": "available",
+    "010120": "available",
+    "010950": "available",
+    "010960": "available",
+    "011300": "available",
+    "011930": "available",
+    "012160": "available",
+    "012510": "not_current",
+    "013360": "available",
+    "013810": "available",
+    "017940": "available",
+    "018500": "available",
+    "020150": "available",
+    "024810": "price_unavailable",
+    "025560": "available",
+    "025620": "available",
+    "025950": "available",
+    "027580": "available",
+    "028100": "available",
+    "028260": "available",
+    "031990": "price_unavailable",
+    "032820": "available",
+    "033310": "available",
+    "034230": "available",
+    "036620": "available",
+    "052710": "available",
+    "054940": "available",
+    "059270": "available",
+    "060900": "available",
+    "065450": "available",
+    "068290": "available",
+    "069460": "inactive",
+    "070960": "available",
+    "071850": "available",
+    "079900": "available",
+    "080010": "available",
+    "082270": "available",
+    "085660": "available",
+    "088790": "available",
+    "097780": "inactive",
+    "123010": "available",
+    "123690": "available",
+    "126340": "available",
+    "142760": "available",
+    "187870": "available",
+    "196170": "available",
+    "211270": "available",
+    "214330": "available",
+    "230360": "not_current",
+    "234300": "available",
+    "235980": "available",
+    "241590": "available",
+    "247540": "available",
+    "288620": "available",
+    "288980": "inactive",
+    "290120": "available",
+    "317400": "available",
+    "318060": "available",
+    "320000": "available",
+    "340930": "inactive",
+    "347700": "available",
+    "356860": "available",
+    "363280": "available",
+    "366030": "available",
+    "375500": "available",
+    "377450": "available",
+    "396470": "available",
+    "403490": "available",
+    "407400": "available",
+    "420770": "available",
+    "452260": "available",
+    "463480": "available",
+    "465770": "available",
+    "473980": "available",
+    "900100": "available"
+  },
+  "forecasts": [
+    {
+      "stock_code": "000210",
+      "signal_date": "2026-10-29",
+      "probability": 0.4611824372007079,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "000520",
+      "signal_date": "2026-10-29",
+      "probability": 0.4485859295081926,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "000660",
+      "signal_date": "2026-10-29",
+      "probability": 0.45356321008881667,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "000720",
+      "signal_date": "2026-10-29",
+      "probability": 0.46430807140007757,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "002990",
+      "signal_date": "2026-10-29",
+      "probability": 0.42122721024613385,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "003350",
+      "signal_date": "2026-10-29",
+      "probability": 0.48671398992925213,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "003540",
+      "signal_date": "2026-10-29",
+      "probability": 0.4513509343145214,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "004250",
+      "signal_date": "2026-10-29",
+      "probability": 0.47437558327254337,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "005610",
+      "signal_date": "2026-10-29",
+      "probability": 0.41972421840626317,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "005940",
+      "signal_date": "2026-10-29",
+      "probability": 0.46458833574353114,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "006040",
+      "signal_date": "2026-10-29",
+      "probability": 0.44555911460814623,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "006260",
+      "signal_date": "2026-10-29",
+      "probability": 0.461391630717572,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "006340",
+      "signal_date": "2026-10-29",
+      "probability": 0.46278420294735967,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "006980",
+      "signal_date": "2026-10-29",
+      "probability": 0.4295716001655474,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "009150",
+      "signal_date": "2026-10-29",
+      "probability": 0.43098364079690954,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "009410",
+      "signal_date": "2026-10-29",
+      "probability": 0.43842918478946913,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "010120",
+      "signal_date": "2026-10-29",
+      "probability": 0.452472864738299,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "010950",
+      "signal_date": "2026-10-29",
+      "probability": 0.4771650713057806,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "010960",
+      "signal_date": "2026-10-29",
+      "probability": 0.4223894776538344,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "011300",
+      "signal_date": "2026-10-29",
+      "probability": 0.4613363576805607,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "011930",
+      "signal_date": "2026-10-29",
+      "probability": 0.44291402962750936,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "012160",
+      "signal_date": "2026-10-29",
+      "probability": 0.46137199616339797,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "013360",
+      "signal_date": "2026-10-29",
+      "probability": 0.44122172542607885,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "013810",
+      "signal_date": "2026-10-29",
+      "probability": 0.42755327683848726,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "017940",
+      "signal_date": "2026-10-29",
+      "probability": 0.44020855977680723,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "018500",
+      "signal_date": "2026-10-29",
+      "probability": 0.42718015453386166,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "020150",
+      "signal_date": "2026-10-29",
+      "probability": 0.4432709516224798,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "025560",
+      "signal_date": "2026-10-29",
+      "probability": 0.42208692046055,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "025620",
+      "signal_date": "2026-10-29",
+      "probability": 0.429079282169604,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "025950",
+      "signal_date": "2026-10-29",
+      "probability": 0.431985235071577,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "027580",
+      "signal_date": "2026-10-29",
+      "probability": 0.4277058167210696,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "028100",
+      "signal_date": "2026-10-29",
+      "probability": 0.4354179020248336,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "028260",
+      "signal_date": "2026-10-29",
+      "probability": 0.45360994539250826,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "032820",
+      "signal_date": "2026-10-29",
+      "probability": 0.4691491641069937,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "033310",
+      "signal_date": "2026-10-29",
+      "probability": 0.4444607812015148,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "034230",
+      "signal_date": "2026-10-29",
+      "probability": 0.4349700382139459,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "036620",
+      "signal_date": "2026-10-29",
+      "probability": 0.44766932641080176,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "052710",
+      "signal_date": "2026-10-29",
+      "probability": 0.4063313271655381,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "054940",
+      "signal_date": "2026-10-29",
+      "probability": 0.4312547267685317,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "059270",
+      "signal_date": "2026-10-29",
+      "probability": 0.4487045245465762,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "060900",
+      "signal_date": "2026-10-29",
+      "probability": 0.4135601057655423,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "065450",
+      "signal_date": "2026-10-29",
+      "probability": 0.4199087786664735,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "068290",
+      "signal_date": "2026-10-29",
+      "probability": 0.4253586708302292,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "070960",
+      "signal_date": "2026-10-29",
+      "probability": 0.4300791845153196,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "071850",
+      "signal_date": "2026-10-29",
+      "probability": 0.41991912942418297,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "079900",
+      "signal_date": "2026-10-29",
+      "probability": 0.4485680045653666,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "080010",
+      "signal_date": "2026-10-29",
+      "probability": 0.4415877756237994,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "082270",
+      "signal_date": "2026-10-29",
+      "probability": 0.4476464722244447,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "085660",
+      "signal_date": "2026-10-29",
+      "probability": 0.4640745035032727,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "088790",
+      "signal_date": "2026-10-29",
+      "probability": 0.4306488954396079,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "123010",
+      "signal_date": "2026-10-29",
+      "probability": 0.423291965196776,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "123690",
+      "signal_date": "2026-10-29",
+      "probability": 0.4530995074264665,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "126340",
+      "signal_date": "2026-10-29",
+      "probability": 0.424325817369107,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "142760",
+      "signal_date": "2026-10-29",
+      "probability": 0.45120094417175766,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "187870",
+      "signal_date": "2026-10-29",
+      "probability": 0.4065644012166317,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "196170",
+      "signal_date": "2026-10-29",
+      "probability": 0.4610971080452641,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "211270",
+      "signal_date": "2026-10-29",
+      "probability": 0.40411724142652583,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "214330",
+      "signal_date": "2026-10-29",
+      "probability": 0.41722169040753554,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "234300",
+      "signal_date": "2026-10-29",
+      "probability": 0.45773448649986215,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "235980",
+      "signal_date": "2026-10-29",
+      "probability": 0.4345711787671529,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "241590",
+      "signal_date": "2026-10-29",
+      "probability": 0.4329779622869471,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "247540",
+      "signal_date": "2026-10-29",
+      "probability": 0.4378205027558674,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "288620",
+      "signal_date": "2026-10-29",
+      "probability": 0.45653465613428124,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "290120",
+      "signal_date": "2026-10-29",
+      "probability": 0.43590474693164954,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "317400",
+      "signal_date": "2026-10-29",
+      "probability": 0.44604286674140586,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "318060",
+      "signal_date": "2026-10-29",
+      "probability": 0.4393571400897192,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "320000",
+      "signal_date": "2026-10-29",
+      "probability": 0.4441991383143188,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "347700",
+      "signal_date": "2026-10-29",
+      "probability": 0.4169388696072655,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "356860",
+      "signal_date": "2026-10-29",
+      "probability": 0.41958983106835723,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "363280",
+      "signal_date": "2026-10-29",
+      "probability": 0.41003693945338265,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "366030",
+      "signal_date": "2026-10-29",
+      "probability": 0.45578921606156025,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "375500",
+      "signal_date": "2026-10-29",
+      "probability": 0.4690133015892412,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "377450",
+      "signal_date": "2026-10-29",
+      "probability": 0.4317846983833076,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "396470",
+      "signal_date": "2026-10-29",
+      "probability": 0.4325522477341106,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "403490",
+      "signal_date": "2026-10-29",
+      "probability": 0.42131316678679176,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "407400",
+      "signal_date": "2026-10-29",
+      "probability": 0.43947859063472483,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "420770",
+      "signal_date": "2026-10-29",
+      "probability": 0.4154571995230483,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "452260",
+      "signal_date": "2026-10-29",
+      "probability": 0.442330845102105,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "463480",
+      "signal_date": "2026-10-29",
+      "probability": 0.462111734176419,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "465770",
+      "signal_date": "2026-10-29",
+      "probability": 0.43096891995405384,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "473980",
+      "signal_date": "2026-10-29",
+      "probability": 0.43303899618940345,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    },
+    {
+      "stock_code": "900100",
+      "signal_date": "2026-10-29",
+      "probability": 0.377702773214646,
+      "predicted_return": null,
+      "stale": false,
+      "recommended": false,
+      "lookup_only": true
+    }
+  ]
+}
