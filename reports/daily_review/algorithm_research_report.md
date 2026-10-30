@@ -8,14 +8,14 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 ```json
 {
   "schema": "algorithm_research_status_v1",
-  "generated_at": "2026-10-30T00:19:27.337080+00:00",
-  "status": "snapshot_already_researched",
+  "generated_at": "2026-10-30T00:24:23.844381+00:00",
+  "status": "researching_not_production_validated",
   "llm_enabled": false,
   "paid_api_calls": false,
   "future_validation_required": true,
   "automatic_orders": false,
-  "trials_reserved": 2,
-  "trials_completed": 2,
+  "trials_reserved": 4,
+  "trials_completed": 4,
   "trials_failed": 0,
   "trials_incomplete": 0,
   "research_screen_passed": 0,
@@ -28,11 +28,11 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 
 ```json
 {
-  "no_error_reduction_against_matched_control": 2,
-  "does_not_beat_past_constant": 2,
-  "unstable_across_development_periods": 2,
-  "development_outcomes_incomplete": 2,
-  "too_few_selected_development_cases": 2
+  "does_not_beat_past_constant": 4,
+  "development_outcomes_incomplete": 4,
+  "too_few_selected_development_cases": 4,
+  "unstable_across_development_periods": 3,
+  "no_error_reduction_against_matched_control": 2
 }
 ```
 
@@ -40,6 +40,8 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 
 | Program | Date Brier improvement vs matched control |
 |---|---:|
+| ed0c5513caed | 0.00005328 |
+| 2061c308fac5 | 0.00002809 |
 | ef0c657c6f84 | -0.00030402 |
 | 1ec6e36fbf39 | -0.00031045 |
 
