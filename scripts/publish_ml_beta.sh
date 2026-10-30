@@ -10,6 +10,9 @@ regenerate() {
 
 stage_outputs() {
     git add docs/dashboard.html docs/diagnostics.html docs/price_model.json docs/reliability_goal.json
+    if [ -f docs/stock_lookup.json ]; then
+        git add docs/stock_lookup.json
+    fi
     git add -- 'data/predictions/ml_next_open_forward_[0-9]*.csv' 'data/predictions/ml_next_open_forward_[0-9]*.manifest.json'
     git add -- 'reports/daily_review/*_ml_beta_release*.json'
     if [ -f reports/daily_review/news_learning_status.json ]; then

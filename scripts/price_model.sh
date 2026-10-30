@@ -8,6 +8,10 @@ if [ -x .venv-ml/bin/python ]; then
     PYTHON=.venv-ml/bin/python
 fi
 COMMAND="${1:-}"
+if [ "$COMMAND" = "refresh-stock-lookup" ]; then
+    shift
+    exec "$PYTHON" -m src.pipeline.stock_lookup_release "$@"
+fi
 if [ "$COMMAND" = "research-algorithms" ]; then
     shift
     exec "$PYTHON" -m src.research.runner "$@"

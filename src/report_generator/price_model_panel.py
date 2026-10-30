@@ -161,7 +161,7 @@ def render_observed_performance(data):
     </section>'''
 
 
-def render_model_panel(data):
+def render_model_panel(data, lookup=None):
     if not data:
         return '<section class="section ml-section"><h2>ML Forecasts <span class="heading-ko">학습 모델 예측</span></h2><p class="ml-caption">모델 예측 데이터가 아직 연결되지 않았습니다. 기존 가격 신호 평가 점수는 ML 예측 정확도가 아닙니다.</p></section>', ''
     en, ko, css = model_status(data)
@@ -179,12 +179,14 @@ def render_model_panel(data):
                                        'recommendation_enabled', 'recommendations', 'watchlist']}
     fields = ['stock_code', 'stock_name', 'aliases', 'signal_date', 'probability', 'predicted_return', 'stale', 'recommended']
     safe['stocks'] = [{key: row[key] for key in fields} for row in data['stocks']]
+    if lookup is not None:
+        safe['lookup'] = {key: lookup[key] for key in ['catalog', 'forecasts', 'states']}
     safe['prediction_target'] = data.get('prediction_target', 'signal_close')
     encoded = json.dumps(safe, ensure_ascii=False, allow_nan=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     html = f'''
     <section class="section ml-section" id="ml-forecasts">
       <div class="section-heading"><h2>ML Forecasts <span class="heading-ko">학습 모델 예측</span></h2>
-      <p class="section-subtitle">{target_note} · 예측 가능 {len(data['stocks'])}종목 · 저장된 완료 일봉 기준{learning_note}</p></div>
+      <p class="section-subtitle">{target_note} · 정기 예측 {len(data['stocks'])}종목 · 저장된 완료 일봉 기준{learning_note}</p></div>
       <p class="ml-caption">{recording_note}</p>
       <div class="ml-status-grid">
         <div class="card"><div class="label">Model Status</div><div class="ko-desc">모델 검증 상태</div><span class="status-pill {css}" id="ml-panel-state">{escape(en)}<br>{escape(ko)}</span></div>
@@ -198,6 +200,7 @@ def render_model_panel(data):
         <p class="ml-error" id="ml-runtime-warning" hidden>가격 갱신이 필요합니다. 아래 값은 오래된 가격으로 계산된 과거 예측입니다.</p>
         <form class="ml-form" id="ml-search-form"><input id="ml-stock-input" aria-label="종목명 또는 6자리 종목코드" placeholder="종목명 또는 6자리 종목코드" list="ml-stock-names" autocomplete="off" required><datalist id="ml-stock-names"></datalist><button type="submit">예측 조회</button></form>
         <p class="ml-error" id="ml-search-error" role="alert"></p>
+        <ul id="ml-search-candidates" hidden></ul>
         <div class="ml-result" id="ml-stock-result" hidden aria-live="polite"><h3 id="ml-result-name"></h3><p class="ml-caption" id="ml-result-date"></p>
           <dl class="ml-result-values"><div><dt>Probability / 비용 초과 상승 확률 추정</dt><dd id="ml-result-probability"></dd></div><div><dt>Return Estimate / 예상 종가 수익률</dt><dd id="ml-result-return"></dd></div><div><dt>Decision / 추천 판단</dt><dd class="ml-result-decision" id="ml-result-decision"></dd></div></dl>
           <p class="ml-caption" id="ml-result-note"></p>
@@ -227,10 +230,17 @@ PANEL_SCRIPT = r'''
       document.getElementById('ml-recommendation-count').textContent = '0';
       ['ml-hero-state', 'ml-panel-state', 'ml-hero-badge'].forEach(id => { const node = document.getElementById(id); if (node) { node.textContent = '가격 갱신 필요'; node.classList.remove('badge-green'); if (id !== 'ml-hero-state') node.classList.add('badge-orange'); } });
     }
-    const safeRecommendation = row => data.recommendation_enabled && row.recommended && !stale(row) && row.signal_date === data.price_date;
+    const safeRecommendation = row => !row.lookup_only && data.recommendation_enabled && row.recommended && !stale(row) && row.signal_date === data.price_date;
+    const catalog = data.lookup ? data.lookup.catalog : data.stocks;
+    const extra = new Map((data.lookup ? data.lookup.forecasts : []).map(row => [row.stock_code, row]));
+    const states = data.lookup ? data.lookup.states : {};
+    const suggestions = document.getElementById('ml-search-candidates');
+    const normalize = text => String(text).normalize('NFKC').toLocaleLowerCase().replace(/[\s\u200b-\u200d\ufeff]/g, '');
     const datalist = document.getElementById('ml-stock-names');
-    data.stocks.forEach(row => { const option = document.createElement('option'); option.value = row.stock_name; option.label = row.stock_code; datalist.append(option); });
+    catalog.forEach(row => { const option = document.createElement('option'); option.value = row.stock_name + ' (' + row.stock_code + ')'; option.label = row.stock_code; datalist.append(option); });
     function show(row) {
+      suggestions.hidden = true;
+      suggestions.replaceChildren();
       document.getElementById('ml-search-error').textContent = '';
       document.getElementById('ml-result-name').textContent = row.stock_name + ' (' + row.stock_code + ')';
       document.getElementById('ml-result-date').textContent = '가격 기준일 ' + row.signal_date + ' · ' + (data.prediction_target === 'next_open_to_fifth_close_v1' ? '다음 거래일 시가 → 5번째 거래일 종가' : '향후 ' + data.horizon_sessions + '거래일');
@@ -238,18 +248,59 @@ PANEL_SCRIPT = r'''
       document.getElementById('ml-result-return').textContent = percent(row.predicted_return);
       document.getElementById('ml-result-decision').textContent = stale(row) ? '가격 갱신 필요' : safeRecommendation(row) ? '관찰 추천' : '추천 보류';
       document.getElementById('ml-result-note').textContent = stale(row) ? '오래된 가격으로 계산된 과거 예측입니다. 현재 추천에 사용할 수 없습니다.' : '가정 비용 ' + percent(data.cost_assumption) + '를 초과해 상승할 확률입니다. ' + (safeRecommendation(row) ? '검증 기준과 개별 종목 조건을 통과했지만 수익은 보장되지 않습니다.' : '모델 검증 또는 개별 종목 기준을 충족하지 못했습니다.');
+      if (row.lookup_only) {
+        document.getElementById('ml-result-decision').textContent = stale(row) ? '가격 갱신 필요' : '조회용 추정 · 추천 보류';
+        document.getElementById('ml-result-note').textContent = '추가 종목의 조회용 연구 추정치입니다. 정기 학습·평가 대상과 별개이며 사전 기록된 예측 실적에 포함하지 않습니다.' + (stale(row) ? ' 가격 갱신이 필요합니다.' : ' 실제 적중률이나 보장된 신뢰도가 아닙니다.');
+      }
       document.getElementById('ml-stock-result').hidden = false;
+    }
+    function showEntry(entry) {
+      const regular = byCode.get(entry.stock_code);
+      if (regular) { show(regular); return; }
+      const additional = extra.get(entry.stock_code);
+      if (additional) { show({...entry, ...additional}); return; }
+      suggestions.hidden = true;
+      suggestions.replaceChildren();
+      document.getElementById('ml-search-error').textContent = '';
+      document.getElementById('ml-result-name').textContent = entry.stock_name + ' (' + entry.stock_code + ')';
+      document.getElementById('ml-result-date').textContent = '현재 제공 가능한 예측 데이터 없음';
+      document.getElementById('ml-result-probability').textContent = '미제공';
+      document.getElementById('ml-result-return').textContent = '미제공';
+      document.getElementById('ml-result-decision').textContent = '예측 보류';
+      const reasons = {insufficient_history:'학습 모델 입력을 계산할 가격 이력이 부족합니다.', not_current:'현재 기준일의 완료 가격 데이터가 없습니다.', inactive:'최근 거래량이 없어 현재 예측을 제공하지 않습니다.', price_unavailable:'가격 데이터 수집에 실패했습니다. 다음 갱신에서 다시 시도합니다.'};
+      document.getElementById('ml-result-note').textContent = reasons[states[entry.stock_code]] || '종목은 확인했지만 현재 예측 데이터가 준비되지 않았습니다. 종목이 존재하지 않는다는 뜻은 아닙니다.';
+      document.getElementById('ml-stock-result').hidden = false;
+    }
+    function offer(matches) {
+      matches.slice(0, 12).forEach(row => {
+        const li = document.createElement('li'); const button = document.createElement('button');
+        button.type = 'button'; button.className = 'ml-stock-button';
+        button.textContent = row.stock_name + ' (' + row.stock_code + ')';
+        button.addEventListener('click', () => { input.value = row.stock_code; showEntry(row); });
+        li.append(button); suggestions.append(li);
+      });
+      suggestions.hidden = matches.length === 0;
     }
     document.getElementById('ml-search-form').addEventListener('submit', event => {
       event.preventDefault();
-      const query = input.value.trim().normalize('NFC').toLocaleLowerCase();
-      const matches = query ? data.stocks.filter(row => row.stock_code.toLowerCase() === query || row.stock_name.normalize('NFC').toLocaleLowerCase() === query || row.aliases.some(name => name.normalize('NFC').toLocaleLowerCase() === query)) : [];
-      if (matches.length !== 1) {
+      suggestions.replaceChildren(); suggestions.hidden = true;
+      const query = normalize(input.value);
+      const formatted = query.match(/\(([0-9a-z]{6})\)$/) || query.match(/^a([0-9]{6})$/);
+      const code = formatted ? formatted[1].toUpperCase() : query.toUpperCase();
+      if (/^[0-9]+$/.test(query) && query.length !== 6) {
         document.getElementById('ml-stock-result').hidden = true;
-        document.getElementById('ml-search-error').textContent = matches.length > 1 ? '같은 이름의 종목이 여러 개입니다. 6자리 종목코드로 조회해 주세요.' : '저장된 ML 예측에 해당 종목이 없습니다.';
+        document.getElementById('ml-search-error').textContent = '종목코드는 6자리입니다. 예: 000660';
         return;
       }
-      show(matches[0]);
+      const matches = query ? catalog.filter(row => row.stock_code === code || normalize(row.stock_name) === query || row.aliases.some(name => normalize(name) === query)) : [];
+      if (matches.length !== 1) {
+        document.getElementById('ml-stock-result').hidden = true;
+        const close = matches.length ? matches : query ? catalog.filter(row => normalize(row.stock_name).includes(query) || row.aliases.some(name => normalize(name).includes(query))) : [];
+        document.getElementById('ml-search-error').textContent = matches.length > 1 ? '같은 이름의 종목이 여러 개입니다. 종목코드를 확인해 선택해 주세요.' : close.length ? '일치하는 종목을 선택해 주세요.' : '현재 조회 목록에 해당 종목이 없습니다.';
+        offer(close);
+        return;
+      }
+      showEntry(matches[0]);
     });
     function table(target, codes, recommended) {
       const rows = codes.map(code => byCode.get(code)).filter(row => row && !stale(row) && (!recommended || safeRecommendation(row)));

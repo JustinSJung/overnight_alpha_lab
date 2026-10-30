@@ -2538,7 +2538,9 @@ def build_html(metrics, stock_data):
     )
     ml_data = load_public_forecast(DOCS_DIR / 'price_model.json')
     ml_status_en, ml_status_ko, ml_status_class = model_status(ml_data)
-    ml_section, ml_script = render_model_panel(ml_data)
+    from src.report_generator.stock_lookup_data import load_lookup
+    lookup = load_lookup(DOCS_DIR / 'stock_lookup.json', ml_data, PROJECT_ROOT) if ml_data else None
+    ml_section, ml_script = render_model_panel(ml_data, lookup)
     from src.report_generator.reliability_goal_panel import render_goal_progress
     goal_progress = render_goal_progress(DOCS_DIR / 'reliability_goal.json')
     if goal_progress:
