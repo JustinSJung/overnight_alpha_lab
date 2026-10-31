@@ -1,0 +1,244 @@
+{
+  "schema": "point_in_time_news_v1",
+  "observed_at": "2026-10-31T16:11:26.376334+00:00",
+  "rows": 0,
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "requests": [
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"써니전자\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "004770"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"대륙제관\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "004780"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"효성\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "004800"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"덕성\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "004830"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"티웨이홀딩스\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "004870"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"동일산업\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "004890"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"씨아이테크\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "004920"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"한신공영\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "004960"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"롯데지주\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "004990"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"한창\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005110"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"녹십자홀딩스\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005250"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"온타이드\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "005320"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"현대자동차\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "005380"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"삼립\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005610"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"파미셀\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "005690"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"대원산업\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005710"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"신영와코루\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005800"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"풍산홀딩스\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005810"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"원림\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005820"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"DB손해보험\"",
+      "status": "failed_TimeoutError",
+      "stock_codes": [
+        "005830"
+      ],
+      "topic": "company",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "Federal Reserve interest rates",
+      "status": "failed_TimeoutError",
+      "stock_codes": [],
+      "topic": "rates",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "semiconductor chip exports",
+      "status": "failed_TimeoutError",
+      "stock_codes": [],
+      "topic": "semiconductors",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "oil prices Middle East",
+      "status": "failed_TimeoutError",
+      "stock_codes": [],
+      "topic": "energy",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "China economy tariffs",
+      "status": "failed_TimeoutError",
+      "stock_codes": [],
+      "topic": "trade",
+      "observed_at": "2026-10-31T16:11:26.376334+00:00"
+    }
+  ],
+  "rejected": {},
+  "catalog_sha256": "e34fbdf6a7f41f4086facf98e2384ae92d37222e842849617a2617faf4dbeee4",
+  "social_media_collected": false,
+  "scope": "Public headline metadata only; no full article bodies or private posts"
+}
