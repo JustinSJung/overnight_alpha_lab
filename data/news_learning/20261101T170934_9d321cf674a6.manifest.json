@@ -1,0 +1,244 @@
+{
+  "schema": "point_in_time_news_v1",
+  "observed_at": "2026-11-01T17:09:34.417093+00:00",
+  "rows": 120,
+  "sha256": "7520f969ec506da863cecadc3ee8ecedd6148df3a15dd106e206f88529f0805b",
+  "requests": [
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"대한해운\"",
+      "status": "success",
+      "stock_codes": [
+        "005880"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"삼성전자\"",
+      "status": "success",
+      "stock_codes": [
+        "005930"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"NH투자증권\"",
+      "status": "success",
+      "stock_codes": [
+        "005940"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"동부건설\"",
+      "status": "success",
+      "stock_codes": [
+        "005960"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"동원산업\"",
+      "status": "success",
+      "stock_codes": [
+        "006040"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"화승인더스트리\"",
+      "status": "success",
+      "stock_codes": [
+        "006060"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"사조오양\"",
+      "status": "success",
+      "stock_codes": [
+        "006090"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"SK디스커버리\"",
+      "status": "success",
+      "stock_codes": [
+        "006120"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"제주은행\"",
+      "status": "success",
+      "stock_codes": [
+        "006220"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"LS\"",
+      "status": "success",
+      "stock_codes": [
+        "006260"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"대원전선\"",
+      "status": "success",
+      "stock_codes": [
+        "006340"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"GS건설\"",
+      "status": "success",
+      "stock_codes": [
+        "006360"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"대구백화점\"",
+      "status": "success",
+      "stock_codes": [
+        "006370"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"삼성SDI\"",
+      "status": "success",
+      "stock_codes": [
+        "006400"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"프리티\"",
+      "status": "success",
+      "stock_codes": [
+        "006490"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"대림통상\"",
+      "status": "success",
+      "stock_codes": [
+        "006570"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"대한유화\"",
+      "status": "success",
+      "stock_codes": [
+        "006650"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "",
+      "status": "success",
+      "stock_codes": [
+        "006730"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"블루산업개발\"",
+      "status": "success",
+      "stock_codes": [
+        "006740"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"미래에셋증권\"",
+      "status": "success",
+      "stock_codes": [
+        "006800"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "Federal Reserve interest rates",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "rates",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "semiconductor chip exports",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "semiconductors",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "oil prices Middle East",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "energy",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "China economy tariffs",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "trade",
+      "observed_at": "2026-11-01T17:09:34.417093+00:00"
+    }
+  ],
+  "rejected": {},
+  "catalog_sha256": "e34fbdf6a7f41f4086facf98e2384ae92d37222e842849617a2617faf4dbeee4",
+  "social_media_collected": false,
+  "scope": "Public headline metadata only; no full article bodies or private posts"
+}
