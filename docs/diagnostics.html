@@ -653,7 +653,7 @@
         <div class="card kpi-card">
           <div class="label">Latest V3 Backtest Update</div>
           <div class="ko-desc">최근 v3 백테스트 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-03 04:10:39<br>최근 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-03 15:27:30<br>최근 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -723,7 +723,7 @@
         <div class="card kpi-card">
           <div class="label">Latest V2 Monitor Update</div>
           <div class="ko-desc">최근 v2 모니터 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-03 04:10:28<br>최근 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-03 15:27:30<br>최근 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -742,35 +742,43 @@
         <div class="card kpi-card">
           <div class="label">Evaluation Status</div>
           <div class="ko-desc">평가 상태</div>
-          <div class="kpi-value-small"><span class="status-pill badge-red">Possible duplicates<br>중복 가능성</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient data<br>평가 정상</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Total Evaluation Rows</div>
           <div class="ko-desc">전체 평가 행 수</div>
-          <div class="kpi-value">1010995</div>
+          <div class="kpi-value-small">
+            <span class="status-pill">Insufficient data<br>데이터 부족</span>
+          </div>
         </div>
         <div class="card kpi-card">
           <div class="label">Unique Evaluation Keys</div>
           <div class="ko-desc">고유 평가 키</div>
-          <div class="kpi-value">37029</div>
+          <div class="kpi-value-small">
+            <span class="status-pill">Insufficient data<br>데이터 부족</span>
+          </div>
         </div>
         <div class="card kpi-card">
           <div class="label">Duplicate Rows</div>
           <div class="ko-desc">중복 행 수</div>
-          <div class="kpi-value">973966</div>
-          <div class="muted-helper">Duplicate rate: 96.34%<br>중복률: 96.34%</div>
+          <div class="kpi-value-small">
+            <span class="status-pill">Insufficient data<br>데이터 부족</span>
+          </div>
+          <div class="muted-helper">Duplicate rate: Insufficient data / 데이터 부족<br>중복률: Insufficient data / 데이터 부족</div>
         </div>
         <div class="card kpi-card">
           <div class="label">V2 Evaluated Cases</div>
           <div class="ko-desc">v2 평가 완료</div>
           <div class="kpi-value">17271</div>
-          <div class="muted-helper">V2 success rate: 48.22%<br>v2 성공률: 48.22%</div>
+          <div class="muted-helper">V2 success rate: Insufficient data / 데이터 부족<br>v2 성공률: Insufficient data / 데이터 부족</div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Coverage</div>
           <div class="ko-desc">시장 대비 평가 커버리지</div>
-          <div class="kpi-value">36.74%</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 대비 평가 가능</span></div>
+          <div class="kpi-value-small">
+            <span class="status-pill">Insufficient data<br>데이터 부족</span>
+          </div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient data<br>시장 대비 평가 가능</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Ranking Integrity</div>
@@ -796,20 +804,20 @@
         <div class="card kpi-card">
           <div class="label">AVOID Model Score — Top 20% Performance</div>
           <div class="ko-desc">회피 모델 점수 상위 20% 성과</div>
-          <div class="kpi-value">25.81%</div>
-          <div class="muted-helper">N=124, Wilson=18.9<br>표본수=124, Wilson 신뢰도=18.9</div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient sample<br>표본 부족</span></div>
+          <div class="muted-helper">N=0, Wilson=None<br>표본수=0, Wilson 신뢰도=None</div>
         </div>
         <div class="card kpi-card">
           <div class="label">v2 Raw Score — Top 20% Performance (AVOID only)</div>
           <div class="ko-desc">기존 v2 점수 상위 20% 성과 (회피형만)</div>
-          <div class="kpi-value">45.93%</div>
-          <div class="muted-helper">N=3087, Wilson=44.2<br>표본수=3087, Wilson 신뢰도=44.2</div>
+          <div class="kpi-value">46.54%</div>
+          <div class="muted-helper">N=1315, Wilson=43.9<br>표본수=1315, Wilson 신뢰도=43.9</div>
         </div>
         <div class="card kpi-card">
           <div class="label">AVOID Candidates with Model Score</div>
           <div class="ko-desc">회피 모델 점수 보유 후보 수</div>
-          <div class="kpi-value">619</div>
-          <div class="muted-helper">Overall AVOID evaluated pool: 15732, success rate 49.1%<br>전체 회피형 평가 완료: 15732건, 성공률 49.1%</div>
+          <div class="kpi-value">0</div>
+          <div class="muted-helper">Overall AVOID evaluated pool: 6875, success rate 48.22%<br>전체 회피형 평가 완료: 6875건, 성공률 48.22%</div>
         </div>
       </div>
     </section>
@@ -825,22 +833,24 @@
         <div class="card kpi-card">
           <div class="label">Benchmark Status</div>
           <div class="ko-desc">시장 기준 상태</div>
-          <div class="kpi-value-small"><span class="status-pill badge-orange">Partial<br>시장 기준 상태</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient data<br>시장 기준 상태</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Latest Date</div>
           <div class="ko-desc">시장 지수 최신일</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-03<br>시장 지수 최신일</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient data<br>데이터 부족</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Price Signal Latest Date</div>
           <div class="ko-desc">가격 신호 최신일</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-02<br>가격 신호 최신일</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">Insufficient data<br>데이터 부족</span></div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark Rows Available</div>
           <div class="ko-desc">시장 지수 행 수</div>
-          <div class="kpi-value">78</div>
+          <div class="kpi-value-small">
+            <span class="status-pill">Insufficient data<br>데이터 부족</span>
+          </div>
         </div>
         <div class="card kpi-card">
           <div class="label">Benchmark-Adjusted Evaluated Cases</div>
@@ -850,8 +860,10 @@
         <div class="card kpi-card">
           <div class="label">Benchmark Coverage Rate</div>
           <div class="ko-desc">시장 대비 커버리지</div>
-          <div class="kpi-value">36.74%</div>
-          <div class="muted-helper">Benchmark-adjusted success rate: 52.63%<br>시장 대비 성공률: 52.63%</div>
+          <div class="kpi-value-small">
+            <span class="status-pill">Insufficient data<br>데이터 부족</span>
+          </div>
+          <div class="muted-helper">Benchmark-adjusted success rate: Insufficient data / 데이터 부족<br>시장 대비 성공률: Insufficient data / 데이터 부족</div>
         </div>
       </div>
     </section>
@@ -897,7 +909,7 @@
         <div class="card kpi-card">
           <div class="label">Latest Rule Update</div>
           <div class="ko-desc">최근 룰 갱신</div>
-          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-03 04:10:00<br>최근 룰 갱신</span></div>
+          <div class="kpi-value-small"><span class="status-pill badge-gray">2026-11-03 15:27:30<br>최근 룰 갱신</span></div>
         </div>
       </div>
       <div class="note section">
@@ -1323,7 +1335,7 @@
       <div class="section-heading">
         <div>
           <h2>Dataset & Reports <span class="heading-ko">데이터셋 및 리포트</span></h2>
-          <p class="section-subtitle">Latest generated at 2026-11-03 04:10:58. Latest ML dataset rows: 551. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
+          <p class="section-subtitle">Latest generated at 2026-11-03 15:45:35. Latest ML dataset rows: 551. 최근 생성 시각과 ML 데이터셋 상태를 확인합니다.</p>
         </div>
       </div>
       <div class="tool-card">
