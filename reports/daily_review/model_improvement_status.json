@@ -1,6 +1,6 @@
 {
   "schema": "model_improvement_status_v1",
-  "generated_at": "2026-11-04T00:37:12.607291+09:00",
+  "generated_at": "2026-11-05T00:53:15.798060+09:00",
   "status": "collecting_forward_evidence",
   "active_family": "extra_trees_504",
   "previous_family": "extra_trees_504",
@@ -85,16 +85,17 @@
   "automatic_model_replacement": true,
   "recommendation_enabled": false,
   "automatic_orders": false,
-  "original_batches": 3,
+  "original_batches": 4,
   "later_batches_excluded": 0,
-  "price_date": "2026-11-03",
+  "price_date": "2026-11-04",
   "original_sha256": [
     "2009be796e121e80e01cb3da56c90c9c119db2c3ebe0c34f578034f2440f3174",
     "82271dca00ded20b5b184928e84cfd22b1ef1d510315567147e9542c47e8d182",
-    "a47849768ef83e551d76197749216493ea208b105ee995865acd6ddcfbc62a3c"
+    "a47849768ef83e551d76197749216493ea208b105ee995865acd6ddcfbc62a3c",
+    "2886a1fca379c18b6b4af2c390a4df392db5368313bd396dafced464a88df8c2"
   ],
   "activation": "current_model_used",
   "recording": "new_prospective_batch_recorded",
   "trained_families": 3,
-  "candidate_count": 834
+  "candidate_count": 840
 }
