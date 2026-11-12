@@ -8,14 +8,14 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 ```json
 {
   "schema": "algorithm_research_status_v1",
-  "generated_at": "2026-11-12T06:45:30.938011+00:00",
+  "generated_at": "2026-11-12T08:37:24.470946+00:00",
   "status": "researching_not_production_validated",
   "llm_enabled": false,
   "paid_api_calls": false,
   "future_validation_required": true,
   "automatic_orders": false,
-  "trials_reserved": 14,
-  "trials_completed": 14,
+  "trials_reserved": 16,
+  "trials_completed": 16,
   "trials_failed": 0,
   "trials_incomplete": 0,
   "research_screen_passed": 0,
@@ -28,10 +28,10 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 
 ```json
 {
-  "does_not_beat_past_constant": 14,
-  "development_outcomes_incomplete": 14,
-  "too_few_selected_development_cases": 14,
-  "unstable_across_development_periods": 10,
+  "does_not_beat_past_constant": 16,
+  "development_outcomes_incomplete": 16,
+  "too_few_selected_development_cases": 16,
+  "unstable_across_development_periods": 11,
   "no_error_reduction_against_matched_control": 9
 }
 ```
@@ -40,11 +40,11 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 
 | Program | Date Brier improvement vs matched control |
 |---|---:|
+| c1a34b54c8f5 | 0.00220461 |
 | be7c8685e10b | 0.00213978 |
+| 09304d51c1fa | 0.00010387 |
 | f8594d3cb727 | 0.00009368 |
 | 4f594de8935e | 0.00007610 |
-| ed0c5513caed | 0.00005328 |
-| 2061c308fac5 | 0.00002809 |
 
 All attempts, including failures, consume the fixed 120-trial budget. The best development result is not a production approval. No candidate is inserted into the existing registered eight-family competition.
 
