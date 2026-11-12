@@ -8,8 +8,8 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 ```json
 {
   "schema": "algorithm_research_status_v1",
-  "generated_at": "2026-11-12T08:37:24.470946+00:00",
-  "status": "researching_not_production_validated",
+  "generated_at": "2026-11-12T16:19:11.333011+00:00",
+  "status": "snapshot_already_researched",
   "llm_enabled": false,
   "paid_api_calls": false,
   "future_validation_required": true,
