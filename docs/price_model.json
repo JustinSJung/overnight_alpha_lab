@@ -2,7 +2,7 @@
   "schema": "public_price_forecast_v1",
   "prediction_target": "next_open_to_fifth_close_v1",
   "prediction_origin": "frozen_original",
-  "generated_at": "2026-11-12T17:27:52.206504+09:00",
+  "generated_at": "2026-11-13T01:14:24.389157+09:00",
   "price_date": "2026-11-12",
   "model_state": "research",
   "recommendation_enabled": false,

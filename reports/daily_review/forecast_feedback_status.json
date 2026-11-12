@@ -2,7 +2,7 @@
   "schema": "forecast_error_feedback_v1",
   "price_date": "2026-11-12",
   "version": "3b81bf6eb11d1a7629b1fd10bdde10092bd6315acf8c0f3711053ebc85b30fc6",
-  "recording": "new_prospective_shadow",
+  "recording": "first_batch_preserved",
   "training": {
     "dates": 7,
     "cases": 5813,

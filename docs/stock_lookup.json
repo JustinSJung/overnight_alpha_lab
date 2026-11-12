@@ -1,9 +1,9 @@
 {
   "schema": "stock_lookup_v1",
   "scope": "lookup_only_not_evaluation",
-  "generated_at": "2026-11-12T08:32:03.704129+00:00",
+  "generated_at": "2026-11-12T16:16:25.866625+00:00",
   "price_date": "2026-11-12",
-  "primary_sha256": "08c0304ec6adfa61c2df3a3f516275bedc01764a63744baf84a0b4fefe5ee7d8",
+  "primary_sha256": "bc1f675fd6d6d387f13b42f5d96263a6f05e338460198d01df68d89b3ca76e86",
   "recommendation_enabled": false,
   "states": {
     "000210": "available",
@@ -103,7 +103,7 @@
     {
       "stock_code": "000210",
       "signal_date": "2026-11-12",
-      "probability": 0.36955442536171523,
+      "probability": 0.3695544253617153,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -112,7 +112,7 @@
     {
       "stock_code": "000520",
       "signal_date": "2026-11-12",
-      "probability": 0.3708486114053624,
+      "probability": 0.37084861140536235,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -130,7 +130,7 @@
     {
       "stock_code": "000720",
       "signal_date": "2026-11-12",
-      "probability": 0.36782676676792414,
+      "probability": 0.3678267667679242,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -166,7 +166,7 @@
     {
       "stock_code": "004250",
       "signal_date": "2026-11-12",
-      "probability": 0.36466531881273506,
+      "probability": 0.3646653188127351,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -274,7 +274,7 @@
     {
       "stock_code": "011300",
       "signal_date": "2026-11-12",
-      "probability": 0.3621010242017693,
+      "probability": 0.3621010242017694,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -364,7 +364,7 @@
     {
       "stock_code": "025950",
       "signal_date": "2026-11-12",
-      "probability": 0.3631489469337196,
+      "probability": 0.36314894693371963,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -427,7 +427,7 @@
     {
       "stock_code": "036620",
       "signal_date": "2026-11-12",
-      "probability": 0.3668649458412124,
+      "probability": 0.3668649458412123,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -544,7 +544,7 @@
     {
       "stock_code": "088790",
       "signal_date": "2026-11-12",
-      "probability": 0.3674556997480165,
+      "probability": 0.36745569974801656,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -724,7 +724,7 @@
     {
       "stock_code": "356860",
       "signal_date": "2026-11-12",
-      "probability": 0.356671265745657,
+      "probability": 0.35667126574565705,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -751,7 +751,7 @@
     {
       "stock_code": "375500",
       "signal_date": "2026-11-12",
-      "probability": 0.3702873858653834,
+      "probability": 0.37028738586538346,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
@@ -841,7 +841,7 @@
     {
       "stock_code": "900100",
       "signal_date": "2026-11-12",
-      "probability": 0.3632912220432389,
+      "probability": 0.36329122204323894,
       "predicted_return": null,
       "stale": false,
       "recommended": false,
