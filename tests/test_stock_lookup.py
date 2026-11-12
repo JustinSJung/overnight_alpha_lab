@@ -1,5 +1,5 @@
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -16,6 +16,9 @@ from src.report_generator.price_model_panel import render_model_panel
 from src.report_generator.stock_lookup_data import build_catalog, load_lookup
 
 
+PUBLICATION_TIME = datetime(2026, 10, 29, 9, tzinfo=timezone.utc)  # 18:00 KST, after close.
+
+
 def prices(rows=65):
     dates = pd.bdate_range(end='2026-10-29', periods=rows)
     close = 100 + np.arange(rows) * .1
@@ -25,7 +28,7 @@ def prices(rows=65):
 
 def primary():
     return dict(schema='public_price_forecast_v1', prediction_target='next_open_to_fifth_close_v1',
-                prediction_origin='frozen_original', generated_at=datetime.now(timezone.utc).isoformat(),
+                prediction_origin='frozen_original', generated_at=PUBLICATION_TIME.isoformat(),
                 price_date='2026-10-29', learned_labels_through='2026-10-28', model_state='research',
                 recommendation_enabled=False, horizon_sessions=5, cost_assumption=.003,
                 recommendations=[], watchlist=['005930'], stock_count=1,
@@ -50,7 +53,12 @@ class StockLookupTests(unittest.TestCase):
         self.primary = self.root / 'docs/price_model.json'
         self.primary.write_text(json.dumps(primary()))
         self.output = self.root / 'docs/stock_lookup.json'
-        self.now = datetime.now(timezone.utc)
+        self.now = PUBLICATION_TIME
+        # Use the same instant for the market cutoff, primary publication and lookup sidecar.
+        for module in ('src.crawler.market_clock', 'src.report_generator.price_model_panel',
+                       'src.report_generator.stock_lookup_data'):
+            clock = self.enterContext(patch(module + '.datetime', wraps=datetime))
+            clock.now.side_effect = lambda tz: self.now.astimezone(tz)
 
     def auxiliary(self):
         data = dict(schema='stock_lookup_v1', scope='lookup_only_not_evaluation',
@@ -127,6 +135,16 @@ class StockLookupTests(unittest.TestCase):
         self.assertEqual(current_features(prices(10), '000660', '2026-10-29'), (None, 'insufficient_history'))
         self.assertEqual(current_features(prices().iloc[:-1], '000660', '2026-10-29'), (None, 'not_current'))
         self.assertEqual(current_features(prices().assign(volume=0), '000660', '2026-10-29'), (None, 'inactive'))
+
+    @patch('src.pipeline.stock_lookup_release.load_model')
+    def test_republishing_old_prices_still_rejects_lookup_before_loading_model(self, model):
+        self.now += timedelta(days=8)
+        self.primary.write_text(json.dumps(dict(primary(), generated_at=self.now.isoformat())))
+        with self.assertRaisesRegex(ValueError, 'Current completed-price publication required'):
+            refresh_lookup(self.primary, self.root / 'model', self.root / 'cache', self.output,
+                           self.root, client=Mock(), now=self.now)
+        model.assert_not_called()
+        self.assertFalse(self.output.exists())
 
     @patch('src.pipeline.stock_lookup_release.load_model')
     @patch('src.pipeline.stock_lookup_release.fetch_lookup_history', return_value=prices())
