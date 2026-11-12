@@ -1,6 +1,6 @@
 {
   "schema": "model_improvement_status_v1",
-  "generated_at": "2026-11-05T00:53:15.798060+09:00",
+  "generated_at": "2026-11-12T15:35:58.445386+09:00",
   "status": "collecting_forward_evidence",
   "active_family": "extra_trees_504",
   "previous_family": "extra_trees_504",
@@ -17,9 +17,9 @@
       "evaluated_cases": 0,
       "selected_cases": 0,
       "selected_signal_dates": 0,
-      "mature_issue_dates": 0,
+      "mature_issue_dates": 5,
       "outcome_coverage": null,
-      "issue_date_coverage": null,
+      "issue_date_coverage": 0.0,
       "pooled_success_rate": null,
       "date_equal_success_rate": null,
       "success_lower": null,
@@ -27,10 +27,23 @@
       "benchmark_excess_lower": null,
       "certification_look": null,
       "reasons": [
-        "no_scheduled_mature_originals",
+        "fewer_than_minimum_evaluated_cases",
+        "fewer_than_minimum_selected_signal_dates",
+        "recommendation_frequency_too_low",
+        "mature_selected_outcomes_missing",
+        "no_prespecified_certification_look_reached",
+        "observed_success_below_target",
+        "success_statistical_lower_below_target",
+        "net_return_lower_not_positive",
+        "benchmark_coverage_or_excess_lower_failed",
+        "recent_health_not_adequate",
         "original_signal_prices_revised"
       ],
-      "pre_registration_candidates": 0
+      "pre_registration_candidates": 0,
+      "recorded_mature_issue_dates": 5,
+      "one_sided_alpha_at_look": 0.003125,
+      "recent_health_success": null,
+      "scope": "Fixed-policy prospective learning-system evidence; not a guarantee of future returns"
     },
     "auto_hgb_504_v1": {
       "status": "price_revision_requires_review",
@@ -41,9 +54,9 @@
       "evaluated_cases": 0,
       "selected_cases": 0,
       "selected_signal_dates": 0,
-      "mature_issue_dates": 0,
+      "mature_issue_dates": 5,
       "outcome_coverage": null,
-      "issue_date_coverage": null,
+      "issue_date_coverage": 0.0,
       "pooled_success_rate": null,
       "date_equal_success_rate": null,
       "success_lower": null,
@@ -51,10 +64,23 @@
       "benchmark_excess_lower": null,
       "certification_look": null,
       "reasons": [
-        "no_scheduled_mature_originals",
+        "fewer_than_minimum_evaluated_cases",
+        "fewer_than_minimum_selected_signal_dates",
+        "recommendation_frequency_too_low",
+        "mature_selected_outcomes_missing",
+        "no_prespecified_certification_look_reached",
+        "observed_success_below_target",
+        "success_statistical_lower_below_target",
+        "net_return_lower_not_positive",
+        "benchmark_coverage_or_excess_lower_failed",
+        "recent_health_not_adequate",
         "original_signal_prices_revised"
       ],
-      "pre_registration_candidates": 0
+      "pre_registration_candidates": 0,
+      "recorded_mature_issue_dates": 5,
+      "one_sided_alpha_at_look": 0.003125,
+      "recent_health_success": null,
+      "scope": "Fixed-policy prospective learning-system evidence; not a guarantee of future returns"
     },
     "auto_extra_252_v1": {
       "status": "price_revision_requires_review",
@@ -65,9 +91,9 @@
       "evaluated_cases": 0,
       "selected_cases": 0,
       "selected_signal_dates": 0,
-      "mature_issue_dates": 0,
+      "mature_issue_dates": 5,
       "outcome_coverage": null,
-      "issue_date_coverage": null,
+      "issue_date_coverage": 0.0,
       "pooled_success_rate": null,
       "date_equal_success_rate": null,
       "success_lower": null,
@@ -75,27 +101,41 @@
       "benchmark_excess_lower": null,
       "certification_look": null,
       "reasons": [
-        "no_scheduled_mature_originals",
+        "fewer_than_minimum_evaluated_cases",
+        "fewer_than_minimum_selected_signal_dates",
+        "recommendation_frequency_too_low",
+        "mature_selected_outcomes_missing",
+        "no_prespecified_certification_look_reached",
+        "observed_success_below_target",
+        "success_statistical_lower_below_target",
+        "net_return_lower_not_positive",
+        "benchmark_coverage_or_excess_lower_failed",
+        "recent_health_not_adequate",
         "original_signal_prices_revised"
       ],
-      "pre_registration_candidates": 0
+      "pre_registration_candidates": 0,
+      "recorded_mature_issue_dates": 5,
+      "one_sided_alpha_at_look": 0.003125,
+      "recent_health_success": null,
+      "scope": "Fixed-policy prospective learning-system evidence; not a guarantee of future returns"
     }
   },
   "comparisons": {},
   "automatic_model_replacement": true,
   "recommendation_enabled": false,
   "automatic_orders": false,
-  "original_batches": 4,
+  "original_batches": 5,
   "later_batches_excluded": 0,
-  "price_date": "2026-11-04",
+  "price_date": "2026-11-11",
   "original_sha256": [
     "2009be796e121e80e01cb3da56c90c9c119db2c3ebe0c34f578034f2440f3174",
     "82271dca00ded20b5b184928e84cfd22b1ef1d510315567147e9542c47e8d182",
     "a47849768ef83e551d76197749216493ea208b105ee995865acd6ddcfbc62a3c",
-    "2886a1fca379c18b6b4af2c390a4df392db5368313bd396dafced464a88df8c2"
+    "2886a1fca379c18b6b4af2c390a4df392db5368313bd396dafced464a88df8c2",
+    "a89972f6aaa1ec1a3caceaf13e6e964cf43058088298fd56bc738b23ada27d58"
   ],
   "activation": "current_model_used",
-  "recording": "new_prospective_batch_recorded",
+  "recording": "outside_recording_window_models_prepared_only",
   "trained_families": 3,
-  "candidate_count": 840
+  "candidate_count": 842
 }
