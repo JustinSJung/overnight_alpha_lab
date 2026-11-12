@@ -66,6 +66,11 @@ jobs:
           KIS_ENV: ${{ secrets.KIS_ENV }}
         run: bash scripts/price_model.sh release-beta --model-dir data/ml_beta_state/current_model
 
+      - name: Learn from resolved forecast errors and freeze shadow probabilities
+        id: feedback
+        continue-on-error: true
+        run: .venv-ml/bin/python -m src.pipeline.forecast_feedback_shadow
+
       - name: Refresh additional lookup-only stock forecasts
         timeout-minutes: 12
         continue-on-error: true
@@ -86,6 +91,8 @@ jobs:
           key: ${{ steps.state.outputs.cache-primary-key }}
 
       - name: Publish beta forecasts and regenerate dashboard
+        env:
+          FEEDBACK_READY: ${{ steps.feedback.outcome == 'success' }}
         run: bash scripts/publish_ml_beta.sh
 
       - name: Request Pages deployment
@@ -103,6 +110,7 @@ jobs:
             data/predictions/ml_next_open_forward_[0-9]*.csv
             data/predictions/ml_next_open_forward_[0-9]*.manifest.json
             data/model_improvement/originals/
+            data/forecast_feedback/v1/
             reports/daily_review/model_improvement_status.json
             reports/daily_review/*_ml_beta_release*.json
           if-no-files-found: warn

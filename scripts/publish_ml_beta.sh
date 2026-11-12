@@ -15,6 +15,12 @@ stage_outputs() {
     fi
     git add -- 'data/predictions/ml_next_open_forward_[0-9]*.csv' 'data/predictions/ml_next_open_forward_[0-9]*.manifest.json'
     git add -- 'reports/daily_review/*_ml_beta_release*.json'
+    if [ "${FEEDBACK_READY:-false}" = true ]; then
+        git add -- reports/daily_review/forecast_feedback_status.json
+        if compgen -G 'data/forecast_feedback/v1/????-??-??.json' > /dev/null; then
+            git add -- data/forecast_feedback/v1/????-??-??.json
+        fi
+    fi
     if [ -f reports/daily_review/news_learning_status.json ]; then
         git add reports/daily_review/news_learning_status.json
     fi
