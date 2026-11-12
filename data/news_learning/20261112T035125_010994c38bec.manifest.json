@@ -1,0 +1,246 @@
+{
+  "schema": "point_in_time_news_v1",
+  "observed_at": "2026-11-12T03:51:25.364600+00:00",
+  "rows": 119,
+  "sha256": "ddc3a80392c3c518e2d39687ffcc1be890f57318de5713402eacf09fdbc6c826",
+  "requests": [
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"썸에이지\"",
+      "status": "success",
+      "stock_codes": [
+        "208640"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"다산디엠씨\"",
+      "status": "success",
+      "stock_codes": [
+        "208860"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"빅텐츠\"",
+      "status": "success",
+      "stock_codes": [
+        "210120"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"SK디앤디\"",
+      "status": "success",
+      "stock_codes": [
+        "210980"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"AP위성\"",
+      "status": "success",
+      "stock_codes": [
+        "211270"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"덕산네오룩스\"",
+      "status": "success",
+      "stock_codes": [
+        "213420"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"금호에이치티\"",
+      "status": "success",
+      "stock_codes": [
+        "214330"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"토니모리\"",
+      "status": "success",
+      "stock_codes": [
+        "214420"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"아이쓰리시스템\"",
+      "status": "success",
+      "stock_codes": [
+        "214430"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"솔디펜스\"",
+      "status": "success",
+      "stock_codes": [
+        "215090"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"콜마바이오텍\"",
+      "status": "success",
+      "stock_codes": [
+        "215380"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"토박스코리아\"",
+      "status": "success",
+      "stock_codes": [
+        "215480"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"크로넥스\"",
+      "status": "success",
+      "stock_codes": [
+        "215570"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"신라젠\"",
+      "status": "success",
+      "stock_codes": [
+        "215600"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"제테마\"",
+      "status": "success",
+      "stock_codes": [
+        "216080"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"인바이츠바이오코아\"",
+      "status": "success",
+      "stock_codes": [
+        "216400"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"제너셈\"",
+      "status": "success",
+      "stock_codes": [
+        "217190"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"싸이토젠\"",
+      "status": "success",
+      "stock_codes": [
+        "217330"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"강스템바이오텍\"",
+      "status": "success",
+      "stock_codes": [
+        "217730"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"디와이디\"",
+      "status": "success",
+      "stock_codes": [
+        "219550"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "Federal Reserve interest rates",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "rates",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "semiconductor chip exports",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "semiconductors",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "oil prices Middle East",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "energy",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "China economy tariffs",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "trade",
+      "observed_at": "2026-11-12T03:51:25.364600+00:00"
+    }
+  ],
+  "rejected": {
+    "invalid_publication_or_metadata": 1
+  },
+  "catalog_sha256": "ad60e593dc56cf31ef6ca6b8f5c4a0589ef1f68a465453898477495ddc5177c8",
+  "social_media_collected": false,
+  "scope": "Public headline metadata only; no full article bodies or private posts"
+}
