@@ -1,0 +1,13 @@
+{
+  "schema": "point_in_time_news_v1",
+  "observed_at": "2026-11-13T04:14:38.532395+00:00",
+  "rows": 1073,
+  "sha256": "8d0a2e05c0ca36eaff283548a5df746941d2cc6c8cf4f148d2ebc07d9831a869",
+  "requests": [],
+  "rejected": {
+    "invalid_publication_or_metadata": 1
+  },
+  "catalog_sha256": "19b5d46a572fe712cfdbf87c70534a46ff1cadfdc4685284b6165ff0c8dd156f",
+  "social_media_collected": false,
+  "scope": "Public headline metadata only; no full article bodies or private posts"
+}
