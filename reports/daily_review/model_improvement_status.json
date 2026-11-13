@@ -1,6 +1,6 @@
 {
   "schema": "model_improvement_status_v1",
-  "generated_at": "2026-11-13T01:12:21.965362+09:00",
+  "generated_at": "2026-11-14T00:49:09.777315+09:00",
   "status": "collecting_forward_evidence",
   "active_family": "extra_trees_504",
   "previous_family": "extra_trees_504",
@@ -17,7 +17,7 @@
       "evaluated_cases": 0,
       "selected_cases": 0,
       "selected_signal_dates": 0,
-      "mature_issue_dates": 6,
+      "mature_issue_dates": 7,
       "outcome_coverage": null,
       "issue_date_coverage": 0.0,
       "pooled_success_rate": null,
@@ -54,7 +54,7 @@
       "evaluated_cases": 0,
       "selected_cases": 0,
       "selected_signal_dates": 0,
-      "mature_issue_dates": 6,
+      "mature_issue_dates": 7,
       "outcome_coverage": null,
       "issue_date_coverage": 0.0,
       "pooled_success_rate": null,
@@ -91,7 +91,7 @@
       "evaluated_cases": 0,
       "selected_cases": 0,
       "selected_signal_dates": 0,
-      "mature_issue_dates": 6,
+      "mature_issue_dates": 7,
       "outcome_coverage": null,
       "issue_date_coverage": 0.0,
       "pooled_success_rate": null,
@@ -126,7 +126,7 @@
   "automatic_orders": false,
   "original_batches": 6,
   "later_batches_excluded": 0,
-  "price_date": "2026-11-12",
+  "price_date": "2026-11-13",
   "original_sha256": [
     "2009be796e121e80e01cb3da56c90c9c119db2c3ebe0c34f578034f2440f3174",
     "82271dca00ded20b5b184928e84cfd22b1ef1d510315567147e9542c47e8d182",
@@ -135,8 +135,8 @@
     "a89972f6aaa1ec1a3caceaf13e6e964cf43058088298fd56bc738b23ada27d58",
     "bd089e70b72a0b0309b136309f3f1d42aa5e4546b7ad80b1feb12f4209de43fb"
   ],
-  "activation": "existing_original_preserved",
-  "recording": "original_batch_preserved",
-  "trained_families": 0,
-  "candidate_count": 843
+  "activation": "current_model_used",
+  "recording": "new_prospective_batch_recorded",
+  "trained_families": 3,
+  "candidate_count": 845
 }
