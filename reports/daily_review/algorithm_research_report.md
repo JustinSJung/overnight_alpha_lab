@@ -8,14 +8,14 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 ```json
 {
   "schema": "algorithm_research_status_v1",
-  "generated_at": "2026-11-12T16:19:11.333011+00:00",
-  "status": "snapshot_already_researched",
+  "generated_at": "2026-11-13T16:01:51.295270+00:00",
+  "status": "researching_not_production_validated",
   "llm_enabled": false,
   "paid_api_calls": false,
   "future_validation_required": true,
   "automatic_orders": false,
-  "trials_reserved": 16,
-  "trials_completed": 16,
+  "trials_reserved": 18,
+  "trials_completed": 18,
   "trials_failed": 0,
   "trials_incomplete": 0,
   "research_screen_passed": 0,
@@ -28,11 +28,11 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 
 ```json
 {
-  "does_not_beat_past_constant": 16,
-  "development_outcomes_incomplete": 16,
-  "too_few_selected_development_cases": 16,
-  "unstable_across_development_periods": 11,
-  "no_error_reduction_against_matched_control": 9
+  "does_not_beat_past_constant": 18,
+  "development_outcomes_incomplete": 18,
+  "too_few_selected_development_cases": 18,
+  "unstable_across_development_periods": 13,
+  "no_error_reduction_against_matched_control": 10
 }
 ```
 
