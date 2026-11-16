@@ -1,0 +1,43 @@
+{
+  "schema": "model_improvement_original_v1",
+  "ledger_file": "model_improvement_20261116_8c9e92c9c866602f.csv",
+  "sha256": "220663e8a7245d69b79d97f458f87a8111a9829228c25d1311698fc79b52ff2e",
+  "protocol_sha256": "bcc198875a5243258c026eeeef3624e5e844a66e541c61807bb54965fcc243f8",
+  "recorded_at": "2026-11-17T02:36:35.906996+09:00",
+  "signal_date": "2026-11-16",
+  "candidate_count": 844,
+  "models": {
+    "extra_trees_504": {
+      "dataset_sha256": "346bdc47d2e295542c8d7d470aebe88689a5a9013a66f898130e14df52f3321d",
+      "trained_at": "2026-11-16T17:34:17.958109+00:00",
+      "as_of": "2026-11-16",
+      "target_version": "next_open_to_fifth_close_v1",
+      "baseline_probability": 0.36766103492299296,
+      "model_family": "extra_trees_504"
+    },
+    "auto_linear_504_v1": {
+      "dataset_sha256": "346bdc47d2e295542c8d7d470aebe88689a5a9013a66f898130e14df52f3321d",
+      "trained_at": "2026-11-16T17:35:43.190774+00:00",
+      "as_of": "2026-11-16",
+      "target_version": "next_open_to_fifth_close_v1",
+      "baseline_probability": 0.36766103492299296,
+      "model_family": "auto_linear_504_v1"
+    },
+    "auto_hgb_504_v1": {
+      "dataset_sha256": "346bdc47d2e295542c8d7d470aebe88689a5a9013a66f898130e14df52f3321d",
+      "trained_at": "2026-11-16T17:36:05.704246+00:00",
+      "as_of": "2026-11-16",
+      "target_version": "next_open_to_fifth_close_v1",
+      "baseline_probability": 0.36766103492299296,
+      "model_family": "auto_hgb_504_v1"
+    },
+    "auto_extra_252_v1": {
+      "dataset_sha256": "20dcb7b36fba167d9c2c9fc435614e83e28fe9e5fe804786e3cf1e69bf4c2fba",
+      "trained_at": "2026-11-16T17:36:35.800307+00:00",
+      "as_of": "2026-11-16",
+      "target_version": "next_open_to_fifth_close_v1",
+      "baseline_probability": 0.36766103492299296,
+      "model_family": "auto_extra_252_v1"
+    }
+  }
+}
