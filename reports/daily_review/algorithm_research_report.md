@@ -8,14 +8,14 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 ```json
 {
   "schema": "algorithm_research_status_v1",
-  "generated_at": "2026-11-16T17:42:44.080763+00:00",
+  "generated_at": "2026-11-17T17:23:28.023685+00:00",
   "status": "researching_not_production_validated",
   "llm_enabled": false,
   "paid_api_calls": false,
   "future_validation_required": true,
   "automatic_orders": false,
-  "trials_reserved": 20,
-  "trials_completed": 20,
+  "trials_reserved": 22,
+  "trials_completed": 22,
   "trials_failed": 0,
   "trials_incomplete": 0,
   "research_screen_passed": 0,
@@ -28,9 +28,9 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 
 ```json
 {
-  "does_not_beat_past_constant": 20,
-  "development_outcomes_incomplete": 20,
-  "too_few_selected_development_cases": 20,
+  "does_not_beat_past_constant": 22,
+  "development_outcomes_incomplete": 22,
+  "too_few_selected_development_cases": 22,
   "unstable_across_development_periods": 14,
   "no_error_reduction_against_matched_control": 10
 }
@@ -43,8 +43,8 @@ RESEARCH_ONLY. Offline program search, not autonomous LLM reasoning or verified 
 | c1a34b54c8f5 | 0.00220461 |
 | be7c8685e10b | 0.00213978 |
 | 3cd331cb051d | 0.00158657 |
+| 3eaeb0820b8c | 0.00155407 |
 | 09304d51c1fa | 0.00010387 |
-| f8594d3cb727 | 0.00009368 |
 
 All attempts, including failures, consume the fixed 120-trial budget. The best development result is not a production approval. No candidate is inserted into the existing registered eight-family competition.
 
