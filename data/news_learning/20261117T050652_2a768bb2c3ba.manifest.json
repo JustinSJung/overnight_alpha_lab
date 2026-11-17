@@ -1,0 +1,246 @@
+{
+  "schema": "point_in_time_news_v1",
+  "observed_at": "2026-11-17T05:06:52.601950+00:00",
+  "rows": 79,
+  "sha256": "217732fda832cdf337a86becbed54a8566f2c512a2e8084593788189895358fa",
+  "requests": [
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"피델릭스\"",
+      "status": "success",
+      "stock_codes": [
+        "032580"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"소프트센\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "032680"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"엠젠솔루션\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "032790"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"판타지오\"",
+      "status": "success",
+      "stock_codes": [
+        "032800"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"우리기술\"",
+      "status": "success",
+      "stock_codes": [
+        "032820"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"유나이티드\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "033270"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"로젠\"",
+      "status": "success",
+      "stock_codes": [
+        "033290"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"엠투엔\"",
+      "status": "success",
+      "stock_codes": [
+        "033310"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"좋은사람들\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "033340"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"SJG세종\"",
+      "status": "success",
+      "stock_codes": [
+        "033530"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"파라텍\"",
+      "status": "success",
+      "stock_codes": [
+        "033540"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"케이티앤지\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "033780"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"피노\"",
+      "status": "failed_HTTPError",
+      "stock_codes": [
+        "033790"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"무학\"",
+      "status": "success",
+      "stock_codes": [
+        "033920"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"두산에너빌리티\"",
+      "status": "success",
+      "stock_codes": [
+        "034020"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"파라다이스\"",
+      "status": "success",
+      "stock_codes": [
+        "034230"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"SK\"",
+      "status": "success",
+      "stock_codes": [
+        "034730"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"바른손이앤에이\"",
+      "status": "success",
+      "stock_codes": [
+        "035620"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"CJ ENM\"",
+      "status": "success",
+      "stock_codes": [
+        "035760"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "\"서희건설\"",
+      "status": "success",
+      "stock_codes": [
+        "035890"
+      ],
+      "topic": "company",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "Federal Reserve interest rates",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "rates",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "semiconductor chip exports",
+      "status": "failed_HTTPError",
+      "stock_codes": [],
+      "topic": "semiconductors",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "oil prices Middle East",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "energy",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "China economy tariffs",
+      "status": "failed_HTTPError",
+      "stock_codes": [],
+      "topic": "trade",
+      "observed_at": "2026-11-17T05:06:52.601950+00:00"
+    }
+  ],
+  "rejected": {
+    "invalid_publication_or_metadata": 1
+  },
+  "catalog_sha256": "7f86bf9e8352ba93472281e7fd2f4039910c6934ccdca13f8820c9f306b31c47",
+  "social_media_collected": false,
+  "scope": "Public headline metadata only; no full article bodies or private posts"
+}
