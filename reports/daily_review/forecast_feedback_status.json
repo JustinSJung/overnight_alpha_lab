@@ -1,14 +1,14 @@
 {
   "schema": "forecast_error_feedback_v1",
-  "price_date": "2026-11-18",
+  "price_date": "2026-11-19",
   "version": "3b81bf6eb11d1a7629b1fd10bdde10092bd6315acf8c0f3711053ebc85b30fc6",
   "recording": "new_prospective_shadow",
   "training": {
-    "dates": 7,
-    "cases": 5813,
-    "latest_label": "2026-11-11",
+    "dates": 8,
+    "cases": 6654,
+    "latest_label": "2026-11-19",
     "ready": true,
-    "offset": -0.04475944345001722
+    "offset": -0.045988108227011944
   },
   "base_diagnostics": {
     "probability_bands": {
@@ -20,18 +20,18 @@
         "hit_rate": null
       },
       "(0.3, 0.4]": {
-        "issued": 4212,
-        "resolved": 186,
-        "dates": 6,
-        "mean_prediction": 0.3835941699799355,
-        "hit_rate": 0.23655913978494625
+        "issued": 5033,
+        "resolved": 1026,
+        "dates": 7,
+        "mean_prediction": 0.36990402136661615,
+        "hit_rate": 0.2777777777777778
       },
       "(0.4, 0.5]": {
-        "issued": 5613,
-        "resolved": 5396,
-        "dates": 7,
-        "mean_prediction": 0.437520161114913,
-        "hit_rate": 0.2679762787249815
+        "issued": 5637,
+        "resolved": 5397,
+        "dates": 8,
+        "mean_prediction": 0.4375136314953357,
+        "hit_rate": 0.2681119140263109
       },
       "(0.5, 0.6]": {
         "issued": 225,
@@ -228,26 +228,26 @@
         "date": "2026-11-12",
         "all": {
           "issued": 843,
-          "resolved": 0,
-          "dates": 0,
-          "mean_prediction": null,
-          "hit_rate": null
+          "resolved": 841,
+          "dates": 1,
+          "mean_prediction": 0.3669147325923141,
+          "hit_rate": 0.2877526753864447
         },
         "top": {
           "issued": 169,
-          "resolved": 0,
-          "dates": 0,
-          "mean_prediction": null,
-          "hit_rate": null
+          "resolved": 169,
+          "dates": 1,
+          "mean_prediction": 0.37355275924416526,
+          "hit_rate": 0.26627218934911245
         },
         "bottom": {
           "issued": 169,
-          "resolved": 0,
-          "dates": 0,
-          "mean_prediction": null,
-          "hit_rate": null
+          "resolved": 167,
+          "dates": 1,
+          "mean_prediction": 0.3601393557073395,
+          "hit_rate": 0.281437125748503
         },
-        "top_minus_bottom": null
+        "top_minus_bottom": -0.015164936399390538
       },
       {
         "date": "2026-11-13",
@@ -348,22 +348,47 @@
           "hit_rate": null
         },
         "top_minus_bottom": null
+      },
+      {
+        "date": "2026-11-19",
+        "all": {
+          "issued": 845,
+          "resolved": 0,
+          "dates": 0,
+          "mean_prediction": null,
+          "hit_rate": null
+        },
+        "top": {
+          "issued": 169,
+          "resolved": 0,
+          "dates": 0,
+          "mean_prediction": null,
+          "hit_rate": null
+        },
+        "bottom": {
+          "issued": 169,
+          "resolved": 0,
+          "dates": 0,
+          "mean_prediction": null,
+          "hit_rate": null
+        },
+        "top_minus_bottom": null
       }
     ],
-    "mean_daily_top_minus_bottom": 0.023195119318184125
+    "mean_daily_top_minus_bottom": 0.01840011235348729
   },
   "prospective": {
-    "issued": 4219,
-    "resolved": 0,
-    "resolved_dates": 0,
+    "issued": 5064,
+    "resolved": 841,
+    "resolved_dates": 1,
     "models": {
       "probability_above_cost": {
-        "date_brier": null,
+        "date_brier": 0.21122780642891578,
         "top_5": {
-          "issued": 25,
-          "resolved": 0,
-          "success_count": 0,
-          "hit_rate": null
+          "issued": 30,
+          "resolved": 5,
+          "success_count": 2,
+          "hit_rate": 0.4
         },
         "at_least_60pct_top_5": {
           "issued": 0,
@@ -373,12 +398,12 @@
         }
       },
       "shadow": {
-        "date_brier": null,
+        "date_brier": 0.20303429994580513,
         "top_5": {
-          "issued": 25,
-          "resolved": 0,
-          "success_count": 0,
-          "hit_rate": null
+          "issued": 30,
+          "resolved": 5,
+          "success_count": 1,
+          "hit_rate": 0.2
         },
         "at_least_60pct_top_5": {
           "issued": 0,
@@ -388,7 +413,7 @@
         }
       },
       "validation_base_rate": {
-        "date_brier": null
+        "date_brier": 0.211276463197982
       }
     }
   },
