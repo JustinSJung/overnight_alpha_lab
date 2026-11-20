@@ -1,0 +1,652 @@
+{
+  "schema": "point_in_time_news_v1",
+  "observed_at": "2026-11-20T04:01:43.799500+00:00",
+  "rows": 68,
+  "sha256": "fb159cdba0de800d42d11573ea4114682deaff70660172c94c7a779c3231fad0",
+  "requests": [
+    {
+      "source_provider": "deepsearch_news",
+      "query": "079160",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "079160",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "079160",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "079160",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "012750",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "012750",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "012750",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "012750",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "096870",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "096870",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "096870",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "096870",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "090430",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "090430",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "090430",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "090430",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "206650",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "206650",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "206650",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "206650",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "038290",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "038290",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "038290",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "038290",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "489460",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "489460",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "489460",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "489460",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "005610",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "005610",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "005610",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "005610",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "006840",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "006840",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "006840",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "006840",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "001630",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "001630",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "001630",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "001630",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "211050",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "211050",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "211050",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "211050",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "372800",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "372800",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "372800",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "372800",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "005440",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "005440",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "005440",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "005440",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "036190",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "036190",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "036190",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "036190",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "육일씨엔에쓰",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "육일씨엔에쓰",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "육일씨엔에쓰",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "육일씨엔에쓰",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "000120",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "000120",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "000120",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "000120",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "099320",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "099320",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "099320",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "099320",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "419540",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "419540",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "419540",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "419540",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "002790",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "002790",
+      "status": "success",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "002790",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "002790",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "deepsearch_news",
+      "query": "048410",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "google_news_rss",
+      "query": "048410",
+      "status": "failed",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "gdelt",
+      "query": "048410",
+      "status": "skipped_after_repeated_failures",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    },
+    {
+      "source_provider": "naver_search",
+      "query": "048410",
+      "status": "skipped_missing_credentials",
+      "stock_codes": [],
+      "topic": "company",
+      "observed_at": "2026-11-20T04:01:43.799500+00:00"
+    }
+  ],
+  "rejected": {},
+  "catalog_sha256": "d1432b142255ece95e069a81b49fc69cb3bc6e952231391390c7a2f1b6402a39",
+  "social_media_collected": false,
+  "scope": "Public headline metadata only; no full article bodies or private posts"
+}
