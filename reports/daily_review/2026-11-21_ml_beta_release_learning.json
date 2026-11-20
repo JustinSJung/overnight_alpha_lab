@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-11-21T01:31:19.477551+09:00",
+  "price_date": "2026-11-20",
+  "learning_state": "new_mature_labels_learned",
+  "new_mature_labels": 841,
+  "serving_family": "extra_trees_504",
+  "publication_uses_current_model": true,
+  "fit_label_cutoff": "2026-11-20",
+  "model_trained_at": "2026-11-20T16:31:00.385982+00:00",
+  "dataset_sha256": "03d6ecf48b4e849cc4dea96a17b51665bdbb219d094c2588520b47092b55c5c4",
+  "recording_state": "new_timely_original_recorded",
+  "new_frozen_predictions": 844,
+  "original_registry_files": 15,
+  "later_duplicate_candidates_not_used": 829,
+  "evidence_scope": "First timely recorded model batch per signal date, same next-open target; evolving learning system, not one static model",
+  "forward": {
+    "recorded_candidates": 11747,
+    "evaluated_cases": 7495,
+    "unresolved_cases": 4252,
+    "states": {
+      "resolved": 7495,
+      "awaiting_future_sessions": 4220,
+      "exit_price_unavailable": 16,
+      "entry_price_unavailable": 11,
+      "price_discontinuity_requires_review": 5
+    },
+    "pooled_success_rate": 0.2541694462975317,
+    "date_brier": 0.21814320993562977,
+    "frozen_baseline_date_brier": 0.21643852262558447,
+    "recommendation_enabled": false,
+    "status": "incomplete_forward_outcomes",
+    "fixed_policy": {
+      "selected_cases": 7,
+      "selected_dates": 2,
+      "evaluated_cases": 7,
+      "unresolved_cases": 0,
+      "outcome_coverage": 1.0,
+      "conditional_success_rate": 0.5714285714285714,
+      "conditional_date_success_rate": 0.7,
+      "conditional_mean_net_return_proxy": 0.06248333599167782,
+      "all_date_net_return_proxy": 0.01629690150563006,
+      "all_date_net_lower_95": null,
+      "unknown_states": {}
+    }
+  },
+  "recommendation_enabled": false
+}
