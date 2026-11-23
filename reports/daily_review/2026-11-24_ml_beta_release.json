@@ -1,0 +1,17 @@
+{
+  "schema": "ml_beta_release_v1",
+  "generated_at": "2026-11-24T04:41:39.924882+09:00",
+  "status": "beta_under_validation",
+  "universe_count": 901,
+  "price_date": "2026-11-23",
+  "new_mature_labels": 839,
+  "learning_state": "new_mature_labels_learned",
+  "recording_state": "new_timely_original_recorded",
+  "new_frozen_predictions": 841,
+  "model_trained_at": "2026-11-23T19:38:33.436409+00:00",
+  "dataset_sha256": "90f72c7ddeefd6b91e990139341514f845be070727f2db38f38461018324f4e4",
+  "history_manifest": "/home/runner/work/overnight_alpha_lab/overnight_alpha_lab/data/ml_beta_state/prices/snapshot_20261123/history_manifest.json",
+  "goal_passed": false,
+  "recommendation_enabled": false,
+  "automatic_orders": false
+}
