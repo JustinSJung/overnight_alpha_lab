@@ -1,14 +1,14 @@
 {
   "schema": "forecast_error_feedback_v1",
-  "price_date": "2026-11-23",
+  "price_date": "2026-11-24",
   "version": "3b81bf6eb11d1a7629b1fd10bdde10092bd6315acf8c0f3711053ebc85b30fc6",
   "recording": "new_prospective_shadow",
   "training": {
-    "dates": 10,
-    "cases": 8334,
-    "latest_label": "2026-11-23",
+    "dates": 11,
+    "cases": 9174,
+    "latest_label": "2026-11-24",
     "ready": true,
-    "offset": -0.05569282879272394
+    "offset": -0.05888219341377285
   },
   "base_diagnostics": {
     "probability_bands": {
@@ -20,18 +20,18 @@
         "hit_rate": 0.0
       },
       "(0.3, 0.4]": {
-        "issued": 6484,
-        "resolved": 2644,
-        "dates": 9,
-        "mean_prediction": 0.36442830387378367,
-        "hit_rate": 0.2102874432677761
+        "issued": 7317,
+        "resolved": 3404,
+        "dates": 10,
+        "mean_prediction": 0.3654197807999045,
+        "hit_rate": 0.21504112808460635
       },
       "(0.4, 0.5]": {
-        "issued": 5871,
-        "resolved": 5458,
-        "dates": 10,
-        "mean_prediction": 0.4373034092901754,
-        "hit_rate": 0.2682301209234152
+        "issued": 5880,
+        "resolved": 5538,
+        "dates": 11,
+        "mean_prediction": 0.4370299556547556,
+        "hit_rate": 0.26579992777175876
       },
       "(0.5, 0.6]": {
         "issued": 225,
@@ -281,48 +281,48 @@
           "resolved": 839,
           "dates": 1,
           "mean_prediction": 0.36424383357079976,
-          "hit_rate": 0.1966626936829559
+          "hit_rate": 0.17401668653158522
         },
         "top": {
           "issued": 169,
           "resolved": 168,
           "dates": 1,
           "mean_prediction": 0.39457993654681445,
-          "hit_rate": 0.16071428571428573
+          "hit_rate": 0.125
         },
         "bottom": {
           "issued": 169,
           "resolved": 167,
           "dates": 1,
           "mean_prediction": 0.33687095203571094,
-          "hit_rate": 0.2275449101796407
+          "hit_rate": 0.19760479041916168
         },
-        "top_minus_bottom": -0.06683062446535498
+        "top_minus_bottom": -0.07260479041916168
       },
       {
         "date": "2026-11-17",
         "all": {
           "issued": 843,
-          "resolved": 0,
-          "dates": 0,
-          "mean_prediction": null,
-          "hit_rate": null
+          "resolved": 840,
+          "dates": 1,
+          "mean_prediction": 0.3735837915605362,
+          "hit_rate": 0.24166666666666667
         },
         "top": {
           "issued": 169,
-          "resolved": 0,
-          "dates": 0,
-          "mean_prediction": null,
-          "hit_rate": null
+          "resolved": 169,
+          "dates": 1,
+          "mean_prediction": 0.4054810396399865,
+          "hit_rate": 0.24260355029585798
         },
         "bottom": {
           "issued": 169,
-          "resolved": 0,
-          "dates": 0,
-          "mean_prediction": null,
-          "hit_rate": null
+          "resolved": 168,
+          "dates": 1,
+          "mean_prediction": 0.34769170703716357,
+          "hit_rate": 0.21428571428571427
         },
-        "top_minus_bottom": null
+        "top_minus_bottom": 0.028317836010143704
       },
       {
         "date": "2026-11-18",
@@ -423,22 +423,47 @@
           "hit_rate": null
         },
         "top_minus_bottom": null
+      },
+      {
+        "date": "2026-11-24",
+        "all": {
+          "issued": 842,
+          "resolved": 0,
+          "dates": 0,
+          "mean_prediction": null,
+          "hit_rate": null
+        },
+        "top": {
+          "issued": 168,
+          "resolved": 0,
+          "dates": 0,
+          "mean_prediction": null,
+          "hit_rate": null
+        },
+        "bottom": {
+          "issued": 168,
+          "resolved": 0,
+          "dates": 0,
+          "mean_prediction": null,
+          "hit_rate": null
+        },
+        "top_minus_bottom": null
       }
     ],
-    "mean_daily_top_minus_bottom": 0.01200187879861836
+    "mean_daily_top_minus_bottom": 0.012960223458410964
   },
   "prospective": {
-    "issued": 6749,
-    "resolved": 2521,
-    "resolved_dates": 3,
+    "issued": 7591,
+    "resolved": 3361,
+    "resolved_dates": 4,
     "models": {
       "probability_above_cost": {
-        "date_brier": 0.18988738187006718,
+        "date_brier": 0.19136631906555013,
         "top_5": {
-          "issued": 40,
-          "resolved": 15,
+          "issued": 45,
+          "resolved": 20,
           "success_count": 5,
-          "hit_rate": 0.3333333333333333
+          "hit_rate": 0.25
         },
         "at_least_60pct_top_5": {
           "issued": 0,
@@ -448,12 +473,12 @@
         }
       },
       "shadow": {
-        "date_brier": 0.17581579675925244,
+        "date_brier": 0.17751263673533918,
         "top_5": {
-          "issued": 40,
-          "resolved": 15,
+          "issued": 45,
+          "resolved": 20,
           "success_count": 5,
-          "hit_rate": 0.3333333333333333
+          "hit_rate": 0.25
         },
         "at_least_60pct_top_5": {
           "issued": 0,
@@ -463,7 +488,7 @@
         }
       },
       "validation_base_rate": {
-        "date_brier": 0.19068459893458758
+        "date_brier": 0.19128052604157042
       }
     }
   },
