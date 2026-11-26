@@ -1,0 +1,12 @@
+{
+  "schema": "next_open_original_v1",
+  "ledger_file": "ml_next_open_forward_20261126_245ae747d17e39d7.csv",
+  "sha256": "6a0d0d899d94d93840e3d1f8d9a4aa72ef22f4955bd220bae2459bfa27259128",
+  "model": {
+    "dataset_sha256": "7901aacbc4e620086df835fca9d394d089679532265f694a492b821d1527bc6f",
+    "trained_at": "2026-11-26T18:03:43.657343+00:00",
+    "as_of": "2026-11-26",
+    "target_version": "next_open_to_fifth_close_v1",
+    "baseline_probability": 0.3470577733041328
+  }
+}
